@@ -8,6 +8,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
 const exerciseCatalogAsset = 'assets/exercises/exercises_de.json';
+const exerciseLegacyMapAsset = 'assets/exercises/legacy_map.json';
 const exerciseImageDirectory = 'assets/exercises/img';
 
 const allowedExerciseSplits = {'push', 'pull', 'beine', 'core', 'cardio'};
@@ -59,6 +60,30 @@ class ExerciseDeEntry {
   final List<String> alternatives;
   final String shoulderRisk;
   final List<String> legacyNames;
+
+  ExerciseDeEntry copyWith({List<String>? legacyNames}) {
+    return ExerciseDeEntry(
+      id: id,
+      nameDe: nameDe,
+      synonyms: synonyms,
+      category: category,
+      primaryMuscles: primaryMuscles,
+      secondaryMuscles: secondaryMuscles,
+      equipment: equipment,
+      split: split,
+      mechanic: mechanic,
+      steps: steps,
+      tips: tips,
+      image: image,
+      source: source,
+      license: license,
+      imageSource: imageSource,
+      imageLicense: imageLicense,
+      alternatives: alternatives,
+      shoulderRisk: shoulderRisk,
+      legacyNames: legacyNames ?? this.legacyNames,
+    );
+  }
 }
 
 class ExerciseCatalogParse {
@@ -159,14 +184,56 @@ Future<ExerciseImportResult> importExerciseCatalog(AppDatabase database) async {
     );
   }
   final raw = await rootBundle.loadString(exerciseCatalogAsset);
-  return importExerciseCatalogJson(database, raw);
+  String? legacyMapRaw;
+  try {
+    legacyMapRaw = await rootBundle.loadString(exerciseLegacyMapAsset);
+  } catch (error) {
+    debugPrint('Exercise legacy map was not loaded: $error');
+  }
+  return importExerciseCatalogJson(database, raw, legacyMapRaw: legacyMapRaw);
+}
+
+Map<String, List<String>> parseLegacyNameMap(String raw) {
+  Object? decoded;
+  try {
+    decoded = jsonDecode(raw);
+  } catch (error) {
+    debugPrint('Exercise legacy map was ignored: $error');
+    return const {};
+  }
+  if (decoded is! Map) return const {};
+  final names = <String, List<String>>{};
+  for (final entry in decoded.entries) {
+    final id = entry.key;
+    if (id is! String || !catalogIdPattern.hasMatch(id)) continue;
+    final value = entry.value;
+    if (value is! List) continue;
+    final legacy = <String>[];
+    for (final item in value) {
+      if (item is! String) continue;
+      final trimmed = item.trim();
+      if (trimmed.isEmpty) continue;
+      legacy.add(trimmed);
+    }
+    if (legacy.isEmpty) continue;
+    names[id] = legacy;
+  }
+  return names;
 }
 
 Future<ExerciseImportResult> importExerciseCatalogJson(
   AppDatabase database,
-  String raw,
-) async {
+  String raw, {
+  String? legacyMapRaw,
+}) async {
   final parsed = parseExerciseCatalog(raw);
+  final legacyMap = legacyMapRaw == null
+      ? const <String, List<String>>{}
+      : parseLegacyNameMap(legacyMapRaw);
+  final entries = [
+    for (final entry in parsed.entries)
+      _attachLegacyNames(entry, legacyMap[entry.id]),
+  ];
   final existing = await database.select(database.exercises).get();
   final byCatalog = <String, Exercise>{
     for (final exercise in existing)
@@ -203,29 +270,24 @@ Future<ExerciseImportResult> importExerciseCatalogJson(
   }
 
   await database.transaction(() async {
-    for (final entry in parsed.entries) {
-      final catalogRow = byCatalog[entry.id];
-      Exercise? legacyRow;
+    for (final entry in entries) {
+      final matches = <int, Exercise>{};
+      void consider(Exercise? row) {
+        if (row == null || !_claimable(row, entry.id)) return;
+        matches[row.id] = row;
+      }
+
+      consider(byCatalog[entry.id]);
       for (final legacy in entry.legacyNames) {
-        final found = byName[legacy.toLowerCase()];
-        if (found == null) continue;
-        if ((found.catalogId ?? '').isEmpty || found.catalogId == entry.id) {
-          legacyRow = found;
-          break;
-        }
+        consider(byName[legacy.toLowerCase()]);
       }
-      final namedRow = byName[entry.id.toLowerCase()];
-      Exercise? target = catalogRow ?? legacyRow ?? namedRow;
-      Exercise? duplicate;
-      if (legacyRow != null &&
-          catalogRow != null &&
-          catalogRow.id != legacyRow.id) {
-        target = legacyRow;
-        duplicate = catalogRow;
-      }
+      consider(byName[entry.id.toLowerCase()]);
+
       final categoryId = await categoryIdFor(entry.category);
       final companion = _companion(entry, categoryId);
-      if (target == null) {
+      if (matches.isEmpty) {
+        final blocked = byName[entry.id.toLowerCase()];
+        if (blocked != null) continue;
         final id = await database
             .into(database.exercises)
             .insert(companion.insert(name: entry.id));
@@ -237,23 +299,43 @@ Future<ExerciseImportResult> importExerciseCatalogJson(
         inserted++;
         continue;
       }
-      final current = target;
-      if (duplicate != null) {
-        await _moveHistory(database, fromId: duplicate.id, toId: current.id);
+
+      Exercise? smallestLegacy;
+      for (final legacy in entry.legacyNames) {
+        final found = byName[legacy.toLowerCase()];
+        if (found == null || !matches.containsKey(found.id)) continue;
+        final current = smallestLegacy;
+        if (current == null || found.id < current.id) smallestLegacy = found;
+      }
+      final survivor =
+          smallestLegacy ??
+          matches.values.reduce(
+            (left, right) => left.id <= right.id ? left : right,
+          );
+      final duplicates = [
+        for (final row in matches.values)
+          if (row.id != survivor.id) row,
+      ];
+      for (final duplicate in duplicates) {
+        await _moveHistory(database, fromId: duplicate.id, toId: survivor.id);
         byName.remove(duplicate.name.toLowerCase());
+        final catalogId = duplicate.catalogId;
+        if (catalogId != null && byCatalog[catalogId]?.id == duplicate.id) {
+          byCatalog.remove(catalogId);
+        }
         merged++;
       }
-      if (_same(current, entry, categoryId) && duplicate == null) {
+      if (_same(survivor, entry, categoryId) && duplicates.isEmpty) {
         unchanged++;
-        byCatalog[entry.id] = current;
+        byCatalog[entry.id] = survivor;
         continue;
       }
       await (database.update(
         database.exercises,
-      )..where((row) => row.id.equals(current.id))).write(companion.update());
+      )..where((row) => row.id.equals(survivor.id))).write(companion.update());
       final refreshed = await (database.select(
         database.exercises,
-      )..where((row) => row.id.equals(current.id))).getSingle();
+      )..where((row) => row.id.equals(survivor.id))).getSingle();
       byCatalog[entry.id] = refreshed;
       byName[refreshed.name.toLowerCase()] = refreshed;
       updated++;
@@ -329,7 +411,8 @@ String? _validate(Map<String, dynamic> json, String id) {
     if (json[key] is! String) return '$id field $key must be a string.';
   }
   for (final key in ['bild_quelle', 'bild_lizenz']) {
-    if (json.containsKey(key) && json[key] is! String) {
+    final value = json[key];
+    if (json.containsKey(key) && value != null && value is! String) {
       return '$id field $key must be a string.';
     }
   }
@@ -383,6 +466,7 @@ String? _muscleList(Map<String, dynamic> json, String key, String id) {
 String? _shoulderRisk(Map<String, dynamic> json, String id) {
   if (!json.containsKey('schulter_risiko')) return null;
   final value = json['schulter_risiko'];
+  if (value == null) return null;
   if (value is! String || !allowedShoulderRisk.contains(value.trim())) {
     return '$id schulter_risiko is not allowed.';
   }
@@ -417,7 +501,18 @@ class _Fields {
   final ExerciseDeEntry entry;
   final int? categoryId;
 
-  String get aliases => entry.synonyms.join('|');
+  String get aliases {
+    final seen = <String>{};
+    final parts = <String>[];
+    for (final name in [...entry.synonyms, ...entry.legacyNames]) {
+      final trimmed = name.trim();
+      final key = trimmed.toLowerCase();
+      if (key.isEmpty || !seen.add(key)) continue;
+      parts.add(trimmed);
+    }
+    return parts.join('|');
+  }
+
   String get primary => jsonEncode(entry.primaryMuscles);
   String get secondary => jsonEncode(entry.secondaryMuscles);
   String get steps => jsonEncode(entry.steps);
@@ -486,6 +581,30 @@ class _Fields {
 
 _Fields _companion(ExerciseDeEntry entry, int? categoryId) =>
     _Fields(entry, categoryId);
+
+ExerciseDeEntry _attachLegacyNames(ExerciseDeEntry entry, List<String>? extra) {
+  if (extra == null || extra.isEmpty) return entry;
+  return entry.copyWith(
+    legacyNames: _uniqueNames([...entry.legacyNames, ...extra]),
+  );
+}
+
+List<String> _uniqueNames(Iterable<String> names) {
+  final seen = <String>{};
+  final result = <String>[];
+  for (final name in names) {
+    final trimmed = name.trim();
+    final key = trimmed.toLowerCase();
+    if (key.isEmpty || !seen.add(key)) continue;
+    result.add(trimmed);
+  }
+  return result;
+}
+
+bool _claimable(Exercise row, String catalogId) {
+  final current = row.catalogId ?? '';
+  return current.isEmpty || current == catalogId;
+}
 
 bool _same(Exercise row, ExerciseDeEntry entry, int? categoryId) {
   final fields = _Fields(entry, categoryId);

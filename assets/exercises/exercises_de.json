@@ -2,408 +2,1274 @@
   {
     "id": "bankdruecken-langhantel",
     "name_de": "Bankdrücken",
-    "synonyme": ["Bench Press", "Flachbank"],
+    "synonyme": [
+      "Bankdrücken mit Langhantel",
+      "Flachbankdrücken",
+      "Langhantel-Bankdrücken",
+      "Bankdruecken",
+      "Barbell Bench Press - Medium Grip",
+      "Bench Press",
+      "Barbell Bench Press"
+    ],
     "kategorie": "Brust",
-    "primaermuskeln": ["brust", "brust_oben"],
-    "sekundaermuskeln": ["trizeps", "schulter_vorne"],
+    "primaermuskeln": [
+      "brust"
+    ],
+    "sekundaermuskeln": [
+      "schulter_vorne",
+      "trizeps"
+    ],
     "geraet": "Langhantel",
     "split": "push",
     "mechanik": "grund",
-    "ausfuehrung_de": ["Platzhalter."],
-    "tipps_de": ["Platzhalter."],
+    "ausfuehrung_de": [
+      "Flach auf die Bank legen, Füße fest auf den Boden, Schulterblätter zusammen und nach unten ziehen.",
+      "Stange etwas breiter als schulterbreit greifen und aus der Ablage heben.",
+      "Stange kontrolliert auf die untere Brust absenken, Ellbogen etwa 45° vom Körper.",
+      "Stange kraftvoll zurück nach oben drücken, bis die Arme fast gestreckt sind."
+    ],
+    "tipps_de": [
+      "Gesäß bleibt auf der Bank.",
+      "Bei schweren Sätzen immer mit Partner oder Sicherungsablagen trainieren."
+    ],
     "bild": "bankdruecken-langhantel.webp",
-    "quelle": "placeholder",
-    "lizenz": "placeholder",
-    "bild_quelle": "placeholder-bild",
-    "bild_lizenz": "placeholder-bildlizenz",
+    "bild_quelle": null,
+    "bild_lizenz": null,
+    "quelle": "free-exercise-db: Barbell_Bench_Press_-_Medium_Grip",
+    "lizenz": "Unlicense",
+    "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell_Bench_Press_-_Medium_Grip/0.jpg",
     "schulter_risiko": "mittel",
-    "alternativen": ["bankdruecken-multipresse"],
-    "legacy_names": ["Barbell bench press"],
-    "future_field": "ignored"
+    "alternativen": [
+      "schraegbankdruecken-multipresse",
+      "butterfly-maschine",
+      "dips"
+    ]
   },
   {
-    "id": "kniebeuge-langhantel",
-    "name_de": "Kniebeuge",
-    "synonyme": ["Squat"],
-    "kategorie": "Beine",
-    "primaermuskeln": ["quadrizeps"],
-    "sekundaermuskeln": ["gesaess", "beinbeuger", "adduktoren"],
-    "geraet": "Langhantel",
-    "split": "beine",
+    "id": "schraegbankdruecken-multipresse",
+    "name_de": "Schrägbankdrücken an der Multipresse",
+    "synonyme": [
+      "Schrägbankdrücken Multipresse",
+      "Schrägbank an der Smith Machine",
+      "Schrägbankdrücken",
+      "Smith Machine Incline Bench Press",
+      "Incline Bench Press"
+    ],
+    "kategorie": "Brust",
+    "primaermuskeln": [
+      "brust_oben"
+    ],
+    "sekundaermuskeln": [
+      "schulter_vorne",
+      "trizeps"
+    ],
+    "geraet": "Multipresse",
+    "split": "push",
     "mechanik": "grund",
-    "ausfuehrung_de": ["Platzhalter."],
-    "tipps_de": ["Platzhalter."],
-    "bild": "kniebeuge-langhantel.webp",
-    "quelle": "placeholder",
-    "lizenz": "placeholder",
-    "bild_quelle": "placeholder-bild",
-    "bild_lizenz": "placeholder-bildlizenz",
-    "alternativen": [],
-    "legacy_names": ["Squat"]
+    "ausfuehrung_de": [
+      "Schrägbank (ca. 30–45°) so unter die Multipresse stellen, dass die Stange über der oberen Brust läuft.",
+      "Stange etwas breiter als schulterbreit greifen, aus der Sicherung drehen und Arme strecken.",
+      "Stange langsam bis kurz über die obere Brust absenken.",
+      "Stange wieder nach oben drücken und oben wieder einhaken, wenn der Satz vorbei ist."
+    ],
+    "tipps_de": [
+      "Bank nicht zu steil einstellen, sonst übernehmen die Schultern.",
+      "Schulterblätter während des ganzen Satzes zurückziehen."
+    ],
+    "bild": "schraegbankdruecken-multipresse.webp",
+    "bild_quelle": null,
+    "bild_lizenz": null,
+    "quelle": "free-exercise-db: Smith_Machine_Incline_Bench_Press",
+    "lizenz": "Unlicense",
+    "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Smith_Machine_Incline_Bench_Press/0.jpg",
+    "schulter_risiko": "mittel",
+    "alternativen": [
+      "bankdruecken-langhantel",
+      "kabelzug-crossover"
+    ]
+  },
+  {
+    "id": "butterfly-maschine",
+    "name_de": "Butterfly",
+    "synonyme": [
+      "Butterfly-Maschine",
+      "Butterfly an der Maschine",
+      "Pec Deck",
+      "Pec Deck Fly",
+      "Machine Fly"
+    ],
+    "kategorie": "Brust",
+    "primaermuskeln": [
+      "brust"
+    ],
+    "sekundaermuskeln": [
+      "schulter_vorne"
+    ],
+    "geraet": "Maschine",
+    "split": "push",
+    "mechanik": "isolation",
+    "ausfuehrung_de": [
+      "Sitz so einstellen, dass die Griffe auf Brusthöhe sind, Rücken fest an die Lehne.",
+      "Griffe fassen, Arme leicht gebeugt.",
+      "Arme vor der Brust zusammenführen und die Brust kurz anspannen.",
+      "Langsam zurück, bis du eine Dehnung in der Brust spürst."
+    ],
+    "tipps_de": [
+      "Ellbogenwinkel während der Bewegung nicht verändern.",
+      "Nicht mit Schwung arbeiten."
+    ],
+    "bild": "butterfly-maschine.webp",
+    "bild_quelle": null,
+    "bild_lizenz": null,
+    "quelle": "free-exercise-db: Butterfly",
+    "lizenz": "Unlicense",
+    "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Butterfly/0.jpg",
+    "schulter_risiko": "hoch",
+    "alternativen": [
+      "kabelzug-crossover",
+      "bankdruecken-langhantel"
+    ]
+  },
+  {
+    "id": "kabelzug-crossover",
+    "name_de": "Cable Crossover",
+    "synonyme": [
+      "Kabelzug-Crossover",
+      "Crossover am Kabelzug",
+      "Kabelziehen über Kreuz",
+      "Fliegende am Kabelzug",
+      "Kabelturm Crossover",
+      "Cable Fly"
+    ],
+    "kategorie": "Brust",
+    "primaermuskeln": [
+      "brust"
+    ],
+    "sekundaermuskeln": [
+      "schulter_vorne"
+    ],
+    "geraet": "Kabelzug",
+    "split": "push",
+    "mechanik": "isolation",
+    "ausfuehrung_de": [
+      "Beide Seilzüge oben einstellen und je einen Griff in die Hand nehmen.",
+      "Einen Schritt nach vorn, leichte Schrittstellung, Oberkörper etwas nach vorn geneigt.",
+      "Arme mit leicht gebeugten Ellbogen im Bogen vor dem Körper nach unten zusammenführen.",
+      "Kontrolliert zurück in die Dehnung gehen."
+    ],
+    "tipps_de": [
+      "Die Höhe der Rollen verändert den Schwerpunkt: von oben eher untere Brust, von unten eher obere Brust."
+    ],
+    "bild": "kabelzug-crossover.webp",
+    "bild_quelle": null,
+    "bild_lizenz": null,
+    "quelle": "free-exercise-db: Cable_Crossover",
+    "lizenz": "Unlicense",
+    "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Cable_Crossover/0.jpg",
+    "schulter_risiko": "mittel",
+    "alternativen": [
+      "butterfly-maschine",
+      "schraegbankdruecken-multipresse"
+    ]
+  },
+  {
+    "id": "klimmzuege",
+    "name_de": "Klimmzüge",
+    "synonyme": [
+      "Klimmzug",
+      "Klimmzüge im Obergriff",
+      "Pull-ups",
+      "Pull-up",
+      "Pullups"
+    ],
+    "kategorie": "Rücken",
+    "primaermuskeln": [
+      "latissimus"
+    ],
+    "sekundaermuskeln": [
+      "bizeps",
+      "oberer_ruecken"
+    ],
+    "geraet": "Körpergewicht",
+    "split": "pull",
+    "mechanik": "grund",
+    "ausfuehrung_de": [
+      "Stange im Obergriff etwas breiter als schulterbreit greifen und frei hängen.",
+      "Schulterblätter nach unten ziehen und Bauch anspannen.",
+      "Dich nach oben ziehen, bis das Kinn über der Stange ist.",
+      "Kontrolliert ablassen, bis die Arme wieder gestreckt sind."
+    ],
+    "tipps_de": [
+      "Nicht schwingen.",
+      "Wenn du noch keine schaffst: Klimmzugmaschine oder Widerstandsband nutzen."
+    ],
+    "bild": "klimmzuege.webp",
+    "bild_quelle": null,
+    "bild_lizenz": null,
+    "quelle": "free-exercise-db: Pullups",
+    "lizenz": "Unlicense",
+    "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Pullups/0.jpg",
+    "schulter_risiko": "mittel",
+    "alternativen": [
+      "latziehen-breit",
+      "rudern-kabel-sitzend"
+    ]
+  },
+  {
+    "id": "latziehen-breit",
+    "name_de": "Latziehen",
+    "synonyme": [
+      "Latzug",
+      "Latziehen breit",
+      "Latzug zur Brust",
+      "Lat-Ziehen",
+      "Wide-Grip Lat Pulldown",
+      "Lat Pulldown"
+    ],
+    "kategorie": "Rücken",
+    "primaermuskeln": [
+      "latissimus"
+    ],
+    "sekundaermuskeln": [
+      "bizeps",
+      "oberer_ruecken",
+      "schulter_hinten"
+    ],
+    "geraet": "Kabelzug",
+    "split": "pull",
+    "mechanik": "grund",
+    "ausfuehrung_de": [
+      "Kniepolster so einstellen, dass die Oberschenkel fest darunter sitzen.",
+      "Stange breit im Obergriff fassen, Oberkörper leicht nach hinten lehnen.",
+      "Stange zur oberen Brust ziehen, Ellbogen nach unten und hinten führen.",
+      "Stange langsam wieder nach oben lassen, bis die Arme gestreckt sind."
+    ],
+    "tipps_de": [
+      "Nicht hinter den Nacken ziehen.",
+      "Die Bewegung aus dem Rücken starten, nicht aus den Armen."
+    ],
+    "bild": "latziehen-breit.webp",
+    "bild_quelle": null,
+    "bild_lizenz": null,
+    "quelle": "free-exercise-db: Wide-Grip_Lat_Pulldown",
+    "lizenz": "Unlicense",
+    "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Wide-Grip_Lat_Pulldown/0.jpg",
+    "schulter_risiko": "mittel",
+    "alternativen": [
+      "klimmzuege",
+      "rudern-kabel-sitzend"
+    ]
+  },
+  {
+    "id": "rudern-kabel-sitzend",
+    "name_de": "Rudern am Kabel",
+    "synonyme": [
+      "Kabelrudern",
+      "Rudern sitzend am Kabelzug",
+      "Rudern eng",
+      "Seated Row",
+      "Seated Cable Rows",
+      "Cable Row"
+    ],
+    "kategorie": "Rücken",
+    "primaermuskeln": [
+      "oberer_ruecken",
+      "latissimus"
+    ],
+    "sekundaermuskeln": [
+      "bizeps",
+      "schulter_hinten"
+    ],
+    "geraet": "Kabelzug",
+    "split": "pull",
+    "mechanik": "grund",
+    "ausfuehrung_de": [
+      "Hinsetzen, Füße auf die Fußstütze, Knie leicht gebeugt.",
+      "Enggriff (V-Griff) fassen, aufrecht sitzen, Brust raus.",
+      "Griff zum Bauch ziehen und dabei die Schulterblätter zusammendrücken.",
+      "Arme langsam wieder nach vorn strecken, ohne den Rücken rund zu machen."
+    ],
+    "tipps_de": [
+      "Oberkörper bleibt weitgehend ruhig, kein Zurückreißen."
+    ],
+    "bild": "rudern-kabel-sitzend.webp",
+    "bild_quelle": null,
+    "bild_lizenz": null,
+    "quelle": "free-exercise-db: Seated_Cable_Rows",
+    "lizenz": "Unlicense",
+    "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Seated_Cable_Rows/0.jpg",
+    "schulter_risiko": "niedrig",
+    "alternativen": [
+      "langhantelrudern",
+      "latziehen-breit"
+    ]
+  },
+  {
+    "id": "langhantelrudern",
+    "name_de": "Langhantelrudern",
+    "synonyme": [
+      "Vorgebeugtes Rudern",
+      "Rudern vorgebeugt mit Langhantel",
+      "Langhantel-Rudern",
+      "Bent Over Barbell Row",
+      "Barbell Row",
+      "Bent Over Row"
+    ],
+    "kategorie": "Rücken",
+    "primaermuskeln": [
+      "oberer_ruecken",
+      "latissimus"
+    ],
+    "sekundaermuskeln": [
+      "bizeps",
+      "schulter_hinten",
+      "unterer_ruecken"
+    ],
+    "geraet": "Langhantel",
+    "split": "pull",
+    "mechanik": "grund",
+    "ausfuehrung_de": [
+      "Langhantel schulterbreit im Obergriff halten, Knie leicht beugen.",
+      "Mit geradem Rücken aus der Hüfte nach vorn beugen, bis der Oberkörper fast waagerecht ist.",
+      "Stange zum Bauchnabel ziehen, Ellbogen eng am Körper.",
+      "Stange kontrolliert ablassen, bis die Arme gestreckt sind."
+    ],
+    "tipps_de": [
+      "Rücken bleibt die ganze Zeit gerade.",
+      "Blick leicht nach vorn-unten, nicht in den Spiegel überstrecken."
+    ],
+    "bild": "langhantelrudern.webp",
+    "bild_quelle": null,
+    "bild_lizenz": null,
+    "quelle": "free-exercise-db: Bent_Over_Barbell_Row",
+    "lizenz": "Unlicense",
+    "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Bent_Over_Barbell_Row/0.jpg",
+    "schulter_risiko": "niedrig",
+    "alternativen": [
+      "rudern-kabel-sitzend"
+    ]
   },
   {
     "id": "kreuzheben-langhantel",
     "name_de": "Kreuzheben",
-    "synonyme": ["Deadlift"],
+    "synonyme": [
+      "Kreuzheben mit Langhantel",
+      "Kreuzheben konventionell",
+      "Deadlift",
+      "Barbell Deadlift"
+    ],
     "kategorie": "Rücken",
-    "primaermuskeln": ["beinbeuger", "gesaess"],
-    "sekundaermuskeln": ["unterer_ruecken", "latissimus", "unterarme"],
+    "primaermuskeln": [
+      "unterer_ruecken",
+      "gesaess",
+      "beinbeuger"
+    ],
+    "sekundaermuskeln": [
+      "quadrizeps",
+      "trapez",
+      "latissimus",
+      "unterarme"
+    ],
     "geraet": "Langhantel",
     "split": "pull",
     "mechanik": "grund",
-    "ausfuehrung_de": ["Platzhalter."],
-    "tipps_de": ["Platzhalter."],
+    "ausfuehrung_de": [
+      "Hüftbreit vor die Stange stellen, Stange über dem Mittelfuß.",
+      "In die Knie gehen und die Stange schulterbreit greifen, Rücken gerade, Brust raus.",
+      "Stange nah am Körper hochziehen, indem du Beine und Hüfte gleichzeitig streckst.",
+      "Oben aufrecht stehen, dann die Stange mit geradem Rücken wieder kontrolliert absetzen."
+    ],
+    "tipps_de": [
+      "Stange immer dicht am Körper führen.",
+      "Bei schwerem Gewicht Wechselgriff oder Zughilfen nutzen."
+    ],
     "bild": "kreuzheben-langhantel.webp",
-    "quelle": "placeholder",
-    "lizenz": "placeholder",
-    "bild_quelle": "placeholder-bild",
-    "bild_lizenz": "placeholder-bildlizenz",
+    "bild_quelle": null,
+    "bild_lizenz": null,
+    "quelle": "free-exercise-db: Barbell_Deadlift",
+    "lizenz": "Unlicense",
+    "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell_Deadlift/0.jpg",
     "schulter_risiko": "niedrig",
-    "alternativen": [],
-    "legacy_names": ["Deadlift"]
+    "alternativen": [
+      "hip-thrust-langhantel",
+      "beinbeuger-sitzend"
+    ]
   },
   {
-    "id": "latziehen-kabel",
-    "name_de": "Latziehen",
-    "synonyme": ["Lat Pulldown"],
-    "kategorie": "Rücken",
-    "primaermuskeln": ["latissimus"],
-    "sekundaermuskeln": ["bizeps", "schulter_hinten"],
-    "geraet": "Kabelzug",
-    "split": "pull",
-    "mechanik": "grund",
-    "ausfuehrung_de": ["Platzhalter."],
-    "tipps_de": ["Platzhalter."],
-    "bild": "latziehen-kabel.webp",
-    "quelle": "placeholder",
-    "lizenz": "placeholder",
-    "bild_quelle": "placeholder-bild",
-    "bild_lizenz": "placeholder-bildlizenz",
-    "alternativen": ["klimmzug"],
-    "legacy_names": ["Lat pull-down"]
-  },
-  {
-    "id": "beinpresse-maschine",
-    "name_de": "Beinpresse",
-    "synonyme": ["Leg Press"],
-    "kategorie": "Beine",
-    "primaermuskeln": ["quadrizeps"],
-    "sekundaermuskeln": ["gesaess"],
-    "geraet": "Maschine",
-    "split": "beine",
-    "mechanik": "grund",
-    "ausfuehrung_de": ["Platzhalter."],
-    "tipps_de": ["Platzhalter."],
-    "bild": "beinpresse-maschine.webp",
-    "quelle": "placeholder",
-    "lizenz": "placeholder",
-    "bild_quelle": "placeholder-bild",
-    "bild_lizenz": "placeholder-bildlizenz",
-    "alternativen": [],
-    "legacy_names": ["Leg press"]
-  },
-  {
-    "id": "schulterdruecken-kurzhantel",
-    "name_de": "Schulterdrücken",
-    "synonyme": ["Shoulder Press"],
+    "id": "schulterdruecken-multipresse",
+    "name_de": "Schulterdrücken an der Multipresse",
+    "synonyme": [
+      "Schulterdrücken Multipresse",
+      "Military Press Multipresse",
+      "Smith Machine Overhead Shoulder Press",
+      "Smith Machine Shoulder Press",
+      "Shoulder Press"
+    ],
     "kategorie": "Schultern",
-    "primaermuskeln": ["schulter_vorne", "schulter_seitlich"],
-    "sekundaermuskeln": ["trizeps"],
-    "geraet": "Kurzhantel",
-    "split": "push",
-    "mechanik": "grund",
-    "ausfuehrung_de": ["Platzhalter."],
-    "tipps_de": ["Platzhalter."],
-    "bild": "schulterdruecken-kurzhantel.webp",
-    "quelle": "placeholder",
-    "lizenz": "placeholder",
-    "bild_quelle": "placeholder-bild",
-    "bild_lizenz": "placeholder-bildlizenz",
-    "schulter_risiko": "hoch",
-    "alternativen": [],
-    "legacy_names": ["Dumbbell shoulder press"]
-  },
-  {
-    "id": "fliegende-kabel",
-    "name_de": "Fliegende",
-    "synonyme": ["Cable Fly", "Kabelzug"],
-    "kategorie": "Brust",
-    "primaermuskeln": ["brust"],
-    "sekundaermuskeln": ["brust_oben"],
-    "geraet": "Kabelzug",
-    "split": "push",
-    "mechanik": "isolation",
-    "ausfuehrung_de": ["Platzhalter."],
-    "tipps_de": ["Platzhalter."],
-    "bild": "fliegende-kabel.webp",
-    "quelle": "placeholder",
-    "lizenz": "placeholder",
-    "bild_quelle": "placeholder-bild",
-    "bild_lizenz": "placeholder-bildlizenz",
-    "schulter_risiko": "niedrig",
-    "alternativen": [],
-    "legacy_names": ["Cable fly"]
-  },
-  {
-    "id": "klimmzug",
-    "name_de": "Klimmzug",
-    "synonyme": ["Pull-up", "Pull Up"],
-    "kategorie": "Rücken",
-    "primaermuskeln": ["latissimus"],
-    "sekundaermuskeln": ["bizeps", "unterarme"],
-    "geraet": "Körpergewicht",
-    "split": "pull",
-    "mechanik": "grund",
-    "ausfuehrung_de": ["Platzhalter."],
-    "tipps_de": ["Platzhalter."],
-    "bild": "klimmzug.webp",
-    "quelle": "placeholder",
-    "lizenz": "placeholder",
-    "bild_quelle": "placeholder-bild",
-    "bild_lizenz": "placeholder-bildlizenz",
-    "schulter_risiko": "niedrig",
-    "alternativen": ["latziehen-kabel"],
-    "legacy_names": ["Pull-up"]
-  },
-  {
-    "id": "crunch",
-    "name_de": "Crunch",
-    "synonyme": ["Crunch"],
-    "kategorie": "Bauch",
-    "primaermuskeln": ["bauch_gerade"],
-    "sekundaermuskeln": [],
-    "geraet": "Körpergewicht",
-    "split": "core",
-    "mechanik": "isolation",
-    "ausfuehrung_de": ["Platzhalter."],
-    "tipps_de": ["Platzhalter."],
-    "bild": "crunch.webp",
-    "quelle": "placeholder",
-    "lizenz": "placeholder",
-    "legacy_names": ["Crunch"]
-  },
-  {
-    "id": "beinbeuger-maschine",
-    "name_de": "Beinbeuger",
-    "synonyme": ["Leg Curl"],
-    "kategorie": "Beine",
-    "primaermuskeln": ["beinbeuger"],
-    "sekundaermuskeln": [],
-    "geraet": "Maschine",
-    "split": "beine",
-    "mechanik": "isolation",
-    "ausfuehrung_de": ["Platzhalter."],
-    "tipps_de": ["Platzhalter."],
-    "bild": "beinbeuger-maschine.webp",
-    "quelle": "placeholder",
-    "lizenz": "placeholder",
-    "bild_quelle": "placeholder-bild",
-    "bild_lizenz": "placeholder-bildlizenz",
-    "alternativen": [],
-    "legacy_names": ["Leg curl"]
-  },
-  {
-    "id": "trizepsdruecken-kabel",
-    "name_de": "Trizepsdrücken",
-    "synonyme": ["Triceps Pushdown"],
-    "kategorie": "Trizeps",
-    "primaermuskeln": ["trizeps"],
-    "sekundaermuskeln": [],
-    "geraet": "Kabelzug",
-    "split": "push",
-    "mechanik": "isolation",
-    "ausfuehrung_de": ["Platzhalter."],
-    "tipps_de": ["Platzhalter."],
-    "bild": "trizepsdruecken-kabel.webp",
-    "quelle": "placeholder",
-    "lizenz": "placeholder",
-    "bild_quelle": "placeholder-bild",
-    "bild_lizenz": "placeholder-bildlizenz",
-    "alternativen": [],
-    "legacy_names": ["Triceps pushdown"]
-  },
-  {
-    "id": "bizepscurl-sz",
-    "name_de": "Bizepscurl",
-    "synonyme": ["Biceps Curl"],
-    "kategorie": "Bizeps",
-    "primaermuskeln": ["bizeps"],
-    "sekundaermuskeln": ["unterarme"],
-    "geraet": "SZ-Stange",
-    "split": "pull",
-    "mechanik": "isolation",
-    "ausfuehrung_de": ["Platzhalter."],
-    "tipps_de": ["Platzhalter."],
-    "bild": "bizepscurl-sz.webp",
-    "quelle": "placeholder",
-    "lizenz": "placeholder",
-    "bild_quelle": "placeholder-bild",
-    "bild_lizenz": "placeholder-bildlizenz",
-    "alternativen": [],
-    "legacy_names": ["Dumbbell biceps curl"]
-  },
-  {
-    "id": "rumaenisches-kreuzheben",
-    "name_de": "Rumänisches Kreuzheben",
-    "synonyme": ["Romanian Deadlift"],
-    "kategorie": "Beine",
-    "primaermuskeln": ["beinbeuger"],
-    "sekundaermuskeln": ["gesaess", "unterer_ruecken"],
-    "geraet": "Langhantel",
-    "split": "pull",
-    "mechanik": "grund",
-    "ausfuehrung_de": ["Platzhalter."],
-    "tipps_de": ["Platzhalter."],
-    "bild": "rumaenisches-kreuzheben.webp",
-    "quelle": "placeholder",
-    "lizenz": "placeholder",
-    "bild_quelle": "placeholder-bild",
-    "bild_lizenz": "placeholder-bildlizenz",
-    "alternativen": [],
-    "legacy_names": ["Romanian deadlift"]
-  },
-  {
-    "id": "ausfallschritt",
-    "name_de": "Ausfallschritt",
-    "synonyme": ["Lunge"],
-    "kategorie": "Beine",
-    "primaermuskeln": ["quadrizeps"],
-    "sekundaermuskeln": ["gesaess", "hueftbeuger", "abduktoren"],
-    "geraet": "Kettlebell",
-    "split": "beine",
-    "mechanik": "grund",
-    "ausfuehrung_de": ["Platzhalter."],
-    "tipps_de": ["Platzhalter."],
-    "bild": "ausfallschritt.webp",
-    "quelle": "placeholder",
-    "lizenz": "placeholder",
-    "bild_quelle": "placeholder-bild",
-    "bild_lizenz": "placeholder-bildlizenz",
-    "alternativen": [],
-    "legacy_names": ["Lunge"]
-  },
-  {
-    "id": "liegestuetz",
-    "name_de": "Liegestütz",
-    "synonyme": ["Push-up", "Push Up"],
-    "kategorie": "Brust",
-    "primaermuskeln": ["brust"],
-    "sekundaermuskeln": ["trizeps", "schulter_vorne"],
-    "geraet": "Körpergewicht",
-    "split": "push",
-    "mechanik": "grund",
-    "ausfuehrung_de": ["Platzhalter."],
-    "tipps_de": ["Platzhalter."],
-    "bild": "liegestuetz.webp",
-    "quelle": "placeholder",
-    "lizenz": "placeholder",
-    "bild_quelle": "placeholder-bild",
-    "bild_lizenz": "placeholder-bildlizenz",
-    "schulter_risiko": "niedrig",
-    "alternativen": [],
-    "legacy_names": ["Push-up"]
-  },
-  {
-    "id": "wadenheben-maschine",
-    "name_de": "Wadenheben",
-    "synonyme": ["Calf Raise"],
-    "kategorie": "Beine",
-    "primaermuskeln": ["waden"],
-    "sekundaermuskeln": [],
-    "geraet": "Maschine",
-    "split": "beine",
-    "mechanik": "isolation",
-    "ausfuehrung_de": ["Platzhalter."],
-    "tipps_de": ["Platzhalter."],
-    "bild": "wadenheben-maschine.webp",
-    "quelle": "placeholder",
-    "lizenz": "placeholder",
-    "bild_quelle": "placeholder-bild",
-    "bild_lizenz": "placeholder-bildlizenz",
-    "alternativen": [],
-    "legacy_names": ["Seated calf raise"]
-  },
-  {
-    "id": "russische-drehung",
-    "name_de": "Russian Twist",
-    "synonyme": ["Russian Twist"],
-    "kategorie": "Bauch",
-    "primaermuskeln": ["bauch_schraeg"],
-    "sekundaermuskeln": ["bauch_gerade"],
-    "geraet": "Widerstandsband",
-    "split": "core",
-    "mechanik": "isolation",
-    "ausfuehrung_de": ["Platzhalter."],
-    "tipps_de": ["Platzhalter."],
-    "bild": "russische-drehung.webp",
-    "quelle": "placeholder",
-    "lizenz": "placeholder",
-    "bild_quelle": "placeholder-bild",
-    "bild_lizenz": "placeholder-bildlizenz",
-    "alternativen": [],
-    "legacy_names": ["Russian twist"]
-  },
-  {
-    "id": "aufrechtes-rudern",
-    "name_de": "Aufrechtes Rudern",
-    "synonyme": ["Upright Row"],
-    "kategorie": "Schultern",
-    "primaermuskeln": ["schulter_seitlich", "trapez"],
-    "sekundaermuskeln": ["oberer_ruecken"],
-    "geraet": "Langhantel",
-    "split": "pull",
-    "mechanik": "isolation",
-    "ausfuehrung_de": ["Platzhalter."],
-    "tipps_de": ["Platzhalter."],
-    "bild": "aufrechtes-rudern.webp",
-    "quelle": "placeholder",
-    "lizenz": "placeholder",
-    "bild_quelle": "placeholder-bild",
-    "bild_lizenz": "placeholder-bildlizenz",
-    "schulter_risiko": "hoch",
-    "alternativen": [],
-    "legacy_names": ["Upright row"]
-  },
-  {
-    "id": "bankdruecken-multipresse",
-    "name_de": "Bankdrücken an der Multipresse",
-    "synonyme": ["Smith Machine", "Multipresse"],
-    "kategorie": "Brust",
-    "primaermuskeln": ["brust"],
-    "sekundaermuskeln": ["trizeps", "schulter_vorne"],
+    "primaermuskeln": [
+      "schulter_vorne",
+      "schulter_seitlich"
+    ],
+    "sekundaermuskeln": [
+      "trizeps"
+    ],
     "geraet": "Multipresse",
     "split": "push",
     "mechanik": "grund",
-    "ausfuehrung_de": ["Platzhalter."],
-    "tipps_de": ["Platzhalter."],
-    "bild": "bankdruecken-multipresse.webp",
-    "quelle": "placeholder",
-    "lizenz": "placeholder",
-    "bild_quelle": "placeholder-bild",
-    "bild_lizenz": "placeholder-bildlizenz",
-    "schulter_risiko": "mittel",
-    "alternativen": ["bankdruecken-langhantel"],
-    "legacy_names": []
+    "ausfuehrung_de": [
+      "Bank mit Rückenlehne aufrecht unter die Multipresse stellen.",
+      "Stange etwas breiter als schulterbreit greifen, aus der Sicherung drehen.",
+      "Stange vor dem Gesicht bis etwa auf Kinnhöhe absenken.",
+      "Stange nach oben drücken, bis die Arme fast gestreckt sind."
+    ],
+    "tipps_de": [
+      "Rücken an der Lehne lassen, kein Hohlkreuz.",
+      "Stange vor dem Kopf führen, nicht in den Nacken."
+    ],
+    "bild": "schulterdruecken-multipresse.webp",
+    "bild_quelle": null,
+    "bild_lizenz": null,
+    "quelle": "free-exercise-db: Smith_Machine_Overhead_Shoulder_Press",
+    "lizenz": "Unlicense",
+    "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Smith_Machine_Overhead_Shoulder_Press/0.jpg",
+    "schulter_risiko": "hoch",
+    "alternativen": [
+      "seitheben-kurzhantel"
+    ]
   },
   {
-    "id": "laufen",
-    "name_de": "Laufen",
-    "synonyme": ["Running"],
+    "id": "seitheben-kurzhantel",
+    "name_de": "Seitheben",
+    "synonyme": [
+      "Seitheben mit Kurzhanteln",
+      "Seitliches Heben",
+      "Seitheben stehend",
+      "Side Lateral Raise",
+      "Lateral Raise",
+      "Dumbbell Lateral Raise"
+    ],
+    "kategorie": "Schultern",
+    "primaermuskeln": [
+      "schulter_seitlich"
+    ],
+    "sekundaermuskeln": [
+      "schulter_vorne",
+      "trapez"
+    ],
+    "geraet": "Kurzhantel",
+    "split": "push",
+    "mechanik": "isolation",
+    "ausfuehrung_de": [
+      "Aufrecht stehen, Kurzhanteln seitlich neben dem Körper.",
+      "Arme mit leicht gebeugten Ellbogen seitlich bis auf Schulterhöhe heben.",
+      "Oben kurz halten.",
+      "Langsam wieder absenken."
+    ],
+    "tipps_de": [
+      "Leichtes Gewicht wählen und ohne Schwung arbeiten.",
+      "Schultern nicht zu den Ohren ziehen."
+    ],
+    "bild": "seitheben-kurzhantel.webp",
+    "bild_quelle": null,
+    "bild_lizenz": null,
+    "quelle": "free-exercise-db: Side_Lateral_Raise",
+    "lizenz": "Unlicense",
+    "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Side_Lateral_Raise/0.jpg",
+    "schulter_risiko": "mittel",
+    "alternativen": [
+      "schulterdruecken-multipresse",
+      "face-pulls"
+    ]
+  },
+  {
+    "id": "face-pulls",
+    "name_de": "Face Pulls",
+    "synonyme": [
+      "Face Pull",
+      "Facepulls",
+      "Seilzug zum Gesicht",
+      "Face Pulls am Kabelzug"
+    ],
+    "kategorie": "Schultern",
+    "primaermuskeln": [
+      "schulter_hinten"
+    ],
+    "sekundaermuskeln": [
+      "oberer_ruecken",
+      "trapez"
+    ],
+    "geraet": "Kabelzug",
+    "split": "pull",
+    "mechanik": "isolation",
+    "ausfuehrung_de": [
+      "Seilgriff am Kabelzug etwa auf Kopfhöhe einhängen.",
+      "Seil im Obergriff fassen und einen Schritt zurückgehen, bis die Arme gestreckt sind.",
+      "Seil Richtung Gesicht ziehen und dabei die Hände auseinanderziehen, Ellbogen hoch.",
+      "Kurz halten und kontrolliert zurückgehen."
+    ],
+    "tipps_de": [
+      "Oberarme bleiben etwa parallel zum Boden.",
+      "Lieber leicht und sauber als schwer."
+    ],
+    "bild": "face-pulls.webp",
+    "bild_quelle": null,
+    "bild_lizenz": null,
+    "quelle": "free-exercise-db: Face_Pull",
+    "lizenz": "Unlicense",
+    "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Face_Pull/0.jpg",
+    "schulter_risiko": "niedrig",
+    "alternativen": [
+      "seitheben-kurzhantel",
+      "rudern-kabel-sitzend"
+    ]
+  },
+  {
+    "id": "kniebeuge-langhantel",
+    "name_de": "Kniebeugen",
+    "synonyme": [
+      "Kniebeuge",
+      "Kniebeugen mit Langhantel",
+      "Langhantel-Kniebeuge",
+      "Squats",
+      "Barbell Squat",
+      "Back Squat",
+      "Squat"
+    ],
+    "kategorie": "Beine",
+    "primaermuskeln": [
+      "quadrizeps",
+      "gesaess"
+    ],
+    "sekundaermuskeln": [
+      "beinbeuger",
+      "unterer_ruecken",
+      "adduktoren"
+    ],
+    "geraet": "Langhantel",
+    "split": "beine",
+    "mechanik": "grund",
+    "ausfuehrung_de": [
+      "Stange im Rack knapp unter Schulterhöhe einhängen, darunter gehen und auf dem oberen Rücken ablegen.",
+      "Stange ausheben, einen Schritt zurück, Füße etwa schulterbreit, Zehen leicht nach außen.",
+      "Hüfte nach hinten und unten schieben, Knie in Richtung der Zehen, Rücken gerade.",
+      "Mindestens bis die Oberschenkel parallel zum Boden sind, dann kraftvoll hochdrücken."
+    ],
+    "tipps_de": [
+      "Fersen bleiben am Boden.",
+      "Im Rack mit Sicherungsablagen trainieren."
+    ],
+    "bild": "kniebeuge-langhantel.webp",
+    "bild_quelle": null,
+    "bild_lizenz": null,
+    "quelle": "free-exercise-db: Barbell_Squat",
+    "lizenz": "Unlicense",
+    "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell_Squat/0.jpg",
+    "schulter_risiko": "mittel",
+    "alternativen": [
+      "beinpresse",
+      "beinstrecker"
+    ]
+  },
+  {
+    "id": "beinpresse",
+    "name_de": "Beinpresse",
+    "synonyme": [
+      "Beinpresse 45°",
+      "Schrägbeinpresse",
+      "Leg Press",
+      "Leg Press Machine"
+    ],
+    "kategorie": "Beine",
+    "primaermuskeln": [
+      "quadrizeps",
+      "gesaess"
+    ],
+    "sekundaermuskeln": [
+      "beinbeuger",
+      "adduktoren"
+    ],
+    "geraet": "Maschine",
+    "split": "beine",
+    "mechanik": "grund",
+    "ausfuehrung_de": [
+      "Hinsetzen, Rücken fest an die Lehne, Füße schulterbreit auf die Plattform.",
+      "Plattform hochdrücken und die Sicherung lösen.",
+      "Plattform kontrolliert absenken, bis die Knie etwa 90° gebeugt sind.",
+      "Über die ganze Fußsohle zurückdrücken, ohne die Knie ganz durchzustrecken."
+    ],
+    "tipps_de": [
+      "Unterer Rücken bleibt an der Lehne, nicht zu tief gehen.",
+      "Höhere Fußposition betont Gesäß und Beinbeuger."
+    ],
+    "bild": "beinpresse.webp",
+    "bild_quelle": null,
+    "bild_lizenz": null,
+    "quelle": "free-exercise-db: Leg_Press",
+    "lizenz": "Unlicense",
+    "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Leg_Press/0.jpg",
+    "schulter_risiko": "niedrig",
+    "alternativen": [
+      "kniebeuge-langhantel",
+      "beinstrecker"
+    ]
+  },
+  {
+    "id": "beinstrecker",
+    "name_de": "Beinstrecker",
+    "synonyme": [
+      "Beinstrecken",
+      "Beinstrecker-Maschine",
+      "Leg Extension",
+      "Leg Extensions"
+    ],
+    "kategorie": "Beine",
+    "primaermuskeln": [
+      "quadrizeps"
+    ],
+    "sekundaermuskeln": [],
+    "geraet": "Maschine",
+    "split": "beine",
+    "mechanik": "isolation",
+    "ausfuehrung_de": [
+      "Sitz so einstellen, dass die Knie auf Höhe des Drehpunkts der Maschine liegen.",
+      "Polster vorn knapp über den Fußgelenken anlegen und die Griffe fassen.",
+      "Beine strecken, bis sie fast gerade sind, oben kurz halten.",
+      "Langsam wieder absenken."
+    ],
+    "tipps_de": [
+      "Nicht mit Schwung arbeiten.",
+      "Oberschenkel bleiben auf dem Sitz."
+    ],
+    "bild": "beinstrecker.webp",
+    "bild_quelle": null,
+    "bild_lizenz": null,
+    "quelle": "free-exercise-db: Leg_Extensions",
+    "lizenz": "Unlicense",
+    "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Leg_Extensions/0.jpg",
+    "schulter_risiko": "niedrig",
+    "alternativen": [
+      "beinpresse"
+    ]
+  },
+  {
+    "id": "beinbeuger-sitzend",
+    "name_de": "Beinbeuger sitzend",
+    "synonyme": [
+      "Beinbeuger",
+      "Beincurls sitzend",
+      "Beinbeugen an der Maschine",
+      "Leg Curl",
+      "Seated Leg Curl"
+    ],
+    "kategorie": "Beine",
+    "primaermuskeln": [
+      "beinbeuger"
+    ],
+    "sekundaermuskeln": [
+      "waden"
+    ],
+    "geraet": "Maschine",
+    "split": "beine",
+    "mechanik": "isolation",
+    "ausfuehrung_de": [
+      "Rückenlehne so einstellen, dass die Knie am Drehpunkt der Maschine liegen.",
+      "Unterschenkel auf das Polster legen, Oberschenkelpolster fest schließen.",
+      "Fersen nach unten und hinten ziehen, so weit es geht.",
+      "Kontrolliert zurück, bis die Beine fast gestreckt sind."
+    ],
+    "tipps_de": [
+      "Gesäß bleibt auf dem Sitz.",
+      "Die Rückbewegung bewusst langsam machen."
+    ],
+    "bild": "beinbeuger-sitzend.webp",
+    "bild_quelle": null,
+    "bild_lizenz": null,
+    "quelle": "free-exercise-db: Seated_Leg_Curl",
+    "lizenz": "Unlicense",
+    "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Seated_Leg_Curl/0.jpg",
+    "schulter_risiko": "niedrig",
+    "alternativen": [
+      "kreuzheben-langhantel",
+      "hip-thrust-langhantel"
+    ]
+  },
+  {
+    "id": "wadenheben-stehend",
+    "name_de": "Wadenheben stehend",
+    "synonyme": [
+      "Wadenheben",
+      "Wadenheben an der Maschine",
+      "Wadenmaschine stehend",
+      "Calf Raises",
+      "Standing Calf Raises",
+      "Standing Calf Raise"
+    ],
+    "kategorie": "Beine",
+    "primaermuskeln": [
+      "waden"
+    ],
+    "sekundaermuskeln": [],
+    "geraet": "Maschine",
+    "split": "beine",
+    "mechanik": "isolation",
+    "ausfuehrung_de": [
+      "Schulterpolster auf deine Größe einstellen und darunter stellen.",
+      "Fußballen auf die Kante, Fersen hängen frei.",
+      "So hoch wie möglich auf die Zehenspitzen drücken und oben kurz halten.",
+      "Fersen langsam unter die Kante absenken, bis die Waden gedehnt sind."
+    ],
+    "tipps_de": [
+      "Knie leicht gebeugt, aber nicht mitwippen.",
+      "Volle Bewegungsweite statt viel Gewicht."
+    ],
+    "bild": "wadenheben-stehend.webp",
+    "bild_quelle": null,
+    "bild_lizenz": null,
+    "quelle": "free-exercise-db: Standing_Calf_Raises",
+    "lizenz": "Unlicense",
+    "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Standing_Calf_Raises/0.jpg",
+    "schulter_risiko": "niedrig"
+  },
+  {
+    "id": "hip-thrust-langhantel",
+    "name_de": "Hip Thrust",
+    "synonyme": [
+      "Hip Thrust mit Langhantel",
+      "Hüftstoßen",
+      "Hip Thrusts",
+      "Barbell Hip Thrust"
+    ],
+    "kategorie": "Beine",
+    "primaermuskeln": [
+      "gesaess"
+    ],
+    "sekundaermuskeln": [
+      "beinbeuger",
+      "quadrizeps"
+    ],
+    "geraet": "Langhantel",
+    "split": "beine",
+    "mechanik": "grund",
+    "ausfuehrung_de": [
+      "Mit dem oberen Rücken an eine Bank lehnen, Langhantel mit Polster über der Hüfte.",
+      "Füße hüftbreit aufstellen, sodass die Unterschenkel oben senkrecht stehen.",
+      "Hüfte nach oben drücken, bis Oberkörper und Oberschenkel eine Linie bilden.",
+      "Oben das Gesäß fest anspannen und dann kontrolliert absenken."
+    ],
+    "tipps_de": [
+      "Kinn leicht zur Brust, nicht ins Hohlkreuz drücken.",
+      "Ein Hantelpolster macht die Übung deutlich angenehmer."
+    ],
+    "bild": "hip-thrust-langhantel.webp",
+    "bild_quelle": null,
+    "bild_lizenz": null,
+    "quelle": "free-exercise-db: Barbell_Hip_Thrust",
+    "lizenz": "Unlicense",
+    "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell_Hip_Thrust/0.jpg",
+    "schulter_risiko": "niedrig",
+    "alternativen": [
+      "kniebeuge-langhantel",
+      "beinpresse"
+    ]
+  },
+  {
+    "id": "bizepscurls-sz-stange",
+    "name_de": "Bizepscurls mit SZ-Stange",
+    "synonyme": [
+      "SZ-Curls",
+      "Curls mit SZ-Stange",
+      "Bizepscurls",
+      "EZ-Bar Curl",
+      "EZ Bar Curl"
+    ],
+    "kategorie": "Bizeps",
+    "primaermuskeln": [
+      "bizeps"
+    ],
+    "sekundaermuskeln": [
+      "unterarme"
+    ],
+    "geraet": "SZ-Stange",
+    "split": "pull",
+    "mechanik": "isolation",
+    "ausfuehrung_de": [
+      "Aufrecht stehen und die SZ-Stange schulterbreit im Untergriff halten.",
+      "Ellbogen eng am Körper fixieren.",
+      "Stange nach oben curlen, bis der Bizeps voll angespannt ist.",
+      "Langsam wieder absenken, bis die Arme gestreckt sind."
+    ],
+    "tipps_de": [
+      "Oberkörper nicht nach hinten lehnen.",
+      "Ellbogen nicht nach vorn wandern lassen."
+    ],
+    "bild": "bizepscurls-sz-stange.webp",
+    "bild_quelle": null,
+    "bild_lizenz": null,
+    "quelle": "free-exercise-db: EZ-Bar_Curl",
+    "lizenz": "Unlicense",
+    "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/EZ-Bar_Curl/0.jpg",
+    "schulter_risiko": "niedrig",
+    "alternativen": [
+      "bizepscurls-kurzhantel",
+      "hammercurls"
+    ]
+  },
+  {
+    "id": "bizepscurls-kurzhantel",
+    "name_de": "Bizepscurls mit Kurzhanteln",
+    "synonyme": [
+      "Kurzhantelcurls",
+      "Kurzhantel-Curls",
+      "Bizepscurls",
+      "Dumbbell Curl",
+      "Dumbbell Bicep Curl",
+      "Biceps Curl"
+    ],
+    "kategorie": "Bizeps",
+    "primaermuskeln": [
+      "bizeps"
+    ],
+    "sekundaermuskeln": [
+      "unterarme"
+    ],
+    "geraet": "Kurzhantel",
+    "split": "pull",
+    "mechanik": "isolation",
+    "ausfuehrung_de": [
+      "Aufrecht stehen, in jeder Hand eine Kurzhantel, Handflächen nach vorn.",
+      "Ellbogen eng am Körper halten.",
+      "Kurzhanteln nach oben curlen, beidarmig oder abwechselnd.",
+      "Kontrolliert wieder ablassen."
+    ],
+    "tipps_de": [
+      "Kein Schwung aus dem Rücken."
+    ],
+    "bild": "bizepscurls-kurzhantel.webp",
+    "bild_quelle": null,
+    "bild_lizenz": null,
+    "quelle": "free-exercise-db: Dumbbell_Bicep_Curl",
+    "lizenz": "Unlicense",
+    "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Dumbbell_Bicep_Curl/0.jpg",
+    "schulter_risiko": "niedrig",
+    "alternativen": [
+      "bizepscurls-sz-stange",
+      "hammercurls"
+    ]
+  },
+  {
+    "id": "hammercurls",
+    "name_de": "Hammercurls",
+    "synonyme": [
+      "Hammer-Curls",
+      "Hammercurls mit Kurzhanteln",
+      "Hammer Curls",
+      "Hammer Curl"
+    ],
+    "kategorie": "Bizeps",
+    "primaermuskeln": [
+      "bizeps",
+      "unterarme"
+    ],
+    "sekundaermuskeln": [],
+    "geraet": "Kurzhantel",
+    "split": "pull",
+    "mechanik": "isolation",
+    "ausfuehrung_de": [
+      "Aufrecht stehen, Kurzhanteln im neutralen Griff (Handflächen zeigen zum Körper).",
+      "Ellbogen eng am Körper halten.",
+      "Kurzhanteln nach oben curlen, ohne den Griff zu drehen.",
+      "Langsam wieder absenken."
+    ],
+    "tipps_de": [
+      "Gut für dickere Arme, weil Brachialis und Unterarm stark mitarbeiten."
+    ],
+    "bild": "hammercurls.webp",
+    "bild_quelle": null,
+    "bild_lizenz": null,
+    "quelle": "free-exercise-db: Hammer_Curls",
+    "lizenz": "Unlicense",
+    "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Hammer_Curls/0.jpg",
+    "schulter_risiko": "niedrig",
+    "alternativen": [
+      "bizepscurls-kurzhantel"
+    ]
+  },
+  {
+    "id": "trizepsdruecken-kabel",
+    "name_de": "Trizepsdrücken am Kabel",
+    "synonyme": [
+      "Trizepsdrücken",
+      "Trizepsdrücken am Kabelzug",
+      "Pushdowns",
+      "Trizeps-Pushdown",
+      "Kabelturm Trizeps",
+      "Triceps Pushdown",
+      "Cable Pushdown"
+    ],
+    "kategorie": "Trizeps",
+    "primaermuskeln": [
+      "trizeps"
+    ],
+    "sekundaermuskeln": [],
+    "geraet": "Kabelzug",
+    "split": "push",
+    "mechanik": "isolation",
+    "ausfuehrung_de": [
+      "Gerade Stange oder SZ-Griff oben am Kabelzug einhängen und schulterbreit im Obergriff fassen.",
+      "Aufrecht hinstellen, Oberarme eng am Körper.",
+      "Stange nach unten drücken, bis die Arme gestreckt sind.",
+      "Kontrolliert zurück, bis die Unterarme etwa waagerecht sind."
+    ],
+    "tipps_de": [
+      "Nur die Unterarme bewegen, Ellbogen bleiben an Ort und Stelle.",
+      "Auch mit Seil möglich."
+    ],
+    "bild": "trizepsdruecken-kabel.webp",
+    "bild_quelle": null,
+    "bild_lizenz": null,
+    "quelle": "free-exercise-db: Triceps_Pushdown",
+    "lizenz": "Unlicense",
+    "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Triceps_Pushdown/0.jpg",
+    "schulter_risiko": "niedrig",
+    "alternativen": [
+      "french-press-sz",
+      "dips"
+    ]
+  },
+  {
+    "id": "dips",
+    "name_de": "Dips",
+    "synonyme": [
+      "Barrendips",
+      "Dips am Barren",
+      "Trizeps-Dips",
+      "Dips - Triceps Version",
+      "Parallel Bar Dips"
+    ],
+    "kategorie": "Trizeps",
+    "primaermuskeln": [
+      "trizeps"
+    ],
+    "sekundaermuskeln": [
+      "brust",
+      "schulter_vorne"
+    ],
+    "geraet": "Körpergewicht",
+    "split": "push",
+    "mechanik": "grund",
+    "ausfuehrung_de": [
+      "Am Barren in den Stütz gehen, Arme gestreckt.",
+      "Oberkörper aufrecht halten, Ellbogen eng am Körper.",
+      "Langsam absenken, bis die Oberarme etwa waagerecht sind.",
+      "Wieder nach oben drücken, bis die Arme gestreckt sind."
+    ],
+    "tipps_de": [
+      "Aufrechter Oberkörper betont den Trizeps, Vorlage eher die Brust.",
+      "Zu schwer? Dip-Maschine oder Band nutzen."
+    ],
+    "bild": "dips.webp",
+    "bild_quelle": null,
+    "bild_lizenz": null,
+    "quelle": "free-exercise-db: Dips_-_Triceps_Version",
+    "lizenz": "Unlicense",
+    "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Dips_-_Triceps_Version/0.jpg",
+    "schulter_risiko": "hoch",
+    "alternativen": [
+      "trizepsdruecken-kabel",
+      "french-press-sz"
+    ]
+  },
+  {
+    "id": "french-press-sz",
+    "name_de": "French Press",
+    "synonyme": [
+      "French Press mit SZ-Stange",
+      "Stirndrücken",
+      "Skullcrusher",
+      "Trizepsdrücken liegend",
+      "EZ-Bar Skullcrusher",
+      "Lying Triceps Extension"
+    ],
+    "kategorie": "Trizeps",
+    "primaermuskeln": [
+      "trizeps"
+    ],
+    "sekundaermuskeln": [],
+    "geraet": "SZ-Stange",
+    "split": "push",
+    "mechanik": "isolation",
+    "ausfuehrung_de": [
+      "Auf die Flachbank legen und die SZ-Stange eng mit gestreckten Armen über der Brust halten.",
+      "Oberarme fixieren und die Stange durch Beugen der Ellbogen Richtung Stirn absenken.",
+      "Kurz vor der Stirn stoppen.",
+      "Stange wieder nach oben strecken."
+    ],
+    "tipps_de": [
+      "Ellbogen zeigen nach oben und gehen nicht nach außen.",
+      "Mit leichtem Gewicht anfangen, die Ellbogen danken es."
+    ],
+    "bild": "french-press-sz.webp",
+    "bild_quelle": null,
+    "bild_lizenz": null,
+    "quelle": "free-exercise-db: EZ-Bar_Skullcrusher",
+    "lizenz": "Unlicense",
+    "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/EZ-Bar_Skullcrusher/0.jpg",
+    "schulter_risiko": "mittel",
+    "alternativen": [
+      "trizepsdruecken-kabel"
+    ]
+  },
+  {
+    "id": "crunches",
+    "name_de": "Crunches",
+    "synonyme": [
+      "Crunch",
+      "Bauchpresse",
+      "Bauchcrunch"
+    ],
+    "kategorie": "Bauch",
+    "primaermuskeln": [
+      "bauch_gerade"
+    ],
+    "sekundaermuskeln": [],
+    "geraet": "Körpergewicht",
+    "split": "core",
+    "mechanik": "isolation",
+    "ausfuehrung_de": [
+      "Auf den Rücken legen, Knie gebeugt, Füße auf dem Boden.",
+      "Hände locker an die Schläfen oder vor der Brust kreuzen.",
+      "Schultern vom Boden abheben und den Oberkörper Richtung Knie einrollen.",
+      "Langsam wieder ablegen."
+    ],
+    "tipps_de": [
+      "Nicht am Kopf ziehen.",
+      "Unterer Rücken bleibt am Boden."
+    ],
+    "bild": "crunches.webp",
+    "bild_quelle": null,
+    "bild_lizenz": null,
+    "quelle": "free-exercise-db: Crunches",
+    "lizenz": "Unlicense",
+    "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Crunches/0.jpg",
+    "schulter_risiko": "niedrig",
+    "alternativen": [
+      "plank",
+      "beinheben-haengend"
+    ]
+  },
+  {
+    "id": "plank",
+    "name_de": "Plank",
+    "synonyme": [
+      "Unterarmstütz",
+      "Brett",
+      "Planke"
+    ],
+    "kategorie": "Bauch",
+    "primaermuskeln": [
+      "bauch_gerade",
+      "bauch_schraeg"
+    ],
+    "sekundaermuskeln": [
+      "schulter_vorne",
+      "gesaess"
+    ],
+    "geraet": "Körpergewicht",
+    "split": "core",
+    "mechanik": "isolation",
+    "ausfuehrung_de": [
+      "Auf die Unterarme und Zehenspitzen stützen, Ellbogen unter den Schultern.",
+      "Körper von Kopf bis Ferse in eine gerade Linie bringen.",
+      "Bauch und Gesäß anspannen und die Position halten."
+    ],
+    "tipps_de": [
+      "Hüfte weder durchhängen lassen noch nach oben schieben.",
+      "Ruhig weiteratmen."
+    ],
+    "bild": "plank.webp",
+    "bild_quelle": null,
+    "bild_lizenz": null,
+    "quelle": "free-exercise-db: Plank",
+    "lizenz": "Unlicense",
+    "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Plank/0.jpg",
+    "schulter_risiko": "niedrig",
+    "alternativen": [
+      "crunches"
+    ]
+  },
+  {
+    "id": "beinheben-haengend",
+    "name_de": "Beinheben hängend",
+    "synonyme": [
+      "Hängendes Beinheben",
+      "Beinheben an der Klimmzugstange",
+      "Beinheben",
+      "Hanging Leg Raise",
+      "Hanging Leg Raises"
+    ],
+    "kategorie": "Bauch",
+    "primaermuskeln": [
+      "bauch_gerade"
+    ],
+    "sekundaermuskeln": [
+      "hueftbeuger"
+    ],
+    "geraet": "Körpergewicht",
+    "split": "core",
+    "mechanik": "isolation",
+    "ausfuehrung_de": [
+      "An der Klimmzugstange hängen, Arme gestreckt.",
+      "Beine gestreckt oder angewinkelt nach vorn hochheben, bis die Hüfte etwa 90° gebeugt ist.",
+      "Kurz halten.",
+      "Beine langsam wieder absenken, ohne zu schwingen."
+    ],
+    "tipps_de": [
+      "Becken am Ende leicht einrollen, dann arbeitet der Bauch mehr als der Hüftbeuger.",
+      "Einfachere Variante: Knie anziehen."
+    ],
+    "bild": "beinheben-haengend.webp",
+    "bild_quelle": null,
+    "bild_lizenz": null,
+    "quelle": "free-exercise-db: Hanging_Leg_Raise",
+    "lizenz": "Unlicense",
+    "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Hanging_Leg_Raise/0.jpg",
+    "schulter_risiko": "mittel",
+    "alternativen": [
+      "crunches",
+      "plank"
+    ]
+  },
+  {
+    "id": "laufband",
+    "name_de": "Laufband",
+    "synonyme": [
+      "Laufen auf dem Laufband",
+      "Joggen Laufband",
+      "Treadmill",
+      "Running, Treadmill",
+      "Treadmill Running"
+    ],
     "kategorie": "Cardio",
-    "primaermuskeln": ["quadrizeps"],
-    "sekundaermuskeln": ["waden", "hueftbeuger"],
+    "primaermuskeln": [
+      "quadrizeps",
+      "waden"
+    ],
+    "sekundaermuskeln": [
+      "gesaess",
+      "beinbeuger"
+    ],
     "geraet": "Cardiogerät",
     "split": "cardio",
     "mechanik": "grund",
-    "ausfuehrung_de": ["Platzhalter."],
-    "tipps_de": ["Platzhalter."],
-    "bild": "laufen.webp",
-    "quelle": "placeholder",
-    "lizenz": "placeholder",
-    "bild_quelle": "placeholder-bild",
-    "bild_lizenz": "placeholder-bildlizenz",
-    "alternativen": [],
-    "legacy_names": [],
-    "extra": {"later": true}
+    "ausfuehrung_de": [
+      "Auf das Laufband stellen (Füße auf die Seitenleisten) und das Programm wählen.",
+      "Mit langsamem Tempo starten und erst dann loslaufen.",
+      "Tempo und Steigung schrittweise auf dein Ziel erhöhen.",
+      "Zum Schluss ein paar Minuten locker auslaufen."
+    ],
+    "tipps_de": [
+      "Nicht an den Griffen festhalten.",
+      "Etwas Steigung (1–2 %) fühlt sich natürlicher an."
+    ],
+    "bild": "laufband.webp",
+    "bild_quelle": null,
+    "bild_lizenz": null,
+    "quelle": "free-exercise-db: Running_Treadmill",
+    "lizenz": "Unlicense",
+    "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Running_Treadmill/0.jpg",
+    "schulter_risiko": "niedrig",
+    "alternativen": [
+      "crosstrainer",
+      "rudergeraet"
+    ]
+  },
+  {
+    "id": "rudergeraet",
+    "name_de": "Rudergerät",
+    "synonyme": [
+      "Rudern am Rudergerät",
+      "Ruderergometer",
+      "Rower",
+      "Rowing, Stationary",
+      "Rowing Machine"
+    ],
+    "kategorie": "Cardio",
+    "primaermuskeln": [
+      "quadrizeps",
+      "oberer_ruecken"
+    ],
+    "sekundaermuskeln": [
+      "gesaess",
+      "beinbeuger",
+      "bizeps",
+      "unterer_ruecken"
+    ],
+    "geraet": "Cardiogerät",
+    "split": "cardio",
+    "mechanik": "grund",
+    "ausfuehrung_de": [
+      "Hinsetzen, Füße in die Fußschlaufen, Griff mit beiden Händen fassen.",
+      "Startposition: Knie gebeugt, Arme gestreckt, Oberkörper leicht nach vorn.",
+      "Zuerst mit den Beinen abdrücken, dann den Oberkörper leicht zurücklehnen und den Griff zum Bauch ziehen.",
+      "In umgekehrter Reihenfolge zurück: Arme, Oberkörper, dann Knie beugen."
+    ],
+    "tipps_de": [
+      "Die Kraft kommt hauptsächlich aus den Beinen.",
+      "Rücken während der ganzen Bewegung gerade."
+    ],
+    "bild": "rudergeraet.webp",
+    "bild_quelle": null,
+    "bild_lizenz": null,
+    "quelle": "free-exercise-db: Rowing_Stationary",
+    "lizenz": "Unlicense",
+    "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Rowing_Stationary/0.jpg",
+    "schulter_risiko": "niedrig",
+    "alternativen": [
+      "crosstrainer",
+      "laufband"
+    ]
+  },
+  {
+    "id": "crosstrainer",
+    "name_de": "Crosstrainer",
+    "synonyme": [
+      "Ellipsentrainer",
+      "Elliptical Trainer",
+      "Elliptical",
+      "Cross Trainer"
+    ],
+    "kategorie": "Cardio",
+    "primaermuskeln": [
+      "quadrizeps",
+      "gesaess"
+    ],
+    "sekundaermuskeln": [
+      "beinbeuger",
+      "waden"
+    ],
+    "geraet": "Cardiogerät",
+    "split": "cardio",
+    "mechanik": "grund",
+    "ausfuehrung_de": [
+      "Auf die Pedale stellen, Griffe fassen und das Programm wählen.",
+      "In ruhigem Tempo starten.",
+      "Widerstand und Tempo nach und nach steigern, die Arme ziehen und drücken aktiv mit.",
+      "Zum Ende einige Minuten locker ausfahren."
+    ],
+    "tipps_de": [
+      "Gelenkschonende Alternative zum Laufband.",
+      "Aufrecht bleiben und nicht auf die Griffe stützen."
+    ],
+    "bild": "crosstrainer.webp",
+    "bild_quelle": null,
+    "bild_lizenz": null,
+    "quelle": "free-exercise-db: Elliptical_Trainer",
+    "lizenz": "Unlicense",
+    "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Elliptical_Trainer/0.jpg",
+    "schulter_risiko": "niedrig",
+    "alternativen": [
+      "laufband",
+      "rudergeraet"
+    ]
   }
 ]
