@@ -63,4 +63,9 @@ class Settings extends Table {
   BoolColumn get keepScreenOn => boolean().withDefault(const Constant(false))();
   TextColumn get inputStyle =>
       text().withDefault(const Constant("underline"))();
+  TextColumn get profileName => text().nullable()();
+  RealColumn get heightCm => real().nullable()();
+  IntColumn get ageYears => integer().nullable()();
+  TextColumn get goals => text().nullable()();
+  TextColumn get apiKey => text().nullable()();
 }

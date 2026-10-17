@@ -82,6 +82,9 @@ const _localeSpecificEnglishEquivalentKeys = <String, Set<String>>{
     'nameLabel',
     'tabs',
     'themeSystem',
+    'profileName',
+    'tabStart',
+    'tabTraining',
   },
   'es': {'stoneUnit', 'cardio', 'minutesShort', 'errorLabel'},
   'fr': {

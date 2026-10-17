@@ -652,7 +652,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get titleOptional => 'Başlık (isteğe bağlı)';
 
   @override
-  String get searchExercises => 'Egzersiz ara...';
+  String get searchExercises => 'Egzersiz ara';
 
   @override
   String get warmupSets => 'Isınma setleri';
@@ -1586,4 +1586,129 @@ class AppLocalizationsTr extends AppLocalizations {
   String setNumber(int number) {
     return '$number. Set';
   }
+
+  @override
+  String get tabStart => 'Başlangıç';
+
+  @override
+  String get tabTraining => 'Antrenman';
+
+  @override
+  String get tabExercises => 'Egzersizler';
+
+  @override
+  String get tabProfile => 'Profil';
+
+  @override
+  String get calendarTitle => 'Takvim';
+
+  @override
+  String dayStreak(int count) {
+    return '$count gün üst üste';
+  }
+
+  @override
+  String weekStreak(int count) {
+    return '$count hafta üst üste';
+  }
+
+  @override
+  String get thisWeek => 'Bu hafta';
+
+  @override
+  String get bodyWeightChart => 'Vücut ağırlığı';
+
+  @override
+  String get strengthChart => 'Kuvvet';
+
+  @override
+  String get weeklyVolumeChart => 'Haftalık hacim';
+
+  @override
+  String get noChartData => 'Henüz yeterli veri yok';
+
+  @override
+  String get newTemplate => 'Yeni şablon';
+
+  @override
+  String get templateLimit => 'En fazla 7 şablon kaydedebilirsin.';
+
+  @override
+  String get templatesEmpty => 'Bu şablonda henüz egzersiz yok.';
+
+  @override
+  String get allMuscles => 'Tümü';
+
+  @override
+  String get noHistory => 'Henüz geçmiş yok';
+
+  @override
+  String bestOneRepMax(String value) {
+    return 'Tahmini 1RM $value kg';
+  }
+
+  @override
+  String bestLoad(String value) {
+    return 'En iyi yük $value kg';
+  }
+
+  @override
+  String get profileName => 'Ad';
+
+  @override
+  String get heightCm => 'Boy (cm)';
+
+  @override
+  String get ageOptional => 'Yaş (isteğe bağlı)';
+
+  @override
+  String get goals => 'Hedefler';
+
+  @override
+  String get bodyData => 'Vücut verileri';
+
+  @override
+  String get addBodyWeight => 'Kilo ekle';
+
+  @override
+  String get weightKg => 'Kilo (kg)';
+
+  @override
+  String get aiCoaching => 'Yapay zeka koçluğu';
+
+  @override
+  String get apiKey => 'API anahtarı';
+
+  @override
+  String get apiKeyStoredLocally =>
+      'Yalnızca bu telefonda saklanır. Henüz kullanılmıyor.';
+
+  @override
+  String get profileSaved => 'Profil kaydedildi';
+
+  @override
+  String get noTrainingThisDay => 'Bu gün için kayıt yok';
+
+  @override
+  String targetSets(int count) {
+    return '$count set';
+  }
+
+  @override
+  String repRangeLabel(String range) {
+    return '$range tekrar';
+  }
+
+  @override
+  String get repMinLabel => 'Tekrar başlangıcı';
+
+  @override
+  String get repMaxLabel => 'Tekrar bitişi';
+
+  @override
+  String get exerciseDatabaseCreditTitle => 'Egzersiz kütüphanesi';
+
+  @override
+  String get exerciseDatabaseCreditBody =>
+      'Adlar yuhonas’ın free-exercise-db kaynağından, Unlicense (kamu malı). Alpha adlar ve takma adlar ekledi.';
 }

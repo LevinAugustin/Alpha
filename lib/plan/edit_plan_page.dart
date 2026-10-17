@@ -77,7 +77,10 @@ class _EditPlanPageState extends State<EditPlanPage> {
               .map((day) => localizedWeekday(context.l10n, day))
               .join(', ');
 
-    final exercises = filterPlanExerciseDrafts(_exercises, _search);
+    final matched = _search.isEmpty
+        ? _exercises.where((draft) => draft.planExercise.enabled.value)
+        : filterPlanExerciseDrafts(_exercises, _search);
+    final exercises = matched.take(80).toList();
     final desktop = isDesktopLayout(context);
     final colors = Theme.of(context).colorScheme;
 
@@ -212,6 +215,7 @@ class _EditPlanPageState extends State<EditPlanPage> {
                   ExerciseTile(
                     planExercise: pe.planExercise,
                     exerciseName: pe.exerciseName,
+                    germanName: pe.germanName,
                     onChange: (value) {
                       final id = _exercises.indexWhere(
                         (exercise) =>

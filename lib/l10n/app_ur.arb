@@ -864,7 +864,7 @@
   "@titleOptional": {
     "description": "Optional plan title field label."
   },
-  "searchExercises": "ورزشیں تلاش کریں...",
+  "searchExercises": "ورزش تلاش کریں",
   "@searchExercises": {
     "description": "Hint for searching exercises."
   },
@@ -2036,5 +2036,42 @@
         "type": "int"
       }
     }
-  }
+  },
+  "tabStart": "آغاز",
+  "tabTraining": "تربیت",
+  "tabExercises": "ورزشیں",
+  "tabProfile": "پروفائل",
+  "calendarTitle": "کیلنڈر",
+  "dayStreak": "مسلسل {count} دن",
+  "weekStreak": "مسلسل {count} ہفتے",
+  "thisWeek": "یہ ہفتہ",
+  "bodyWeightChart": "جسمانی وزن",
+  "strengthChart": "طاقت",
+  "weeklyVolumeChart": "ہفتہ وار حجم",
+  "noChartData": "ابھی ڈیٹا کم ہے",
+  "newTemplate": "نیا سانچہ",
+  "templateLimit": "آپ 7 سانچے محفوظ کر سکتے ہیں۔",
+  "templatesEmpty": "اس سانچے میں ابھی ورزش نہیں۔",
+  "allMuscles": "سب",
+  "noHistory": "ابھی کوئی تاریخ نہیں",
+  "bestOneRepMax": "تخمینی 1RM {value} کلو",
+  "bestLoad": "بہترین وزن {value} کلو",
+  "profileName": "نام",
+  "heightCm": "قد (سم)",
+  "ageOptional": "عمر (اختیاری)",
+  "goals": "اہداف",
+  "bodyData": "جسمانی ڈیٹا",
+  "addBodyWeight": "وزن شامل کریں",
+  "weightKg": "وزن (کلو)",
+  "aiCoaching": "اے آئی کوچنگ",
+  "apiKey": "اے پی آئی کلید",
+  "apiKeyStoredLocally": "صرف اسی فون پر محفوظ۔ ابھی استعمال نہیں۔",
+  "profileSaved": "پروفائل محفوظ ہو گیا",
+  "noTrainingThisDay": "اس دن کچھ درج نہیں",
+  "targetSets": "{count} سیٹ",
+  "repRangeLabel": "{range} تکرار",
+  "repMinLabel": "تکرار سے",
+  "repMaxLabel": "تکرار تک",
+  "exerciseDatabaseCreditTitle": "ورزشوں کی لائبریری",
+  "exerciseDatabaseCreditBody": "نام yuhonas کے free-exercise-db سے ہیں، Unlicense (عوامی ڈومین)۔ Alpha نے نام اور عرفی نام شامل کیے۔"
 }

@@ -650,7 +650,7 @@ class AppLocalizationsFa extends AppLocalizations {
   String get titleOptional => 'عنوان (اختیاری)';
 
   @override
-  String get searchExercises => 'جست‌وجوی تمرین‌ها...';
+  String get searchExercises => 'جستجوی حرکت';
 
   @override
   String get warmupSets => 'ست‌های گرم‌کردن';
@@ -1570,4 +1570,129 @@ class AppLocalizationsFa extends AppLocalizations {
   String setNumber(int number) {
     return 'ست $number';
   }
+
+  @override
+  String get tabStart => 'شروع';
+
+  @override
+  String get tabTraining => 'تمرین';
+
+  @override
+  String get tabExercises => 'حرکت‌ها';
+
+  @override
+  String get tabProfile => 'نمایه';
+
+  @override
+  String get calendarTitle => 'تقویم';
+
+  @override
+  String dayStreak(int count) {
+    return '$count روز پیاپی';
+  }
+
+  @override
+  String weekStreak(int count) {
+    return '$count هفته پیاپی';
+  }
+
+  @override
+  String get thisWeek => 'این هفته';
+
+  @override
+  String get bodyWeightChart => 'وزن بدن';
+
+  @override
+  String get strengthChart => 'قدرت';
+
+  @override
+  String get weeklyVolumeChart => 'حجم هفتگی';
+
+  @override
+  String get noChartData => 'داده هنوز کم است';
+
+  @override
+  String get newTemplate => 'الگوی تازه';
+
+  @override
+  String get templateLimit => 'تا ۷ الگو می‌توانی ذخیره کنی.';
+
+  @override
+  String get templatesEmpty => 'این الگو هنوز حرکتی ندارد.';
+
+  @override
+  String get allMuscles => 'همه';
+
+  @override
+  String get noHistory => 'هنوز سابقه‌ای نیست';
+
+  @override
+  String bestOneRepMax(String value) {
+    return 'یک تکرار بیشینه تخمینی $value کیلو';
+  }
+
+  @override
+  String bestLoad(String value) {
+    return 'بهترین وزنه $value کیلو';
+  }
+
+  @override
+  String get profileName => 'نام';
+
+  @override
+  String get heightCm => 'قد (سانتی‌متر)';
+
+  @override
+  String get ageOptional => 'سن (اختیاری)';
+
+  @override
+  String get goals => 'هدف‌ها';
+
+  @override
+  String get bodyData => 'داده‌های بدن';
+
+  @override
+  String get addBodyWeight => 'افزودن وزن';
+
+  @override
+  String get weightKg => 'وزن (کیلوگرم)';
+
+  @override
+  String get aiCoaching => 'مربی هوش مصنوعی';
+
+  @override
+  String get apiKey => 'کلید API';
+
+  @override
+  String get apiKeyStoredLocally =>
+      'فقط روی همین گوشی ذخیره می‌شود. هنوز استفاده نمی‌شود.';
+
+  @override
+  String get profileSaved => 'نمایه ذخیره شد';
+
+  @override
+  String get noTrainingThisDay => 'در این روز چیزی ثبت نشده';
+
+  @override
+  String targetSets(int count) {
+    return '$count ست';
+  }
+
+  @override
+  String repRangeLabel(String range) {
+    return '$range تکرار';
+  }
+
+  @override
+  String get repMinLabel => 'تکرار از';
+
+  @override
+  String get repMaxLabel => 'تکرار تا';
+
+  @override
+  String get exerciseDatabaseCreditTitle => 'کتابخانه حرکات';
+
+  @override
+  String get exerciseDatabaseCreditBody =>
+      'نام‌ها از free-exercise-db اثر yuhonas با مجوز Unlicense (مالکیت عمومی). Alpha نام‌ها و نام‌های مستعار را افزوده است.';
 }

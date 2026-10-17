@@ -633,7 +633,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get titleOptional => '标题（可选）';
 
   @override
-  String get searchExercises => '搜索动作...';
+  String get searchExercises => '搜索动作';
 
   @override
   String get warmupSets => '热身组';
@@ -1502,6 +1502,130 @@ class AppLocalizationsZh extends AppLocalizations {
   String setNumber(int number) {
     return '第 $number 组';
   }
+
+  @override
+  String get tabStart => '开始';
+
+  @override
+  String get tabTraining => '训练';
+
+  @override
+  String get tabExercises => '动作';
+
+  @override
+  String get tabProfile => '个人资料';
+
+  @override
+  String get calendarTitle => '日历';
+
+  @override
+  String dayStreak(int count) {
+    return '连续 $count 天';
+  }
+
+  @override
+  String weekStreak(int count) {
+    return '连续 $count 周';
+  }
+
+  @override
+  String get thisWeek => '本周';
+
+  @override
+  String get bodyWeightChart => '体重';
+
+  @override
+  String get strengthChart => '力量';
+
+  @override
+  String get weeklyVolumeChart => '每周训练量';
+
+  @override
+  String get noChartData => '数据还不够';
+
+  @override
+  String get newTemplate => '新模板';
+
+  @override
+  String get templateLimit => '最多可以保存 7 个模板。';
+
+  @override
+  String get templatesEmpty => '这个模板还没有动作。';
+
+  @override
+  String get allMuscles => '全部';
+
+  @override
+  String get noHistory => '还没有记录';
+
+  @override
+  String bestOneRepMax(String value) {
+    return '估计 1RM $value kg';
+  }
+
+  @override
+  String bestLoad(String value) {
+    return '最大重量 $value kg';
+  }
+
+  @override
+  String get profileName => '姓名';
+
+  @override
+  String get heightCm => '身高（厘米）';
+
+  @override
+  String get ageOptional => '年龄（可选）';
+
+  @override
+  String get goals => '目标';
+
+  @override
+  String get bodyData => '身体数据';
+
+  @override
+  String get addBodyWeight => '添加体重';
+
+  @override
+  String get weightKg => '体重（千克）';
+
+  @override
+  String get aiCoaching => 'AI 教练';
+
+  @override
+  String get apiKey => 'API 密钥';
+
+  @override
+  String get apiKeyStoredLocally => '只保存在这台手机上。尚未使用。';
+
+  @override
+  String get profileSaved => '资料已保存';
+
+  @override
+  String get noTrainingThisDay => '这一天没有训练';
+
+  @override
+  String targetSets(int count) {
+    return '$count 组';
+  }
+
+  @override
+  String repRangeLabel(String range) {
+    return '$range 次';
+  }
+
+  @override
+  String get repMinLabel => '次数从';
+
+  @override
+  String get repMaxLabel => '次数到';
+
+  @override
+  String get exerciseDatabaseCreditTitle => '动作库';
+
+  @override
+  String get exerciseDatabaseCreditBody =>
+      '名称来自 yuhonas 的 free-exercise-db（Unlicense，公有领域）。Alpha 补充了名称和别名。';
 }
 
 /// The translations for Chinese, as used in China (`zh_CN`).
@@ -2133,7 +2257,7 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
   String get titleOptional => '标题（可选）';
 
   @override
-  String get searchExercises => '搜索动作...';
+  String get searchExercises => '搜索动作';
 
   @override
   String get warmupSets => '热身组';
@@ -3002,6 +3126,130 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
   String setNumber(int number) {
     return '第 $number 组';
   }
+
+  @override
+  String get tabStart => '开始';
+
+  @override
+  String get tabTraining => '训练';
+
+  @override
+  String get tabExercises => '动作';
+
+  @override
+  String get tabProfile => '个人资料';
+
+  @override
+  String get calendarTitle => '日历';
+
+  @override
+  String dayStreak(int count) {
+    return '连续 $count 天';
+  }
+
+  @override
+  String weekStreak(int count) {
+    return '连续 $count 周';
+  }
+
+  @override
+  String get thisWeek => '本周';
+
+  @override
+  String get bodyWeightChart => '体重';
+
+  @override
+  String get strengthChart => '力量';
+
+  @override
+  String get weeklyVolumeChart => '每周训练量';
+
+  @override
+  String get noChartData => '数据还不够';
+
+  @override
+  String get newTemplate => '新模板';
+
+  @override
+  String get templateLimit => '最多可以保存 7 个模板。';
+
+  @override
+  String get templatesEmpty => '这个模板还没有动作。';
+
+  @override
+  String get allMuscles => '全部';
+
+  @override
+  String get noHistory => '还没有记录';
+
+  @override
+  String bestOneRepMax(String value) {
+    return '估计 1RM $value kg';
+  }
+
+  @override
+  String bestLoad(String value) {
+    return '最大重量 $value kg';
+  }
+
+  @override
+  String get profileName => '姓名';
+
+  @override
+  String get heightCm => '身高（厘米）';
+
+  @override
+  String get ageOptional => '年龄（可选）';
+
+  @override
+  String get goals => '目标';
+
+  @override
+  String get bodyData => '身体数据';
+
+  @override
+  String get addBodyWeight => '添加体重';
+
+  @override
+  String get weightKg => '体重（千克）';
+
+  @override
+  String get aiCoaching => 'AI 教练';
+
+  @override
+  String get apiKey => 'API 密钥';
+
+  @override
+  String get apiKeyStoredLocally => '只保存在这台手机上。尚未使用。';
+
+  @override
+  String get profileSaved => '资料已保存';
+
+  @override
+  String get noTrainingThisDay => '这一天没有训练';
+
+  @override
+  String targetSets(int count) {
+    return '$count 组';
+  }
+
+  @override
+  String repRangeLabel(String range) {
+    return '$range 次';
+  }
+
+  @override
+  String get repMinLabel => '次数从';
+
+  @override
+  String get repMaxLabel => '次数到';
+
+  @override
+  String get exerciseDatabaseCreditTitle => '动作库';
+
+  @override
+  String get exerciseDatabaseCreditBody =>
+      '名称来自 yuhonas 的 free-exercise-db（Unlicense，公有领域）。Alpha 补充了名称和别名。';
 }
 
 /// The translations for Chinese, as used in Taiwan (`zh_TW`).
@@ -3633,7 +3881,7 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get titleOptional => '標題（可選）';
 
   @override
-  String get searchExercises => '搜尋動作...';
+  String get searchExercises => '搜尋動作';
 
   @override
   String get warmupSets => '熱身組';
@@ -4502,4 +4750,128 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String setNumber(int number) {
     return '第 $number 組';
   }
+
+  @override
+  String get tabStart => '開始';
+
+  @override
+  String get tabTraining => '訓練';
+
+  @override
+  String get tabExercises => '動作';
+
+  @override
+  String get tabProfile => '個人資料';
+
+  @override
+  String get calendarTitle => '日曆';
+
+  @override
+  String dayStreak(int count) {
+    return '連續 $count 天';
+  }
+
+  @override
+  String weekStreak(int count) {
+    return '連續 $count 週';
+  }
+
+  @override
+  String get thisWeek => '本週';
+
+  @override
+  String get bodyWeightChart => '體重';
+
+  @override
+  String get strengthChart => '力量';
+
+  @override
+  String get weeklyVolumeChart => '每週訓練量';
+
+  @override
+  String get noChartData => '資料還不夠';
+
+  @override
+  String get newTemplate => '新範本';
+
+  @override
+  String get templateLimit => '最多可以儲存 7 個範本。';
+
+  @override
+  String get templatesEmpty => '這個範本還沒有動作。';
+
+  @override
+  String get allMuscles => '全部';
+
+  @override
+  String get noHistory => '還沒有紀錄';
+
+  @override
+  String bestOneRepMax(String value) {
+    return '估計 1RM $value kg';
+  }
+
+  @override
+  String bestLoad(String value) {
+    return '最大重量 $value kg';
+  }
+
+  @override
+  String get profileName => '姓名';
+
+  @override
+  String get heightCm => '身高（公分）';
+
+  @override
+  String get ageOptional => '年齡（選填）';
+
+  @override
+  String get goals => '目標';
+
+  @override
+  String get bodyData => '身體資料';
+
+  @override
+  String get addBodyWeight => '新增體重';
+
+  @override
+  String get weightKg => '體重（公斤）';
+
+  @override
+  String get aiCoaching => 'AI 教練';
+
+  @override
+  String get apiKey => 'API 金鑰';
+
+  @override
+  String get apiKeyStoredLocally => '只儲存在這支手機上。尚未使用。';
+
+  @override
+  String get profileSaved => '資料已儲存';
+
+  @override
+  String get noTrainingThisDay => '這一天沒有訓練';
+
+  @override
+  String targetSets(int count) {
+    return '$count 組';
+  }
+
+  @override
+  String repRangeLabel(String range) {
+    return '$range 次';
+  }
+
+  @override
+  String get repMinLabel => '次數從';
+
+  @override
+  String get repMaxLabel => '次數到';
+
+  @override
+  String get exerciseDatabaseCreditTitle => '動作庫';
+
+  @override
+  String get exerciseDatabaseCreditBody =>
+      '名稱來自 yuhonas 的 free-exercise-db（Unlicense，公有領域）。Alpha 補充了名稱和別名。';
 }

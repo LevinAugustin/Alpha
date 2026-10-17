@@ -1,0 +1,179 @@
+import 'package:drift/drift.dart' hide Column;
+import 'package:flexify/database/database.dart';
+import 'package:flexify/exercise_labels.dart';
+import 'package:flexify/l10n/l10n.dart';
+import 'package:flexify/main.dart';
+import 'package:flexify/shell/training_stats.dart';
+import 'package:flutter/material.dart';
+
+class CalendarPage extends StatefulWidget {
+  const CalendarPage({super.key});
+
+  @override
+  State<CalendarPage> createState() => _CalendarPageState();
+}
+
+class _CalendarPageState extends State<CalendarPage> {
+  late DateTime _month;
+  DateTime? _selected;
+
+  @override
+  void initState() {
+    super.initState();
+    final now = dateOnly(DateTime.now());
+    _month = DateTime(now.year, now.month);
+    _selected = now;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text(context.l10n.calendarTitle)),
+      body: StreamBuilder<List<TypedResult>>(
+        stream: (db.select(db.exerciseSets).join([
+          innerJoin(
+            db.exercises,
+            db.exercises.id.equalsExp(db.exerciseSets.exerciseId),
+          ),
+        ])).watch(),
+        builder: (context, snapshot) {
+          final rows = snapshot.data ?? const <TypedResult>[];
+          final trained = <DateTime>{};
+          for (final row in rows) {
+            trained.add(dateOnly(row.readTable(db.exerciseSets).timestamp));
+          }
+          final today = DateTime.now();
+          final selected = _selected;
+          final dayRows = selected == null
+              ? const <TypedResult>[]
+              : rows.where((row) {
+                  return dateOnly(row.readTable(db.exerciseSets).timestamp) ==
+                      selected;
+                }).toList();
+          return ListView(
+            padding: const EdgeInsets.all(16),
+            children: [
+              Text(context.l10n.dayStreak(trainingDayStreak(trained, today))),
+              Text(context.l10n.weekStreak(trainingWeekStreak(trained, today))),
+              const SizedBox(height: 12),
+              Row(
+                children: [
+                  IconButton(
+                    onPressed: () => setState(() {
+                      _month = DateTime(_month.year, _month.month - 1);
+                    }),
+                    icon: const Icon(Icons.chevron_left),
+                  ),
+                  Expanded(
+                    child: Text(
+                      MaterialLocalizations.of(context).formatMonthYear(_month),
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.titleMedium,
+                    ),
+                  ),
+                  IconButton(
+                    onPressed: () => setState(() {
+                      _month = DateTime(_month.year, _month.month + 1);
+                    }),
+                    icon: const Icon(Icons.chevron_right),
+                  ),
+                ],
+              ),
+              _MonthGrid(
+                month: _month,
+                trained: trained,
+                selected: selected,
+                onSelect: (day) => setState(() => _selected = day),
+              ),
+              const SizedBox(height: 16),
+              Text(
+                selected == null
+                    ? context.l10n.noTrainingThisDay
+                    : MaterialLocalizations.of(
+                        context,
+                      ).formatFullDate(selected),
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
+              if (dayRows.isEmpty)
+                Padding(
+                  padding: const EdgeInsets.only(top: 8),
+                  child: Text(context.l10n.noTrainingThisDay),
+                )
+              else
+                for (final row in dayRows)
+                  ListTile(
+                    contentPadding: EdgeInsets.zero,
+                    title: Text(
+                      localizedExerciseName(
+                        context,
+                        row.readTable(db.exercises).name,
+                        german: row.readTable(db.exercises).germanName,
+                      ),
+                    ),
+                    subtitle: Text(_detail(row.readTable(db.exerciseSets))),
+                  ),
+            ],
+          );
+        },
+      ),
+    );
+  }
+
+  String _detail(ExerciseSet set) {
+    final reps = set.reps == null ? '-' : set.reps!.toStringAsFixed(0);
+    final load = set.loadKg == null
+        ? '-'
+        : '${set.loadKg!.toStringAsFixed(1)} kg';
+    return '$load × $reps';
+  }
+}
+
+class _MonthGrid extends StatelessWidget {
+  const _MonthGrid({
+    required this.month,
+    required this.trained,
+    required this.selected,
+    required this.onSelect,
+  });
+
+  final DateTime month;
+  final Set<DateTime> trained;
+  final DateTime? selected;
+  final ValueChanged<DateTime> onSelect;
+
+  @override
+  Widget build(BuildContext context) {
+    final first = DateTime(month.year, month.month);
+    final daysInMonth = DateTime(month.year, month.month + 1, 0).day;
+    final leading = first.weekday - 1;
+    final cells = leading + daysInMonth;
+    return GridView.builder(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 7,
+      ),
+      itemCount: cells,
+      itemBuilder: (context, index) {
+        if (index < leading) return const SizedBox.shrink();
+        final day = DateTime(month.year, month.month, index - leading + 1);
+        final isTrained = trained.contains(day);
+        final isSelected = selected == day;
+        return InkWell(
+          onTap: () => onSelect(day),
+          child: Center(
+            child: CircleAvatar(
+              radius: 16,
+              backgroundColor: isSelected
+                  ? Theme.of(context).colorScheme.primary
+                  : isTrained
+                  ? Theme.of(context).colorScheme.primaryContainer
+                  : Colors.transparent,
+              child: Text('${day.day}'),
+            ),
+          ),
+        );
+      },
+    );
+  }
+}

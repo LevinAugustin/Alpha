@@ -648,7 +648,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get titleOptional => 'العنوان (اختياري)';
 
   @override
-  String get searchExercises => 'البحث في التمارين...';
+  String get searchExercises => 'ابحث عن تمرين';
 
   @override
   String get warmupSets => 'مجموعات الإحماء';
@@ -1558,4 +1558,128 @@ class AppLocalizationsAr extends AppLocalizations {
   String setNumber(int number) {
     return 'المجموعة $number';
   }
+
+  @override
+  String get tabStart => 'البداية';
+
+  @override
+  String get tabTraining => 'التدريب';
+
+  @override
+  String get tabExercises => 'التمارين';
+
+  @override
+  String get tabProfile => 'الملف';
+
+  @override
+  String get calendarTitle => 'التقويم';
+
+  @override
+  String dayStreak(int count) {
+    return '$count أيام متتالية';
+  }
+
+  @override
+  String weekStreak(int count) {
+    return '$count أسابيع متتالية';
+  }
+
+  @override
+  String get thisWeek => 'هذا الأسبوع';
+
+  @override
+  String get bodyWeightChart => 'وزن الجسم';
+
+  @override
+  String get strengthChart => 'القوة';
+
+  @override
+  String get weeklyVolumeChart => 'الحجم الأسبوعي';
+
+  @override
+  String get noChartData => 'البيانات غير كافية بعد';
+
+  @override
+  String get newTemplate => 'قالب جديد';
+
+  @override
+  String get templateLimit => 'يمكنك حفظ 7 قوالب كحد أقصى.';
+
+  @override
+  String get templatesEmpty => 'لا توجد تمارين في هذا القالب بعد.';
+
+  @override
+  String get allMuscles => 'الكل';
+
+  @override
+  String get noHistory => 'لا يوجد سجل بعد';
+
+  @override
+  String bestOneRepMax(String value) {
+    return '1RM تقديري $value كغ';
+  }
+
+  @override
+  String bestLoad(String value) {
+    return 'أفضل حمل $value كغ';
+  }
+
+  @override
+  String get profileName => 'الاسم';
+
+  @override
+  String get heightCm => 'الطول (سم)';
+
+  @override
+  String get ageOptional => 'العمر (اختياري)';
+
+  @override
+  String get goals => 'الأهداف';
+
+  @override
+  String get bodyData => 'بيانات الجسم';
+
+  @override
+  String get addBodyWeight => 'أضف الوزن';
+
+  @override
+  String get weightKg => 'الوزن (كغ)';
+
+  @override
+  String get aiCoaching => 'تدريب بالذكاء الاصطناعي';
+
+  @override
+  String get apiKey => 'مفتاح API';
+
+  @override
+  String get apiKeyStoredLocally => 'يُحفظ على هذا الهاتف فقط. غير مستخدم بعد.';
+
+  @override
+  String get profileSaved => 'تم حفظ الملف';
+
+  @override
+  String get noTrainingThisDay => 'لا شيء مسجل في هذا اليوم';
+
+  @override
+  String targetSets(int count) {
+    return '$count مجموعات';
+  }
+
+  @override
+  String repRangeLabel(String range) {
+    return '$range تكرار';
+  }
+
+  @override
+  String get repMinLabel => 'تكرار من';
+
+  @override
+  String get repMaxLabel => 'تكرار إلى';
+
+  @override
+  String get exerciseDatabaseCreditTitle => 'مكتبة التمارين';
+
+  @override
+  String get exerciseDatabaseCreditBody =>
+      'الأسماء من free-exercise-db لـ yuhonas، ترخيص Unlicense (ملكية عامة). أضافت Alpha أسماء وأسماء بديلة.';
 }

@@ -634,7 +634,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get titleOptional => 'タイトル（任意）';
 
   @override
-  String get searchExercises => '種目を検索...';
+  String get searchExercises => '種目を検索';
 
   @override
   String get warmupSets => 'ウォームアップセット';
@@ -1512,4 +1512,128 @@ class AppLocalizationsJa extends AppLocalizations {
   String setNumber(int number) {
     return 'セット $number';
   }
+
+  @override
+  String get tabStart => 'スタート';
+
+  @override
+  String get tabTraining => 'トレーニング';
+
+  @override
+  String get tabExercises => '種目';
+
+  @override
+  String get tabProfile => 'プロフィール';
+
+  @override
+  String get calendarTitle => 'カレンダー';
+
+  @override
+  String dayStreak(int count) {
+    return '$count日連続';
+  }
+
+  @override
+  String weekStreak(int count) {
+    return '$count週連続';
+  }
+
+  @override
+  String get thisWeek => '今週';
+
+  @override
+  String get bodyWeightChart => '体重';
+
+  @override
+  String get strengthChart => '筋力';
+
+  @override
+  String get weeklyVolumeChart => '週間ボリューム';
+
+  @override
+  String get noChartData => 'データがまだ足りません';
+
+  @override
+  String get newTemplate => '新しいテンプレート';
+
+  @override
+  String get templateLimit => 'テンプレートは7件まで保存できます。';
+
+  @override
+  String get templatesEmpty => 'このテンプレートには種目がありません。';
+
+  @override
+  String get allMuscles => 'すべて';
+
+  @override
+  String get noHistory => '履歴はまだありません';
+
+  @override
+  String bestOneRepMax(String value) {
+    return '推定1RM $value kg';
+  }
+
+  @override
+  String bestLoad(String value) {
+    return '最大重量 $value kg';
+  }
+
+  @override
+  String get profileName => '名前';
+
+  @override
+  String get heightCm => '身長 (cm)';
+
+  @override
+  String get ageOptional => '年齢（任意）';
+
+  @override
+  String get goals => '目標';
+
+  @override
+  String get bodyData => '身体データ';
+
+  @override
+  String get addBodyWeight => '体重を追加';
+
+  @override
+  String get weightKg => '体重 (kg)';
+
+  @override
+  String get aiCoaching => 'AIコーチング';
+
+  @override
+  String get apiKey => 'APIキー';
+
+  @override
+  String get apiKeyStoredLocally => 'この端末だけに保存されます。まだ使いません。';
+
+  @override
+  String get profileSaved => 'プロフィールを保存しました';
+
+  @override
+  String get noTrainingThisDay => 'この日の記録はありません';
+
+  @override
+  String targetSets(int count) {
+    return '$countセット';
+  }
+
+  @override
+  String repRangeLabel(String range) {
+    return '$range回';
+  }
+
+  @override
+  String get repMinLabel => '回数（から）';
+
+  @override
+  String get repMaxLabel => '回数（まで）';
+
+  @override
+  String get exerciseDatabaseCreditTitle => '種目ライブラリ';
+
+  @override
+  String get exerciseDatabaseCreditBody =>
+      '名称は yuhonas の free-exercise-db（Unlicense、パブリックドメイン）より。Alpha がドイツ語名と別名を追加しました。';
 }

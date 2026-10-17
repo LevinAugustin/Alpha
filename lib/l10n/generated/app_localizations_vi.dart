@@ -648,7 +648,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get titleOptional => 'Tiêu đề (tùy chọn)';
 
   @override
-  String get searchExercises => 'Tìm kiếm bài tập...';
+  String get searchExercises => 'Tìm bài tập';
 
   @override
   String get warmupSets => 'Hiệp khởi động';
@@ -1576,4 +1576,129 @@ class AppLocalizationsVi extends AppLocalizations {
   String setNumber(int number) {
     return 'Hiệp $number';
   }
+
+  @override
+  String get tabStart => 'Bắt đầu';
+
+  @override
+  String get tabTraining => 'Tập luyện';
+
+  @override
+  String get tabExercises => 'Bài tập';
+
+  @override
+  String get tabProfile => 'Hồ sơ';
+
+  @override
+  String get calendarTitle => 'Lịch';
+
+  @override
+  String dayStreak(int count) {
+    return '$count ngày liên tiếp';
+  }
+
+  @override
+  String weekStreak(int count) {
+    return '$count tuần liên tiếp';
+  }
+
+  @override
+  String get thisWeek => 'Tuần này';
+
+  @override
+  String get bodyWeightChart => 'Cân nặng';
+
+  @override
+  String get strengthChart => 'Sức mạnh';
+
+  @override
+  String get weeklyVolumeChart => 'Khối lượng tuần';
+
+  @override
+  String get noChartData => 'Chưa đủ dữ liệu';
+
+  @override
+  String get newTemplate => 'Mẫu mới';
+
+  @override
+  String get templateLimit => 'Bạn có thể lưu tối đa 7 mẫu.';
+
+  @override
+  String get templatesEmpty => 'Mẫu này chưa có bài tập.';
+
+  @override
+  String get allMuscles => 'Tất cả';
+
+  @override
+  String get noHistory => 'Chưa có lịch sử';
+
+  @override
+  String bestOneRepMax(String value) {
+    return '1RM ước tính $value kg';
+  }
+
+  @override
+  String bestLoad(String value) {
+    return 'Mức tạ tốt nhất $value kg';
+  }
+
+  @override
+  String get profileName => 'Tên';
+
+  @override
+  String get heightCm => 'Chiều cao (cm)';
+
+  @override
+  String get ageOptional => 'Tuổi (không bắt buộc)';
+
+  @override
+  String get goals => 'Mục tiêu';
+
+  @override
+  String get bodyData => 'Số đo cơ thể';
+
+  @override
+  String get addBodyWeight => 'Thêm cân nặng';
+
+  @override
+  String get weightKg => 'Cân nặng (kg)';
+
+  @override
+  String get aiCoaching => 'Huấn luyện AI';
+
+  @override
+  String get apiKey => 'Khóa API';
+
+  @override
+  String get apiKeyStoredLocally =>
+      'Chỉ lưu trên điện thoại này. Chưa được dùng.';
+
+  @override
+  String get profileSaved => 'Đã lưu hồ sơ';
+
+  @override
+  String get noTrainingThisDay => 'Không có buổi tập ngày này';
+
+  @override
+  String targetSets(int count) {
+    return '$count hiệp';
+  }
+
+  @override
+  String repRangeLabel(String range) {
+    return '$range lần';
+  }
+
+  @override
+  String get repMinLabel => 'Số lần từ';
+
+  @override
+  String get repMaxLabel => 'Số lần đến';
+
+  @override
+  String get exerciseDatabaseCreditTitle => 'Thư viện bài tập';
+
+  @override
+  String get exerciseDatabaseCreditBody =>
+      'Tên từ free-exercise-db của yuhonas, Unlicense (phạm vi công cộng). Alpha thêm tên và biệt danh.';
 }

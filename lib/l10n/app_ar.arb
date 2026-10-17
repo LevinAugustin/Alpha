@@ -864,7 +864,7 @@
   "@titleOptional": {
     "description": "Optional plan title field label."
   },
-  "searchExercises": "البحث في التمارين...",
+  "searchExercises": "ابحث عن تمرين",
   "@searchExercises": {
     "description": "Hint for searching exercises."
   },
@@ -2036,5 +2036,42 @@
         "type": "int"
       }
     }
-  }
+  },
+  "tabStart": "البداية",
+  "tabTraining": "التدريب",
+  "tabExercises": "التمارين",
+  "tabProfile": "الملف",
+  "calendarTitle": "التقويم",
+  "dayStreak": "{count} أيام متتالية",
+  "weekStreak": "{count} أسابيع متتالية",
+  "thisWeek": "هذا الأسبوع",
+  "bodyWeightChart": "وزن الجسم",
+  "strengthChart": "القوة",
+  "weeklyVolumeChart": "الحجم الأسبوعي",
+  "noChartData": "البيانات غير كافية بعد",
+  "newTemplate": "قالب جديد",
+  "templateLimit": "يمكنك حفظ 7 قوالب كحد أقصى.",
+  "templatesEmpty": "لا توجد تمارين في هذا القالب بعد.",
+  "allMuscles": "الكل",
+  "noHistory": "لا يوجد سجل بعد",
+  "bestOneRepMax": "1RM تقديري {value} كغ",
+  "bestLoad": "أفضل حمل {value} كغ",
+  "profileName": "الاسم",
+  "heightCm": "الطول (سم)",
+  "ageOptional": "العمر (اختياري)",
+  "goals": "الأهداف",
+  "bodyData": "بيانات الجسم",
+  "addBodyWeight": "أضف الوزن",
+  "weightKg": "الوزن (كغ)",
+  "aiCoaching": "تدريب بالذكاء الاصطناعي",
+  "apiKey": "مفتاح API",
+  "apiKeyStoredLocally": "يُحفظ على هذا الهاتف فقط. غير مستخدم بعد.",
+  "profileSaved": "تم حفظ الملف",
+  "noTrainingThisDay": "لا شيء مسجل في هذا اليوم",
+  "targetSets": "{count} مجموعات",
+  "repRangeLabel": "{range} تكرار",
+  "repMinLabel": "تكرار من",
+  "repMaxLabel": "تكرار إلى",
+  "exerciseDatabaseCreditTitle": "مكتبة التمارين",
+  "exerciseDatabaseCreditBody": "الأسماء من free-exercise-db لـ yuhonas، ترخيص Unlicense (ملكية عامة). أضافت Alpha أسماء وأسماء بديلة."
 }

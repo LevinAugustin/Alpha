@@ -864,7 +864,7 @@
   "@titleOptional": {
     "description": "Optional plan title field label."
   },
-  "searchExercises": "ব্যায়াম খুঁজুন...",
+  "searchExercises": "ব্যায়াম খুঁজুন",
   "@searchExercises": {
     "description": "Hint for searching exercises."
   },
@@ -2036,5 +2036,42 @@
         "type": "int"
       }
     }
-  }
+  },
+  "tabStart": "শুরু",
+  "tabTraining": "প্রশিক্ষণ",
+  "tabExercises": "ব্যায়াম",
+  "tabProfile": "প্রোফাইল",
+  "calendarTitle": "ক্যালেন্ডার",
+  "dayStreak": "টানা {count} দিন",
+  "weekStreak": "টানা {count} সপ্তাহ",
+  "thisWeek": "এই সপ্তাহ",
+  "bodyWeightChart": "শরীরের ওজন",
+  "strengthChart": "শক্তি",
+  "weeklyVolumeChart": "সাপ্তাহিক ভলিউম",
+  "noChartData": "এখনও যথেষ্ট তথ্য নেই",
+  "newTemplate": "নতুন টেমপ্লেট",
+  "templateLimit": "আপনি সর্বোচ্চ ৭টি টেমপ্লেট রাখতে পারেন।",
+  "templatesEmpty": "এই টেমপ্লেটে এখনও ব্যায়াম নেই।",
+  "allMuscles": "সব",
+  "noHistory": "এখনও কোনো ইতিহাস নেই",
+  "bestOneRepMax": "আনুমানিক 1RM {value} কেজি",
+  "bestLoad": "সেরা ভার {value} কেজি",
+  "profileName": "নাম",
+  "heightCm": "উচ্চতা (সেমি)",
+  "ageOptional": "বয়স (ঐচ্ছিক)",
+  "goals": "লক্ষ্য",
+  "bodyData": "শরীরের তথ্য",
+  "addBodyWeight": "ওজন যোগ করুন",
+  "weightKg": "ওজন (কেজি)",
+  "aiCoaching": "এআই কোচিং",
+  "apiKey": "এপিআই কী",
+  "apiKeyStoredLocally": "শুধু এই ফোনে সংরক্ষিত। এখনও ব্যবহৃত হয় না।",
+  "profileSaved": "প্রোফাইল সংরক্ষিত",
+  "noTrainingThisDay": "এই দিনে কিছু নেই",
+  "targetSets": "{count} সেট",
+  "repRangeLabel": "{range} রেপ",
+  "repMinLabel": "রেপ থেকে",
+  "repMaxLabel": "রেপ পর্যন্ত",
+  "exerciseDatabaseCreditTitle": "ব্যায়াম সংগ্রহ",
+  "exerciseDatabaseCreditBody": "নাম yuhonas-এর free-exercise-db থেকে, Unlicense (পাবলিক ডোমেইন)। Alpha নাম ও ডাকনাম যোগ করেছে।"
 }

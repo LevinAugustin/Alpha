@@ -649,7 +649,7 @@ class AppLocalizationsTh extends AppLocalizations {
   String get titleOptional => 'ชื่อเรื่อง (ไม่บังคับ)';
 
   @override
-  String get searchExercises => 'ค้นหาการออกกำลังกาย...';
+  String get searchExercises => 'ค้นหาท่า';
 
   @override
   String get warmupSets => 'เซ็ตวอร์มอัป';
@@ -1555,4 +1555,128 @@ class AppLocalizationsTh extends AppLocalizations {
   String setNumber(int number) {
     return 'เซ็ต $number';
   }
+
+  @override
+  String get tabStart => 'เริ่มต้น';
+
+  @override
+  String get tabTraining => 'การฝึก';
+
+  @override
+  String get tabExercises => 'ท่าออกกำลัง';
+
+  @override
+  String get tabProfile => 'โปรไฟล์';
+
+  @override
+  String get calendarTitle => 'ปฏิทิน';
+
+  @override
+  String dayStreak(int count) {
+    return '$count วันติดต่อกัน';
+  }
+
+  @override
+  String weekStreak(int count) {
+    return '$count สัปดาห์ติดต่อกัน';
+  }
+
+  @override
+  String get thisWeek => 'สัปดาห์นี้';
+
+  @override
+  String get bodyWeightChart => 'น้ำหนักตัว';
+
+  @override
+  String get strengthChart => 'ความแข็งแรง';
+
+  @override
+  String get weeklyVolumeChart => 'ปริมาณรายสัปดาห์';
+
+  @override
+  String get noChartData => 'ข้อมูลยังไม่พอ';
+
+  @override
+  String get newTemplate => 'เทมเพลตใหม่';
+
+  @override
+  String get templateLimit => 'บันทึกได้สูงสุด 7 เทมเพลต';
+
+  @override
+  String get templatesEmpty => 'เทมเพลตนี้ยังไม่มีท่า';
+
+  @override
+  String get allMuscles => 'ทั้งหมด';
+
+  @override
+  String get noHistory => 'ยังไม่มีประวัติ';
+
+  @override
+  String bestOneRepMax(String value) {
+    return '1RM โดยประมาณ $value kg';
+  }
+
+  @override
+  String bestLoad(String value) {
+    return 'น้ำหนักดีที่สุด $value kg';
+  }
+
+  @override
+  String get profileName => 'ชื่อ';
+
+  @override
+  String get heightCm => 'ส่วนสูง (ซม.)';
+
+  @override
+  String get ageOptional => 'อายุ (ไม่บังคับ)';
+
+  @override
+  String get goals => 'เป้าหมาย';
+
+  @override
+  String get bodyData => 'ข้อมูลร่างกาย';
+
+  @override
+  String get addBodyWeight => 'เพิ่มน้ำหนัก';
+
+  @override
+  String get weightKg => 'น้ำหนัก (กก.)';
+
+  @override
+  String get aiCoaching => 'โค้ช AI';
+
+  @override
+  String get apiKey => 'คีย์ API';
+
+  @override
+  String get apiKeyStoredLocally => 'เก็บไว้ในโทรศัพท์นี้เท่านั้น ยังไม่ถูกใช้';
+
+  @override
+  String get profileSaved => 'บันทึกโปรไฟล์แล้ว';
+
+  @override
+  String get noTrainingThisDay => 'วันนี้ไม่มีการฝึก';
+
+  @override
+  String targetSets(int count) {
+    return '$count เซต';
+  }
+
+  @override
+  String repRangeLabel(String range) {
+    return '$range ครั้ง';
+  }
+
+  @override
+  String get repMinLabel => 'ครั้งตั้งแต่';
+
+  @override
+  String get repMaxLabel => 'ครั้งถึง';
+
+  @override
+  String get exerciseDatabaseCreditTitle => 'คลังท่าฝึก';
+
+  @override
+  String get exerciseDatabaseCreditBody =>
+      'ชื่อจาก free-exercise-db โดย yuhonas, Unlicense (สาธารณสมบัติ) Alpha เพิ่มชื่อและชื่อเรียก';
 }

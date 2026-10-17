@@ -653,7 +653,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get titleOptional => 'Judul (opsional)';
 
   @override
-  String get searchExercises => 'Cari latihan…';
+  String get searchExercises => 'Cari gerakan';
 
   @override
   String get warmupSets => 'Set pemanasan';
@@ -1580,4 +1580,129 @@ class AppLocalizationsId extends AppLocalizations {
   String setNumber(int number) {
     return 'Set ke-$number';
   }
+
+  @override
+  String get tabStart => 'Mulai';
+
+  @override
+  String get tabTraining => 'Latihan';
+
+  @override
+  String get tabExercises => 'Gerakan';
+
+  @override
+  String get tabProfile => 'Profil';
+
+  @override
+  String get calendarTitle => 'Kalender';
+
+  @override
+  String dayStreak(int count) {
+    return '$count hari berturut-turut';
+  }
+
+  @override
+  String weekStreak(int count) {
+    return '$count minggu berturut-turut';
+  }
+
+  @override
+  String get thisWeek => 'Minggu ini';
+
+  @override
+  String get bodyWeightChart => 'Berat badan';
+
+  @override
+  String get strengthChart => 'Kekuatan';
+
+  @override
+  String get weeklyVolumeChart => 'Volume mingguan';
+
+  @override
+  String get noChartData => 'Data masih kurang';
+
+  @override
+  String get newTemplate => 'Templat baru';
+
+  @override
+  String get templateLimit => 'Kamu bisa menyimpan hingga 7 templat.';
+
+  @override
+  String get templatesEmpty => 'Templat ini belum berisi gerakan.';
+
+  @override
+  String get allMuscles => 'Semua';
+
+  @override
+  String get noHistory => 'Belum ada riwayat';
+
+  @override
+  String bestOneRepMax(String value) {
+    return '1RM perkiraan $value kg';
+  }
+
+  @override
+  String bestLoad(String value) {
+    return 'Beban terbaik $value kg';
+  }
+
+  @override
+  String get profileName => 'Nama';
+
+  @override
+  String get heightCm => 'Tinggi (cm)';
+
+  @override
+  String get ageOptional => 'Usia (opsional)';
+
+  @override
+  String get goals => 'Tujuan';
+
+  @override
+  String get bodyData => 'Data tubuh';
+
+  @override
+  String get addBodyWeight => 'Tambah berat';
+
+  @override
+  String get weightKg => 'Berat (kg)';
+
+  @override
+  String get aiCoaching => 'Pelatihan AI';
+
+  @override
+  String get apiKey => 'Kunci API';
+
+  @override
+  String get apiKeyStoredLocally =>
+      'Hanya tersimpan di ponsel ini. Belum dipakai.';
+
+  @override
+  String get profileSaved => 'Profil disimpan';
+
+  @override
+  String get noTrainingThisDay => 'Tidak ada catatan pada hari ini';
+
+  @override
+  String targetSets(int count) {
+    return '$count set';
+  }
+
+  @override
+  String repRangeLabel(String range) {
+    return '$range rep';
+  }
+
+  @override
+  String get repMinLabel => 'Rep dari';
+
+  @override
+  String get repMaxLabel => 'Rep sampai';
+
+  @override
+  String get exerciseDatabaseCreditTitle => 'Pustaka gerakan';
+
+  @override
+  String get exerciseDatabaseCreditBody =>
+      'Nama dari free-exercise-db oleh yuhonas, Unlicense (domain publik). Alpha menambahkan nama dan alias.';
 }

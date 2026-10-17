@@ -654,7 +654,7 @@ class AppLocalizationsUr extends AppLocalizations {
   String get titleOptional => 'عنوان (اختیاری)';
 
   @override
-  String get searchExercises => 'ورزشیں تلاش کریں...';
+  String get searchExercises => 'ورزش تلاش کریں';
 
   @override
   String get warmupSets => 'وارم اپ سیٹس';
@@ -1569,4 +1569,128 @@ class AppLocalizationsUr extends AppLocalizations {
   String setNumber(int number) {
     return 'سیٹ $number';
   }
+
+  @override
+  String get tabStart => 'آغاز';
+
+  @override
+  String get tabTraining => 'تربیت';
+
+  @override
+  String get tabExercises => 'ورزشیں';
+
+  @override
+  String get tabProfile => 'پروفائل';
+
+  @override
+  String get calendarTitle => 'کیلنڈر';
+
+  @override
+  String dayStreak(int count) {
+    return 'مسلسل $count دن';
+  }
+
+  @override
+  String weekStreak(int count) {
+    return 'مسلسل $count ہفتے';
+  }
+
+  @override
+  String get thisWeek => 'یہ ہفتہ';
+
+  @override
+  String get bodyWeightChart => 'جسمانی وزن';
+
+  @override
+  String get strengthChart => 'طاقت';
+
+  @override
+  String get weeklyVolumeChart => 'ہفتہ وار حجم';
+
+  @override
+  String get noChartData => 'ابھی ڈیٹا کم ہے';
+
+  @override
+  String get newTemplate => 'نیا سانچہ';
+
+  @override
+  String get templateLimit => 'آپ 7 سانچے محفوظ کر سکتے ہیں۔';
+
+  @override
+  String get templatesEmpty => 'اس سانچے میں ابھی ورزش نہیں۔';
+
+  @override
+  String get allMuscles => 'سب';
+
+  @override
+  String get noHistory => 'ابھی کوئی تاریخ نہیں';
+
+  @override
+  String bestOneRepMax(String value) {
+    return 'تخمینی 1RM $value کلو';
+  }
+
+  @override
+  String bestLoad(String value) {
+    return 'بہترین وزن $value کلو';
+  }
+
+  @override
+  String get profileName => 'نام';
+
+  @override
+  String get heightCm => 'قد (سم)';
+
+  @override
+  String get ageOptional => 'عمر (اختیاری)';
+
+  @override
+  String get goals => 'اہداف';
+
+  @override
+  String get bodyData => 'جسمانی ڈیٹا';
+
+  @override
+  String get addBodyWeight => 'وزن شامل کریں';
+
+  @override
+  String get weightKg => 'وزن (کلو)';
+
+  @override
+  String get aiCoaching => 'اے آئی کوچنگ';
+
+  @override
+  String get apiKey => 'اے پی آئی کلید';
+
+  @override
+  String get apiKeyStoredLocally => 'صرف اسی فون پر محفوظ۔ ابھی استعمال نہیں۔';
+
+  @override
+  String get profileSaved => 'پروفائل محفوظ ہو گیا';
+
+  @override
+  String get noTrainingThisDay => 'اس دن کچھ درج نہیں';
+
+  @override
+  String targetSets(int count) {
+    return '$count سیٹ';
+  }
+
+  @override
+  String repRangeLabel(String range) {
+    return '$range تکرار';
+  }
+
+  @override
+  String get repMinLabel => 'تکرار سے';
+
+  @override
+  String get repMaxLabel => 'تکرار تک';
+
+  @override
+  String get exerciseDatabaseCreditTitle => 'ورزشوں کی لائبریری';
+
+  @override
+  String get exerciseDatabaseCreditBody =>
+      'نام yuhonas کے free-exercise-db سے ہیں، Unlicense (عوامی ڈومین)۔ Alpha نے نام اور عرفی نام شامل کیے۔';
 }

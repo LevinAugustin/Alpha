@@ -657,7 +657,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get titleOptional => 'Название (необязательно)';
 
   @override
-  String get searchExercises => 'Поиск упражнений...';
+  String get searchExercises => 'Поиск упражнений';
 
   @override
   String get warmupSets => 'Разминочные подходы';
@@ -1596,4 +1596,129 @@ class AppLocalizationsRu extends AppLocalizations {
   String setNumber(int number) {
     return 'Подход $number';
   }
+
+  @override
+  String get tabStart => 'Старт';
+
+  @override
+  String get tabTraining => 'Тренировка';
+
+  @override
+  String get tabExercises => 'Упражнения';
+
+  @override
+  String get tabProfile => 'Профиль';
+
+  @override
+  String get calendarTitle => 'Календарь';
+
+  @override
+  String dayStreak(int count) {
+    return '$count дней подряд';
+  }
+
+  @override
+  String weekStreak(int count) {
+    return '$count недель подряд';
+  }
+
+  @override
+  String get thisWeek => 'Эта неделя';
+
+  @override
+  String get bodyWeightChart => 'Вес тела';
+
+  @override
+  String get strengthChart => 'Сила';
+
+  @override
+  String get weeklyVolumeChart => 'Недельный объём';
+
+  @override
+  String get noChartData => 'Пока мало данных';
+
+  @override
+  String get newTemplate => 'Новый шаблон';
+
+  @override
+  String get templateLimit => 'Можно сохранить до 7 шаблонов.';
+
+  @override
+  String get templatesEmpty => 'В этом шаблоне ещё нет упражнений.';
+
+  @override
+  String get allMuscles => 'Все';
+
+  @override
+  String get noHistory => 'Истории пока нет';
+
+  @override
+  String bestOneRepMax(String value) {
+    return 'Оценка 1ПМ $value кг';
+  }
+
+  @override
+  String bestLoad(String value) {
+    return 'Лучший вес $value кг';
+  }
+
+  @override
+  String get profileName => 'Имя';
+
+  @override
+  String get heightCm => 'Рост (см)';
+
+  @override
+  String get ageOptional => 'Возраст (необязательно)';
+
+  @override
+  String get goals => 'Цели';
+
+  @override
+  String get bodyData => 'Данные тела';
+
+  @override
+  String get addBodyWeight => 'Добавить вес';
+
+  @override
+  String get weightKg => 'Вес (кг)';
+
+  @override
+  String get aiCoaching => 'ИИ-коучинг';
+
+  @override
+  String get apiKey => 'Ключ API';
+
+  @override
+  String get apiKeyStoredLocally =>
+      'Хранится только на этом телефоне. Пока не используется.';
+
+  @override
+  String get profileSaved => 'Профиль сохранён';
+
+  @override
+  String get noTrainingThisDay => 'В этот день ничего нет';
+
+  @override
+  String targetSets(int count) {
+    return '$count подходов';
+  }
+
+  @override
+  String repRangeLabel(String range) {
+    return '$range повт.';
+  }
+
+  @override
+  String get repMinLabel => 'Повторы от';
+
+  @override
+  String get repMaxLabel => 'Повторы до';
+
+  @override
+  String get exerciseDatabaseCreditTitle => 'Библиотека упражнений';
+
+  @override
+  String get exerciseDatabaseCreditBody =>
+      'Названия из free-exercise-db автора yuhonas, Unlicense (общественное достояние). Alpha добавила названия и псевдонимы.';
 }

@@ -864,7 +864,7 @@
   "@titleOptional": {
     "description": "Optional plan title field label."
   },
-  "searchExercises": "ค้นหาการออกกำลังกาย...",
+  "searchExercises": "ค้นหาท่า",
   "@searchExercises": {
     "description": "Hint for searching exercises."
   },
@@ -2036,5 +2036,42 @@
         "type": "int"
       }
     }
-  }
+  },
+  "tabStart": "เริ่มต้น",
+  "tabTraining": "การฝึก",
+  "tabExercises": "ท่าออกกำลัง",
+  "tabProfile": "โปรไฟล์",
+  "calendarTitle": "ปฏิทิน",
+  "dayStreak": "{count} วันติดต่อกัน",
+  "weekStreak": "{count} สัปดาห์ติดต่อกัน",
+  "thisWeek": "สัปดาห์นี้",
+  "bodyWeightChart": "น้ำหนักตัว",
+  "strengthChart": "ความแข็งแรง",
+  "weeklyVolumeChart": "ปริมาณรายสัปดาห์",
+  "noChartData": "ข้อมูลยังไม่พอ",
+  "newTemplate": "เทมเพลตใหม่",
+  "templateLimit": "บันทึกได้สูงสุด 7 เทมเพลต",
+  "templatesEmpty": "เทมเพลตนี้ยังไม่มีท่า",
+  "allMuscles": "ทั้งหมด",
+  "noHistory": "ยังไม่มีประวัติ",
+  "bestOneRepMax": "1RM โดยประมาณ {value} kg",
+  "bestLoad": "น้ำหนักดีที่สุด {value} kg",
+  "profileName": "ชื่อ",
+  "heightCm": "ส่วนสูง (ซม.)",
+  "ageOptional": "อายุ (ไม่บังคับ)",
+  "goals": "เป้าหมาย",
+  "bodyData": "ข้อมูลร่างกาย",
+  "addBodyWeight": "เพิ่มน้ำหนัก",
+  "weightKg": "น้ำหนัก (กก.)",
+  "aiCoaching": "โค้ช AI",
+  "apiKey": "คีย์ API",
+  "apiKeyStoredLocally": "เก็บไว้ในโทรศัพท์นี้เท่านั้น ยังไม่ถูกใช้",
+  "profileSaved": "บันทึกโปรไฟล์แล้ว",
+  "noTrainingThisDay": "วันนี้ไม่มีการฝึก",
+  "targetSets": "{count} เซต",
+  "repRangeLabel": "{range} ครั้ง",
+  "repMinLabel": "ครั้งตั้งแต่",
+  "repMaxLabel": "ครั้งถึง",
+  "exerciseDatabaseCreditTitle": "คลังท่าฝึก",
+  "exerciseDatabaseCreditBody": "ชื่อจาก free-exercise-db โดย yuhonas, Unlicense (สาธารณสมบัติ) Alpha เพิ่มชื่อและชื่อเรียก"
 }

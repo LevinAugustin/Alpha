@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:drift/drift.dart';
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flexify/crash_logger.dart';
+import 'package:flexify/database/catalog_seed.dart';
 import 'package:flexify/database/database.dart';
 import 'package:flexify/database/failed_migrations_page.dart';
 import 'package:flexify/home_page.dart';
@@ -111,6 +112,11 @@ Future<void> main() async {
       }
 
       talker.info('Loaded application settings');
+      try {
+        await seedExerciseCatalog(db);
+      } catch (error, stack) {
+        talker.error('Exercise catalog seed failed', error, stack);
+      }
       runApp(appProviders(setting));
     },
     (error, stack) =>

@@ -864,7 +864,7 @@
   "@titleOptional": {
     "description": "Optional plan title field label."
   },
-  "searchExercises": "جست‌وجوی تمرین‌ها...",
+  "searchExercises": "جستجوی حرکت",
   "@searchExercises": {
     "description": "Hint for searching exercises."
   },
@@ -2036,5 +2036,42 @@
         "type": "int"
       }
     }
-  }
+  },
+  "tabStart": "شروع",
+  "tabTraining": "تمرین",
+  "tabExercises": "حرکت‌ها",
+  "tabProfile": "نمایه",
+  "calendarTitle": "تقویم",
+  "dayStreak": "{count} روز پیاپی",
+  "weekStreak": "{count} هفته پیاپی",
+  "thisWeek": "این هفته",
+  "bodyWeightChart": "وزن بدن",
+  "strengthChart": "قدرت",
+  "weeklyVolumeChart": "حجم هفتگی",
+  "noChartData": "داده هنوز کم است",
+  "newTemplate": "الگوی تازه",
+  "templateLimit": "تا ۷ الگو می‌توانی ذخیره کنی.",
+  "templatesEmpty": "این الگو هنوز حرکتی ندارد.",
+  "allMuscles": "همه",
+  "noHistory": "هنوز سابقه‌ای نیست",
+  "bestOneRepMax": "یک تکرار بیشینه تخمینی {value} کیلو",
+  "bestLoad": "بهترین وزنه {value} کیلو",
+  "profileName": "نام",
+  "heightCm": "قد (سانتی‌متر)",
+  "ageOptional": "سن (اختیاری)",
+  "goals": "هدف‌ها",
+  "bodyData": "داده‌های بدن",
+  "addBodyWeight": "افزودن وزن",
+  "weightKg": "وزن (کیلوگرم)",
+  "aiCoaching": "مربی هوش مصنوعی",
+  "apiKey": "کلید API",
+  "apiKeyStoredLocally": "فقط روی همین گوشی ذخیره می‌شود. هنوز استفاده نمی‌شود.",
+  "profileSaved": "نمایه ذخیره شد",
+  "noTrainingThisDay": "در این روز چیزی ثبت نشده",
+  "targetSets": "{count} ست",
+  "repRangeLabel": "{range} تکرار",
+  "repMinLabel": "تکرار از",
+  "repMaxLabel": "تکرار تا",
+  "exerciseDatabaseCreditTitle": "کتابخانه حرکات",
+  "exerciseDatabaseCreditBody": "نام‌ها از free-exercise-db اثر yuhonas با مجوز Unlicense (مالکیت عمومی). Alpha نام‌ها و نام‌های مستعار را افزوده است."
 }

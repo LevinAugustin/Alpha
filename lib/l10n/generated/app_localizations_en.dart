@@ -649,7 +649,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get titleOptional => 'Title (optional)';
 
   @override
-  String get searchExercises => 'Search exercises...';
+  String get searchExercises => 'Search exercises';
 
   @override
   String get warmupSets => 'Warmup sets';
@@ -1561,4 +1561,128 @@ class AppLocalizationsEn extends AppLocalizations {
   String setNumber(int number) {
     return 'Set $number';
   }
+
+  @override
+  String get tabStart => 'Start';
+
+  @override
+  String get tabTraining => 'Training';
+
+  @override
+  String get tabExercises => 'Exercises';
+
+  @override
+  String get tabProfile => 'Profile';
+
+  @override
+  String get calendarTitle => 'Calendar';
+
+  @override
+  String dayStreak(int count) {
+    return '$count days in a row';
+  }
+
+  @override
+  String weekStreak(int count) {
+    return '$count weeks in a row';
+  }
+
+  @override
+  String get thisWeek => 'This week';
+
+  @override
+  String get bodyWeightChart => 'Body weight';
+
+  @override
+  String get strengthChart => 'Strength';
+
+  @override
+  String get weeklyVolumeChart => 'Weekly volume';
+
+  @override
+  String get noChartData => 'Not enough data yet';
+
+  @override
+  String get newTemplate => 'New template';
+
+  @override
+  String get templateLimit => 'You can save up to 7 templates.';
+
+  @override
+  String get templatesEmpty => 'No exercises in this template yet.';
+
+  @override
+  String get allMuscles => 'All';
+
+  @override
+  String get noHistory => 'No history yet';
+
+  @override
+  String bestOneRepMax(String value) {
+    return 'Estimated 1RM $value kg';
+  }
+
+  @override
+  String bestLoad(String value) {
+    return 'Best load $value kg';
+  }
+
+  @override
+  String get profileName => 'Name';
+
+  @override
+  String get heightCm => 'Height (cm)';
+
+  @override
+  String get ageOptional => 'Age (optional)';
+
+  @override
+  String get goals => 'Goals';
+
+  @override
+  String get bodyData => 'Body data';
+
+  @override
+  String get addBodyWeight => 'Add weight';
+
+  @override
+  String get weightKg => 'Weight (kg)';
+
+  @override
+  String get aiCoaching => 'AI coaching';
+
+  @override
+  String get apiKey => 'API key';
+
+  @override
+  String get apiKeyStoredLocally => 'Stored only on this phone. Not used yet.';
+
+  @override
+  String get profileSaved => 'Profile saved';
+
+  @override
+  String get noTrainingThisDay => 'Nothing logged on this day';
+
+  @override
+  String targetSets(int count) {
+    return '$count sets';
+  }
+
+  @override
+  String repRangeLabel(String range) {
+    return '$range reps';
+  }
+
+  @override
+  String get repMinLabel => 'Reps from';
+
+  @override
+  String get repMaxLabel => 'Reps to';
+
+  @override
+  String get exerciseDatabaseCreditTitle => 'Exercise library';
+
+  @override
+  String get exerciseDatabaseCreditBody =>
+      'Names from free-exercise-db by yuhonas, Unlicense (public domain). German names and aliases were added for Alpha.';
 }

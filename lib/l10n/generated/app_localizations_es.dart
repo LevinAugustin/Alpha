@@ -657,7 +657,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get titleOptional => 'Título (opcional)';
 
   @override
-  String get searchExercises => 'Buscar ejercicios...';
+  String get searchExercises => 'Buscar ejercicios';
 
   @override
   String get warmupSets => 'Series de calentamiento';
@@ -1591,4 +1591,129 @@ class AppLocalizationsEs extends AppLocalizations {
   String setNumber(int number) {
     return 'Serie $number';
   }
+
+  @override
+  String get tabStart => 'Inicio';
+
+  @override
+  String get tabTraining => 'Entrenamiento';
+
+  @override
+  String get tabExercises => 'Ejercicios';
+
+  @override
+  String get tabProfile => 'Perfil';
+
+  @override
+  String get calendarTitle => 'Calendario';
+
+  @override
+  String dayStreak(int count) {
+    return '$count días seguidos';
+  }
+
+  @override
+  String weekStreak(int count) {
+    return '$count semanas seguidas';
+  }
+
+  @override
+  String get thisWeek => 'Esta semana';
+
+  @override
+  String get bodyWeightChart => 'Peso corporal';
+
+  @override
+  String get strengthChart => 'Fuerza';
+
+  @override
+  String get weeklyVolumeChart => 'Volumen semanal';
+
+  @override
+  String get noChartData => 'Todavía hay pocos datos';
+
+  @override
+  String get newTemplate => 'Nueva plantilla';
+
+  @override
+  String get templateLimit => 'Puedes guardar hasta 7 plantillas.';
+
+  @override
+  String get templatesEmpty => 'Esta plantilla aún no tiene ejercicios.';
+
+  @override
+  String get allMuscles => 'Todos';
+
+  @override
+  String get noHistory => 'Aún no hay historial';
+
+  @override
+  String bestOneRepMax(String value) {
+    return '1RM estimado $value kg';
+  }
+
+  @override
+  String bestLoad(String value) {
+    return 'Mejor carga $value kg';
+  }
+
+  @override
+  String get profileName => 'Nombre';
+
+  @override
+  String get heightCm => 'Altura (cm)';
+
+  @override
+  String get ageOptional => 'Edad (opcional)';
+
+  @override
+  String get goals => 'Objetivos';
+
+  @override
+  String get bodyData => 'Datos corporales';
+
+  @override
+  String get addBodyWeight => 'Añadir peso';
+
+  @override
+  String get weightKg => 'Peso (kg)';
+
+  @override
+  String get aiCoaching => 'Entrenamiento con IA';
+
+  @override
+  String get apiKey => 'Clave de API';
+
+  @override
+  String get apiKeyStoredLocally =>
+      'Solo se guarda en este teléfono. Aún no se usa.';
+
+  @override
+  String get profileSaved => 'Perfil guardado';
+
+  @override
+  String get noTrainingThisDay => 'No hay nada registrado este día';
+
+  @override
+  String targetSets(int count) {
+    return '$count series';
+  }
+
+  @override
+  String repRangeLabel(String range) {
+    return '$range repeticiones';
+  }
+
+  @override
+  String get repMinLabel => 'Reps desde';
+
+  @override
+  String get repMaxLabel => 'Reps hasta';
+
+  @override
+  String get exerciseDatabaseCreditTitle => 'Biblioteca de ejercicios';
+
+  @override
+  String get exerciseDatabaseCreditBody =>
+      'Nombres de free-exercise-db de yuhonas, Unlicense (dominio público). Alpha añadió nombres y alias.';
 }

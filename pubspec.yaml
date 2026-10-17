@@ -1,7 +1,7 @@
 name: flexify
 description: Alpha, an offline-first gym tracker based on Flexify
 publish_to: none
-version: 2.2.34+448
+version: 2.3.0+449
 environment:
   sdk: ">=3.12.0 <4.0.0"
   flutter: ">=3.44.8"
@@ -80,7 +80,7 @@ flutter_launcher_icons:
   image_path: assets/ic_launcher.png
   adaptive_icon_background: "#000000"
   adaptive_icon_foreground: assets/ic_launcher.png
-  adaptive_icon_foreground_inset: 16
+  adaptive_icon_foreground_inset: 0
   min_sdk_android: 21
 msix_config:
   msstore_appId: 9P13THVK7F69

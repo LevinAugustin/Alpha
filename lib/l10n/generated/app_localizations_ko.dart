@@ -635,7 +635,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get titleOptional => '제목 (선택 사항)';
 
   @override
-  String get searchExercises => '운동 검색...';
+  String get searchExercises => '종목 검색';
 
   @override
   String get warmupSets => '워밍업 세트';
@@ -1514,4 +1514,128 @@ class AppLocalizationsKo extends AppLocalizations {
   String setNumber(int number) {
     return '세트 $number';
   }
+
+  @override
+  String get tabStart => '시작';
+
+  @override
+  String get tabTraining => '운동';
+
+  @override
+  String get tabExercises => '운동 종목';
+
+  @override
+  String get tabProfile => '프로필';
+
+  @override
+  String get calendarTitle => '달력';
+
+  @override
+  String dayStreak(int count) {
+    return '$count일 연속';
+  }
+
+  @override
+  String weekStreak(int count) {
+    return '$count주 연속';
+  }
+
+  @override
+  String get thisWeek => '이번 주';
+
+  @override
+  String get bodyWeightChart => '체중';
+
+  @override
+  String get strengthChart => '근력';
+
+  @override
+  String get weeklyVolumeChart => '주간 볼륨';
+
+  @override
+  String get noChartData => '데이터가 아직 부족합니다';
+
+  @override
+  String get newTemplate => '새 템플릿';
+
+  @override
+  String get templateLimit => '템플릿은 최대 7개까지 저장할 수 있습니다.';
+
+  @override
+  String get templatesEmpty => '이 템플릿에는 아직 종목이 없습니다.';
+
+  @override
+  String get allMuscles => '전체';
+
+  @override
+  String get noHistory => '기록이 아직 없습니다';
+
+  @override
+  String bestOneRepMax(String value) {
+    return '예상 1RM $value kg';
+  }
+
+  @override
+  String bestLoad(String value) {
+    return '최고 중량 $value kg';
+  }
+
+  @override
+  String get profileName => '이름';
+
+  @override
+  String get heightCm => '키 (cm)';
+
+  @override
+  String get ageOptional => '나이 (선택)';
+
+  @override
+  String get goals => '목표';
+
+  @override
+  String get bodyData => '신체 데이터';
+
+  @override
+  String get addBodyWeight => '체중 추가';
+
+  @override
+  String get weightKg => '체중 (kg)';
+
+  @override
+  String get aiCoaching => 'AI 코칭';
+
+  @override
+  String get apiKey => 'API 키';
+
+  @override
+  String get apiKeyStoredLocally => '이 휴대폰에만 저장됩니다. 아직 사용하지 않습니다.';
+
+  @override
+  String get profileSaved => '프로필을 저장했습니다';
+
+  @override
+  String get noTrainingThisDay => '이 날짜에는 기록이 없습니다';
+
+  @override
+  String targetSets(int count) {
+    return '$count세트';
+  }
+
+  @override
+  String repRangeLabel(String range) {
+    return '$range회';
+  }
+
+  @override
+  String get repMinLabel => '반복 시작';
+
+  @override
+  String get repMaxLabel => '반복 끝';
+
+  @override
+  String get exerciseDatabaseCreditTitle => '운동 라이브러리';
+
+  @override
+  String get exerciseDatabaseCreditBody =>
+      '이름은 yuhonas의 free-exercise-db(Unlicense, 퍼블릭 도메인)에서 가져왔습니다. Alpha가 이름과 별칭을 추가했습니다.';
 }

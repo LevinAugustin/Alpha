@@ -864,7 +864,7 @@
   "@titleOptional": {
     "description": "Optional plan title field label."
   },
-  "searchExercises": "Tìm kiếm bài tập...",
+  "searchExercises": "Tìm bài tập",
   "@searchExercises": {
     "description": "Hint for searching exercises."
   },
@@ -2036,5 +2036,42 @@
         "type": "int"
       }
     }
-  }
+  },
+  "tabStart": "Bắt đầu",
+  "tabTraining": "Tập luyện",
+  "tabExercises": "Bài tập",
+  "tabProfile": "Hồ sơ",
+  "calendarTitle": "Lịch",
+  "dayStreak": "{count} ngày liên tiếp",
+  "weekStreak": "{count} tuần liên tiếp",
+  "thisWeek": "Tuần này",
+  "bodyWeightChart": "Cân nặng",
+  "strengthChart": "Sức mạnh",
+  "weeklyVolumeChart": "Khối lượng tuần",
+  "noChartData": "Chưa đủ dữ liệu",
+  "newTemplate": "Mẫu mới",
+  "templateLimit": "Bạn có thể lưu tối đa 7 mẫu.",
+  "templatesEmpty": "Mẫu này chưa có bài tập.",
+  "allMuscles": "Tất cả",
+  "noHistory": "Chưa có lịch sử",
+  "bestOneRepMax": "1RM ước tính {value} kg",
+  "bestLoad": "Mức tạ tốt nhất {value} kg",
+  "profileName": "Tên",
+  "heightCm": "Chiều cao (cm)",
+  "ageOptional": "Tuổi (không bắt buộc)",
+  "goals": "Mục tiêu",
+  "bodyData": "Số đo cơ thể",
+  "addBodyWeight": "Thêm cân nặng",
+  "weightKg": "Cân nặng (kg)",
+  "aiCoaching": "Huấn luyện AI",
+  "apiKey": "Khóa API",
+  "apiKeyStoredLocally": "Chỉ lưu trên điện thoại này. Chưa được dùng.",
+  "profileSaved": "Đã lưu hồ sơ",
+  "noTrainingThisDay": "Không có buổi tập ngày này",
+  "targetSets": "{count} hiệp",
+  "repRangeLabel": "{range} lần",
+  "repMinLabel": "Số lần từ",
+  "repMaxLabel": "Số lần đến",
+  "exerciseDatabaseCreditTitle": "Thư viện bài tập",
+  "exerciseDatabaseCreditBody": "Tên từ free-exercise-db của yuhonas, Unlicense (phạm vi công cộng). Alpha thêm tên và biệt danh."
 }

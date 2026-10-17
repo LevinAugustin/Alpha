@@ -656,7 +656,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get titleOptional => 'Titel (optioneel)';
 
   @override
-  String get searchExercises => 'Oefeningen zoeken...';
+  String get searchExercises => 'Oefeningen zoeken';
 
   @override
   String get warmupSets => 'Opwarmsets';
@@ -1582,4 +1582,129 @@ class AppLocalizationsNl extends AppLocalizations {
   String setNumber(int number) {
     return 'Set $number';
   }
+
+  @override
+  String get tabStart => 'Startpagina';
+
+  @override
+  String get tabTraining => 'Workout';
+
+  @override
+  String get tabExercises => 'Oefeningen';
+
+  @override
+  String get tabProfile => 'Profiel';
+
+  @override
+  String get calendarTitle => 'Kalender';
+
+  @override
+  String dayStreak(int count) {
+    return '$count dagen op rij';
+  }
+
+  @override
+  String weekStreak(int count) {
+    return '$count weken op rij';
+  }
+
+  @override
+  String get thisWeek => 'Deze week';
+
+  @override
+  String get bodyWeightChart => 'Lichaamsgewicht';
+
+  @override
+  String get strengthChart => 'Kracht';
+
+  @override
+  String get weeklyVolumeChart => 'Weekvolume';
+
+  @override
+  String get noChartData => 'Nog te weinig gegevens';
+
+  @override
+  String get newTemplate => 'Nieuw schema';
+
+  @override
+  String get templateLimit => 'Je kunt maximaal 7 schema’s bewaren.';
+
+  @override
+  String get templatesEmpty => 'Dit schema heeft nog geen oefeningen.';
+
+  @override
+  String get allMuscles => 'Alles';
+
+  @override
+  String get noHistory => 'Nog geen geschiedenis';
+
+  @override
+  String bestOneRepMax(String value) {
+    return 'Geschatte 1RM $value kg';
+  }
+
+  @override
+  String bestLoad(String value) {
+    return 'Zwaarste gewicht $value kg';
+  }
+
+  @override
+  String get profileName => 'Naam';
+
+  @override
+  String get heightCm => 'Lengte (cm)';
+
+  @override
+  String get ageOptional => 'Leeftijd (optioneel)';
+
+  @override
+  String get goals => 'Doelen';
+
+  @override
+  String get bodyData => 'Lichaamsgegevens';
+
+  @override
+  String get addBodyWeight => 'Gewicht toevoegen';
+
+  @override
+  String get weightKg => 'Gewicht (kg)';
+
+  @override
+  String get aiCoaching => 'AI-coaching';
+
+  @override
+  String get apiKey => 'API-sleutel';
+
+  @override
+  String get apiKeyStoredLocally =>
+      'Alleen op deze telefoon opgeslagen. Nog niet gebruikt.';
+
+  @override
+  String get profileSaved => 'Profiel opgeslagen';
+
+  @override
+  String get noTrainingThisDay => 'Niets genoteerd op deze dag';
+
+  @override
+  String targetSets(int count) {
+    return '$count reeksen';
+  }
+
+  @override
+  String repRangeLabel(String range) {
+    return '$range herh.';
+  }
+
+  @override
+  String get repMinLabel => 'Herhalingen van';
+
+  @override
+  String get repMaxLabel => 'Herhalingen tot';
+
+  @override
+  String get exerciseDatabaseCreditTitle => 'Oefeningenbibliotheek';
+
+  @override
+  String get exerciseDatabaseCreditBody =>
+      'Namen uit free-exercise-db van yuhonas, Unlicense (publiek domein). Alpha voegde namen en aliassen toe.';
 }

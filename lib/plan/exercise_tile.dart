@@ -1,5 +1,6 @@
 import 'package:drift/drift.dart' hide Column;
 import 'package:flexify/database/database.dart';
+import 'package:flexify/exercise_labels.dart';
 import 'package:flexify/l10n/l10n.dart';
 import 'package:flexify/utils.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +9,7 @@ import 'package:provider/provider.dart';
 class ExerciseTile extends StatefulWidget {
   final PlanExercisesCompanion planExercise;
   final String exerciseName;
+  final String germanName;
   final Function(PlanExercisesCompanion) onChange;
 
   const ExerciseTile({
@@ -15,6 +17,7 @@ class ExerciseTile extends StatefulWidget {
     required this.onChange,
     required this.planExercise,
     required this.exerciseName,
+    this.germanName = '',
   });
 
   @override
@@ -24,6 +27,8 @@ class ExerciseTile extends StatefulWidget {
 class _ExerciseTileState extends State<ExerciseTile> {
   late final TextEditingController _max;
   late final TextEditingController _warmup;
+  late final TextEditingController _repMin;
+  late final TextEditingController _repMax;
 
   @override
   void initState() {
@@ -39,13 +44,35 @@ class _ExerciseTileState extends State<ExerciseTile> {
           widget.planExercise.warmupSets.value?.toString() ??
           (settings.warmupSets ?? 0).toString(),
     );
+    _repMin = TextEditingController(
+      text: widget.planExercise.repMin.present
+          ? (widget.planExercise.repMin.value?.toString() ?? '')
+          : '',
+    );
+    _repMax = TextEditingController(
+      text: widget.planExercise.repMax.present
+          ? (widget.planExercise.repMax.value?.toString() ?? '')
+          : '',
+    );
   }
 
   @override
   void dispose() {
     _max.dispose();
     _warmup.dispose();
+    _repMin.dispose();
+    _repMax.dispose();
     super.dispose();
+  }
+
+  void _writeReps() {
+    widget.onChange(
+      widget.planExercise.copyWith(
+        enabled: const Value(true),
+        repMin: Value(int.tryParse(_repMin.text)),
+        repMax: Value(int.tryParse(_repMax.text)),
+      ),
+    );
   }
 
   @override
@@ -113,6 +140,31 @@ class _ExerciseTileState extends State<ExerciseTile> {
                           ),
                         ),
                       ),
+                      TextField(
+                        controller: _repMin,
+                        keyboardType: const TextInputType.numberWithOptions(
+                          decimal: false,
+                        ),
+                        onTap: () => selectAll(_repMin),
+                        onChanged: (_) => _writeReps(),
+                        decoration: InputDecoration(
+                          labelText: context.l10n.repMinLabel,
+                          border: const OutlineInputBorder(),
+                        ),
+                      ),
+                      const SizedBox(height: 16),
+                      TextField(
+                        controller: _repMax,
+                        keyboardType: const TextInputType.numberWithOptions(
+                          decimal: false,
+                        ),
+                        onTap: () => selectAll(_repMax),
+                        onChanged: (_) => _writeReps(),
+                        decoration: InputDecoration(
+                          labelText: context.l10n.repMaxLabel,
+                          border: const OutlineInputBorder(),
+                        ),
+                      ),
                       StatefulBuilder(
                         builder: (context, setState) => ListTile(
                           title: Text(context.l10n.restTimers),
@@ -148,7 +200,14 @@ class _ExerciseTileState extends State<ExerciseTile> {
           );
         },
       ),
-      title: Text(widget.exerciseName),
+      title: Text(
+        localizedExerciseName(
+          context,
+          widget.exerciseName,
+          german: widget.germanName,
+        ),
+      ),
+      subtitle: _rangeSubtitle(context),
       trailing: Switch(
         value: widget.planExercise.enabled.value,
         onChanged: (value) {
@@ -163,5 +222,25 @@ class _ExerciseTileState extends State<ExerciseTile> {
         );
       },
     );
+  }
+
+  Widget? _rangeSubtitle(BuildContext context) {
+    final range = formatRepRange(
+      widget.planExercise.repMin.present
+          ? widget.planExercise.repMin.value
+          : null,
+      widget.planExercise.repMax.present
+          ? widget.planExercise.repMax.value
+          : null,
+    );
+    final sets = widget.planExercise.maxSets.present
+        ? widget.planExercise.maxSets.value
+        : null;
+    final parts = [
+      if (sets != null) context.l10n.targetSets(sets),
+      if (range != null) context.l10n.repRangeLabel(range),
+    ];
+    if (parts.isEmpty) return null;
+    return Text(parts.join(' · '));
   }
 }

@@ -873,7 +873,7 @@
   "@titleOptional": {
     "description": "Optional plan title field label."
   },
-  "searchExercises": "Пошук вправ…",
+  "searchExercises": "Пошук вправ",
   "@searchExercises": {
     "description": "Hint for searching exercises."
   },
@@ -2045,5 +2045,42 @@
         "type": "int"
       }
     }
-  }
+  },
+  "tabStart": "Старт",
+  "tabTraining": "Тренування",
+  "tabExercises": "Вправи",
+  "tabProfile": "Профіль",
+  "calendarTitle": "Календар",
+  "dayStreak": "{count} днів поспіль",
+  "weekStreak": "{count} тижнів поспіль",
+  "thisWeek": "Цей тиждень",
+  "bodyWeightChart": "Вага тіла",
+  "strengthChart": "Сила",
+  "weeklyVolumeChart": "Тижневий обсяг",
+  "noChartData": "Ще замало даних",
+  "newTemplate": "Новий шаблон",
+  "templateLimit": "Можна зберегти до 7 шаблонів.",
+  "templatesEmpty": "У цьому шаблоні ще немає вправ.",
+  "allMuscles": "Усі",
+  "noHistory": "Історії ще немає",
+  "bestOneRepMax": "Оцінка 1ПМ {value} кг",
+  "bestLoad": "Найбільша вага {value} кг",
+  "profileName": "Ім’я",
+  "heightCm": "Зріст (см)",
+  "ageOptional": "Вік (необов’язково)",
+  "goals": "Цілі",
+  "bodyData": "Дані тіла",
+  "addBodyWeight": "Додати вагу",
+  "weightKg": "Вага (кг)",
+  "aiCoaching": "ШІ-коучинг",
+  "apiKey": "Ключ API",
+  "apiKeyStoredLocally": "Зберігається лише на цьому телефоні. Ще не використовується.",
+  "profileSaved": "Профіль збережено",
+  "noTrainingThisDay": "Цього дня нічого немає",
+  "targetSets": "{count} підходи",
+  "repRangeLabel": "{range} повт.",
+  "repMinLabel": "Повтори від",
+  "repMaxLabel": "Повтори до",
+  "exerciseDatabaseCreditTitle": "Бібліотека вправ",
+  "exerciseDatabaseCreditBody": "Назви з free-exercise-db автора yuhonas, Unlicense (суспільне надбання). Alpha додала назви та псевдоніми."
 }

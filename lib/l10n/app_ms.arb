@@ -864,7 +864,7 @@
   "@titleOptional": {
     "description": "Optional plan title field label."
   },
-  "searchExercises": "Cari senaman…",
+  "searchExercises": "Cari senaman",
   "@searchExercises": {
     "description": "Hint for searching exercises."
   },
@@ -2036,5 +2036,42 @@
         "type": "int"
       }
     }
-  }
+  },
+  "tabStart": "Mula",
+  "tabTraining": "Latihan",
+  "tabExercises": "Senaman",
+  "tabProfile": "Profil",
+  "calendarTitle": "Kalendar",
+  "dayStreak": "{count} hari berturut-turut",
+  "weekStreak": "{count} minggu berturut-turut",
+  "thisWeek": "Minggu ini",
+  "bodyWeightChart": "Berat badan",
+  "strengthChart": "Kekuatan",
+  "weeklyVolumeChart": "Volum mingguan",
+  "noChartData": "Data masih kurang",
+  "newTemplate": "Templat baharu",
+  "templateLimit": "Anda boleh simpan sehingga 7 templat.",
+  "templatesEmpty": "Templat ini belum ada senaman.",
+  "allMuscles": "Semua",
+  "noHistory": "Belum ada sejarah",
+  "bestOneRepMax": "1RM anggaran {value} kg",
+  "bestLoad": "Beban terbaik {value} kg",
+  "profileName": "Nama",
+  "heightCm": "Tinggi (cm)",
+  "ageOptional": "Umur (pilihan)",
+  "goals": "Matlamat",
+  "bodyData": "Data badan",
+  "addBodyWeight": "Tambah berat",
+  "weightKg": "Berat (kg)",
+  "aiCoaching": "Bimbingan AI",
+  "apiKey": "Kunci API",
+  "apiKeyStoredLocally": "Hanya disimpan pada telefon ini. Belum digunakan.",
+  "profileSaved": "Profil disimpan",
+  "noTrainingThisDay": "Tiada rekod pada hari ini",
+  "targetSets": "{count} set",
+  "repRangeLabel": "{range} ulangan",
+  "repMinLabel": "Ulangan dari",
+  "repMaxLabel": "Ulangan hingga",
+  "exerciseDatabaseCreditTitle": "Pustaka senaman",
+  "exerciseDatabaseCreditBody": "Nama daripada free-exercise-db oleh yuhonas, Unlicense (domain awam). Alpha menambah nama dan alias."
 }

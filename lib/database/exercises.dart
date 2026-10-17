@@ -23,4 +23,7 @@ class Exercises extends Table {
   BoolColumn get graphTimeBasedXAxis =>
       boolean().withDefault(const Constant(false))();
   BoolColumn get archived => boolean().withDefault(const Constant(false))();
+  TextColumn get germanName => text().nullable()();
+  TextColumn get aliases => text().nullable()();
+  TextColumn get muscle => text().nullable()();
 }

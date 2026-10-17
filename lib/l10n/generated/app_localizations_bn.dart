@@ -653,7 +653,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get titleOptional => 'শিরোনাম (ঐচ্ছিক)';
 
   @override
-  String get searchExercises => 'ব্যায়াম খুঁজুন...';
+  String get searchExercises => 'ব্যায়াম খুঁজুন';
 
   @override
   String get warmupSets => 'ওয়ার্ম-আপ সেট';
@@ -1566,4 +1566,129 @@ class AppLocalizationsBn extends AppLocalizations {
   String setNumber(int number) {
     return 'সেট $number';
   }
+
+  @override
+  String get tabStart => 'শুরু';
+
+  @override
+  String get tabTraining => 'প্রশিক্ষণ';
+
+  @override
+  String get tabExercises => 'ব্যায়াম';
+
+  @override
+  String get tabProfile => 'প্রোফাইল';
+
+  @override
+  String get calendarTitle => 'ক্যালেন্ডার';
+
+  @override
+  String dayStreak(int count) {
+    return 'টানা $count দিন';
+  }
+
+  @override
+  String weekStreak(int count) {
+    return 'টানা $count সপ্তাহ';
+  }
+
+  @override
+  String get thisWeek => 'এই সপ্তাহ';
+
+  @override
+  String get bodyWeightChart => 'শরীরের ওজন';
+
+  @override
+  String get strengthChart => 'শক্তি';
+
+  @override
+  String get weeklyVolumeChart => 'সাপ্তাহিক ভলিউম';
+
+  @override
+  String get noChartData => 'এখনও যথেষ্ট তথ্য নেই';
+
+  @override
+  String get newTemplate => 'নতুন টেমপ্লেট';
+
+  @override
+  String get templateLimit => 'আপনি সর্বোচ্চ ৭টি টেমপ্লেট রাখতে পারেন।';
+
+  @override
+  String get templatesEmpty => 'এই টেমপ্লেটে এখনও ব্যায়াম নেই।';
+
+  @override
+  String get allMuscles => 'সব';
+
+  @override
+  String get noHistory => 'এখনও কোনো ইতিহাস নেই';
+
+  @override
+  String bestOneRepMax(String value) {
+    return 'আনুমানিক 1RM $value কেজি';
+  }
+
+  @override
+  String bestLoad(String value) {
+    return 'সেরা ভার $value কেজি';
+  }
+
+  @override
+  String get profileName => 'নাম';
+
+  @override
+  String get heightCm => 'উচ্চতা (সেমি)';
+
+  @override
+  String get ageOptional => 'বয়স (ঐচ্ছিক)';
+
+  @override
+  String get goals => 'লক্ষ্য';
+
+  @override
+  String get bodyData => 'শরীরের তথ্য';
+
+  @override
+  String get addBodyWeight => 'ওজন যোগ করুন';
+
+  @override
+  String get weightKg => 'ওজন (কেজি)';
+
+  @override
+  String get aiCoaching => 'এআই কোচিং';
+
+  @override
+  String get apiKey => 'এপিআই কী';
+
+  @override
+  String get apiKeyStoredLocally =>
+      'শুধু এই ফোনে সংরক্ষিত। এখনও ব্যবহৃত হয় না।';
+
+  @override
+  String get profileSaved => 'প্রোফাইল সংরক্ষিত';
+
+  @override
+  String get noTrainingThisDay => 'এই দিনে কিছু নেই';
+
+  @override
+  String targetSets(int count) {
+    return '$count সেট';
+  }
+
+  @override
+  String repRangeLabel(String range) {
+    return '$range রেপ';
+  }
+
+  @override
+  String get repMinLabel => 'রেপ থেকে';
+
+  @override
+  String get repMaxLabel => 'রেপ পর্যন্ত';
+
+  @override
+  String get exerciseDatabaseCreditTitle => 'ব্যায়াম সংগ্রহ';
+
+  @override
+  String get exerciseDatabaseCreditBody =>
+      'নাম yuhonas-এর free-exercise-db থেকে, Unlicense (পাবলিক ডোমেইন)। Alpha নাম ও ডাকনাম যোগ করেছে।';
 }

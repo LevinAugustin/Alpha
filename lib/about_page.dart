@@ -81,6 +81,15 @@ class AboutPage extends StatelessWidget {
             },
           ),
           ListTile(
+            title: Text(context.l10n.exerciseDatabaseCreditTitle),
+            leading: const Icon(Icons.fitness_center),
+            subtitle: Text(context.l10n.exerciseDatabaseCreditBody),
+            onTap: () async {
+              const url = 'https://github.com/yuhonas/free-exercise-db';
+              await launchUrlString(url);
+            },
+          ),
+          ListTile(
             title: Text(context.l10n.licenseLabel),
             leading: const Icon(Icons.balance),
             subtitle: FutureBuilder(
