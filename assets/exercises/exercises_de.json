@@ -20,7 +20,6 @@
       "trizeps"
     ],
     "geraet": "Langhantel",
-    "split": "push",
     "mechanik": "grund",
     "ausfuehrung_de": [
       "Flach auf die Bank legen, Füße fest auf den Boden, Schulterblätter zusammen und nach unten ziehen.",
@@ -40,6 +39,7 @@
     "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell_Bench_Press_-_Medium_Grip/0.jpg",
     "schulter_risiko": "mittel",
     "alternativen": [
+      "schraegbankdruecken-kurzhantel",
       "schraegbankdruecken-multipresse",
       "butterfly-maschine",
       "dips"
@@ -64,7 +64,6 @@
       "trizeps"
     ],
     "geraet": "Multipresse",
-    "split": "push",
     "mechanik": "grund",
     "ausfuehrung_de": [
       "Schrägbank (ca. 30–45°) so unter die Multipresse stellen, dass die Stange über der oberen Brust läuft.",
@@ -84,6 +83,7 @@
     "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Smith_Machine_Incline_Bench_Press/0.jpg",
     "schulter_risiko": "mittel",
     "alternativen": [
+      "schraegbankdruecken-kurzhantel",
       "bankdruecken-langhantel",
       "kabelzug-crossover"
     ]
@@ -106,7 +106,6 @@
       "schulter_vorne"
     ],
     "geraet": "Maschine",
-    "split": "push",
     "mechanik": "isolation",
     "ausfuehrung_de": [
       "Sitz so einstellen, dass die Griffe auf Brusthöhe sind, Rücken fest an die Lehne.",
@@ -149,7 +148,6 @@
       "schulter_vorne"
     ],
     "geraet": "Kabelzug",
-    "split": "push",
     "mechanik": "isolation",
     "ausfuehrung_de": [
       "Beide Seilzüge oben einstellen und je einen Griff in die Hand nehmen.",
@@ -166,7 +164,7 @@
     "quelle": "free-exercise-db: Cable_Crossover",
     "lizenz": "Unlicense",
     "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Cable_Crossover/0.jpg",
-    "schulter_risiko": "mittel",
+    "schulter_risiko": "hoch",
     "alternativen": [
       "butterfly-maschine",
       "schraegbankdruecken-multipresse"
@@ -191,7 +189,6 @@
       "oberer_ruecken"
     ],
     "geraet": "Körpergewicht",
-    "split": "pull",
     "mechanik": "grund",
     "ausfuehrung_de": [
       "Stange im Obergriff etwas breiter als schulterbreit greifen und frei hängen.",
@@ -236,7 +233,6 @@
       "schulter_hinten"
     ],
     "geraet": "Kabelzug",
-    "split": "pull",
     "mechanik": "grund",
     "ausfuehrung_de": [
       "Kniepolster so einstellen, dass die Oberschenkel fest darunter sitzen.",
@@ -281,7 +277,6 @@
       "schulter_hinten"
     ],
     "geraet": "Kabelzug",
-    "split": "pull",
     "mechanik": "grund",
     "ausfuehrung_de": [
       "Hinsetzen, Füße auf die Fußstütze, Knie leicht gebeugt.",
@@ -326,7 +321,6 @@
       "unterer_ruecken"
     ],
     "geraet": "Langhantel",
-    "split": "pull",
     "mechanik": "grund",
     "ausfuehrung_de": [
       "Langhantel schulterbreit im Obergriff halten, Knie leicht beugen.",
@@ -371,7 +365,6 @@
       "unterarme"
     ],
     "geraet": "Langhantel",
-    "split": "pull",
     "mechanik": "grund",
     "ausfuehrung_de": [
       "Hüftbreit vor die Stange stellen, Stange über dem Mittelfuß.",
@@ -414,7 +407,6 @@
       "trizeps"
     ],
     "geraet": "Multipresse",
-    "split": "push",
     "mechanik": "grund",
     "ausfuehrung_de": [
       "Bank mit Rückenlehne aufrecht unter die Multipresse stellen.",
@@ -434,6 +426,7 @@
     "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Smith_Machine_Overhead_Shoulder_Press/0.jpg",
     "schulter_risiko": "hoch",
     "alternativen": [
+      "schulterdruecken-kurzhantel",
       "seitheben-kurzhantel"
     ]
   },
@@ -457,7 +450,6 @@
       "trapez"
     ],
     "geraet": "Kurzhantel",
-    "split": "push",
     "mechanik": "isolation",
     "ausfuehrung_de": [
       "Aufrecht stehen, Kurzhanteln seitlich neben dem Körper.",
@@ -477,6 +469,7 @@
     "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Side_Lateral_Raise/0.jpg",
     "schulter_risiko": "mittel",
     "alternativen": [
+      "schulterdruecken-kurzhantel",
       "schulterdruecken-multipresse",
       "face-pulls"
     ]
@@ -499,7 +492,6 @@
       "trapez"
     ],
     "geraet": "Kabelzug",
-    "split": "pull",
     "mechanik": "isolation",
     "ausfuehrung_de": [
       "Seilgriff am Kabelzug etwa auf Kopfhöhe einhängen.",
@@ -546,7 +538,6 @@
       "adduktoren"
     ],
     "geraet": "Langhantel",
-    "split": "beine",
     "mechanik": "grund",
     "ausfuehrung_de": [
       "Stange im Rack knapp unter Schulterhöhe einhängen, darunter gehen und auf dem oberen Rücken ablegen.",
@@ -564,7 +555,7 @@
     "quelle": "free-exercise-db: Barbell_Squat",
     "lizenz": "Unlicense",
     "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell_Squat/0.jpg",
-    "schulter_risiko": "mittel",
+    "schulter_risiko": "niedrig",
     "alternativen": [
       "beinpresse",
       "beinstrecker"
@@ -589,7 +580,6 @@
       "adduktoren"
     ],
     "geraet": "Maschine",
-    "split": "beine",
     "mechanik": "grund",
     "ausfuehrung_de": [
       "Hinsetzen, Rücken fest an die Lehne, Füße schulterbreit auf die Plattform.",
@@ -628,7 +618,6 @@
     ],
     "sekundaermuskeln": [],
     "geraet": "Maschine",
-    "split": "beine",
     "mechanik": "isolation",
     "ausfuehrung_de": [
       "Sitz so einstellen, dass die Knie auf Höhe des Drehpunkts der Maschine liegen.",
@@ -669,7 +658,6 @@
       "waden"
     ],
     "geraet": "Maschine",
-    "split": "beine",
     "mechanik": "isolation",
     "ausfuehrung_de": [
       "Rückenlehne so einstellen, dass die Knie am Drehpunkt der Maschine liegen.",
@@ -710,7 +698,6 @@
     ],
     "sekundaermuskeln": [],
     "geraet": "Maschine",
-    "split": "beine",
     "mechanik": "isolation",
     "ausfuehrung_de": [
       "Schulterpolster auf deine Größe einstellen und darunter stellen.",
@@ -748,7 +735,6 @@
       "quadrizeps"
     ],
     "geraet": "Langhantel",
-    "split": "beine",
     "mechanik": "grund",
     "ausfuehrung_de": [
       "Mit dem oberen Rücken an eine Bank lehnen, Langhantel mit Polster über der Hüfte.",
@@ -790,7 +776,6 @@
       "unterarme"
     ],
     "geraet": "SZ-Stange",
-    "split": "pull",
     "mechanik": "isolation",
     "ausfuehrung_de": [
       "Aufrecht stehen und die SZ-Stange schulterbreit im Untergriff halten.",
@@ -833,7 +818,6 @@
       "unterarme"
     ],
     "geraet": "Kurzhantel",
-    "split": "pull",
     "mechanik": "isolation",
     "ausfuehrung_de": [
       "Aufrecht stehen, in jeder Hand eine Kurzhantel, Handflächen nach vorn.",
@@ -872,7 +856,6 @@
     ],
     "sekundaermuskeln": [],
     "geraet": "Kurzhantel",
-    "split": "pull",
     "mechanik": "isolation",
     "ausfuehrung_de": [
       "Aufrecht stehen, Kurzhanteln im neutralen Griff (Handflächen zeigen zum Körper).",
@@ -912,7 +895,6 @@
     ],
     "sekundaermuskeln": [],
     "geraet": "Kabelzug",
-    "split": "push",
     "mechanik": "isolation",
     "ausfuehrung_de": [
       "Gerade Stange oder SZ-Griff oben am Kabelzug einhängen und schulterbreit im Obergriff fassen.",
@@ -955,7 +937,6 @@
       "schulter_vorne"
     ],
     "geraet": "Körpergewicht",
-    "split": "push",
     "mechanik": "grund",
     "ausfuehrung_de": [
       "Am Barren in den Stütz gehen, Arme gestreckt.",
@@ -996,7 +977,6 @@
     ],
     "sekundaermuskeln": [],
     "geraet": "SZ-Stange",
-    "split": "push",
     "mechanik": "isolation",
     "ausfuehrung_de": [
       "Auf die Flachbank legen und die SZ-Stange eng mit gestreckten Armen über der Brust halten.",
@@ -1033,7 +1013,6 @@
     ],
     "sekundaermuskeln": [],
     "geraet": "Körpergewicht",
-    "split": "core",
     "mechanik": "isolation",
     "ausfuehrung_de": [
       "Auf den Rücken legen, Knie gebeugt, Füße auf dem Boden.",
@@ -1075,7 +1054,6 @@
       "gesaess"
     ],
     "geraet": "Körpergewicht",
-    "split": "core",
     "mechanik": "isolation",
     "ausfuehrung_de": [
       "Auf die Unterarme und Zehenspitzen stützen, Ellbogen unter den Schultern.",
@@ -1115,7 +1093,6 @@
       "hueftbeuger"
     ],
     "geraet": "Körpergewicht",
-    "split": "core",
     "mechanik": "isolation",
     "ausfuehrung_de": [
       "An der Klimmzugstange hängen, Arme gestreckt.",
@@ -1159,8 +1136,7 @@
       "beinbeuger"
     ],
     "geraet": "Cardiogerät",
-    "split": "cardio",
-    "mechanik": "grund",
+    "mechanik": null,
     "ausfuehrung_de": [
       "Auf das Laufband stellen (Füße auf die Seitenleisten) und das Programm wählen.",
       "Mit langsamem Tempo starten und erst dann loslaufen.",
@@ -1205,8 +1181,7 @@
       "unterer_ruecken"
     ],
     "geraet": "Cardiogerät",
-    "split": "cardio",
-    "mechanik": "grund",
+    "mechanik": null,
     "ausfuehrung_de": [
       "Hinsetzen, Füße in die Fußschlaufen, Griff mit beiden Händen fassen.",
       "Startposition: Knie gebeugt, Arme gestreckt, Oberkörper leicht nach vorn.",
@@ -1248,8 +1223,7 @@
       "waden"
     ],
     "geraet": "Cardiogerät",
-    "split": "cardio",
-    "mechanik": "grund",
+    "mechanik": null,
     "ausfuehrung_de": [
       "Auf die Pedale stellen, Griffe fassen und das Programm wählen.",
       "In ruhigem Tempo starten.",
@@ -1270,6 +1244,94 @@
     "alternativen": [
       "laufband",
       "rudergeraet"
+    ]
+  },
+  {
+    "id": "schraegbankdruecken-kurzhantel",
+    "name_de": "Schrägbankdrücken mit Kurzhanteln",
+    "synonyme": [
+      "Kurzhantel-Schrägbankdrücken",
+      "Schrägbankdrücken Kurzhantel",
+      "Schrägbank mit Kurzhanteln",
+      "Schrägbankdrücken",
+      "Incline Dumbbell Press",
+      "Incline Dumbbell Bench Press"
+    ],
+    "kategorie": "Brust",
+    "primaermuskeln": [
+      "brust_oben"
+    ],
+    "sekundaermuskeln": [
+      "schulter_vorne",
+      "trizeps"
+    ],
+    "geraet": "Kurzhantel",
+    "mechanik": "grund",
+    "ausfuehrung_de": [
+      "Schrägbank auf etwa 30–45° stellen und mit den Kurzhanteln auf den Oberschenkeln hinsetzen.",
+      "Zurücklehnen und die Hanteln über die Knie in Startposition über die Schultern bringen.",
+      "Kurzhanteln kontrolliert seitlich neben die obere Brust absenken, Ellbogen etwa 45° vom Körper.",
+      "Hanteln wieder nach oben drücken, bis die Arme fast gestreckt sind."
+    ],
+    "tipps_de": [
+      "Bank nicht zu steil einstellen, sonst übernehmen die Schultern.",
+      "Schulterblätter zurückziehen und nicht zu tief in die Dehnung gehen."
+    ],
+    "bild": "schraegbankdruecken-kurzhantel.webp",
+    "bild_quelle": null,
+    "bild_lizenz": null,
+    "quelle": "free-exercise-db: Incline_Dumbbell_Press",
+    "lizenz": "Unlicense",
+    "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Incline_Dumbbell_Press/0.jpg",
+    "schulter_risiko": "mittel",
+    "alternativen": [
+      "schraegbankdruecken-multipresse",
+      "bankdruecken-langhantel",
+      "butterfly-maschine"
+    ]
+  },
+  {
+    "id": "schulterdruecken-kurzhantel",
+    "name_de": "Schulterdrücken mit Kurzhanteln",
+    "synonyme": [
+      "Kurzhantel-Schulterdrücken",
+      "Schulterdrücken Kurzhantel",
+      "Schulterdrücken sitzend",
+      "Schulterdrücken",
+      "Dumbbell Shoulder Press",
+      "Shoulder Press",
+      "Overhead Press"
+    ],
+    "kategorie": "Schultern",
+    "primaermuskeln": [
+      "schulter_vorne",
+      "schulter_seitlich"
+    ],
+    "sekundaermuskeln": [
+      "trizeps"
+    ],
+    "geraet": "Kurzhantel",
+    "mechanik": "grund",
+    "ausfuehrung_de": [
+      "Auf eine Bank mit aufrechter Lehne setzen, Kurzhanteln auf den Oberschenkeln.",
+      "Hanteln auf Schulterhöhe bringen, Handflächen nach vorn.",
+      "Kurzhanteln über den Kopf drücken, bis die Arme fast gestreckt sind.",
+      "Langsam wieder bis auf Schulterhöhe absenken."
+    ],
+    "tipps_de": [
+      "Rücken an der Lehne lassen, kein Hohlkreuz.",
+      "Ein leicht neutraler Griff (Handflächen schräg zueinander) ist für viele schulterfreundlicher."
+    ],
+    "bild": "schulterdruecken-kurzhantel.webp",
+    "bild_quelle": null,
+    "bild_lizenz": null,
+    "quelle": "free-exercise-db: Dumbbell_Shoulder_Press",
+    "lizenz": "Unlicense",
+    "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Dumbbell_Shoulder_Press/0.jpg",
+    "schulter_risiko": "hoch",
+    "alternativen": [
+      "schulterdruecken-multipresse",
+      "seitheben-kurzhantel"
     ]
   }
 ]

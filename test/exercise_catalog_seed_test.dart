@@ -15,15 +15,11 @@ import 'support/test_app.dart';
 
 import 'mock_tests.dart';
 
-List<Map<String, dynamic>> _probeWithNullCardioMechanic() {
+List<Map<String, dynamic>> _probeRows() {
   final decoded =
       jsonDecode(File('assets/exercises/exercises_de.json').readAsStringSync())
           as List;
-  return [
-    for (final row in decoded)
-      Map<String, dynamic>.from(row as Map)
-        ..['mechanik'] = row['kategorie'] == 'Cardio' ? null : row['mechanik'],
-  ];
+  return [for (final row in decoded) Map<String, dynamic>.from(row as Map)];
 }
 
 void main() {
@@ -36,10 +32,16 @@ void main() {
     ).readAsStringSync();
     final parsed = parseExerciseCatalog(raw);
     expect(parsed.skipped, isEmpty);
-    expect(parsed.entries, hasLength(30));
+    expect(parsed.entries, hasLength(32));
     expect(parsed.entries.first.imageSource, isEmpty);
     expect(parsed.entries.first.imageLicense, isEmpty);
-    expect(parsed.entries.last.id, 'crosstrainer');
+    expect(parsed.entries.last.id, 'schulterdruecken-kurzhantel');
+    expect(
+      parsed.entries
+          .where((entry) => entry.category == 'Cardio')
+          .map((entry) => entry.mechanic),
+      everyElement(isEmpty),
+    );
     final map = parseLegacyNameMap(legacyMap);
     expect(map.keys, parsed.entries.map((entry) => entry.id));
 
@@ -142,8 +144,8 @@ void main() {
       legacyMapRaw: legacyMap,
     );
     expect(first.skipped, isEmpty);
-    expect(first.inserted, 11);
-    expect(first.updated, 19);
+    expect(first.inserted, 12);
+    expect(first.updated, 20);
     expect(first.merged, 3);
 
     final after =
@@ -167,7 +169,7 @@ void main() {
     expect(after.imageLicense, '');
     expect(
       after.alternatives,
-      '["schraegbankdruecken-multipresse","butterfly-maschine","dips"]',
+      '["schraegbankdruecken-kurzhantel","schraegbankdruecken-multipresse","butterfly-maschine","dips"]',
     );
     expect(after.image, 'assets/exercises/img/bankdruecken-langhantel.webp');
     expect(after.aliases, contains('Flachbankdrücken'));
@@ -308,6 +310,21 @@ void main() {
     expect(stillThere.catalogId, isNull);
     expect(stillThere.name, 'Neck curl');
 
+    final incline =
+        await (db.exercises.select()..where(
+              (row) => row.catalogId.equals('schraegbankdruecken-kurzhantel'),
+            ))
+            .getSingle();
+    expect(incline.name, 'schraegbankdruecken-kurzhantel');
+    expect(incline.germanName, 'Schrägbankdrücken mit Kurzhanteln');
+    expect(incline.equipment, 'Kurzhantel');
+    final shoulder =
+        await (db.exercises.select()
+              ..where((row) => row.name.equals('Dumbbell shoulder press')))
+            .getSingle();
+    expect(shoulder.catalogId, 'schulterdruecken-kurzhantel');
+    expect(shoulder.germanName, 'Schulterdrücken mit Kurzhanteln');
+
     final second = await importExerciseCatalogJson(
       db,
       raw,
@@ -316,7 +333,7 @@ void main() {
     expect(second.inserted, 0);
     expect(second.updated, 0);
     expect(second.merged, 0);
-    expect(second.unchanged, 30);
+    expect(second.unchanged, 32);
 
     final changed = raw.replaceFirst('Bankdrücken', 'Bankdrücken geändert');
     final third = await importExerciseCatalogJson(
@@ -590,8 +607,14 @@ void main() {
   test(
     'null mechanik from the probe is stored and stays out of search',
     () async {
-      final rows = _probeWithNullCardioMechanic();
-      expect(rows, hasLength(30));
+      final rows = _probeRows();
+      expect(rows, hasLength(32));
+      expect(
+        rows
+            .where((row) => row['kategorie'] == 'Cardio')
+            .map((row) => row['mechanik']),
+        everyElement(isNull),
+      );
       final parsed = parseExerciseCatalog(jsonEncode(rows));
       expect(parsed.skipped, isEmpty);
       expect(
@@ -684,7 +707,7 @@ void main() {
   testWidgets('detail page and filters hide a null mechanic', (tester) async {
     final harness = await FlexifyTestHarness.create();
     addTearDown(harness.database.close);
-    final rows = _probeWithNullCardioMechanic();
+    final rows = _probeRows();
     await importExerciseCatalogJson(
       harness.database,
       jsonEncode(rows),
