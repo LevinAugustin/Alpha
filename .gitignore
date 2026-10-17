@@ -60,3 +60,6 @@ coverage/
 # Local Serena agent state
 .serena/
 /android/app/build/
+android/key.properties
+*.jks
+*.keystore

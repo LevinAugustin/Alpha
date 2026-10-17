@@ -4,8 +4,8 @@ import 'package:flexify/exercise_labels.dart';
 import 'package:flexify/l10n/l10n.dart';
 import 'package:flexify/main.dart';
 import 'package:flexify/plan/edit_plan_page.dart';
-import 'package:flexify/plan/start_plan_page.dart';
 import 'package:flexify/platform_page_route.dart';
+import 'package:flexify/workout/gym_workout_page.dart';
 import 'package:flutter/material.dart';
 
 const maxWorkoutTemplates = 7;
@@ -110,7 +110,7 @@ class _TemplateCard extends StatelessWidget {
       child: InkWell(
         onTap: () {
           Navigator.of(context).push(
-            FlexPageRoute(builder: (context) => StartPlanPage(plan: plan)),
+            FlexPageRoute(builder: (context) => GymWorkoutPage(plan: plan)),
           );
         },
         child: Padding(

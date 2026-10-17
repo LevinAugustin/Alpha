@@ -3125,6 +3125,222 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Names from free-exercise-db by yuhonas, Unlicense (public domain). German names and aliases were added for Alpha.'**
   String get exerciseDatabaseCreditBody;
+
+  /// Button that ends the current workout.
+  ///
+  /// In en, this message translates to:
+  /// **'Finish'**
+  String get workoutFinish;
+
+  /// Label for the total lifted volume.
+  ///
+  /// In en, this message translates to:
+  /// **'Volume'**
+  String get volumeLabel;
+
+  /// Label for the number of completed sets.
+  ///
+  /// In en, this message translates to:
+  /// **'Sets'**
+  String get setsLabel;
+
+  /// Skips the remaining rest.
+  ///
+  /// In en, this message translates to:
+  /// **'Skip'**
+  String get restSkip;
+
+  /// Column title for the set number.
+  ///
+  /// In en, this message translates to:
+  /// **'SET'**
+  String get columnSet;
+
+  /// Column title for the previous session.
+  ///
+  /// In en, this message translates to:
+  /// **'PREVIOUS'**
+  String get columnPrevious;
+
+  /// Column title for the load.
+  ///
+  /// In en, this message translates to:
+  /// **'KG'**
+  String get columnKg;
+
+  /// Column title for repetitions.
+  ///
+  /// In en, this message translates to:
+  /// **'REPS'**
+  String get columnReps;
+
+  /// Adds an exercise during the workout.
+  ///
+  /// In en, this message translates to:
+  /// **'Add exercise'**
+  String get addExerciseWorkout;
+
+  /// Adds a note to the exercise.
+  ///
+  /// In en, this message translates to:
+  /// **'Add note'**
+  String get addNote;
+
+  /// Replaces an exercise during the workout.
+  ///
+  /// In en, this message translates to:
+  /// **'Swap exercise'**
+  String get swapExercise;
+
+  /// Moves an exercise up.
+  ///
+  /// In en, this message translates to:
+  /// **'Move up'**
+  String get moveExerciseUp;
+
+  /// Moves an exercise down.
+  ///
+  /// In en, this message translates to:
+  /// **'Move down'**
+  String get moveExerciseDown;
+
+  /// Removes an exercise from this workout.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove'**
+  String get removeExercise;
+
+  /// Label for the rest duration of an exercise.
+  ///
+  /// In en, this message translates to:
+  /// **'Rest in seconds'**
+  String get restSecondsLabel;
+
+  /// Title of the record notice.
+  ///
+  /// In en, this message translates to:
+  /// **'NEW RECORD!'**
+  String get newRecordTitle;
+
+  /// Closes the record notice.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep going'**
+  String get recordKeepGoing;
+
+  /// Hint in the exercise search field.
+  ///
+  /// In en, this message translates to:
+  /// **'Search exercises'**
+  String get exerciseSearchHint;
+
+  /// Button that downloads and installs an update.
+  ///
+  /// In en, this message translates to:
+  /// **'Install update'**
+  String get installUpdate;
+
+  /// Hint that an update can be installed.
+  ///
+  /// In en, this message translates to:
+  /// **'A newer version is available'**
+  String get updateAvailable;
+
+  /// Heading for local profiles.
+  ///
+  /// In en, this message translates to:
+  /// **'Profiles'**
+  String get localProfiles;
+
+  /// Creates another local profile.
+  ///
+  /// In en, this message translates to:
+  /// **'New profile'**
+  String get newProfile;
+
+  /// Hint for a new profile name.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile name'**
+  String get profileNameHint;
+
+  /// Marks the profile that is in use.
+  ///
+  /// In en, this message translates to:
+  /// **'Active'**
+  String get profileActive;
+
+  /// Switches to another profile.
+  ///
+  /// In en, this message translates to:
+  /// **'Switch'**
+  String get switchProfile;
+
+  /// Heading for the visual theme.
+  ///
+  /// In en, this message translates to:
+  /// **'Theme'**
+  String get themeSetting;
+
+  /// Name of the default theme.
+  ///
+  /// In en, this message translates to:
+  /// **'Deep black'**
+  String get themeTiefschwarz;
+
+  /// Name of the ice-blue theme.
+  ///
+  /// In en, this message translates to:
+  /// **'Ice blue'**
+  String get themeEisblau;
+
+  /// Name of the pink theme.
+  ///
+  /// In en, this message translates to:
+  /// **'Hot pink'**
+  String get themePink;
+
+  /// Switch for the sound at the end of rest.
+  ///
+  /// In en, this message translates to:
+  /// **'Rest sound'**
+  String get restSound;
+
+  /// Slider for the rest sound volume.
+  ///
+  /// In en, this message translates to:
+  /// **'Rest volume'**
+  String get restSoundVolume;
+
+  /// Credit for the rest sound.
+  ///
+  /// In en, this message translates to:
+  /// **'Notification Sound by yfjesse, CC0'**
+  String get restSoundCredit;
+
+  /// Motto on the splash screen.
+  ///
+  /// In en, this message translates to:
+  /// **'Strength. Discipline. Progress.'**
+  String get splashMotto;
+
+  /// Greeting with the profile name.
+  ///
+  /// In en, this message translates to:
+  /// **'Hello, {name}'**
+  String helloName(String name);
+
+  /// Title of the Alpha settings.
+  ///
+  /// In en, this message translates to:
+  /// **'Alpha setup'**
+  String get alphaSettings;
+
+  /// Description of the Alpha settings.
+  ///
+  /// In en, this message translates to:
+  /// **'Profiles, theme and rest sound'**
+  String get alphaSettingsDescription;
 }
 
 class _AppLocalizationsDelegate

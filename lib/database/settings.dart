@@ -68,4 +68,6 @@ class Settings extends Table {
   IntColumn get ageYears => integer().nullable()();
   TextColumn get goals => text().nullable()();
   TextColumn get apiKey => text().nullable()();
+  TextColumn get themeId => text().withDefault(const Constant('tiefschwarz'))();
+  RealColumn get restVolume => real().withDefault(const Constant(0.35))();
 }

@@ -1,8 +1,12 @@
 import 'package:drift/drift.dart' hide Column;
+import 'package:flexify/database/database.dart';
 import 'package:flexify/l10n/l10n.dart';
 import 'package:flexify/main.dart';
 import 'package:flexify/shell/training_stats.dart';
+import 'package:flexify/theme/alpha_theme.dart';
+import 'package:flexify/update/app_update.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class StartPage extends StatefulWidget {
   const StartPage({super.key});
@@ -30,9 +34,53 @@ class _StartPageState extends State<StartPage> {
           return const Center(child: CircularProgressIndicator());
         }
         final l10n = context.l10n;
+        final palette = AlphaTheme.of(context);
+        final name = context.select<Setting, String?>(
+          (settings) => settings.profileName,
+        );
+        final greeting = (name ?? '').trim().isEmpty
+            ? 'Alpha'
+            : l10n.helloName(name!.trim());
         return ListView(
           padding: const EdgeInsets.fromLTRB(16, 8, 16, 24),
           children: [
+            Container(
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: palette.card,
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(color: palette.border),
+              ),
+              child: Row(
+                children: [
+                  Image.asset(palette.figureAsset, height: 96),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Text(
+                      greeting,
+                      style: const TextStyle(
+                        fontFamily: 'Bebas Neue',
+                        fontSize: 36,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            ValueListenableBuilder(
+              valueListenable: pendingAppUpdate,
+              builder: (context, release, _) {
+                if (release == null) return const SizedBox.shrink();
+                return Align(
+                  alignment: Alignment.centerLeft,
+                  child: TextButton(
+                    onPressed: () => downloadAndInstallUpdate(release),
+                    child: Text(l10n.installUpdate),
+                  ),
+                );
+              },
+            ),
+            const SizedBox(height: 16),
             Row(
               children: [
                 Expanded(

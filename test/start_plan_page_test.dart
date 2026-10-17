@@ -39,6 +39,7 @@ class RecordingTimerState extends TimerState {
     bool enableSound, [
     String target = 'timer',
     bool keepRinging = false,
+    double volume = 0.35,
   ]) async {
     lastTitle = title;
   }

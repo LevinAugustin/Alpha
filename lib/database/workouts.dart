@@ -19,4 +19,8 @@ class Workouts extends Table {
   )();
   DateTimeColumn get startedAt => dateTime()();
   DateTimeColumn get endedAt => dateTime().nullable()();
+
+  /// Exercise ids for this session, in the order they were performed.
+  /// Null until the session is opened. The plan template is never rewritten.
+  TextColumn get exerciseOrder => text().nullable()();
 }

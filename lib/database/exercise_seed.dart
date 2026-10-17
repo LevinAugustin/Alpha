@@ -19,7 +19,7 @@ class ExerciseSeed {
 const exerciseCatalog = <ExerciseSeed>[
   ExerciseSeed(
     name: '3/4 Sit-Up',
-    germanName: '3 4 Sit-up',
+    germanName: '3/4 Sit-up',
     aliases: '3/4 Sit Up',
     muscle: 'Bauch',
     category: 'Core',
@@ -27,7 +27,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: '90/90 Hamstring',
-    germanName: '90 90 Beinbeuger',
+    germanName: '90/90 Beinbeuger',
     aliases: '',
     muscle: 'Beinbeuger',
     category: 'Legs',
@@ -35,7 +35,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Ab Crunch Machine',
-    germanName: 'Ab Crunch Maschine',
+    germanName: 'Bauch Crunch mit Maschine',
     aliases: '',
     muscle: 'Bauch',
     category: 'Core',
@@ -43,7 +43,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Ab Roller',
-    germanName: 'Ab Roller',
+    germanName: 'Bauch Roller',
     aliases: '',
     muscle: 'Bauch',
     category: 'Core',
@@ -59,7 +59,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Adductor/Groin',
-    germanName: 'Adductor/Groin',
+    germanName: 'Adductor/groin',
     aliases: '',
     muscle: 'Adduktoren',
     category: 'Legs',
@@ -67,7 +67,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Advanced Kettlebell Windmill',
-    germanName: 'Advanced Kettlebell Windmill',
+    germanName: 'Fortgeschritten Windmühle mit Kettlebell',
     aliases: '',
     muscle: 'Bauch',
     category: 'Core',
@@ -83,7 +83,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'All Fours Quad Stretch',
-    germanName: 'All Fours Quad Stretch',
+    germanName: 'Alle Viere Quadrizeps Dehnung',
     aliases: '',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -99,7 +99,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Alternate Heel Touchers',
-    germanName: 'Wechselnd heel touchers',
+    germanName: 'Wechselnd Heel Touchers',
     aliases: '',
     muscle: 'Bauch',
     category: 'Core',
@@ -107,7 +107,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Alternate Incline Dumbbell Curl',
-    germanName: 'Wechselnd Schräg Kurzhantel Curl',
+    germanName: 'Wechselnd schräg Bizepscurl mit Kurzhantel',
     aliases: '',
     muscle: 'Bizeps',
     category: 'Arms',
@@ -115,7 +115,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Alternate Leg Diagonal Bound',
-    germanName: 'Wechselnd leg diagonal bound',
+    germanName: 'Wechselnd Bein diagonal Sprung',
     aliases: '',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -123,7 +123,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Alternating Cable Shoulder Press',
-    germanName: 'Wechselnd Kabel Schulterdrücken',
+    germanName: 'Wechselnd Schulterdrücken mit Kabel',
     aliases: 'Shoulder Press|OHP',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -131,7 +131,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Alternating Deltoid Raise',
-    germanName: 'Wechselnd deltoid Heben',
+    germanName: 'Wechselnd Deltoid Heben',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -139,7 +139,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Alternating Floor Press',
-    germanName: 'Wechselnd floor Drücken',
+    germanName: 'Wechselnd Floor Press',
     aliases: '',
     muscle: 'Brust',
     category: 'Chest',
@@ -147,7 +147,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Alternating Hang Clean',
-    germanName: 'Wechselnd Hang Umsetzen',
+    germanName: 'Wechselnd Hang Clean',
     aliases: '',
     muscle: 'Beinbeuger',
     category: 'Legs',
@@ -155,7 +155,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Alternating Kettlebell Press',
-    germanName: 'Wechselnd Kettlebell Drücken',
+    germanName: 'Wechselnd Drücken mit Kettlebell',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -163,7 +163,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Alternating Kettlebell Row',
-    germanName: 'Wechselnd Kettlebell Rudern',
+    germanName: 'Wechselnd Rudern mit Kettlebell',
     aliases: '',
     muscle: 'Mittlerer Rücken',
     category: 'Back',
@@ -171,7 +171,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Alternating Renegade Row',
-    germanName: 'Wechselnd renegade Rudern',
+    germanName: 'Wechselnd Renegade Rudern',
     aliases: '',
     muscle: 'Mittlerer Rücken',
     category: 'Back',
@@ -179,7 +179,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Ankle Circles',
-    germanName: 'Ankle Circles',
+    germanName: 'Knöchel Kreisen',
     aliases: '',
     muscle: 'Waden',
     category: 'Calves',
@@ -187,7 +187,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Ankle On The Knee',
-    germanName: 'Ankle On The Knee',
+    germanName: 'Knöchel auf Knie',
     aliases: '',
     muscle: 'Gesäß',
     category: 'Legs',
@@ -195,7 +195,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Anterior Tibialis-SMR',
-    germanName: 'Anterior Tibialis-SMR',
+    germanName: 'Anterior Tibialis Smr',
     aliases: 'Anterior Tibialis SMR',
     muscle: 'Waden',
     category: 'Calves',
@@ -203,7 +203,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Anti-Gravity Press',
-    germanName: 'Anti gravity Drücken',
+    germanName: 'Anti Gravity Drücken',
     aliases: 'Anti Gravity Press',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -211,7 +211,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Arm Circles',
-    germanName: 'Arm Circles',
+    germanName: 'Arm Kreisen',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -219,7 +219,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Arnold Dumbbell Press',
-    germanName: 'Arnold Kurzhantel Drücken',
+    germanName: 'Arnold Press mit Kurzhantel',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -227,7 +227,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Around The Worlds',
-    germanName: 'Around The Worlds',
+    germanName: 'Um Worlds',
     aliases: '',
     muscle: 'Brust',
     category: 'Chest',
@@ -259,7 +259,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Back Flyes - With Bands',
-    germanName: 'Rücken flyes with bands',
+    germanName: 'Rücken Fliegende mit Band',
     aliases: 'Back Flyes   With Bands',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -267,7 +267,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Backward Drag',
-    germanName: 'Backward Drag',
+    germanName: 'Rückwärts Ziehen',
     aliases: '',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -275,7 +275,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Backward Medicine Ball Throw',
-    germanName: 'Backward Medicine Ball Throw',
+    germanName: 'Rückwärts Throw mit Medizinball',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -291,7 +291,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Ball Leg Curl',
-    germanName: 'Ball Beinbeuger-Curl',
+    germanName: 'Ball Bein Bizepscurl',
     aliases: '',
     muscle: 'Beinbeuger',
     category: 'Legs',
@@ -299,7 +299,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Band Assisted Pull-Up',
-    germanName: 'Band assisted Klimmzug',
+    germanName: 'Unterstützt Klimmzug mit Band',
     aliases: 'Band Assisted Pull Up|Pull-up|Pull Up',
     muscle: 'Latissimus',
     category: 'Back',
@@ -307,7 +307,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Band Good Morning',
-    germanName: 'Band Good Morning',
+    germanName: 'Good Morning mit Band',
     aliases: '',
     muscle: 'Beinbeuger',
     category: 'Legs',
@@ -315,7 +315,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Band Good Morning (Pull Through)',
-    germanName: 'Band Good Morning Zug through',
+    germanName: 'Good Morning Pull durch mit Band',
     aliases: '',
     muscle: 'Beinbeuger',
     category: 'Legs',
@@ -323,7 +323,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Band Hip Adductions',
-    germanName: 'Band Hüftadduktions',
+    germanName: 'Hüfte Adductions mit Band',
     aliases: '',
     muscle: 'Adduktoren',
     category: 'Legs',
@@ -331,7 +331,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Band Pull Apart',
-    germanName: 'Band Zug apart',
+    germanName: 'Pull Apart mit Band',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -339,7 +339,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Band Skull Crusher',
-    germanName: 'Band Stirndrücken',
+    germanName: 'French Press mit Band',
     aliases: '',
     muscle: 'Trizeps',
     category: 'Arms',
@@ -347,7 +347,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Barbell Ab Rollout',
-    germanName: 'Langhantel ab rollout',
+    germanName: 'Bauch-Rollout mit Langhantel',
     aliases: '',
     muscle: 'Bauch',
     category: 'Core',
@@ -355,7 +355,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Barbell Ab Rollout - On Knees',
-    germanName: 'Langhantel ab rollout on knees',
+    germanName: 'Bauch-Rollout auf Knien mit Langhantel',
     aliases: 'Barbell Ab Rollout   On Knees',
     muscle: 'Bauch',
     category: 'Core',
@@ -363,7 +363,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Barbell Bench Press - Medium Grip',
-    germanName: 'Langhantel-Bankdrücken medium grip',
+    germanName: 'Bankdrücken, mittlerer Griff',
     aliases:
         'Barbell Bench Press   Medium Grip|Flachbank|Bench Press|Bankdruecken',
     muscle: 'Brust',
@@ -372,7 +372,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Barbell Curl',
-    germanName: 'Langhantel Curl',
+    germanName: 'Bizepscurl mit Langhantel',
     aliases: '',
     muscle: 'Bizeps',
     category: 'Arms',
@@ -380,7 +380,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Barbell Curls Lying Against An Incline',
-    germanName: 'Langhantel curls liegend against an Schräg',
+    germanName: 'Curls liegend Against schräg mit Langhantel',
     aliases: '',
     muscle: 'Bizeps',
     category: 'Arms',
@@ -388,7 +388,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Barbell Deadlift',
-    germanName: 'Langhantel Kreuzheben',
+    germanName: 'Kreuzheben mit Langhantel',
     aliases: 'Deadlift',
     muscle: 'Unterer Rücken',
     category: 'Back',
@@ -396,7 +396,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Barbell Full Squat',
-    germanName: 'Langhantel full Kniebeuge',
+    germanName: 'Full Kniebeuge mit Langhantel',
     aliases: 'Squat|Kniebeugen',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -404,7 +404,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Barbell Glute Bridge',
-    germanName: 'Langhantel Gesäß bridge',
+    germanName: 'Glute Bridge mit Langhantel',
     aliases: '',
     muscle: 'Gesäß',
     category: 'Legs',
@@ -412,7 +412,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Barbell Guillotine Bench Press',
-    germanName: 'Langhantel guillotine Bankdrücken',
+    germanName: 'Guillotine Bankdrücken mit Langhantel',
     aliases: 'Flachbank|Bench Press|Bankdruecken',
     muscle: 'Brust',
     category: 'Chest',
@@ -420,7 +420,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Barbell Hack Squat',
-    germanName: 'Langhantel Hackenschmidt-Kniebeuge',
+    germanName: 'Hackenschmidt-Kniebeuge mit Langhantel',
     aliases: 'Squat|Kniebeugen',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -428,7 +428,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Barbell Hip Thrust',
-    germanName: 'Langhantel Hüfte Thrust',
+    germanName: 'Hip Thrust mit Langhantel',
     aliases: '',
     muscle: 'Gesäß',
     category: 'Legs',
@@ -436,7 +436,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Barbell Incline Bench Press - Medium Grip',
-    germanName: 'Langhantel Schrägbankdrücken medium grip',
+    germanName: 'Schrägbankdrücken, mittlerer Griff',
     aliases:
         'Barbell Incline Bench Press   Medium Grip|Flachbank|Bench Press|Bankdruecken|Incline Bench|Schrägbank',
     muscle: 'Brust',
@@ -445,7 +445,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Barbell Incline Shoulder Raise',
-    germanName: 'Langhantel Schräg Schulter Heben',
+    germanName: 'Schräg Schulter Heben mit Langhantel',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -453,7 +453,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Barbell Lunge',
-    germanName: 'Langhantel Ausfallschritt',
+    germanName: 'Ausfallschritt mit Langhantel',
     aliases: 'Lunge|Lunges',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -461,7 +461,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Barbell Rear Delt Row',
-    germanName: 'Langhantel hintere delt Rudern',
+    germanName: 'Hinten Delt Rudern mit Langhantel',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -469,7 +469,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Barbell Rollout from Bench',
-    germanName: 'Langhantel rollout from bench',
+    germanName: 'Rollout aus Bank mit Langhantel',
     aliases: '',
     muscle: 'Bauch',
     category: 'Core',
@@ -477,7 +477,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Barbell Seated Calf Raise',
-    germanName: 'Langhantel sitzend Wadenheben',
+    germanName: 'Sitzend Wadenheben mit Langhantel',
     aliases: 'Calf Raise',
     muscle: 'Waden',
     category: 'Calves',
@@ -485,7 +485,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Barbell shoulder press',
-    germanName: 'Langhantel-Schulterdrücken',
+    germanName: 'Schulterdrücken mit Langhantel',
     aliases: 'Shoulder Press|OHP|Military Press',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -493,7 +493,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Barbell shrug',
-    germanName: 'Langhantel-Schulterheben',
+    germanName: 'Schulterheben mit Langhantel',
     aliases: 'Shrugs|Schulterheben',
     muscle: 'Trapez',
     category: 'Shoulders',
@@ -501,7 +501,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Barbell Shrug Behind The Back',
-    germanName: 'Langhantel Schulterheben behind the Rücken',
+    germanName: 'Schulterheben hinter Rücken mit Langhantel',
     aliases: '',
     muscle: 'Trapez',
     category: 'Shoulders',
@@ -509,7 +509,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Barbell Side Bend',
-    germanName: 'Langhantel seitlich bend',
+    germanName: 'Seitlich Bend mit Langhantel',
     aliases: '',
     muscle: 'Bauch',
     category: 'Core',
@@ -517,7 +517,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Barbell Side Split Squat',
-    germanName: 'Langhantel seitlich Geteilte Kniebeuge',
+    germanName: 'Seitlich Split-Kniebeuge mit Langhantel',
     aliases: 'Squat|Kniebeugen',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -525,7 +525,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Barbell Squat',
-    germanName: 'Langhantel Kniebeuge',
+    germanName: 'Kniebeuge mit Langhantel',
     aliases: 'Squat|Kniebeugen',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -533,7 +533,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Barbell Squat To A Bench',
-    germanName: 'Langhantel Kniebeuge to a bench',
+    germanName: 'Kniebeuge zu Bank mit Langhantel',
     aliases: 'Squat|Kniebeugen',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -541,7 +541,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Barbell Step Ups',
-    germanName: 'Langhantel Step-ups',
+    germanName: 'Step Ups mit Langhantel',
     aliases: '',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -549,7 +549,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Barbell Walking Lunge',
-    germanName: 'Langhantel walking Ausfallschritt',
+    germanName: 'Gehender Ausfallschritt mit Langhantel',
     aliases: 'Lunge|Lunges',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -573,7 +573,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Behind Head Chest Stretch',
-    germanName: 'Behind head Brust stretch',
+    germanName: 'Hinter Kopf Brust Dehnung',
     aliases: '',
     muscle: 'Brust',
     category: 'Chest',
@@ -581,7 +581,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Bench Dips',
-    germanName: 'Bench Dips',
+    germanName: 'Bank Dips',
     aliases: '',
     muscle: 'Trizeps',
     category: 'Arms',
@@ -589,7 +589,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Bench Jump',
-    germanName: 'Bench Jump',
+    germanName: 'Bank Sprung',
     aliases: '',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -597,7 +597,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Bench Press - Powerlifting',
-    germanName: 'Bankdrücken powerlifting',
+    germanName: 'Bankdrücken Powerlifting',
     aliases: 'Bench Press   Powerlifting|Flachbank|Bench Press|Bankdruecken',
     muscle: 'Trizeps',
     category: 'Arms',
@@ -605,7 +605,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Bench Press - With Bands',
-    germanName: 'Bankdrücken with bands',
+    germanName: 'Bankdrücken mit Band',
     aliases: 'Bench Press   With Bands|Flachbank|Bench Press|Bankdruecken',
     muscle: 'Brust',
     category: 'Chest',
@@ -613,7 +613,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Bench Press with Chains',
-    germanName: 'Bankdrücken with chains',
+    germanName: 'Bankdrücken mit Ketten',
     aliases: 'Flachbank|Bench Press|Bankdruecken',
     muscle: 'Trizeps',
     category: 'Arms',
@@ -621,7 +621,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Bench Sprint',
-    germanName: 'Bench Sprint',
+    germanName: 'Bank Sprint',
     aliases: '',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -629,7 +629,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Bent-Arm Barbell Pullover',
-    germanName: 'Bent arm Langhantel Überzüge',
+    germanName: 'Gebeugt Arm Überzug mit Langhantel',
     aliases: 'Bent Arm Barbell Pullover',
     muscle: 'Latissimus',
     category: 'Back',
@@ -637,7 +637,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Bent-Arm Dumbbell Pullover',
-    germanName: 'Bent arm Kurzhantel Überzüge',
+    germanName: 'Gebeugt Arm Überzug mit Kurzhantel',
     aliases: 'Bent Arm Dumbbell Pullover',
     muscle: 'Brust',
     category: 'Chest',
@@ -645,7 +645,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Bent-Knee Hip Raise',
-    germanName: 'Bent knee Hüfte Heben',
+    germanName: 'Gebeugt Knie Hüfte Heben',
     aliases: 'Bent Knee Hip Raise',
     muscle: 'Bauch',
     category: 'Core',
@@ -653,7 +653,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Bent Over Barbell Row',
-    germanName: 'Vorgebeugt Langhantelrudern',
+    germanName: 'Vorgebeugtes Rudern mit Langhantel',
     aliases: '',
     muscle: 'Mittlerer Rücken',
     category: 'Back',
@@ -662,7 +662,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ExerciseSeed(
     name: 'Bent Over Dumbbell Rear Delt Raise With Head On Bench',
     germanName:
-        'Vorgebeugt Kurzhantel Hintere Schulter heben with head on bench',
+        'Vorgebeugtes hinteres Seitheben mit Kurzhantel, Kopf auf der Bank',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -670,7 +670,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Bent Over Low-Pulley Side Lateral',
-    germanName: 'Vorgebeugt low pulley seitlich lateral',
+    germanName: 'Gebeugt vor tief Pulley seitlich seitlich',
     aliases: 'Bent Over Low Pulley Side Lateral',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -678,7 +678,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Bent Over One-Arm Long Bar Row',
-    germanName: 'Vorgebeugt einarmig long bar Rudern',
+    germanName: 'Gebeugt vor einarmig lang Stange Rudern',
     aliases: 'Bent Over One Arm Long Bar Row',
     muscle: 'Mittlerer Rücken',
     category: 'Back',
@@ -686,7 +686,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Bent Over Two-Arm Long Bar Row',
-    germanName: 'Vorgebeugt two arm long bar Rudern',
+    germanName: 'Gebeugt vor beidarmig lang Stange Rudern',
     aliases: 'Bent Over Two Arm Long Bar Row',
     muscle: 'Mittlerer Rücken',
     category: 'Back',
@@ -694,7 +694,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Bent Over Two-Dumbbell Row',
-    germanName: 'Vorgebeugt two Kurzhantel Rudern',
+    germanName: 'Gebeugt vor zwei Rudern mit Kurzhantel',
     aliases: 'Bent Over Two Dumbbell Row',
     muscle: 'Mittlerer Rücken',
     category: 'Back',
@@ -702,7 +702,8 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Bent Over Two-Dumbbell Row With Palms In',
-    germanName: 'Vorgebeugt two Kurzhantel Rudern with palms in',
+    germanName:
+        'Gebeugt vor zwei Rudern mit Kurzhantel, Handflächen zueinander',
     aliases: 'Bent Over Two Dumbbell Row With Palms In',
     muscle: 'Mittlerer Rücken',
     category: 'Back',
@@ -710,7 +711,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Bent Press',
-    germanName: 'Bent Drücken',
+    germanName: 'Gebeugt Drücken',
     aliases: '',
     muscle: 'Bauch',
     category: 'Core',
@@ -726,7 +727,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Bicycling, Stationary',
-    germanName: 'Bicycling, Stationary',
+    germanName: 'Bicycling Stationary',
     aliases: '',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -734,7 +735,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Board Press',
-    germanName: 'Board Drücken',
+    germanName: 'Board Press',
     aliases: '',
     muscle: 'Trizeps',
     category: 'Arms',
@@ -742,7 +743,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Body-Up',
-    germanName: 'Body-Up',
+    germanName: 'Körper hoch',
     aliases: 'Body Up',
     muscle: 'Trizeps',
     category: 'Arms',
@@ -750,7 +751,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Body Tricep Press',
-    germanName: 'Body tricep Drücken',
+    germanName: 'Körper Trizeps Drücken',
     aliases: '',
     muscle: 'Trizeps',
     category: 'Arms',
@@ -758,7 +759,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Bodyweight Flyes',
-    germanName: 'Körpergewicht flyes',
+    germanName: 'Fliegende mit Körpergewicht',
     aliases: '',
     muscle: 'Brust',
     category: 'Chest',
@@ -766,7 +767,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Bodyweight Mid Row',
-    germanName: 'Körpergewicht mid Rudern',
+    germanName: 'Mid Rudern mit Körpergewicht',
     aliases: '',
     muscle: 'Mittlerer Rücken',
     category: 'Back',
@@ -774,7 +775,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Bodyweight Squat',
-    germanName: 'Körpergewicht Kniebeuge',
+    germanName: 'Kniebeuge mit Körpergewicht',
     aliases: 'Squat|Kniebeugen',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -782,7 +783,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Bodyweight Walking Lunge',
-    germanName: 'Körpergewicht walking Ausfallschritt',
+    germanName: 'Gehender Ausfallschritt mit Körpergewicht',
     aliases: 'Lunge|Lunges',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -790,7 +791,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Bosu Ball Cable Crunch With Side Bends',
-    germanName: 'Bosu ball Kabel Crunch with seitlich bends',
+    germanName: 'Crunch seitlich Bends mit Kabel und Bosu',
     aliases: '',
     muscle: 'Bauch',
     category: 'Core',
@@ -798,7 +799,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Bottoms-Up Clean From The Hang Position',
-    germanName: 'Bottoms up Umsetzen from the hang position',
+    germanName: 'Bottoms hoch Umsetzen aus Hang Position',
     aliases: 'Bottoms Up Clean From The Hang Position',
     muscle: 'Unterarme',
     category: 'Arms',
@@ -806,7 +807,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Bottoms Up',
-    germanName: 'Bottoms Up',
+    germanName: 'Bottoms hoch',
     aliases: '',
     muscle: 'Bauch',
     category: 'Core',
@@ -814,7 +815,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Box Jump (Multiple Response)',
-    germanName: 'Box Jump (Multiple Response)',
+    germanName: 'Box Jump mehrfach Response',
     aliases: '',
     muscle: 'Beinbeuger',
     category: 'Legs',
@@ -830,7 +831,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Box Squat',
-    germanName: 'Box Kniebeuge',
+    germanName: 'Box-Kniebeuge',
     aliases: 'Squat|Kniebeugen',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -838,7 +839,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Box Squat with Bands',
-    germanName: 'Box Kniebeuge with bands',
+    germanName: 'Box-Kniebeuge mit Band',
     aliases: 'Squat|Kniebeugen',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -846,7 +847,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Box Squat with Chains',
-    germanName: 'Box Kniebeuge with chains',
+    germanName: 'Box-Kniebeuge mit Ketten',
     aliases: 'Squat|Kniebeugen',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -854,7 +855,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Brachialis-SMR',
-    germanName: 'Brachialis-SMR',
+    germanName: 'Brachialis Smr',
     aliases: 'Brachialis SMR',
     muscle: 'Bizeps',
     category: 'Arms',
@@ -862,7 +863,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Bradford/Rocky Presses',
-    germanName: 'Bradford/Rocky Presses',
+    germanName: 'Bradford/rocky Presses',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -870,7 +871,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Butt-Ups',
-    germanName: 'Butt-Ups',
+    germanName: 'Butt Ups',
     aliases: 'Butt Ups',
     muscle: 'Bauch',
     category: 'Core',
@@ -878,7 +879,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Butt Lift (Bridge)',
-    germanName: 'Butt Lift (Bridge)',
+    germanName: 'Butt Lift Bridge',
     aliases: '',
     muscle: 'Gesäß',
     category: 'Legs',
@@ -894,7 +895,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Cable Chest Press',
-    germanName: 'Kabel Brustdrücken',
+    germanName: 'Brust Drücken mit Kabel',
     aliases: '',
     muscle: 'Brust',
     category: 'Chest',
@@ -902,7 +903,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Cable Crossover',
-    germanName: 'Kabel crossover',
+    germanName: 'Crossover mit Kabel',
     aliases: '',
     muscle: 'Brust',
     category: 'Chest',
@@ -910,7 +911,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Cable Crunch',
-    germanName: 'Kabel Crunch',
+    germanName: 'Crunch mit Kabel',
     aliases: '',
     muscle: 'Bauch',
     category: 'Core',
@@ -918,7 +919,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Cable Deadlifts',
-    germanName: 'Kabel Kreuzhebens',
+    germanName: 'Deadlifts mit Kabel',
     aliases: 'Deadlift',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -926,7 +927,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Cable Hammer Curls - Rope Attachment',
-    germanName: 'Kabel Hammercurls rope attachment',
+    germanName: 'Hammer Curls Rope Attachment mit Kabel',
     aliases: 'Cable Hammer Curls   Rope Attachment',
     muscle: 'Bizeps',
     category: 'Arms',
@@ -934,7 +935,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Cable Hip Adduction',
-    germanName: 'Kabel Hüftadduktion',
+    germanName: 'Hüftadduktion mit Kabel',
     aliases: '',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -942,7 +943,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Cable Incline Pushdown',
-    germanName: 'Kabel Schräg pushdown',
+    germanName: 'Schräg Drücken mit Kabel',
     aliases: '',
     muscle: 'Latissimus',
     category: 'Back',
@@ -950,7 +951,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Cable Incline Triceps Extension',
-    germanName: 'Kabel Schräg Trizepsstrecken',
+    germanName: 'Schräg Trizepsstrecken mit Kabel',
     aliases: '',
     muscle: 'Trizeps',
     category: 'Arms',
@@ -958,7 +959,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Cable Internal Rotation',
-    germanName: 'Kabel internal Rotation',
+    germanName: 'Innenrotation mit Kabel',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -966,7 +967,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Cable Iron Cross',
-    germanName: 'Kabel iron cross',
+    germanName: 'Iron Cross mit Kabel',
     aliases: '',
     muscle: 'Brust',
     category: 'Chest',
@@ -974,7 +975,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Cable Judo Flip',
-    germanName: 'Kabel judo flip',
+    germanName: 'Judo Flip mit Kabel',
     aliases: '',
     muscle: 'Bauch',
     category: 'Core',
@@ -982,7 +983,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Cable Lying Triceps Extension',
-    germanName: 'Kabel liegend Trizepsstrecken',
+    germanName: 'Liegend Trizepsstrecken mit Kabel',
     aliases: '',
     muscle: 'Trizeps',
     category: 'Arms',
@@ -990,7 +991,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Cable One Arm Tricep Extension',
-    germanName: 'Kabel einarmig tricep Strecken',
+    germanName: 'Einarmig Trizepsstrecken mit Kabel',
     aliases: '',
     muscle: 'Trizeps',
     category: 'Arms',
@@ -998,7 +999,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Cable Preacher Curl',
-    germanName: 'Kabel Scott-Curl',
+    germanName: 'Scott-Curl mit Kabel',
     aliases: '',
     muscle: 'Bizeps',
     category: 'Arms',
@@ -1006,7 +1007,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Cable Rear Delt Fly',
-    germanName: 'Kabel hintere delt Fliegende',
+    germanName: 'Reverse Fly mit Kabel',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -1014,7 +1015,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Cable Reverse Crunch',
-    germanName: 'Kabel reverse Crunch',
+    germanName: 'Reverse Crunch mit Kabel',
     aliases: '',
     muscle: 'Bauch',
     category: 'Core',
@@ -1022,7 +1023,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Cable Rope Overhead Triceps Extension',
-    germanName: 'Kabel rope Überkopf Trizepsstrecken',
+    germanName: 'Rope Überkopf Trizepsstrecken mit Kabel',
     aliases: '',
     muscle: 'Trizeps',
     category: 'Arms',
@@ -1030,7 +1031,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Cable Rope Rear-Delt Rows',
-    germanName: 'Kabel rope hintere delt rows',
+    germanName: 'Rope hinten Delt Rows mit Kabel',
     aliases: 'Cable Rope Rear Delt Rows',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -1038,7 +1039,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Cable Russian Twists',
-    germanName: 'Kabel Russische Drehungs',
+    germanName: 'Russian Twists mit Kabel',
     aliases: '',
     muscle: 'Bauch',
     category: 'Core',
@@ -1046,7 +1047,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Cable Seated Crunch',
-    germanName: 'Kabel sitzend Crunch',
+    germanName: 'Sitzend Crunch mit Kabel',
     aliases: '',
     muscle: 'Bauch',
     category: 'Core',
@@ -1054,7 +1055,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Cable Seated Lateral Raise',
-    germanName: 'Kabel sitzend Seitheben',
+    germanName: 'Sitzend Seitheben mit Kabel',
     aliases: 'Lateral Raise',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -1062,7 +1063,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Cable Shoulder Press',
-    germanName: 'Kabel Schulterdrücken',
+    germanName: 'Schulterdrücken mit Kabel',
     aliases: 'Shoulder Press|OHP',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -1070,7 +1071,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Cable Shrugs',
-    germanName: 'Kabel Schulterhebens',
+    germanName: 'Shrugs mit Kabel',
     aliases: '',
     muscle: 'Trapez',
     category: 'Shoulders',
@@ -1078,7 +1079,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Cable Wrist Curl',
-    germanName: 'Kabel Handgelenkscurl',
+    germanName: 'Handgelenkscurl mit Kabel',
     aliases: '',
     muscle: 'Unterarme',
     category: 'Arms',
@@ -1086,7 +1087,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Calf-Machine Shoulder Shrug',
-    germanName: 'Wade Maschine Schulter Schulterheben',
+    germanName: 'Wade Schulter Schulterheben mit Maschine',
     aliases: 'Calf Machine Shoulder Shrug',
     muscle: 'Trapez',
     category: 'Shoulders',
@@ -1102,7 +1103,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Calf Press On The Leg Press Machine',
-    germanName: 'Wade Drücken on the Beinpresse Maschine',
+    germanName: 'Wade Drücken auf Beinpresse mit Maschine',
     aliases: 'Leg Press',
     muscle: 'Waden',
     category: 'Calves',
@@ -1110,7 +1111,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Calf Raise On A Dumbbell',
-    germanName: 'Wadenheben on a Kurzhantel',
+    germanName: 'Wadenheben auf mit Kurzhantel',
     aliases: 'Calf Raise',
     muscle: 'Waden',
     category: 'Calves',
@@ -1118,7 +1119,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Calf Raises - With Bands',
-    germanName: 'Wadenhebens with bands',
+    germanName: 'Wade Raises mit Band',
     aliases: 'Calf Raises   With Bands|Calf Raise',
     muscle: 'Waden',
     category: 'Calves',
@@ -1126,7 +1127,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Calf Stretch Elbows Against Wall',
-    germanName: 'Wade stretch elbows against wall',
+    germanName: 'Wade Dehnung Elbows Against Wall',
     aliases: '',
     muscle: 'Waden',
     category: 'Calves',
@@ -1134,7 +1135,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Calf Stretch Hands Against Wall',
-    germanName: 'Wade stretch hands against wall',
+    germanName: 'Wade Dehnung Hands Against Wall',
     aliases: '',
     muscle: 'Waden',
     category: 'Calves',
@@ -1142,7 +1143,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Calves-SMR',
-    germanName: 'Waden smr',
+    germanName: 'Waden Smr',
     aliases: 'Calves SMR',
     muscle: 'Waden',
     category: 'Calves',
@@ -1174,7 +1175,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Cat Stretch',
-    germanName: 'Cat Stretch',
+    germanName: 'Cat Dehnung',
     aliases: '',
     muscle: 'Unterer Rücken',
     category: 'Back',
@@ -1182,7 +1183,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Catch and Overhead Throw',
-    germanName: 'Catch and Überkopf throw',
+    germanName: 'Catch und Überkopf Throw',
     aliases: '',
     muscle: 'Latissimus',
     category: 'Back',
@@ -1190,7 +1191,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Chain Handle Extension',
-    germanName: 'Chain handle Strecken',
+    germanName: 'Handle Strecken mit Ketten',
     aliases: '',
     muscle: 'Trizeps',
     category: 'Arms',
@@ -1198,7 +1199,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Chain Press',
-    germanName: 'Chain Drücken',
+    germanName: 'Drücken mit Ketten',
     aliases: '',
     muscle: 'Brust',
     category: 'Chest',
@@ -1206,7 +1207,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Chair Leg Extended Stretch',
-    germanName: 'Chair Leg Extended Stretch',
+    germanName: 'Chair Bein Extended Dehnung',
     aliases: '',
     muscle: 'Beinbeuger',
     category: 'Legs',
@@ -1214,7 +1215,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Chair Lower Back Stretch',
-    germanName: 'Chair lower Rücken stretch',
+    germanName: 'Chair Lower Rücken Dehnung',
     aliases: '',
     muscle: 'Latissimus',
     category: 'Back',
@@ -1230,7 +1231,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Chair Upper Body Stretch',
-    germanName: 'Chair Upper Body Stretch',
+    germanName: 'Chair Upper Körper Dehnung',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -1238,7 +1239,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Chest And Front Of Shoulder Stretch',
-    germanName: 'Brust and Front of Schulter stretch',
+    germanName: 'Brust und Front Schulter Dehnung',
     aliases: '',
     muscle: 'Brust',
     category: 'Chest',
@@ -1246,7 +1247,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Chest Push from 3 point stance',
-    germanName: 'Brust Drücken from 3 point stance',
+    germanName: 'Brust Push aus 3 Point Stand',
     aliases: '',
     muscle: 'Brust',
     category: 'Chest',
@@ -1254,7 +1255,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Chest Push (multiple response)',
-    germanName: 'Brust Drücken multiple response',
+    germanName: 'Brust Push mehrfach Response',
     aliases: '',
     muscle: 'Brust',
     category: 'Chest',
@@ -1262,7 +1263,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Chest Push (single response)',
-    germanName: 'Brust Drücken single response',
+    germanName: 'Brust Push ein Response',
     aliases: '',
     muscle: 'Brust',
     category: 'Chest',
@@ -1270,7 +1271,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Chest Push with Run Release',
-    germanName: 'Brust Drücken with run release',
+    germanName: 'Brust Push Run Release',
     aliases: '',
     muscle: 'Brust',
     category: 'Chest',
@@ -1278,7 +1279,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Chest Stretch on Stability Ball',
-    germanName: 'Brust stretch on stability ball',
+    germanName: 'Brust Dehnung auf mit Gymnastikball',
     aliases: '',
     muscle: 'Brust',
     category: 'Chest',
@@ -1286,7 +1287,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Child\'s Pose',
-    germanName: 'Child\'s Pose',
+    germanName: 'Child S Pose',
     aliases: '',
     muscle: 'Unterer Rücken',
     category: 'Back',
@@ -1302,7 +1303,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Chin To Chest Stretch',
-    germanName: 'Chin to Brust stretch',
+    germanName: 'Chin zu Brust Dehnung',
     aliases: '',
     muscle: 'Nacken',
     category: 'Shoulders',
@@ -1334,7 +1335,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Clean Pull',
-    germanName: 'Umsetzen Zug',
+    germanName: 'Umsetzen Pull',
     aliases: '',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -1358,7 +1359,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Clean and Press',
-    germanName: 'Umsetzen and Drücken',
+    germanName: 'Umsetzen und Drücken',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -1366,7 +1367,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Clean from Blocks',
-    germanName: 'Umsetzen from blocks',
+    germanName: 'Umsetzen aus Blocks',
     aliases: '',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -1382,7 +1383,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Close-Grip Barbell Bench Press',
-    germanName: 'Enger Griff Langhantel-Bankdrücken',
+    germanName: 'Bankdrücken, enger Griff',
     aliases:
         'Close Grip Barbell Bench Press|Flachbank|Bench Press|Bankdruecken',
     muscle: 'Trizeps',
@@ -1391,7 +1392,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Close-Grip Dumbbell Press',
-    germanName: 'Enger Griff Kurzhantel Drücken',
+    germanName: 'Drücken mit Kurzhantel, enger Griff',
     aliases: 'Close Grip Dumbbell Press',
     muscle: 'Trizeps',
     category: 'Arms',
@@ -1399,7 +1400,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Close-Grip EZ-Bar Curl with Band',
-    germanName: 'Enger Griff SZ-Stange Curl with Band',
+    germanName: 'Bizepscurl mit SZ-Stange und Band, enger Griff',
     aliases: 'Close Grip EZ Bar Curl with Band',
     muscle: 'Bizeps',
     category: 'Arms',
@@ -1407,7 +1408,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Close-Grip EZ-Bar Press',
-    germanName: 'Enger Griff SZ-Stange Drücken',
+    germanName: 'Drücken mit SZ-Stange, enger Griff',
     aliases: 'Close Grip EZ Bar Press',
     muscle: 'Trizeps',
     category: 'Arms',
@@ -1415,7 +1416,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Close-Grip EZ Bar Curl',
-    germanName: 'Enger Griff SZ-Stange Curl',
+    germanName: 'Bizepscurl mit SZ-Stange, enger Griff',
     aliases: 'Close Grip EZ Bar Curl',
     muscle: 'Bizeps',
     category: 'Arms',
@@ -1423,7 +1424,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Close-Grip Front Lat Pulldown',
-    germanName: 'Enger Griff Front Latzug',
+    germanName: 'Front Latzug, enger Griff',
     aliases: 'Close Grip Front Lat Pulldown|Lat Pulldown|Latzug',
     muscle: 'Latissimus',
     category: 'Back',
@@ -1431,7 +1432,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Close-Grip Push-Up off of a Dumbbell',
-    germanName: 'Enger Griff Liegestütz off of a Kurzhantel',
+    germanName: 'Liegestütz ab mit Kurzhantel, enger Griff',
     aliases: 'Close Grip Push Up off of a Dumbbell|Push-up|Push Up|Liegestütze',
     muscle: 'Trizeps',
     category: 'Arms',
@@ -1439,7 +1440,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Close-Grip Standing Barbell Curl',
-    germanName: 'Enger Griff stehend Langhantel Curl',
+    germanName: 'Stehend Bizepscurl mit Langhantel, enger Griff',
     aliases: 'Close Grip Standing Barbell Curl',
     muscle: 'Bizeps',
     category: 'Arms',
@@ -1455,7 +1456,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Conan\'s Wheel',
-    germanName: 'Conan\'s Wheel',
+    germanName: 'Conan S Wheel',
     aliases: '',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -1463,7 +1464,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Concentration Curls',
-    germanName: 'Konzentrationscurls',
+    germanName: 'Concentration Curls',
     aliases: '',
     muscle: 'Bizeps',
     category: 'Arms',
@@ -1471,7 +1472,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Cross-Body Crunch',
-    germanName: 'Cross-Body Crunch',
+    germanName: 'Cross Körper Crunch',
     aliases: 'Cross Body Crunch',
     muscle: 'Bauch',
     category: 'Core',
@@ -1479,7 +1480,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Cross Body Hammer Curl',
-    germanName: 'Cross body Hammercurl',
+    germanName: 'Cross Körper Hammercurl',
     aliases: '',
     muscle: 'Bizeps',
     category: 'Arms',
@@ -1487,7 +1488,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Cross Over - With Bands',
-    germanName: 'Cross Over - With Bands',
+    germanName: 'Cross vor mit Band',
     aliases: 'Cross Over   With Bands',
     muscle: 'Brust',
     category: 'Chest',
@@ -1495,7 +1496,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Crossover Reverse Lunge',
-    germanName: 'Crossover reverse Ausfallschritt',
+    germanName: 'Crossover Rückwärts-Ausfallschritt',
     aliases: 'Lunge|Lunges',
     muscle: 'Unterer Rücken',
     category: 'Back',
@@ -1511,7 +1512,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Crunch - Hands Overhead',
-    germanName: 'Crunch hands Überkopf',
+    germanName: 'Crunch Hands Überkopf',
     aliases: 'Crunch   Hands Overhead',
     muscle: 'Bauch',
     category: 'Core',
@@ -1519,7 +1520,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Crunch - Legs On Exercise Ball',
-    germanName: 'Crunch - Legs On Exercise Ball',
+    germanName: 'Crunch Beine auf mit Gymnastikball',
     aliases: 'Crunch   Legs On Exercise Ball',
     muscle: 'Bauch',
     category: 'Core',
@@ -1543,7 +1544,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Dancer\'s Stretch',
-    germanName: 'Dancer\'s Stretch',
+    germanName: 'Dancer S Dehnung',
     aliases: '',
     muscle: 'Unterer Rücken',
     category: 'Back',
@@ -1559,7 +1560,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Deadlift with Bands',
-    germanName: 'Kreuzheben with bands',
+    germanName: 'Kreuzheben mit Band',
     aliases: 'Deadlift',
     muscle: 'Unterer Rücken',
     category: 'Back',
@@ -1567,7 +1568,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Deadlift with Chains',
-    germanName: 'Kreuzheben with chains',
+    germanName: 'Kreuzheben mit Ketten',
     aliases: 'Deadlift',
     muscle: 'Unterer Rücken',
     category: 'Back',
@@ -1575,7 +1576,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Decline Barbell Bench Press',
-    germanName: 'Negativ Langhantel-Bankdrücken',
+    germanName: 'Negativbankdrücken',
     aliases: 'Flachbank|Bench Press|Bankdruecken',
     muscle: 'Brust',
     category: 'Chest',
@@ -1583,7 +1584,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Decline Close-Grip Bench To Skull Crusher',
-    germanName: 'Negativ enger Griff bench to Stirndrücken',
+    germanName: 'Negativ Bank zu French Press, enger Griff',
     aliases: 'Decline Close Grip Bench To Skull Crusher',
     muscle: 'Trizeps',
     category: 'Arms',
@@ -1599,7 +1600,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Decline Dumbbell Bench Press',
-    germanName: 'Negativ Kurzhantel-Bankdrücken',
+    germanName: 'Negativbankdrücken mit Kurzhantel',
     aliases: 'Flachbank|Bench Press|Bankdruecken',
     muscle: 'Brust',
     category: 'Chest',
@@ -1607,7 +1608,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Decline Dumbbell Flyes',
-    germanName: 'Negativ Kurzhantel flyes',
+    germanName: 'Negativ Fliegende mit Kurzhantel',
     aliases: '',
     muscle: 'Brust',
     category: 'Chest',
@@ -1615,7 +1616,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Decline Dumbbell Triceps Extension',
-    germanName: 'Negativ Kurzhantel Trizepsstrecken',
+    germanName: 'Negativ Trizepsstrecken mit Kurzhantel',
     aliases: '',
     muscle: 'Trizeps',
     category: 'Arms',
@@ -1623,7 +1624,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Decline EZ Bar Triceps Extension',
-    germanName: 'Negativ SZ-Stange Trizepsstrecken',
+    germanName: 'Negativ Trizepsstrecken mit SZ-Stange',
     aliases: '',
     muscle: 'Trizeps',
     category: 'Arms',
@@ -1631,7 +1632,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Decline Oblique Crunch',
-    germanName: 'Negativ oblique Crunch',
+    germanName: 'Negativ Oblique Crunch',
     aliases: '',
     muscle: 'Bauch',
     category: 'Core',
@@ -1647,7 +1648,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Decline Reverse Crunch',
-    germanName: 'Negativ reverse Crunch',
+    germanName: 'Negativ Reverse Crunch',
     aliases: '',
     muscle: 'Bauch',
     category: 'Core',
@@ -1655,7 +1656,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Decline Smith Press',
-    germanName: 'Negativ Smith-Maschine Drücken',
+    germanName: 'Negativ Smith Drücken',
     aliases: '',
     muscle: 'Brust',
     category: 'Chest',
@@ -1663,7 +1664,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Deficit Deadlift',
-    germanName: 'Deficit Kreuzheben',
+    germanName: 'Defizit Kreuzheben',
     aliases: 'Deadlift',
     muscle: 'Unterer Rücken',
     category: 'Back',
@@ -1671,7 +1672,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Depth Jump Leap',
-    germanName: 'Depth Jump Leap',
+    germanName: 'Depth Sprung Leap',
     aliases: '',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -1679,7 +1680,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Dip Machine',
-    germanName: 'Dip Maschine',
+    germanName: 'Dip mit Maschine',
     aliases: '',
     muscle: 'Trizeps',
     category: 'Arms',
@@ -1687,7 +1688,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Dips - Chest Version',
-    germanName: 'Dips Brust version',
+    germanName: 'Dips Brust Version',
     aliases: 'Dips   Chest Version',
     muscle: 'Brust',
     category: 'Chest',
@@ -1695,7 +1696,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Dips - Triceps Version',
-    germanName: 'Dips Trizeps version',
+    germanName: 'Dips Trizeps Version',
     aliases: 'Dips   Triceps Version',
     muscle: 'Trizeps',
     category: 'Arms',
@@ -1703,7 +1704,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Donkey Calf Raises',
-    germanName: 'Donkey Wadenhebens',
+    germanName: 'Donkey Wade Raises',
     aliases: 'Calf Raise',
     muscle: 'Waden',
     category: 'Calves',
@@ -1711,7 +1712,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Double Kettlebell Alternating Hang Clean',
-    germanName: 'Double Kettlebell wechselnd Hang Umsetzen',
+    germanName: 'Double wechselnd Hang Clean mit Kettlebell',
     aliases: '',
     muscle: 'Beinbeuger',
     category: 'Legs',
@@ -1719,7 +1720,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Double Kettlebell Jerk',
-    germanName: 'Double Kettlebell Stoßen',
+    germanName: 'Double Stoßen mit Kettlebell',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -1727,7 +1728,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Double Kettlebell Push Press',
-    germanName: 'Double Kettlebell Drücken Drücken',
+    germanName: 'Double Push Press mit Kettlebell',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -1735,7 +1736,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Double Kettlebell Snatch',
-    germanName: 'Double Kettlebell Reißen',
+    germanName: 'Double Reißen mit Kettlebell',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -1743,7 +1744,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Double Kettlebell Windmill',
-    germanName: 'Double Kettlebell Windmill',
+    germanName: 'Double Windmühle mit Kettlebell',
     aliases: '',
     muscle: 'Bauch',
     category: 'Core',
@@ -1751,7 +1752,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Double Leg Butt Kick',
-    germanName: 'Double Leg Butt Kick',
+    germanName: 'Double Bein Butt Kick',
     aliases: '',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -1775,7 +1776,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Drop Push',
-    germanName: 'Drop Drücken',
+    germanName: 'Drop Push',
     aliases: '',
     muscle: 'Brust',
     category: 'Chest',
@@ -1783,7 +1784,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Dumbbell Alternate Bicep Curl',
-    germanName: 'Kurzhantel wechselnd bicep Curl',
+    germanName: 'Wechselnd Bizeps Bizepscurl mit Kurzhantel',
     aliases: '',
     muscle: 'Bizeps',
     category: 'Arms',
@@ -1791,7 +1792,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Dumbbell bench press',
-    germanName: 'Kurzhantel-Bankdrücken',
+    germanName: 'Bankdrücken mit Kurzhantel',
     aliases:
         'Dumbbell Bench Press|Flachbank Kurzhantel|Flachbank|Bench Press|Bankdruecken',
     muscle: 'Brust',
@@ -1800,7 +1801,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Dumbbell Bench Press with Neutral Grip',
-    germanName: 'Kurzhantel-Bankdrücken with neutral grip',
+    germanName: 'Bankdrücken mit Kurzhantel, neutraler Griff',
     aliases: 'Flachbank|Bench Press|Bankdruecken',
     muscle: 'Brust',
     category: 'Chest',
@@ -1808,7 +1809,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Dumbbell Bicep Curl',
-    germanName: 'Kurzhantel bicep Curl',
+    germanName: 'Bizeps Bizepscurl mit Kurzhantel',
     aliases: '',
     muscle: 'Bizeps',
     category: 'Arms',
@@ -1816,7 +1817,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Dumbbell Clean',
-    germanName: 'Kurzhantel Umsetzen',
+    germanName: 'Umsetzen mit Kurzhantel',
     aliases: '',
     muscle: 'Beinbeuger',
     category: 'Legs',
@@ -1824,7 +1825,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Dumbbell Floor Press',
-    germanName: 'Kurzhantel floor Drücken',
+    germanName: 'Floor Press mit Kurzhantel',
     aliases: '',
     muscle: 'Trizeps',
     category: 'Arms',
@@ -1832,7 +1833,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Dumbbell Flyes',
-    germanName: 'Kurzhantel flyes',
+    germanName: 'Fliegende mit Kurzhantel',
     aliases: '',
     muscle: 'Brust',
     category: 'Chest',
@@ -1840,7 +1841,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Dumbbell Incline Row',
-    germanName: 'Kurzhantel Schräg Rudern',
+    germanName: 'Schräg Rudern mit Kurzhantel',
     aliases: '',
     muscle: 'Mittlerer Rücken',
     category: 'Back',
@@ -1848,7 +1849,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Dumbbell Incline Shoulder Raise',
-    germanName: 'Kurzhantel Schräg Schulter Heben',
+    germanName: 'Schräg Schulter Heben mit Kurzhantel',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -1856,7 +1857,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Dumbbell Lunges',
-    germanName: 'Kurzhantel Ausfallschritts',
+    germanName: 'Lunges mit Kurzhantel',
     aliases: 'Lunge|Lunges',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -1864,7 +1865,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Dumbbell Lying One-Arm Rear Lateral Raise',
-    germanName: 'Kurzhantel liegend einarmig hintere Seitheben',
+    germanName: 'Liegend einarmig hinten Seitheben mit Kurzhantel',
     aliases: 'Dumbbell Lying One Arm Rear Lateral Raise|Lateral Raise',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -1872,7 +1873,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Dumbbell Lying Pronation',
-    germanName: 'Kurzhantel liegend pronation',
+    germanName: 'Liegend Pronation mit Kurzhantel',
     aliases: '',
     muscle: 'Unterarme',
     category: 'Arms',
@@ -1880,7 +1881,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Dumbbell Lying Rear Lateral Raise',
-    germanName: 'Kurzhantel liegend hintere Seitheben',
+    germanName: 'Liegend hinten Seitheben mit Kurzhantel',
     aliases: 'Lateral Raise',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -1888,7 +1889,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Dumbbell Lying Supination',
-    germanName: 'Kurzhantel liegend supination',
+    germanName: 'Liegend Supination mit Kurzhantel',
     aliases: '',
     muscle: 'Unterarme',
     category: 'Arms',
@@ -1896,7 +1897,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Dumbbell One-Arm Shoulder Press',
-    germanName: 'Kurzhantel einarmig Schulterdrücken',
+    germanName: 'Einarmig Schulterdrücken mit Kurzhantel',
     aliases: 'Dumbbell One Arm Shoulder Press|Shoulder Press|OHP',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -1904,7 +1905,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Dumbbell One-Arm Triceps Extension',
-    germanName: 'Kurzhantel einarmig Trizepsstrecken',
+    germanName: 'Einarmig Trizepsstrecken mit Kurzhantel',
     aliases: 'Dumbbell One Arm Triceps Extension',
     muscle: 'Trizeps',
     category: 'Arms',
@@ -1912,7 +1913,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Dumbbell One-Arm Upright Row',
-    germanName: 'Kurzhantel einarmig Aufrechtes Rudern',
+    germanName: 'Einarmig Aufrechtes Rudern mit Kurzhantel',
     aliases: 'Dumbbell One Arm Upright Row',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -1920,7 +1921,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Dumbbell Prone Incline Curl',
-    germanName: 'Kurzhantel prone Schräg Curl',
+    germanName: 'Prone schräg Bizepscurl mit Kurzhantel',
     aliases: '',
     muscle: 'Bizeps',
     category: 'Arms',
@@ -1928,7 +1929,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Dumbbell Raise',
-    germanName: 'Kurzhantel Heben',
+    germanName: 'Heben mit Kurzhantel',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -1936,7 +1937,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Dumbbell Rear Lunge',
-    germanName: 'Kurzhantel hintere Ausfallschritt',
+    germanName: 'Hinten Ausfallschritt mit Kurzhantel',
     aliases: 'Lunge|Lunges',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -1944,7 +1945,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Dumbbell Scaption',
-    germanName: 'Kurzhantel scaption',
+    germanName: 'Scaption mit Kurzhantel',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -1952,7 +1953,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Dumbbell Seated Box Jump',
-    germanName: 'Kurzhantel sitzend box jump',
+    germanName: 'Sitzend Box Jump mit Kurzhantel',
     aliases: '',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -1960,7 +1961,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Dumbbell Seated One-Leg Calf Raise',
-    germanName: 'Kurzhantel sitzend one leg Wadenheben',
+    germanName: 'Sitzend ein Bein Wadenheben mit Kurzhantel',
     aliases: 'Dumbbell Seated One Leg Calf Raise|Calf Raise',
     muscle: 'Waden',
     category: 'Calves',
@@ -1968,7 +1969,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Dumbbell shoulder press',
-    germanName: 'Kurzhantel-Schulterdrücken',
+    germanName: 'Schulterdrücken mit Kurzhantel',
     aliases: 'Dumbbell Press|Shoulder Press|OHP',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -1976,7 +1977,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Dumbbell shrug',
-    germanName: 'Kurzhantel-Schulterheben',
+    germanName: 'Schulterheben mit Kurzhantel',
     aliases: 'Shrugs',
     muscle: 'Trapez',
     category: 'Shoulders',
@@ -1984,7 +1985,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Dumbbell Side Bend',
-    germanName: 'Kurzhantel seitlich bend',
+    germanName: 'Seitlich Bend mit Kurzhantel',
     aliases: '',
     muscle: 'Bauch',
     category: 'Core',
@@ -1992,7 +1993,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Dumbbell Squat',
-    germanName: 'Kurzhantel Kniebeuge',
+    germanName: 'Kniebeuge mit Kurzhantel',
     aliases: 'Squat|Kniebeugen',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -2000,7 +2001,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Dumbbell Squat To A Bench',
-    germanName: 'Kurzhantel Kniebeuge to a bench',
+    germanName: 'Kniebeuge zu Bank mit Kurzhantel',
     aliases: 'Squat|Kniebeugen',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -2008,7 +2009,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Dumbbell Step Ups',
-    germanName: 'Kurzhantel Step-ups',
+    germanName: 'Step Ups mit Kurzhantel',
     aliases: '',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -2016,7 +2017,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Dumbbell Tricep Extension -Pronated Grip',
-    germanName: 'Kurzhantel tricep Strecken pronated grip',
+    germanName: 'Trizepsstrecken Pronated Grip mit Kurzhantel',
     aliases: 'Dumbbell Tricep Extension  Pronated Grip',
     muscle: 'Trizeps',
     category: 'Arms',
@@ -2024,7 +2025,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Dynamic Back Stretch',
-    germanName: 'Dynamic Rücken stretch',
+    germanName: 'Dynamic Rücken Dehnung',
     aliases: '',
     muscle: 'Latissimus',
     category: 'Back',
@@ -2032,7 +2033,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Dynamic Chest Stretch',
-    germanName: 'Dynamic Brust stretch',
+    germanName: 'Dynamic Brust Dehnung',
     aliases: '',
     muscle: 'Brust',
     category: 'Chest',
@@ -2040,7 +2041,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'EZ-Bar Curl',
-    germanName: 'SZ-Stange Curl',
+    germanName: 'Bizepscurl mit SZ-Stange',
     aliases: 'EZ Bar Curl',
     muscle: 'Bizeps',
     category: 'Arms',
@@ -2048,7 +2049,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'EZ-Bar Skullcrusher',
-    germanName: 'SZ-Stange skullcrusher',
+    germanName: 'Skullcrusher mit SZ-Stange',
     aliases: 'EZ Bar Skullcrusher',
     muscle: 'Trizeps',
     category: 'Arms',
@@ -2056,7 +2057,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Elbow Circles',
-    germanName: 'Elbow Circles',
+    germanName: 'Elbow Kreisen',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -2064,7 +2065,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Elbow to Knee',
-    germanName: 'Elbow to Knee',
+    germanName: 'Elbow zu Knie',
     aliases: '',
     muscle: 'Bauch',
     category: 'Core',
@@ -2088,7 +2089,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Elevated Cable Rows',
-    germanName: 'Elevated Kabel rows',
+    germanName: 'Elevated Rows mit Kabel',
     aliases: '',
     muscle: 'Latissimus',
     category: 'Back',
@@ -2104,7 +2105,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Exercise Ball Crunch',
-    germanName: 'Exercise Ball Crunch',
+    germanName: 'Crunch mit Gymnastikball',
     aliases: '',
     muscle: 'Bauch',
     category: 'Core',
@@ -2112,7 +2113,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Exercise Ball Pull-In',
-    germanName: 'Exercise ball Zug in',
+    germanName: 'Pull in mit Gymnastikball',
     aliases: 'Exercise Ball Pull In',
     muscle: 'Bauch',
     category: 'Core',
@@ -2120,7 +2121,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Extended Range One-Arm Kettlebell Floor Press',
-    germanName: 'Extended range einarmig Kettlebell floor Drücken',
+    germanName: 'Extended Range einarmig Floor Press mit Kettlebell',
     aliases: 'Extended Range One Arm Kettlebell Floor Press',
     muscle: 'Brust',
     category: 'Chest',
@@ -2128,7 +2129,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'External Rotation',
-    germanName: 'External Rotation',
+    germanName: 'Außenrotation',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -2136,7 +2137,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'External Rotation with Band',
-    germanName: 'External Rotation with Band',
+    germanName: 'Außenrotation mit Band',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -2144,7 +2145,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'External Rotation with Cable',
-    germanName: 'External Rotation with Kabel',
+    germanName: 'Außenrotation mit Kabel',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -2152,7 +2153,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Face Pull',
-    germanName: 'Face Zug',
+    germanName: 'Face Pull',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -2160,7 +2161,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Farmer\'s Walk',
-    germanName: 'Farmer s Gehen',
+    germanName: 'Farmers Walk',
     aliases: '',
     muscle: 'Unterarme',
     category: 'Arms',
@@ -2168,7 +2169,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Fast Skipping',
-    germanName: 'Fast Skipping',
+    germanName: 'Schnell Skipping',
     aliases: '',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -2184,7 +2185,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Flat Bench Cable Flyes',
-    germanName: 'Flat bench Kabel flyes',
+    germanName: 'Flat Bank Fliegende mit Kabel',
     aliases: '',
     muscle: 'Brust',
     category: 'Chest',
@@ -2192,7 +2193,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Flat Bench Leg Pull-In',
-    germanName: 'Flat bench leg Zug in',
+    germanName: 'Flat Bank Bein Pull in',
     aliases: 'Flat Bench Leg Pull In',
     muscle: 'Bauch',
     category: 'Core',
@@ -2200,7 +2201,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Flat Bench Lying Leg Raise',
-    germanName: 'Flat bench liegend Beinheben',
+    germanName: 'Flat Bank liegend Beinheben',
     aliases: '',
     muscle: 'Bauch',
     category: 'Core',
@@ -2208,7 +2209,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Flexor Incline Dumbbell Curls',
-    germanName: 'Flexor Schräg Kurzhantel curls',
+    germanName: 'Flexor schräg Curls mit Kurzhantel',
     aliases: '',
     muscle: 'Bizeps',
     category: 'Arms',
@@ -2216,7 +2217,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Floor Glute-Ham Raise',
-    germanName: 'Floor Gesäß ham Heben',
+    germanName: 'Boden Gesäß Ham Heben',
     aliases: 'Floor Glute Ham Raise',
     muscle: 'Beinbeuger',
     category: 'Legs',
@@ -2224,7 +2225,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Floor Press',
-    germanName: 'Floor Drücken',
+    germanName: 'Floor Press',
     aliases: '',
     muscle: 'Trizeps',
     category: 'Arms',
@@ -2232,7 +2233,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Floor Press with Chains',
-    germanName: 'Floor Drücken with chains',
+    germanName: 'Floor Press mit Ketten',
     aliases: '',
     muscle: 'Trizeps',
     category: 'Arms',
@@ -2248,7 +2249,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Foot-SMR',
-    germanName: 'Foot-SMR',
+    germanName: 'Foot Smr',
     aliases: 'Foot SMR',
     muscle: 'Waden',
     category: 'Calves',
@@ -2256,7 +2257,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Forward Drag with Press',
-    germanName: 'Forward drag with Drücken',
+    germanName: 'Vorwärts Ziehen Drücken',
     aliases: '',
     muscle: 'Brust',
     category: 'Chest',
@@ -2272,7 +2273,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Freehand Jump Squat',
-    germanName: 'Freehand jump Kniebeuge',
+    germanName: 'Freehand Sprung Kniebeuge',
     aliases: 'Squat|Kniebeugen',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -2288,7 +2289,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Frog Sit-Ups',
-    germanName: 'Frog Sit-ups',
+    germanName: 'Frog Sit Ups',
     aliases: 'Frog Sit Ups',
     muscle: 'Bauch',
     category: 'Core',
@@ -2296,7 +2297,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Front Barbell Squat',
-    germanName: 'Front Langhantel Kniebeuge',
+    germanName: 'Frontkniebeuge mit Langhantel',
     aliases: 'Squat|Kniebeugen',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -2304,7 +2305,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Front Barbell Squat To A Bench',
-    germanName: 'Front Langhantel Kniebeuge to a bench',
+    germanName: 'Frontkniebeuge zu Bank mit Langhantel',
     aliases: 'Squat|Kniebeugen',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -2320,7 +2321,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Front Cable Raise',
-    germanName: 'Front Kabel Heben',
+    germanName: 'Frontheben mit Kabel',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -2328,7 +2329,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Front Cone Hops (or hurdle hops)',
-    germanName: 'Front Cone Hops (or hurdle hops)',
+    germanName: 'Front Cone Hops Or Hurdle Hops',
     aliases: '',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -2336,7 +2337,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Front Dumbbell Raise',
-    germanName: 'Front Kurzhantel Heben',
+    germanName: 'Frontheben mit Kurzhantel',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -2344,7 +2345,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Front Incline Dumbbell Raise',
-    germanName: 'Front Schräg Kurzhantel Heben',
+    germanName: 'Front schräg Heben mit Kurzhantel',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -2352,7 +2353,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Front Leg Raises',
-    germanName: 'Front Beinhebens',
+    germanName: 'Front Bein Raises',
     aliases: '',
     muscle: 'Beinbeuger',
     category: 'Legs',
@@ -2360,7 +2361,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Front Plate Raise',
-    germanName: 'Front plate Heben',
+    germanName: 'Front Plate Heben',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -2368,7 +2369,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Front Raise And Pullover',
-    germanName: 'Frontheben and Überzüge',
+    germanName: 'Frontheben und Überzug',
     aliases: '',
     muscle: 'Brust',
     category: 'Chest',
@@ -2376,7 +2377,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Front Squat (Clean Grip)',
-    germanName: 'Frontkniebeuge Umsetzen grip',
+    germanName: 'Frontkniebeuge Umsetzen Grip',
     aliases: 'Squat|Kniebeugen',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -2384,7 +2385,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Front Squats With Two Kettlebells',
-    germanName: 'Frontkniebeuges with two kettlebells',
+    germanName: 'Front Kniebeugen zwei mit Kettlebell',
     aliases: 'Squat|Kniebeugen',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -2392,7 +2393,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Front Two-Dumbbell Raise',
-    germanName: 'Front two Kurzhantel Heben',
+    germanName: 'Front zwei Heben mit Kurzhantel',
     aliases: 'Front Two Dumbbell Raise',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -2400,7 +2401,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Full Range-Of-Motion Lat Pulldown',
-    germanName: 'Full range of motion Latzug',
+    germanName: 'Full Range Motion Latzug',
     aliases: 'Full Range Of Motion Lat Pulldown|Lat Pulldown|Latzug',
     muscle: 'Latissimus',
     category: 'Back',
@@ -2416,7 +2417,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Glute Ham Raise',
-    germanName: 'Gesäß ham Heben',
+    germanName: 'Gesäß Ham Heben',
     aliases: '',
     muscle: 'Beinbeuger',
     category: 'Legs',
@@ -2448,7 +2449,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Good Morning off Pins',
-    germanName: 'Good Morning off Pins',
+    germanName: 'Good Morning ab Pins',
     aliases: '',
     muscle: 'Beinbeuger',
     category: 'Legs',
@@ -2456,7 +2457,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Gorilla Chin/Crunch',
-    germanName: 'Gorilla Chin/Crunch',
+    germanName: 'Gorilla Chin/ Crunch',
     aliases: '',
     muscle: 'Bauch',
     category: 'Core',
@@ -2464,7 +2465,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Groin and Back Stretch',
-    germanName: 'Groin and Rücken stretch',
+    germanName: 'Groin und Rücken Dehnung',
     aliases: '',
     muscle: 'Adduktoren',
     category: 'Legs',
@@ -2488,7 +2489,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Hammer Curls',
-    germanName: 'Hammercurls',
+    germanName: 'Hammer Curls',
     aliases: '',
     muscle: 'Bizeps',
     category: 'Arms',
@@ -2496,7 +2497,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Hammer Grip Incline DB Bench Press',
-    germanName: 'Hammer grip Schräg db Bankdrücken',
+    germanName: 'Schräg Db Bankdrücken, Hammergriff',
     aliases: 'Flachbank|Bench Press|Bankdruecken',
     muscle: 'Brust',
     category: 'Chest',
@@ -2504,7 +2505,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Hamstring-SMR',
-    germanName: 'Beinbeuger smr',
+    germanName: 'Beinbeuger Smr',
     aliases: 'Hamstring SMR',
     muscle: 'Beinbeuger',
     category: 'Legs',
@@ -2512,7 +2513,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Hamstring Stretch',
-    germanName: 'Beinbeuger stretch',
+    germanName: 'Beinbeuger Dehnung',
     aliases: '',
     muscle: 'Beinbeuger',
     category: 'Legs',
@@ -2520,7 +2521,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Handstand Push-Ups',
-    germanName: 'Handstand Liegestützs',
+    germanName: 'Handstand Push Ups',
     aliases: 'Handstand Push Ups|Push-up|Push Up|Liegestütze',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -2528,7 +2529,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Hang Clean',
-    germanName: 'Hang Umsetzen',
+    germanName: 'Hang Clean',
     aliases: '',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -2536,7 +2537,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Hang Clean - Below the Knees',
-    germanName: 'Hang Umsetzen below the knees',
+    germanName: 'Hang Clean Below Knien',
     aliases: 'Hang Clean   Below the Knees',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -2552,7 +2553,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Hang Snatch - Below Knees',
-    germanName: 'Hang Reißen below knees',
+    germanName: 'Hang Reißen Below Knien',
     aliases: 'Hang Snatch   Below Knees',
     muscle: 'Beinbeuger',
     category: 'Legs',
@@ -2560,7 +2561,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Hanging Bar Good Morning',
-    germanName: 'Hanging Bar Good Morning',
+    germanName: 'Hanging Stange Good Morning',
     aliases: '',
     muscle: 'Beinbeuger',
     category: 'Legs',
@@ -2584,7 +2585,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Heaving Snatch Balance',
-    germanName: 'Heaving Reißen balance',
+    germanName: 'Heaving Reißen Balance',
     aliases: '',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -2600,7 +2601,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'High Cable Curls',
-    germanName: 'High Kabel curls',
+    germanName: 'Hoch Curls mit Kabel',
     aliases: '',
     muscle: 'Bizeps',
     category: 'Arms',
@@ -2608,7 +2609,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Hip Circles (prone)',
-    germanName: 'Hüfte circles prone',
+    germanName: 'Hüfte Kreisen Prone',
     aliases: '',
     muscle: 'Abduktoren',
     category: 'Legs',
@@ -2616,7 +2617,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Hip Extension with Bands',
-    germanName: 'Hüfte Strecken with bands',
+    germanName: 'Hüfte Strecken mit Band',
     aliases: '',
     muscle: 'Gesäß',
     category: 'Legs',
@@ -2624,7 +2625,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Hip Flexion with Band',
-    germanName: 'Hüfte flexion with Band',
+    germanName: 'Hüfte Beugen mit Band',
     aliases: '',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -2632,7 +2633,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Hip Lift with Band',
-    germanName: 'Hüfte lift with Band',
+    germanName: 'Hüfte Lift mit Band',
     aliases: '',
     muscle: 'Gesäß',
     category: 'Legs',
@@ -2640,7 +2641,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Hug A Ball',
-    germanName: 'Hug A Ball',
+    germanName: 'Hug Ball',
     aliases: '',
     muscle: 'Unterer Rücken',
     category: 'Back',
@@ -2648,7 +2649,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Hug Knees To Chest',
-    germanName: 'Hug knees to Brust',
+    germanName: 'Hug Knien zu Brust',
     aliases: '',
     muscle: 'Unterer Rücken',
     category: 'Back',
@@ -2664,7 +2665,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Hyperextensions (Back Extensions)',
-    germanName: 'Hyperextensions Rücken extensions',
+    germanName: 'Hyperextensions Rücken Extensions',
     aliases: '',
     muscle: 'Unterer Rücken',
     category: 'Back',
@@ -2672,7 +2673,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Hyperextensions With No Hyperextension Bench',
-    germanName: 'Hyperextensions With No Hyperextension Bench',
+    germanName: 'Hyperextensions No Hyperextension Bank',
     aliases: '',
     muscle: 'Unterer Rücken',
     category: 'Back',
@@ -2680,7 +2681,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'IT Band and Glute Stretch',
-    germanName: 'It Band and Gesäß stretch',
+    germanName: 'It und Gesäß Dehnung mit Band',
     aliases: '',
     muscle: 'Abduktoren',
     category: 'Legs',
@@ -2688,7 +2689,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Iliotibial Tract-SMR',
-    germanName: 'Iliotibial Tract-SMR',
+    germanName: 'Iliotibial Tract Smr',
     aliases: 'Iliotibial Tract SMR',
     muscle: 'Abduktoren',
     category: 'Legs',
@@ -2704,7 +2705,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Incline Barbell Triceps Extension',
-    germanName: 'Schräg Langhantel Trizepsstrecken',
+    germanName: 'Schräg Trizepsstrecken mit Langhantel',
     aliases: '',
     muscle: 'Trizeps',
     category: 'Arms',
@@ -2712,7 +2713,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Incline Bench Pull',
-    germanName: 'Schräg bench Zug',
+    germanName: 'Schräg Bank Pull',
     aliases: '',
     muscle: 'Mittlerer Rücken',
     category: 'Back',
@@ -2720,7 +2721,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Incline Cable Chest Press',
-    germanName: 'Schräg Kabel Brustdrücken',
+    germanName: 'Schräg Brust Drücken mit Kabel',
     aliases: '',
     muscle: 'Brust',
     category: 'Chest',
@@ -2728,7 +2729,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Incline Cable Flye',
-    germanName: 'Schräg Kabel Fliegende',
+    germanName: 'Schräg Fliegende mit Kabel',
     aliases: '',
     muscle: 'Brust',
     category: 'Chest',
@@ -2736,7 +2737,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Incline Dumbbell Bench With Palms Facing In',
-    germanName: 'Schräg Kurzhantel bench with palms facing in',
+    germanName: 'Schräg Bank Palms Facing in mit Kurzhantel',
     aliases: '',
     muscle: 'Brust',
     category: 'Chest',
@@ -2744,7 +2745,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Incline Dumbbell Curl',
-    germanName: 'Schräg Kurzhantel Curl',
+    germanName: 'Schräg Bizepscurl mit Kurzhantel',
     aliases: '',
     muscle: 'Bizeps',
     category: 'Arms',
@@ -2752,7 +2753,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Incline Dumbbell Flyes',
-    germanName: 'Schräg Kurzhantel flyes',
+    germanName: 'Schräg Fliegende mit Kurzhantel',
     aliases: '',
     muscle: 'Brust',
     category: 'Chest',
@@ -2760,7 +2761,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Incline Dumbbell Flyes - With A Twist',
-    germanName: 'Schräg Kurzhantel flyes with a Drehung',
+    germanName: 'Schräg Fliegende Drehung mit Kurzhantel',
     aliases: 'Incline Dumbbell Flyes   With A Twist',
     muscle: 'Brust',
     category: 'Chest',
@@ -2768,7 +2769,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Incline Dumbbell Press',
-    germanName: 'Schräg Kurzhantel Drücken',
+    germanName: 'Schrägbankdrücken mit Kurzhantel',
     aliases: '',
     muscle: 'Brust',
     category: 'Chest',
@@ -2776,7 +2777,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Incline Hammer Curls',
-    germanName: 'Schräg Hammercurls',
+    germanName: 'Schräg Hammer Curls',
     aliases: '',
     muscle: 'Bizeps',
     category: 'Arms',
@@ -2784,7 +2785,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Incline Inner Biceps Curl',
-    germanName: 'Schräg inner Bizepscurl',
+    germanName: 'Schräg Inner Bizepscurl',
     aliases: 'Biceps Curl|Curls',
     muscle: 'Bizeps',
     category: 'Arms',
@@ -2800,7 +2801,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Incline Push-Up Close-Grip',
-    germanName: 'Schräg Liegestütz enger Griff',
+    germanName: 'Schräg Liegestütz, enger Griff',
     aliases: 'Incline Push Up Close Grip|Push-up|Push Up|Liegestütze',
     muscle: 'Trizeps',
     category: 'Arms',
@@ -2808,7 +2809,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Incline Push-Up Depth Jump',
-    germanName: 'Schräg Liegestütz depth jump',
+    germanName: 'Schräg Liegestütz Depth Sprung',
     aliases: 'Incline Push Up Depth Jump|Push-up|Push Up|Liegestütze',
     muscle: 'Brust',
     category: 'Chest',
@@ -2816,7 +2817,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Incline Push-Up Medium',
-    germanName: 'Schräg Liegestütz medium',
+    germanName: 'Schräg Liegestütz Medium',
     aliases: 'Incline Push Up Medium|Push-up|Push Up|Liegestütze',
     muscle: 'Brust',
     category: 'Chest',
@@ -2824,7 +2825,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Incline Push-Up Reverse Grip',
-    germanName: 'Schräg Liegestütz Untergriff',
+    germanName: 'Schräg Liegestütz, Untergriff',
     aliases: 'Incline Push Up Reverse Grip|Push-up|Push Up|Liegestütze',
     muscle: 'Brust',
     category: 'Chest',
@@ -2832,7 +2833,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Incline Push-Up Wide',
-    germanName: 'Schräg Liegestütz wide',
+    germanName: 'Schräg Liegestütz breit',
     aliases: 'Incline Push Up Wide|Push-up|Push Up|Liegestütze',
     muscle: 'Brust',
     category: 'Chest',
@@ -2840,7 +2841,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Intermediate Groin Stretch',
-    germanName: 'Intermediate Groin Stretch',
+    germanName: 'Intermediate Groin Dehnung',
     aliases: '',
     muscle: 'Beinbeuger',
     category: 'Legs',
@@ -2848,7 +2849,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Intermediate Hip Flexor and Quad Stretch',
-    germanName: 'Intermediate Hüfte flexor and quad stretch',
+    germanName: 'Intermediate Hüfte Flexor und Quadrizeps Dehnung',
     aliases: '',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -2856,7 +2857,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Internal Rotation with Band',
-    germanName: 'Internal Rotation with Band',
+    germanName: 'Innenrotation mit Band',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -2872,7 +2873,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Inverted Row with Straps',
-    germanName: 'Inverted Rudern with straps',
+    germanName: 'Inverted Rudern Straps',
     aliases: '',
     muscle: 'Mittlerer Rücken',
     category: 'Back',
@@ -2888,7 +2889,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Iron Crosses (stretch)',
-    germanName: 'Iron Crosses (stretch)',
+    germanName: 'Iron Crosses Dehnung',
     aliases: '',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -2896,7 +2897,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Isometric Chest Squeezes',
-    germanName: 'Isometric Brust squeezes',
+    germanName: 'Isometrisch Brust Squeezes',
     aliases: '',
     muscle: 'Brust',
     category: 'Chest',
@@ -2904,7 +2905,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Isometric Neck Exercise - Front And Back',
-    germanName: 'Isometric Nacken exercise Front and Rücken',
+    germanName: 'Isometrisch Nacken Exercise Front und Rücken',
     aliases: 'Isometric Neck Exercise   Front And Back',
     muscle: 'Nacken',
     category: 'Shoulders',
@@ -2912,7 +2913,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Isometric Neck Exercise - Sides',
-    germanName: 'Isometric Nacken exercise sides',
+    germanName: 'Isometrisch Nacken Exercise Sides',
     aliases: 'Isometric Neck Exercise   Sides',
     muscle: 'Nacken',
     category: 'Shoulders',
@@ -2920,7 +2921,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Isometric Wipers',
-    germanName: 'Isometric Wipers',
+    germanName: 'Isometrisch Wipers',
     aliases: '',
     muscle: 'Brust',
     category: 'Chest',
@@ -2952,7 +2953,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Jefferson Squats',
-    germanName: 'Jefferson Kniebeuges',
+    germanName: 'Jefferson Kniebeugen',
     aliases: 'Squat|Kniebeugen',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -2960,7 +2961,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Jerk Balance',
-    germanName: 'Stoßen balance',
+    germanName: 'Stoßen Balance',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -2976,7 +2977,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Jogging, Treadmill',
-    germanName: 'Jogging, Treadmill',
+    germanName: 'Jogging Treadmill',
     aliases: '',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -2992,7 +2993,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Kettlebell Arnold Press',
-    germanName: 'Kettlebell arnold Drücken',
+    germanName: 'Arnold Press mit Kettlebell',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -3000,7 +3001,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Kettlebell Dead Clean',
-    germanName: 'Kettlebell dead Umsetzen',
+    germanName: 'Dead Umsetzen mit Kettlebell',
     aliases: '',
     muscle: 'Beinbeuger',
     category: 'Legs',
@@ -3008,7 +3009,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Kettlebell Figure 8',
-    germanName: 'Kettlebell Figure 8',
+    germanName: 'Figure 8 mit Kettlebell',
     aliases: '',
     muscle: 'Bauch',
     category: 'Core',
@@ -3016,7 +3017,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Kettlebell Halo',
-    germanName: 'Kettlebell Halo',
+    germanName: 'Halo mit Kettlebell',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -3024,7 +3025,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Kettlebell Halo with Overhead Extension',
-    germanName: 'Kettlebell halo with Überkopf Strecken',
+    germanName: 'Halo Überkopfstrecken mit Kettlebell',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -3032,7 +3033,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Kettlebell Hang Clean',
-    germanName: 'Kettlebell Hang Umsetzen',
+    germanName: 'Hang Clean mit Kettlebell',
     aliases: '',
     muscle: 'Beinbeuger',
     category: 'Legs',
@@ -3040,7 +3041,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Kettlebell One-Legged Deadlift',
-    germanName: 'Kettlebell one legged Kreuzheben',
+    germanName: 'Ein Legged Kreuzheben mit Kettlebell',
     aliases: 'Kettlebell One Legged Deadlift|Deadlift',
     muscle: 'Beinbeuger',
     category: 'Legs',
@@ -3048,7 +3049,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Kettlebell Overhead Triceps Extension',
-    germanName: 'Kettlebell Überkopf Trizepsstrecken',
+    germanName: 'Überkopf Trizepsstrecken mit Kettlebell',
     aliases: '',
     muscle: 'Trizeps',
     category: 'Arms',
@@ -3056,7 +3057,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Kettlebell Pass Between The Legs',
-    germanName: 'Kettlebell Pass Between The Legs',
+    germanName: 'Pass Between Beine mit Kettlebell',
     aliases: '',
     muscle: 'Bauch',
     category: 'Core',
@@ -3064,7 +3065,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Kettlebell Pirate Ships',
-    germanName: 'Kettlebell Pirate Ships',
+    germanName: 'Pirate Ships mit Kettlebell',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -3072,7 +3073,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Kettlebell Pistol Squat',
-    germanName: 'Kettlebell pistol Kniebeuge',
+    germanName: 'Pistol-Kniebeuge mit Kettlebell',
     aliases: 'Squat|Kniebeugen',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -3080,7 +3081,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Kettlebell Seated Press',
-    germanName: 'Kettlebell sitzend Drücken',
+    germanName: 'Sitzend Drücken mit Kettlebell',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -3088,7 +3089,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Kettlebell Seesaw Press',
-    germanName: 'Kettlebell seesaw Drücken',
+    germanName: 'Seesaw Drücken mit Kettlebell',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -3096,7 +3097,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Kettlebell Sumo High Pull',
-    germanName: 'Kettlebell Sumo high Zug',
+    germanName: 'Sumo hoch Pull mit Kettlebell',
     aliases: '',
     muscle: 'Trapez',
     category: 'Shoulders',
@@ -3104,7 +3105,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Kettlebell Thruster',
-    germanName: 'Kettlebell Thruster',
+    germanName: 'Thruster mit Kettlebell',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -3112,7 +3113,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Kettlebell Turkish Get-Up (Lunge style)',
-    germanName: 'Kettlebell turkish get up Ausfallschritt style',
+    germanName: 'Turkish Get hoch Ausfallschritt Style mit Kettlebell',
     aliases: 'Kettlebell Turkish Get Up (Lunge style)|Lunge|Lunges',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -3120,7 +3121,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Kettlebell Turkish Get-Up (Squat style)',
-    germanName: 'Kettlebell turkish get up Kniebeuge style',
+    germanName: 'Turkish Get hoch Kniebeuge Style mit Kettlebell',
     aliases: 'Kettlebell Turkish Get Up (Squat style)|Squat|Kniebeugen',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -3128,7 +3129,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Kettlebell Windmill',
-    germanName: 'Kettlebell Windmill',
+    germanName: 'Windmühle mit Kettlebell',
     aliases: '',
     muscle: 'Bauch',
     category: 'Core',
@@ -3136,7 +3137,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Kipping Muscle Up',
-    germanName: 'Kipping Muscle Up',
+    germanName: 'Kipping Muscle-up',
     aliases: '',
     muscle: 'Latissimus',
     category: 'Back',
@@ -3144,7 +3145,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Knee Across The Body',
-    germanName: 'Knee Across The Body',
+    germanName: 'Knie Across Körper',
     aliases: '',
     muscle: 'Gesäß',
     category: 'Legs',
@@ -3152,7 +3153,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Knee Circles',
-    germanName: 'Knee Circles',
+    germanName: 'Knie Kreisen',
     aliases: '',
     muscle: 'Waden',
     category: 'Calves',
@@ -3160,7 +3161,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Knee/Hip Raise On Parallel Bars',
-    germanName: 'Knee Hüfte Heben on parallel bars',
+    germanName: 'Knee/hip Heben auf Parallel Bars',
     aliases: '',
     muscle: 'Bauch',
     category: 'Core',
@@ -3168,7 +3169,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Knee Tuck Jump',
-    germanName: 'Knee Tuck Jump',
+    germanName: 'Knie Tuck Sprung',
     aliases: '',
     muscle: 'Beinbeuger',
     category: 'Legs',
@@ -3176,7 +3177,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Kneeling Arm Drill',
-    germanName: 'Kneeling Arm Drill',
+    germanName: 'Kniend Arm Drill',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -3184,7 +3185,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Kneeling Cable Crunch With Alternating Oblique Twists',
-    germanName: 'Kneeling Kabel Crunch with wechselnd oblique twists',
+    germanName: 'Kniend Crunch wechselnd Oblique Twists mit Kabel',
     aliases: '',
     muscle: 'Bauch',
     category: 'Core',
@@ -3192,7 +3193,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Kneeling Cable Triceps Extension',
-    germanName: 'Kneeling Kabel Trizepsstrecken',
+    germanName: 'Kniend Trizepsstrecken mit Kabel',
     aliases: '',
     muscle: 'Trizeps',
     category: 'Arms',
@@ -3200,7 +3201,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Kneeling Forearm Stretch',
-    germanName: 'Kneeling Unterarm stretch',
+    germanName: 'Kniend Forearm Dehnung',
     aliases: '',
     muscle: 'Unterarme',
     category: 'Arms',
@@ -3208,7 +3209,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Kneeling High Pulley Row',
-    germanName: 'Kneeling high pulley Rudern',
+    germanName: 'Kniend hoch Pulley Rudern',
     aliases: '',
     muscle: 'Latissimus',
     category: 'Back',
@@ -3216,7 +3217,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Kneeling Hip Flexor',
-    germanName: 'Kneeling Hüfte flexor',
+    germanName: 'Kniend Hüfte Flexor',
     aliases: '',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -3224,7 +3225,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Kneeling Jump Squat',
-    germanName: 'Kneeling jump Kniebeuge',
+    germanName: 'Kniend Sprung Kniebeuge',
     aliases: 'Squat|Kniebeugen',
     muscle: 'Gesäß',
     category: 'Legs',
@@ -3232,7 +3233,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Kneeling Single-Arm High Pulley Row',
-    germanName: 'Kneeling einarmig high pulley Rudern',
+    germanName: 'Kniend einarmig hoch Pulley Rudern',
     aliases: 'Kneeling Single Arm High Pulley Row',
     muscle: 'Latissimus',
     category: 'Back',
@@ -3240,7 +3241,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Kneeling Squat',
-    germanName: 'Kneeling Kniebeuge',
+    germanName: 'Kniend Kniebeuge',
     aliases: 'Squat|Kniebeugen',
     muscle: 'Gesäß',
     category: 'Legs',
@@ -3248,7 +3249,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Landmine 180\'s',
-    germanName: 'Landmine 180\'s',
+    germanName: '180 S mit Landmine',
     aliases: '',
     muscle: 'Bauch',
     category: 'Core',
@@ -3256,7 +3257,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Landmine Linear Jammer',
-    germanName: 'Landmine Linear Jammer',
+    germanName: 'Linear Jammer mit Landmine',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -3264,7 +3265,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Lateral Bound',
-    germanName: 'Lateral Bound',
+    germanName: 'Seitlich Sprung',
     aliases: '',
     muscle: 'Adduktoren',
     category: 'Legs',
@@ -3272,7 +3273,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Lateral Box Jump',
-    germanName: 'Lateral Box Jump',
+    germanName: 'Seitlich Box Jump',
     aliases: '',
     muscle: 'Adduktoren',
     category: 'Legs',
@@ -3280,7 +3281,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Lateral Cone Hops',
-    germanName: 'Lateral Cone Hops',
+    germanName: 'Seitlich Cone Hops',
     aliases: '',
     muscle: 'Adduktoren',
     category: 'Legs',
@@ -3288,7 +3289,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Lateral Raise - With Bands',
-    germanName: 'Seitheben with bands',
+    germanName: 'Seitheben mit Band',
     aliases: 'Lateral Raise   With Bands|Lateral Raise',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -3296,7 +3297,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Latissimus Dorsi-SMR',
-    germanName: 'Latissimus Dorsi-SMR',
+    germanName: 'Latissimus Dorsi Smr',
     aliases: 'Latissimus Dorsi SMR',
     muscle: 'Latissimus',
     category: 'Back',
@@ -3304,7 +3305,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Leg-Over Floor Press',
-    germanName: 'Leg over floor Drücken',
+    germanName: 'Bein vor Floor Press',
     aliases: 'Leg Over Floor Press',
     muscle: 'Brust',
     category: 'Chest',
@@ -3312,7 +3313,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Leg-Up Hamstring Stretch',
-    germanName: 'Leg up Beinbeuger stretch',
+    germanName: 'Bein hoch Beinbeuger Dehnung',
     aliases: 'Leg Up Hamstring Stretch',
     muscle: 'Beinbeuger',
     category: 'Legs',
@@ -3320,7 +3321,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Leg Extensions',
-    germanName: 'Beinstreckers',
+    germanName: 'Bein Extensions',
     aliases: '',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -3328,7 +3329,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Leg Lift',
-    germanName: 'Leg Lift',
+    germanName: 'Bein Lift',
     aliases: '',
     muscle: 'Gesäß',
     category: 'Legs',
@@ -3344,7 +3345,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Leg Pull-In',
-    germanName: 'Leg Zug in',
+    germanName: 'Bein Pull in',
     aliases: 'Leg Pull In',
     muscle: 'Bauch',
     category: 'Core',
@@ -3352,7 +3353,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Leverage Chest Press',
-    germanName: 'Leverage Brustdrücken',
+    germanName: 'Leverage Brust Drücken',
     aliases: '',
     muscle: 'Brust',
     category: 'Chest',
@@ -3368,7 +3369,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Leverage Decline Chest Press',
-    germanName: 'Leverage Negativ Brustdrücken',
+    germanName: 'Leverage negativ Brust Drücken',
     aliases: '',
     muscle: 'Brust',
     category: 'Chest',
@@ -3376,7 +3377,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Leverage High Row',
-    germanName: 'Leverage high Rudern',
+    germanName: 'Leverage hoch Rudern',
     aliases: '',
     muscle: 'Mittlerer Rücken',
     category: 'Back',
@@ -3384,7 +3385,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Leverage Incline Chest Press',
-    germanName: 'Leverage Schräg Brustdrücken',
+    germanName: 'Leverage schräg Brust Drücken',
     aliases: '',
     muscle: 'Brust',
     category: 'Chest',
@@ -3392,7 +3393,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Leverage Iso Row',
-    germanName: 'Leverage iso Rudern',
+    germanName: 'Leverage Iso Rudern',
     aliases: '',
     muscle: 'Latissimus',
     category: 'Back',
@@ -3416,7 +3417,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Linear 3-Part Start Technique',
-    germanName: 'Linear 3-Part Start Technique',
+    germanName: 'Linear 3 Part Start Technique',
     aliases: 'Linear 3 Part Start Technique',
     muscle: 'Beinbeuger',
     category: 'Legs',
@@ -3432,7 +3433,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Linear Depth Jump',
-    germanName: 'Linear Depth Jump',
+    germanName: 'Linear Depth Sprung',
     aliases: '',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -3456,7 +3457,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Looking At Ceiling',
-    germanName: 'Looking At Ceiling',
+    germanName: 'Looking an Ceiling',
     aliases: '',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -3464,7 +3465,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Low Cable Crossover',
-    germanName: 'Low Kabel crossover',
+    germanName: 'Tief Crossover mit Kabel',
     aliases: '',
     muscle: 'Brust',
     category: 'Chest',
@@ -3472,7 +3473,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Low Cable Triceps Extension',
-    germanName: 'Low Kabel Trizepsstrecken',
+    germanName: 'Tief Trizepsstrecken mit Kabel',
     aliases: '',
     muscle: 'Trizeps',
     category: 'Arms',
@@ -3480,7 +3481,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Low Pulley Row To Neck',
-    germanName: 'Low pulley Rudern to Nacken',
+    germanName: 'Tief Pulley Rudern zu Nacken',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -3488,7 +3489,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Lower Back-SMR',
-    germanName: 'Lower Rücken smr',
+    germanName: 'Lower Rücken Smr',
     aliases: 'Lower Back SMR',
     muscle: 'Unterer Rücken',
     category: 'Back',
@@ -3496,7 +3497,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Lower Back Curl',
-    germanName: 'Lower Rücken Curl',
+    germanName: 'Lower Rücken Bizepscurl',
     aliases: '',
     muscle: 'Bauch',
     category: 'Core',
@@ -3504,7 +3505,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Lunge Pass Through',
-    germanName: 'Ausfallschritt pass through',
+    germanName: 'Ausfallschritt Pass durch',
     aliases: 'Lunge|Lunges',
     muscle: 'Beinbeuger',
     category: 'Legs',
@@ -3512,7 +3513,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Lunge Sprint',
-    germanName: 'Ausfallschritt sprint',
+    germanName: 'Ausfallschritt Sprint',
     aliases: 'Lunge|Lunges',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -3520,7 +3521,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Lying Bent Leg Groin',
-    germanName: 'Liegend bent leg groin',
+    germanName: 'Liegend gebeugt Bein Groin',
     aliases: '',
     muscle: 'Adduktoren',
     category: 'Legs',
@@ -3528,7 +3529,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Lying Cable Curl',
-    germanName: 'Liegend Kabel Curl',
+    germanName: 'Liegend Bizepscurl mit Kabel',
     aliases: '',
     muscle: 'Bizeps',
     category: 'Arms',
@@ -3536,7 +3537,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Lying Cambered Barbell Row',
-    germanName: 'Liegend cambered Langhantelrudern',
+    germanName: 'Liegend Cambered Rudern mit Langhantel',
     aliases: '',
     muscle: 'Mittlerer Rücken',
     category: 'Back',
@@ -3544,7 +3545,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Lying Close-Grip Bar Curl On High Pulley',
-    germanName: 'Liegend enger Griff bar Curl on high pulley',
+    germanName: 'Liegend Stange Bizepscurl auf hoch Pulley, enger Griff',
     aliases: 'Lying Close Grip Bar Curl On High Pulley',
     muscle: 'Bizeps',
     category: 'Arms',
@@ -3553,7 +3554,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ExerciseSeed(
     name: 'Lying Close-Grip Barbell Triceps Extension Behind The Head',
     germanName:
-        'Liegend enger Griff Langhantel Trizepsstrecken behind the head',
+        'Liegend Trizepsstrecken hinter Kopf mit Langhantel, enger Griff',
     aliases: 'Lying Close Grip Barbell Triceps Extension Behind The Head',
     muscle: 'Trizeps',
     category: 'Arms',
@@ -3561,7 +3562,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Lying Close-Grip Barbell Triceps Press To Chin',
-    germanName: 'Liegend enger Griff Langhantel Trizeps Drücken to chin',
+    germanName: 'Liegend Trizeps Drücken zu Chin mit Langhantel, enger Griff',
     aliases: 'Lying Close Grip Barbell Triceps Press To Chin',
     muscle: 'Trizeps',
     category: 'Arms',
@@ -3569,7 +3570,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Lying Crossover',
-    germanName: 'Liegend crossover',
+    germanName: 'Liegend Crossover',
     aliases: '',
     muscle: 'Abduktoren',
     category: 'Legs',
@@ -3577,7 +3578,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Lying Dumbbell Tricep Extension',
-    germanName: 'Liegend Kurzhantel tricep Strecken',
+    germanName: 'Liegend Trizepsstrecken mit Kurzhantel',
     aliases: '',
     muscle: 'Trizeps',
     category: 'Arms',
@@ -3585,7 +3586,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Lying Face Down Plate Neck Resistance',
-    germanName: 'Liegend face down plate Nacken resistance',
+    germanName: 'Liegend Face runter Plate Nacken Resistance',
     aliases: '',
     muscle: 'Nacken',
     category: 'Shoulders',
@@ -3593,7 +3594,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Lying Face Up Plate Neck Resistance',
-    germanName: 'Liegend face up plate Nacken resistance',
+    germanName: 'Liegend Face hoch Plate Nacken Resistance',
     aliases: '',
     muscle: 'Nacken',
     category: 'Shoulders',
@@ -3617,7 +3618,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Lying High Bench Barbell Curl',
-    germanName: 'Liegend high bench Langhantel Curl',
+    germanName: 'Liegend hoch Bank Bizepscurl mit Langhantel',
     aliases: '',
     muscle: 'Bizeps',
     category: 'Arms',
@@ -3625,7 +3626,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Lying Leg Curls',
-    germanName: 'Liegend Beinbeuger-Curls',
+    germanName: 'Liegend Bein Curls',
     aliases: '',
     muscle: 'Beinbeuger',
     category: 'Legs',
@@ -3633,7 +3634,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Lying Machine Squat',
-    germanName: 'Liegend Maschine Kniebeuge',
+    germanName: 'Liegend Kniebeuge mit Maschine',
     aliases: 'Squat|Kniebeugen',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -3649,7 +3650,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Lying Prone Quadriceps',
-    germanName: 'Liegend prone quadriceps',
+    germanName: 'Liegend Prone Quadriceps',
     aliases: '',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -3657,7 +3658,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Lying Rear Delt Raise',
-    germanName: 'Liegend Hintere Schulter heben',
+    germanName: 'Liegend hinten Delt Heben',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -3665,7 +3666,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Lying Supine Dumbbell Curl',
-    germanName: 'Liegend supine Kurzhantel Curl',
+    germanName: 'Liegend Supine Bizepscurl mit Kurzhantel',
     aliases: '',
     muscle: 'Bizeps',
     category: 'Arms',
@@ -3673,7 +3674,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Lying T-Bar Row',
-    germanName: 'Liegend t bar Rudern',
+    germanName: 'Liegend T Stange Rudern',
     aliases: 'Lying T Bar Row',
     muscle: 'Mittlerer Rücken',
     category: 'Back',
@@ -3689,7 +3690,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Machine Bench Press',
-    germanName: 'Maschine Bankdrücken',
+    germanName: 'Bankdrücken mit Maschine',
     aliases: 'Flachbank|Bench Press|Bankdruecken',
     muscle: 'Brust',
     category: 'Chest',
@@ -3697,7 +3698,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Machine Bicep Curl',
-    germanName: 'Maschine bicep Curl',
+    germanName: 'Bizeps Bizepscurl mit Maschine',
     aliases: '',
     muscle: 'Bizeps',
     category: 'Arms',
@@ -3705,7 +3706,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Machine Preacher Curls',
-    germanName: 'Maschine Scott-Curls',
+    germanName: 'Preacher Curls mit Maschine',
     aliases: '',
     muscle: 'Bizeps',
     category: 'Arms',
@@ -3713,7 +3714,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Machine Shoulder (Military) Press',
-    germanName: 'Maschine Schulter Military Drücken',
+    germanName: 'Schulter Military Press mit Maschine',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -3721,7 +3722,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Machine Triceps Extension',
-    germanName: 'Maschine Trizepsstrecken',
+    germanName: 'Trizepsstrecken mit Maschine',
     aliases: '',
     muscle: 'Trizeps',
     category: 'Arms',
@@ -3729,7 +3730,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Medicine Ball Chest Pass',
-    germanName: 'Medicine ball Brust pass',
+    germanName: 'Brust Pass mit Medizinball',
     aliases: '',
     muscle: 'Brust',
     category: 'Chest',
@@ -3737,7 +3738,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Medicine Ball Full Twist',
-    germanName: 'Medicine ball full Drehung',
+    germanName: 'Full Drehung mit Medizinball',
     aliases: '',
     muscle: 'Bauch',
     category: 'Core',
@@ -3745,7 +3746,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Medicine Ball Scoop Throw',
-    germanName: 'Medicine Ball Scoop Throw',
+    germanName: 'Scoop Throw mit Medizinball',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -3761,7 +3762,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Middle Back Stretch',
-    germanName: 'Middle Rücken stretch',
+    germanName: 'Middle Rücken Dehnung',
     aliases: '',
     muscle: 'Mittlerer Rücken',
     category: 'Back',
@@ -3809,7 +3810,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Muscle Up',
-    germanName: 'Muscle Up',
+    germanName: 'Muscle-up',
     aliases: '',
     muscle: 'Latissimus',
     category: 'Back',
@@ -3817,7 +3818,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Narrow Stance Hack Squats',
-    germanName: 'Narrow stance Hackenschmidt-Kniebeuges',
+    germanName: 'Eng Stand Hack Kniebeugen',
     aliases: 'Squat|Kniebeugen',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -3825,7 +3826,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Narrow Stance Leg Press',
-    germanName: 'Narrow stance Beinpresse',
+    germanName: 'Eng Stand Beinpresse',
     aliases: 'Leg Press',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -3833,7 +3834,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Narrow Stance Squats',
-    germanName: 'Narrow stance Kniebeuges',
+    germanName: 'Eng Stand Kniebeugen',
     aliases: 'Squat|Kniebeugen',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -3841,7 +3842,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Natural Glute Ham Raise',
-    germanName: 'Natural Gesäß ham Heben',
+    germanName: 'Natural Gesäß Ham Heben',
     aliases: '',
     muscle: 'Beinbeuger',
     category: 'Legs',
@@ -3849,7 +3850,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Neck-SMR',
-    germanName: 'Nacken smr',
+    germanName: 'Nacken Smr',
     aliases: 'Neck SMR',
     muscle: 'Nacken',
     category: 'Shoulders',
@@ -3873,7 +3874,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Oblique Crunches - On The Floor',
-    germanName: 'Oblique Crunches - On The Floor',
+    germanName: 'Oblique Crunches auf Boden',
     aliases: 'Oblique Crunches   On The Floor',
     muscle: 'Bauch',
     category: 'Core',
@@ -3889,7 +3890,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'On-Your-Back Quad Stretch',
-    germanName: 'On your Rücken quad stretch',
+    germanName: 'Auf Your Rücken Quadrizeps Dehnung',
     aliases: 'On Your Back Quad Stretch',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -3897,7 +3898,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'On Your Side Quad Stretch',
-    germanName: 'On your seitlich quad stretch',
+    germanName: 'Auf Your seitlich Quadrizeps Dehnung',
     aliases: '',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -3905,7 +3906,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'One-Arm Dumbbell Row',
-    germanName: 'Einarmig Kurzhantel Rudern',
+    germanName: 'Einarmig Rudern mit Kurzhantel',
     aliases: 'One Arm Dumbbell Row',
     muscle: 'Mittlerer Rücken',
     category: 'Back',
@@ -3913,7 +3914,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'One-Arm Flat Bench Dumbbell Flye',
-    germanName: 'Einarmig flat bench Kurzhantel Fliegende',
+    germanName: 'Einarmig Flat Bank Fliegende mit Kurzhantel',
     aliases: 'One Arm Flat Bench Dumbbell Flye',
     muscle: 'Brust',
     category: 'Chest',
@@ -3921,7 +3922,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'One-Arm High-Pulley Cable Side Bends',
-    germanName: 'Einarmig high pulley Kabel seitlich bends',
+    germanName: 'Einarmig hoch Pulley seitlich Bends mit Kabel',
     aliases: 'One Arm High Pulley Cable Side Bends',
     muscle: 'Bauch',
     category: 'Core',
@@ -3929,7 +3930,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'One-Arm Incline Lateral Raise',
-    germanName: 'Einarmig Schräg Seitheben',
+    germanName: 'Einarmig schräg Seitheben',
     aliases: 'One Arm Incline Lateral Raise|Lateral Raise',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -3937,7 +3938,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'One-Arm Kettlebell Clean',
-    germanName: 'Einarmig Kettlebell Umsetzen',
+    germanName: 'Einarmig Umsetzen mit Kettlebell',
     aliases: 'One Arm Kettlebell Clean',
     muscle: 'Beinbeuger',
     category: 'Legs',
@@ -3945,7 +3946,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'One-Arm Kettlebell Clean and Jerk',
-    germanName: 'Einarmig Kettlebell Umsetzen und Stoßen',
+    germanName: 'Einarmig Umsetzen und Stoßen mit Kettlebell',
     aliases: 'One Arm Kettlebell Clean and Jerk',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -3953,7 +3954,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'One-Arm Kettlebell Floor Press',
-    germanName: 'Einarmig Kettlebell floor Drücken',
+    germanName: 'Einarmig Floor Press mit Kettlebell',
     aliases: 'One Arm Kettlebell Floor Press',
     muscle: 'Brust',
     category: 'Chest',
@@ -3961,7 +3962,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'One-Arm Kettlebell Jerk',
-    germanName: 'Einarmig Kettlebell Stoßen',
+    germanName: 'Einarmig Stoßen mit Kettlebell',
     aliases: 'One Arm Kettlebell Jerk',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -3969,7 +3970,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'One-Arm Kettlebell Military Press To The Side',
-    germanName: 'Einarmig Kettlebell Military Drücken to the seitlich',
+    germanName: 'Einarmig Military Press zu seitlich mit Kettlebell',
     aliases: 'One Arm Kettlebell Military Press To The Side',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -3977,7 +3978,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'One-Arm Kettlebell Para Press',
-    germanName: 'Einarmig Kettlebell para Drücken',
+    germanName: 'Einarmig Para Drücken mit Kettlebell',
     aliases: 'One Arm Kettlebell Para Press',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -3985,7 +3986,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'One-Arm Kettlebell Push Press',
-    germanName: 'Einarmig Kettlebell Drücken Drücken',
+    germanName: 'Einarmig Push Press mit Kettlebell',
     aliases: 'One Arm Kettlebell Push Press',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -3993,7 +3994,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'One-Arm Kettlebell Row',
-    germanName: 'Einarmig Kettlebell Rudern',
+    germanName: 'Einarmig Rudern mit Kettlebell',
     aliases: 'One Arm Kettlebell Row',
     muscle: 'Mittlerer Rücken',
     category: 'Back',
@@ -4001,7 +4002,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'One-Arm Kettlebell Snatch',
-    germanName: 'Einarmig Kettlebell Reißen',
+    germanName: 'Einarmig Reißen mit Kettlebell',
     aliases: 'One Arm Kettlebell Snatch',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -4009,7 +4010,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'One-Arm Kettlebell Split Jerk',
-    germanName: 'Einarmig Kettlebell split Stoßen',
+    germanName: 'Einarmig Split Stoßen mit Kettlebell',
     aliases: 'One Arm Kettlebell Split Jerk',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -4017,7 +4018,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'One-Arm Kettlebell Split Snatch',
-    germanName: 'Einarmig Kettlebell split Reißen',
+    germanName: 'Einarmig Split Reißen mit Kettlebell',
     aliases: 'One Arm Kettlebell Split Snatch',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -4025,7 +4026,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'One-Arm Kettlebell Swings',
-    germanName: 'Einarmig Kettlebell swings',
+    germanName: 'Einarmig Swings mit Kettlebell',
     aliases: 'One Arm Kettlebell Swings',
     muscle: 'Beinbeuger',
     category: 'Legs',
@@ -4033,7 +4034,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'One-Arm Long Bar Row',
-    germanName: 'Einarmig long bar Rudern',
+    germanName: 'Einarmig lang Stange Rudern',
     aliases: 'One Arm Long Bar Row',
     muscle: 'Mittlerer Rücken',
     category: 'Back',
@@ -4041,7 +4042,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'One-Arm Medicine Ball Slam',
-    germanName: 'Einarmig medicine ball slam',
+    germanName: 'Einarmig Slam mit Medizinball',
     aliases: 'One Arm Medicine Ball Slam',
     muscle: 'Bauch',
     category: 'Core',
@@ -4049,7 +4050,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'One-Arm Open Palm Kettlebell Clean',
-    germanName: 'Einarmig open palm Kettlebell Umsetzen',
+    germanName: 'Einarmig Open Palm Umsetzen mit Kettlebell',
     aliases: 'One Arm Open Palm Kettlebell Clean',
     muscle: 'Beinbeuger',
     category: 'Legs',
@@ -4057,7 +4058,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'One-Arm Overhead Kettlebell Squats',
-    germanName: 'Einarmig Überkopf Kettlebell Kniebeuges',
+    germanName: 'Einarmig Überkopf Kniebeugen mit Kettlebell',
     aliases: 'One Arm Overhead Kettlebell Squats|Squat|Kniebeugen',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -4073,7 +4074,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'One-Arm Side Laterals',
-    germanName: 'Einarmig seitlich laterals',
+    germanName: 'Einarmig seitlich Laterals',
     aliases: 'One Arm Side Laterals',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -4081,7 +4082,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'One-Legged Cable Kickback',
-    germanName: 'One legged Kabel Kickback',
+    germanName: 'Ein Legged Kickback mit Kabel',
     aliases: 'One Legged Cable Kickback',
     muscle: 'Gesäß',
     category: 'Legs',
@@ -4089,7 +4090,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'One Arm Against Wall',
-    germanName: 'Einarmig against wall',
+    germanName: 'Einarmig Against Wall',
     aliases: '',
     muscle: 'Latissimus',
     category: 'Back',
@@ -4105,7 +4106,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'One Arm Dumbbell Bench Press',
-    germanName: 'Einarmig Kurzhantel-Bankdrücken',
+    germanName: 'Einarmig Bankdrücken mit Kurzhantel',
     aliases: 'Flachbank|Bench Press|Bankdruecken',
     muscle: 'Brust',
     category: 'Chest',
@@ -4113,7 +4114,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'One Arm Dumbbell Preacher Curl',
-    germanName: 'Einarmig Kurzhantel Scott-Curl',
+    germanName: 'Einarmig Scott-Curl mit Kurzhantel',
     aliases: '',
     muscle: 'Bizeps',
     category: 'Arms',
@@ -4121,7 +4122,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'One Arm Floor Press',
-    germanName: 'Einarmig floor Drücken',
+    germanName: 'Einarmig Floor Press',
     aliases: '',
     muscle: 'Trizeps',
     category: 'Arms',
@@ -4137,7 +4138,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'One Arm Pronated Dumbbell Triceps Extension',
-    germanName: 'Einarmig pronated Kurzhantel Trizepsstrecken',
+    germanName: 'Einarmig Pronated Trizepsstrecken mit Kurzhantel',
     aliases: '',
     muscle: 'Trizeps',
     category: 'Arms',
@@ -4145,7 +4146,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'One Arm Supinated Dumbbell Triceps Extension',
-    germanName: 'Einarmig supinated Kurzhantel Trizepsstrecken',
+    germanName: 'Einarmig Supinated Trizepsstrecken mit Kurzhantel',
     aliases: '',
     muscle: 'Trizeps',
     category: 'Arms',
@@ -4153,7 +4154,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'One Half Locust',
-    germanName: 'One Half Locust',
+    germanName: 'Ein Half Locust',
     aliases: '',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -4161,7 +4162,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'One Handed Hang',
-    germanName: 'One Handed Hang',
+    germanName: 'Ein Handed Hang',
     aliases: '',
     muscle: 'Latissimus',
     category: 'Back',
@@ -4169,7 +4170,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'One Knee To Chest',
-    germanName: 'One knee to Brust',
+    germanName: 'Ein Knie zu Brust',
     aliases: '',
     muscle: 'Gesäß',
     category: 'Legs',
@@ -4177,7 +4178,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'One Leg Barbell Squat',
-    germanName: 'One leg Langhantel Kniebeuge',
+    germanName: 'Ein Bein Kniebeuge mit Langhantel',
     aliases: 'Squat|Kniebeugen',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -4185,7 +4186,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Open Palm Kettlebell Clean',
-    germanName: 'Open palm Kettlebell Umsetzen',
+    germanName: 'Open Palm Umsetzen mit Kettlebell',
     aliases: '',
     muscle: 'Beinbeuger',
     category: 'Legs',
@@ -4193,7 +4194,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Otis-Up',
-    germanName: 'Otis-Up',
+    germanName: 'Otis hoch',
     aliases: 'Otis Up',
     muscle: 'Bauch',
     category: 'Core',
@@ -4201,7 +4202,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Overhead Cable Curl',
-    germanName: 'Überkopf Kabel Curl',
+    germanName: 'Überkopf Bizepscurl mit Kabel',
     aliases: '',
     muscle: 'Bizeps',
     category: 'Arms',
@@ -4209,7 +4210,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Overhead Lat',
-    germanName: 'Überkopf lat',
+    germanName: 'Überkopf Lat',
     aliases: '',
     muscle: 'Latissimus',
     category: 'Back',
@@ -4217,7 +4218,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Overhead Slam',
-    germanName: 'Überkopf slam',
+    germanName: 'Überkopf Slam',
     aliases: '',
     muscle: 'Latissimus',
     category: 'Back',
@@ -4225,7 +4226,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Overhead Squat',
-    germanName: 'Überkopf Kniebeuge',
+    germanName: 'Überkopfkniebeuge',
     aliases: 'Squat|Kniebeugen',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -4233,7 +4234,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Overhead Stretch',
-    germanName: 'Überkopf stretch',
+    germanName: 'Überkopf Dehnung',
     aliases: '',
     muscle: 'Bauch',
     category: 'Core',
@@ -4257,7 +4258,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Pallof Press With Rotation',
-    germanName: 'Pallof Drücken with Rotation',
+    germanName: 'Pallof Drücken Rotation',
     aliases: '',
     muscle: 'Bauch',
     category: 'Core',
@@ -4265,7 +4266,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Palms-Down Dumbbell Wrist Curl Over A Bench',
-    germanName: 'Palms down Kurzhantel Handgelenkscurl over a bench',
+    germanName: 'Palms runter Handgelenkscurl vor Bank mit Kurzhantel',
     aliases: 'Palms Down Dumbbell Wrist Curl Over A Bench',
     muscle: 'Unterarme',
     category: 'Arms',
@@ -4273,7 +4274,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Palms-Down Wrist Curl Over A Bench',
-    germanName: 'Palms down Handgelenkscurl over a bench',
+    germanName: 'Palms runter Handgelenkscurl vor Bank',
     aliases: 'Palms Down Wrist Curl Over A Bench',
     muscle: 'Unterarme',
     category: 'Arms',
@@ -4281,7 +4282,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Palms-Up Barbell Wrist Curl Over A Bench',
-    germanName: 'Palms up Langhantel Handgelenkscurl over a bench',
+    germanName: 'Palms hoch Handgelenkscurl vor Bank mit Langhantel',
     aliases: 'Palms Up Barbell Wrist Curl Over A Bench',
     muscle: 'Unterarme',
     category: 'Arms',
@@ -4289,7 +4290,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Palms-Up Dumbbell Wrist Curl Over A Bench',
-    germanName: 'Palms up Kurzhantel Handgelenkscurl over a bench',
+    germanName: 'Palms hoch Handgelenkscurl vor Bank mit Kurzhantel',
     aliases: 'Palms Up Dumbbell Wrist Curl Over A Bench',
     muscle: 'Unterarme',
     category: 'Arms',
@@ -4297,7 +4298,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Parallel Bar Dip',
-    germanName: 'Parallel Bar Dip',
+    germanName: 'Parallel Stange Dip',
     aliases: '',
     muscle: 'Trizeps',
     category: 'Arms',
@@ -4305,7 +4306,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Pelvic Tilt Into Bridge',
-    germanName: 'Pelvic Tilt Into Bridge',
+    germanName: 'Pelvic Tilt in Bridge',
     aliases: '',
     muscle: 'Unterer Rücken',
     category: 'Back',
@@ -4313,7 +4314,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Peroneals-SMR',
-    germanName: 'Peroneals-SMR',
+    germanName: 'Peroneals Smr',
     aliases: 'Peroneals SMR',
     muscle: 'Waden',
     category: 'Calves',
@@ -4321,7 +4322,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Peroneals Stretch',
-    germanName: 'Peroneals Stretch',
+    germanName: 'Peroneals Dehnung',
     aliases: '',
     muscle: 'Waden',
     category: 'Calves',
@@ -4329,7 +4330,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Physioball Hip Bridge',
-    germanName: 'Physioball Hüfte bridge',
+    germanName: 'Physioball Hüfte Bridge',
     aliases: '',
     muscle: 'Gesäß',
     category: 'Legs',
@@ -4345,7 +4346,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Piriformis-SMR',
-    germanName: 'Piriformis-SMR',
+    germanName: 'Piriformis Smr',
     aliases: 'Piriformis SMR',
     muscle: 'Gesäß',
     category: 'Legs',
@@ -4377,7 +4378,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Platform Hamstring Slides',
-    germanName: 'Platform Beinbeuger slides',
+    germanName: 'Platform Beinbeuger Slides',
     aliases: '',
     muscle: 'Beinbeuger',
     category: 'Legs',
@@ -4385,7 +4386,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Plie Dumbbell Squat',
-    germanName: 'Plie Kurzhantel Kniebeuge',
+    germanName: 'Plie Kniebeuge mit Kurzhantel',
     aliases: 'Squat|Kniebeugen',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -4393,7 +4394,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Plyo Kettlebell Pushups',
-    germanName: 'Plyo Kettlebell Liegestützs',
+    germanName: 'Plyo Pushups mit Kettlebell',
     aliases: 'Push-up|Push Up|Liegestütze',
     muscle: 'Brust',
     category: 'Chest',
@@ -4409,7 +4410,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Posterior Tibialis Stretch',
-    germanName: 'Posterior Tibialis Stretch',
+    germanName: 'Posterior Tibialis Dehnung',
     aliases: '',
     muscle: 'Waden',
     category: 'Calves',
@@ -4417,7 +4418,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Power Clean',
-    germanName: 'Power Umsetzen',
+    germanName: 'Power Clean',
     aliases: '',
     muscle: 'Beinbeuger',
     category: 'Legs',
@@ -4425,7 +4426,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Power Clean from Blocks',
-    germanName: 'Power Umsetzen from blocks',
+    germanName: 'Power Clean aus Blocks',
     aliases: '',
     muscle: 'Beinbeuger',
     category: 'Legs',
@@ -4457,7 +4458,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Power Snatch from Blocks',
-    germanName: 'Power Reißen from blocks',
+    germanName: 'Power Reißen aus Blocks',
     aliases: '',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -4481,7 +4482,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Preacher Hammer Dumbbell Curl',
-    germanName: 'Preacher hammer Kurzhantel Curl',
+    germanName: 'Preacher Hammercurl mit Kurzhantel',
     aliases: '',
     muscle: 'Bizeps',
     category: 'Arms',
@@ -4497,7 +4498,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Prone Manual Hamstring',
-    germanName: 'Prone manual Beinbeuger',
+    germanName: 'Prone Manual Beinbeuger',
     aliases: '',
     muscle: 'Beinbeuger',
     category: 'Legs',
@@ -4513,7 +4514,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Pull Through',
-    germanName: 'Zug through',
+    germanName: 'Pull durch',
     aliases: '',
     muscle: 'Gesäß',
     category: 'Legs',
@@ -4521,7 +4522,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Pullups',
-    germanName: 'Klimmzugs',
+    germanName: 'Pullups',
     aliases: 'Pull-up|Pull Up',
     muscle: 'Latissimus',
     category: 'Back',
@@ -4529,7 +4530,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Push-Up Wide',
-    germanName: 'Liegestütz wide',
+    germanName: 'Liegestütz breit',
     aliases: 'Push Up Wide|Push-up|Push Up|Liegestütze',
     muscle: 'Brust',
     category: 'Chest',
@@ -4537,7 +4538,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Push-Ups - Close Triceps Position',
-    germanName: 'Liegestützs close Trizeps position',
+    germanName: 'Push Ups eng Trizeps Position',
     aliases: 'Push Ups   Close Triceps Position|Push-up|Push Up|Liegestütze',
     muscle: 'Trizeps',
     category: 'Arms',
@@ -4545,7 +4546,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Push-Ups With Feet Elevated',
-    germanName: 'Liegestützs with feet elevated',
+    germanName: 'Push Ups Feet Elevated',
     aliases: 'Push Ups With Feet Elevated|Push-up|Push Up|Liegestütze',
     muscle: 'Brust',
     category: 'Chest',
@@ -4553,7 +4554,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Push-Ups With Feet On An Exercise Ball',
-    germanName: 'Liegestützs with feet on an exercise ball',
+    germanName: 'Push Ups Feet auf mit Gymnastikball',
     aliases:
         'Push Ups With Feet On An Exercise Ball|Push-up|Push Up|Liegestütze',
     muscle: 'Brust',
@@ -4562,7 +4563,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Push Press',
-    germanName: 'Drücken Drücken',
+    germanName: 'Push Press',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -4570,7 +4571,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Push Press - Behind the Neck',
-    germanName: 'Drücken Drücken behind the Nacken',
+    germanName: 'Push Press hinter Nacken',
     aliases: 'Push Press   Behind the Neck',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -4578,7 +4579,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Push Up to Side Plank',
-    germanName: 'Liegestütz to seitlich Unterarmstütz',
+    germanName: 'Liegestütz zu seitlich Unterarmstütz',
     aliases: 'Push-up|Push Up|Liegestütze',
     muscle: 'Brust',
     category: 'Chest',
@@ -4586,7 +4587,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Pushups',
-    germanName: 'Liegestützs',
+    germanName: 'Pushups',
     aliases: 'Push-up|Push Up|Liegestütze',
     muscle: 'Brust',
     category: 'Chest',
@@ -4594,7 +4595,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Pushups (Close and Wide Hand Positions)',
-    germanName: 'Liegestützs close and wide hand positions',
+    germanName: 'Pushups eng und breit Hand Positions',
     aliases: 'Push-up|Push Up|Liegestütze',
     muscle: 'Brust',
     category: 'Chest',
@@ -4610,7 +4611,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Quad Stretch',
-    germanName: 'Quad Stretch',
+    germanName: 'Quadrizeps Dehnung',
     aliases: '',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -4618,7 +4619,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Quadriceps-SMR',
-    germanName: 'Quadriceps-SMR',
+    germanName: 'Quadriceps Smr',
     aliases: 'Quadriceps SMR',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -4642,7 +4643,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Rack Pull with Bands',
-    germanName: 'Rack Zug with bands',
+    germanName: 'Rack Pull mit Band',
     aliases: '',
     muscle: 'Unterer Rücken',
     category: 'Back',
@@ -4658,7 +4659,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Rear Leg Raises',
-    germanName: 'Hintere Beinhebens',
+    germanName: 'Hinten Bein Raises',
     aliases: '',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -4674,7 +4675,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Return Push from Stance',
-    germanName: 'Return Drücken from stance',
+    germanName: 'Return Push aus Stand',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -4682,7 +4683,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Reverse Band Bench Press',
-    germanName: 'Reverse Band Bankdrücken',
+    germanName: 'Reverse Bankdrücken mit Band',
     aliases: 'Flachbank|Bench Press|Bankdruecken',
     muscle: 'Trizeps',
     category: 'Arms',
@@ -4690,7 +4691,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Reverse Band Box Squat',
-    germanName: 'Reverse Band box Kniebeuge',
+    germanName: 'Reverse Box-Kniebeuge mit Band',
     aliases: 'Squat|Kniebeugen',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -4698,7 +4699,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Reverse Band Deadlift',
-    germanName: 'Reverse Band Kreuzheben',
+    germanName: 'Reverse Kreuzheben mit Band',
     aliases: 'Deadlift',
     muscle: 'Unterer Rücken',
     category: 'Back',
@@ -4706,7 +4707,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Reverse Band Power Squat',
-    germanName: 'Reverse Band power Kniebeuge',
+    germanName: 'Reverse Power Kniebeuge mit Band',
     aliases: 'Squat|Kniebeugen',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -4714,7 +4715,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Reverse Band Sumo Deadlift',
-    germanName: 'Reverse Band Sumo-Kreuzheben',
+    germanName: 'Reverse Sumo Kreuzheben mit Band',
     aliases: 'Deadlift',
     muscle: 'Beinbeuger',
     category: 'Legs',
@@ -4722,7 +4723,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Reverse Barbell Curl',
-    germanName: 'Reverse Langhantel Curl',
+    germanName: 'Reverse Curl mit Langhantel',
     aliases: '',
     muscle: 'Bizeps',
     category: 'Arms',
@@ -4730,7 +4731,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Reverse Barbell Preacher Curls',
-    germanName: 'Reverse Langhantel Scott-Curls',
+    germanName: 'Reverse Preacher Curls mit Langhantel',
     aliases: '',
     muscle: 'Bizeps',
     category: 'Arms',
@@ -4738,7 +4739,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Reverse Cable Curl',
-    germanName: 'Reverse Kabel Curl',
+    germanName: 'Reverse Curl mit Kabel',
     aliases: '',
     muscle: 'Bizeps',
     category: 'Arms',
@@ -4754,7 +4755,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Reverse Flyes',
-    germanName: 'Reverse Flyes',
+    germanName: 'Reverse Fliegende',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -4762,7 +4763,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Reverse Flyes With External Rotation',
-    germanName: 'Reverse Flyes With External Rotation',
+    germanName: 'Reverse Fliegende Außenrotation',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -4770,7 +4771,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Reverse Grip Bent-Over Rows',
-    germanName: 'Untergriff Vorgebeugtes Ruderns',
+    germanName: 'Gebeugt vor Rows, Untergriff',
     aliases: 'Reverse Grip Bent Over Rows',
     muscle: 'Mittlerer Rücken',
     category: 'Back',
@@ -4778,7 +4779,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Reverse Grip Triceps Pushdown',
-    germanName: 'Untergriff Trizepsdrücken',
+    germanName: 'Trizepsdrücken, Untergriff',
     aliases: 'Pushdown|Trizeps Pushdown',
     muscle: 'Trizeps',
     category: 'Arms',
@@ -4794,7 +4795,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Reverse Machine Flyes',
-    germanName: 'Reverse Maschine flyes',
+    germanName: 'Reverse Fliegende mit Maschine',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -4818,7 +4819,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Rhomboids-SMR',
-    germanName: 'Rhomboids-SMR',
+    germanName: 'Rhomboids Smr',
     aliases: 'Rhomboids SMR',
     muscle: 'Mittlerer Rücken',
     category: 'Back',
@@ -4850,7 +4851,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Rocket Jump',
-    germanName: 'Rocket Jump',
+    germanName: 'Rocket Sprung',
     aliases: '',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -4866,7 +4867,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Rocky Pull-Ups/Pulldowns',
-    germanName: 'Rocky Klimmzugs Latzugs',
+    germanName: 'Rocky Pull Ups/pulldowns',
     aliases: 'Rocky Pull Ups/Pulldowns|Pull-up|Pull Up|Lat Pulldown|Latzug',
     muscle: 'Latissimus',
     category: 'Back',
@@ -4882,7 +4883,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Romanian Deadlift from Deficit',
-    germanName: 'Rumänisches Kreuzheben from deficit',
+    germanName: 'Rumänisches Kreuzheben aus Defizit',
     aliases: 'Deadlift',
     muscle: 'Beinbeuger',
     category: 'Legs',
@@ -4914,7 +4915,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Rope Straight-Arm Pulldown',
-    germanName: 'Rope straight arm Latzug',
+    germanName: 'Rope gerade Arm Latzug',
     aliases: 'Rope Straight Arm Pulldown|Lat Pulldown|Latzug',
     muscle: 'Latissimus',
     category: 'Back',
@@ -4922,7 +4923,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Round The World Shoulder Stretch',
-    germanName: 'Round the world Schulter stretch',
+    germanName: 'Round World Schulter Dehnung',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -4930,7 +4931,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Rowing, Stationary',
-    germanName: 'Rowing, Stationary',
+    germanName: 'Rowing Stationary',
     aliases: '',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -4938,7 +4939,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Runner\'s Stretch',
-    germanName: 'Runner\'s Stretch',
+    germanName: 'Runner S Dehnung',
     aliases: '',
     muscle: 'Beinbeuger',
     category: 'Legs',
@@ -4946,7 +4947,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Running, Treadmill',
-    germanName: 'Running, Treadmill',
+    germanName: 'Running Treadmill',
     aliases: '',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -4954,7 +4955,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Russian twist',
-    germanName: 'Russische Drehung',
+    germanName: 'Russian Twist',
     aliases: 'Russian Twist',
     muscle: 'Bauch',
     category: 'Core',
@@ -4986,7 +4987,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Scissors Jump',
-    germanName: 'Scissors Jump',
+    germanName: 'Scissors Sprung',
     aliases: '',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -4994,7 +4995,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Seated Band Hamstring Curl',
-    germanName: 'Sitzend Band Beinbeuger Curl',
+    germanName: 'Sitzend Beinbeuger Bizepscurl mit Band',
     aliases: '',
     muscle: 'Beinbeuger',
     category: 'Legs',
@@ -5002,7 +5003,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Seated Barbell Military Press',
-    germanName: 'Sitzend Langhantel Military Drücken',
+    germanName: 'Sitzend Military Press mit Langhantel',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -5010,7 +5011,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Seated Barbell Twist',
-    germanName: 'Sitzend Langhantel Drehung',
+    germanName: 'Sitzend Drehung mit Langhantel',
     aliases: '',
     muscle: 'Bauch',
     category: 'Core',
@@ -5018,7 +5019,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Seated Bent-Over One-Arm Dumbbell Triceps Extension',
-    germanName: 'Sitzend vorgebeugt einarmig Kurzhantel Trizepsstrecken',
+    germanName: 'Sitzend gebeugt vor einarmig Trizepsstrecken mit Kurzhantel',
     aliases: 'Seated Bent Over One Arm Dumbbell Triceps Extension',
     muscle: 'Trizeps',
     category: 'Arms',
@@ -5026,7 +5027,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Seated Bent-Over Rear Delt Raise',
-    germanName: 'Sitzend vorgebeugt Hintere Schulter heben',
+    germanName: 'Sitzend gebeugt vor hinten Delt Heben',
     aliases: 'Seated Bent Over Rear Delt Raise',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -5034,7 +5035,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Seated Bent-Over Two-Arm Dumbbell Triceps Extension',
-    germanName: 'Sitzend vorgebeugt two arm Kurzhantel Trizepsstrecken',
+    germanName: 'Sitzend gebeugt vor beidarmig Trizepsstrecken mit Kurzhantel',
     aliases: 'Seated Bent Over Two Arm Dumbbell Triceps Extension',
     muscle: 'Trizeps',
     category: 'Arms',
@@ -5050,7 +5051,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Seated Cable Rows',
-    germanName: 'Sitzend Kabel rows',
+    germanName: 'Sitzend Rows mit Kabel',
     aliases: '',
     muscle: 'Mittlerer Rücken',
     category: 'Back',
@@ -5058,7 +5059,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Seated Cable Shoulder Press',
-    germanName: 'Sitzend Kabel Schulterdrücken',
+    germanName: 'Sitzend Schulterdrücken mit Kabel',
     aliases: 'Shoulder Press|OHP',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -5066,7 +5067,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Seated calf raise',
-    germanName: 'Sitzendes Wadenheben',
+    germanName: 'Sitzend Wadenheben',
     aliases: 'Seated Calf Raise|Calf Raise',
     muscle: 'Waden',
     category: 'Calves',
@@ -5074,7 +5075,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Seated Calf Stretch',
-    germanName: 'Sitzend Wade stretch',
+    germanName: 'Sitzend Wade Dehnung',
     aliases: '',
     muscle: 'Waden',
     category: 'Calves',
@@ -5082,7 +5083,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Seated Close-Grip Concentration Barbell Curl',
-    germanName: 'Sitzend enger Griff concentration Langhantel Curl',
+    germanName: 'Sitzend Konzentrationscurl mit Langhantel, enger Griff',
     aliases: 'Seated Close Grip Concentration Barbell Curl',
     muscle: 'Bizeps',
     category: 'Arms',
@@ -5090,7 +5091,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Seated Dumbbell Curl',
-    germanName: 'Sitzend Kurzhantel Curl',
+    germanName: 'Sitzend Bizepscurl mit Kurzhantel',
     aliases: '',
     muscle: 'Bizeps',
     category: 'Arms',
@@ -5098,7 +5099,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Seated Dumbbell Inner Biceps Curl',
-    germanName: 'Sitzend Kurzhantel inner Bizepscurl',
+    germanName: 'Sitzend Inner Bizepscurl mit Kurzhantel',
     aliases: 'Biceps Curl|Curls',
     muscle: 'Bizeps',
     category: 'Arms',
@@ -5106,7 +5107,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Seated Dumbbell Palms-Down Wrist Curl',
-    germanName: 'Sitzend Kurzhantel palms down Handgelenkscurl',
+    germanName: 'Sitzend Palms runter Handgelenkscurl mit Kurzhantel',
     aliases: 'Seated Dumbbell Palms Down Wrist Curl',
     muscle: 'Unterarme',
     category: 'Arms',
@@ -5114,7 +5115,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Seated Dumbbell Palms-Up Wrist Curl',
-    germanName: 'Sitzend Kurzhantel palms up Handgelenkscurl',
+    germanName: 'Sitzend Palms hoch Handgelenkscurl mit Kurzhantel',
     aliases: 'Seated Dumbbell Palms Up Wrist Curl',
     muscle: 'Unterarme',
     category: 'Arms',
@@ -5122,7 +5123,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Seated Dumbbell Press',
-    germanName: 'Sitzend Kurzhantel Drücken',
+    germanName: 'Sitzend Drücken mit Kurzhantel',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -5130,7 +5131,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Seated Flat Bench Leg Pull-In',
-    germanName: 'Sitzend flat bench leg Zug in',
+    germanName: 'Sitzend Flat Bank Bein Pull in',
     aliases: 'Seated Flat Bench Leg Pull In',
     muscle: 'Bauch',
     category: 'Core',
@@ -5138,7 +5139,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Seated Floor Hamstring Stretch',
-    germanName: 'Sitzend floor Beinbeuger stretch',
+    germanName: 'Sitzend Boden Beinbeuger Dehnung',
     aliases: '',
     muscle: 'Beinbeuger',
     category: 'Legs',
@@ -5146,7 +5147,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Seated Front Deltoid',
-    germanName: 'Sitzend Front deltoid',
+    germanName: 'Sitzend Front Deltoid',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -5178,7 +5179,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Seated Hamstring and Calf Stretch',
-    germanName: 'Sitzend Beinbeuger and Wade stretch',
+    germanName: 'Sitzend Beinbeuger und Wade Dehnung',
     aliases: '',
     muscle: 'Beinbeuger',
     category: 'Legs',
@@ -5186,7 +5187,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Seated Head Harness Neck Resistance',
-    germanName: 'Sitzend head harness Nacken resistance',
+    germanName: 'Sitzend Kopf Harness Nacken Resistance',
     aliases: '',
     muscle: 'Nacken',
     category: 'Shoulders',
@@ -5194,7 +5195,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Seated Leg Curl',
-    germanName: 'Sitzend Beinbeuger-Curl',
+    germanName: 'Sitzend Bein Bizepscurl',
     aliases: '',
     muscle: 'Beinbeuger',
     category: 'Legs',
@@ -5202,7 +5203,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Seated Leg Tucks',
-    germanName: 'Sitzend leg tucks',
+    germanName: 'Sitzend Bein Tucks',
     aliases: '',
     muscle: 'Bauch',
     category: 'Core',
@@ -5210,7 +5211,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Seated One-Arm Dumbbell Palms-Down Wrist Curl',
-    germanName: 'Sitzend einarmig Kurzhantel palms down Handgelenkscurl',
+    germanName: 'Sitzend einarmig Palms runter Handgelenkscurl mit Kurzhantel',
     aliases: 'Seated One Arm Dumbbell Palms Down Wrist Curl',
     muscle: 'Unterarme',
     category: 'Arms',
@@ -5218,7 +5219,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Seated One-Arm Dumbbell Palms-Up Wrist Curl',
-    germanName: 'Sitzend einarmig Kurzhantel palms up Handgelenkscurl',
+    germanName: 'Sitzend einarmig Palms hoch Handgelenkscurl mit Kurzhantel',
     aliases: 'Seated One Arm Dumbbell Palms Up Wrist Curl',
     muscle: 'Unterarme',
     category: 'Arms',
@@ -5226,7 +5227,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Seated One-arm Cable Pulley Rows',
-    germanName: 'Sitzend einarmig Kabel pulley rows',
+    germanName: 'Sitzend einarmig Pulley Rows mit Kabel',
     aliases: 'Seated One arm Cable Pulley Rows',
     muscle: 'Mittlerer Rücken',
     category: 'Back',
@@ -5234,7 +5235,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Seated Overhead Stretch',
-    germanName: 'Sitzend Überkopf stretch',
+    germanName: 'Sitzend Überkopf Dehnung',
     aliases: '',
     muscle: 'Bauch',
     category: 'Core',
@@ -5242,7 +5243,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Seated Palm-Up Barbell Wrist Curl',
-    germanName: 'Sitzend palm up Langhantel Handgelenkscurl',
+    germanName: 'Sitzend Palm hoch Handgelenkscurl mit Langhantel',
     aliases: 'Seated Palm Up Barbell Wrist Curl',
     muscle: 'Unterarme',
     category: 'Arms',
@@ -5250,7 +5251,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Seated Palms-Down Barbell Wrist Curl',
-    germanName: 'Sitzend palms down Langhantel Handgelenkscurl',
+    germanName: 'Sitzend Palms runter Handgelenkscurl mit Langhantel',
     aliases: 'Seated Palms Down Barbell Wrist Curl',
     muscle: 'Unterarme',
     category: 'Arms',
@@ -5274,7 +5275,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Seated Two-Arm Palms-Up Low-Pulley Wrist Curl',
-    germanName: 'Sitzend two arm palms up low pulley Handgelenkscurl',
+    germanName: 'Sitzend beidarmig Palms hoch tief Pulley Handgelenkscurl',
     aliases: 'Seated Two Arm Palms Up Low Pulley Wrist Curl',
     muscle: 'Unterarme',
     category: 'Arms',
@@ -5282,7 +5283,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'See-Saw Press (Alternating Side Press)',
-    germanName: 'See saw Drücken wechselnd seitlich Drücken',
+    germanName: 'See Saw Drücken wechselnd seitlich Drücken',
     aliases: 'See Saw Press (Alternating Side Press)',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -5298,7 +5299,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Shoulder Circles',
-    germanName: 'Schulter circles',
+    germanName: 'Schulter Kreisen',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -5306,7 +5307,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Shoulder Press - With Bands',
-    germanName: 'Schulterdrücken with bands',
+    germanName: 'Schulterdrücken mit Band',
     aliases: 'Shoulder Press   With Bands|Shoulder Press|OHP',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -5322,7 +5323,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Shoulder Stretch',
-    germanName: 'Schulter stretch',
+    germanName: 'Schulter Dehnung',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -5330,7 +5331,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Side-Lying Floor Stretch',
-    germanName: 'Seitlich liegend floor stretch',
+    germanName: 'Seitlich liegend Boden Dehnung',
     aliases: 'Side Lying Floor Stretch',
     muscle: 'Latissimus',
     category: 'Back',
@@ -5338,7 +5339,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Side Bridge',
-    germanName: 'Seitlich bridge',
+    germanName: 'Seitlich Bridge',
     aliases: '',
     muscle: 'Bauch',
     category: 'Core',
@@ -5346,7 +5347,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Side Hop-Sprint',
-    germanName: 'Seitlich hop sprint',
+    germanName: 'Seitlich Hop Sprint',
     aliases: 'Side Hop Sprint',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -5354,7 +5355,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Side Jackknife',
-    germanName: 'Seitlich jackknife',
+    germanName: 'Seitlich Jackknife',
     aliases: '',
     muscle: 'Bauch',
     category: 'Core',
@@ -5370,7 +5371,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Side Laterals to Front Raise',
-    germanName: 'Seitlich laterals to Frontheben',
+    germanName: 'Seitlich Laterals zu Frontheben',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -5378,7 +5379,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Side Leg Raises',
-    germanName: 'Seitlich Beinhebens',
+    germanName: 'Seitlich Bein Raises',
     aliases: '',
     muscle: 'Adduktoren',
     category: 'Legs',
@@ -5386,7 +5387,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Side Lying Groin Stretch',
-    germanName: 'Seitlich liegend groin stretch',
+    germanName: 'Seitlich liegend Groin Dehnung',
     aliases: '',
     muscle: 'Adduktoren',
     category: 'Legs',
@@ -5394,7 +5395,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Side Neck Stretch',
-    germanName: 'Seitlich Nacken stretch',
+    germanName: 'Seitlich Nacken Dehnung',
     aliases: '',
     muscle: 'Nacken',
     category: 'Shoulders',
@@ -5402,7 +5403,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Side Standing Long Jump',
-    germanName: 'Seitlich stehend long jump',
+    germanName: 'Seitlich stehend lang Sprung',
     aliases: '',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -5410,7 +5411,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Side To Side Chins',
-    germanName: 'Seitlich to seitlich chins',
+    germanName: 'Seitlich zu seitlich Chins',
     aliases: '',
     muscle: 'Latissimus',
     category: 'Back',
@@ -5418,7 +5419,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Side Wrist Pull',
-    germanName: 'Seitlich Handgelenk Zug',
+    germanName: 'Seitlich Handgelenk Pull',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -5426,7 +5427,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Side to Side Box Shuffle',
-    germanName: 'Seitlich to seitlich box shuffle',
+    germanName: 'Seitlich zu seitlich Box Shuffle',
     aliases: '',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -5434,7 +5435,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Single-Arm Cable Crossover',
-    germanName: 'Einarmig Kabel crossover',
+    germanName: 'Einarmig Crossover mit Kabel',
     aliases: 'Single Arm Cable Crossover',
     muscle: 'Brust',
     category: 'Chest',
@@ -5442,7 +5443,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Single-Arm Linear Jammer',
-    germanName: 'Einarmig linear jammer',
+    germanName: 'Einarmig Linear Jammer',
     aliases: 'Single Arm Linear Jammer',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -5458,7 +5459,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Single-Cone Sprint Drill',
-    germanName: 'Single-Cone Sprint Drill',
+    germanName: 'Ein Cone Sprint Drill',
     aliases: 'Single Cone Sprint Drill',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -5466,7 +5467,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Single-Leg High Box Squat',
-    germanName: 'Single leg high box Kniebeuge',
+    germanName: 'Ein Bein hoch Box-Kniebeuge',
     aliases: 'Single Leg High Box Squat|Squat|Kniebeugen',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -5474,7 +5475,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Single-Leg Hop Progression',
-    germanName: 'Single-Leg Hop Progression',
+    germanName: 'Ein Bein Hop Progression',
     aliases: 'Single Leg Hop Progression',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -5482,7 +5483,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Single-Leg Lateral Hop',
-    germanName: 'Single-Leg Lateral Hop',
+    germanName: 'Ein Bein seitlich Hop',
     aliases: 'Single Leg Lateral Hop',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -5490,7 +5491,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Single-Leg Leg Extension',
-    germanName: 'Single leg Beinstrecker',
+    germanName: 'Ein Bein Beinstrecker',
     aliases: 'Single Leg Leg Extension',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -5498,7 +5499,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Single-Leg Stride Jump',
-    germanName: 'Single-Leg Stride Jump',
+    germanName: 'Ein Bein Stride Sprung',
     aliases: 'Single Leg Stride Jump',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -5506,7 +5507,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Single Dumbbell Raise',
-    germanName: 'Single Kurzhantel Heben',
+    germanName: 'Ein Heben mit Kurzhantel',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -5514,7 +5515,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Single Leg Butt Kick',
-    germanName: 'Single Leg Butt Kick',
+    germanName: 'Ein Bein Butt Kick',
     aliases: '',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -5522,7 +5523,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Single Leg Glute Bridge',
-    germanName: 'Single leg Gesäß bridge',
+    germanName: 'Ein Bein Glute Bridge',
     aliases: '',
     muscle: 'Gesäß',
     category: 'Legs',
@@ -5530,7 +5531,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Single Leg Push-off',
-    germanName: 'Single leg Drücken off',
+    germanName: 'Ein Bein Push ab',
     aliases: 'Single Leg Push off',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -5546,7 +5547,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Sit Squats',
-    germanName: 'Sit Kniebeuges',
+    germanName: 'Sit Kniebeugen',
     aliases: 'Squat|Kniebeugen',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -5562,7 +5563,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Sled Drag - Harness',
-    germanName: 'Sled Drag - Harness',
+    germanName: 'Sled Ziehen Harness',
     aliases: 'Sled Drag   Harness',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -5570,7 +5571,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Sled Overhead Backward Walk',
-    germanName: 'Sled Überkopf backward Gehen',
+    germanName: 'Sled Überkopf rückwärts Gehen',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -5586,7 +5587,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Sled Push',
-    germanName: 'Sled Drücken',
+    germanName: 'Sled Push',
     aliases: '',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -5594,7 +5595,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Sled Reverse Flye',
-    germanName: 'Sled reverse Fliegende',
+    germanName: 'Sled Reverse Fliegende',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -5618,7 +5619,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Smith Incline Shoulder Raise',
-    germanName: 'Smith-Maschine Schräg Schulter Heben',
+    germanName: 'Smith schräg Schulter Heben',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -5626,7 +5627,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Smith Machine Behind the Back Shrug',
-    germanName: 'Smith-Maschine Maschine behind the Rücken Schulterheben',
+    germanName: 'Hinter Rücken Schulterheben mit Smith-Maschine',
     aliases: '',
     muscle: 'Trapez',
     category: 'Shoulders',
@@ -5634,7 +5635,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Smith Machine Bench Press',
-    germanName: 'Smith-Maschine Maschine Bankdrücken',
+    germanName: 'Bankdrücken mit Smith-Maschine',
     aliases: 'Flachbank|Bench Press|Bankdruecken',
     muscle: 'Brust',
     category: 'Chest',
@@ -5642,7 +5643,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Smith Machine Bent Over Row',
-    germanName: 'Smith-Maschine Maschine Vorgebeugtes Rudern',
+    germanName: 'Vorgebeugtes Rudern mit Smith-Maschine',
     aliases: '',
     muscle: 'Mittlerer Rücken',
     category: 'Back',
@@ -5650,7 +5651,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Smith Machine Calf Raise',
-    germanName: 'Smith-Maschine Maschine Wadenheben',
+    germanName: 'Wadenheben mit Smith-Maschine',
     aliases: 'Calf Raise',
     muscle: 'Waden',
     category: 'Calves',
@@ -5658,7 +5659,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Smith Machine Close-Grip Bench Press',
-    germanName: 'Smith-Maschine Maschine Enges Bankdrücken',
+    germanName: 'Bankdrücken mit Smith-Maschine, enger Griff',
     aliases:
         'Smith Machine Close Grip Bench Press|Flachbank|Bench Press|Bankdruecken',
     muscle: 'Trizeps',
@@ -5667,7 +5668,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Smith Machine Decline Press',
-    germanName: 'Smith-Maschine Maschine Negativ Drücken',
+    germanName: 'Negativbankdrücken mit Smith-Maschine',
     aliases: '',
     muscle: 'Brust',
     category: 'Chest',
@@ -5675,7 +5676,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Smith Machine Hang Power Clean',
-    germanName: 'Smith-Maschine Maschine hang Power Umsetzen',
+    germanName: 'Hang Power Clean mit Smith-Maschine',
     aliases: '',
     muscle: 'Beinbeuger',
     category: 'Legs',
@@ -5683,7 +5684,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Smith Machine Hip Raise',
-    germanName: 'Smith-Maschine Maschine Hüfte Heben',
+    germanName: 'Hüfte Heben mit Smith-Maschine',
     aliases: '',
     muscle: 'Bauch',
     category: 'Core',
@@ -5691,7 +5692,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Smith Machine Incline Bench Press',
-    germanName: 'Smith-Maschine Maschine Schrägbankdrücken',
+    germanName: 'Schrägbankdrücken mit Smith-Maschine',
     aliases: 'Flachbank|Bench Press|Bankdruecken|Incline Bench|Schrägbank',
     muscle: 'Brust',
     category: 'Chest',
@@ -5699,7 +5700,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Smith Machine Leg Press',
-    germanName: 'Smith-Maschine Maschine Beinpresse',
+    germanName: 'Beinpresse mit Smith-Maschine',
     aliases: 'Leg Press',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -5707,7 +5708,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Smith Machine One-Arm Upright Row',
-    germanName: 'Smith-Maschine Maschine einarmig Aufrechtes Rudern',
+    germanName: 'Einarmig Aufrechtes Rudern mit Smith-Maschine',
     aliases: 'Smith Machine One Arm Upright Row',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -5715,7 +5716,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Smith Machine Overhead Shoulder Press',
-    germanName: 'Smith-Maschine Maschine Überkopf Schulterdrücken',
+    germanName: 'Überkopf Schulterdrücken mit Smith-Maschine',
     aliases: 'Shoulder Press|OHP',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -5723,7 +5724,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Smith Machine Pistol Squat',
-    germanName: 'Smith-Maschine Maschine pistol Kniebeuge',
+    germanName: 'Pistol-Kniebeuge mit Smith-Maschine',
     aliases: 'Squat|Kniebeugen',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -5731,7 +5732,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Smith Machine Reverse Calf Raises',
-    germanName: 'Smith-Maschine Maschine reverse Wadenhebens',
+    germanName: 'Reverse Wade Raises mit Smith-Maschine',
     aliases: 'Calf Raise',
     muscle: 'Waden',
     category: 'Calves',
@@ -5739,7 +5740,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Smith Machine Squat',
-    germanName: 'Smith-Maschine Maschine Kniebeuge',
+    germanName: 'Kniebeuge mit Smith-Maschine',
     aliases: 'Squat|Kniebeugen',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -5747,7 +5748,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Smith Machine Stiff-Legged Deadlift',
-    germanName: 'Smith-Maschine Maschine stiff legged Kreuzheben',
+    germanName: 'Gestreckt Legged Kreuzheben mit Smith-Maschine',
     aliases: 'Smith Machine Stiff Legged Deadlift|Deadlift',
     muscle: 'Beinbeuger',
     category: 'Legs',
@@ -5755,7 +5756,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Smith Machine Upright Row',
-    germanName: 'Smith-Maschine Maschine Aufrechtes Rudern',
+    germanName: 'Aufrechtes Rudern mit Smith-Maschine',
     aliases: '',
     muscle: 'Trapez',
     category: 'Shoulders',
@@ -5763,7 +5764,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Smith Single-Leg Split Squat',
-    germanName: 'Smith-Maschine single leg Geteilte Kniebeuge',
+    germanName: 'Smith ein Bein Split-Kniebeuge',
     aliases: 'Smith Single Leg Split Squat|Squat|Kniebeugen',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -5779,7 +5780,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Snatch Balance',
-    germanName: 'Reißen balance',
+    germanName: 'Reißen Balance',
     aliases: '',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -5795,7 +5796,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Snatch Pull',
-    germanName: 'Reißen Zug',
+    germanName: 'Reißen Pull',
     aliases: '',
     muscle: 'Beinbeuger',
     category: 'Legs',
@@ -5811,7 +5812,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Snatch from Blocks',
-    germanName: 'Reißen from blocks',
+    germanName: 'Reißen aus Blocks',
     aliases: '',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -5819,7 +5820,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Speed Band Overhead Triceps',
-    germanName: 'Speed Band Überkopf Trizeps',
+    germanName: 'Speed Überkopf Trizeps mit Band',
     aliases: '',
     muscle: 'Trizeps',
     category: 'Arms',
@@ -5827,7 +5828,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Speed Box Squat',
-    germanName: 'Speed box Kniebeuge',
+    germanName: 'Speed Box-Kniebeuge',
     aliases: 'Squat|Kniebeugen',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -5835,7 +5836,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Speed Squats',
-    germanName: 'Speed Kniebeuges',
+    germanName: 'Speed Kniebeugen',
     aliases: 'Squat|Kniebeugen',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -5867,7 +5868,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Spinal Stretch',
-    germanName: 'Spinal Stretch',
+    germanName: 'Spinal Dehnung',
     aliases: '',
     muscle: 'Mittlerer Rücken',
     category: 'Back',
@@ -5891,7 +5892,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Split Jump',
-    germanName: 'Split Jump',
+    germanName: 'Split Sprung',
     aliases: '',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -5907,7 +5908,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Split Squat with Dumbbells',
-    germanName: 'Geteilte Kniebeuge with Kurzhanteln',
+    germanName: 'Split-Kniebeuge mit Kurzhantel',
     aliases: 'Squat|Kniebeugen',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -5915,7 +5916,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Split Squats',
-    germanName: 'Geteilte Kniebeuges',
+    germanName: 'Split Kniebeugen',
     aliases: 'Squat|Kniebeugen',
     muscle: 'Beinbeuger',
     category: 'Legs',
@@ -5931,7 +5932,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Squat with Bands',
-    germanName: 'Kniebeuge with bands',
+    germanName: 'Kniebeuge mit Band',
     aliases: 'Squat|Kniebeugen',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -5939,7 +5940,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Squat with Chains',
-    germanName: 'Kniebeuge with chains',
+    germanName: 'Kniebeuge mit Ketten',
     aliases: 'Squat|Kniebeugen',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -5947,7 +5948,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Squat with Plate Movers',
-    germanName: 'Kniebeuge with plate movers',
+    germanName: 'Kniebeuge Plate Movers',
     aliases: 'Squat|Kniebeugen',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -5955,7 +5956,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Squats - With Bands',
-    germanName: 'Kniebeuges with bands',
+    germanName: 'Kniebeugen mit Band',
     aliases: 'Squats   With Bands|Squat|Kniebeugen',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -5971,7 +5972,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Standing Alternating Dumbbell Press',
-    germanName: 'Stehend wechselnd Kurzhantel Drücken',
+    germanName: 'Stehend wechselnd Drücken mit Kurzhantel',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -5979,7 +5980,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Standing Barbell Calf Raise',
-    germanName: 'Stehend Langhantel Wadenheben',
+    germanName: 'Stehend Wadenheben mit Langhantel',
     aliases: 'Calf Raise',
     muscle: 'Waden',
     category: 'Calves',
@@ -5987,7 +5988,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Standing Barbell Press Behind Neck',
-    germanName: 'Stehend Langhantel Drücken behind Nacken',
+    germanName: 'Stehend Drücken hinter Nacken mit Langhantel',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -5995,7 +5996,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Standing Bent-Over One-Arm Dumbbell Triceps Extension',
-    germanName: 'Stehend vorgebeugt einarmig Kurzhantel Trizepsstrecken',
+    germanName: 'Stehend gebeugt vor einarmig Trizepsstrecken mit Kurzhantel',
     aliases: 'Standing Bent Over One Arm Dumbbell Triceps Extension',
     muscle: 'Trizeps',
     category: 'Arms',
@@ -6003,7 +6004,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Standing Bent-Over Two-Arm Dumbbell Triceps Extension',
-    germanName: 'Stehend vorgebeugt two arm Kurzhantel Trizepsstrecken',
+    germanName: 'Stehend gebeugt vor beidarmig Trizepsstrecken mit Kurzhantel',
     aliases: 'Standing Bent Over Two Arm Dumbbell Triceps Extension',
     muscle: 'Trizeps',
     category: 'Arms',
@@ -6011,7 +6012,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Standing Biceps Cable Curl',
-    germanName: 'Stehend Bizeps Kabel Curl',
+    germanName: 'Stehend Bizepscurl mit Kabel',
     aliases: '',
     muscle: 'Bizeps',
     category: 'Arms',
@@ -6019,7 +6020,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Standing Biceps Stretch',
-    germanName: 'Stehend Bizeps stretch',
+    germanName: 'Stehend Bizeps Dehnung',
     aliases: '',
     muscle: 'Bizeps',
     category: 'Arms',
@@ -6027,7 +6028,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Standing Bradford Press',
-    germanName: 'Stehend bradford Drücken',
+    germanName: 'Stehend Bradford Drücken',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -6035,7 +6036,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Standing Cable Chest Press',
-    germanName: 'Stehend Kabel Brustdrücken',
+    germanName: 'Stehend Brust Drücken mit Kabel',
     aliases: '',
     muscle: 'Brust',
     category: 'Chest',
@@ -6043,7 +6044,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Standing Cable Lift',
-    germanName: 'Stehend Kabel lift',
+    germanName: 'Stehend Lift mit Kabel',
     aliases: '',
     muscle: 'Bauch',
     category: 'Core',
@@ -6051,7 +6052,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Standing Cable Wood Chop',
-    germanName: 'Stehend Kabel wood chop',
+    germanName: 'Stehend Wood Chop mit Kabel',
     aliases: '',
     muscle: 'Bauch',
     category: 'Core',
@@ -6059,7 +6060,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Standing Calf Raises',
-    germanName: 'Stehend Wadenhebens',
+    germanName: 'Stehend Wade Raises',
     aliases: 'Calf Raise',
     muscle: 'Waden',
     category: 'Calves',
@@ -6075,7 +6076,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Standing Dumbbell Calf Raise',
-    germanName: 'Stehend Kurzhantel Wadenheben',
+    germanName: 'Stehend Wadenheben mit Kurzhantel',
     aliases: 'Calf Raise',
     muscle: 'Waden',
     category: 'Calves',
@@ -6083,7 +6084,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Standing Dumbbell Press',
-    germanName: 'Stehend Kurzhantel Drücken',
+    germanName: 'Stehend Drücken mit Kurzhantel',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -6091,7 +6092,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Standing Dumbbell Reverse Curl',
-    germanName: 'Stehend Kurzhantel reverse Curl',
+    germanName: 'Stehend Reverse Curl mit Kurzhantel',
     aliases: '',
     muscle: 'Bizeps',
     category: 'Arms',
@@ -6099,7 +6100,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Standing Dumbbell Straight-Arm Front Delt Raise Above Head',
-    germanName: 'Stehend Kurzhantel straight arm Front delt Heben above head',
+    germanName: 'Stehend gerade Arm Front Delt Heben Above Kopf mit Kurzhantel',
     aliases: 'Standing Dumbbell Straight Arm Front Delt Raise Above Head',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -6107,7 +6108,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Standing Dumbbell Triceps Extension',
-    germanName: 'Stehend Kurzhantel Trizepsstrecken',
+    germanName: 'Stehend Trizepsstrecken mit Kurzhantel',
     aliases: '',
     muscle: 'Trizeps',
     category: 'Arms',
@@ -6115,7 +6116,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Standing Dumbbell Upright Row',
-    germanName: 'Stehend Kurzhantel Aufrechtes Rudern',
+    germanName: 'Stehend Aufrechtes Rudern mit Kurzhantel',
     aliases: '',
     muscle: 'Trapez',
     category: 'Shoulders',
@@ -6123,7 +6124,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Standing Elevated Quad Stretch',
-    germanName: 'Stehend elevated quad stretch',
+    germanName: 'Stehend Elevated Quadrizeps Dehnung',
     aliases: '',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -6131,7 +6132,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Standing Front Barbell Raise Over Head',
-    germanName: 'Stehend Front Langhantel Heben over head',
+    germanName: 'Stehend Frontheben vor Kopf mit Langhantel',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -6139,7 +6140,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Standing Gastrocnemius Calf Stretch',
-    germanName: 'Stehend gastrocnemius Wade stretch',
+    germanName: 'Stehend Gastrocnemius Wade Dehnung',
     aliases: '',
     muscle: 'Waden',
     category: 'Calves',
@@ -6147,7 +6148,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Standing Hamstring and Calf Stretch',
-    germanName: 'Stehend Beinbeuger and Wade stretch',
+    germanName: 'Stehend Beinbeuger und Wade Dehnung',
     aliases: '',
     muscle: 'Beinbeuger',
     category: 'Legs',
@@ -6155,7 +6156,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Standing Hip Circles',
-    germanName: 'Stehend Hüfte circles',
+    germanName: 'Stehend Hüfte Kreisen',
     aliases: '',
     muscle: 'Abduktoren',
     category: 'Legs',
@@ -6163,7 +6164,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Standing Hip Flexors',
-    germanName: 'Stehend Hüfte flexors',
+    germanName: 'Stehend Hüfte Flexors',
     aliases: '',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -6171,7 +6172,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Standing Inner-Biceps Curl',
-    germanName: 'Stehend inner Bizepscurl',
+    germanName: 'Stehend Inner Bizepscurl',
     aliases: 'Standing Inner Biceps Curl|Biceps Curl|Curls',
     muscle: 'Bizeps',
     category: 'Arms',
@@ -6179,7 +6180,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Standing Lateral Stretch',
-    germanName: 'Stehend lateral stretch',
+    germanName: 'Stehend seitlich Dehnung',
     aliases: '',
     muscle: 'Bauch',
     category: 'Core',
@@ -6187,7 +6188,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Standing Leg Curl',
-    germanName: 'Stehend Beinbeuger-Curl',
+    germanName: 'Stehend Bein Bizepscurl',
     aliases: '',
     muscle: 'Beinbeuger',
     category: 'Legs',
@@ -6195,7 +6196,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Standing Long Jump',
-    germanName: 'Stehend long jump',
+    germanName: 'Stehend lang Sprung',
     aliases: '',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -6203,7 +6204,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Standing Low-Pulley Deltoid Raise',
-    germanName: 'Stehend low pulley deltoid Heben',
+    germanName: 'Stehend tief Pulley Deltoid Heben',
     aliases: 'Standing Low Pulley Deltoid Raise',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -6211,7 +6212,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Standing Low-Pulley One-Arm Triceps Extension',
-    germanName: 'Stehend low pulley einarmig Trizepsstrecken',
+    germanName: 'Stehend tief Pulley einarmig Trizepsstrecken',
     aliases: 'Standing Low Pulley One Arm Triceps Extension',
     muscle: 'Trizeps',
     category: 'Arms',
@@ -6219,7 +6220,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Standing Military Press',
-    germanName: 'Stehend Military Drücken',
+    germanName: 'Stehend Military Press',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -6227,7 +6228,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Standing Olympic Plate Hand Squeeze',
-    germanName: 'Stehend olympic plate hand squeeze',
+    germanName: 'Stehend Olympic Plate Hand Squeeze',
     aliases: '',
     muscle: 'Unterarme',
     category: 'Arms',
@@ -6235,7 +6236,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Standing One-Arm Cable Curl',
-    germanName: 'Stehend einarmig Kabel Curl',
+    germanName: 'Stehend einarmig Bizepscurl mit Kabel',
     aliases: 'Standing One Arm Cable Curl',
     muscle: 'Bizeps',
     category: 'Arms',
@@ -6243,7 +6244,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Standing One-Arm Dumbbell Curl Over Incline Bench',
-    germanName: 'Stehend einarmig Kurzhantel Curl over Schräg bench',
+    germanName: 'Stehend einarmig Bizepscurl vor schräg Bank mit Kurzhantel',
     aliases: 'Standing One Arm Dumbbell Curl Over Incline Bench',
     muscle: 'Bizeps',
     category: 'Arms',
@@ -6251,7 +6252,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Standing One-Arm Dumbbell Triceps Extension',
-    germanName: 'Stehend einarmig Kurzhantel Trizepsstrecken',
+    germanName: 'Stehend einarmig Trizepsstrecken mit Kurzhantel',
     aliases: 'Standing One Arm Dumbbell Triceps Extension',
     muscle: 'Trizeps',
     category: 'Arms',
@@ -6259,7 +6260,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Standing Overhead Barbell Triceps Extension',
-    germanName: 'Stehend Überkopf Langhantel Trizepsstrecken',
+    germanName: 'Stehend Überkopf Trizepsstrecken mit Langhantel',
     aliases: '',
     muscle: 'Trizeps',
     category: 'Arms',
@@ -6267,7 +6268,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Standing Palm-In One-Arm Dumbbell Press',
-    germanName: 'Stehend palm in einarmig Kurzhantel Drücken',
+    germanName: 'Stehend Palm in einarmig Drücken mit Kurzhantel',
     aliases: 'Standing Palm In One Arm Dumbbell Press',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -6275,7 +6276,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Standing Palms-In Dumbbell Press',
-    germanName: 'Stehend palms in Kurzhantel Drücken',
+    germanName: 'Stehend Drücken mit Kurzhantel, Handflächen zueinander',
     aliases: 'Standing Palms In Dumbbell Press',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -6283,7 +6284,8 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Standing Palms-Up Barbell Behind The Back Wrist Curl',
-    germanName: 'Stehend palms up Langhantel behind the Rücken Handgelenkscurl',
+    germanName:
+        'Stehend Palms hoch hinter Rücken Handgelenkscurl mit Langhantel',
     aliases: 'Standing Palms Up Barbell Behind The Back Wrist Curl',
     muscle: 'Unterarme',
     category: 'Arms',
@@ -6291,7 +6293,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Standing Pelvic Tilt',
-    germanName: 'Stehend pelvic tilt',
+    germanName: 'Stehend Pelvic Tilt',
     aliases: '',
     muscle: 'Unterer Rücken',
     category: 'Back',
@@ -6299,7 +6301,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Standing Rope Crunch',
-    germanName: 'Stehend rope Crunch',
+    germanName: 'Stehend Rope Crunch',
     aliases: '',
     muscle: 'Bauch',
     category: 'Core',
@@ -6307,7 +6309,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Standing Soleus And Achilles Stretch',
-    germanName: 'Stehend soleus and achilles stretch',
+    germanName: 'Stehend Soleus und Achilles Dehnung',
     aliases: '',
     muscle: 'Waden',
     category: 'Calves',
@@ -6315,7 +6317,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Standing Toe Touches',
-    germanName: 'Stehend toe touches',
+    germanName: 'Stehend Toe Touches',
     aliases: '',
     muscle: 'Beinbeuger',
     category: 'Legs',
@@ -6323,7 +6325,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Standing Towel Triceps Extension',
-    germanName: 'Stehend towel Trizepsstrecken',
+    germanName: 'Stehend Towel Trizepsstrecken',
     aliases: '',
     muscle: 'Trizeps',
     category: 'Arms',
@@ -6331,7 +6333,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Standing Two-Arm Overhead Throw',
-    germanName: 'Stehend two arm Überkopf throw',
+    germanName: 'Stehend beidarmig Überkopf Throw',
     aliases: 'Standing Two Arm Overhead Throw',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -6339,7 +6341,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Star Jump',
-    germanName: 'Star Jump',
+    germanName: 'Star Sprung',
     aliases: '',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -6347,7 +6349,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Step-up with Knee Raise',
-    germanName: 'Step-up with knee Heben',
+    germanName: 'Step-up Knie Heben',
     aliases: 'Step up with Knee Raise',
     muscle: 'Gesäß',
     category: 'Legs',
@@ -6363,7 +6365,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Stiff-Legged Barbell Deadlift',
-    germanName: 'Stiff legged Langhantel Kreuzheben',
+    germanName: 'Gestreckt Legged Kreuzheben mit Langhantel',
     aliases: 'Stiff Legged Barbell Deadlift|Deadlift',
     muscle: 'Beinbeuger',
     category: 'Legs',
@@ -6371,7 +6373,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Stiff-Legged Dumbbell Deadlift',
-    germanName: 'Stiff legged Kurzhantel Kreuzheben',
+    germanName: 'Gestreckt Legged Kreuzheben mit Kurzhantel',
     aliases: 'Stiff Legged Dumbbell Deadlift|Deadlift',
     muscle: 'Beinbeuger',
     category: 'Legs',
@@ -6379,7 +6381,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Stiff Leg Barbell Good Morning',
-    germanName: 'Gestrecktes Bein Langhantel Good Morning',
+    germanName: 'Gestreckt Bein Good Morning mit Langhantel',
     aliases: '',
     muscle: 'Unterer Rücken',
     category: 'Back',
@@ -6395,7 +6397,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Straight-Arm Dumbbell Pullover',
-    germanName: 'Straight arm Kurzhantel Überzüge',
+    germanName: 'Gerade Arm Überzug mit Kurzhantel',
     aliases: 'Straight Arm Dumbbell Pullover',
     muscle: 'Brust',
     category: 'Chest',
@@ -6403,7 +6405,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Straight-Arm Pulldown',
-    germanName: 'Straight arm Latzug',
+    germanName: 'Gerade Arm Latzug',
     aliases: 'Straight Arm Pulldown|Lat Pulldown|Latzug',
     muscle: 'Latissimus',
     category: 'Back',
@@ -6411,7 +6413,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Straight Bar Bench Mid Rows',
-    germanName: 'Straight Bar Bench Mid Rows',
+    germanName: 'Gerade Stange Bank Mid Rows',
     aliases: '',
     muscle: 'Mittlerer Rücken',
     category: 'Back',
@@ -6419,7 +6421,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Straight Raises on Incline Bench',
-    germanName: 'Straight raises on Schräg bench',
+    germanName: 'Gerade Raises auf schräg Bank',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -6427,7 +6429,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Stride Jump Crossover',
-    germanName: 'Stride Jump Crossover',
+    germanName: 'Stride Sprung Crossover',
     aliases: '',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -6435,7 +6437,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Sumo Deadlift',
-    germanName: 'Sumo-Kreuzheben',
+    germanName: 'Sumo Kreuzheben',
     aliases: 'Deadlift',
     muscle: 'Beinbeuger',
     category: 'Legs',
@@ -6443,7 +6445,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Sumo Deadlift with Bands',
-    germanName: 'Sumo-Kreuzheben with bands',
+    germanName: 'Sumo Kreuzheben mit Band',
     aliases: 'Deadlift',
     muscle: 'Beinbeuger',
     category: 'Legs',
@@ -6451,7 +6453,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Sumo Deadlift with Chains',
-    germanName: 'Sumo-Kreuzheben with chains',
+    germanName: 'Sumo Kreuzheben mit Ketten',
     aliases: 'Deadlift',
     muscle: 'Beinbeuger',
     category: 'Legs',
@@ -6467,7 +6469,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Supine Chest Throw',
-    germanName: 'Supine Brust throw',
+    germanName: 'Supine Brust Throw',
     aliases: '',
     muscle: 'Trizeps',
     category: 'Arms',
@@ -6475,7 +6477,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Supine One-Arm Overhead Throw',
-    germanName: 'Supine einarmig Überkopf throw',
+    germanName: 'Supine einarmig Überkopf Throw',
     aliases: 'Supine One Arm Overhead Throw',
     muscle: 'Bauch',
     category: 'Core',
@@ -6483,7 +6485,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Supine Two-Arm Overhead Throw',
-    germanName: 'Supine two arm Überkopf throw',
+    germanName: 'Supine beidarmig Überkopf Throw',
     aliases: 'Supine Two Arm Overhead Throw',
     muscle: 'Bauch',
     category: 'Core',
@@ -6523,7 +6525,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Suspended Split Squat',
-    germanName: 'Suspended Geteilte Kniebeuge',
+    germanName: 'Suspended Split-Kniebeuge',
     aliases: 'Squat|Kniebeugen',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -6539,7 +6541,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'T-Bar Row with Handle',
-    germanName: 'T bar Rudern with handle',
+    germanName: 'T Stange Rudern Handle',
     aliases: 'T Bar Row with Handle',
     muscle: 'Mittlerer Rücken',
     category: 'Back',
@@ -6555,7 +6557,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'The Straddle',
-    germanName: 'The Straddle',
+    germanName: 'Straddle',
     aliases: '',
     muscle: 'Beinbeuger',
     category: 'Legs',
@@ -6603,7 +6605,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Trail Running/Walking',
-    germanName: 'Trail Running/Walking',
+    germanName: 'Trail Running/walking',
     aliases: '',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -6611,7 +6613,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Trap Bar Deadlift',
-    germanName: 'Trap Bar Kreuzheben',
+    germanName: 'Kreuzheben mit Trap Bar',
     aliases: 'Deadlift',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -6619,7 +6621,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Tricep Dumbbell Kickback',
-    germanName: 'Tricep Kurzhantel Kickback',
+    germanName: 'Trizeps Kickback mit Kurzhantel',
     aliases: '',
     muscle: 'Trizeps',
     category: 'Arms',
@@ -6627,7 +6629,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Tricep Side Stretch',
-    germanName: 'Tricep seitlich stretch',
+    germanName: 'Trizeps seitlich Dehnung',
     aliases: '',
     muscle: 'Trizeps',
     category: 'Arms',
@@ -6635,7 +6637,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Triceps Overhead Extension with Rope',
-    germanName: 'Trizeps Überkopf Strecken with rope',
+    germanName: 'Trizeps Überkopfstrecken Rope',
     aliases: '',
     muscle: 'Trizeps',
     category: 'Arms',
@@ -6651,7 +6653,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Triceps Pushdown - Rope Attachment',
-    germanName: 'Trizepsdrücken rope attachment',
+    germanName: 'Trizepsdrücken Rope Attachment',
     aliases: 'Triceps Pushdown   Rope Attachment|Pushdown|Trizeps Pushdown',
     muscle: 'Trizeps',
     category: 'Arms',
@@ -6659,7 +6661,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Triceps Pushdown - V-Bar Attachment',
-    germanName: 'Trizepsdrücken v bar attachment',
+    germanName: 'Trizepsdrücken V Stange Attachment',
     aliases: 'Triceps Pushdown   V Bar Attachment|Pushdown|Trizeps Pushdown',
     muscle: 'Trizeps',
     category: 'Arms',
@@ -6667,7 +6669,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Triceps Stretch',
-    germanName: 'Trizeps stretch',
+    germanName: 'Trizeps Dehnung',
     aliases: '',
     muscle: 'Trizeps',
     category: 'Arms',
@@ -6683,7 +6685,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Two-Arm Dumbbell Preacher Curl',
-    germanName: 'Two arm Kurzhantel Scott-Curl',
+    germanName: 'Beidarmig Scott-Curl mit Kurzhantel',
     aliases: 'Two Arm Dumbbell Preacher Curl',
     muscle: 'Bizeps',
     category: 'Arms',
@@ -6691,7 +6693,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Two-Arm Kettlebell Clean',
-    germanName: 'Two arm Kettlebell Umsetzen',
+    germanName: 'Beidarmig Umsetzen mit Kettlebell',
     aliases: 'Two Arm Kettlebell Clean',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -6699,7 +6701,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Two-Arm Kettlebell Jerk',
-    germanName: 'Two arm Kettlebell Stoßen',
+    germanName: 'Beidarmig Stoßen mit Kettlebell',
     aliases: 'Two Arm Kettlebell Jerk',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -6707,7 +6709,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Two-Arm Kettlebell Military Press',
-    germanName: 'Two arm Kettlebell Military Drücken',
+    germanName: 'Beidarmig Military Press mit Kettlebell',
     aliases: 'Two Arm Kettlebell Military Press',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -6715,7 +6717,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Two-Arm Kettlebell Row',
-    germanName: 'Two arm Kettlebell Rudern',
+    germanName: 'Beidarmig Rudern mit Kettlebell',
     aliases: 'Two Arm Kettlebell Row',
     muscle: 'Mittlerer Rücken',
     category: 'Back',
@@ -6723,7 +6725,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Underhand Cable Pulldowns',
-    germanName: 'Untergriff Kabel Latzugs',
+    germanName: 'Pulldowns mit Kabel, Untergriff',
     aliases: 'Lat Pulldown|Latzug',
     muscle: 'Latissimus',
     category: 'Back',
@@ -6731,7 +6733,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Upper Back-Leg Grab',
-    germanName: 'Upper Rücken leg grab',
+    germanName: 'Upper Rücken Bein Grab',
     aliases: 'Upper Back Leg Grab',
     muscle: 'Beinbeuger',
     category: 'Legs',
@@ -6739,7 +6741,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Upper Back Stretch',
-    germanName: 'Upper Rücken stretch',
+    germanName: 'Upper Rücken Dehnung',
     aliases: '',
     muscle: 'Mittlerer Rücken',
     category: 'Back',
@@ -6747,7 +6749,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Upright Barbell Row',
-    germanName: 'Upright Langhantelrudern',
+    germanName: 'Aufrechtes Rudern mit Langhantel',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -6755,7 +6757,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Upright Cable Row',
-    germanName: 'Upright Kabel Rudern',
+    germanName: 'Aufrechtes Rudern mit Kabel',
     aliases: '',
     muscle: 'Trapez',
     category: 'Shoulders',
@@ -6763,7 +6765,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Upright Row - With Bands',
-    germanName: 'Aufrechtes Rudern with bands',
+    germanName: 'Aufrechtes Rudern mit Band',
     aliases: 'Upright Row   With Bands',
     muscle: 'Trapez',
     category: 'Shoulders',
@@ -6771,7 +6773,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Upward Stretch',
-    germanName: 'Upward Stretch',
+    germanName: 'Upward Dehnung',
     aliases: '',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -6779,7 +6781,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'V-Bar Pulldown',
-    germanName: 'V bar Latzug',
+    germanName: 'V Stange Latzug',
     aliases: 'V Bar Pulldown|Lat Pulldown|Latzug',
     muscle: 'Latissimus',
     category: 'Back',
@@ -6787,7 +6789,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'V-Bar Pullup',
-    germanName: 'V bar Klimmzug',
+    germanName: 'V Stange Klimmzug',
     aliases: 'V Bar Pullup|Pull-up|Pull Up',
     muscle: 'Latissimus',
     category: 'Back',
@@ -6795,7 +6797,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Vertical Swing',
-    germanName: 'Vertical Schwingen',
+    germanName: 'Vertical Schwung',
     aliases: '',
     muscle: 'Beinbeuger',
     category: 'Legs',
@@ -6803,7 +6805,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Walking, Treadmill',
-    germanName: 'Walking, Treadmill',
+    germanName: 'Walking Treadmill',
     aliases: '',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -6811,7 +6813,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Weighted Ball Hyperextension',
-    germanName: 'Weighted Ball Hyperextension',
+    germanName: 'Mit Zusatzgewicht Ball Hyperextension',
     aliases: '',
     muscle: 'Unterer Rücken',
     category: 'Back',
@@ -6819,7 +6821,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Weighted Ball Side Bend',
-    germanName: 'Weighted ball seitlich bend',
+    germanName: 'Mit Zusatzgewicht Ball seitlich Bend',
     aliases: '',
     muscle: 'Bauch',
     category: 'Core',
@@ -6827,7 +6829,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Weighted Bench Dip',
-    germanName: 'Weighted Bench Dip',
+    germanName: 'Mit Zusatzgewicht Bank Dip',
     aliases: '',
     muscle: 'Trizeps',
     category: 'Arms',
@@ -6835,7 +6837,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Weighted Crunches',
-    germanName: 'Weighted Crunches',
+    germanName: 'Mit Zusatzgewicht Crunches',
     aliases: '',
     muscle: 'Bauch',
     category: 'Core',
@@ -6843,7 +6845,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Weighted Jump Squat',
-    germanName: 'Weighted jump Kniebeuge',
+    germanName: 'Mit Zusatzgewicht Sprung Kniebeuge',
     aliases: 'Squat|Kniebeugen',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -6851,7 +6853,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Weighted Pull Ups',
-    germanName: 'Weighted Klimmzugs',
+    germanName: 'Mit Zusatzgewicht Pull Ups',
     aliases: 'Pull-up|Pull Up',
     muscle: 'Latissimus',
     category: 'Back',
@@ -6859,7 +6861,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Weighted Sissy Squat',
-    germanName: 'Weighted sissy Kniebeuge',
+    germanName: 'Mit Zusatzgewicht Sissy-Kniebeuge',
     aliases: 'Squat|Kniebeugen',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -6867,7 +6869,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Weighted Sit-Ups - With Bands',
-    germanName: 'Weighted Sit-ups with bands',
+    germanName: 'Mit Zusatzgewicht Sit Ups mit Band',
     aliases: 'Weighted Sit Ups   With Bands',
     muscle: 'Bauch',
     category: 'Core',
@@ -6875,7 +6877,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Weighted Squat',
-    germanName: 'Weighted Kniebeuge',
+    germanName: 'Mit Zusatzgewicht Kniebeuge',
     aliases: 'Squat|Kniebeugen',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -6883,7 +6885,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Wide-Grip Barbell Bench Press',
-    germanName: 'Breiter Griff Langhantel-Bankdrücken',
+    germanName: 'Bankdrücken, breiter Griff',
     aliases: 'Wide Grip Barbell Bench Press|Flachbank|Bench Press|Bankdruecken',
     muscle: 'Brust',
     category: 'Chest',
@@ -6891,7 +6893,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Wide-Grip Decline Barbell Bench Press',
-    germanName: 'Breiter Griff Negativ Langhantel-Bankdrücken',
+    germanName: 'Negativbankdrücken, breiter Griff',
     aliases:
         'Wide Grip Decline Barbell Bench Press|Flachbank|Bench Press|Bankdruecken',
     muscle: 'Brust',
@@ -6900,7 +6902,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Wide-Grip Decline Barbell Pullover',
-    germanName: 'Breiter Griff Negativ Langhantel Überzüge',
+    germanName: 'Negativ Überzug mit Langhantel, breiter Griff',
     aliases: 'Wide Grip Decline Barbell Pullover',
     muscle: 'Brust',
     category: 'Chest',
@@ -6908,7 +6910,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Wide-Grip Lat Pulldown',
-    germanName: 'Breiter Griff Latzug',
+    germanName: 'Latzug, breiter Griff',
     aliases: 'Wide Grip Lat Pulldown|Lat Pulldown|Latzug',
     muscle: 'Latissimus',
     category: 'Back',
@@ -6916,7 +6918,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Wide-Grip Pulldown Behind The Neck',
-    germanName: 'Breiter Griff Latzug behind the Nacken',
+    germanName: 'Latzug hinter Nacken, breiter Griff',
     aliases: 'Wide Grip Pulldown Behind The Neck|Lat Pulldown|Latzug',
     muscle: 'Latissimus',
     category: 'Back',
@@ -6924,7 +6926,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Wide-Grip Rear Pull-Up',
-    germanName: 'Breiter Griff hintere Klimmzug',
+    germanName: 'Hinten Klimmzug, breiter Griff',
     aliases: 'Wide Grip Rear Pull Up|Pull-up|Pull Up',
     muscle: 'Latissimus',
     category: 'Back',
@@ -6932,7 +6934,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Wide-Grip Standing Barbell Curl',
-    germanName: 'Breiter Griff stehend Langhantel Curl',
+    germanName: 'Stehend Bizepscurl mit Langhantel, breiter Griff',
     aliases: 'Wide Grip Standing Barbell Curl',
     muscle: 'Bizeps',
     category: 'Arms',
@@ -6940,7 +6942,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Wide Stance Barbell Squat',
-    germanName: 'Wide stance Langhantel Kniebeuge',
+    germanName: 'Breit Stand Kniebeuge mit Langhantel',
     aliases: 'Squat|Kniebeugen',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -6948,7 +6950,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Wide Stance Stiff Legs',
-    germanName: 'Wide Stance Stiff Legs',
+    germanName: 'Breit Stand gestreckt Beine',
     aliases: '',
     muscle: 'Beinbeuger',
     category: 'Legs',
@@ -6972,7 +6974,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'World\'s Greatest Stretch',
-    germanName: 'World\'s Greatest Stretch',
+    germanName: 'World S Greatest Dehnung',
     aliases: '',
     muscle: 'Beinbeuger',
     category: 'Legs',
@@ -6980,7 +6982,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Wrist Circles',
-    germanName: 'Handgelenk circles',
+    germanName: 'Handgelenk Kreisen',
     aliases: '',
     muscle: 'Unterarme',
     category: 'Arms',
@@ -6988,7 +6990,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Wrist Roller',
-    germanName: 'Handgelenk roller',
+    germanName: 'Handgelenk Roller',
     aliases: '',
     muscle: 'Unterarme',
     category: 'Arms',
@@ -6996,7 +6998,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Wrist Rotations with Straight Bar',
-    germanName: 'Handgelenk rotations with straight bar',
+    germanName: 'Handgelenk Rotationen gerade Stange',
     aliases: '',
     muscle: 'Unterarme',
     category: 'Arms',
@@ -7012,7 +7014,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Zercher Squats',
-    germanName: 'Zercher Kniebeuges',
+    germanName: 'Zercher Kniebeugen',
     aliases: 'Squat|Kniebeugen',
     muscle: 'Quadrizeps',
     category: 'Legs',
@@ -7036,7 +7038,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Arnold press',
-    germanName: 'Arnold-Press',
+    germanName: 'Arnold Press',
     aliases: 'Arnold Press|Arnolddrücken',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -7060,7 +7062,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Barbell biceps curl',
-    germanName: 'Langhantel-Bizepscurl',
+    germanName: 'Bizepscurl mit Langhantel',
     aliases: 'Bizepscurl|Barbell Curl|Curls',
     muscle: 'Bizeps',
     category: 'Arms',
@@ -7068,7 +7070,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Barbell bent-over row',
-    germanName: 'Vorgebeugtes Langhantelrudern',
+    germanName: 'Vorgebeugtes Rudern mit Langhantel',
     aliases: 'Bent Over Row|Langhantelrudern',
     muscle: 'Mittlerer Rücken',
     category: 'Back',
@@ -7076,7 +7078,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Cable fly',
-    germanName: 'Kabel-Fliegende',
+    germanName: 'Fliegende mit Kabel',
     aliases: 'Cable Fly|Fliegende',
     muscle: 'Brust',
     category: 'Chest',
@@ -7084,7 +7086,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Cable lateral raise',
-    germanName: 'Kabel-Seitheben',
+    germanName: 'Seitheben mit Kabel',
     aliases: 'Lateral Raise|Seitheben',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -7092,7 +7094,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Cable pull-down',
-    germanName: 'Kabelzug',
+    germanName: 'Pull runter mit Kabel',
     aliases: 'Pulldown|Latzug',
     muscle: 'Latissimus',
     category: 'Back',
@@ -7100,7 +7102,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Chest fly',
-    germanName: 'Fliegende',
+    germanName: 'Brust Fliegende',
     aliases: 'Fly|Butterfly',
     muscle: 'Brust',
     category: 'Chest',
@@ -7108,7 +7110,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Close-grip pull-up',
-    germanName: 'Enger Klimmzug',
+    germanName: 'Klimmzug, enger Griff',
     aliases: 'Close Grip Pull-up',
     muscle: 'Latissimus',
     category: 'Back',
@@ -7140,7 +7142,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Diamond push-up',
-    germanName: 'Diamant-Liegestütz',
+    germanName: 'Diamond Liegestütz',
     aliases: 'Diamond Push-up|Liegestütz eng',
     muscle: 'Trizeps',
     category: 'Chest',
@@ -7148,7 +7150,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Dumbbell biceps curl',
-    germanName: 'Kurzhantel-Bizepscurl',
+    germanName: 'Bizepscurl mit Kurzhantel',
     aliases: 'Dumbbell Curl|Bizepscurl',
     muscle: 'Bizeps',
     category: 'Arms',
@@ -7156,7 +7158,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Dumbbell bent-over row',
-    germanName: 'Vorgebeugtes Kurzhantelrudern',
+    germanName: 'Vorgebeugtes Rudern mit Kurzhantel',
     aliases: 'Dumbbell Row',
     muscle: 'Mittlerer Rücken',
     category: 'Back',
@@ -7164,7 +7166,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Dumbbell fly',
-    germanName: 'Kurzhantel-Fliegende',
+    germanName: 'Fliegende mit Kurzhantel',
     aliases: 'Dumbbell Fly|Fliegende',
     muscle: 'Brust',
     category: 'Chest',
@@ -7172,7 +7174,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Dumbbell lateral raise',
-    germanName: 'Kurzhantel-Seitheben',
+    germanName: 'Seitheben mit Kurzhantel',
     aliases: 'Lateral Raise|Seitheben',
     muscle: 'Schultern',
     category: 'Shoulders',
@@ -7196,7 +7198,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Lat pull-down',
-    germanName: 'Latzug',
+    germanName: 'Lat Pull runter',
     aliases: 'Lat Pulldown|Latzug breit',
     muscle: 'Latissimus',
     category: 'Back',
@@ -7204,7 +7206,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Leg curl',
-    germanName: 'Beinbeuger-Curl',
+    germanName: 'Bein Bizepscurl',
     aliases: 'Leg Curl|Beinbeuger',
     muscle: 'Beinbeuger',
     category: 'Legs',
@@ -7236,7 +7238,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Narrow-grip push-up',
-    germanName: 'Enger Liegestütz',
+    germanName: 'Liegestütz, enger Griff',
     aliases: 'Narrow Push-up|Liegestütz',
     muscle: 'Trizeps',
     category: 'Chest',
@@ -7244,7 +7246,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Neck curl',
-    germanName: 'Nackencurl',
+    germanName: 'Nackenbeuger',
     aliases: 'Neck Curl',
     muscle: 'Nacken',
     category: 'Shoulders',
@@ -7252,7 +7254,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Overhead triceps extension',
-    germanName: 'Überkopf-Trizepsstrecken',
+    germanName: 'Überkopf Trizepsstrecken',
     aliases: 'Overhead Extension|French Press',
     muscle: 'Trizeps',
     category: 'Arms',
@@ -7260,7 +7262,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Pull-down',
-    germanName: 'Latzug',
+    germanName: 'Pull runter',
     aliases: 'Pulldown',
     muscle: 'Latissimus',
     category: 'Back',
@@ -7284,7 +7286,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Reverse grip pull-down',
-    germanName: 'Latzug im Untergriff',
+    germanName: 'Pull runter, Untergriff',
     aliases: 'Reverse Grip Pulldown',
     muscle: 'Latissimus',
     category: 'Back',
@@ -7292,7 +7294,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Reverse grip pushdown',
-    germanName: 'Trizepsdrücken im Untergriff',
+    germanName: 'Drücken, Untergriff',
     aliases: 'Reverse Pushdown',
     muscle: 'Trizeps',
     category: 'Arms',
@@ -7300,7 +7302,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Roman chair leg raise',
-    germanName: 'Beinheben am Römischen Stuhl',
+    germanName: 'Roman Chair Beinheben',
     aliases: 'Roman Chair',
     muscle: 'Bauch',
     category: 'Core',
@@ -7308,7 +7310,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Shoulder shrug',
-    germanName: 'Schulterheben',
+    germanName: 'Schulter Schulterheben',
     aliases: 'Shrugs',
     muscle: 'Trapez',
     category: 'Shoulders',
@@ -7324,7 +7326,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Standing calf raise',
-    germanName: 'Stehendes Wadenheben',
+    germanName: 'Stehend Wadenheben',
     aliases: 'Standing Calf Raise|Wadenheben',
     muscle: 'Waden',
     category: 'Calves',
@@ -7332,7 +7334,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'T-bar row',
-    germanName: 'T-Bar-Rudern',
+    germanName: 'T Stange Rudern',
     aliases: 'T-Bar Row',
     muscle: 'Mittlerer Rücken',
     category: 'Back',
@@ -7340,7 +7342,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Triceps dip',
-    germanName: 'Trizeps-Dip',
+    germanName: 'Trizeps Dip',
     aliases: 'Dip|Dips',
     muscle: 'Trizeps',
     category: 'Arms',
@@ -7364,7 +7366,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Weighted Russian twist',
-    germanName: 'Gewichtete russische Drehung',
+    germanName: 'Mit Zusatzgewicht Russian Twist',
     aliases: 'Weighted Russian Twist',
     muscle: 'Bauch',
     category: 'Core',
@@ -7372,7 +7374,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Wide-grip pull-up',
-    germanName: 'Breiter Klimmzug',
+    germanName: 'Klimmzug, breiter Griff',
     aliases: 'Wide Grip Pull-up',
     muscle: 'Latissimus',
     category: 'Back',
@@ -7380,7 +7382,7 @@ const exerciseCatalog = <ExerciseSeed>[
   ),
   ExerciseSeed(
     name: 'Wide-grip push-up',
-    germanName: 'Breiter Liegestütz',
+    germanName: 'Liegestütz, breiter Griff',
     aliases: 'Wide Push-up',
     muscle: 'Brust',
     category: 'Chest',

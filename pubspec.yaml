@@ -1,7 +1,7 @@
 name: flexify
 description: Alpha, an offline-first gym tracker based on Flexify
 publish_to: none
-version: 2.3.0+449
+version: 2.4.0+450
 environment:
   sdk: ">=3.12.0 <4.0.0"
   flutter: ">=3.44.8"
@@ -72,8 +72,17 @@ flutter:
   uses-material-design: true
   assets:
     - assets/
+    - assets/figures/
+    - assets/sound/
     - assets/changelogs/
     - assets/changelogs/l10n/
+  fonts:
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/Inter.ttf
+    - family: Bebas Neue
+      fonts:
+        - asset: assets/fonts/BebasNeue-Regular.ttf
 flutter_launcher_icons:
   android: true
   ios: false

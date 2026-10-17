@@ -4,7 +4,9 @@ import 'package:flexify/database/database.dart';
 import 'package:flexify/l10n/l10n.dart';
 import 'package:flexify/main.dart';
 import 'package:flexify/platform_page_route.dart';
+import 'package:flexify/profile/local_profiles.dart';
 import 'package:flexify/settings/settings_page.dart';
+import 'package:flexify/update/app_update.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -62,6 +64,7 @@ class _ProfilePageState extends State<ProfilePage> {
         apiKey: Value(_emptyToNull(_apiKey.text)),
       ),
     );
+    await rememberProfileName(_name.text);
     if (!mounted) return;
     ScaffoldMessenger.of(
       context,
@@ -125,6 +128,19 @@ class _ProfilePageState extends State<ProfilePage> {
         const SizedBox(height: 8),
         FilledButton(onPressed: _save, child: Text(context.l10n.actionSave)),
         const SizedBox(height: 24),
+        ValueListenableBuilder(
+          valueListenable: pendingAppUpdate,
+          builder: (context, release, _) {
+            if (release == null) return const SizedBox.shrink();
+            return Padding(
+              padding: const EdgeInsets.only(bottom: 12),
+              child: FilledButton(
+                onPressed: () => downloadAndInstallUpdate(release),
+                child: Text(context.l10n.installUpdate),
+              ),
+            );
+          },
+        ),
         ListTile(
           contentPadding: EdgeInsets.zero,
           leading: const Icon(Icons.settings),

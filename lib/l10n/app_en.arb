@@ -2227,5 +2227,154 @@
   "exerciseDatabaseCreditBody": "Names from free-exercise-db by yuhonas, Unlicense (public domain). German names and aliases were added for Alpha.",
   "@exerciseDatabaseCreditBody": {
     "description": "About-screen credit for the Unlicense exercise database."
+  },
+  "workoutFinish": "Finish",
+  "@workoutFinish":   {
+    "description": "Button that ends the current workout."
+  },
+  "volumeLabel": "Volume",
+  "@volumeLabel":   {
+    "description": "Label for the total lifted volume."
+  },
+  "setsLabel": "Sets",
+  "@setsLabel":   {
+    "description": "Label for the number of completed sets."
+  },
+  "restSkip": "Skip",
+  "@restSkip":   {
+    "description": "Skips the remaining rest."
+  },
+  "columnSet": "SET",
+  "@columnSet":   {
+    "description": "Column title for the set number."
+  },
+  "columnPrevious": "PREVIOUS",
+  "@columnPrevious":   {
+    "description": "Column title for the previous session."
+  },
+  "columnKg": "KG",
+  "@columnKg":   {
+    "description": "Column title for the load."
+  },
+  "columnReps": "REPS",
+  "@columnReps":   {
+    "description": "Column title for repetitions."
+  },
+  "addExerciseWorkout": "Add exercise",
+  "@addExerciseWorkout":   {
+    "description": "Adds an exercise during the workout."
+  },
+  "addNote": "Add note",
+  "@addNote":   {
+    "description": "Adds a note to the exercise."
+  },
+  "swapExercise": "Swap exercise",
+  "@swapExercise":   {
+    "description": "Replaces an exercise during the workout."
+  },
+  "moveExerciseUp": "Move up",
+  "@moveExerciseUp":   {
+    "description": "Moves an exercise up."
+  },
+  "moveExerciseDown": "Move down",
+  "@moveExerciseDown":   {
+    "description": "Moves an exercise down."
+  },
+  "removeExercise": "Remove",
+  "@removeExercise":   {
+    "description": "Removes an exercise from this workout."
+  },
+  "restSecondsLabel": "Rest in seconds",
+  "@restSecondsLabel":   {
+    "description": "Label for the rest duration of an exercise."
+  },
+  "newRecordTitle": "NEW RECORD!",
+  "@newRecordTitle":   {
+    "description": "Title of the record notice."
+  },
+  "recordKeepGoing": "Keep going",
+  "@recordKeepGoing":   {
+    "description": "Closes the record notice."
+  },
+  "exerciseSearchHint": "Search exercises",
+  "@exerciseSearchHint":   {
+    "description": "Hint in the exercise search field."
+  },
+  "installUpdate": "Install update",
+  "@installUpdate":   {
+    "description": "Button that downloads and installs an update."
+  },
+  "updateAvailable": "A newer version is available",
+  "@updateAvailable":   {
+    "description": "Hint that an update can be installed."
+  },
+  "localProfiles": "Profiles",
+  "@localProfiles":   {
+    "description": "Heading for local profiles."
+  },
+  "newProfile": "New profile",
+  "@newProfile":   {
+    "description": "Creates another local profile."
+  },
+  "profileNameHint": "Profile name",
+  "@profileNameHint":   {
+    "description": "Hint for a new profile name."
+  },
+  "profileActive": "Active",
+  "@profileActive":   {
+    "description": "Marks the profile that is in use."
+  },
+  "switchProfile": "Switch",
+  "@switchProfile":   {
+    "description": "Switches to another profile."
+  },
+  "themeSetting": "Theme",
+  "@themeSetting":   {
+    "description": "Heading for the visual theme."
+  },
+  "themeTiefschwarz": "Deep black",
+  "@themeTiefschwarz":   {
+    "description": "Name of the default theme."
+  },
+  "themeEisblau": "Ice blue",
+  "@themeEisblau":   {
+    "description": "Name of the ice-blue theme."
+  },
+  "themePink": "Hot pink",
+  "@themePink":   {
+    "description": "Name of the pink theme."
+  },
+  "restSound": "Rest sound",
+  "@restSound":   {
+    "description": "Switch for the sound at the end of rest."
+  },
+  "restSoundVolume": "Rest volume",
+  "@restSoundVolume":   {
+    "description": "Slider for the rest sound volume."
+  },
+  "restSoundCredit": "Notification Sound by yfjesse, CC0",
+  "@restSoundCredit":   {
+    "description": "Credit for the rest sound."
+  },
+  "splashMotto": "Strength. Discipline. Progress.",
+  "@splashMotto":   {
+    "description": "Motto on the splash screen."
+  },
+  "helloName": "Hello, {name}",
+  "@helloName":   {
+    "description": "Greeting with the profile name.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "alphaSettings": "Alpha setup",
+  "@alphaSettings":   {
+    "description": "Title of the Alpha settings."
+  },
+  "alphaSettingsDescription": "Profiles, theme and rest sound",
+  "@alphaSettingsDescription":   {
+    "description": "Description of the Alpha settings."
   }
 }

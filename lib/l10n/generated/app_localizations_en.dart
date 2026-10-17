@@ -1685,4 +1685,114 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get exerciseDatabaseCreditBody =>
       'Names from free-exercise-db by yuhonas, Unlicense (public domain). German names and aliases were added for Alpha.';
+
+  @override
+  String get workoutFinish => 'Finish';
+
+  @override
+  String get volumeLabel => 'Volume';
+
+  @override
+  String get setsLabel => 'Sets';
+
+  @override
+  String get restSkip => 'Skip';
+
+  @override
+  String get columnSet => 'SET';
+
+  @override
+  String get columnPrevious => 'PREVIOUS';
+
+  @override
+  String get columnKg => 'KG';
+
+  @override
+  String get columnReps => 'REPS';
+
+  @override
+  String get addExerciseWorkout => 'Add exercise';
+
+  @override
+  String get addNote => 'Add note';
+
+  @override
+  String get swapExercise => 'Swap exercise';
+
+  @override
+  String get moveExerciseUp => 'Move up';
+
+  @override
+  String get moveExerciseDown => 'Move down';
+
+  @override
+  String get removeExercise => 'Remove';
+
+  @override
+  String get restSecondsLabel => 'Rest in seconds';
+
+  @override
+  String get newRecordTitle => 'NEW RECORD!';
+
+  @override
+  String get recordKeepGoing => 'Keep going';
+
+  @override
+  String get exerciseSearchHint => 'Search exercises';
+
+  @override
+  String get installUpdate => 'Install update';
+
+  @override
+  String get updateAvailable => 'A newer version is available';
+
+  @override
+  String get localProfiles => 'Profiles';
+
+  @override
+  String get newProfile => 'New profile';
+
+  @override
+  String get profileNameHint => 'Profile name';
+
+  @override
+  String get profileActive => 'Active';
+
+  @override
+  String get switchProfile => 'Switch';
+
+  @override
+  String get themeSetting => 'Theme';
+
+  @override
+  String get themeTiefschwarz => 'Deep black';
+
+  @override
+  String get themeEisblau => 'Ice blue';
+
+  @override
+  String get themePink => 'Hot pink';
+
+  @override
+  String get restSound => 'Rest sound';
+
+  @override
+  String get restSoundVolume => 'Rest volume';
+
+  @override
+  String get restSoundCredit => 'Notification Sound by yfjesse, CC0';
+
+  @override
+  String get splashMotto => 'Strength. Discipline. Progress.';
+
+  @override
+  String helloName(String name) {
+    return 'Hello, $name';
+  }
+
+  @override
+  String get alphaSettings => 'Alpha setup';
+
+  @override
+  String get alphaSettingsDescription => 'Profiles, theme and rest sound';
 }

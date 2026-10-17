@@ -1,17 +1,19 @@
 import 'dart:async';
 
 import 'package:drift/drift.dart';
-import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flexify/crash_logger.dart';
 import 'package:flexify/database/catalog_seed.dart';
 import 'package:flexify/database/database.dart';
 import 'package:flexify/database/failed_migrations_page.dart';
-import 'package:flexify/home_page.dart';
 import 'package:flexify/logging.dart';
 import 'package:flexify/l10n/generated/app_localizations.dart';
 import 'package:flexify/l10n/l10n.dart';
 import 'package:flexify/l10n/locale_preferences.dart';
+import 'package:flexify/profile/local_profiles.dart';
+import 'package:flexify/shell/alpha_boot.dart';
+import 'package:flexify/theme/alpha_theme.dart';
 import 'package:flexify/timer/timer_state.dart';
+import 'package:flexify/update/app_update.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -101,6 +103,7 @@ Future<void> main() async {
       Setting setting;
 
       try {
+        db = await openActiveProfile();
         setting = await (db.settings.select()..limit(1)).getSingle();
       } catch (error) {
         CrashLogger.instance?.record(
@@ -117,6 +120,7 @@ Future<void> main() async {
       } catch (error, stack) {
         talker.error('Exercise catalog seed failed', error, stack);
       }
+      unawaited(checkForAppUpdate());
       runApp(appProviders(setting));
     },
     (error, stack) =>
@@ -155,131 +159,61 @@ Widget appProviders(Setting initialSettings) => ValueListenableBuilder<int>(
 );
 
 class App extends StatelessWidget {
-  static final _lightScheme = ColorScheme.fromSeed(
-    seedColor: Colors.deepPurple,
-  );
-  static final _darkScheme = ColorScheme.fromSeed(
-    seedColor: Colors.deepPurple,
-    brightness: Brightness.dark,
-  );
-  static const _popupMenuTheme = PopupMenuThemeData(
-    menuPadding: EdgeInsets.zero,
-  );
-
-  static InputDecorationTheme _inputDecorationTheme(String inputStyle) {
-    return switch (inputStyle) {
-      'outlined' => const InputDecorationTheme(border: OutlineInputBorder()),
-      'filled' => const InputDecorationTheme(filled: true),
-      _ => const InputDecorationTheme(
-        floatingLabelBehavior: FloatingLabelBehavior.always,
-      ),
-    };
-  }
-
   const App({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final colors = context.select<Setting, bool>(
-      (settings) => settings.systemColors,
-    );
-    final amoledDark = context.select<Setting, bool>(
-      (settings) => settings.themeMode == 'ThemeMode.amoled',
-    );
-    final mode = context.select<Setting, ThemeMode>(
-      (settings) => settings.themeMode == 'ThemeMode.amoled'
-          ? ThemeMode.dark
-          : ThemeMode.values.byName(
-              settings.themeMode.replaceFirst('ThemeMode.', ''),
-            ),
-    );
-    final inputStyle = context.select<Setting, String>(
-      (settings) => settings.inputStyle,
-    );
-    final themeMode = context.select<Setting, String>(
-      (settings) => settings.themeMode,
+    final themeId = context.select<Setting, String>(
+      (settings) => settings.themeId,
     );
     final localeOverride = context.select<Setting, String?>(
       (settings) => settings.localeOverride,
     );
+    final theme = alphaThemeData(
+      AlphaPalette.byId(themeId),
+    ).copyWith(pageTransitionsTheme: _pageTransitionsTheme());
 
-    return DynamicColorBuilder(
-      builder: (lightDynamic, darkDynamic) {
-        final currentBrightness =
-            themeMode == 'ThemeMode.dark' ||
-                themeMode == 'ThemeMode.amoled' ||
-                (themeMode == 'ThemeMode.system' &&
-                    MediaQuery.of(context).platformBrightness ==
-                        Brightness.dark)
-            ? Brightness.dark
-            : Brightness.light;
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        statusBarIconBrightness: Brightness.light,
+        systemNavigationBarIconBrightness: Brightness.light,
+        statusBarColor: Colors.transparent,
+        systemNavigationBarColor: Colors.transparent,
+      ),
+    );
 
-        SystemChrome.setSystemUIOverlayStyle(
-          SystemUiOverlayStyle(
-            statusBarIconBrightness: currentBrightness == Brightness.dark
-                ? Brightness.light
-                : Brightness.dark,
-            systemNavigationBarIconBrightness:
-                currentBrightness == Brightness.dark
-                ? Brightness.light
-                : Brightness.dark,
-            statusBarColor: Colors.transparent,
-            systemNavigationBarColor: Colors.transparent,
-          ),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      scaffoldMessengerKey: rootScaffoldMessenger,
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+      localeListResolutionCallback: resolveSystemLocale,
+      locale: localeOverrideFromIdentifier(localeOverride),
+      navigatorObservers: [UnfocusObserver()],
+      builder: (context, child) {
+        _syncBackupLocalizations(context.l10n);
+        context.read<TimerState>().setNotificationLocalizations(
+          timerUpTitle: context.l10n.timerUp,
+          openNotificationLabel: context.l10n.openNotification,
+          stopLabel: context.l10n.actionStop,
+          addOneMinuteLabel: context.l10n.addOneMinuteNotification,
+          restTimerTitle: context.l10n.restTimer,
+          timerChannelName: context.l10n.timerChannelName,
+          timerChannelDescription: context.l10n.timerChannelDescription,
+          timerFinishedChannelName: context.l10n.timerFinishedChannelName,
+          timerFinishedChannelDescription:
+              context.l10n.timerFinishedChannelDescription,
+          timerFinishedTitle: context.l10n.timerFinished,
+          exactAlarmRequestUnavailable:
+              context.l10n.exactAlarmRequestUnavailable,
         );
-
-        return MaterialApp(
-          debugShowCheckedModeBanner: false,
-          scaffoldMessengerKey: rootScaffoldMessenger,
-          localizationsDelegates: AppLocalizations.localizationsDelegates,
-          supportedLocales: AppLocalizations.supportedLocales,
-          localeListResolutionCallback: resolveSystemLocale,
-          locale: localeOverrideFromIdentifier(localeOverride),
-          navigatorObservers: [UnfocusObserver()],
-          builder: (context, child) {
-            _syncBackupLocalizations(context.l10n);
-            context.read<TimerState>().setNotificationLocalizations(
-              timerUpTitle: context.l10n.timerUp,
-              openNotificationLabel: context.l10n.openNotification,
-              stopLabel: context.l10n.actionStop,
-              addOneMinuteLabel: context.l10n.addOneMinuteNotification,
-              restTimerTitle: context.l10n.restTimer,
-              timerChannelName: context.l10n.timerChannelName,
-              timerChannelDescription: context.l10n.timerChannelDescription,
-              timerFinishedChannelName: context.l10n.timerFinishedChannelName,
-              timerFinishedChannelDescription:
-                  context.l10n.timerFinishedChannelDescription,
-              timerFinishedTitle: context.l10n.timerFinished,
-              exactAlarmRequestUnavailable:
-                  context.l10n.exactAlarmRequestUnavailable,
-            );
-            return KeyboardUnfocusWrapper(
-              child: child ?? const SizedBox.shrink(),
-            );
-          },
-          onGenerateTitle: (context) => context.l10n.appTitle,
-          theme: ThemeData(
-            colorScheme: colors ? lightDynamic : _lightScheme,
-            fontFamily: 'Manrope',
-            useMaterial3: true,
-            inputDecorationTheme: _inputDecorationTheme(inputStyle),
-            popupMenuTheme: _popupMenuTheme,
-            pageTransitionsTheme: _pageTransitionsTheme(),
-          ),
-          darkTheme: ThemeData(
-            colorScheme: (colors ? darkDynamic : _darkScheme)?.copyWith(
-              surface: amoledDark ? Colors.black : null,
-            ),
-            fontFamily: 'Manrope',
-            useMaterial3: true,
-            inputDecorationTheme: _inputDecorationTheme(inputStyle),
-            popupMenuTheme: _popupMenuTheme,
-            pageTransitionsTheme: _pageTransitionsTheme(),
-          ),
-          themeMode: mode,
-          home: HomePage(),
-        );
+        return KeyboardUnfocusWrapper(child: child ?? const SizedBox.shrink());
       },
+      onGenerateTitle: (context) => context.l10n.appTitle,
+      theme: theme,
+      darkTheme: theme,
+      themeMode: ThemeMode.dark,
+      home: const AlphaBoot(),
     );
   }
 }

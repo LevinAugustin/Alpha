@@ -164,6 +164,8 @@ void main() {
           'age_years': null,
           'goals': null,
           'api_key': null,
+          'theme_id': 'tiefschwarz',
+          'rest_volume': 0.35,
         },
     ],
     'exercises': [
@@ -173,6 +175,10 @@ void main() {
     'plan_exercises': [
       for (final row in before['plan_exercises'] ?? const [])
         {...row, 'rep_min': null, 'rep_max': null},
+    ],
+    'workouts': [
+      for (final row in before['workouts'] ?? const [])
+        {...row, 'exercise_order': null},
     ],
   };
 

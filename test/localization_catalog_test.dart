@@ -38,6 +38,7 @@ final _placeholderPattern = RegExp(r'\{([A-Za-z][A-Za-z0-9_]*)\s*(?:,|\})');
 const _allowedLiteralUiText = <String>{
   'lib/about_page.dart:Brandon Dick',
   'lib/about_page.dart:MIT',
+  'lib/shell/alpha_boot.dart:ALPHA',
 };
 
 const _alwaysEnglishEquivalentKeys = <String>{
@@ -68,6 +69,7 @@ const _alwaysEnglishEquivalentKeys = <String>{
   'languageNameMalay',
   'languageNameUkrainian',
   'stoneUnitShort',
+  'columnKg',
 };
 
 const _localeSpecificEnglishEquivalentKeys = <String, Set<String>>{

@@ -4,8 +4,8 @@ import 'package:drift/drift.dart' hide Column;
 import 'package:flexify/database/database.dart';
 import 'package:flexify/l10n/l10n.dart';
 import 'package:flexify/main.dart';
-import 'package:flexify/plan/start_plan_page.dart';
 import 'package:flexify/platform_page_route.dart';
+import 'package:flexify/workout/gym_workout_page.dart';
 import 'package:flexify/settings/whats_new.dart';
 import 'package:flexify/shell/calendar_page.dart';
 import 'package:flexify/shell/exercises_page.dart';
@@ -81,7 +81,7 @@ class _HomePageState extends State<HomePage> {
     await Navigator.of(context).push(
       FlexPageRoute(
         settings: RouteSettings(name: 'start-plan:$planId'),
-        builder: (context) => StartPlanPage(plan: plan),
+        builder: (context) => GymWorkoutPage(plan: plan),
       ),
     );
   }

@@ -36,6 +36,7 @@ Future<void> seedExerciseCatalog(AppDatabase database) async {
 
   final missing = <ExerciseSeed>[];
   var needsLabels = false;
+  var staleGerman = false;
   for (final seed in exerciseCatalog) {
     final current = byKey[normalizeExerciseKey(seed.name)];
     if (current == null) {
@@ -44,9 +45,11 @@ Future<void> seedExerciseCatalog(AppDatabase database) async {
     }
     if ((current.germanName ?? '').isEmpty || (current.muscle ?? '').isEmpty) {
       needsLabels = true;
+    } else if (current.germanName != seed.germanName) {
+      staleGerman = true;
     }
   }
-  if (missing.isEmpty && !needsLabels) return;
+  if (missing.isEmpty && !needsLabels && !staleGerman) return;
 
   final categoryIds = {
     for (final category in await database.select(database.categories).get())
@@ -73,17 +76,17 @@ Future<void> seedExerciseCatalog(AppDatabase database) async {
     for (final seed in exerciseCatalog) {
       final current = byKey[normalizeExerciseKey(seed.name)];
       if (current == null) continue;
-      if ((current.germanName ?? '').isNotEmpty &&
-          (current.muscle ?? '').isNotEmpty) {
-        continue;
-      }
+      final germanEmpty = (current.germanName ?? '').isEmpty;
+      final muscleEmpty = (current.muscle ?? '').isEmpty;
+      final germanStale = current.germanName != seed.germanName;
+      if (!germanEmpty && !muscleEmpty && !germanStale) continue;
       await (database.update(
         database.exercises,
       )..where((row) => row.id.equals(current.id))).write(
         ExercisesCompanion(
           germanName: Value(seed.germanName),
-          aliases: Value(seed.aliases),
-          muscle: Value(seed.muscle),
+          aliases: muscleEmpty ? Value(seed.aliases) : const Value.absent(),
+          muscle: muscleEmpty ? Value(seed.muscle) : const Value.absent(),
         ),
       );
     }

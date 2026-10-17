@@ -1460,8 +1460,25 @@ class $WorkoutsTable extends Workouts with TableInfo<$WorkoutsTable, Workout> {
     type: DriftSqlType.dateTime,
     requiredDuringInsert: false,
   );
+  static const VerificationMeta _exerciseOrderMeta = const VerificationMeta(
+    'exerciseOrder',
+  );
   @override
-  List<GeneratedColumn> get $columns => [id, planId, startedAt, endedAt];
+  late final GeneratedColumn<String> exerciseOrder = GeneratedColumn<String>(
+    'exercise_order',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    planId,
+    startedAt,
+    endedAt,
+    exerciseOrder,
+  ];
   @override
   String get aliasedName => _alias ?? actualTableName;
   @override
@@ -1497,6 +1514,15 @@ class $WorkoutsTable extends Workouts with TableInfo<$WorkoutsTable, Workout> {
         endedAt.isAcceptableOrUnknown(data['ended_at']!, _endedAtMeta),
       );
     }
+    if (data.containsKey('exercise_order')) {
+      context.handle(
+        _exerciseOrderMeta,
+        exerciseOrder.isAcceptableOrUnknown(
+          data['exercise_order']!,
+          _exerciseOrderMeta,
+        ),
+      );
+    }
     return context;
   }
 
@@ -1522,6 +1548,10 @@ class $WorkoutsTable extends Workouts with TableInfo<$WorkoutsTable, Workout> {
         DriftSqlType.dateTime,
         data['${effectivePrefix}ended_at'],
       ),
+      exerciseOrder: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}exercise_order'],
+      ),
     );
   }
 
@@ -1536,11 +1566,16 @@ class Workout extends DataClass implements Insertable<Workout> {
   final int? planId;
   final DateTime startedAt;
   final DateTime? endedAt;
+
+  /// Exercise ids for this session, in the order they were performed.
+  /// Null until the session is opened. The plan template is never rewritten.
+  final String? exerciseOrder;
   const Workout({
     required this.id,
     this.planId,
     required this.startedAt,
     this.endedAt,
+    this.exerciseOrder,
   });
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
@@ -1552,6 +1587,9 @@ class Workout extends DataClass implements Insertable<Workout> {
     map['started_at'] = Variable<DateTime>(startedAt);
     if (!nullToAbsent || endedAt != null) {
       map['ended_at'] = Variable<DateTime>(endedAt);
+    }
+    if (!nullToAbsent || exerciseOrder != null) {
+      map['exercise_order'] = Variable<String>(exerciseOrder);
     }
     return map;
   }
@@ -1566,6 +1604,9 @@ class Workout extends DataClass implements Insertable<Workout> {
       endedAt: endedAt == null && nullToAbsent
           ? const Value.absent()
           : Value(endedAt),
+      exerciseOrder: exerciseOrder == null && nullToAbsent
+          ? const Value.absent()
+          : Value(exerciseOrder),
     );
   }
 
@@ -1579,6 +1620,7 @@ class Workout extends DataClass implements Insertable<Workout> {
       planId: serializer.fromJson<int?>(json['planId']),
       startedAt: serializer.fromJson<DateTime>(json['startedAt']),
       endedAt: serializer.fromJson<DateTime?>(json['endedAt']),
+      exerciseOrder: serializer.fromJson<String?>(json['exerciseOrder']),
     );
   }
   @override
@@ -1589,6 +1631,7 @@ class Workout extends DataClass implements Insertable<Workout> {
       'planId': serializer.toJson<int?>(planId),
       'startedAt': serializer.toJson<DateTime>(startedAt),
       'endedAt': serializer.toJson<DateTime?>(endedAt),
+      'exerciseOrder': serializer.toJson<String?>(exerciseOrder),
     };
   }
 
@@ -1597,11 +1640,15 @@ class Workout extends DataClass implements Insertable<Workout> {
     Value<int?> planId = const Value.absent(),
     DateTime? startedAt,
     Value<DateTime?> endedAt = const Value.absent(),
+    Value<String?> exerciseOrder = const Value.absent(),
   }) => Workout(
     id: id ?? this.id,
     planId: planId.present ? planId.value : this.planId,
     startedAt: startedAt ?? this.startedAt,
     endedAt: endedAt.present ? endedAt.value : this.endedAt,
+    exerciseOrder: exerciseOrder.present
+        ? exerciseOrder.value
+        : this.exerciseOrder,
   );
   Workout copyWithCompanion(WorkoutsCompanion data) {
     return Workout(
@@ -1609,6 +1656,9 @@ class Workout extends DataClass implements Insertable<Workout> {
       planId: data.planId.present ? data.planId.value : this.planId,
       startedAt: data.startedAt.present ? data.startedAt.value : this.startedAt,
       endedAt: data.endedAt.present ? data.endedAt.value : this.endedAt,
+      exerciseOrder: data.exerciseOrder.present
+          ? data.exerciseOrder.value
+          : this.exerciseOrder,
     );
   }
 
@@ -1618,13 +1668,15 @@ class Workout extends DataClass implements Insertable<Workout> {
           ..write('id: $id, ')
           ..write('planId: $planId, ')
           ..write('startedAt: $startedAt, ')
-          ..write('endedAt: $endedAt')
+          ..write('endedAt: $endedAt, ')
+          ..write('exerciseOrder: $exerciseOrder')
           ..write(')'))
         .toString();
   }
 
   @override
-  int get hashCode => Object.hash(id, planId, startedAt, endedAt);
+  int get hashCode =>
+      Object.hash(id, planId, startedAt, endedAt, exerciseOrder);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -1632,7 +1684,8 @@ class Workout extends DataClass implements Insertable<Workout> {
           other.id == this.id &&
           other.planId == this.planId &&
           other.startedAt == this.startedAt &&
-          other.endedAt == this.endedAt);
+          other.endedAt == this.endedAt &&
+          other.exerciseOrder == this.exerciseOrder);
 }
 
 class WorkoutsCompanion extends UpdateCompanion<Workout> {
@@ -1640,29 +1693,34 @@ class WorkoutsCompanion extends UpdateCompanion<Workout> {
   final Value<int?> planId;
   final Value<DateTime> startedAt;
   final Value<DateTime?> endedAt;
+  final Value<String?> exerciseOrder;
   const WorkoutsCompanion({
     this.id = const Value.absent(),
     this.planId = const Value.absent(),
     this.startedAt = const Value.absent(),
     this.endedAt = const Value.absent(),
+    this.exerciseOrder = const Value.absent(),
   });
   WorkoutsCompanion.insert({
     this.id = const Value.absent(),
     this.planId = const Value.absent(),
     required DateTime startedAt,
     this.endedAt = const Value.absent(),
+    this.exerciseOrder = const Value.absent(),
   }) : startedAt = Value(startedAt);
   static Insertable<Workout> custom({
     Expression<int>? id,
     Expression<int>? planId,
     Expression<DateTime>? startedAt,
     Expression<DateTime>? endedAt,
+    Expression<String>? exerciseOrder,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
       if (planId != null) 'plan_id': planId,
       if (startedAt != null) 'started_at': startedAt,
       if (endedAt != null) 'ended_at': endedAt,
+      if (exerciseOrder != null) 'exercise_order': exerciseOrder,
     });
   }
 
@@ -1671,12 +1729,14 @@ class WorkoutsCompanion extends UpdateCompanion<Workout> {
     Value<int?>? planId,
     Value<DateTime>? startedAt,
     Value<DateTime?>? endedAt,
+    Value<String?>? exerciseOrder,
   }) {
     return WorkoutsCompanion(
       id: id ?? this.id,
       planId: planId ?? this.planId,
       startedAt: startedAt ?? this.startedAt,
       endedAt: endedAt ?? this.endedAt,
+      exerciseOrder: exerciseOrder ?? this.exerciseOrder,
     );
   }
 
@@ -1695,6 +1755,9 @@ class WorkoutsCompanion extends UpdateCompanion<Workout> {
     if (endedAt.present) {
       map['ended_at'] = Variable<DateTime>(endedAt.value);
     }
+    if (exerciseOrder.present) {
+      map['exercise_order'] = Variable<String>(exerciseOrder.value);
+    }
     return map;
   }
 
@@ -1704,7 +1767,8 @@ class WorkoutsCompanion extends UpdateCompanion<Workout> {
           ..write('id: $id, ')
           ..write('planId: $planId, ')
           ..write('startedAt: $startedAt, ')
-          ..write('endedAt: $endedAt')
+          ..write('endedAt: $endedAt, ')
+          ..write('exerciseOrder: $exerciseOrder')
           ..write(')'))
         .toString();
   }
@@ -3320,6 +3384,30 @@ class $SettingsTable extends Settings with TableInfo<$SettingsTable, Setting> {
     type: DriftSqlType.string,
     requiredDuringInsert: false,
   );
+  static const VerificationMeta _themeIdMeta = const VerificationMeta(
+    'themeId',
+  );
+  @override
+  late final GeneratedColumn<String> themeId = GeneratedColumn<String>(
+    'theme_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('tiefschwarz'),
+  );
+  static const VerificationMeta _restVolumeMeta = const VerificationMeta(
+    'restVolume',
+  );
+  @override
+  late final GeneratedColumn<double> restVolume = GeneratedColumn<double>(
+    'rest_volume',
+    aliasedName,
+    false,
+    type: DriftSqlType.double,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0.35),
+  );
   @override
   List<GeneratedColumn> get $columns => [
     alarmSound,
@@ -3372,6 +3460,8 @@ class $SettingsTable extends Settings with TableInfo<$SettingsTable, Setting> {
     ageYears,
     goals,
     apiKey,
+    themeId,
+    restVolume,
   ];
   @override
   String get aliasedName => _alias ?? actualTableName;
@@ -3804,6 +3894,18 @@ class $SettingsTable extends Settings with TableInfo<$SettingsTable, Setting> {
         apiKey.isAcceptableOrUnknown(data['api_key']!, _apiKeyMeta),
       );
     }
+    if (data.containsKey('theme_id')) {
+      context.handle(
+        _themeIdMeta,
+        themeId.isAcceptableOrUnknown(data['theme_id']!, _themeIdMeta),
+      );
+    }
+    if (data.containsKey('rest_volume')) {
+      context.handle(
+        _restVolumeMeta,
+        restVolume.isAcceptableOrUnknown(data['rest_volume']!, _restVolumeMeta),
+      );
+    }
     return context;
   }
 
@@ -4013,6 +4115,14 @@ class $SettingsTable extends Settings with TableInfo<$SettingsTable, Setting> {
         DriftSqlType.string,
         data['${effectivePrefix}api_key'],
       ),
+      themeId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}theme_id'],
+      )!,
+      restVolume: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}rest_volume'],
+      )!,
     );
   }
 
@@ -4073,6 +4183,8 @@ class Setting extends DataClass implements Insertable<Setting> {
   final int? ageYears;
   final String? goals;
   final String? apiKey;
+  final String themeId;
+  final double restVolume;
   const Setting({
     required this.alarmSound,
     required this.automaticBackups,
@@ -4124,6 +4236,8 @@ class Setting extends DataClass implements Insertable<Setting> {
     this.ageYears,
     this.goals,
     this.apiKey,
+    required this.themeId,
+    required this.restVolume,
   });
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
@@ -4202,6 +4316,8 @@ class Setting extends DataClass implements Insertable<Setting> {
     if (!nullToAbsent || apiKey != null) {
       map['api_key'] = Variable<String>(apiKey);
     }
+    map['theme_id'] = Variable<String>(themeId);
+    map['rest_volume'] = Variable<double>(restVolume);
     return map;
   }
 
@@ -4277,6 +4393,8 @@ class Setting extends DataClass implements Insertable<Setting> {
       apiKey: apiKey == null && nullToAbsent
           ? const Value.absent()
           : Value(apiKey),
+      themeId: Value(themeId),
+      restVolume: Value(restVolume),
     );
   }
 
@@ -4346,6 +4464,8 @@ class Setting extends DataClass implements Insertable<Setting> {
       ageYears: serializer.fromJson<int?>(json['ageYears']),
       goals: serializer.fromJson<String?>(json['goals']),
       apiKey: serializer.fromJson<String?>(json['apiKey']),
+      themeId: serializer.fromJson<String>(json['themeId']),
+      restVolume: serializer.fromJson<double>(json['restVolume']),
     );
   }
   @override
@@ -4406,6 +4526,8 @@ class Setting extends DataClass implements Insertable<Setting> {
       'ageYears': serializer.toJson<int?>(ageYears),
       'goals': serializer.toJson<String?>(goals),
       'apiKey': serializer.toJson<String?>(apiKey),
+      'themeId': serializer.toJson<String>(themeId),
+      'restVolume': serializer.toJson<double>(restVolume),
     };
   }
 
@@ -4460,6 +4582,8 @@ class Setting extends DataClass implements Insertable<Setting> {
     Value<int?> ageYears = const Value.absent(),
     Value<String?> goals = const Value.absent(),
     Value<String?> apiKey = const Value.absent(),
+    String? themeId,
+    double? restVolume,
   }) => Setting(
     alarmSound: alarmSound ?? this.alarmSound,
     automaticBackups: automaticBackups ?? this.automaticBackups,
@@ -4517,6 +4641,8 @@ class Setting extends DataClass implements Insertable<Setting> {
     ageYears: ageYears.present ? ageYears.value : this.ageYears,
     goals: goals.present ? goals.value : this.goals,
     apiKey: apiKey.present ? apiKey.value : this.apiKey,
+    themeId: themeId ?? this.themeId,
+    restVolume: restVolume ?? this.restVolume,
   );
   Setting copyWithCompanion(SettingsCompanion data) {
     return Setting(
@@ -4647,6 +4773,10 @@ class Setting extends DataClass implements Insertable<Setting> {
       ageYears: data.ageYears.present ? data.ageYears.value : this.ageYears,
       goals: data.goals.present ? data.goals.value : this.goals,
       apiKey: data.apiKey.present ? data.apiKey.value : this.apiKey,
+      themeId: data.themeId.present ? data.themeId.value : this.themeId,
+      restVolume: data.restVolume.present
+          ? data.restVolume.value
+          : this.restVolume,
     );
   }
 
@@ -4704,7 +4834,9 @@ class Setting extends DataClass implements Insertable<Setting> {
           ..write('heightCm: $heightCm, ')
           ..write('ageYears: $ageYears, ')
           ..write('goals: $goals, ')
-          ..write('apiKey: $apiKey')
+          ..write('apiKey: $apiKey, ')
+          ..write('themeId: $themeId, ')
+          ..write('restVolume: $restVolume')
           ..write(')'))
         .toString();
   }
@@ -4761,6 +4893,8 @@ class Setting extends DataClass implements Insertable<Setting> {
     ageYears,
     goals,
     apiKey,
+    themeId,
+    restVolume,
   ]);
   @override
   bool operator ==(Object other) =>
@@ -4816,7 +4950,9 @@ class Setting extends DataClass implements Insertable<Setting> {
           other.heightCm == this.heightCm &&
           other.ageYears == this.ageYears &&
           other.goals == this.goals &&
-          other.apiKey == this.apiKey);
+          other.apiKey == this.apiKey &&
+          other.themeId == this.themeId &&
+          other.restVolume == this.restVolume);
 }
 
 class SettingsCompanion extends UpdateCompanion<Setting> {
@@ -4870,6 +5006,8 @@ class SettingsCompanion extends UpdateCompanion<Setting> {
   final Value<int?> ageYears;
   final Value<String?> goals;
   final Value<String?> apiKey;
+  final Value<String> themeId;
+  final Value<double> restVolume;
   const SettingsCompanion({
     this.alarmSound = const Value.absent(),
     this.automaticBackups = const Value.absent(),
@@ -4921,6 +5059,8 @@ class SettingsCompanion extends UpdateCompanion<Setting> {
     this.ageYears = const Value.absent(),
     this.goals = const Value.absent(),
     this.apiKey = const Value.absent(),
+    this.themeId = const Value.absent(),
+    this.restVolume = const Value.absent(),
   });
   SettingsCompanion.insert({
     required String alarmSound,
@@ -4973,6 +5113,8 @@ class SettingsCompanion extends UpdateCompanion<Setting> {
     this.ageYears = const Value.absent(),
     this.goals = const Value.absent(),
     this.apiKey = const Value.absent(),
+    this.themeId = const Value.absent(),
+    this.restVolume = const Value.absent(),
   }) : alarmSound = Value(alarmSound),
        cardioUnit = Value(cardioUnit),
        curveLines = Value(curveLines),
@@ -5040,6 +5182,8 @@ class SettingsCompanion extends UpdateCompanion<Setting> {
     Expression<int>? ageYears,
     Expression<String>? goals,
     Expression<String>? apiKey,
+    Expression<String>? themeId,
+    Expression<double>? restVolume,
   }) {
     return RawValuesInsertable({
       if (alarmSound != null) 'alarm_sound': alarmSound,
@@ -5098,6 +5242,8 @@ class SettingsCompanion extends UpdateCompanion<Setting> {
       if (ageYears != null) 'age_years': ageYears,
       if (goals != null) 'goals': goals,
       if (apiKey != null) 'api_key': apiKey,
+      if (themeId != null) 'theme_id': themeId,
+      if (restVolume != null) 'rest_volume': restVolume,
     });
   }
 
@@ -5152,6 +5298,8 @@ class SettingsCompanion extends UpdateCompanion<Setting> {
     Value<int?>? ageYears,
     Value<String?>? goals,
     Value<String?>? apiKey,
+    Value<String>? themeId,
+    Value<double>? restVolume,
   }) {
     return SettingsCompanion(
       alarmSound: alarmSound ?? this.alarmSound,
@@ -5207,6 +5355,8 @@ class SettingsCompanion extends UpdateCompanion<Setting> {
       ageYears: ageYears ?? this.ageYears,
       goals: goals ?? this.goals,
       apiKey: apiKey ?? this.apiKey,
+      themeId: themeId ?? this.themeId,
+      restVolume: restVolume ?? this.restVolume,
     );
   }
 
@@ -5367,6 +5517,12 @@ class SettingsCompanion extends UpdateCompanion<Setting> {
     if (apiKey.present) {
       map['api_key'] = Variable<String>(apiKey.value);
     }
+    if (themeId.present) {
+      map['theme_id'] = Variable<String>(themeId.value);
+    }
+    if (restVolume.present) {
+      map['rest_volume'] = Variable<double>(restVolume.value);
+    }
     return map;
   }
 
@@ -5424,7 +5580,9 @@ class SettingsCompanion extends UpdateCompanion<Setting> {
           ..write('heightCm: $heightCm, ')
           ..write('ageYears: $ageYears, ')
           ..write('goals: $goals, ')
-          ..write('apiKey: $apiKey')
+          ..write('apiKey: $apiKey, ')
+          ..write('themeId: $themeId, ')
+          ..write('restVolume: $restVolume')
           ..write(')'))
         .toString();
   }
@@ -7465,6 +7623,7 @@ typedef $$WorkoutsTableCreateCompanionBuilder =
       Value<int?> planId,
       required DateTime startedAt,
       Value<DateTime?> endedAt,
+      Value<String?> exerciseOrder,
     });
 typedef $$WorkoutsTableUpdateCompanionBuilder =
     WorkoutsCompanion Function({
@@ -7472,6 +7631,7 @@ typedef $$WorkoutsTableUpdateCompanionBuilder =
       Value<int?> planId,
       Value<DateTime> startedAt,
       Value<DateTime?> endedAt,
+      Value<String?> exerciseOrder,
     });
 
 final class $$WorkoutsTableReferences
@@ -7535,6 +7695,11 @@ class $$WorkoutsTableFilterComposer
 
   ColumnFilters<DateTime> get endedAt => $composableBuilder(
     column: $table.endedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get exerciseOrder => $composableBuilder(
+    column: $table.exerciseOrder,
     builder: (column) => ColumnFilters(column),
   );
 
@@ -7611,6 +7776,11 @@ class $$WorkoutsTableOrderingComposer
     builder: (column) => ColumnOrderings(column),
   );
 
+  ColumnOrderings<String> get exerciseOrder => $composableBuilder(
+    column: $table.exerciseOrder,
+    builder: (column) => ColumnOrderings(column),
+  );
+
   $$PlansTableOrderingComposer get planId {
     final $$PlansTableOrderingComposer composer = $composerBuilder(
       composer: this,
@@ -7652,6 +7822,11 @@ class $$WorkoutsTableAnnotationComposer
 
   GeneratedColumn<DateTime> get endedAt =>
       $composableBuilder(column: $table.endedAt, builder: (column) => column);
+
+  GeneratedColumn<String> get exerciseOrder => $composableBuilder(
+    column: $table.exerciseOrder,
+    builder: (column) => column,
+  );
 
   $$PlansTableAnnotationComposer get planId {
     final $$PlansTableAnnotationComposer composer = $composerBuilder(
@@ -7734,11 +7909,13 @@ class $$WorkoutsTableTableManager
                 Value<int?> planId = const Value.absent(),
                 Value<DateTime> startedAt = const Value.absent(),
                 Value<DateTime?> endedAt = const Value.absent(),
+                Value<String?> exerciseOrder = const Value.absent(),
               }) => WorkoutsCompanion(
                 id: id,
                 planId: planId,
                 startedAt: startedAt,
                 endedAt: endedAt,
+                exerciseOrder: exerciseOrder,
               ),
           createCompanionCallback:
               ({
@@ -7746,11 +7923,13 @@ class $$WorkoutsTableTableManager
                 Value<int?> planId = const Value.absent(),
                 required DateTime startedAt,
                 Value<DateTime?> endedAt = const Value.absent(),
+                Value<String?> exerciseOrder = const Value.absent(),
               }) => WorkoutsCompanion.insert(
                 id: id,
                 planId: planId,
                 startedAt: startedAt,
                 endedAt: endedAt,
+                exerciseOrder: exerciseOrder,
               ),
           withReferenceMapper: (p0) => p0
               .map(
@@ -8591,6 +8770,8 @@ typedef $$SettingsTableCreateCompanionBuilder =
       Value<int?> ageYears,
       Value<String?> goals,
       Value<String?> apiKey,
+      Value<String> themeId,
+      Value<double> restVolume,
     });
 typedef $$SettingsTableUpdateCompanionBuilder =
     SettingsCompanion Function({
@@ -8644,6 +8825,8 @@ typedef $$SettingsTableUpdateCompanionBuilder =
       Value<int?> ageYears,
       Value<String?> goals,
       Value<String?> apiKey,
+      Value<String> themeId,
+      Value<double> restVolume,
     });
 
 class $$SettingsTableFilterComposer
@@ -8902,6 +9085,16 @@ class $$SettingsTableFilterComposer
 
   ColumnFilters<String> get apiKey => $composableBuilder(
     column: $table.apiKey,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get themeId => $composableBuilder(
+    column: $table.themeId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<double> get restVolume => $composableBuilder(
+    column: $table.restVolume,
     builder: (column) => ColumnFilters(column),
   );
 }
@@ -9165,6 +9358,16 @@ class $$SettingsTableOrderingComposer
     column: $table.apiKey,
     builder: (column) => ColumnOrderings(column),
   );
+
+  ColumnOrderings<String> get themeId => $composableBuilder(
+    column: $table.themeId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<double> get restVolume => $composableBuilder(
+    column: $table.restVolume,
+    builder: (column) => ColumnOrderings(column),
+  );
 }
 
 class $$SettingsTableAnnotationComposer
@@ -9402,6 +9605,14 @@ class $$SettingsTableAnnotationComposer
 
   GeneratedColumn<String> get apiKey =>
       $composableBuilder(column: $table.apiKey, builder: (column) => column);
+
+  GeneratedColumn<String> get themeId =>
+      $composableBuilder(column: $table.themeId, builder: (column) => column);
+
+  GeneratedColumn<double> get restVolume => $composableBuilder(
+    column: $table.restVolume,
+    builder: (column) => column,
+  );
 }
 
 class $$SettingsTableTableManager
@@ -9483,6 +9694,8 @@ class $$SettingsTableTableManager
                 Value<int?> ageYears = const Value.absent(),
                 Value<String?> goals = const Value.absent(),
                 Value<String?> apiKey = const Value.absent(),
+                Value<String> themeId = const Value.absent(),
+                Value<double> restVolume = const Value.absent(),
               }) => SettingsCompanion(
                 alarmSound: alarmSound,
                 automaticBackups: automaticBackups,
@@ -9535,6 +9748,8 @@ class $$SettingsTableTableManager
                 ageYears: ageYears,
                 goals: goals,
                 apiKey: apiKey,
+                themeId: themeId,
+                restVolume: restVolume,
               ),
           createCompanionCallback:
               ({
@@ -9589,6 +9804,8 @@ class $$SettingsTableTableManager
                 Value<int?> ageYears = const Value.absent(),
                 Value<String?> goals = const Value.absent(),
                 Value<String?> apiKey = const Value.absent(),
+                Value<String> themeId = const Value.absent(),
+                Value<double> restVolume = const Value.absent(),
               }) => SettingsCompanion.insert(
                 alarmSound: alarmSound,
                 automaticBackups: automaticBackups,
@@ -9641,6 +9858,8 @@ class $$SettingsTableTableManager
                 ageYears: ageYears,
                 goals: goals,
                 apiKey: apiKey,
+                themeId: themeId,
+                restVolume: restVolume,
               ),
           withReferenceMapper: (p0) => p0
               .map(
