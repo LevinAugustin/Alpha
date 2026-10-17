@@ -37,7 +37,6 @@
     "quelle": "free-exercise-db: Barbell_Bench_Press_-_Medium_Grip",
     "lizenz": "Unlicense",
     "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell_Bench_Press_-_Medium_Grip/0.jpg",
-    "schulter_risiko": "mittel",
     "alternativen": [
       "schraegbankdruecken-kurzhantel",
       "schraegbankdruecken-multipresse",
@@ -85,7 +84,6 @@
     "quelle": "free-exercise-db: Smith_Machine_Incline_Bench_Press",
     "lizenz": "Unlicense",
     "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Smith_Machine_Incline_Bench_Press/0.jpg",
-    "schulter_risiko": "mittel",
     "alternativen": [
       "schraegbankdruecken-kurzhantel",
       "bankdruecken-langhantel",
@@ -131,7 +129,6 @@
     "quelle": "free-exercise-db: Butterfly",
     "lizenz": "Unlicense",
     "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Butterfly/0.jpg",
-    "schulter_risiko": "hoch",
     "alternativen": [
       "kabelzug-crossover",
       "bankdruecken-langhantel"
@@ -175,7 +172,6 @@
     "quelle": "free-exercise-db: Cable_Crossover",
     "lizenz": "Unlicense",
     "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Cable_Crossover/0.jpg",
-    "schulter_risiko": "hoch",
     "alternativen": [
       "butterfly-maschine",
       "schraegbankdruecken-multipresse"
@@ -220,7 +216,6 @@
     "quelle": "free-exercise-db: Pullups",
     "lizenz": "Unlicense",
     "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Pullups/0.jpg",
-    "schulter_risiko": "mittel",
     "alternativen": [
       "latziehen-breit",
       "rudern-kabel-sitzend"
@@ -268,7 +263,6 @@
     "quelle": "free-exercise-db: Wide-Grip_Lat_Pulldown",
     "lizenz": "Unlicense",
     "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Wide-Grip_Lat_Pulldown/0.jpg",
-    "schulter_risiko": "mittel",
     "alternativen": [
       "klimmzuege",
       "rudern-kabel-sitzend"
@@ -315,7 +309,6 @@
     "quelle": "free-exercise-db: Seated_Cable_Rows",
     "lizenz": "Unlicense",
     "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Seated_Cable_Rows/0.jpg",
-    "schulter_risiko": "niedrig",
     "alternativen": [
       "langhantelrudern",
       "latziehen-breit"
@@ -363,7 +356,6 @@
     "quelle": "free-exercise-db: Bent_Over_Barbell_Row",
     "lizenz": "Unlicense",
     "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Bent_Over_Barbell_Row/0.jpg",
-    "schulter_risiko": "niedrig",
     "alternativen": [
       "rudern-kabel-sitzend"
     ],
@@ -411,7 +403,6 @@
     "quelle": "free-exercise-db: Barbell_Deadlift",
     "lizenz": "Unlicense",
     "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell_Deadlift/0.jpg",
-    "schulter_risiko": "niedrig",
     "alternativen": [
       "hip-thrust-langhantel",
       "beinbeuger-sitzend"
@@ -456,7 +447,6 @@
     "quelle": "free-exercise-db: Smith_Machine_Overhead_Shoulder_Press",
     "lizenz": "Unlicense",
     "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Smith_Machine_Overhead_Shoulder_Press/0.jpg",
-    "schulter_risiko": "hoch",
     "alternativen": [
       "schulterdruecken-kurzhantel",
       "seitheben-kurzhantel"
@@ -502,7 +492,6 @@
     "quelle": "free-exercise-db: Side_Lateral_Raise",
     "lizenz": "Unlicense",
     "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Side_Lateral_Raise/0.jpg",
-    "schulter_risiko": "mittel",
     "alternativen": [
       "schulterdruecken-kurzhantel",
       "schulterdruecken-multipresse",
@@ -547,7 +536,6 @@
     "quelle": "free-exercise-db: Face_Pull",
     "lizenz": "Unlicense",
     "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Face_Pull/0.jpg",
-    "schulter_risiko": "niedrig",
     "alternativen": [
       "seitheben-kurzhantel",
       "rudern-kabel-sitzend"
@@ -596,7 +584,6 @@
     "quelle": "free-exercise-db: Barbell_Squat",
     "lizenz": "Unlicense",
     "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell_Squat/0.jpg",
-    "schulter_risiko": "niedrig",
     "alternativen": [
       "beinpresse",
       "beinstrecker"
@@ -641,7 +628,6 @@
     "quelle": "free-exercise-db: Leg_Press",
     "lizenz": "Unlicense",
     "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Leg_Press/0.jpg",
-    "schulter_risiko": "niedrig",
     "alternativen": [
       "kniebeuge-langhantel",
       "beinstrecker"
@@ -682,7 +668,6 @@
     "quelle": "free-exercise-db: Leg_Extensions",
     "lizenz": "Unlicense",
     "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Leg_Extensions/0.jpg",
-    "schulter_risiko": "niedrig",
     "alternativen": [
       "beinpresse"
     ],
@@ -725,7 +710,6 @@
     "quelle": "free-exercise-db: Seated_Leg_Curl",
     "lizenz": "Unlicense",
     "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Seated_Leg_Curl/0.jpg",
-    "schulter_risiko": "niedrig",
     "alternativen": [
       "kreuzheben-langhantel",
       "hip-thrust-langhantel"
@@ -769,7 +753,6 @@
     "quelle": "free-exercise-db: Standing_Calf_Raises",
     "lizenz": "Unlicense",
     "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Standing_Calf_Raises/0.jpg",
-    "schulter_risiko": "niedrig",
     "position": "stehend",
     "bewegung": "beine_huefte",
     "familie": "wadenheben-stehend",
@@ -810,7 +793,6 @@
     "quelle": "free-exercise-db: Barbell_Hip_Thrust",
     "lizenz": "Unlicense",
     "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell_Hip_Thrust/0.jpg",
-    "schulter_risiko": "niedrig",
     "alternativen": [
       "kniebeuge-langhantel",
       "beinpresse"
@@ -854,7 +836,6 @@
     "quelle": "free-exercise-db: EZ-Bar_Curl",
     "lizenz": "Unlicense",
     "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/EZ-Bar_Curl/0.jpg",
-    "schulter_risiko": "niedrig",
     "alternativen": [
       "bizepscurls-kurzhantel",
       "hammercurls"
@@ -898,7 +879,6 @@
     "quelle": "free-exercise-db: Dumbbell_Bicep_Curl",
     "lizenz": "Unlicense",
     "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Dumbbell_Bicep_Curl/0.jpg",
-    "schulter_risiko": "niedrig",
     "alternativen": [
       "bizepscurls-sz-stange",
       "hammercurls"
@@ -939,7 +919,6 @@
     "quelle": "free-exercise-db: Hammer_Curls",
     "lizenz": "Unlicense",
     "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Hammer_Curls/0.jpg",
-    "schulter_risiko": "niedrig",
     "alternativen": [
       "bizepscurls-kurzhantel"
     ],
@@ -983,7 +962,6 @@
     "quelle": "free-exercise-db: Triceps_Pushdown",
     "lizenz": "Unlicense",
     "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Triceps_Pushdown/0.jpg",
-    "schulter_risiko": "niedrig",
     "alternativen": [
       "french-press-sz",
       "dips"
@@ -1028,7 +1006,6 @@
     "quelle": "free-exercise-db: Dips_-_Triceps_Version",
     "lizenz": "Unlicense",
     "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Dips_-_Triceps_Version/0.jpg",
-    "schulter_risiko": "hoch",
     "alternativen": [
       "trizepsdruecken-kabel",
       "french-press-sz"
@@ -1071,7 +1048,6 @@
     "quelle": "free-exercise-db: EZ-Bar_Skullcrusher",
     "lizenz": "Unlicense",
     "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/EZ-Bar_Skullcrusher/0.jpg",
-    "schulter_risiko": "mittel",
     "alternativen": [
       "trizepsdruecken-kabel"
     ],
@@ -1110,7 +1086,6 @@
     "quelle": "free-exercise-db: Crunches",
     "lizenz": "Unlicense",
     "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Crunches/0.jpg",
-    "schulter_risiko": "niedrig",
     "alternativen": [
       "plank",
       "beinheben-haengend"
@@ -1153,7 +1128,6 @@
     "quelle": "free-exercise-db: Plank",
     "lizenz": "Unlicense",
     "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Plank/0.jpg",
-    "schulter_risiko": "niedrig",
     "alternativen": [
       "crunches"
     ],
@@ -1196,7 +1170,6 @@
     "quelle": "free-exercise-db: Hanging_Leg_Raise",
     "lizenz": "Unlicense",
     "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Hanging_Leg_Raise/0.jpg",
-    "schulter_risiko": "mittel",
     "alternativen": [
       "crunches",
       "plank"
@@ -1242,7 +1215,6 @@
     "quelle": "free-exercise-db: Running_Treadmill",
     "lizenz": "Unlicense",
     "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Running_Treadmill/0.jpg",
-    "schulter_risiko": "niedrig",
     "alternativen": [
       "crosstrainer",
       "rudergeraet"
@@ -1290,7 +1262,6 @@
     "quelle": "free-exercise-db: Rowing_Stationary",
     "lizenz": "Unlicense",
     "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Rowing_Stationary/0.jpg",
-    "schulter_risiko": "niedrig",
     "alternativen": [
       "crosstrainer",
       "laufband"
@@ -1335,7 +1306,6 @@
     "quelle": "free-exercise-db: Elliptical_Trainer",
     "lizenz": "Unlicense",
     "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Elliptical_Trainer/0.jpg",
-    "schulter_risiko": "niedrig",
     "alternativen": [
       "laufband",
       "rudergeraet"
@@ -1381,7 +1351,6 @@
     "quelle": "free-exercise-db: Incline_Dumbbell_Press",
     "lizenz": "Unlicense",
     "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Incline_Dumbbell_Press/0.jpg",
-    "schulter_risiko": "mittel",
     "alternativen": [
       "schraegbankdruecken-multipresse",
       "bankdruecken-langhantel",
@@ -1430,7 +1399,6 @@
     "quelle": "free-exercise-db: Dumbbell_Shoulder_Press",
     "lizenz": "Unlicense",
     "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Dumbbell_Shoulder_Press/0.jpg",
-    "schulter_risiko": "hoch",
     "alternativen": [
       "schulterdruecken-multipresse",
       "seitheben-kurzhantel"

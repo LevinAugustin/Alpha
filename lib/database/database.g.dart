@@ -810,17 +810,6 @@ class $ExercisesTable extends Exercises
     type: DriftSqlType.string,
     requiredDuringInsert: false,
   );
-  static const VerificationMeta _schulterRisikoMeta = const VerificationMeta(
-    'schulterRisiko',
-  );
-  @override
-  late final GeneratedColumn<String> schulterRisiko = GeneratedColumn<String>(
-    'schulter_risiko',
-    aliasedName,
-    true,
-    type: DriftSqlType.string,
-    requiredDuringInsert: false,
-  );
   static const VerificationMeta _familieMeta = const VerificationMeta(
     'familie',
   );
@@ -909,7 +898,6 @@ class $ExercisesTable extends Exercises
     imageSource,
     imageLicense,
     alternatives,
-    schulterRisiko,
     familie,
     bewegung,
     griff,
@@ -1144,15 +1132,6 @@ class $ExercisesTable extends Exercises
         ),
       );
     }
-    if (data.containsKey('schulter_risiko')) {
-      context.handle(
-        _schulterRisikoMeta,
-        schulterRisiko.isAcceptableOrUnknown(
-          data['schulter_risiko']!,
-          _schulterRisikoMeta,
-        ),
-      );
-    }
     if (data.containsKey('familie')) {
       context.handle(
         _familieMeta,
@@ -1308,10 +1287,6 @@ class $ExercisesTable extends Exercises
         DriftSqlType.string,
         data['${effectivePrefix}alternatives'],
       ),
-      schulterRisiko: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}schulter_risiko'],
-      ),
       familie: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}familie'],
@@ -1371,7 +1346,6 @@ class Exercise extends DataClass implements Insertable<Exercise> {
   final String? imageSource;
   final String? imageLicense;
   final String? alternatives;
-  final String? schulterRisiko;
   final String? familie;
   final String? bewegung;
   final String? griff;
@@ -1407,7 +1381,6 @@ class Exercise extends DataClass implements Insertable<Exercise> {
     this.imageSource,
     this.imageLicense,
     this.alternatives,
-    this.schulterRisiko,
     this.familie,
     this.bewegung,
     this.griff,
@@ -1485,9 +1458,6 @@ class Exercise extends DataClass implements Insertable<Exercise> {
     }
     if (!nullToAbsent || alternatives != null) {
       map['alternatives'] = Variable<String>(alternatives);
-    }
-    if (!nullToAbsent || schulterRisiko != null) {
-      map['schulter_risiko'] = Variable<String>(schulterRisiko);
     }
     if (!nullToAbsent || familie != null) {
       map['familie'] = Variable<String>(familie);
@@ -1574,9 +1544,6 @@ class Exercise extends DataClass implements Insertable<Exercise> {
       alternatives: alternatives == null && nullToAbsent
           ? const Value.absent()
           : Value(alternatives),
-      schulterRisiko: schulterRisiko == null && nullToAbsent
-          ? const Value.absent()
-          : Value(schulterRisiko),
       familie: familie == null && nullToAbsent
           ? const Value.absent()
           : Value(familie),
@@ -1632,7 +1599,6 @@ class Exercise extends DataClass implements Insertable<Exercise> {
       imageSource: serializer.fromJson<String?>(json['imageSource']),
       imageLicense: serializer.fromJson<String?>(json['imageLicense']),
       alternatives: serializer.fromJson<String?>(json['alternatives']),
-      schulterRisiko: serializer.fromJson<String?>(json['schulterRisiko']),
       familie: serializer.fromJson<String?>(json['familie']),
       bewegung: serializer.fromJson<String?>(json['bewegung']),
       griff: serializer.fromJson<String?>(json['griff']),
@@ -1673,7 +1639,6 @@ class Exercise extends DataClass implements Insertable<Exercise> {
       'imageSource': serializer.toJson<String?>(imageSource),
       'imageLicense': serializer.toJson<String?>(imageLicense),
       'alternatives': serializer.toJson<String?>(alternatives),
-      'schulterRisiko': serializer.toJson<String?>(schulterRisiko),
       'familie': serializer.toJson<String?>(familie),
       'bewegung': serializer.toJson<String?>(bewegung),
       'griff': serializer.toJson<String?>(griff),
@@ -1712,7 +1677,6 @@ class Exercise extends DataClass implements Insertable<Exercise> {
     Value<String?> imageSource = const Value.absent(),
     Value<String?> imageLicense = const Value.absent(),
     Value<String?> alternatives = const Value.absent(),
-    Value<String?> schulterRisiko = const Value.absent(),
     Value<String?> familie = const Value.absent(),
     Value<String?> bewegung = const Value.absent(),
     Value<String?> griff = const Value.absent(),
@@ -1758,9 +1722,6 @@ class Exercise extends DataClass implements Insertable<Exercise> {
     imageSource: imageSource.present ? imageSource.value : this.imageSource,
     imageLicense: imageLicense.present ? imageLicense.value : this.imageLicense,
     alternatives: alternatives.present ? alternatives.value : this.alternatives,
-    schulterRisiko: schulterRisiko.present
-        ? schulterRisiko.value
-        : this.schulterRisiko,
     familie: familie.present ? familie.value : this.familie,
     bewegung: bewegung.present ? bewegung.value : this.bewegung,
     griff: griff.present ? griff.value : this.griff,
@@ -1830,9 +1791,6 @@ class Exercise extends DataClass implements Insertable<Exercise> {
       alternatives: data.alternatives.present
           ? data.alternatives.value
           : this.alternatives,
-      schulterRisiko: data.schulterRisiko.present
-          ? data.schulterRisiko.value
-          : this.schulterRisiko,
       familie: data.familie.present ? data.familie.value : this.familie,
       bewegung: data.bewegung.present ? data.bewegung.value : this.bewegung,
       griff: data.griff.present ? data.griff.value : this.griff,
@@ -1873,7 +1831,6 @@ class Exercise extends DataClass implements Insertable<Exercise> {
           ..write('imageSource: $imageSource, ')
           ..write('imageLicense: $imageLicense, ')
           ..write('alternatives: $alternatives, ')
-          ..write('schulterRisiko: $schulterRisiko, ')
           ..write('familie: $familie, ')
           ..write('bewegung: $bewegung, ')
           ..write('griff: $griff, ')
@@ -1914,7 +1871,6 @@ class Exercise extends DataClass implements Insertable<Exercise> {
     imageSource,
     imageLicense,
     alternatives,
-    schulterRisiko,
     familie,
     bewegung,
     griff,
@@ -1954,7 +1910,6 @@ class Exercise extends DataClass implements Insertable<Exercise> {
           other.imageSource == this.imageSource &&
           other.imageLicense == this.imageLicense &&
           other.alternatives == this.alternatives &&
-          other.schulterRisiko == this.schulterRisiko &&
           other.familie == this.familie &&
           other.bewegung == this.bewegung &&
           other.griff == this.griff &&
@@ -1992,7 +1947,6 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
   final Value<String?> imageSource;
   final Value<String?> imageLicense;
   final Value<String?> alternatives;
-  final Value<String?> schulterRisiko;
   final Value<String?> familie;
   final Value<String?> bewegung;
   final Value<String?> griff;
@@ -2028,7 +1982,6 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
     this.imageSource = const Value.absent(),
     this.imageLicense = const Value.absent(),
     this.alternatives = const Value.absent(),
-    this.schulterRisiko = const Value.absent(),
     this.familie = const Value.absent(),
     this.bewegung = const Value.absent(),
     this.griff = const Value.absent(),
@@ -2065,7 +2018,6 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
     this.imageSource = const Value.absent(),
     this.imageLicense = const Value.absent(),
     this.alternatives = const Value.absent(),
-    this.schulterRisiko = const Value.absent(),
     this.familie = const Value.absent(),
     this.bewegung = const Value.absent(),
     this.griff = const Value.absent(),
@@ -2104,7 +2056,6 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
     Expression<String>? imageSource,
     Expression<String>? imageLicense,
     Expression<String>? alternatives,
-    Expression<String>? schulterRisiko,
     Expression<String>? familie,
     Expression<String>? bewegung,
     Expression<String>? griff,
@@ -2143,7 +2094,6 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
       if (imageSource != null) 'image_source': imageSource,
       if (imageLicense != null) 'image_license': imageLicense,
       if (alternatives != null) 'alternatives': alternatives,
-      if (schulterRisiko != null) 'schulter_risiko': schulterRisiko,
       if (familie != null) 'familie': familie,
       if (bewegung != null) 'bewegung': bewegung,
       if (griff != null) 'griff': griff,
@@ -2182,7 +2132,6 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
     Value<String?>? imageSource,
     Value<String?>? imageLicense,
     Value<String?>? alternatives,
-    Value<String?>? schulterRisiko,
     Value<String?>? familie,
     Value<String?>? bewegung,
     Value<String?>? griff,
@@ -2220,7 +2169,6 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
       imageSource: imageSource ?? this.imageSource,
       imageLicense: imageLicense ?? this.imageLicense,
       alternatives: alternatives ?? this.alternatives,
-      schulterRisiko: schulterRisiko ?? this.schulterRisiko,
       familie: familie ?? this.familie,
       bewegung: bewegung ?? this.bewegung,
       griff: griff ?? this.griff,
@@ -2323,9 +2271,6 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
     if (alternatives.present) {
       map['alternatives'] = Variable<String>(alternatives.value);
     }
-    if (schulterRisiko.present) {
-      map['schulter_risiko'] = Variable<String>(schulterRisiko.value);
-    }
     if (familie.present) {
       map['familie'] = Variable<String>(familie.value);
     }
@@ -2376,7 +2321,6 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
           ..write('imageSource: $imageSource, ')
           ..write('imageLicense: $imageLicense, ')
           ..write('alternatives: $alternatives, ')
-          ..write('schulterRisiko: $schulterRisiko, ')
           ..write('familie: $familie, ')
           ..write('bewegung: $bewegung, ')
           ..write('griff: $griff, ')
@@ -7943,7 +7887,6 @@ typedef $$ExercisesTableCreateCompanionBuilder =
       Value<String?> imageSource,
       Value<String?> imageLicense,
       Value<String?> alternatives,
-      Value<String?> schulterRisiko,
       Value<String?> familie,
       Value<String?> bewegung,
       Value<String?> griff,
@@ -7981,7 +7924,6 @@ typedef $$ExercisesTableUpdateCompanionBuilder =
       Value<String?> imageSource,
       Value<String?> imageLicense,
       Value<String?> alternatives,
-      Value<String?> schulterRisiko,
       Value<String?> familie,
       Value<String?> bewegung,
       Value<String?> griff,
@@ -8193,11 +8135,6 @@ class $$ExercisesTableFilterComposer
 
   ColumnFilters<String> get alternatives => $composableBuilder(
     column: $table.alternatives,
-    builder: (column) => ColumnFilters(column),
-  );
-
-  ColumnFilters<String> get schulterRisiko => $composableBuilder(
-    column: $table.schulterRisiko,
     builder: (column) => ColumnFilters(column),
   );
 
@@ -8449,11 +8386,6 @@ class $$ExercisesTableOrderingComposer
     builder: (column) => ColumnOrderings(column),
   );
 
-  ColumnOrderings<String> get schulterRisiko => $composableBuilder(
-    column: $table.schulterRisiko,
-    builder: (column) => ColumnOrderings(column),
-  );
-
   ColumnOrderings<String> get familie => $composableBuilder(
     column: $table.familie,
     builder: (column) => ColumnOrderings(column),
@@ -8626,11 +8558,6 @@ class $$ExercisesTableAnnotationComposer
     builder: (column) => column,
   );
 
-  GeneratedColumn<String> get schulterRisiko => $composableBuilder(
-    column: $table.schulterRisiko,
-    builder: (column) => column,
-  );
-
   GeneratedColumn<String> get familie =>
       $composableBuilder(column: $table.familie, builder: (column) => column);
 
@@ -8781,7 +8708,6 @@ class $$ExercisesTableTableManager
                 Value<String?> imageSource = const Value.absent(),
                 Value<String?> imageLicense = const Value.absent(),
                 Value<String?> alternatives = const Value.absent(),
-                Value<String?> schulterRisiko = const Value.absent(),
                 Value<String?> familie = const Value.absent(),
                 Value<String?> bewegung = const Value.absent(),
                 Value<String?> griff = const Value.absent(),
@@ -8817,7 +8743,6 @@ class $$ExercisesTableTableManager
                 imageSource: imageSource,
                 imageLicense: imageLicense,
                 alternatives: alternatives,
-                schulterRisiko: schulterRisiko,
                 familie: familie,
                 bewegung: bewegung,
                 griff: griff,
@@ -8855,7 +8780,6 @@ class $$ExercisesTableTableManager
                 Value<String?> imageSource = const Value.absent(),
                 Value<String?> imageLicense = const Value.absent(),
                 Value<String?> alternatives = const Value.absent(),
-                Value<String?> schulterRisiko = const Value.absent(),
                 Value<String?> familie = const Value.absent(),
                 Value<String?> bewegung = const Value.absent(),
                 Value<String?> griff = const Value.absent(),
@@ -8891,7 +8815,6 @@ class $$ExercisesTableTableManager
                 imageSource: imageSource,
                 imageLicense: imageLicense,
                 alternatives: alternatives,
-                schulterRisiko: schulterRisiko,
                 familie: familie,
                 bewegung: bewegung,
                 griff: griff,

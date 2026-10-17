@@ -46,8 +46,6 @@ const exerciseCategories = [
   'Cardio',
 ];
 
-const shoulderRiskValues = ['niedrig', 'mittel', 'hoch'];
-
 const exerciseGripValues = [
   'eng',
   'breit',

@@ -1151,6 +1151,9 @@ class AppDatabase extends _$AppDatabase {
             from77To78: (Migrator m, Schema78 schema) async {
               await m.addColumn(schema.exercises, schema.exercises.bewegung);
             },
+            from78To79: (Migrator m, Schema79 schema) async {
+              await m.dropColumn(schema.exercises, 'schulter_risiko');
+            },
           );
           await transaction(() async {
             await upgrade(m, from, to);
@@ -1172,5 +1175,5 @@ class AppDatabase extends _$AppDatabase {
   }
 
   @override
-  int get schemaVersion => 78;
+  int get schemaVersion => 79;
 }

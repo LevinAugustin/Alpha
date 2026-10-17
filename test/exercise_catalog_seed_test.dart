@@ -158,7 +158,6 @@ void main() {
     expect(after.equipment, 'Langhantel');
     expect(after.primaryMuscles, '["brust"]');
     expect(after.secondaryMuscles, '["schulter_vorne","trizeps"]');
-    expect(after.schulterRisiko, 'mittel');
     expect(after.kind, 'strength');
     expect(
       after.catalogSource,
@@ -288,7 +287,6 @@ void main() {
     expect(crunches.imageSource, '');
     expect(crunches.imageLicense, '');
     expect(crunches.alternatives, '["plank","beinheben-haengend"]');
-    expect(crunches.schulterRisiko, 'niedrig');
 
     final licenses = await exerciseLicenseRows(db);
     expect(
@@ -592,13 +590,11 @@ void main() {
     );
     expect(
       parseExerciseCatalog(row('"schulter_risiko": "extrem"')).entries,
-      isEmpty,
+      hasLength(1),
     );
     expect(
-      parseExerciseCatalog(
-        row('"schulter_risiko": "hoch"'),
-      ).entries.single.shoulderRisk,
-      'hoch',
+      parseExerciseCatalog(row('"schulter_risiko": "hoch"')).skipped,
+      isEmpty,
     );
     expect(parseExerciseCatalog(row('"bild_quelle": 1')).entries, isEmpty);
     expect(
@@ -619,7 +615,6 @@ void main() {
     expect(optionalNull.entries, hasLength(1));
     expect(optionalNull.entries.single.imageSource, isEmpty);
     expect(optionalNull.entries.single.imageLicense, isEmpty);
-    expect(optionalNull.entries.single.shoulderRisk, isEmpty);
     expect(
       parseExerciseCatalog(row('"alternativen": "klimmzug"')).entries,
       isEmpty,
@@ -645,6 +640,8 @@ void main() {
     () async {
       final rows = _probeRows();
       expect(rows, hasLength(32));
+      expect(rows.every((row) => !row.containsKey('schulter_risiko')), isTrue);
+      expect(rows.any((row) => row.containsKey('alternativen')), isTrue);
       expect(
         rows
             .where((row) => row['kategorie'] == 'Cardio')

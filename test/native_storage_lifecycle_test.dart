@@ -188,7 +188,6 @@ void main() {
           'image_source': null,
           'image_license': null,
           'alternatives': null,
-          'schulter_risiko': null,
           'familie': null,
           'bewegung': null,
           'griff': null,
