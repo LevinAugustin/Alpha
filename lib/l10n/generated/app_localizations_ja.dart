@@ -1993,6 +1993,9 @@ class AppLocalizationsJa extends AppLocalizations {
   String get alternativesLabel => '代替種目';
 
   @override
+  String get mechanicLabel => '動作タイプ';
+
+  @override
   String get aiCoachTitle => 'AIコーチ';
 
   @override

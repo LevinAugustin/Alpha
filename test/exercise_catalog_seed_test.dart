@@ -1,13 +1,30 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:drift/drift.dart' hide isNull, isNotNull;
 import 'package:flexify/database/catalog_seed.dart';
 import 'package:flexify/database/database.dart';
 import 'package:flexify/database/exercise_de_catalog.dart';
+import 'package:flexify/exercises/exercise_detail_page.dart';
 import 'package:flexify/main.dart';
+import 'package:flexify/shell/exercises_page.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
+import 'support/test_app.dart';
+
 import 'mock_tests.dart';
+
+List<Map<String, dynamic>> _probeWithNullCardioMechanic() {
+  final decoded =
+      jsonDecode(File('assets/exercises/exercises_de.json').readAsStringSync())
+          as List;
+  return [
+    for (final row in decoded)
+      Map<String, dynamic>.from(row as Map)
+        ..['mechanik'] = row['split'] == 'cardio' ? null : row['mechanik'],
+  ];
+}
 
 void main() {
   setUp(() => db = testDb());
@@ -518,6 +535,18 @@ void main() {
       'hoch',
     );
     expect(parseExerciseCatalog(row('"bild_quelle": 1')).entries, isEmpty);
+    expect(
+      parseExerciseCatalog(
+        '[$valid]'.replaceFirst('"mechanik": "grund"', '"mechanik": null'),
+      ).entries.single.mechanic,
+      isEmpty,
+    );
+    expect(
+      parseExerciseCatalog(
+        '[$valid]'.replaceFirst('"mechanik": "grund"', '"mechanik": "legs"'),
+      ).entries,
+      isEmpty,
+    );
     final optionalNull = parseExerciseCatalog(
       row('"bild_quelle": null, "bild_lizenz": null, "schulter_risiko": null'),
     );
@@ -543,6 +572,122 @@ void main() {
       ).entries.single.alternatives,
       isEmpty,
     );
+  });
+
+  test(
+    'null mechanik from the probe is stored and stays out of search',
+    () async {
+      final rows = _probeWithNullCardioMechanic();
+      expect(rows, hasLength(30));
+      final parsed = parseExerciseCatalog(jsonEncode(rows));
+      expect(parsed.skipped, isEmpty);
+      expect(
+        parsed.entries
+            .where((entry) => entry.split == 'cardio')
+            .map((entry) => entry.mechanic),
+        everyElement(isEmpty),
+      );
+      expect(parsed.entries.first.mechanic, 'grund');
+
+      final imported = await importExerciseCatalogJson(
+        db,
+        jsonEncode(rows),
+        legacyMapRaw: File(
+          'assets/exercises/legacy_map.json',
+        ).readAsStringSync(),
+      );
+      expect(imported.skipped, isEmpty);
+      final cardio =
+          await (db.exercises.select()
+                ..where((row) => row.catalogId.equals('laufband')))
+              .getSingle();
+      final bench =
+          await (db.exercises.select()..where(
+                (row) => row.catalogId.equals('bankdruecken-langhantel'),
+              ))
+              .getSingle();
+      expect(cardio.mechanic, isNull);
+      expect(bench.mechanic, 'grund');
+      expect(catalogText(cardio.mechanic), isNull);
+      expect(
+        matchesExerciseFilters(
+          name: cardio.name,
+          mechanic: cardio.mechanic,
+          query: '',
+          mechanicFilter: 'grund',
+        ),
+        isFalse,
+      );
+      expect(
+        matchesExerciseFilters(
+          name: cardio.name,
+          split: cardio.split,
+          mechanic: cardio.mechanic,
+          query: '',
+          splitFilter: 'cardio',
+        ),
+        isTrue,
+      );
+      expect(
+        exerciseMatchesQuery(
+          name: cardio.name,
+          germanName: cardio.germanName,
+          mechanic: cardio.mechanic,
+          query: 'null',
+        ),
+        isFalse,
+      );
+    },
+  );
+
+  testWidgets('detail page and filters hide a null mechanic', (tester) async {
+    final harness = await FlexifyTestHarness.create();
+    addTearDown(harness.database.close);
+    final rows = _probeWithNullCardioMechanic();
+    await importExerciseCatalogJson(
+      harness.database,
+      jsonEncode(rows),
+      legacyMapRaw: File('assets/exercises/legacy_map.json').readAsStringSync(),
+    );
+    final cardio =
+        await (harness.database.exercises.select()
+              ..where((row) => row.catalogId.equals('crosstrainer')))
+            .getSingle();
+    final bench =
+        await (harness.database.exercises.select()
+              ..where((row) => row.catalogId.equals('bankdruecken-langhantel')))
+            .getSingle();
+
+    await harness.pump(tester, ExerciseDetailPage(exercise: cardio));
+    await tester.pump();
+    expect(find.textContaining('Mechanic'), findsNothing);
+    expect(find.textContaining('null'), findsNothing);
+
+    await harness.pump(tester, ExerciseDetailPage(exercise: bench));
+    await tester.pump();
+    expect(find.text('Mechanic: grund'), findsOneWidget);
+    expect(find.textContaining('null'), findsNothing);
+
+    await harness.pump(tester, const Scaffold(body: ExercisesPage()));
+    await tester.pumpAndSettle(
+      const Duration(milliseconds: 50),
+      EnginePhase.sendSemanticsUpdate,
+      const Duration(seconds: 3),
+    );
+    expect(find.text('null'), findsNothing);
+    final chips = find.descendant(
+      of: find.byKey(const Key('exercise-filters')),
+      matching: find.byType(Scrollable),
+    );
+    await tester.scrollUntilVisible(find.text('grund'), 400, scrollable: chips);
+    expect(find.text('grund'), findsOneWidget);
+    await tester.scrollUntilVisible(
+      find.text('isolation'),
+      400,
+      scrollable: chips,
+    );
+    expect(find.text('isolation'), findsOneWidget);
+    expect(find.text('null'), findsNothing);
   });
 
   test('legacy map entries can be extended and bad ones are skipped', () {

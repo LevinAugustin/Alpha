@@ -2052,6 +2052,9 @@ class AppLocalizationsFa extends AppLocalizations {
   String get alternativesLabel => 'جایگزین‌ها';
 
   @override
+  String get mechanicLabel => 'مکانیک';
+
+  @override
   String get aiCoachTitle => 'مربی هوش مصنوعی';
 
   @override

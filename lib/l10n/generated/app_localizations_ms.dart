@@ -2062,6 +2062,9 @@ class AppLocalizationsMs extends AppLocalizations {
   String get alternativesLabel => 'Alternatif';
 
   @override
+  String get mechanicLabel => 'Mekanik';
+
+  @override
   String get aiCoachTitle => 'Jurulatih AI';
 
   @override

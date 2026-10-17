@@ -2067,6 +2067,9 @@ class AppLocalizationsNl extends AppLocalizations {
   String get alternativesLabel => 'Alternatieven';
 
   @override
+  String get mechanicLabel => 'Mechanica';
+
+  @override
   String get aiCoachTitle => 'AI-coach';
 
   @override

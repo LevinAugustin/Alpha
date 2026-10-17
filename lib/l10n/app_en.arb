@@ -2726,6 +2726,10 @@
   "@alternativesLabel": {
     "description": "Alternatives"
   },
+  "mechanicLabel": "Mechanic",
+  "@mechanicLabel": {
+    "description": "Mechanic"
+  },
 
   "aiCoachTitle": "AI coach",
   "@aiCoachTitle":   {

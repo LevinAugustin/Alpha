@@ -2049,6 +2049,9 @@ class AppLocalizationsBn extends AppLocalizations {
   String get alternativesLabel => 'বিকল্প';
 
   @override
+  String get mechanicLabel => 'যান্ত্রিকতা';
+
+  @override
   String get aiCoachTitle => 'এআই কোচ';
 
   @override

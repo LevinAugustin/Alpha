@@ -644,6 +644,7 @@
   "muscleAbductors": "Abducteurs",
   "muscleHipFlexors": "Fléchisseurs de hanche",
   "alternativesLabel": "Autres exercices",
+  "mechanicLabel": "Mécanique",
   "aiCoachTitle": "Coach IA",
   "aiProviderLabel": "Fournisseur",
   "aiOffNotice": "Le coach reste éteint tant que tu n’enregistres pas ta propre clé.",

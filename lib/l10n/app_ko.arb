@@ -644,6 +644,7 @@
   "muscleAbductors": "외전근",
   "muscleHipFlexors": "고관절 굴곡근",
   "alternativesLabel": "대체 운동",
+  "mechanicLabel": "역학",
   "aiCoachTitle": "AI 코치",
   "aiProviderLabel": "제공자",
   "aiOffNotice": "자신의 키를 저장하기 전에는 코치가 꺼져 있습니다.",

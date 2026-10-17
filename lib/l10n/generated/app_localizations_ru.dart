@@ -2081,6 +2081,9 @@ class AppLocalizationsRu extends AppLocalizations {
   String get alternativesLabel => 'Альтернативы';
 
   @override
+  String get mechanicLabel => 'Механика';
+
+  @override
   String get aiCoachTitle => 'ИИ-тренер';
 
   @override

@@ -2082,6 +2082,9 @@ class AppLocalizationsFr extends AppLocalizations {
   String get alternativesLabel => 'Autres exercices';
 
   @override
+  String get mechanicLabel => 'Mécanique';
+
+  @override
   String get aiCoachTitle => 'Coach IA';
 
   @override

@@ -2058,6 +2058,9 @@ class AppLocalizationsVi extends AppLocalizations {
   String get alternativesLabel => 'Bài thay thế';
 
   @override
+  String get mechanicLabel => 'Cơ chế';
+
+  @override
   String get aiCoachTitle => 'Huấn luyện viên AI';
 
   @override

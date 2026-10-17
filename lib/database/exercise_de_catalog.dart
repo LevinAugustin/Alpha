@@ -403,13 +403,14 @@ String? _validate(Map<String, dynamic> json, String id) {
     'kategorie',
     'geraet',
     'split',
-    'mechanik',
     'bild',
     'quelle',
     'lizenz',
   ]) {
     if (json[key] is! String) return '$id field $key must be a string.';
   }
+  final mechanic = _mechanic(json, id);
+  if (mechanic != null) return mechanic;
   for (final key in ['bild_quelle', 'bild_lizenz']) {
     final value = json[key];
     if (json.containsKey(key) && value != null && value is! String) {
@@ -427,10 +428,6 @@ String? _validate(Map<String, dynamic> json, String id) {
   final split = _string(json['split']);
   if (!allowedExerciseSplits.contains(split)) {
     return '$id split "$split" is not allowed.';
-  }
-  final mechanic = _string(json['mechanik']);
-  if (!allowedExerciseMechanics.contains(mechanic)) {
-    return '$id mechanik "$mechanic" is not allowed.';
   }
   final gear = _string(json['geraet']);
   if (!exerciseGearValues.contains(gear)) {
@@ -459,6 +456,16 @@ String? _muscleList(Map<String, dynamic> json, String key, String id) {
     if (item is! String || !exerciseMuscleKeys.contains(item.trim())) {
       return '$id field $key must use a muscle map key.';
     }
+  }
+  return null;
+}
+
+String? _mechanic(Map<String, dynamic> json, String id) {
+  if (!json.containsKey('mechanik') || json['mechanik'] == null) return null;
+  final value = json['mechanik'];
+  if (value is String && value.trim().isEmpty) return null;
+  if (value is! String || !allowedExerciseMechanics.contains(value.trim())) {
+    return '$id mechanik is not allowed.';
   }
   return null;
 }
@@ -519,6 +526,7 @@ class _Fields {
   String get tips => jsonEncode(entry.tips);
   String get alternatives => jsonEncode(entry.alternatives);
   String? get image => resolveExerciseImage(entry.image);
+  String? get mechanic => entry.mechanic.isEmpty ? null : entry.mechanic;
 
   ExercisesCompanion insert({required String name}) {
     final cardio = entry.split == 'cardio';
@@ -537,7 +545,7 @@ class _Fields {
       primaryMuscles: Value(primary),
       secondaryMuscles: Value(secondary),
       split: Value(entry.split),
-      mechanic: Value(entry.mechanic),
+      mechanic: Value(mechanic),
       steps: Value(steps),
       tips: Value(tips),
       catalogSource: Value(entry.source),
@@ -564,7 +572,7 @@ class _Fields {
       primaryMuscles: Value(primary),
       secondaryMuscles: Value(secondary),
       split: Value(entry.split),
-      mechanic: Value(entry.mechanic),
+      mechanic: Value(mechanic),
       steps: Value(steps),
       tips: Value(tips),
       catalogSource: Value(entry.source),
@@ -618,7 +626,7 @@ bool _same(Exercise row, ExerciseDeEntry entry, int? categoryId) {
       row.primaryMuscles == fields.primary &&
       row.secondaryMuscles == fields.secondary &&
       row.split == entry.split &&
-      row.mechanic == entry.mechanic &&
+      (row.mechanic ?? '') == entry.mechanic &&
       row.steps == fields.steps &&
       row.tips == fields.tips &&
       row.image == fields.image &&

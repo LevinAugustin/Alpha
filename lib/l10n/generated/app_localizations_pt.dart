@@ -2076,6 +2076,9 @@ class AppLocalizationsPt extends AppLocalizations {
   String get alternativesLabel => 'Alternativas';
 
   @override
+  String get mechanicLabel => 'Mecânica';
+
+  @override
   String get aiCoachTitle => 'Treinador de IA';
 
   @override
@@ -4274,6 +4277,9 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
 
   @override
   String get alternativesLabel => 'Alternativas';
+
+  @override
+  String get mechanicLabel => 'Mecânica';
 
   @override
   String get aiCoachTitle => 'Treinador de IA';
@@ -6481,6 +6487,9 @@ class AppLocalizationsPtPt extends AppLocalizationsPt {
 
   @override
   String get alternativesLabel => 'Alternativas';
+
+  @override
+  String get mechanicLabel => 'Mecânica';
 
   @override
   String get aiCoachTitle => 'Treinador de IA';

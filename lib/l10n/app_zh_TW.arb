@@ -644,6 +644,7 @@
   "muscleAbductors": "外展肌",
   "muscleHipFlexors": "髖屈肌",
   "alternativesLabel": "替代動作",
+  "mechanicLabel": "動作類型",
   "aiCoachTitle": "智慧教練",
   "aiProviderLabel": "提供者",
   "aiOffNotice": "在你儲存自己的金鑰之前，教練保持關閉。",

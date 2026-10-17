@@ -644,6 +644,7 @@
   "muscleAbductors": "外転筋",
   "muscleHipFlexors": "腸腰筋",
   "alternativesLabel": "代替種目",
+  "mechanicLabel": "動作タイプ",
   "aiCoachTitle": "AIコーチ",
   "aiProviderLabel": "提供元",
   "aiOffNotice": "自分の鍵を保存するまでコーチはオフです。",

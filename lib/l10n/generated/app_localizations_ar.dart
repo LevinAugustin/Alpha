@@ -2039,6 +2039,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get alternativesLabel => 'بدائل';
 
   @override
+  String get mechanicLabel => 'الآلية';
+
+  @override
   String get aiCoachTitle => 'مدرب الذكاء';
 
   @override

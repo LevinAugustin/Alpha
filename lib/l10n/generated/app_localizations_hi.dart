@@ -2046,6 +2046,9 @@ class AppLocalizationsHi extends AppLocalizations {
   String get alternativesLabel => 'विकल्प';
 
   @override
+  String get mechanicLabel => 'यांत्रिकी';
+
+  @override
   String get aiCoachTitle => 'एआई कोच';
 
   @override

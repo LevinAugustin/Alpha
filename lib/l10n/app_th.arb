@@ -2188,6 +2188,7 @@
   "muscleAbductors": "กล้ามเนื้อกางขา",
   "muscleHipFlexors": "งอสะโพก",
   "alternativesLabel": "ทางเลือก",
+  "mechanicLabel": "กลไก",
   "aiCoachTitle": "โค้ช AI",
   "aiProviderLabel": "ผู้ให้บริการ",
   "aiOffNotice": "โค้ชปิดอยู่จนกว่าคุณจะบันทึกคีย์ของตัวเอง",

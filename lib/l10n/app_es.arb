@@ -644,6 +644,7 @@
   "muscleAbductors": "Abductores",
   "muscleHipFlexors": "Flexores de cadera",
   "alternativesLabel": "Alternativas",
+  "mechanicLabel": "Mecánica",
   "aiCoachTitle": "Entrenador de IA",
   "aiProviderLabel": "Proveedor",
   "aiOffNotice": "El entrenador permanece apagado hasta que guardes tu propia clave.",

@@ -22,6 +22,7 @@ class _ExercisesPageState extends State<ExercisesPage> {
   String _muscle = '';
   String _equipment = '';
   String _split = '';
+  String _mechanic = '';
 
   @override
   void dispose() {
@@ -69,7 +70,12 @@ class _ExercisesPageState extends State<ExercisesPage> {
                 exercises.map((exercise) => exercise.split),
                 const ['push', 'pull', 'beine', 'core', 'cardio'],
               );
+              final mechanics = _chipValues(
+                exercises.map((exercise) => catalogText(exercise.mechanic)),
+                const ['grund', 'isolation'],
+              );
               return ListView(
+                key: const Key('exercise-filters'),
                 scrollDirection: Axis.horizontal,
                 padding: const EdgeInsets.symmetric(horizontal: 12),
                 children: [
@@ -114,6 +120,17 @@ class _ExercisesPageState extends State<ExercisesPage> {
                         }),
                       ),
                     ),
+                  for (final item in mechanics)
+                    Padding(
+                      padding: const EdgeInsets.only(right: 8),
+                      child: FilterChip(
+                        label: Text(item),
+                        selected: _mechanic == item,
+                        onSelected: (_) => setState(() {
+                          _mechanic = _mechanic == item ? '' : item;
+                        }),
+                      ),
+                    ),
                 ],
               );
             },
@@ -138,12 +155,14 @@ class _ExercisesPageState extends State<ExercisesPage> {
                       category: exercise.categoryName,
                       equipment: exercise.equipment,
                       split: exercise.split,
+                      mechanic: exercise.mechanic,
                       primaryMuscles: exercise.primaryMuscles,
                       secondaryMuscles: exercise.secondaryMuscles,
                       query: query,
                       group: _muscle,
                       equipmentFilter: _equipment,
                       splitFilter: _split,
+                      mechanicFilter: _mechanic,
                     );
                   }).toList()..sort((a, b) {
                     final left = (a.germanName ?? a.name).toLowerCase();

@@ -1995,6 +1995,9 @@ class AppLocalizationsKo extends AppLocalizations {
   String get alternativesLabel => '대체 운동';
 
   @override
+  String get mechanicLabel => '역학';
+
+  @override
   String get aiCoachTitle => 'AI 코치';
 
   @override

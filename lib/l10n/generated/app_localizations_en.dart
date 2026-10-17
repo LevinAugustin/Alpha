@@ -2056,6 +2056,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get alternativesLabel => 'Alternatives';
 
   @override
+  String get mechanicLabel => 'Mechanic';
+
+  @override
   String get aiCoachTitle => 'AI coach';
 
   @override

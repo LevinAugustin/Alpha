@@ -131,6 +131,8 @@ class _ExerciseDetailPageState extends State<ExerciseDetailPage> {
             '${l10n.secondaryMuscleLabel}: ${secondary.map((key) => muscleLabel(l10n, key)).join(', ')}',
           ),
         Text('${l10n.equipmentLabel}: ${gear.isEmpty ? '—' : gear}'),
+        if (catalogText(exercise.mechanic) case final mechanic?)
+          Text('${l10n.mechanicLabel}: $mechanic'),
         _alternatives(context, exercise),
         if ((exercise.catalogSource ?? '').trim().isNotEmpty ||
             (exercise.catalogLicense ?? '').trim().isNotEmpty)

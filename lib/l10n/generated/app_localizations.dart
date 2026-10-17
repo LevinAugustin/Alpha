@@ -3810,6 +3810,12 @@ abstract class AppLocalizations {
   /// **'Alternatives'**
   String get alternativesLabel;
 
+  /// Mechanic
+  ///
+  /// In en, this message translates to:
+  /// **'Mechanic'**
+  String get mechanicLabel;
+
   /// AI coach
   ///
   /// In en, this message translates to:

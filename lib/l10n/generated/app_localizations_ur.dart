@@ -2051,6 +2051,9 @@ class AppLocalizationsUr extends AppLocalizations {
   String get alternativesLabel => 'متبادل';
 
   @override
+  String get mechanicLabel => 'میکانکس';
+
+  @override
   String get aiCoachTitle => 'اے آئی کوچ';
 
   @override

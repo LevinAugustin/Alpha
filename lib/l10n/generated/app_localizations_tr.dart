@@ -2069,6 +2069,9 @@ class AppLocalizationsTr extends AppLocalizations {
   String get alternativesLabel => 'Seçenekler';
 
   @override
+  String get mechanicLabel => 'Mekanik';
+
+  @override
   String get aiCoachTitle => 'YZ koçu';
 
   @override

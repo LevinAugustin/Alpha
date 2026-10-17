@@ -2063,6 +2063,9 @@ class AppLocalizationsId extends AppLocalizations {
   String get alternativesLabel => 'Alternatif';
 
   @override
+  String get mechanicLabel => 'Mekanika';
+
+  @override
   String get aiCoachTitle => 'Pelatih AI';
 
   @override

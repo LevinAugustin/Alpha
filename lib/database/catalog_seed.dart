@@ -1,5 +1,11 @@
 import 'dart:convert';
 
+String? catalogText(String? value) {
+  final text = value?.trim() ?? '';
+  if (text.isEmpty || text.toLowerCase() == 'null') return null;
+  return text;
+}
+
 List<String> decodeCatalogList(String? raw) {
   final value = raw?.trim() ?? '';
   if (value.isEmpty) return const [];
@@ -26,6 +32,7 @@ bool exerciseMatchesQuery({
   String? category,
   String? equipment,
   String? split,
+  String? mechanic,
   String? primaryMuscles,
   String? secondaryMuscles,
   required String query,
@@ -40,6 +47,7 @@ bool exerciseMatchesQuery({
     category ?? '',
     equipment ?? '',
     split ?? '',
+    catalogText(mechanic) ?? '',
     decodeCatalogList(primaryMuscles).join(' '),
     decodeCatalogList(secondaryMuscles).join(' '),
   ].join(' ').toLowerCase();
@@ -54,12 +62,14 @@ bool matchesExerciseFilters({
   String? category,
   String? equipment,
   String? split,
+  String? mechanic,
   String? primaryMuscles,
   String? secondaryMuscles,
   required String query,
   String group = '',
   String equipmentFilter = '',
   String splitFilter = '',
+  String mechanicFilter = '',
 }) {
   if (group.isNotEmpty) {
     final groups = <String>{
@@ -79,6 +89,11 @@ bool matchesExerciseFilters({
       (split ?? '').trim().toLowerCase() != splitFilter.toLowerCase()) {
     return false;
   }
+  if (mechanicFilter.isNotEmpty &&
+      (catalogText(mechanic) ?? '').toLowerCase() !=
+          mechanicFilter.toLowerCase()) {
+    return false;
+  }
   return exerciseMatchesQuery(
     name: name,
     germanName: germanName,
@@ -87,6 +102,7 @@ bool matchesExerciseFilters({
     category: category,
     equipment: equipment,
     split: split,
+    mechanic: mechanic,
     primaryMuscles: primaryMuscles,
     secondaryMuscles: secondaryMuscles,
     query: query,

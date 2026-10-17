@@ -644,6 +644,7 @@
   "muscleAbductors": "Abduttori",
   "muscleHipFlexors": "Flessori dell anca",
   "alternativesLabel": "Alternative",
+  "mechanicLabel": "Meccanica",
   "aiCoachTitle": "Coach IA",
   "aiProviderLabel": "Fornitore",
   "aiOffNotice": "Il coach resta spento finché non salvi la tua chiave.",

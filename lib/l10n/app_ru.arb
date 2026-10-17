@@ -644,6 +644,7 @@
   "muscleAbductors": "Отводящие",
   "muscleHipFlexors": "Сгибатели бедра",
   "alternativesLabel": "Альтернативы",
+  "mechanicLabel": "Механика",
   "aiCoachTitle": "ИИ-тренер",
   "aiProviderLabel": "Провайдер",
   "aiOffNotice": "Тренер выключен, пока вы не сохраните свой ключ.",

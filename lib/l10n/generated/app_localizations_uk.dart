@@ -2077,6 +2077,9 @@ class AppLocalizationsUk extends AppLocalizations {
   String get alternativesLabel => 'Альтернативи';
 
   @override
+  String get mechanicLabel => 'Механіка';
+
+  @override
   String get aiCoachTitle => 'ШІ-тренер';
 
   @override

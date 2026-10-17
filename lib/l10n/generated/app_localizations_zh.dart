@@ -1982,6 +1982,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get alternativesLabel => '替代动作';
 
   @override
+  String get mechanicLabel => '动作类型';
+
+  @override
   String get aiCoachTitle => '智能教练';
 
   @override
@@ -4094,6 +4097,9 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
   String get alternativesLabel => '替代动作';
 
   @override
+  String get mechanicLabel => '动作类型';
+
+  @override
   String get aiCoachTitle => '智能教练';
 
   @override
@@ -6204,6 +6210,9 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get alternativesLabel => '替代動作';
+
+  @override
+  String get mechanicLabel => '動作類型';
 
   @override
   String get aiCoachTitle => '智慧教練';

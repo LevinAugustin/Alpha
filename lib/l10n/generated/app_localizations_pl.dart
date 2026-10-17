@@ -2079,6 +2079,9 @@ class AppLocalizationsPl extends AppLocalizations {
   String get alternativesLabel => 'Zamienniki';
 
   @override
+  String get mechanicLabel => 'Mechanika';
+
+  @override
   String get aiCoachTitle => 'Trener SI';
 
   @override
