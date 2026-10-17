@@ -1939,6 +1939,30 @@ class AppLocalizationsJa extends AppLocalizations {
   String get tipsLabel => 'コツ';
 
   @override
+  String get imageSourceLabel => '画像の出典';
+
+  @override
+  String get imageLicenseLabel => '画像のライセンス';
+
+  @override
+  String get gearLanghantel => 'バーベル';
+
+  @override
+  String get gearKurzhantel => 'ダンベル';
+
+  @override
+  String get gearKabelzug => 'ケーブル';
+
+  @override
+  String get gearMaschine => 'マシン';
+
+  @override
+  String get gearMultipresse => 'スミスマシン';
+
+  @override
+  String get gearKoerpergewicht => '自重';
+
+  @override
   String get aiCoachTitle => 'AIコーチ';
 
   @override

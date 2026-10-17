@@ -2013,6 +2013,30 @@ class AppLocalizationsNl extends AppLocalizations {
   String get tipsLabel => 'Aanwijzingen';
 
   @override
+  String get imageSourceLabel => 'Bron van de afbeelding';
+
+  @override
+  String get imageLicenseLabel => 'Licentie van de afbeelding';
+
+  @override
+  String get gearLanghantel => 'Halterstang';
+
+  @override
+  String get gearKurzhantel => 'Halter';
+
+  @override
+  String get gearKabelzug => 'Kabel';
+
+  @override
+  String get gearMaschine => 'Apparaat';
+
+  @override
+  String get gearMultipresse => 'Smithmachine';
+
+  @override
+  String get gearKoerpergewicht => 'Lichaamsgewicht';
+
+  @override
   String get aiCoachTitle => 'AI-coach';
 
   @override

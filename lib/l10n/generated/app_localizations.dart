@@ -3702,6 +3702,54 @@ abstract class AppLocalizations {
   /// **'Tips'**
   String get tipsLabel;
 
+  /// Image source
+  ///
+  /// In en, this message translates to:
+  /// **'Image source'**
+  String get imageSourceLabel;
+
+  /// Image license
+  ///
+  /// In en, this message translates to:
+  /// **'Image license'**
+  String get imageLicenseLabel;
+
+  /// Barbell
+  ///
+  /// In en, this message translates to:
+  /// **'Barbell'**
+  String get gearLanghantel;
+
+  /// Dumbbell
+  ///
+  /// In en, this message translates to:
+  /// **'Dumbbell'**
+  String get gearKurzhantel;
+
+  /// Cable
+  ///
+  /// In en, this message translates to:
+  /// **'Cable'**
+  String get gearKabelzug;
+
+  /// Machine
+  ///
+  /// In en, this message translates to:
+  /// **'Machine'**
+  String get gearMaschine;
+
+  /// Smith machine
+  ///
+  /// In en, this message translates to:
+  /// **'Smith machine'**
+  String get gearMultipresse;
+
+  /// Bodyweight
+  ///
+  /// In en, this message translates to:
+  /// **'Bodyweight'**
+  String get gearKoerpergewicht;
+
   /// AI coach
   ///
   /// In en, this message translates to:

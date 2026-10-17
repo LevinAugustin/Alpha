@@ -2022,6 +2022,30 @@ class AppLocalizationsPt extends AppLocalizations {
   String get tipsLabel => 'Dicas';
 
   @override
+  String get imageSourceLabel => 'Fonte da imagem';
+
+  @override
+  String get imageLicenseLabel => 'Licença da imagem';
+
+  @override
+  String get gearLanghantel => 'Barra';
+
+  @override
+  String get gearKurzhantel => 'Halter';
+
+  @override
+  String get gearKabelzug => 'Cabo';
+
+  @override
+  String get gearMaschine => 'Aparelho';
+
+  @override
+  String get gearMultipresse => 'Máquina Smith';
+
+  @override
+  String get gearKoerpergewicht => 'Peso corporal';
+
+  @override
   String get aiCoachTitle => 'Treinador de IA';
 
   @override
@@ -4166,6 +4190,30 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
 
   @override
   String get tipsLabel => 'Dicas';
+
+  @override
+  String get imageSourceLabel => 'Fonte da imagem';
+
+  @override
+  String get imageLicenseLabel => 'Licença da imagem';
+
+  @override
+  String get gearLanghantel => 'Barra';
+
+  @override
+  String get gearKurzhantel => 'Halter';
+
+  @override
+  String get gearKabelzug => 'Cabo';
+
+  @override
+  String get gearMaschine => 'Aparelho';
+
+  @override
+  String get gearMultipresse => 'Máquina Smith';
+
+  @override
+  String get gearKoerpergewicht => 'Peso corporal';
 
   @override
   String get aiCoachTitle => 'Treinador de IA';
@@ -6319,6 +6367,30 @@ class AppLocalizationsPtPt extends AppLocalizationsPt {
 
   @override
   String get tipsLabel => 'Dicas';
+
+  @override
+  String get imageSourceLabel => 'Fonte da imagem';
+
+  @override
+  String get imageLicenseLabel => 'Licença da imagem';
+
+  @override
+  String get gearLanghantel => 'Barra';
+
+  @override
+  String get gearKurzhantel => 'Halter';
+
+  @override
+  String get gearKabelzug => 'Cabo';
+
+  @override
+  String get gearMaschine => 'Aparelho';
+
+  @override
+  String get gearMultipresse => 'Máquina Smith';
+
+  @override
+  String get gearKoerpergewicht => 'Peso corporal';
 
   @override
   String get aiCoachTitle => 'Treinador de IA';

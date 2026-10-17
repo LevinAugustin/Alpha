@@ -1,11 +1,13 @@
 import 'package:drift/drift.dart' hide Column;
 import 'package:flexify/database/database.dart';
 import 'package:flexify/database/catalog_seed.dart';
+import 'package:flexify/exercise_keys.dart';
 import 'package:flexify/exercise_labels.dart';
 import 'package:flexify/exercises/exercise_detail_page.dart';
 import 'package:flexify/l10n/l10n.dart';
 import 'package:flexify/main.dart';
 import 'package:flexify/platform_page_route.dart';
+import 'package:flexify/workout/muscle_map.dart';
 import 'package:flutter/material.dart';
 
 class ExercisesPage extends StatefulWidget {
@@ -53,11 +55,15 @@ class _ExercisesPageState extends State<ExercisesPage> {
                     .watch(),
             builder: (context, snapshot) {
               final exercises = snapshot.data ?? const <Exercise>[];
-              final muscles = _chipValues(
-                exercises.map((exercise) => exercise.categoryName),
-              );
+              final muscles = _chipValues([
+                for (final exercise in exercises) ...[
+                  ...decodeCatalogList(exercise.primaryMuscles),
+                  ...decodeCatalogList(exercise.secondaryMuscles),
+                ],
+              ], exerciseMuscleKeys);
               final equipment = _chipValues(
                 exercises.map((exercise) => exercise.equipment),
+                exerciseGearKeys,
               );
               final splits = _chipValues(
                 exercises.map((exercise) => exercise.split),
@@ -79,7 +85,7 @@ class _ExercisesPageState extends State<ExercisesPage> {
                     Padding(
                       padding: const EdgeInsets.only(right: 8),
                       child: FilterChip(
-                        label: Text(muscle),
+                        label: Text(muscleLabel(context.l10n, muscle)),
                         selected: _muscle == muscle,
                         onSelected: (_) => setState(() {
                           _muscle = _muscle == muscle ? '' : muscle;
@@ -90,7 +96,7 @@ class _ExercisesPageState extends State<ExercisesPage> {
                     Padding(
                       padding: const EdgeInsets.only(right: 8),
                       child: FilterChip(
-                        label: Text(item),
+                        label: Text(gearLabel(context.l10n, item)),
                         selected: _equipment == item,
                         onSelected: (_) => setState(() {
                           _equipment = _equipment == item ? '' : item;

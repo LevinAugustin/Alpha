@@ -75,7 +75,7 @@ flutter:
     - assets/
     - assets/figures/
     - assets/exercises/
-    - assets/exercises/images/
+    - assets/exercises/img/
     - assets/sound/
     - assets/changelogs/
     - assets/changelogs/l10n/

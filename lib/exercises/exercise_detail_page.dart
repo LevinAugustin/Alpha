@@ -8,6 +8,7 @@ import 'package:flexify/l10n/l10n.dart';
 import 'package:flexify/main.dart';
 import 'package:flexify/shell/training_stats.dart';
 import 'package:flexify/theme/alpha_theme.dart';
+import 'package:flexify/workout/muscle_map.dart';
 import 'package:flutter/material.dart';
 
 class ExerciseDetailPage extends StatefulWidget {
@@ -90,7 +91,8 @@ class _ExerciseDetailPageState extends State<ExerciseDetailPage> {
     final secondary = decodeCatalogList(exercise.secondaryMuscles);
     final primaryText = primary.isEmpty
         ? (exercise.muscle ?? '')
-        : primary.join(', ');
+        : primary.map((key) => muscleLabel(l10n, key)).join(', ');
+    final gear = (exercise.equipment ?? '').trim();
     final working = sets.where((set) => !(set.notes ?? '').contains('warmup'));
     double bestWeight = 0;
     double bestEstimate = 0;
@@ -124,14 +126,21 @@ class _ExerciseDetailPageState extends State<ExerciseDetailPage> {
           '${l10n.primaryMuscleLabel}: ${primaryText.isEmpty ? '—' : primaryText}',
         ),
         if (secondary.isNotEmpty)
-          Text('${l10n.secondaryMuscleLabel}: ${secondary.join(', ')}'),
+          Text(
+            '${l10n.secondaryMuscleLabel}: ${secondary.map((key) => muscleLabel(l10n, key)).join(', ')}',
+          ),
         Text(
-          '${l10n.equipmentLabel}: ${(exercise.equipment ?? '').isEmpty ? '—' : exercise.equipment}',
+          '${l10n.equipmentLabel}: ${gear.isEmpty ? '—' : gearLabel(l10n, gear)}',
         ),
-        if ((exercise.catalogSource ?? '').isNotEmpty ||
-            (exercise.catalogLicense ?? '').isNotEmpty)
+        if ((exercise.catalogSource ?? '').trim().isNotEmpty ||
+            (exercise.catalogLicense ?? '').trim().isNotEmpty)
           Text(
             '${l10n.sourceLabel}: ${exercise.catalogSource ?? ''} · ${l10n.licenseLabel}: ${exercise.catalogLicense ?? ''}',
+          ),
+        if ((exercise.imageSource ?? '').trim().isNotEmpty ||
+            (exercise.imageLicense ?? '').trim().isNotEmpty)
+          Text(
+            '${l10n.imageSourceLabel}: ${exercise.imageSource ?? ''} · ${l10n.imageLicenseLabel}: ${exercise.imageLicense ?? ''}',
           ),
         const SizedBox(height: 12),
         Wrap(

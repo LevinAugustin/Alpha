@@ -37,4 +37,7 @@ class Exercises extends Table {
   TextColumn get tips => text().nullable()();
   TextColumn get catalogSource => text().nullable()();
   TextColumn get catalogLicense => text().nullable()();
+  TextColumn get imageSource => text().nullable()();
+  TextColumn get imageLicense => text().nullable()();
+  TextColumn get alternatives => text().nullable()();
 }

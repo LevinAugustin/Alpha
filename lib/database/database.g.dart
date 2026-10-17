@@ -786,6 +786,39 @@ class $ExercisesTable extends Exercises
     type: DriftSqlType.string,
     requiredDuringInsert: false,
   );
+  static const VerificationMeta _imageSourceMeta = const VerificationMeta(
+    'imageSource',
+  );
+  @override
+  late final GeneratedColumn<String> imageSource = GeneratedColumn<String>(
+    'image_source',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _imageLicenseMeta = const VerificationMeta(
+    'imageLicense',
+  );
+  @override
+  late final GeneratedColumn<String> imageLicense = GeneratedColumn<String>(
+    'image_license',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _alternativesMeta = const VerificationMeta(
+    'alternatives',
+  );
+  @override
+  late final GeneratedColumn<String> alternatives = GeneratedColumn<String>(
+    'alternatives',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
   @override
   List<GeneratedColumn> get $columns => [
     id,
@@ -815,6 +848,9 @@ class $ExercisesTable extends Exercises
     tips,
     catalogSource,
     catalogLicense,
+    imageSource,
+    imageLicense,
+    alternatives,
   ];
   @override
   String get aliasedName => _alias ?? actualTableName;
@@ -1023,6 +1059,33 @@ class $ExercisesTable extends Exercises
         ),
       );
     }
+    if (data.containsKey('image_source')) {
+      context.handle(
+        _imageSourceMeta,
+        imageSource.isAcceptableOrUnknown(
+          data['image_source']!,
+          _imageSourceMeta,
+        ),
+      );
+    }
+    if (data.containsKey('image_license')) {
+      context.handle(
+        _imageLicenseMeta,
+        imageLicense.isAcceptableOrUnknown(
+          data['image_license']!,
+          _imageLicenseMeta,
+        ),
+      );
+    }
+    if (data.containsKey('alternatives')) {
+      context.handle(
+        _alternativesMeta,
+        alternatives.isAcceptableOrUnknown(
+          data['alternatives']!,
+          _alternativesMeta,
+        ),
+      );
+    }
     return context;
   }
 
@@ -1140,6 +1203,18 @@ class $ExercisesTable extends Exercises
         DriftSqlType.string,
         data['${effectivePrefix}catalog_license'],
       ),
+      imageSource: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}image_source'],
+      ),
+      imageLicense: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}image_license'],
+      ),
+      alternatives: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}alternatives'],
+      ),
     );
   }
 
@@ -1177,6 +1252,9 @@ class Exercise extends DataClass implements Insertable<Exercise> {
   final String? tips;
   final String? catalogSource;
   final String? catalogLicense;
+  final String? imageSource;
+  final String? imageLicense;
+  final String? alternatives;
   const Exercise({
     required this.id,
     required this.name,
@@ -1205,6 +1283,9 @@ class Exercise extends DataClass implements Insertable<Exercise> {
     this.tips,
     this.catalogSource,
     this.catalogLicense,
+    this.imageSource,
+    this.imageLicense,
+    this.alternatives,
   });
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
@@ -1272,6 +1353,15 @@ class Exercise extends DataClass implements Insertable<Exercise> {
     if (!nullToAbsent || catalogLicense != null) {
       map['catalog_license'] = Variable<String>(catalogLicense);
     }
+    if (!nullToAbsent || imageSource != null) {
+      map['image_source'] = Variable<String>(imageSource);
+    }
+    if (!nullToAbsent || imageLicense != null) {
+      map['image_license'] = Variable<String>(imageLicense);
+    }
+    if (!nullToAbsent || alternatives != null) {
+      map['alternatives'] = Variable<String>(alternatives);
+    }
     return map;
   }
 
@@ -1338,6 +1428,15 @@ class Exercise extends DataClass implements Insertable<Exercise> {
       catalogLicense: catalogLicense == null && nullToAbsent
           ? const Value.absent()
           : Value(catalogLicense),
+      imageSource: imageSource == null && nullToAbsent
+          ? const Value.absent()
+          : Value(imageSource),
+      imageLicense: imageLicense == null && nullToAbsent
+          ? const Value.absent()
+          : Value(imageLicense),
+      alternatives: alternatives == null && nullToAbsent
+          ? const Value.absent()
+          : Value(alternatives),
     );
   }
 
@@ -1378,6 +1477,9 @@ class Exercise extends DataClass implements Insertable<Exercise> {
       tips: serializer.fromJson<String?>(json['tips']),
       catalogSource: serializer.fromJson<String?>(json['catalogSource']),
       catalogLicense: serializer.fromJson<String?>(json['catalogLicense']),
+      imageSource: serializer.fromJson<String?>(json['imageSource']),
+      imageLicense: serializer.fromJson<String?>(json['imageLicense']),
+      alternatives: serializer.fromJson<String?>(json['alternatives']),
     );
   }
   @override
@@ -1411,6 +1513,9 @@ class Exercise extends DataClass implements Insertable<Exercise> {
       'tips': serializer.toJson<String?>(tips),
       'catalogSource': serializer.toJson<String?>(catalogSource),
       'catalogLicense': serializer.toJson<String?>(catalogLicense),
+      'imageSource': serializer.toJson<String?>(imageSource),
+      'imageLicense': serializer.toJson<String?>(imageLicense),
+      'alternatives': serializer.toJson<String?>(alternatives),
     };
   }
 
@@ -1442,6 +1547,9 @@ class Exercise extends DataClass implements Insertable<Exercise> {
     Value<String?> tips = const Value.absent(),
     Value<String?> catalogSource = const Value.absent(),
     Value<String?> catalogLicense = const Value.absent(),
+    Value<String?> imageSource = const Value.absent(),
+    Value<String?> imageLicense = const Value.absent(),
+    Value<String?> alternatives = const Value.absent(),
   }) => Exercise(
     id: id ?? this.id,
     name: name ?? this.name,
@@ -1480,6 +1588,9 @@ class Exercise extends DataClass implements Insertable<Exercise> {
     catalogLicense: catalogLicense.present
         ? catalogLicense.value
         : this.catalogLicense,
+    imageSource: imageSource.present ? imageSource.value : this.imageSource,
+    imageLicense: imageLicense.present ? imageLicense.value : this.imageLicense,
+    alternatives: alternatives.present ? alternatives.value : this.alternatives,
   );
   Exercise copyWithCompanion(ExercisesCompanion data) {
     return Exercise(
@@ -1536,6 +1647,15 @@ class Exercise extends DataClass implements Insertable<Exercise> {
       catalogLicense: data.catalogLicense.present
           ? data.catalogLicense.value
           : this.catalogLicense,
+      imageSource: data.imageSource.present
+          ? data.imageSource.value
+          : this.imageSource,
+      imageLicense: data.imageLicense.present
+          ? data.imageLicense.value
+          : this.imageLicense,
+      alternatives: data.alternatives.present
+          ? data.alternatives.value
+          : this.alternatives,
     );
   }
 
@@ -1568,7 +1688,10 @@ class Exercise extends DataClass implements Insertable<Exercise> {
           ..write('steps: $steps, ')
           ..write('tips: $tips, ')
           ..write('catalogSource: $catalogSource, ')
-          ..write('catalogLicense: $catalogLicense')
+          ..write('catalogLicense: $catalogLicense, ')
+          ..write('imageSource: $imageSource, ')
+          ..write('imageLicense: $imageLicense, ')
+          ..write('alternatives: $alternatives')
           ..write(')'))
         .toString();
   }
@@ -1602,6 +1725,9 @@ class Exercise extends DataClass implements Insertable<Exercise> {
     tips,
     catalogSource,
     catalogLicense,
+    imageSource,
+    imageLicense,
+    alternatives,
   ]);
   @override
   bool operator ==(Object other) =>
@@ -1633,7 +1759,10 @@ class Exercise extends DataClass implements Insertable<Exercise> {
           other.steps == this.steps &&
           other.tips == this.tips &&
           other.catalogSource == this.catalogSource &&
-          other.catalogLicense == this.catalogLicense);
+          other.catalogLicense == this.catalogLicense &&
+          other.imageSource == this.imageSource &&
+          other.imageLicense == this.imageLicense &&
+          other.alternatives == this.alternatives);
 }
 
 class ExercisesCompanion extends UpdateCompanion<Exercise> {
@@ -1664,6 +1793,9 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
   final Value<String?> tips;
   final Value<String?> catalogSource;
   final Value<String?> catalogLicense;
+  final Value<String?> imageSource;
+  final Value<String?> imageLicense;
+  final Value<String?> alternatives;
   const ExercisesCompanion({
     this.id = const Value.absent(),
     this.name = const Value.absent(),
@@ -1692,6 +1824,9 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
     this.tips = const Value.absent(),
     this.catalogSource = const Value.absent(),
     this.catalogLicense = const Value.absent(),
+    this.imageSource = const Value.absent(),
+    this.imageLicense = const Value.absent(),
+    this.alternatives = const Value.absent(),
   });
   ExercisesCompanion.insert({
     this.id = const Value.absent(),
@@ -1721,6 +1856,9 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
     this.tips = const Value.absent(),
     this.catalogSource = const Value.absent(),
     this.catalogLicense = const Value.absent(),
+    this.imageSource = const Value.absent(),
+    this.imageLicense = const Value.absent(),
+    this.alternatives = const Value.absent(),
   }) : name = Value(name),
        kind = Value(kind),
        displayUnit = Value(displayUnit);
@@ -1752,6 +1890,9 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
     Expression<String>? tips,
     Expression<String>? catalogSource,
     Expression<String>? catalogLicense,
+    Expression<String>? imageSource,
+    Expression<String>? imageLicense,
+    Expression<String>? alternatives,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
@@ -1783,6 +1924,9 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
       if (tips != null) 'tips': tips,
       if (catalogSource != null) 'catalog_source': catalogSource,
       if (catalogLicense != null) 'catalog_license': catalogLicense,
+      if (imageSource != null) 'image_source': imageSource,
+      if (imageLicense != null) 'image_license': imageLicense,
+      if (alternatives != null) 'alternatives': alternatives,
     });
   }
 
@@ -1814,6 +1958,9 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
     Value<String?>? tips,
     Value<String?>? catalogSource,
     Value<String?>? catalogLicense,
+    Value<String?>? imageSource,
+    Value<String?>? imageLicense,
+    Value<String?>? alternatives,
   }) {
     return ExercisesCompanion(
       id: id ?? this.id,
@@ -1844,6 +1991,9 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
       tips: tips ?? this.tips,
       catalogSource: catalogSource ?? this.catalogSource,
       catalogLicense: catalogLicense ?? this.catalogLicense,
+      imageSource: imageSource ?? this.imageSource,
+      imageLicense: imageLicense ?? this.imageLicense,
+      alternatives: alternatives ?? this.alternatives,
     );
   }
 
@@ -1935,6 +2085,15 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
     if (catalogLicense.present) {
       map['catalog_license'] = Variable<String>(catalogLicense.value);
     }
+    if (imageSource.present) {
+      map['image_source'] = Variable<String>(imageSource.value);
+    }
+    if (imageLicense.present) {
+      map['image_license'] = Variable<String>(imageLicense.value);
+    }
+    if (alternatives.present) {
+      map['alternatives'] = Variable<String>(alternatives.value);
+    }
     return map;
   }
 
@@ -1967,7 +2126,10 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
           ..write('steps: $steps, ')
           ..write('tips: $tips, ')
           ..write('catalogSource: $catalogSource, ')
-          ..write('catalogLicense: $catalogLicense')
+          ..write('catalogLicense: $catalogLicense, ')
+          ..write('imageSource: $imageSource, ')
+          ..write('imageLicense: $imageLicense, ')
+          ..write('alternatives: $alternatives')
           ..write(')'))
         .toString();
   }
@@ -7482,6 +7644,9 @@ typedef $$ExercisesTableCreateCompanionBuilder =
       Value<String?> tips,
       Value<String?> catalogSource,
       Value<String?> catalogLicense,
+      Value<String?> imageSource,
+      Value<String?> imageLicense,
+      Value<String?> alternatives,
     });
 typedef $$ExercisesTableUpdateCompanionBuilder =
     ExercisesCompanion Function({
@@ -7512,6 +7677,9 @@ typedef $$ExercisesTableUpdateCompanionBuilder =
       Value<String?> tips,
       Value<String?> catalogSource,
       Value<String?> catalogLicense,
+      Value<String?> imageSource,
+      Value<String?> imageLicense,
+      Value<String?> alternatives,
     });
 
 final class $$ExercisesTableReferences
@@ -7708,6 +7876,21 @@ class $$ExercisesTableFilterComposer
 
   ColumnFilters<String> get catalogLicense => $composableBuilder(
     column: $table.catalogLicense,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get imageSource => $composableBuilder(
+    column: $table.imageSource,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get imageLicense => $composableBuilder(
+    column: $table.imageLicense,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get alternatives => $composableBuilder(
+    column: $table.alternatives,
     builder: (column) => ColumnFilters(column),
   );
 
@@ -7924,6 +8107,21 @@ class $$ExercisesTableOrderingComposer
     builder: (column) => ColumnOrderings(column),
   );
 
+  ColumnOrderings<String> get imageSource => $composableBuilder(
+    column: $table.imageSource,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get imageLicense => $composableBuilder(
+    column: $table.imageLicense,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get alternatives => $composableBuilder(
+    column: $table.alternatives,
+    builder: (column) => ColumnOrderings(column),
+  );
+
   $$CategoriesTableOrderingComposer get categoryId {
     final $$CategoriesTableOrderingComposer composer = $composerBuilder(
       composer: this,
@@ -8056,6 +8254,21 @@ class $$ExercisesTableAnnotationComposer
 
   GeneratedColumn<String> get catalogLicense => $composableBuilder(
     column: $table.catalogLicense,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get imageSource => $composableBuilder(
+    column: $table.imageSource,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get imageLicense => $composableBuilder(
+    column: $table.imageLicense,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get alternatives => $composableBuilder(
+    column: $table.alternatives,
     builder: (column) => column,
   );
 
@@ -8192,6 +8405,9 @@ class $$ExercisesTableTableManager
                 Value<String?> tips = const Value.absent(),
                 Value<String?> catalogSource = const Value.absent(),
                 Value<String?> catalogLicense = const Value.absent(),
+                Value<String?> imageSource = const Value.absent(),
+                Value<String?> imageLicense = const Value.absent(),
+                Value<String?> alternatives = const Value.absent(),
               }) => ExercisesCompanion(
                 id: id,
                 name: name,
@@ -8220,6 +8436,9 @@ class $$ExercisesTableTableManager
                 tips: tips,
                 catalogSource: catalogSource,
                 catalogLicense: catalogLicense,
+                imageSource: imageSource,
+                imageLicense: imageLicense,
+                alternatives: alternatives,
               ),
           createCompanionCallback:
               ({
@@ -8250,6 +8469,9 @@ class $$ExercisesTableTableManager
                 Value<String?> tips = const Value.absent(),
                 Value<String?> catalogSource = const Value.absent(),
                 Value<String?> catalogLicense = const Value.absent(),
+                Value<String?> imageSource = const Value.absent(),
+                Value<String?> imageLicense = const Value.absent(),
+                Value<String?> alternatives = const Value.absent(),
               }) => ExercisesCompanion.insert(
                 id: id,
                 name: name,
@@ -8278,6 +8500,9 @@ class $$ExercisesTableTableManager
                 tips: tips,
                 catalogSource: catalogSource,
                 catalogLicense: catalogLicense,
+                imageSource: imageSource,
+                imageLicense: imageLicense,
+                alternatives: alternatives,
               ),
           withReferenceMapper: (p0) => p0
               .map(

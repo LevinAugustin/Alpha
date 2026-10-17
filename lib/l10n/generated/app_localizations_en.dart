@@ -2002,6 +2002,30 @@ class AppLocalizationsEn extends AppLocalizations {
   String get tipsLabel => 'Tips';
 
   @override
+  String get imageSourceLabel => 'Image source';
+
+  @override
+  String get imageLicenseLabel => 'Image license';
+
+  @override
+  String get gearLanghantel => 'Barbell';
+
+  @override
+  String get gearKurzhantel => 'Dumbbell';
+
+  @override
+  String get gearKabelzug => 'Cable';
+
+  @override
+  String get gearMaschine => 'Machine';
+
+  @override
+  String get gearMultipresse => 'Smith machine';
+
+  @override
+  String get gearKoerpergewicht => 'Bodyweight';
+
+  @override
   String get aiCoachTitle => 'AI coach';
 
   @override

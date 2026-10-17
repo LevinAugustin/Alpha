@@ -124,20 +124,13 @@ Future<Map<String, double>> loadMuscleHeat(MusclePeriod period) async {
     if (since != null && set.timestamp.isBefore(since)) continue;
     final load = (set.loadKg ?? 0) * (set.reps ?? 0);
     if (load <= 0) continue;
-    final region = regionForGroup(exercise.muscle);
-    if (region != null) heat[region] = (heat[region] ?? 0) + load;
-    if (exercise.muscle == 'Arme') {
-      heat['triceps'] = (heat['triceps'] ?? 0) + load * 0.5;
-      heat['biceps'] = (heat['biceps'] ?? 0) + load * 0.5;
-    }
-    if (exercise.muscle == 'Beine') {
-      heat['hams'] = (heat['hams'] ?? 0) + load * 0.4;
-      heat['glutes'] = (heat['glutes'] ?? 0) + load * 0.3;
-      heat['calves'] = (heat['calves'] ?? 0) + load * 0.15;
-    }
-    if (exercise.muscle == 'Rücken') {
-      heat['traps'] = (heat['traps'] ?? 0) + load * 0.35;
-    }
+    contributeMuscleHeat(
+      heat,
+      load: load,
+      group: exercise.muscle,
+      primaryMuscles: exercise.primaryMuscles,
+      secondaryMuscles: exercise.secondaryMuscles,
+    );
   }
   if (heat.isEmpty) return heat;
   final maxHeat = heat.values.reduce((a, b) => a > b ? a : b);

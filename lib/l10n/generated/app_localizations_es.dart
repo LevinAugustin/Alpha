@@ -2022,6 +2022,30 @@ class AppLocalizationsEs extends AppLocalizations {
   String get tipsLabel => 'Consejos';
 
   @override
+  String get imageSourceLabel => 'Fuente de la imagen';
+
+  @override
+  String get imageLicenseLabel => 'Licencia de la imagen';
+
+  @override
+  String get gearLanghantel => 'Barra';
+
+  @override
+  String get gearKurzhantel => 'Mancuerna';
+
+  @override
+  String get gearKabelzug => 'Polea';
+
+  @override
+  String get gearMaschine => 'Aparato';
+
+  @override
+  String get gearMultipresse => 'Multipower';
+
+  @override
+  String get gearKoerpergewicht => 'Peso corporal';
+
+  @override
   String get aiCoachTitle => 'Entrenador de IA';
 
   @override

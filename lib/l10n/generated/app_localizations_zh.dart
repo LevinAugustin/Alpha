@@ -1928,6 +1928,30 @@ class AppLocalizationsZh extends AppLocalizations {
   String get tipsLabel => '提示';
 
   @override
+  String get imageSourceLabel => '图片来源';
+
+  @override
+  String get imageLicenseLabel => '图片许可';
+
+  @override
+  String get gearLanghantel => '杠铃';
+
+  @override
+  String get gearKurzhantel => '哑铃';
+
+  @override
+  String get gearKabelzug => '绳索';
+
+  @override
+  String get gearMaschine => '器械';
+
+  @override
+  String get gearMultipresse => '史密斯机';
+
+  @override
+  String get gearKoerpergewicht => '自重';
+
+  @override
   String get aiCoachTitle => '智能教练';
 
   @override
@@ -3986,6 +4010,30 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
   String get tipsLabel => '提示';
 
   @override
+  String get imageSourceLabel => '图片来源';
+
+  @override
+  String get imageLicenseLabel => '图片许可';
+
+  @override
+  String get gearLanghantel => '杠铃';
+
+  @override
+  String get gearKurzhantel => '哑铃';
+
+  @override
+  String get gearKabelzug => '绳索';
+
+  @override
+  String get gearMaschine => '器械';
+
+  @override
+  String get gearMultipresse => '史密斯机';
+
+  @override
+  String get gearKoerpergewicht => '自重';
+
+  @override
   String get aiCoachTitle => '智能教练';
 
   @override
@@ -6042,6 +6090,30 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get tipsLabel => '提示';
+
+  @override
+  String get imageSourceLabel => '圖片來源';
+
+  @override
+  String get imageLicenseLabel => '圖片授權';
+
+  @override
+  String get gearLanghantel => '槓鈴';
+
+  @override
+  String get gearKurzhantel => '啞鈴';
+
+  @override
+  String get gearKabelzug => '繩索';
+
+  @override
+  String get gearMaschine => '器械';
+
+  @override
+  String get gearMultipresse => '史密斯機';
+
+  @override
+  String get gearKoerpergewicht => '自重';
 
   @override
   String get aiCoachTitle => '智慧教練';

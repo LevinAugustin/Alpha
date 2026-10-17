@@ -1995,6 +1995,30 @@ class AppLocalizationsBn extends AppLocalizations {
   String get tipsLabel => 'পরামর্শ';
 
   @override
+  String get imageSourceLabel => 'ছবির উৎস';
+
+  @override
+  String get imageLicenseLabel => 'ছবির লাইসেন্স';
+
+  @override
+  String get gearLanghantel => 'বারবেল';
+
+  @override
+  String get gearKurzhantel => 'ডাম্বেল';
+
+  @override
+  String get gearKabelzug => 'কেবল';
+
+  @override
+  String get gearMaschine => 'যন্ত্র';
+
+  @override
+  String get gearMultipresse => 'স্মিথ যন্ত্র';
+
+  @override
+  String get gearKoerpergewicht => 'শরীরের ওজন';
+
+  @override
   String get aiCoachTitle => 'এআই কোচ';
 
   @override

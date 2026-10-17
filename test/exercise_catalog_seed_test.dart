@@ -39,13 +39,47 @@ void main() {
         await (db.exercises.select()..where((row) => row.id.equals(before.id)))
             .getSingle();
     expect(after.name, 'Barbell bench press');
-    expect(after.catalogId, 'barbell-bench-press');
+    expect(after.catalogId, 'bankdruecken-langhantel');
     expect(after.germanName, 'Bankdrücken');
     expect(after.muscle, 'Brust');
-    expect(after.equipment, 'Langhantel');
+    expect(after.equipment, 'langhantel');
+    expect(after.primaryMuscles, '["chest"]');
+    expect(after.secondaryMuscles, '["triceps","delts"]');
     expect(after.split, 'push');
     expect(after.catalogSource, 'placeholder');
     expect(after.catalogLicense, 'placeholder');
+    expect(after.imageSource, 'placeholder-bild');
+    expect(after.imageLicense, 'placeholder-bildlizenz');
+    expect(after.alternatives, '["bankdruecken-multipresse"]');
+    expect(after.image, 'assets/exercises/img/bankdruecken-langhantel.webp');
+
+    final crunch =
+        await (db.exercises.select()
+              ..where((row) => row.catalogId.equals('crunch')))
+            .getSingle();
+    expect(crunch.imageSource, '');
+    expect(crunch.imageLicense, '');
+    expect(crunch.alternatives, '[]');
+
+    final licenses = await exerciseLicenseRows(db);
+    expect(
+      licenses.any(
+        (row) =>
+            !row.image &&
+            row.source == 'placeholder' &&
+            row.license == 'placeholder',
+      ),
+      isTrue,
+    );
+    expect(
+      licenses.any(
+        (row) =>
+            row.image &&
+            row.source == 'placeholder-bild' &&
+            row.license == 'placeholder-bildlizenz',
+      ),
+      isTrue,
+    );
 
     final history =
         await (db.exerciseSets.select()
@@ -86,18 +120,18 @@ void main() {
     const created = '''
 [
   {
-    "id": "barbell-bench-press",
+    "id": "bankdruecken-langhantel",
     "name_de": "Bankdrücken",
     "synonyme": ["Bench Press"],
     "kategorie": "Brust",
-    "primaermuskeln": ["Brust"],
+    "primaermuskeln": ["chest"],
     "sekundaermuskeln": [],
-    "geraet": "Langhantel",
+    "geraet": "langhantel",
     "split": "push",
     "mechanik": "grund",
     "ausfuehrung_de": ["Platzhalter."],
     "tipps_de": [],
-    "bild": "bench.png",
+    "bild": "bankdruecken-langhantel.webp",
     "quelle": "placeholder",
     "lizenz": "placeholder"
   }
@@ -107,7 +141,7 @@ void main() {
     expect(first.inserted, 1);
     final duplicate =
         await (db.exercises.select()
-              ..where((row) => row.catalogId.equals('barbell-bench-press')))
+              ..where((row) => row.catalogId.equals('bankdruecken-langhantel')))
             .getSingle();
     final original =
         await (db.exercises.select()
@@ -133,9 +167,9 @@ void main() {
         await (db.exercises.select()
               ..where((row) => row.id.equals(original.id)))
             .getSingle();
-    expect(kept.catalogId, 'barbell-bench-press');
+    expect(kept.catalogId, 'bankdruecken-langhantel');
     expect(kept.name, 'Barbell bench press');
-    expect(kept.image, 'assets/exercises/images/bench.png');
+    expect(kept.image, 'assets/exercises/img/bankdruecken-langhantel.webp');
     expect(
       await (db.exercises.select()..where((row) => row.id.equals(duplicate.id)))
           .getSingleOrNull(),
@@ -160,12 +194,12 @@ void main() {
     "kategorie": "Brust",
     "primaermuskeln": [],
     "sekundaermuskeln": [],
-    "geraet": "Langhantel",
+    "geraet": "langhantel",
     "split": "legs",
     "mechanik": "grund",
     "ausfuehrung_de": [],
     "tipps_de": [],
-    "bild": "",
+    "bild": "bad-split.webp",
     "quelle": "placeholder",
     "lizenz": "placeholder"
   }
@@ -174,5 +208,103 @@ void main() {
     final parsed = parseExerciseCatalog(raw);
     expect(parsed.entries, isEmpty);
     expect(parsed.skipped, isNotEmpty);
+  });
+
+  test('ids, images, muscles, gear and unknown fields', () {
+    const valid = '''
+{
+  "id": "bankdruecken-langhantel",
+  "name_de": "Bankdrücken",
+  "synonyme": [],
+  "kategorie": "Brust",
+  "primaermuskeln": ["chest"],
+  "sekundaermuskeln": [],
+  "geraet": "langhantel",
+  "split": "push",
+  "mechanik": "grund",
+  "ausfuehrung_de": [],
+  "tipps_de": [],
+  "bild": "bankdruecken-langhantel.webp",
+  "quelle": "placeholder",
+  "lizenz": "placeholder",
+  "future_field": {"ok": true}
+}''';
+    String row(String patch) => '[$valid]'.replaceFirst(
+      '"lizenz": "placeholder"',
+      '"lizenz": "placeholder", $patch',
+    );
+
+    expect(parseExerciseCatalog('[$valid]').entries, hasLength(1));
+    expect(parseExerciseCatalog('[$valid]').entries.single.imageSource, '');
+    expect(
+      parseExerciseCatalog('[$valid]').entries.single.alternatives,
+      isEmpty,
+    );
+
+    expect(parseExerciseCatalog(row('"id": "Bankdruecken"')).entries, isEmpty);
+    expect(
+      parseExerciseCatalog(
+        '[$valid]'.replaceFirst(
+          '"id": "bankdruecken-langhantel"',
+          '"id": "bankdrücken"',
+        ),
+      ).entries,
+      isEmpty,
+    );
+    expect(
+      parseExerciseCatalog(
+        '[$valid]'.replaceFirst(
+          '"id": "bankdruecken-langhantel"',
+          '"id": "bank_druecken"',
+        ),
+      ).entries,
+      isEmpty,
+    );
+    expect(
+      parseExerciseCatalog(
+        '[$valid]'.replaceFirst(
+          '"bild": "bankdruecken-langhantel.webp"',
+          '"bild": "assets/exercises/img/bankdruecken-langhantel.webp"',
+        ),
+      ).entries,
+      isEmpty,
+    );
+    expect(
+      parseExerciseCatalog(
+        '[$valid]'.replaceFirst(
+          '"primaermuskeln": ["chest"]',
+          '"primaermuskeln": ["Brust"]',
+        ),
+      ).entries,
+      isEmpty,
+    );
+    expect(
+      parseExerciseCatalog(
+        '[$valid]'.replaceFirst(
+          '"geraet": "langhantel"',
+          '"geraet": "Langhantel"',
+        ),
+      ).entries,
+      isEmpty,
+    );
+    expect(parseExerciseCatalog(row('"bild_quelle": 1')).entries, isEmpty);
+    expect(
+      parseExerciseCatalog(row('"alternativen": "klimmzug"')).entries,
+      isEmpty,
+    );
+    final withAlternative = parseExerciseCatalog(
+      row(
+        '"alternativen": ["klimmzug"], "bild_quelle": "wiki", "bild_lizenz": "cc"',
+      ),
+    );
+    expect(withAlternative.entries.single.alternatives, ['klimmzug']);
+    expect(withAlternative.entries.single.imageSource, 'wiki');
+    expect(withAlternative.entries.single.imageLicense, 'cc');
+    expect(
+      parseExerciseCatalog(
+        row('"alternativen": []'),
+      ).entries.single.alternatives,
+      isEmpty,
+    );
   });
 }

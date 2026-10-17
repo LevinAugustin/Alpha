@@ -1997,6 +1997,30 @@ class AppLocalizationsUr extends AppLocalizations {
   String get tipsLabel => 'مشورے';
 
   @override
+  String get imageSourceLabel => 'تصویر کا ماخذ';
+
+  @override
+  String get imageLicenseLabel => 'تصویر کا لائسنس';
+
+  @override
+  String get gearLanghantel => 'باربل';
+
+  @override
+  String get gearKurzhantel => 'ڈمبل';
+
+  @override
+  String get gearKabelzug => 'کیبل';
+
+  @override
+  String get gearMaschine => 'مشین';
+
+  @override
+  String get gearMultipresse => 'اسمتھ مشین';
+
+  @override
+  String get gearKoerpergewicht => 'جسمانی وزن';
+
+  @override
   String get aiCoachTitle => 'اے آئی کوچ';
 
   @override

@@ -1982,6 +1982,30 @@ class AppLocalizationsTh extends AppLocalizations {
   String get tipsLabel => 'เคล็ดลับ';
 
   @override
+  String get imageSourceLabel => 'แหล่งที่มาของภาพ';
+
+  @override
+  String get imageLicenseLabel => 'สัญญาอนุญาตของภาพ';
+
+  @override
+  String get gearLanghantel => 'บาร์เบล';
+
+  @override
+  String get gearKurzhantel => 'ดัมเบล';
+
+  @override
+  String get gearKabelzug => 'เคเบิล';
+
+  @override
+  String get gearMaschine => 'เครื่องฝึก';
+
+  @override
+  String get gearMultipresse => 'สมิธแมชชีน';
+
+  @override
+  String get gearKoerpergewicht => 'น้ำหนักตัว';
+
+  @override
   String get aiCoachTitle => 'โค้ช AI';
 
   @override

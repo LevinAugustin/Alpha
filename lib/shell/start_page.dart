@@ -215,18 +215,13 @@ Future<_Dashboard> _load() async {
     final reps = set.reps ?? 0;
     final load = set.loadKg ?? 0;
     if (!day.isBefore(weekStart)) {
-      final region = regionForGroup(exercise.muscle);
-      if (region != null) {
-        heat[region] = (heat[region] ?? 0) + load * reps;
-      }
-      if (exercise.muscle == 'Arme') {
-        heat['triceps'] = (heat['triceps'] ?? 0) + load * reps * 0.5;
-        heat['biceps'] = (heat['biceps'] ?? 0) + load * reps * 0.5;
-      }
-      if (exercise.muscle == 'Beine') {
-        heat['hams'] = (heat['hams'] ?? 0) + load * reps * 0.4;
-        heat['glutes'] = (heat['glutes'] ?? 0) + load * reps * 0.3;
-      }
+      contributeMuscleHeat(
+        heat,
+        load: load * reps,
+        group: exercise.muscle,
+        primaryMuscles: exercise.primaryMuscles,
+        secondaryMuscles: exercise.secondaryMuscles,
+      );
     }
     final estimate = estimatedOneRepMax(load, reps);
     if (estimate <= 0) continue;

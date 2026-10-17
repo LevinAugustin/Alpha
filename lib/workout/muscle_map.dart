@@ -1,20 +1,10 @@
+import 'package:flexify/database/catalog_seed.dart';
+import 'package:flexify/exercise_keys.dart';
 import 'package:flexify/l10n/generated/app_localizations.dart';
 import 'package:flexify/theme/alpha_theme.dart';
 import 'package:flutter/material.dart';
 
-const muscleRegions = [
-  'chest',
-  'delts',
-  'biceps',
-  'triceps',
-  'abs',
-  'quads',
-  'calves',
-  'traps',
-  'lats',
-  'glutes',
-  'hams',
-];
+const muscleRegions = exerciseMuscleKeys;
 
 String muscleLabel(AppLocalizations l10n, String id) {
   return switch (id) {
@@ -33,7 +23,20 @@ String muscleLabel(AppLocalizations l10n, String id) {
   };
 }
 
+String gearLabel(AppLocalizations l10n, String id) {
+  return switch (id) {
+    'langhantel' => l10n.gearLanghantel,
+    'kurzhantel' => l10n.gearKurzhantel,
+    'kabelzug' => l10n.gearKabelzug,
+    'maschine' => l10n.gearMaschine,
+    'multipresse' => l10n.gearMultipresse,
+    'koerpergewicht' => l10n.gearKoerpergewicht,
+    _ => id,
+  };
+}
+
 String? regionForGroup(String? muscle) {
+  if (muscle != null && exerciseMuscleKeys.contains(muscle)) return muscle;
   return switch (muscle) {
     'Brust' => 'chest',
     'Schultern' => 'delts',
@@ -44,6 +47,49 @@ String? regionForGroup(String? muscle) {
     'Cardio' => null,
     _ => null,
   };
+}
+
+void contributeMuscleHeat(
+  Map<String, double> heat, {
+  required double load,
+  String? group,
+  String? primaryMuscles,
+  String? secondaryMuscles,
+}) {
+  if (load == 0) return;
+  final primary = [
+    for (final key in decodeCatalogList(primaryMuscles))
+      if (exerciseMuscleKeys.contains(key)) key,
+  ];
+  final secondary = [
+    for (final key in decodeCatalogList(secondaryMuscles))
+      if (exerciseMuscleKeys.contains(key)) key,
+  ];
+  if (primary.isNotEmpty || secondary.isNotEmpty) {
+    for (final key in primary) {
+      heat[key] = (heat[key] ?? 0) + load;
+    }
+    for (final key in secondary) {
+      heat[key] = (heat[key] ?? 0) + load * 0.35;
+    }
+    return;
+  }
+  final region = regionForGroup(group);
+  if (region != null) {
+    heat[region] = (heat[region] ?? 0) + load;
+  }
+  if (group == 'Arme') {
+    heat['triceps'] = (heat['triceps'] ?? 0) + load * 0.5;
+    heat['biceps'] = (heat['biceps'] ?? 0) + load * 0.5;
+  }
+  if (group == 'Beine') {
+    heat['hams'] = (heat['hams'] ?? 0) + load * 0.4;
+    heat['glutes'] = (heat['glutes'] ?? 0) + load * 0.3;
+    heat['calves'] = (heat['calves'] ?? 0) + load * 0.15;
+  }
+  if (group == 'Rücken') {
+    heat['traps'] = (heat['traps'] ?? 0) + load * 0.35;
+  }
 }
 
 class MuscleMap extends StatelessWidget {

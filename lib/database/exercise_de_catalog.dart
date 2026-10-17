@@ -3,14 +3,17 @@ import 'dart:io';
 
 import 'package:drift/drift.dart';
 import 'package:flexify/database/database.dart';
+import 'package:flexify/exercise_keys.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
 const exerciseCatalogAsset = 'assets/exercises/exercises_de.json';
-const exerciseImageDirectory = 'assets/exercises/images';
+const exerciseImageDirectory = 'assets/exercises/img';
 
 const allowedExerciseSplits = {'push', 'pull', 'beine', 'core', 'cardio'};
 const allowedExerciseMechanics = {'grund', 'isolation'};
+
+final catalogIdPattern = RegExp(r'^[a-z0-9]+(?:-[a-z0-9]+)*$');
 
 class ExerciseDeEntry {
   const ExerciseDeEntry({
@@ -28,6 +31,9 @@ class ExerciseDeEntry {
     required this.image,
     required this.source,
     required this.license,
+    required this.imageSource,
+    required this.imageLicense,
+    required this.alternatives,
     required this.legacyNames,
   });
 
@@ -45,6 +51,9 @@ class ExerciseDeEntry {
   final String image;
   final String source;
   final String license;
+  final String imageSource;
+  final String imageLicense;
+  final List<String> alternatives;
   final List<String> legacyNames;
 }
 
@@ -73,11 +82,11 @@ class ExerciseImportResult {
 
 String? resolveExerciseImage(String bild) {
   final value = bild.trim();
-  if (value.isEmpty) return null;
-  if (value.startsWith('assets/')) return value;
-  final name = value.split(RegExp(r'[/\\]')).last.trim();
-  if (name.isEmpty) return null;
-  return '$exerciseImageDirectory/$name';
+  if (!value.endsWith('.webp')) return null;
+  if (value.contains('/') || value.contains('\\')) return null;
+  final stem = value.substring(0, value.length - 5);
+  if (!catalogIdPattern.hasMatch(stem)) return null;
+  return '$exerciseImageDirectory/$value';
 }
 
 ExerciseCatalogParse parseExerciseCatalog(String raw) {
@@ -124,6 +133,9 @@ ExerciseCatalogParse parseExerciseCatalog(String raw) {
         image: _string(json['bild']),
         source: _string(json['quelle']),
         license: _string(json['lizenz']),
+        imageSource: _string(json['bild_quelle']),
+        imageLicense: _string(json['bild_lizenz']),
+        alternatives: _strings(json['alternativen']),
         legacyNames: _strings(json['legacy_names']),
       ),
     );
@@ -255,21 +267,27 @@ Future<ExerciseImportResult> importExerciseCatalogJson(
   );
 }
 
-Future<List<({String source, String license})>> exerciseLicenseRows(
+Future<List<({String source, String license, bool image})>> exerciseLicenseRows(
   AppDatabase database,
 ) async {
   final rows = await database.select(database.exercises).get();
   final seen = <String>{};
-  final licenses = <({String source, String license})>[];
+  final licenses = <({String source, String license, bool image})>[];
+  void add(String? sourceRaw, String? licenseRaw, bool image) {
+    final source = (sourceRaw ?? '').trim();
+    final license = (licenseRaw ?? '').trim();
+    if (source.isEmpty && license.isEmpty) return;
+    final key = '$image\n$source\n$license';
+    if (!seen.add(key)) return;
+    licenses.add((source: source, license: license, image: image));
+  }
+
   for (final row in rows) {
-    final source = (row.catalogSource ?? '').trim();
-    final license = (row.catalogLicense ?? '').trim();
-    if (source.isEmpty && license.isEmpty) continue;
-    final key = '$source\n$license';
-    if (!seen.add(key)) continue;
-    licenses.add((source: source, license: license));
+    add(row.catalogSource, row.catalogLicense, false);
+    add(row.imageSource, row.imageLicense, true);
   }
   licenses.sort((a, b) {
+    if (a.image != b.image) return a.image ? 1 : -1;
     final source = a.source.toLowerCase().compareTo(b.source.toLowerCase());
     if (source != 0) return source;
     return a.license.toLowerCase().compareTo(b.license.toLowerCase());
@@ -278,19 +296,21 @@ Future<List<({String source, String license})>> exerciseLicenseRows(
 }
 
 String? _validate(Map<String, dynamic> json, String id) {
-  if (id.isEmpty) return 'An exercise is missing id.';
-  if (_string(json['name_de']).isEmpty) return '$id is missing name_de.';
-  for (final key in [
-    'synonyme',
-    'primaermuskeln',
-    'sekundaermuskeln',
-    'ausfuehrung_de',
-    'tipps_de',
-  ]) {
-    if (json[key] is! List) return '$id field $key must be a list.';
+  if (!catalogIdPattern.hasMatch(id)) {
+    return 'id "$id" must be a lowercase ascii kebab slug.';
   }
-  if (json.containsKey('legacy_names') && json['legacy_names'] is! List) {
-    return '$id field legacy_names must be a list.';
+  if (_string(json['name_de']).isEmpty) return '$id is missing name_de.';
+  for (final key in ['synonyme', 'ausfuehrung_de', 'tipps_de']) {
+    final reason = _stringList(json, key, id);
+    if (reason != null) return reason;
+  }
+  for (final key in ['primaermuskeln', 'sekundaermuskeln']) {
+    final reason = _muscleList(json, key, id);
+    if (reason != null) return reason;
+  }
+  if (json.containsKey('legacy_names')) {
+    final reason = _stringList(json, 'legacy_names', id);
+    if (reason != null) return reason;
   }
   for (final key in [
     'kategorie',
@@ -303,6 +323,13 @@ String? _validate(Map<String, dynamic> json, String id) {
   ]) {
     if (json[key] is! String) return '$id field $key must be a string.';
   }
+  for (final key in ['bild_quelle', 'bild_lizenz']) {
+    if (json.containsKey(key) && json[key] is! String) {
+      return '$id field $key must be a string.';
+    }
+  }
+  final alternatives = _alternatives(json, id);
+  if (alternatives != null) return alternatives;
   final split = _string(json['split']);
   if (!allowedExerciseSplits.contains(split)) {
     return '$id split "$split" is not allowed.';
@@ -310,6 +337,46 @@ String? _validate(Map<String, dynamic> json, String id) {
   final mechanic = _string(json['mechanik']);
   if (!allowedExerciseMechanics.contains(mechanic)) {
     return '$id mechanik "$mechanic" is not allowed.';
+  }
+  final gear = _string(json['geraet']);
+  if (!exerciseGearKeys.contains(gear)) {
+    return '$id geraet "$gear" is not allowed.';
+  }
+  final bild = _string(json['bild']);
+  if (bild != '$id.webp') {
+    return '$id bild must be the file name $id.webp.';
+  }
+  return null;
+}
+
+String? _stringList(Map<String, dynamic> json, String key, String id) {
+  final value = json[key];
+  if (value is! List) return '$id field $key must be a list.';
+  for (final item in value) {
+    if (item is! String) return '$id field $key must contain strings.';
+  }
+  return null;
+}
+
+String? _muscleList(Map<String, dynamic> json, String key, String id) {
+  final value = json[key];
+  if (value is! List) return '$id field $key must be a list.';
+  for (final item in value) {
+    if (item is! String || !exerciseMuscleKeys.contains(item.trim())) {
+      return '$id field $key must use a muscle map key.';
+    }
+  }
+  return null;
+}
+
+String? _alternatives(Map<String, dynamic> json, String id) {
+  if (!json.containsKey('alternativen')) return null;
+  final value = json['alternativen'];
+  if (value is! List) return '$id field alternativen must be a list.';
+  for (final item in value) {
+    if (item is! String || !catalogIdPattern.hasMatch(item.trim())) {
+      return '$id field alternativen must list exercise ids.';
+    }
   }
   return null;
 }
@@ -335,6 +402,7 @@ class _Fields {
   String get secondary => jsonEncode(entry.secondaryMuscles);
   String get steps => jsonEncode(entry.steps);
   String get tips => jsonEncode(entry.tips);
+  String get alternatives => jsonEncode(entry.alternatives);
   String? get image => resolveExerciseImage(entry.image);
 
   ExercisesCompanion insert({required String name}) {
@@ -359,6 +427,9 @@ class _Fields {
       tips: Value(tips),
       catalogSource: Value(entry.source),
       catalogLicense: Value(entry.license),
+      imageSource: Value(entry.imageSource),
+      imageLicense: Value(entry.imageLicense),
+      alternatives: Value(alternatives),
     );
   }
 
@@ -380,6 +451,9 @@ class _Fields {
       tips: Value(tips),
       catalogSource: Value(entry.source),
       catalogLicense: Value(entry.license),
+      imageSource: Value(entry.imageSource),
+      imageLicense: Value(entry.imageLicense),
+      alternatives: Value(alternatives),
     );
   }
 }
@@ -404,7 +478,10 @@ bool _same(Exercise row, ExerciseDeEntry entry, int? categoryId) {
       row.tips == fields.tips &&
       row.image == fields.image &&
       row.catalogSource == entry.source &&
-      row.catalogLicense == entry.license;
+      row.catalogLicense == entry.license &&
+      row.imageSource == entry.imageSource &&
+      row.imageLicense == entry.imageLicense &&
+      row.alternatives == fields.alternatives;
 }
 
 Future<void> _moveHistory(

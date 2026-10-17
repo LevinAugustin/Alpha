@@ -1985,6 +1985,30 @@ class AppLocalizationsAr extends AppLocalizations {
   String get tipsLabel => 'نصائح';
 
   @override
+  String get imageSourceLabel => 'مصدر الصورة';
+
+  @override
+  String get imageLicenseLabel => 'ترخيص الصورة';
+
+  @override
+  String get gearLanghantel => 'بار حديد';
+
+  @override
+  String get gearKurzhantel => 'دمبل';
+
+  @override
+  String get gearKabelzug => 'كابل';
+
+  @override
+  String get gearMaschine => 'جهاز';
+
+  @override
+  String get gearMultipresse => 'جهاز سميث';
+
+  @override
+  String get gearKoerpergewicht => 'وزن الجسم';
+
+  @override
   String get aiCoachTitle => 'مدرب الذكاء';
 
   @override

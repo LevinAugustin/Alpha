@@ -2654,6 +2654,38 @@
   "@tipsLabel": {
     "description": "Tips"
   },
+  "imageSourceLabel": "Image source",
+  "@imageSourceLabel": {
+    "description": "Image source"
+  },
+  "imageLicenseLabel": "Image license",
+  "@imageLicenseLabel": {
+    "description": "Image license"
+  },
+  "gearLanghantel": "Barbell",
+  "@gearLanghantel": {
+    "description": "Barbell"
+  },
+  "gearKurzhantel": "Dumbbell",
+  "@gearKurzhantel": {
+    "description": "Dumbbell"
+  },
+  "gearKabelzug": "Cable",
+  "@gearKabelzug": {
+    "description": "Cable"
+  },
+  "gearMaschine": "Machine",
+  "@gearMaschine": {
+    "description": "Machine"
+  },
+  "gearMultipresse": "Smith machine",
+  "@gearMultipresse": {
+    "description": "Smith machine"
+  },
+  "gearKoerpergewicht": "Bodyweight",
+  "@gearKoerpergewicht": {
+    "description": "Bodyweight"
+  },
   "aiCoachTitle": "AI coach",
   "@aiCoachTitle":   {
     "description": "AI coach"

@@ -2004,6 +2004,30 @@ class AppLocalizationsVi extends AppLocalizations {
   String get tipsLabel => 'Mẹo';
 
   @override
+  String get imageSourceLabel => 'Nguồn ảnh';
+
+  @override
+  String get imageLicenseLabel => 'Giấy phép ảnh';
+
+  @override
+  String get gearLanghantel => 'Thanh đòn';
+
+  @override
+  String get gearKurzhantel => 'Tạ đơn';
+
+  @override
+  String get gearKabelzug => 'Cáp';
+
+  @override
+  String get gearMaschine => 'Máy tập';
+
+  @override
+  String get gearMultipresse => 'Máy Smith';
+
+  @override
+  String get gearKoerpergewicht => 'Trọng lượng cơ thể';
+
+  @override
   String get aiCoachTitle => 'Huấn luyện viên AI';
 
   @override

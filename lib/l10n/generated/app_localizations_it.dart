@@ -2014,6 +2014,30 @@ class AppLocalizationsIt extends AppLocalizations {
   String get tipsLabel => 'Consigli';
 
   @override
+  String get imageSourceLabel => 'Fonte immagine';
+
+  @override
+  String get imageLicenseLabel => 'Licenza immagine';
+
+  @override
+  String get gearLanghantel => 'Bilanciere';
+
+  @override
+  String get gearKurzhantel => 'Manubrio';
+
+  @override
+  String get gearKabelzug => 'Cavo';
+
+  @override
+  String get gearMaschine => 'Attrezzo';
+
+  @override
+  String get gearMultipresse => 'Multipower';
+
+  @override
+  String get gearKoerpergewicht => 'Peso corporeo';
+
+  @override
   String get aiCoachTitle => 'Coach IA';
 
   @override

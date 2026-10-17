@@ -1998,6 +1998,30 @@ class AppLocalizationsFa extends AppLocalizations {
   String get tipsLabel => 'نکته‌ها';
 
   @override
+  String get imageSourceLabel => 'منبع تصویر';
+
+  @override
+  String get imageLicenseLabel => 'مجوز تصویر';
+
+  @override
+  String get gearLanghantel => 'هالتر';
+
+  @override
+  String get gearKurzhantel => 'دمبل';
+
+  @override
+  String get gearKabelzug => 'کابل';
+
+  @override
+  String get gearMaschine => 'دستگاه';
+
+  @override
+  String get gearMultipresse => 'دستگاه اسمیت';
+
+  @override
+  String get gearKoerpergewicht => 'وزن بدن';
+
+  @override
   String get aiCoachTitle => 'مربی هوش مصنوعی';
 
   @override

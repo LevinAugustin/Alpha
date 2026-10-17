@@ -186,6 +186,9 @@ void main() {
           'tips': null,
           'catalog_source': null,
           'catalog_license': null,
+          'image_source': null,
+          'image_license': null,
+          'alternatives': null,
         },
     ],
     'plan_exercises': [

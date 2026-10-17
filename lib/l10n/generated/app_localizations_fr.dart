@@ -2028,6 +2028,30 @@ class AppLocalizationsFr extends AppLocalizations {
   String get tipsLabel => 'Conseils';
 
   @override
+  String get imageSourceLabel => 'Source de l\'image';
+
+  @override
+  String get imageLicenseLabel => 'Licence de l\'image';
+
+  @override
+  String get gearLanghantel => 'Barre';
+
+  @override
+  String get gearKurzhantel => 'Haltère';
+
+  @override
+  String get gearKabelzug => 'Poulie';
+
+  @override
+  String get gearMaschine => 'Appareil';
+
+  @override
+  String get gearMultipresse => 'Machine Smith';
+
+  @override
+  String get gearKoerpergewicht => 'Poids du corps';
+
+  @override
   String get aiCoachTitle => 'Coach IA';
 
   @override

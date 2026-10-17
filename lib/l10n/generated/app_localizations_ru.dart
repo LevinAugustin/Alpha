@@ -2027,6 +2027,30 @@ class AppLocalizationsRu extends AppLocalizations {
   String get tipsLabel => 'Советы';
 
   @override
+  String get imageSourceLabel => 'Источник изображения';
+
+  @override
+  String get imageLicenseLabel => 'Лицензия изображения';
+
+  @override
+  String get gearLanghantel => 'Штанга';
+
+  @override
+  String get gearKurzhantel => 'Гантель';
+
+  @override
+  String get gearKabelzug => 'Блок';
+
+  @override
+  String get gearMaschine => 'Тренажёр';
+
+  @override
+  String get gearMultipresse => 'Машина Смита';
+
+  @override
+  String get gearKoerpergewicht => 'Вес тела';
+
+  @override
   String get aiCoachTitle => 'ИИ-тренер';
 
   @override

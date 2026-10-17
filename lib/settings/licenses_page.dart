@@ -19,7 +19,7 @@ class LicensesPage extends StatelessWidget {
           const SizedBox(height: 16),
           Text(l10n.exerciseDbNotice),
           const SizedBox(height: 12),
-          FutureBuilder<List<({String source, String license})>>(
+          FutureBuilder<List<({String source, String license, bool image})>>(
             future: exerciseLicenseRows(db),
             builder: (context, snapshot) {
               final rows = snapshot.data ?? const [];
@@ -30,7 +30,9 @@ class LicensesPage extends StatelessWidget {
                   for (final row in rows)
                     Padding(
                       padding: const EdgeInsets.only(bottom: 8),
-                      child: Text('${row.source} · ${row.license}'),
+                      child: Text(
+                        '${row.image ? l10n.imageSourceLabel : l10n.sourceLabel}: ${row.source} · ${row.image ? l10n.imageLicenseLabel : l10n.licenseLabel}: ${row.license}',
+                      ),
                     ),
                 ],
               );

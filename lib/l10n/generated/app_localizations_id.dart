@@ -2009,6 +2009,30 @@ class AppLocalizationsId extends AppLocalizations {
   String get tipsLabel => 'Saran';
 
   @override
+  String get imageSourceLabel => 'Sumber gambar';
+
+  @override
+  String get imageLicenseLabel => 'Lisensi gambar';
+
+  @override
+  String get gearLanghantel => 'Barbel';
+
+  @override
+  String get gearKurzhantel => 'Dumbel';
+
+  @override
+  String get gearKabelzug => 'Kabel';
+
+  @override
+  String get gearMaschine => 'Mesin';
+
+  @override
+  String get gearMultipresse => 'Mesin Smith';
+
+  @override
+  String get gearKoerpergewicht => 'Berat badan';
+
+  @override
   String get aiCoachTitle => 'Pelatih AI';
 
   @override

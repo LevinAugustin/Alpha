@@ -1941,6 +1941,30 @@ class AppLocalizationsKo extends AppLocalizations {
   String get tipsLabel => '팁';
 
   @override
+  String get imageSourceLabel => '이미지 출처';
+
+  @override
+  String get imageLicenseLabel => '이미지 라이선스';
+
+  @override
+  String get gearLanghantel => '바벨';
+
+  @override
+  String get gearKurzhantel => '덤벨';
+
+  @override
+  String get gearKabelzug => '케이블';
+
+  @override
+  String get gearMaschine => '기구';
+
+  @override
+  String get gearMultipresse => '스미스 머신';
+
+  @override
+  String get gearKoerpergewicht => '맨몸';
+
+  @override
   String get aiCoachTitle => 'AI 코치';
 
   @override

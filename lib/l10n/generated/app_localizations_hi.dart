@@ -1992,6 +1992,30 @@ class AppLocalizationsHi extends AppLocalizations {
   String get tipsLabel => 'सुझाव';
 
   @override
+  String get imageSourceLabel => 'चित्र स्रोत';
+
+  @override
+  String get imageLicenseLabel => 'चित्र लाइसेंस';
+
+  @override
+  String get gearLanghantel => 'बारबेल';
+
+  @override
+  String get gearKurzhantel => 'डंबल';
+
+  @override
+  String get gearKabelzug => 'केबल';
+
+  @override
+  String get gearMaschine => 'यंत्र';
+
+  @override
+  String get gearMultipresse => 'स्मिथ मशीन';
+
+  @override
+  String get gearKoerpergewicht => 'शरीर का वजन';
+
+  @override
   String get aiCoachTitle => 'एआई कोच';
 
   @override

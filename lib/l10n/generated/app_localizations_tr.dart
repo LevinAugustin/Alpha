@@ -2015,6 +2015,30 @@ class AppLocalizationsTr extends AppLocalizations {
   String get tipsLabel => 'İpuçları';
 
   @override
+  String get imageSourceLabel => 'Görsel kaynağı';
+
+  @override
+  String get imageLicenseLabel => 'Görsel lisansı';
+
+  @override
+  String get gearLanghantel => 'Halter';
+
+  @override
+  String get gearKurzhantel => 'Dambıl';
+
+  @override
+  String get gearKabelzug => 'Kablo';
+
+  @override
+  String get gearMaschine => 'Alet';
+
+  @override
+  String get gearMultipresse => 'Smith aleti';
+
+  @override
+  String get gearKoerpergewicht => 'Vücut ağırlığı';
+
+  @override
   String get aiCoachTitle => 'YZ koçu';
 
   @override

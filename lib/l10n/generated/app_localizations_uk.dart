@@ -2023,6 +2023,30 @@ class AppLocalizationsUk extends AppLocalizations {
   String get tipsLabel => 'Поради';
 
   @override
+  String get imageSourceLabel => 'Джерело зображення';
+
+  @override
+  String get imageLicenseLabel => 'Ліцензія зображення';
+
+  @override
+  String get gearLanghantel => 'Штанга';
+
+  @override
+  String get gearKurzhantel => 'Гантель';
+
+  @override
+  String get gearKabelzug => 'Блок';
+
+  @override
+  String get gearMaschine => 'Тренажер';
+
+  @override
+  String get gearMultipresse => 'Машина Сміта';
+
+  @override
+  String get gearKoerpergewicht => 'Вага тіла';
+
+  @override
   String get aiCoachTitle => 'ШІ-тренер';
 
   @override

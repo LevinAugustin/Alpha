@@ -1,564 +1,401 @@
 [
   {
-    "id": "barbell-bench-press",
+    "id": "bankdruecken-langhantel",
     "name_de": "Bankdrücken",
-    "synonyme": [
-      "Bench Press",
-      "Flachbank"
-    ],
+    "synonyme": ["Bench Press", "Flachbank"],
     "kategorie": "Brust",
-    "primaermuskeln": [
-      "Brust"
-    ],
-    "sekundaermuskeln": [
-      "Trizeps",
-      "Schultern"
-    ],
-    "geraet": "Langhantel",
+    "primaermuskeln": ["chest"],
+    "sekundaermuskeln": ["triceps", "delts"],
+    "geraet": "langhantel",
     "split": "push",
     "mechanik": "grund",
-    "ausfuehrung_de": [
-      "Platzhalter."
-    ],
-    "tipps_de": [
-      "Platzhalter."
-    ],
-    "bild": "",
+    "ausfuehrung_de": ["Platzhalter."],
+    "tipps_de": ["Platzhalter."],
+    "bild": "bankdruecken-langhantel.webp",
     "quelle": "placeholder",
     "lizenz": "placeholder",
-    "legacy_names": [
-      "Barbell bench press"
-    ]
+    "bild_quelle": "placeholder-bild",
+    "bild_lizenz": "placeholder-bildlizenz",
+    "alternativen": ["bankdruecken-multipresse"],
+    "legacy_names": ["Barbell bench press"],
+    "future_field": "ignored"
   },
   {
-    "id": "squat",
+    "id": "kniebeuge-langhantel",
     "name_de": "Kniebeuge",
-    "synonyme": [
-      "Squat"
-    ],
+    "synonyme": ["Squat"],
     "kategorie": "Beine",
-    "primaermuskeln": [
-      "Beine"
-    ],
-    "sekundaermuskeln": [
-      "Gesäß"
-    ],
-    "geraet": "Langhantel",
+    "primaermuskeln": ["quads"],
+    "sekundaermuskeln": ["glutes", "hams"],
+    "geraet": "langhantel",
     "split": "beine",
     "mechanik": "grund",
-    "ausfuehrung_de": [
-      "Platzhalter."
-    ],
-    "tipps_de": [
-      "Platzhalter."
-    ],
-    "bild": "",
+    "ausfuehrung_de": ["Platzhalter."],
+    "tipps_de": ["Platzhalter."],
+    "bild": "kniebeuge-langhantel.webp",
     "quelle": "placeholder",
     "lizenz": "placeholder",
-    "legacy_names": [
-      "Squat"
-    ]
+    "bild_quelle": "placeholder-bild",
+    "bild_lizenz": "placeholder-bildlizenz",
+    "alternativen": [],
+    "legacy_names": ["Squat"]
   },
   {
-    "id": "deadlift",
+    "id": "kreuzheben-langhantel",
     "name_de": "Kreuzheben",
-    "synonyme": [
-      "Deadlift"
-    ],
+    "synonyme": ["Deadlift"],
     "kategorie": "Rücken",
-    "primaermuskeln": [
-      "Rücken"
-    ],
-    "sekundaermuskeln": [
-      "Beine"
-    ],
-    "geraet": "Langhantel",
+    "primaermuskeln": ["lats", "hams"],
+    "sekundaermuskeln": ["glutes", "quads"],
+    "geraet": "langhantel",
     "split": "pull",
     "mechanik": "grund",
-    "ausfuehrung_de": [
-      "Platzhalter."
-    ],
-    "tipps_de": [
-      "Platzhalter."
-    ],
-    "bild": "",
+    "ausfuehrung_de": ["Platzhalter."],
+    "tipps_de": ["Platzhalter."],
+    "bild": "kreuzheben-langhantel.webp",
     "quelle": "placeholder",
     "lizenz": "placeholder",
-    "legacy_names": [
-      "Deadlift"
-    ]
+    "bild_quelle": "placeholder-bild",
+    "bild_lizenz": "placeholder-bildlizenz",
+    "alternativen": [],
+    "legacy_names": ["Deadlift"]
   },
   {
-    "id": "lat-pull-down",
+    "id": "latziehen-kabel",
     "name_de": "Latziehen",
-    "synonyme": [
-      "Lat Pulldown"
-    ],
+    "synonyme": ["Lat Pulldown"],
     "kategorie": "Rücken",
-    "primaermuskeln": [
-      "Rücken"
-    ],
-    "sekundaermuskeln": [
-      "Bizeps"
-    ],
-    "geraet": "Kabelzug",
+    "primaermuskeln": ["lats"],
+    "sekundaermuskeln": ["biceps"],
+    "geraet": "kabelzug",
     "split": "pull",
     "mechanik": "grund",
-    "ausfuehrung_de": [
-      "Platzhalter."
-    ],
-    "tipps_de": [
-      "Platzhalter."
-    ],
-    "bild": "",
+    "ausfuehrung_de": ["Platzhalter."],
+    "tipps_de": ["Platzhalter."],
+    "bild": "latziehen-kabel.webp",
     "quelle": "placeholder",
     "lizenz": "placeholder",
-    "legacy_names": [
-      "Lat pull-down"
-    ]
+    "bild_quelle": "placeholder-bild",
+    "bild_lizenz": "placeholder-bildlizenz",
+    "alternativen": ["klimmzug"],
+    "legacy_names": ["Lat pull-down"]
   },
   {
-    "id": "leg-press",
+    "id": "beinpresse-maschine",
     "name_de": "Beinpresse",
-    "synonyme": [
-      "Leg Press"
-    ],
+    "synonyme": ["Leg Press"],
     "kategorie": "Beine",
-    "primaermuskeln": [
-      "Beine"
-    ],
-    "sekundaermuskeln": [],
-    "geraet": "Maschine",
+    "primaermuskeln": ["quads"],
+    "sekundaermuskeln": ["glutes"],
+    "geraet": "maschine",
     "split": "beine",
     "mechanik": "grund",
-    "ausfuehrung_de": [
-      "Platzhalter."
-    ],
-    "tipps_de": [
-      "Platzhalter."
-    ],
-    "bild": "",
+    "ausfuehrung_de": ["Platzhalter."],
+    "tipps_de": ["Platzhalter."],
+    "bild": "beinpresse-maschine.webp",
     "quelle": "placeholder",
     "lizenz": "placeholder",
-    "legacy_names": [
-      "Leg press"
-    ]
+    "bild_quelle": "placeholder-bild",
+    "bild_lizenz": "placeholder-bildlizenz",
+    "alternativen": [],
+    "legacy_names": ["Leg press"]
   },
   {
-    "id": "dumbbell-shoulder-press",
+    "id": "schulterdruecken-kurzhantel",
     "name_de": "Schulterdrücken",
-    "synonyme": [
-      "Shoulder Press"
-    ],
+    "synonyme": ["Shoulder Press"],
     "kategorie": "Schultern",
-    "primaermuskeln": [
-      "Schultern"
-    ],
-    "sekundaermuskeln": [
-      "Trizeps"
-    ],
-    "geraet": "Kurzhantel",
+    "primaermuskeln": ["delts"],
+    "sekundaermuskeln": ["triceps"],
+    "geraet": "kurzhantel",
     "split": "push",
     "mechanik": "grund",
-    "ausfuehrung_de": [
-      "Platzhalter."
-    ],
-    "tipps_de": [
-      "Platzhalter."
-    ],
-    "bild": "",
+    "ausfuehrung_de": ["Platzhalter."],
+    "tipps_de": ["Platzhalter."],
+    "bild": "schulterdruecken-kurzhantel.webp",
     "quelle": "placeholder",
     "lizenz": "placeholder",
-    "legacy_names": [
-      "Dumbbell shoulder press"
-    ]
+    "bild_quelle": "placeholder-bild",
+    "bild_lizenz": "placeholder-bildlizenz",
+    "alternativen": [],
+    "legacy_names": ["Dumbbell shoulder press"]
   },
   {
-    "id": "cable-fly",
+    "id": "fliegende-kabel",
     "name_de": "Fliegende",
-    "synonyme": [
-      "Cable Fly",
-      "Kabelzug"
-    ],
+    "synonyme": ["Cable Fly", "Kabelzug"],
     "kategorie": "Brust",
-    "primaermuskeln": [
-      "Brust"
-    ],
+    "primaermuskeln": ["chest"],
     "sekundaermuskeln": [],
-    "geraet": "Kabelzug",
+    "geraet": "kabelzug",
     "split": "push",
     "mechanik": "isolation",
-    "ausfuehrung_de": [
-      "Platzhalter."
-    ],
-    "tipps_de": [
-      "Platzhalter."
-    ],
-    "bild": "",
+    "ausfuehrung_de": ["Platzhalter."],
+    "tipps_de": ["Platzhalter."],
+    "bild": "fliegende-kabel.webp",
     "quelle": "placeholder",
     "lizenz": "placeholder",
-    "legacy_names": [
-      "Cable fly"
-    ]
+    "bild_quelle": "placeholder-bild",
+    "bild_lizenz": "placeholder-bildlizenz",
+    "alternativen": [],
+    "legacy_names": ["Cable fly"]
   },
   {
-    "id": "pull-up",
+    "id": "klimmzug",
     "name_de": "Klimmzug",
-    "synonyme": [
-      "Pull-up",
-      "Pull Up"
-    ],
+    "synonyme": ["Pull-up", "Pull Up"],
     "kategorie": "Rücken",
-    "primaermuskeln": [
-      "Rücken"
-    ],
-    "sekundaermuskeln": [
-      "Bizeps"
-    ],
-    "geraet": "Körpergewicht",
+    "primaermuskeln": ["lats"],
+    "sekundaermuskeln": ["biceps"],
+    "geraet": "koerpergewicht",
     "split": "pull",
     "mechanik": "grund",
-    "ausfuehrung_de": [
-      "Platzhalter."
-    ],
-    "tipps_de": [
-      "Platzhalter."
-    ],
-    "bild": "",
+    "ausfuehrung_de": ["Platzhalter."],
+    "tipps_de": ["Platzhalter."],
+    "bild": "klimmzug.webp",
     "quelle": "placeholder",
     "lizenz": "placeholder",
-    "legacy_names": [
-      "Pull-up"
-    ]
+    "bild_quelle": "placeholder-bild",
+    "bild_lizenz": "placeholder-bildlizenz",
+    "alternativen": ["latziehen-kabel"],
+    "legacy_names": ["Pull-up"]
   },
   {
     "id": "crunch",
     "name_de": "Crunch",
-    "synonyme": [
-      "Crunch"
-    ],
+    "synonyme": ["Crunch"],
     "kategorie": "Bauch",
-    "primaermuskeln": [
-      "Bauch"
-    ],
+    "primaermuskeln": ["abs"],
     "sekundaermuskeln": [],
-    "geraet": "Körpergewicht",
+    "geraet": "koerpergewicht",
     "split": "core",
     "mechanik": "isolation",
-    "ausfuehrung_de": [
-      "Platzhalter."
-    ],
-    "tipps_de": [
-      "Platzhalter."
-    ],
-    "bild": "",
+    "ausfuehrung_de": ["Platzhalter."],
+    "tipps_de": ["Platzhalter."],
+    "bild": "crunch.webp",
     "quelle": "placeholder",
     "lizenz": "placeholder",
-    "legacy_names": [
-      "Crunch"
-    ]
+    "legacy_names": ["Crunch"]
   },
   {
-    "id": "leg-curl",
+    "id": "beinbeuger-maschine",
     "name_de": "Beinbeuger",
-    "synonyme": [
-      "Leg Curl"
-    ],
+    "synonyme": ["Leg Curl"],
     "kategorie": "Beine",
-    "primaermuskeln": [
-      "Beine"
-    ],
+    "primaermuskeln": ["hams"],
     "sekundaermuskeln": [],
-    "geraet": "Maschine",
+    "geraet": "maschine",
     "split": "beine",
     "mechanik": "isolation",
-    "ausfuehrung_de": [
-      "Platzhalter."
-    ],
-    "tipps_de": [
-      "Platzhalter."
-    ],
-    "bild": "",
+    "ausfuehrung_de": ["Platzhalter."],
+    "tipps_de": ["Platzhalter."],
+    "bild": "beinbeuger-maschine.webp",
     "quelle": "placeholder",
     "lizenz": "placeholder",
-    "legacy_names": [
-      "Leg curl"
-    ]
+    "bild_quelle": "placeholder-bild",
+    "bild_lizenz": "placeholder-bildlizenz",
+    "alternativen": [],
+    "legacy_names": ["Leg curl"]
   },
   {
-    "id": "triceps-pushdown",
+    "id": "trizepsdruecken-kabel",
     "name_de": "Trizepsdrücken",
-    "synonyme": [
-      "Triceps Pushdown"
-    ],
+    "synonyme": ["Triceps Pushdown"],
     "kategorie": "Arme",
-    "primaermuskeln": [
-      "Trizeps"
-    ],
+    "primaermuskeln": ["triceps"],
     "sekundaermuskeln": [],
-    "geraet": "Kabelzug",
+    "geraet": "kabelzug",
     "split": "push",
     "mechanik": "isolation",
-    "ausfuehrung_de": [
-      "Platzhalter."
-    ],
-    "tipps_de": [
-      "Platzhalter."
-    ],
-    "bild": "",
+    "ausfuehrung_de": ["Platzhalter."],
+    "tipps_de": ["Platzhalter."],
+    "bild": "trizepsdruecken-kabel.webp",
     "quelle": "placeholder",
     "lizenz": "placeholder",
-    "legacy_names": [
-      "Triceps pushdown"
-    ]
+    "bild_quelle": "placeholder-bild",
+    "bild_lizenz": "placeholder-bildlizenz",
+    "alternativen": [],
+    "legacy_names": ["Triceps pushdown"]
   },
   {
-    "id": "dumbbell-biceps-curl",
+    "id": "bizepscurl-kurzhantel",
     "name_de": "Bizepscurl",
-    "synonyme": [
-      "Biceps Curl"
-    ],
+    "synonyme": ["Biceps Curl"],
     "kategorie": "Arme",
-    "primaermuskeln": [
-      "Bizeps"
-    ],
+    "primaermuskeln": ["biceps"],
     "sekundaermuskeln": [],
-    "geraet": "Kurzhantel",
+    "geraet": "kurzhantel",
     "split": "pull",
     "mechanik": "isolation",
-    "ausfuehrung_de": [
-      "Platzhalter."
-    ],
-    "tipps_de": [
-      "Platzhalter."
-    ],
-    "bild": "",
+    "ausfuehrung_de": ["Platzhalter."],
+    "tipps_de": ["Platzhalter."],
+    "bild": "bizepscurl-kurzhantel.webp",
     "quelle": "placeholder",
     "lizenz": "placeholder",
-    "legacy_names": [
-      "Dumbbell biceps curl"
-    ]
+    "bild_quelle": "placeholder-bild",
+    "bild_lizenz": "placeholder-bildlizenz",
+    "alternativen": [],
+    "legacy_names": ["Dumbbell biceps curl"]
   },
   {
-    "id": "romanian-deadlift",
+    "id": "rumaenisches-kreuzheben",
     "name_de": "Rumänisches Kreuzheben",
-    "synonyme": [
-      "Romanian Deadlift"
-    ],
+    "synonyme": ["Romanian Deadlift"],
     "kategorie": "Beine",
-    "primaermuskeln": [
-      "Beine"
-    ],
-    "sekundaermuskeln": [
-      "Rücken"
-    ],
-    "geraet": "Langhantel",
+    "primaermuskeln": ["hams"],
+    "sekundaermuskeln": ["glutes", "lats"],
+    "geraet": "langhantel",
     "split": "pull",
     "mechanik": "grund",
-    "ausfuehrung_de": [
-      "Platzhalter."
-    ],
-    "tipps_de": [
-      "Platzhalter."
-    ],
-    "bild": "",
+    "ausfuehrung_de": ["Platzhalter."],
+    "tipps_de": ["Platzhalter."],
+    "bild": "rumaenisches-kreuzheben.webp",
     "quelle": "placeholder",
     "lizenz": "placeholder",
-    "legacy_names": [
-      "Romanian deadlift"
-    ]
+    "bild_quelle": "placeholder-bild",
+    "bild_lizenz": "placeholder-bildlizenz",
+    "alternativen": [],
+    "legacy_names": ["Romanian deadlift"]
   },
   {
-    "id": "lunge",
+    "id": "ausfallschritt",
     "name_de": "Ausfallschritt",
-    "synonyme": [
-      "Lunge"
-    ],
+    "synonyme": ["Lunge"],
     "kategorie": "Beine",
-    "primaermuskeln": [
-      "Beine"
-    ],
-    "sekundaermuskeln": [
-      "Gesäß"
-    ],
-    "geraet": "Körpergewicht",
+    "primaermuskeln": ["quads"],
+    "sekundaermuskeln": ["glutes"],
+    "geraet": "koerpergewicht",
     "split": "beine",
     "mechanik": "grund",
-    "ausfuehrung_de": [
-      "Platzhalter."
-    ],
-    "tipps_de": [
-      "Platzhalter."
-    ],
-    "bild": "",
+    "ausfuehrung_de": ["Platzhalter."],
+    "tipps_de": ["Platzhalter."],
+    "bild": "ausfallschritt.webp",
     "quelle": "placeholder",
     "lizenz": "placeholder",
-    "legacy_names": [
-      "Lunge"
-    ]
+    "bild_quelle": "placeholder-bild",
+    "bild_lizenz": "placeholder-bildlizenz",
+    "alternativen": [],
+    "legacy_names": ["Lunge"]
   },
   {
-    "id": "push-up",
+    "id": "liegestuetz",
     "name_de": "Liegestütz",
-    "synonyme": [
-      "Push-up",
-      "Push Up"
-    ],
+    "synonyme": ["Push-up", "Push Up"],
     "kategorie": "Brust",
-    "primaermuskeln": [
-      "Brust"
-    ],
-    "sekundaermuskeln": [
-      "Trizeps"
-    ],
-    "geraet": "Körpergewicht",
+    "primaermuskeln": ["chest"],
+    "sekundaermuskeln": ["triceps"],
+    "geraet": "koerpergewicht",
     "split": "push",
     "mechanik": "grund",
-    "ausfuehrung_de": [
-      "Platzhalter."
-    ],
-    "tipps_de": [
-      "Platzhalter."
-    ],
-    "bild": "",
+    "ausfuehrung_de": ["Platzhalter."],
+    "tipps_de": ["Platzhalter."],
+    "bild": "liegestuetz.webp",
     "quelle": "placeholder",
     "lizenz": "placeholder",
-    "legacy_names": [
-      "Push-up"
-    ]
+    "bild_quelle": "placeholder-bild",
+    "bild_lizenz": "placeholder-bildlizenz",
+    "alternativen": [],
+    "legacy_names": ["Push-up"]
   },
   {
-    "id": "seated-calf-raise",
+    "id": "wadenheben-maschine",
     "name_de": "Wadenheben",
-    "synonyme": [
-      "Calf Raise"
-    ],
+    "synonyme": ["Calf Raise"],
     "kategorie": "Beine",
-    "primaermuskeln": [
-      "Waden"
-    ],
+    "primaermuskeln": ["calves"],
     "sekundaermuskeln": [],
-    "geraet": "Maschine",
+    "geraet": "maschine",
     "split": "beine",
     "mechanik": "isolation",
-    "ausfuehrung_de": [
-      "Platzhalter."
-    ],
-    "tipps_de": [
-      "Platzhalter."
-    ],
-    "bild": "",
+    "ausfuehrung_de": ["Platzhalter."],
+    "tipps_de": ["Platzhalter."],
+    "bild": "wadenheben-maschine.webp",
     "quelle": "placeholder",
     "lizenz": "placeholder",
-    "legacy_names": [
-      "Seated calf raise"
-    ]
+    "bild_quelle": "placeholder-bild",
+    "bild_lizenz": "placeholder-bildlizenz",
+    "alternativen": [],
+    "legacy_names": ["Seated calf raise"]
   },
   {
-    "id": "russian-twist",
+    "id": "russische-drehung",
     "name_de": "Russian Twist",
-    "synonyme": [
-      "Russian Twist"
-    ],
+    "synonyme": ["Russian Twist"],
     "kategorie": "Bauch",
-    "primaermuskeln": [
-      "Bauch"
-    ],
+    "primaermuskeln": ["abs"],
     "sekundaermuskeln": [],
-    "geraet": "Körpergewicht",
+    "geraet": "koerpergewicht",
     "split": "core",
     "mechanik": "isolation",
-    "ausfuehrung_de": [
-      "Platzhalter."
-    ],
-    "tipps_de": [
-      "Platzhalter."
-    ],
-    "bild": "",
+    "ausfuehrung_de": ["Platzhalter."],
+    "tipps_de": ["Platzhalter."],
+    "bild": "russische-drehung.webp",
     "quelle": "placeholder",
     "lizenz": "placeholder",
-    "legacy_names": [
-      "Russian twist"
-    ]
+    "bild_quelle": "placeholder-bild",
+    "bild_lizenz": "placeholder-bildlizenz",
+    "alternativen": [],
+    "legacy_names": ["Russian twist"]
   },
   {
-    "id": "upright-row",
+    "id": "aufrechtes-rudern",
     "name_de": "Aufrechtes Rudern",
-    "synonyme": [
-      "Upright Row"
-    ],
+    "synonyme": ["Upright Row"],
     "kategorie": "Schultern",
-    "primaermuskeln": [
-      "Schultern"
-    ],
-    "sekundaermuskeln": [],
-    "geraet": "Langhantel",
+    "primaermuskeln": ["delts"],
+    "sekundaermuskeln": ["traps"],
+    "geraet": "langhantel",
     "split": "pull",
     "mechanik": "isolation",
-    "ausfuehrung_de": [
-      "Platzhalter."
-    ],
-    "tipps_de": [
-      "Platzhalter."
-    ],
-    "bild": "",
+    "ausfuehrung_de": ["Platzhalter."],
+    "tipps_de": ["Platzhalter."],
+    "bild": "aufrechtes-rudern.webp",
     "quelle": "placeholder",
     "lizenz": "placeholder",
-    "legacy_names": [
-      "Upright row"
-    ]
+    "bild_quelle": "placeholder-bild",
+    "bild_lizenz": "placeholder-bildlizenz",
+    "alternativen": [],
+    "legacy_names": ["Upright row"]
   },
   {
-    "id": "smith-bench-press",
+    "id": "bankdruecken-multipresse",
     "name_de": "Bankdrücken an der Multipresse",
-    "synonyme": [
-      "Smith Machine",
-      "Multipresse"
-    ],
+    "synonyme": ["Smith Machine", "Multipresse"],
     "kategorie": "Brust",
-    "primaermuskeln": [
-      "Brust"
-    ],
-    "sekundaermuskeln": [
-      "Trizeps"
-    ],
-    "geraet": "Multipresse",
+    "primaermuskeln": ["chest"],
+    "sekundaermuskeln": ["triceps"],
+    "geraet": "multipresse",
     "split": "push",
     "mechanik": "grund",
-    "ausfuehrung_de": [
-      "Platzhalter."
-    ],
-    "tipps_de": [
-      "Platzhalter."
-    ],
-    "bild": "",
+    "ausfuehrung_de": ["Platzhalter."],
+    "tipps_de": ["Platzhalter."],
+    "bild": "bankdruecken-multipresse.webp",
     "quelle": "placeholder",
     "lizenz": "placeholder",
+    "bild_quelle": "placeholder-bild",
+    "bild_lizenz": "placeholder-bildlizenz",
+    "alternativen": ["bankdruecken-langhantel"],
     "legacy_names": []
   },
   {
-    "id": "running",
+    "id": "laufen",
     "name_de": "Laufen",
-    "synonyme": [
-      "Running"
-    ],
+    "synonyme": ["Running"],
     "kategorie": "Cardio",
-    "primaermuskeln": [
-      "Beine"
-    ],
-    "sekundaermuskeln": [],
-    "geraet": "Körpergewicht",
+    "primaermuskeln": ["quads"],
+    "sekundaermuskeln": ["calves"],
+    "geraet": "koerpergewicht",
     "split": "cardio",
     "mechanik": "grund",
-    "ausfuehrung_de": [
-      "Platzhalter."
-    ],
-    "tipps_de": [
-      "Platzhalter."
-    ],
-    "bild": "",
+    "ausfuehrung_de": ["Platzhalter."],
+    "tipps_de": ["Platzhalter."],
+    "bild": "laufen.webp",
     "quelle": "placeholder",
     "lizenz": "placeholder",
-    "legacy_names": []
+    "bild_quelle": "placeholder-bild",
+    "bild_lizenz": "placeholder-bildlizenz",
+    "alternativen": [],
+    "legacy_names": [],
+    "extra": {"later": true}
   }
 ]

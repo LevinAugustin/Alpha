@@ -2008,6 +2008,30 @@ class AppLocalizationsMs extends AppLocalizations {
   String get tipsLabel => 'Petua';
 
   @override
+  String get imageSourceLabel => 'Sumber imej';
+
+  @override
+  String get imageLicenseLabel => 'Lesen imej';
+
+  @override
+  String get gearLanghantel => 'Barbel';
+
+  @override
+  String get gearKurzhantel => 'Dumbel';
+
+  @override
+  String get gearKabelzug => 'Kabel';
+
+  @override
+  String get gearMaschine => 'Mesin';
+
+  @override
+  String get gearMultipresse => 'Mesin Smith';
+
+  @override
+  String get gearKoerpergewicht => 'Berat badan';
+
+  @override
   String get aiCoachTitle => 'Jurulatih AI';
 
   @override

@@ -2025,6 +2025,30 @@ class AppLocalizationsPl extends AppLocalizations {
   String get tipsLabel => 'Wskazówki';
 
   @override
+  String get imageSourceLabel => 'Źródło obrazu';
+
+  @override
+  String get imageLicenseLabel => 'Licencja obrazu';
+
+  @override
+  String get gearLanghantel => 'Sztanga';
+
+  @override
+  String get gearKurzhantel => 'Hantle';
+
+  @override
+  String get gearKabelzug => 'Wyciąg';
+
+  @override
+  String get gearMaschine => 'Maszyna';
+
+  @override
+  String get gearMultipresse => 'Maszyna Smitha';
+
+  @override
+  String get gearKoerpergewicht => 'Masa ciała';
+
+  @override
   String get aiCoachTitle => 'Trener SI';
 
   @override
