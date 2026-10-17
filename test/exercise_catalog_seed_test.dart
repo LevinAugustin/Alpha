@@ -858,7 +858,7 @@ void main() {
   });
 
   test(
-    'flexify mapping moves seed and retired names without dropping sets',
+    'flexify mapping moves seed names and keeps trained suggestions',
     () async {
       final mapping = File(
         'assets/exercises/flexify_mapping.json',
@@ -868,7 +868,9 @@ void main() {
       final rawMap = jsonDecode(mapping) as Map;
       expect(rawMap.length, 294);
       expect(catalogIds, rawMap.keys.toSet());
-      expect(map.length, 276);
+      expect(map.length, 275);
+      final suggestions = parseFlexifySuggestions(mapping);
+      expect(suggestions, hasLength(100));
       final ohneRaw =
           jsonDecode(
                 File(
@@ -886,25 +888,40 @@ void main() {
       expect(ohne, hasLength(278));
       expect(ohne, contains(normalizedExerciseName('Neck curl')));
       expect(ohne, contains(normalizedExerciseName("90/90 Hamstring")));
-      var mappedNames = 0;
+      var seedNames = 0;
+      var suggestedNames = 0;
       for (final value in rawMap.values) {
         final row = Map<String, dynamic>.from(value as Map);
-        mappedNames += (row['seed_namen'] as List).length;
-        mappedNames +=
+        seedNames += (row['seed_namen'] as List).length;
+        suggestedNames +=
             (row['aussortiert_naechste_entsprechung'] as List).length;
       }
-      expect(mappedNames + ohne.length, 920);
+      expect(seedNames, 542);
+      expect(suggestedNames, 100);
+      expect(seedNames + suggestedNames + ohne.length, 920);
       expect(map['bankdruecken-langhantel'], contains('Barbell bench press'));
-      expect(map['bankdruecken-langhantel'], contains('Board Press'));
+      expect(map['bankdruecken-langhantel'], isNot(contains('Board Press')));
+      expect(
+        suggestions[normalizedExerciseName('Board Press')],
+        'bankdruecken-langhantel',
+      );
       expect(parseFlexifyMapping('{'), isEmpty);
       expect(parseFlexifyMapping('[]'), isEmpty);
+      expect(parseFlexifySuggestions('{'), isEmpty);
+      expect(parseFlexifySuggestions(null), isEmpty);
       expect(
         parseFlexifyMapping(
           '{"Bad Id": {"seed_namen": ["X"]}, "dips": {"seed_namen": ["Triceps dip", 1, ""], "aussortiert_naechste_entsprechung": ["Bench Dips"], "note": true}, "plank": []}',
         ),
         {
-          'dips': ['Triceps dip', 'Bench Dips'],
+          'dips': ['Triceps dip'],
         },
+      );
+      expect(
+        parseFlexifySuggestions(
+          '{"dips": {"aussortiert_naechste_entsprechung": ["Bench Dips", ""]}}',
+        ),
+        {'bench dips': 'dips'},
       );
 
       final bench =
@@ -944,17 +961,36 @@ void main() {
         ).readAsStringSync(),
       );
       expect(imported.skipped, isEmpty);
-      expect(
-        await (db.exercises.select()..where((row) => row.id.equals(boardId)))
-            .getSingleOrNull(),
-        isNull,
-      );
+      final boardAfter =
+          await (db.exercises.select()..where((row) => row.id.equals(boardId)))
+              .getSingle();
+      expect(boardAfter.name, 'Board Press');
+      expect(boardAfter.catalogId, 'eigen-board-press');
+      expect(isCustomExercise(boardAfter), isTrue);
+      expect(boardAfter.alternatives, '["bankdruecken-langhantel"]');
       expect(
         (await (db.exerciseSets.select()
                   ..where((row) => row.id.equals(boardSet)))
                 .getSingle())
             .exerciseId,
-        bench.id,
+        boardId,
+      );
+      final benchAfter =
+          await (db.exercises.select()..where((row) => row.id.equals(bench.id)))
+              .getSingle();
+      expect(benchAfter.catalogId, 'bankdruecken-langhantel');
+      expect(benchAfter.name, 'Barbell bench press');
+      expect(
+        await (db.exerciseSets.select()
+              ..where((row) => row.exerciseId.equals(bench.id)))
+            .get(),
+        isEmpty,
+      );
+      expect(
+        await (db.exercises.select()
+              ..where((row) => row.name.equals('Pin Presses')))
+            .getSingleOrNull(),
+        isNull,
       );
       final arnoldAfter =
           await (db.exercises.select()
@@ -1266,13 +1302,21 @@ void main() {
           .getSingleOrNull(),
       isNull,
     );
+    final carry =
+        await (db.exercises.select()
+              ..where((exercise) => exercise.id.equals(escapedId)))
+            .getSingle();
+    expect(carry.name, " Farmer\\'s Carry ");
+    expect(carry.catalogId, 'eigen-farmer-s-carry');
+    expect(carry.alternatives, '["farmers-walk"]');
     expect(
-      await (db.exercises.select()
-            ..where((exercise) => exercise.id.equals(escapedId)))
-          .getSingleOrNull(),
-      isNull,
+      (await (db.exerciseSets.select()
+                ..where((row) => row.id.equals(escapedSet)))
+              .getSingle())
+          .exerciseId,
+      escapedId,
     );
-    for (final setId in [straightSet, curlySet, escapedSet]) {
+    for (final setId in [straightSet, curlySet]) {
       expect(
         (await (db.exerciseSets.select()..where((row) => row.id.equals(setId)))
                 .getSingle())

@@ -256,25 +256,48 @@ Map<String, List<String>> parseFlexifyMapping(String raw) {
     if (id is! String || !catalogIdPattern.hasMatch(id)) continue;
     final value = entry.value;
     if (value is! Map) continue;
+    final list = value['seed_namen'];
+    if (list is! List) continue;
     final legacy = <String>[];
     final seen = <String>{};
-    for (final key in const [
-      'seed_namen',
-      'aussortiert_naechste_entsprechung',
-    ]) {
-      final list = value[key];
-      if (list is! List) continue;
-      for (final item in list) {
-        if (item is! String) continue;
-        final trimmed = item.trim();
-        if (trimmed.isEmpty || !seen.add(normalizedExerciseName(trimmed))) {
-          continue;
-        }
-        legacy.add(trimmed);
+    for (final item in list) {
+      if (item is! String) continue;
+      final trimmed = item.trim();
+      if (trimmed.isEmpty || !seen.add(normalizedExerciseName(trimmed))) {
+        continue;
       }
+      legacy.add(trimmed);
     }
     if (legacy.isEmpty) continue;
     names[id] = legacy;
+  }
+  return names;
+}
+
+Map<String, String> parseFlexifySuggestions(String? raw) {
+  if (raw == null || raw.trim().isEmpty) return const {};
+  Object? decoded;
+  try {
+    decoded = jsonDecode(raw);
+  } catch (error) {
+    debugPrint('Exercise flexify suggestions were ignored: $error');
+    return const {};
+  }
+  if (decoded is! Map) return const {};
+  final names = <String, String>{};
+  for (final entry in decoded.entries) {
+    final id = entry.key;
+    if (id is! String || !catalogIdPattern.hasMatch(id)) continue;
+    final value = entry.value;
+    if (value is! Map) continue;
+    final list = value['aussortiert_naechste_entsprechung'];
+    if (list is! List) continue;
+    for (final item in list) {
+      if (item is! String) continue;
+      final key = normalizedExerciseName(item);
+      if (key.isEmpty || names.containsKey(key)) continue;
+      names[key] = id;
+    }
   }
   return names;
 }
@@ -376,6 +399,7 @@ Future<ExerciseImportResult> importExerciseCatalogJson(
       if ((exercise.catalogId ?? '').isNotEmpty) exercise.catalogId!: exercise,
   };
   final ohneZiel = parseFlexifyOhneZiel(ohneZielRaw);
+  final suggestions = parseFlexifySuggestions(flexifyMapRaw);
   final byName = <String, List<Exercise>>{};
   void remember(Exercise row) {
     final key = normalizedExerciseName(row.name);
@@ -502,7 +526,10 @@ Future<ExerciseImportResult> importExerciseCatalogJson(
       remember(refreshed);
       updated++;
     }
-    await _keepTrainedOhneZiel(database, ohneZiel);
+    await _keepTrainedCustomExercises(database, {
+      ...ohneZiel,
+      ...suggestions.keys,
+    }, suggestions);
   });
 
   if (parsed.skipped.isNotEmpty) {
@@ -802,11 +829,12 @@ List<String> _uniqueNames(Iterable<String> names) {
   return result;
 }
 
-Future<void> _keepTrainedOhneZiel(
+Future<void> _keepTrainedCustomExercises(
   AppDatabase database,
-  Set<String> ohneZiel,
+  Set<String> names,
+  Map<String, String> suggestions,
 ) async {
-  if (ohneZiel.isEmpty) return;
+  if (names.isEmpty) return;
   final trained = <int>{
     for (final set in await database.select(database.exerciseSets).get())
       set.exerciseId,
@@ -817,7 +845,8 @@ Future<void> _keepTrainedOhneZiel(
   for (final row in rows) {
     if (!trained.contains(row.id)) continue;
     if ((row.catalogId ?? '').isNotEmpty) continue;
-    if (!ohneZiel.contains(normalizedExerciseName(row.name))) continue;
+    final key = normalizedExerciseName(row.name);
+    if (!names.contains(key)) continue;
     final catalogId = await uniqueCustomCatalogId(
       database,
       row.name,
@@ -825,6 +854,11 @@ Future<void> _keepTrainedOhneZiel(
     );
     final german = (row.germanName ?? '').trim();
     final source = (row.catalogSource ?? '').trim();
+    final suggested = suggestions[key];
+    final currentAlternatives = (row.alternatives ?? '').trim();
+    final link =
+        suggested != null &&
+        (currentAlternatives.isEmpty || currentAlternatives == '[]');
     await (database.update(
       database.exercises,
     )..where((item) => item.id.equals(row.id))).write(
@@ -833,6 +867,9 @@ Future<void> _keepTrainedOhneZiel(
         germanName: german.isEmpty ? Value(row.name) : const Value.absent(),
         catalogSource: source.isEmpty
             ? const Value('custom')
+            : const Value.absent(),
+        alternatives: link
+            ? Value(jsonEncode([suggested]))
             : const Value.absent(),
       ),
     );
