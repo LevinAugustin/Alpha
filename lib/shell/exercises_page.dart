@@ -102,6 +102,10 @@ class _ExercisesPageState extends State<ExercisesPage> {
                         }),
                       ),
                     ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 8),
+                    child: Center(child: Text(context.l10n.equipmentLabel)),
+                  ),
                   for (final item in exerciseGearValues)
                     Padding(
                       padding: const EdgeInsets.only(right: 8),

@@ -33,6 +33,11 @@ const exerciseGearValues = [
   'Kettlebell',
   'Widerstandsband',
   'Cardiogerät',
+  'Hantelscheibe',
+  'Bauchroller',
+  'Battle Rope',
+  'Schlitten',
+  'Springseil',
 ];
 
 const exerciseCategories = [

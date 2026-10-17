@@ -9,6 +9,7 @@ class ImportedSet {
     required this.kg,
     required this.reps,
     required this.warmup,
+    this.equipment = '',
   });
 
   final String workoutTitle;
@@ -18,6 +19,60 @@ class ImportedSet {
   final double kg;
   final double reps;
   final bool warmup;
+  final String equipment;
+}
+
+String? hevyEquipmentGear(String raw) {
+  final key = raw
+      .trim()
+      .toLowerCase()
+      .replaceAll('ä', 'ae')
+      .replaceAll('ö', 'oe')
+      .replaceAll('ü', 'ue')
+      .replaceAll('ß', 'ss')
+      .replaceAll(RegExp(r'[^a-z0-9]+'), '');
+  return const {
+    'barbell': 'Langhantel',
+    'langhantel': 'Langhantel',
+    'dumbbell': 'Kurzhantel',
+    'kurzhantel': 'Kurzhantel',
+    'ezbar': 'SZ-Stange',
+    'ezbarbell': 'SZ-Stange',
+    'szstange': 'SZ-Stange',
+    'cable': 'Kabelzug',
+    'kabelzug': 'Kabelzug',
+    'machine': 'Maschine',
+    'maschine': 'Maschine',
+    'smith': 'Multipresse',
+    'smithmachine': 'Multipresse',
+    'multipresse': 'Multipresse',
+    'bodyweight': 'Körpergewicht',
+    'koerpergewicht': 'Körpergewicht',
+    'kettlebell': 'Kettlebell',
+    'band': 'Widerstandsband',
+    'resistanceband': 'Widerstandsband',
+    'widerstandsband': 'Widerstandsband',
+    'cardio': 'Cardiogerät',
+    'cardiomachine': 'Cardiogerät',
+    'cardiogeraet': 'Cardiogerät',
+    'plate': 'Hantelscheibe',
+    'plates': 'Hantelscheibe',
+    'weightplate': 'Hantelscheibe',
+    'scheibe': 'Hantelscheibe',
+    'scheiben': 'Hantelscheibe',
+    'hantelscheibe': 'Hantelscheibe',
+    'abwheel': 'Bauchroller',
+    'abroller': 'Bauchroller',
+    'bauchroller': 'Bauchroller',
+    'battlerope': 'Battle Rope',
+    'battleropes': 'Battle Rope',
+    'sled': 'Schlitten',
+    'schlitten': 'Schlitten',
+    'jumprope': 'Springseil',
+    'jumpropes': 'Springseil',
+    'skippingrope': 'Springseil',
+    'springseil': 'Springseil',
+  }[key];
 }
 
 class ImportedTemplate {
@@ -88,6 +143,13 @@ WorkoutImport? parseWorkoutCsv(String raw) {
   final weight = indexOf(['weight_kg', 'weight', 'kg']);
   final reps = indexOf(['reps', 'repetitions']);
   final setType = indexOf(['set_type', 'type']);
+  final equipment = indexOf([
+    'equipment',
+    'exercise_equipment',
+    'gear',
+    'geraet',
+    'gerät',
+  ]);
   if (title == null || exercise == null) return null;
 
   final sets = <ImportedSet>[];
@@ -106,6 +168,7 @@ WorkoutImport? parseWorkoutCsv(String raw) {
         kg: double.tryParse(_cell(row, weight).replaceAll(',', '.')) ?? 0,
         reps: double.tryParse(_cell(row, reps).replaceAll(',', '.')) ?? 0,
         warmup: _cell(row, setType).toLowerCase().contains('warm'),
+        equipment: _cell(row, equipment),
       ),
     );
   }

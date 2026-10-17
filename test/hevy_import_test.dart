@@ -29,6 +29,42 @@ Tag 2: Pull A Breit/Obergriff,2026-10-06 18:00:00,2026-10-06 19:00:00,Barbell Ro
     );
   });
 
+  test('Hevy equipment maps onto the gear list', () {
+    expect(hevyEquipmentGear('barbell'), 'Langhantel');
+    expect(hevyEquipmentGear('Dumbbell'), 'Kurzhantel');
+    expect(hevyEquipmentGear('ez_bar'), 'SZ-Stange');
+    expect(hevyEquipmentGear('cable'), 'Kabelzug');
+    expect(hevyEquipmentGear('machine'), 'Maschine');
+    expect(hevyEquipmentGear('smith machine'), 'Multipresse');
+    expect(hevyEquipmentGear('bodyweight'), 'Körpergewicht');
+    expect(hevyEquipmentGear('kettlebell'), 'Kettlebell');
+    expect(hevyEquipmentGear('resistance_band'), 'Widerstandsband');
+    expect(hevyEquipmentGear('cardio'), 'Cardiogerät');
+    expect(hevyEquipmentGear('plate'), 'Hantelscheibe');
+    expect(hevyEquipmentGear('Scheibe'), 'Hantelscheibe');
+    expect(hevyEquipmentGear('weight_plate'), 'Hantelscheibe');
+    expect(hevyEquipmentGear('ab wheel'), 'Bauchroller');
+    expect(hevyEquipmentGear('ab_wheel'), 'Bauchroller');
+    expect(hevyEquipmentGear('Ab-Wheel'), 'Bauchroller');
+    expect(hevyEquipmentGear('battle rope'), 'Battle Rope');
+    expect(hevyEquipmentGear('sled'), 'Schlitten');
+    expect(hevyEquipmentGear('jump rope'), 'Springseil');
+    expect(hevyEquipmentGear('other'), isNull);
+    expect(hevyEquipmentGear(''), isNull);
+
+    const csv = '''
+title,start_time,exercise_title,equipment,weight_kg,reps
+Tag,2026-10-01 18:00:00,Plate Pinch,plate,20,10
+Tag,2026-10-01 18:00:00,Ab Wheel,ab wheel,0,8
+''';
+    final preview = parseWorkoutCsv(csv);
+    expect(preview!.sets.map((set) => set.equipment), ['plate', 'ab wheel']);
+    expect(preview.sets.map((set) => hevyEquipmentGear(set.equipment)), [
+      'Hantelscheibe',
+      'Bauchroller',
+    ]);
+  });
+
   test('measurement CSV reads date and weight', () {
     const csv = 'datum,gewicht\n01.10.2026,82.5\n';
     final points = parseMeasurementCsv(csv);

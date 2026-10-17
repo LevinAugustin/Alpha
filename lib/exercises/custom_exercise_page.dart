@@ -9,10 +9,16 @@ import 'package:flexify/workout/muscle_map.dart';
 import 'package:flutter/material.dart';
 
 class CustomExercisePage extends StatefulWidget {
-  const CustomExercisePage({super.key, this.exercise, this.initialName = ''});
+  const CustomExercisePage({
+    super.key,
+    this.exercise,
+    this.initialName = '',
+    this.initialEquipment,
+  });
 
   final Exercise? exercise;
   final String initialName;
+  final String? initialEquipment;
 
   @override
   State<CustomExercisePage> createState() => _CustomExercisePageState();
@@ -39,6 +45,10 @@ class _CustomExercisePageState extends State<CustomExercisePage> {
       text: exercise?.germanName ?? exercise?.name ?? widget.initialName,
     );
     _family = TextEditingController(text: exercise?.familie ?? '');
+    final initialGear = widget.initialEquipment;
+    if (initialGear != null && exerciseGearValues.contains(initialGear)) {
+      _equipment = initialGear;
+    }
     if (exercise != null) {
       _category = exercise.categoryName ?? _category;
       _equipment = exercise.equipment ?? _equipment;

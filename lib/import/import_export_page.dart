@@ -254,8 +254,10 @@ class _ImportPreviewPageState extends State<ImportPreviewPage> {
                   onPressed: () async {
                     final created = await Navigator.of(context).push<Exercise>(
                       MaterialPageRoute(
-                        builder: (context) =>
-                            CustomExercisePage(initialName: name),
+                        builder: (context) => CustomExercisePage(
+                          initialName: name,
+                          initialEquipment: _gearFor(name),
+                        ),
                       ),
                     );
                     if (created == null || !mounted) return;
@@ -269,6 +271,14 @@ class _ImportPreviewPageState extends State<ImportPreviewPage> {
               ],
             ),
     );
+  }
+
+  String? _gearFor(String name) {
+    for (final set in widget.preview.sets) {
+      if (set.exercise != name || set.equipment.trim().isEmpty) continue;
+      return hevyEquipmentGear(set.equipment);
+    }
+    return null;
   }
 
   Exercise? _match(String name) {

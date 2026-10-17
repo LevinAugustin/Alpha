@@ -582,6 +582,23 @@ void main() {
       ).entries,
       isEmpty,
     );
+    for (final gear in const [
+      'Hantelscheibe',
+      'Bauchroller',
+      'Battle Rope',
+      'Schlitten',
+      'Springseil',
+    ]) {
+      expect(
+        parseExerciseCatalog(
+          '[$valid]'.replaceFirst(
+            '"geraet": "Langhantel"',
+            '"geraet": "$gear"',
+          ),
+        ).entries.single.equipment,
+        gear,
+      );
+    }
     expect(
       parseExerciseCatalog(
         '[$valid]'.replaceFirst('"kategorie": "Brust"', '"kategorie": "Arme"'),
@@ -803,6 +820,16 @@ void main() {
       of: find.byKey(const Key('exercise-filters')),
       matching: find.byType(Scrollable),
     );
+    for (final gear in const [
+      'Hantelscheibe',
+      'Bauchroller',
+      'Battle Rope',
+      'Schlitten',
+      'Springseil',
+    ]) {
+      await tester.scrollUntilVisible(find.text(gear), 200, scrollable: chips);
+      expect(find.text(gear), findsOneWidget);
+    }
     await tester.scrollUntilVisible(find.text('grund'), 400, scrollable: chips);
     expect(find.text('grund'), findsOneWidget);
     await tester.scrollUntilVisible(
