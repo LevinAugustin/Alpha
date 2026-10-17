@@ -4,6 +4,7 @@ import 'package:flexify/database/catalog_seed.dart';
 import 'package:flexify/exercise_keys.dart';
 import 'package:flexify/exercise_labels.dart';
 import 'package:flexify/exercises/custom_exercise_page.dart';
+import 'package:flexify/exercises/exercise_image.dart';
 import 'package:flexify/exercises/exercise_detail_page.dart';
 import 'package:flexify/l10n/l10n.dart';
 import 'package:flexify/main.dart';
@@ -206,6 +207,7 @@ class _ExercisesPageState extends State<ExercisesPage> {
                     return left.compareTo(right);
                   });
               return ListView.builder(
+                key: const Key('exercise-results'),
                 itemCount: exercises.length,
                 itemBuilder: (context, index) {
                   final exercise = exercises[index];
@@ -218,6 +220,7 @@ class _ExercisesPageState extends State<ExercisesPage> {
                       ? exercise.muscle
                       : '${exercise.name}${exercise.muscle == null ? '' : ' · ${exercise.muscle}'}';
                   return ListTile(
+                    leading: ExerciseImage(path: exercise.image, height: 48),
                     title: Text(title),
                     subtitle: subtitle == null ? null : Text(subtitle),
                     onTap: () {

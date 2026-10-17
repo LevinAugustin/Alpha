@@ -6,6 +6,7 @@ import 'package:flexify/database/catalog_seed.dart';
 import 'package:flexify/database/database.dart';
 import 'package:flexify/database/exercise_de_catalog.dart';
 import 'package:flexify/exercises/exercise_detail_page.dart';
+import 'package:flexify/exercises/exercise_image.dart';
 import 'package:flexify/main.dart';
 import 'package:flexify/shell/exercises_page.dart';
 import 'package:flutter/material.dart';
@@ -32,10 +33,10 @@ void main() {
     ).readAsStringSync();
     final parsed = parseExerciseCatalog(raw);
     expect(parsed.skipped, isEmpty);
-    expect(parsed.entries, hasLength(32));
+    expect(parsed.entries, hasLength(294));
     expect(parsed.entries.first.imageSource, isEmpty);
     expect(parsed.entries.first.imageLicense, isEmpty);
-    expect(parsed.entries.last.id, 'schulterdruecken-kurzhantel');
+    expect(parsed.entries.last.id, 'scheiben-pinch');
     expect(
       parsed.entries
           .where((entry) => entry.category == 'Cardio')
@@ -43,7 +44,8 @@ void main() {
       everyElement(isEmpty),
     );
     final map = parseLegacyNameMap(legacyMap);
-    expect(map.keys, parsed.entries.map((entry) => entry.id));
+    expect(map.keys, hasLength(32));
+    expect(parsed.entries.map((entry) => entry.id), containsAll(map.keys));
 
     final before =
         await (db.exercises.select()
@@ -144,7 +146,7 @@ void main() {
       legacyMapRaw: legacyMap,
     );
     expect(first.skipped, isEmpty);
-    expect(first.inserted, 12);
+    expect(first.inserted, 274);
     expect(first.updated, 20);
     expect(first.merged, 3);
 
@@ -168,7 +170,7 @@ void main() {
     expect(after.imageLicense, '');
     expect(
       after.alternatives,
-      '["schraegbankdruecken-kurzhantel","schraegbankdruecken-multipresse","butterfly-maschine","dips"]',
+      '["bankdruecken-kurzhantel","bankdruecken-multipresse","brustpresse-maschine"]',
     );
     expect(after.image, 'assets/exercises/img/bankdruecken-langhantel.webp');
     expect(after.aliases, contains('Flachbankdrücken'));
@@ -286,7 +288,7 @@ void main() {
     expect(crunches.name, 'Crunch');
     expect(crunches.imageSource, '');
     expect(crunches.imageLicense, '');
-    expect(crunches.alternatives, '["plank","beinheben-haengend"]');
+    expect(crunches.alternatives, '[]');
 
     final licenses = await exerciseLicenseRows(db);
     expect(
@@ -331,7 +333,7 @@ void main() {
     expect(second.inserted, 0);
     expect(second.updated, 0);
     expect(second.merged, 0);
-    expect(second.unchanged, 32);
+    expect(second.unchanged, 294);
 
     final changed = raw.replaceFirst('Bankdrücken', 'Bankdrücken geändert');
     final third = await importExerciseCatalogJson(
@@ -656,7 +658,7 @@ void main() {
     'null mechanik from the probe is stored and stays out of search',
     () async {
       final rows = _probeRows();
-      expect(rows, hasLength(32));
+      expect(rows, hasLength(294));
       expect(rows.every((row) => !row.containsKey('schulter_risiko')), isTrue);
       expect(rows.any((row) => row.containsKey('alternativen')), isTrue);
       expect(
@@ -784,6 +786,10 @@ void main() {
   testWidgets('detail page and filters hide a null mechanic', (tester) async {
     final harness = await FlexifyTestHarness.create();
     addTearDown(harness.database.close);
+    final logged = <FlutterErrorDetails>[];
+    final previous = FlutterError.onError;
+    FlutterError.onError = logged.add;
+    addTearDown(() => FlutterError.onError = previous);
     final rows = _probeRows();
     await importExerciseCatalogJson(
       harness.database,
@@ -808,6 +814,9 @@ void main() {
     await tester.pump();
     expect(find.text('Mechanic: grund'), findsOneWidget);
     expect(find.textContaining('null'), findsNothing);
+    expect(find.byType(ExerciseImagePlaceholder), findsOneWidget);
+    expect(tester.takeException(), isNull);
+    expect(logged, isEmpty);
 
     await harness.pump(tester, const Scaffold(body: ExercisesPage()));
     await tester.pumpAndSettle(
@@ -816,6 +825,9 @@ void main() {
       const Duration(seconds: 3),
     );
     expect(find.text('null'), findsNothing);
+    expect(find.byType(ExerciseImagePlaceholder), findsWidgets);
+    expect(tester.takeException(), isNull);
+    expect(logged, isEmpty);
     final chips = find.descendant(
       of: find.byKey(const Key('exercise-filters')),
       matching: find.byType(Scrollable),
@@ -849,8 +861,24 @@ void main() {
       ).readAsStringSync();
       final map = parseFlexifyMapping(mapping);
       final catalogIds = _probeRows().map((row) => row['id']).toSet();
-      expect((jsonDecode(mapping) as Map).length, 150);
-      expect(catalogIds, everyElement(isIn(map.keys.toSet())));
+      final rawMap = jsonDecode(mapping) as Map;
+      expect(rawMap.length, 294);
+      expect(catalogIds, rawMap.keys.toSet());
+      expect(map.length, 276);
+      final ohne = parseFlexifyOhneZiel(
+        File('assets/exercises/flexify_ohne_ziel.json').readAsStringSync(),
+      );
+      expect(ohne, hasLength(278));
+      expect(ohne, contains(normalizedExerciseName('Neck curl')));
+      expect(ohne, contains(normalizedExerciseName("90/90 Hamstring")));
+      var mappedNames = 0;
+      for (final value in rawMap.values) {
+        final row = Map<String, dynamic>.from(value as Map);
+        mappedNames += (row['seed_namen'] as List).length;
+        mappedNames +=
+            (row['aussortiert_naechste_entsprechung'] as List).length;
+      }
+      expect(mappedNames + ohne.length, 920);
       expect(map['bankdruecken-langhantel'], contains('Barbell bench press'));
       expect(map['bankdruecken-langhantel'], contains('Board Press'));
       expect(parseFlexifyMapping('{'), isEmpty);
@@ -896,6 +924,9 @@ void main() {
         db,
         File('assets/exercises/exercises_de.json').readAsStringSync(),
         flexifyMapRaw: mapping,
+        ohneZielRaw: File(
+          'assets/exercises/flexify_ohne_ziel.json',
+        ).readAsStringSync(),
       );
       expect(imported.skipped, isEmpty);
       expect(
@@ -915,7 +946,7 @@ void main() {
                 ..where((row) => row.id.equals(arnold.id)))
               .getSingle();
       expect(arnoldAfter.name, 'Arnold press');
-      expect(arnoldAfter.catalogId, isNull);
+      expect(arnoldAfter.catalogId, 'arnold-press');
       final neckAfter =
           await (db.exercises.select()..where((row) => row.id.equals(neck.id)))
               .getSingle();
@@ -934,7 +965,7 @@ void main() {
       parseFlexifyOhneZiel(
         File('assets/exercises/flexify_ohne_ziel.json').readAsStringSync(),
       ),
-      isEmpty,
+      hasLength(278),
     );
     expect(parseFlexifyOhneZiel(null), isEmpty);
     expect(parseFlexifyOhneZiel('{'), isEmpty);

@@ -11,6 +11,7 @@ import 'package:flexify/coach/coach_client.dart';
 import 'package:flexify/database/database.dart';
 import 'package:flexify/database/exercise_set_repository.dart';
 import 'package:flexify/exercises/exercise_detail_page.dart';
+import 'package:flexify/exercises/exercise_image.dart';
 import 'package:flexify/exercise_labels.dart';
 import 'package:flexify/l10n/generated/app_localizations.dart';
 import 'package:flexify/l10n/l10n.dart';
@@ -1282,15 +1283,7 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
         border: Border.all(color: palette.border),
       ),
       clipBehavior: Clip.antiAlias,
-      child: image == null || image.isEmpty
-          ? Icon(Icons.fitness_center, color: palette.muted)
-          : Image.file(
-              File(image),
-              fit: BoxFit.cover,
-              errorBuilder: (context, error, stack) {
-                return Icon(Icons.fitness_center, color: palette.muted);
-              },
-            ),
+      child: ExerciseImage(path: image, height: 48),
     );
   }
 

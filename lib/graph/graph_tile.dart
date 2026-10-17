@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flexify/constants.dart';
 import 'package:flexify/database/exercise_analytics.dart';
+import 'package:flexify/exercises/exercise_image.dart';
 import 'package:flexify/graph/cardio_page.dart';
 import 'package:flexify/graph/strength_page.dart';
 import 'package:flexify/l10n/l10n.dart';
@@ -62,7 +63,7 @@ class GraphTile extends StatelessWidget {
 
     Widget? leading;
 
-    if (showImages && exerciseSet.image?.isNotEmpty == true) {
+    if (showImages && exerciseImageFileExists(exerciseSet.image)) {
       leading = GestureDetector(
         onTap: () => onSelect(exerciseSet.selectionKey),
         child: Image.file(

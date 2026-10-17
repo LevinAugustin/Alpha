@@ -1,10 +1,9 @@
-import 'dart:io';
-
 import 'package:drift/drift.dart' hide Column;
 import 'package:flexify/database/catalog_seed.dart';
 import 'package:flexify/database/database.dart';
 import 'package:flexify/exercise_labels.dart';
 import 'package:flexify/exercises/custom_exercise.dart';
+import 'package:flexify/exercises/exercise_image.dart';
 import 'package:flexify/exercises/custom_exercise_page.dart';
 import 'package:flexify/l10n/l10n.dart';
 import 'package:flexify/main.dart';
@@ -185,7 +184,7 @@ class _ExerciseDetailPageState extends State<ExerciseDetailPage> {
       key: const Key('exercise-overview'),
       padding: const EdgeInsets.fromLTRB(16, 12, 16, 24),
       children: [
-        _image(exercise.image, palette),
+        ExerciseImage(path: exercise.image),
         const SizedBox(height: 12),
         Text(
           '${l10n.primaryMuscleLabel}: ${primaryText.isEmpty ? '—' : primaryText}',
@@ -404,81 +403,6 @@ class _ExerciseDetailPageState extends State<ExerciseDetailPage> {
       },
     );
   }
-
-  Widget _image(String? stored, AlphaPalette palette) {
-    final path = (stored ?? '').trim();
-    if (path.isEmpty) return _NeutralExerciseImage(palette: palette);
-    if (path.startsWith('assets/')) {
-      return Image.asset(
-        path,
-        height: 180,
-        fit: BoxFit.contain,
-        errorBuilder: (context, error, stack) =>
-            _NeutralExerciseImage(palette: palette),
-      );
-    }
-    return Image.file(
-      File(path),
-      height: 180,
-      fit: BoxFit.contain,
-      errorBuilder: (context, error, stack) =>
-          _NeutralExerciseImage(palette: palette),
-    );
-  }
-}
-
-class _NeutralExerciseImage extends StatelessWidget {
-  const _NeutralExerciseImage({required this.palette});
-
-  final AlphaPalette palette;
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 180,
-      child: DecoratedBox(
-        decoration: BoxDecoration(
-          color: palette.card,
-          borderRadius: BorderRadius.circular(12),
-          border: Border.all(color: palette.border),
-        ),
-        child: CustomPaint(painter: _NeutralFigurePainter(palette.muted)),
-      ),
-    );
-  }
-}
-
-class _NeutralFigurePainter extends CustomPainter {
-  const _NeutralFigurePainter(this.color);
-
-  final Color color;
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final paint = Paint()
-      ..color = color
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 3
-      ..strokeCap = StrokeCap.round;
-    final center = Offset(size.width / 2, size.height / 2);
-    canvas.drawCircle(center + const Offset(0, -48), 14, paint);
-    final body = Path()
-      ..moveTo(center.dx, center.dy - 32)
-      ..lineTo(center.dx, center.dy + 18)
-      ..moveTo(center.dx, center.dy - 18)
-      ..lineTo(center.dx - 28, center.dy + 4)
-      ..moveTo(center.dx, center.dy - 18)
-      ..lineTo(center.dx + 28, center.dy + 4)
-      ..moveTo(center.dx, center.dy + 18)
-      ..lineTo(center.dx - 18, center.dy + 58)
-      ..moveTo(center.dx, center.dy + 18)
-      ..lineTo(center.dx + 18, center.dy + 58);
-    canvas.drawPath(body, paint);
-  }
-
-  @override
-  bool shouldRepaint(covariant _NeutralFigurePainter oldDelegate) =>
-      oldDelegate.color != color;
 }
 
 String _num(double value) {

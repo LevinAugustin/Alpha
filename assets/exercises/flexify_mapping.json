@@ -66,7 +66,9 @@
       "Elevated Cable Rows",
       "Seated Cable Rows"
     ],
-    "aussortiert_naechste_entsprechung": []
+    "aussortiert_naechste_entsprechung": [
+      "Sled Row"
+    ]
   },
   "langhantelrudern": {
     "seed_namen": [
@@ -86,6 +88,7 @@
     "aussortiert_naechste_entsprechung": [
       "Deadlift with Bands",
       "Deadlift with Chains",
+      "One-Arm Side Deadlift",
       "Reverse Band Deadlift"
     ]
   },
@@ -115,16 +118,25 @@
   },
   "kniebeuge-langhantel": {
     "seed_namen": [
+      "Barbell Full Squat",
       "Barbell Squat",
+      "Narrow Stance Squats",
+      "Speed Squats",
+      "Wide Stance Barbell Squat",
       "Squat"
     ],
-    "aussortiert_naechste_entsprechung": []
+    "aussortiert_naechste_entsprechung": [
+      "Jefferson Squats",
+      "Squat with Plate Movers"
+    ]
   },
   "beinpresse": {
     "seed_namen": [
       "Leg press"
     ],
-    "aussortiert_naechste_entsprechung": []
+    "aussortiert_naechste_entsprechung": [
+      "Smith Machine Leg Press"
+    ]
   },
   "beinstrecker": {
     "seed_namen": [
@@ -135,6 +147,7 @@
   },
   "beinbeuger-sitzend": {
     "seed_namen": [
+      "Seated Band Hamstring Curl",
       "Seated Leg Curl",
       "Leg curl"
     ],
@@ -142,6 +155,7 @@
   },
   "wadenheben-stehend": {
     "seed_namen": [
+      "Calf Raises - With Bands",
       "Standing Calf Raises",
       "Standing calf raise"
     ],
@@ -151,10 +165,14 @@
     "seed_namen": [
       "Barbell Hip Thrust"
     ],
-    "aussortiert_naechste_entsprechung": []
+    "aussortiert_naechste_entsprechung": [
+      "Kneeling Squat"
+    ]
   },
   "bizepscurls-sz-stange": {
     "seed_namen": [
+      "Close-Grip EZ-Bar Curl with Band",
+      "Close-Grip EZ Bar Curl",
       "EZ-Bar Curl",
       "Barbell biceps curl"
     ],
@@ -163,22 +181,21 @@
   "bizepscurls-kurzhantel": {
     "seed_namen": [
       "Dumbbell Bicep Curl",
-      "Dumbbell biceps curl",
-      "Dumbbell Alternate Bicep Curl"
+      "Dumbbell biceps curl"
     ],
     "aussortiert_naechste_entsprechung": []
   },
   "hammercurls": {
     "seed_namen": [
+      "Alternate Hammer Curl",
       "Hammer Curls",
-      "Alternate Hammer Curl"
+      "Incline Hammer Curls"
     ],
     "aussortiert_naechste_entsprechung": []
   },
   "trizepsdruecken-kabel": {
     "seed_namen": [
       "Triceps pushdown",
-      "Triceps Pushdown - Rope Attachment",
       "Triceps Pushdown - V-Bar Attachment"
     ],
     "aussortiert_naechste_entsprechung": []
@@ -186,43 +203,69 @@
   "dips": {
     "seed_namen": [
       "Dips - Triceps Version",
+      "Parallel Bar Dip",
       "Triceps dip"
     ],
-    "aussortiert_naechste_entsprechung": []
+    "aussortiert_naechste_entsprechung": [
+      "Ring Dips"
+    ]
   },
   "french-press-sz": {
     "seed_namen": [
-      "EZ-Bar Skullcrusher"
+      "Band Skull Crusher",
+      "Cable Lying Triceps Extension",
+      "Decline EZ Bar Triceps Extension",
+      "EZ-Bar Skullcrusher",
+      "Lying Close-Grip Barbell Triceps Press To Chin",
+      "Lying Triceps Press"
     ],
-    "aussortiert_naechste_entsprechung": []
+    "aussortiert_naechste_entsprechung": [
+      "Body Tricep Press",
+      "Cable Incline Triceps Extension",
+      "Low Cable Triceps Extension"
+    ]
   },
   "crunches": {
     "seed_namen": [
+      "Crunch - Hands Overhead",
       "Crunches",
+      "Toe Touchers",
+      "Tuck Crunch",
       "Crunch"
     ],
-    "aussortiert_naechste_entsprechung": []
+    "aussortiert_naechste_entsprechung": [
+      "Crunch - Legs On Exercise Ball",
+      "Exercise Ball Crunch",
+      "Weighted Crunches"
+    ]
   },
   "plank": {
     "seed_namen": [
       "Plank"
     ],
-    "aussortiert_naechste_entsprechung": []
+    "aussortiert_naechste_entsprechung": [
+      "Butt-Ups",
+      "Spider Crawl"
+    ]
   },
   "beinheben-haengend": {
     "seed_namen": [
       "Hanging leg raise",
       "Leg raise"
     ],
-    "aussortiert_naechste_entsprechung": []
+    "aussortiert_naechste_entsprechung": [
+      "Hip Flexion with Band"
+    ]
   },
   "laufband": {
     "seed_namen": [
-      "Running, Treadmill",
       "Jogging, Treadmill",
+      "Running, Treadmill",
       "Walking, Treadmill"
     ],
-    "aussortiert_naechste_entsprechung": []
+    "aussortiert_naechste_entsprechung": [
+      "Trail Running/Walking"
+    ]
   },
   "rudergeraet": {
     "seed_namen": [
@@ -234,7 +277,9 @@
     "seed_namen": [
       "Elliptical Trainer"
     ],
-    "aussortiert_naechste_entsprechung": []
+    "aussortiert_naechste_entsprechung": [
+      "Skating"
+    ]
   },
   "schraegbankdruecken-kurzhantel": {
     "seed_namen": [
@@ -265,7 +310,9 @@
     "seed_namen": [
       "Dumbbell Bench Press with Neutral Grip"
     ],
-    "aussortiert_naechste_entsprechung": []
+    "aussortiert_naechste_entsprechung": [
+      "Close-Grip Dumbbell Press"
+    ]
   },
   "bankdruecken-kurzhantel-einarmig": {
     "seed_namen": [
@@ -657,9 +704,7 @@
       "Suspended Row"
     ],
     "aussortiert_naechste_entsprechung": [
-      "Bodyweight Mid Row",
-      "Inverted Row with Straps",
-      "Suspended Row"
+      "Bodyweight Mid Row"
     ]
   },
   "kettlebell-rudern-einarmig": {
@@ -688,6 +733,7 @@
   },
   "kreuzheben-trap-bar": {
     "seed_namen": [
+      "Leverage Deadlift",
       "Trap Bar Deadlift"
     ],
     "aussortiert_naechste_entsprechung": []
@@ -708,7 +754,9 @@
   },
   "kreuzheben-kurzhantel": {
     "seed_namen": [],
-    "aussortiert_naechste_entsprechung": []
+    "aussortiert_naechste_entsprechung": [
+      "Cable Deadlifts"
+    ]
   },
   "hyperextensions": {
     "seed_namen": [
@@ -729,7 +777,9 @@
     "seed_namen": [
       "Reverse Hyperextension"
     ],
-    "aussortiert_naechste_entsprechung": []
+    "aussortiert_naechste_entsprechung": [
+      "Flutter Kicks"
+    ]
   },
   "superman": {
     "seed_namen": [
@@ -966,7 +1016,9 @@
       "Bent Over Low-Pulley Side Lateral",
       "Cable Rear Delt Fly"
     ],
-    "aussortiert_naechste_entsprechung": []
+    "aussortiert_naechste_entsprechung": [
+      "Sled Reverse Flye"
+    ]
   },
   "reverse-flys-kurzhantel-vorgebeugt": {
     "seed_namen": [
@@ -1075,6 +1127,1034 @@
   "thruster-kettlebell": {
     "seed_namen": [
       "Kettlebell Thruster"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "frontkniebeuge": {
+    "seed_namen": [
+      "Front Barbell Squat",
+      "Front Barbell Squat To A Bench",
+      "Front Squat (Clean Grip)",
+      "Front Squats With Two Kettlebells"
+    ],
+    "aussortiert_naechste_entsprechung": [
+      "Zercher Squats"
+    ]
+  },
+  "kniebeuge-multipresse": {
+    "seed_namen": [
+      "Chair Squat",
+      "Smith Machine Squat"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "goblet-squat": {
+    "seed_namen": [
+      "Goblet Squat"
+    ],
+    "aussortiert_naechste_entsprechung": [
+      "One-Arm Overhead Kettlebell Squats"
+    ]
+  },
+  "kniebeuge-kurzhantel": {
+    "seed_namen": [
+      "Dumbbell Squat",
+      "Dumbbell Squat To A Bench"
+    ],
+    "aussortiert_naechste_entsprechung": [
+      "Weighted Squat"
+    ]
+  },
+  "sumo-kniebeuge-kurzhantel": {
+    "seed_namen": [
+      "Plie Dumbbell Squat"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "box-kniebeuge": {
+    "seed_namen": [
+      "Barbell Squat To A Bench",
+      "Box Squat",
+      "Speed Box Squat"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "kniebeuge-koerpergewicht": {
+    "seed_namen": [
+      "Bodyweight Squat",
+      "Squats - With Bands"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "hackenschmidt": {
+    "seed_namen": [
+      "Hack Squat",
+      "Lying Machine Squat",
+      "Narrow Stance Hack Squats"
+    ],
+    "aussortiert_naechste_entsprechung": [
+      "Barbell Hack Squat"
+    ]
+  },
+  "sissy-squat": {
+    "seed_namen": [
+      "Weighted Sissy Squat"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "pistol-squat": {
+    "seed_namen": [
+      "Kettlebell Pistol Squat"
+    ],
+    "aussortiert_naechste_entsprechung": [
+      "Smith Machine Pistol Squat"
+    ]
+  },
+  "beinpresse-eng": {
+    "seed_namen": [
+      "Narrow Stance Leg Press"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "beinpresse-einbeinig": {
+    "seed_namen": [],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "beinpresse-horizontal": {
+    "seed_namen": [],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "ausfallschritte-kurzhantel": {
+    "seed_namen": [
+      "Dumbbell Lunges",
+      "Lunge"
+    ],
+    "aussortiert_naechste_entsprechung": [
+      "Lunge Pass Through"
+    ]
+  },
+  "ausfallschritte-langhantel": {
+    "seed_namen": [
+      "Barbell Lunge"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "ausfallschritte-multipresse": {
+    "seed_namen": [
+      "Lunge Sprint"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "ausfallschritte-gehend": {
+    "seed_namen": [
+      "Barbell Walking Lunge",
+      "Bodyweight Walking Lunge"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "ausfallschritte-rueckwaerts": {
+    "seed_namen": [
+      "Dumbbell Rear Lunge",
+      "Elevated Back Lunge"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "ausfallschritte-seitlich": {
+    "seed_namen": [
+      "Barbell Side Split Squat"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "bulgarische-split-squats-kurzhantel": {
+    "seed_namen": [
+      "Split Squat with Dumbbells"
+    ],
+    "aussortiert_naechste_entsprechung": [
+      "Suspended Split Squat"
+    ]
+  },
+  "bulgarische-split-squats-langhantel": {
+    "seed_namen": [
+      "One Leg Barbell Squat"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "bulgarische-split-squats-multipresse": {
+    "seed_namen": [
+      "Smith Single-Leg Split Squat"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "step-ups-kurzhantel": {
+    "seed_namen": [
+      "Dumbbell Step Ups",
+      "Step-up with Knee Raise"
+    ],
+    "aussortiert_naechste_entsprechung": [
+      "Single-Leg High Box Squat"
+    ]
+  },
+  "step-ups-langhantel": {
+    "seed_namen": [
+      "Barbell Step Ups"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "beinstrecker-einbeinig": {
+    "seed_namen": [
+      "Single-Leg Leg Extension"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "beinbeuger-liegend": {
+    "seed_namen": [
+      "Lying Leg Curls"
+    ],
+    "aussortiert_naechste_entsprechung": [
+      "Platform Hamstring Slides",
+      "Prone Manual Hamstring"
+    ]
+  },
+  "beinbeuger-stehend": {
+    "seed_namen": [
+      "Leg Lift",
+      "Standing Leg Curl"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "glute-ham-raise": {
+    "seed_namen": [
+      "Glute Ham Raise",
+      "Natural Glute Ham Raise"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "nordic-curls": {
+    "seed_namen": [
+      "Floor Glute-Ham Raise"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "rumaenisches-kreuzheben-langhantel": {
+    "seed_namen": [
+      "Romanian deadlift",
+      "Romanian Deadlift from Deficit"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "rumaenisches-kreuzheben-kurzhantel": {
+    "seed_namen": [
+      "Stiff-Legged Dumbbell Deadlift"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "rumaenisches-kreuzheben-multipresse": {
+    "seed_namen": [
+      "Smith Machine Stiff-Legged Deadlift"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "rumaenisches-kreuzheben-einbeinig": {
+    "seed_namen": [
+      "Kettlebell One-Legged Deadlift"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "kreuzheben-gestreckt": {
+    "seed_namen": [
+      "Stiff-Legged Barbell Deadlift",
+      "Wide Stance Stiff Legs"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "kabel-pull-through": {
+    "seed_namen": [
+      "Pull Through"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "kettlebell-swing": {
+    "seed_namen": [
+      "One-Arm Kettlebell Swings"
+    ],
+    "aussortiert_naechste_entsprechung": [
+      "Vertical Swing"
+    ]
+  },
+  "hip-thrust-maschine": {
+    "seed_namen": [],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "hip-thrust-multipresse": {
+    "seed_namen": [],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "glute-bridge-langhantel": {
+    "seed_namen": [
+      "Barbell Glute Bridge"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "glute-bridge": {
+    "seed_namen": [
+      "Butt Lift (Bridge)"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "glute-bridge-einbeinig": {
+    "seed_namen": [
+      "Single Leg Glute Bridge"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "glute-kickback-kabel": {
+    "seed_namen": [
+      "Hip Extension with Bands",
+      "One-Legged Cable Kickback"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "glute-kickback-maschine": {
+    "seed_namen": [],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "glute-kickback-boden": {
+    "seed_namen": [
+      "Glute Kickback"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "abduktorenmaschine": {
+    "seed_namen": [
+      "Thigh Abductor"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "adduktorenmaschine": {
+    "seed_namen": [
+      "Thigh Adductor"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "adduktion-kabel": {
+    "seed_namen": [
+      "Band Hip Adductions",
+      "Cable Hip Adduction"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "abduktion-kabel": {
+    "seed_namen": [],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "monster-walk": {
+    "seed_namen": [
+      "Monster Walk"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "wadenheben-sitzend": {
+    "seed_namen": [
+      "Barbell Seated Calf Raise",
+      "Dumbbell Seated One-Leg Calf Raise",
+      "Seated calf raise"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "wadenheben-beinpresse": {
+    "seed_namen": [
+      "Calf Press",
+      "Calf Press On The Leg Press Machine"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "wadenheben-multipresse": {
+    "seed_namen": [
+      "Smith Machine Calf Raise"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "wadenheben-langhantel": {
+    "seed_namen": [
+      "Rocking Standing Calf Raise",
+      "Standing Barbell Calf Raise"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "wadenheben-kurzhantel": {
+    "seed_namen": [
+      "Standing Dumbbell Calf Raise",
+      "Calf Raise On A Dumbbell"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "wadenheben-donkey": {
+    "seed_namen": [
+      "Donkey Calf Raises"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "box-jumps": {
+    "seed_namen": [
+      "Front Box Jump"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "sprungkniebeugen": {
+    "seed_namen": [
+      "Freehand Jump Squat",
+      "Weighted Jump Squat"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "bizepscurls-langhantel": {
+    "seed_namen": [
+      "Barbell Curl",
+      "Close-Grip Standing Barbell Curl",
+      "Wide-Grip Standing Barbell Curl"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "drag-curls": {
+    "seed_namen": [
+      "Drag Curl"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "bizepscurls-kurzhantel-wechselnd": {
+    "seed_namen": [
+      "Dumbbell Alternate Bicep Curl",
+      "Standing Inner-Biceps Curl"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "bizepscurls-kurzhantel-sitzend": {
+    "seed_namen": [
+      "Seated Dumbbell Curl",
+      "Seated Dumbbell Inner Biceps Curl"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "schraegbank-curls": {
+    "seed_namen": [
+      "Alternate Incline Dumbbell Curl",
+      "Flexor Incline Dumbbell Curls",
+      "Incline Dumbbell Curl",
+      "Incline Inner Biceps Curl"
+    ],
+    "aussortiert_naechste_entsprechung": [
+      "Barbell Curls Lying Against An Incline",
+      "Lying Supine Dumbbell Curl"
+    ]
+  },
+  "konzentrationscurls": {
+    "seed_namen": [
+      "Concentration Curls",
+      "Standing Concentration Curl"
+    ],
+    "aussortiert_naechste_entsprechung": [
+      "Seated Close-Grip Concentration Barbell Curl"
+    ]
+  },
+  "hammercurls-kreuz": {
+    "seed_namen": [
+      "Cross Body Hammer Curl"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "zottman-curls": {
+    "seed_namen": [
+      "Zottman Curl",
+      "Zottman Preacher Curl"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "scottcurls-sz": {
+    "seed_namen": [
+      "Cable Preacher Curl",
+      "Preacher curl"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "scottcurls-kurzhantel": {
+    "seed_namen": [
+      "One Arm Dumbbell Preacher Curl",
+      "Preacher Hammer Dumbbell Curl",
+      "Standing One-Arm Dumbbell Curl Over Incline Bench",
+      "Two-Arm Dumbbell Preacher Curl"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "scottcurls-maschine": {
+    "seed_namen": [
+      "Machine Preacher Curls"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "bizepsmaschine": {
+    "seed_namen": [
+      "Machine Bicep Curl"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "spider-curls": {
+    "seed_namen": [
+      "Lying High Bench Barbell Curl",
+      "Spider Curl"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "spider-curls-kurzhantel": {
+    "seed_namen": [
+      "Dumbbell Prone Incline Curl"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "bizepscurls-kabel": {
+    "seed_namen": [
+      "Standing Biceps Cable Curl"
+    ],
+    "aussortiert_naechste_entsprechung": [
+      "Lying Cable Curl",
+      "Lying Close-Grip Bar Curl On High Pulley"
+    ]
+  },
+  "bizepscurls-kabel-einarmig": {
+    "seed_namen": [
+      "Standing One-Arm Cable Curl"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "bayesian-curls": {
+    "seed_namen": [],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "bizepscurls-kabel-oben": {
+    "seed_namen": [
+      "High Cable Curls",
+      "Overhead Cable Curl"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "hammercurls-seil": {
+    "seed_namen": [
+      "Cable Hammer Curls - Rope Attachment"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "reverse-curls": {
+    "seed_namen": [
+      "Reverse Barbell Curl",
+      "Reverse Barbell Preacher Curls",
+      "Reverse Cable Curl",
+      "Reverse Plate Curls",
+      "Standing Dumbbell Reverse Curl"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "unterarmcurls-langhantel": {
+    "seed_namen": [
+      "Cable Wrist Curl",
+      "Finger Curls",
+      "Palms-Up Barbell Wrist Curl Over A Bench",
+      "Seated Palm-Up Barbell Wrist Curl",
+      "Seated Two-Arm Palms-Up Low-Pulley Wrist Curl",
+      "Standing Palms-Up Barbell Behind The Back Wrist Curl"
+    ],
+    "aussortiert_naechste_entsprechung": [
+      "Wrist Roller",
+      "Wrist Rotations with Straight Bar"
+    ]
+  },
+  "unterarmcurls-kurzhantel": {
+    "seed_namen": [
+      "Palms-Up Dumbbell Wrist Curl Over A Bench",
+      "Seated Dumbbell Palms-Up Wrist Curl",
+      "Seated One-Arm Dumbbell Palms-Up Wrist Curl"
+    ],
+    "aussortiert_naechste_entsprechung": [
+      "Dumbbell Lying Supination"
+    ]
+  },
+  "reverse-unterarmcurls": {
+    "seed_namen": [
+      "Palms-Down Dumbbell Wrist Curl Over A Bench",
+      "Palms-Down Wrist Curl Over A Bench",
+      "Seated Dumbbell Palms-Down Wrist Curl",
+      "Seated One-Arm Dumbbell Palms-Down Wrist Curl",
+      "Seated Palms-Down Barbell Wrist Curl"
+    ],
+    "aussortiert_naechste_entsprechung": [
+      "Dumbbell Lying Pronation"
+    ]
+  },
+  "farmers-walk": {
+    "seed_namen": [
+      "Farmer's Walk"
+    ],
+    "aussortiert_naechste_entsprechung": [
+      "Rickshaw Carry"
+    ]
+  },
+  "trizepsdruecken-seil": {
+    "seed_namen": [
+      "Triceps Pushdown - Rope Attachment"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "trizepsdruecken-untergriff": {
+    "seed_namen": [
+      "Reverse Grip Triceps Pushdown",
+      "Reverse grip pushdown"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "trizepsdruecken-einarmig": {
+    "seed_namen": [
+      "Cable One Arm Tricep Extension"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "trizepsstrecken-kabel-ueberkopf": {
+    "seed_namen": [
+      "Cable Rope Overhead Triceps Extension",
+      "Kneeling Cable Triceps Extension",
+      "Triceps Overhead Extension with Rope",
+      "Triceps extension"
+    ],
+    "aussortiert_naechste_entsprechung": [
+      "Sled Overhead Triceps Extension"
+    ]
+  },
+  "trizepsstrecken-kabel-einarmig": {
+    "seed_namen": [
+      "Standing Low-Pulley One-Arm Triceps Extension"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "trizepsstrecken-kurzhantel-ueberkopf": {
+    "seed_namen": [
+      "Kettlebell Overhead Triceps Extension",
+      "Seated Triceps Press",
+      "Standing Dumbbell Triceps Extension",
+      "Overhead triceps extension"
+    ],
+    "aussortiert_naechste_entsprechung": [
+      "Standing Towel Triceps Extension"
+    ]
+  },
+  "trizepsstrecken-kurzhantel-einarmig": {
+    "seed_namen": [
+      "Dumbbell One-Arm Triceps Extension",
+      "Standing One-Arm Dumbbell Triceps Extension"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "trizepsstrecken-sz-ueberkopf": {
+    "seed_namen": [
+      "Speed Band Overhead Triceps",
+      "Standing Overhead Barbell Triceps Extension"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "french-press-langhantel": {
+    "seed_namen": [
+      "Incline Barbell Triceps Extension",
+      "Lying Close-Grip Barbell Triceps Extension Behind The Head"
+    ],
+    "aussortiert_naechste_entsprechung": [
+      "Decline Close-Grip Bench To Skull Crusher"
+    ]
+  },
+  "french-press-kurzhantel": {
+    "seed_namen": [
+      "Decline Dumbbell Triceps Extension",
+      "Dumbbell Tricep Extension -Pronated Grip",
+      "Lying Dumbbell Tricep Extension",
+      "One Arm Pronated Dumbbell Triceps Extension",
+      "One Arm Supinated Dumbbell Triceps Extension"
+    ],
+    "aussortiert_naechste_entsprechung": [
+      "Chain Handle Extension",
+      "Tate Press"
+    ]
+  },
+  "jm-press": {
+    "seed_namen": [
+      "JM Press"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "enges-bankdruecken": {
+    "seed_namen": [
+      "Close-Grip Barbell Bench Press",
+      "Close-Grip EZ-Bar Press",
+      "Reverse Triceps Bench Press"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "enges-bankdruecken-multipresse": {
+    "seed_namen": [
+      "Smith Machine Close-Grip Bench Press"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "kickbacks-kurzhantel": {
+    "seed_namen": [
+      "Seated Bent-Over One-Arm Dumbbell Triceps Extension",
+      "Seated Bent-Over Two-Arm Dumbbell Triceps Extension",
+      "Standing Bent-Over One-Arm Dumbbell Triceps Extension",
+      "Standing Bent-Over Two-Arm Dumbbell Triceps Extension",
+      "Tricep Dumbbell Kickback"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "kickbacks-kabel": {
+    "seed_namen": [],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "bankdips": {
+    "seed_namen": [
+      "Bench Dips",
+      "Weighted Bench Dip"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "dipmaschine": {
+    "seed_namen": [
+      "Dip Machine"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "trizepsmaschine": {
+    "seed_namen": [
+      "Machine Triceps Extension"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "liegestuetze-eng": {
+    "seed_namen": [
+      "Close-Grip Push-Up off of a Dumbbell",
+      "Incline Push-Up Close-Grip",
+      "Push-Ups - Close Triceps Position",
+      "Narrow-grip push-up"
+    ],
+    "aussortiert_naechste_entsprechung": [
+      "Body-Up"
+    ]
+  },
+  "diamond-liegestuetze": {
+    "seed_namen": [
+      "Diamond push-up"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "crunches-kabel": {
+    "seed_namen": [
+      "Cable Crunch",
+      "Cable Seated Crunch",
+      "Kneeling Cable Crunch With Alternating Oblique Twists",
+      "Rope Crunch",
+      "Standing Rope Crunch"
+    ],
+    "aussortiert_naechste_entsprechung": [
+      "Bosu Ball Cable Crunch With Side Bends"
+    ]
+  },
+  "bauchmaschine": {
+    "seed_namen": [
+      "Ab Crunch Machine"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "reverse-crunches": {
+    "seed_namen": [
+      "Bent-Knee Hip Raise",
+      "Bottoms Up",
+      "Cable Reverse Crunch",
+      "Decline Reverse Crunch",
+      "Reverse Crunch"
+    ],
+    "aussortiert_naechste_entsprechung": [
+      "Smith Machine Hip Raise",
+      "Suspended Reverse Crunch"
+    ]
+  },
+  "crunches-schraeg": {
+    "seed_namen": [
+      "Cross-Body Crunch",
+      "Decline Oblique Crunch",
+      "Elbow to Knee",
+      "Oblique Crunches",
+      "Oblique Crunches - On The Floor",
+      "Side Jackknife"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "crunches-negativbank": {
+    "seed_namen": [
+      "Decline Crunch"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "bicycle-crunches": {
+    "seed_namen": [
+      "Air Bike"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "fersentippen": {
+    "seed_namen": [
+      "Alternate Heel Touchers"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "sit-ups": {
+    "seed_namen": [
+      "3/4 Sit-Up",
+      "Frog Sit-Ups",
+      "Janda Sit-Up",
+      "Otis-Up",
+      "Sit-Up"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "sit-ups-negativbank": {
+    "seed_namen": [
+      "Weighted Sit-Ups - With Bands"
+    ],
+    "aussortiert_naechste_entsprechung": [
+      "Press Sit-Up"
+    ]
+  },
+  "klappmesser": {
+    "seed_namen": [
+      "Cocoons",
+      "Jackknife Sit-Up"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "seitstuetz": {
+    "seed_namen": [
+      "Side Bridge"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "dead-bug": {
+    "seed_namen": [
+      "Dead Bug"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "mountain-climbers": {
+    "seed_namen": [
+      "Mountain Climbers"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "knieheben-haengend": {
+    "seed_namen": [
+      "Wind Sprints"
+    ],
+    "aussortiert_naechste_entsprechung": [
+      "Exercise Ball Pull-In",
+      "Gorilla Chin/Crunch"
+    ]
+  },
+  "knieheben-roman-chair": {
+    "seed_namen": [
+      "Knee/Hip Raise On Parallel Bars",
+      "Roman chair leg raise"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "toes-to-bar": {
+    "seed_namen": [
+      "Hanging Pike"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "beinheben-liegend": {
+    "seed_namen": [
+      "Flat Bench Leg Pull-In",
+      "Flat Bench Lying Leg Raise",
+      "Leg Pull-In"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "knieheben-sitzend": {
+    "seed_namen": [
+      "Seated Flat Bench Leg Pull-In",
+      "Seated Leg Tucks"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "scherenschlaege": {
+    "seed_namen": [
+      "Scissor Kick"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "russian-twists": {
+    "seed_namen": [
+      "Russian twist"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "russian-twists-gewicht": {
+    "seed_namen": [
+      "Plate Twist",
+      "Seated Barbell Twist",
+      "Weighted Russian twist"
+    ],
+    "aussortiert_naechste_entsprechung": [
+      "Cable Russian Twists",
+      "Medicine Ball Full Twist",
+      "Spell Caster"
+    ]
+  },
+  "holzhacker-kabel": {
+    "seed_namen": [
+      "Cable Judo Flip",
+      "Standing Cable Wood Chop"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "holzhacker-kabel-unten": {
+    "seed_namen": [
+      "Standing Cable Lift"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "pallof-press": {
+    "seed_namen": [
+      "Pallof Press",
+      "Pallof Press With Rotation"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "landmine-180": {
+    "seed_namen": [
+      "Landmine 180's"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "bauchroller": {
+    "seed_namen": [
+      "Ab Roller",
+      "Barbell Ab Rollout",
+      "Barbell Ab Rollout - On Knees",
+      "Barbell Rollout from Bench"
+    ],
+    "aussortiert_naechste_entsprechung": [
+      "Suspended Fallout"
+    ]
+  },
+  "seitbeugen-kurzhantel": {
+    "seed_namen": [
+      "Barbell Side Bend",
+      "Dumbbell Side Bend",
+      "One-Arm High-Pulley Cable Side Bends"
+    ],
+    "aussortiert_naechste_entsprechung": [
+      "Weighted Ball Side Bend"
+    ]
+  },
+  "hyperextensions-seitlich": {
+    "seed_namen": [],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "kettlebell-windmill": {
+    "seed_namen": [
+      "Advanced Kettlebell Windmill",
+      "Double Kettlebell Windmill",
+      "Kettlebell Windmill"
+    ],
+    "aussortiert_naechste_entsprechung": [
+      "Bent Press"
+    ]
+  },
+  "fahrradergometer": {
+    "seed_namen": [
+      "Bicycling, Stationary"
+    ],
+    "aussortiert_naechste_entsprechung": [
+      "Bicycling"
+    ]
+  },
+  "spinning": {
+    "seed_namen": [],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "liegeergometer": {
+    "seed_namen": [
+      "Recumbent Bike"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "air-bike": {
+    "seed_namen": [],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "stepper": {
+    "seed_namen": [
+      "Stairmaster"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "treppenmaschine": {
+    "seed_namen": [
+      "Step Mill"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "seilspringen": {
+    "seed_namen": [
+      "Rope Jumping"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "burpees": {
+    "seed_namen": [],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "hampelmann": {
+    "seed_namen": [],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "svend-press": {
+    "seed_namen": [
+      "Svend Press"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "battle-ropes": {
+    "seed_namen": [
+      "Battling Ropes"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "schlitten-schieben": {
+    "seed_namen": [
+      "Prowler Sprint",
+      "Sled Push"
+    ],
+    "aussortiert_naechste_entsprechung": []
+  },
+  "schlitten-ziehen": {
+    "seed_namen": [
+      "Backward Drag",
+      "Sled Drag - Harness"
+    ],
+    "aussortiert_naechste_entsprechung": [
+      "Bear Crawl Sled Drags",
+      "Sled Overhead Backward Walk"
+    ]
+  },
+  "scheiben-pinch": {
+    "seed_namen": [
+      "Plate Pinch",
+      "Standing Olympic Plate Hand Squeeze"
     ],
     "aussortiert_naechste_entsprechung": []
   }

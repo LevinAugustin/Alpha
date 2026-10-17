@@ -117,6 +117,22 @@ class ExerciseImportResult {
   final List<String> skipped;
 }
 
+final bundledExerciseImages = <String>{};
+
+Future<void> refreshBundledExerciseImages() async {
+  bundledExerciseImages.clear();
+  if (Platform.environment.containsKey('FLUTTER_TEST')) return;
+  try {
+    final manifest = await AssetManifest.loadFromAssetBundle(rootBundle);
+    for (final asset in manifest.listAssets()) {
+      if (asset.startsWith('$exerciseImageDirectory/') &&
+          asset.endsWith('.webp')) {
+        bundledExerciseImages.add(asset);
+      }
+    }
+  } catch (_) {}
+}
+
 String? resolveExerciseImage(String bild) {
   final value = bild.trim();
   if (!value.endsWith('.webp')) return null;
@@ -194,6 +210,7 @@ Future<ExerciseImportResult> importExerciseCatalog(AppDatabase database) async {
       skipped: [],
     );
   }
+  await refreshBundledExerciseImages();
   final raw = await rootBundle.loadString(exerciseCatalogAsset);
   String? flexifyMapRaw;
   try {
@@ -315,11 +332,21 @@ Set<String> parseFlexifyOhneZiel(String? raw) {
     debugPrint('Exercise flexify ohne ziel was ignored: $error');
     return const {};
   }
-  if (decoded is! List) return const {};
+  final items = decoded is List
+      ? decoded
+      : decoded is Map
+      ? decoded['eintraege']
+      : null;
+  if (items is! List) return const {};
   final names = <String>{};
-  for (final item in decoded) {
-    if (item is! String) continue;
-    final key = normalizedExerciseName(item);
+  for (final item in items) {
+    final raw = item is String
+        ? item
+        : item is Map
+        ? item['seed_name']
+        : null;
+    if (raw is! String) continue;
+    final key = normalizedExerciseName(raw);
     if (key.isEmpty) continue;
     names.add(key);
   }

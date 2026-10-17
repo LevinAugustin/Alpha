@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:file_picker/file_picker.dart';
 import 'package:flexify/app_fab.dart';
 import 'package:flexify/database/exercise_catalog.dart';
+import 'package:flexify/exercises/exercise_image.dart';
 import 'package:flexify/l10n/l10n.dart';
 import 'package:flexify/logging.dart';
 import 'package:flexify/database/database.dart';
@@ -176,16 +177,19 @@ class _AddExercisePageState extends State<AddExercisePage> {
                       ),
                       if (_image != null) ...[
                         const SizedBox(height: 8),
-                        Image.file(
-                          File(_image!),
-                          cacheWidth: 400,
-                          errorBuilder: (context, error, stackTrace) =>
-                              TextButton.icon(
-                                label: Text(context.l10n.imageError),
-                                icon: const Icon(Icons.error),
-                                onPressed: () => pick(),
-                              ),
-                        ),
+                        if (exerciseImageFileExists(_image))
+                          Image.file(
+                            File(_image!),
+                            cacheWidth: 400,
+                            errorBuilder: (context, error, stackTrace) =>
+                                TextButton.icon(
+                                  label: Text(context.l10n.imageError),
+                                  icon: const Icon(Icons.error),
+                                  onPressed: () => pick(),
+                                ),
+                          )
+                        else
+                          const ExerciseImage(path: null, height: 120),
                       ],
                     ],
                   ),

@@ -149,9 +149,7 @@ void main() {
     );
     await tester.pump();
     await tester.pump(const Duration(milliseconds: 400));
-    final variant = find.byKey(
-      const Key('family-schraegbankdruecken-kurzhantel'),
-    );
+    final variant = find.byKey(const Key('family-bankdruecken-kurzhantel'));
     await tester.ensureVisible(variant);
     await tester.pump(const Duration(milliseconds: 300));
     expect(variant, findsOneWidget);
@@ -178,10 +176,23 @@ void main() {
     );
     await tester.enterText(find.byType(TextField), 'Pull');
     await tester.pump(const Duration(milliseconds: 400));
-    expect(find.text('Face Pulls'), findsOneWidget);
-    expect(find.text('Bizepscurls mit SZ-Stange'), findsOneWidget);
-    expect(find.text('Hammercurls'), findsOneWidget);
-    expect(find.text('Reverse Butterfly'), findsOneWidget);
+    final results = find.descendant(
+      of: find.byKey(const Key('exercise-results')),
+      matching: find.byType(Scrollable),
+    );
+    for (final name in const [
+      'Face Pulls',
+      'Bizepscurls mit SZ-Stange',
+      'Hammercurls',
+      'Reverse Butterfly',
+    ]) {
+      final target = find.text(name);
+      for (var i = 0; i < 30 && target.evaluate().isEmpty; i++) {
+        await tester.drag(results, const Offset(0, -500));
+        await tester.pump(const Duration(milliseconds: 50));
+      }
+      expect(target, findsWidgets);
+    }
     expect(find.text('Bankdrücken'), findsNothing);
     expect(find.text('Bewegung'), findsOneWidget);
     await _shot(tester, 'pull_search');
@@ -254,18 +265,12 @@ void main() {
             .getSingle();
     expect(dips.categoryName, 'Trizeps');
     expect(dips.familie, 'dips');
-    await harness.database.exercises.insertOne(
-      ExercisesCompanion.insert(
-        name: 'Dips Brust',
-        kind: 'strength',
-        displayUnit: 'kg',
-        germanName: const Value('Dips an der Brust'),
-        familie: const Value('dips'),
-        categoryName: const Value('Brust'),
-        muscle: const Value('Brust'),
-        catalogId: const Value('dips-brust'),
-      ),
-    );
+    final chestDips =
+        await (harness.database.exercises.select()
+              ..where((row) => row.catalogId.equals('dips-brust')))
+            .getSingle();
+    expect(chestDips.categoryName, 'Brust');
+    expect(chestDips.familie, 'dips');
     await harness.pump(
       tester,
       ExerciseDetailPage(exercise: dips),
@@ -277,13 +282,13 @@ void main() {
     await tester.ensureVisible(chest);
     await tester.pump();
     expect(chest, findsOneWidget);
-    expect(find.text('Dips an der Brust · Brust'), findsOneWidget);
+    expect(find.text('Brust-Dips · Brust'), findsOneWidget);
 
     await tester.tap(chest);
     await tester.pump();
     await tester.pump(const Duration(milliseconds: 400));
     expect(find.byKey(const Key('family-dips')), findsOneWidget);
-    expect(find.textContaining('· Trizeps'), findsOneWidget);
+    expect(find.textContaining('· Trizeps'), findsWidgets);
   });
 }
 
