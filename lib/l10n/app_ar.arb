@@ -2206,5 +2206,8 @@
   "lengthUnitLabel": "طول الجسم",
   "centimetersShort": "سنتيمتر (سم)",
   "inchesShort": "بوصة (in)",
-  "heightInches": "الطول (بوصة)"
+  "heightInches": "الطول (بوصة)",
+  "whoAreYou": "من أنت؟",
+  "letsGo": "هيا بنا",
+  "onboardingWeightHint": "وزن الجسم، اختياري"
 }

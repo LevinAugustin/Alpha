@@ -2206,5 +2206,8 @@
   "lengthUnitLabel": "शरीर की लंबाई",
   "centimetersShort": "सेंटीमीटर (cm)",
   "inchesShort": "इंच (in)",
-  "heightInches": "कद (इंच)"
+  "heightInches": "कद (इंच)",
+  "whoAreYou": "आप कौन हैं?",
+  "letsGo": "चलिए शुरू करें",
+  "onboardingWeightHint": "शरीर का वजन, वैकल्पिक"
 }

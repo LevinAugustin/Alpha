@@ -2127,4 +2127,13 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get heightInches => 'Tinggi (inci)';
+
+  @override
+  String get whoAreYou => 'Siapa kamu?';
+
+  @override
+  String get letsGo => 'Ayo mulai';
+
+  @override
+  String get onboardingWeightHint => 'Berat badan, opsional';
 }

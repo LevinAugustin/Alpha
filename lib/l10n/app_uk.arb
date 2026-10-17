@@ -2215,5 +2215,8 @@
   "lengthUnitLabel": "Довжина тіла",
   "centimetersShort": "Сантиметри (см)",
   "inchesShort": "Дюйми (in)",
-  "heightInches": "Зріст (дюйми)"
+  "heightInches": "Зріст (дюйми)",
+  "whoAreYou": "Хто ти?",
+  "letsGo": "Поїхали",
+  "onboardingWeightHint": "Вага тіла, необов'язково"
 }

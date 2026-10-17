@@ -662,5 +662,8 @@
   "lengthUnitLabel": "Lichaamslengte",
   "centimetersShort": "Centimeter (cm)",
   "inchesShort": "Inch (in)",
-  "heightInches": "Lengte (inch)"
+  "heightInches": "Lengte (inch)",
+  "whoAreYou": "Wie ben jij?",
+  "letsGo": "Aan de slag",
+  "onboardingWeightHint": "Lichaamsgewicht, optioneel"
 }

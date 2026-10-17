@@ -2206,5 +2206,8 @@
   "lengthUnitLabel": "หน่วยส่วนสูง",
   "centimetersShort": "เซนติเมตร (cm)",
   "inchesShort": "นิ้ว (in)",
-  "heightInches": "ส่วนสูง (นิ้ว)"
+  "heightInches": "ส่วนสูง (นิ้ว)",
+  "whoAreYou": "คุณเป็นใคร?",
+  "letsGo": "ไปกันเลย",
+  "onboardingWeightHint": "น้ำหนักตัว ไม่บังคับ"
 }

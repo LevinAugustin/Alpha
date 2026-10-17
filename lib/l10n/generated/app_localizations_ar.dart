@@ -2103,4 +2103,13 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get heightInches => 'الطول (بوصة)';
+
+  @override
+  String get whoAreYou => 'من أنت؟';
+
+  @override
+  String get letsGo => 'هيا بنا';
+
+  @override
+  String get onboardingWeightHint => 'وزن الجسم، اختياري';
 }

@@ -2143,4 +2143,13 @@ class AppLocalizationsPl extends AppLocalizations {
 
   @override
   String get heightInches => 'Wzrost (cale)';
+
+  @override
+  String get whoAreYou => 'Kim jesteś?';
+
+  @override
+  String get letsGo => 'Zaczynamy';
+
+  @override
+  String get onboardingWeightHint => 'Masa ciała, opcjonalnie';
 }

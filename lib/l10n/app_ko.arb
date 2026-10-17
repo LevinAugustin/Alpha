@@ -662,5 +662,8 @@
   "lengthUnitLabel": "키 단위",
   "centimetersShort": "센티미터 (cm)",
   "inchesShort": "인치 (in)",
-  "heightInches": "키 (인치)"
+  "heightInches": "키 (인치)",
+  "whoAreYou": "당신은 누구인가요?",
+  "letsGo": "시작하기",
+  "onboardingWeightHint": "체중, 선택 사항"
 }

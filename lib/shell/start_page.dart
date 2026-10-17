@@ -270,7 +270,7 @@ Future<String> _profileName() async {
     final name = registry.active.name.trim();
     if (name.isNotEmpty) return name;
   } catch (_) {}
-  return 'Levin';
+  return '';
 }
 
 int _automaticGoal(Set<DateTime> trained, DateTime now) {
@@ -422,15 +422,16 @@ class _Hero extends StatelessWidget {
                     height: 0.9,
                   ),
                 ),
-                Text(
-                  name,
-                  style: TextStyle(
-                    fontFamily: 'Bebas Neue',
-                    fontSize: 42,
-                    height: 0.9,
-                    color: palette.accent,
+                if (name.isNotEmpty)
+                  Text(
+                    name,
+                    style: TextStyle(
+                      fontFamily: 'Bebas Neue',
+                      fontSize: 42,
+                      height: 0.9,
+                      color: palette.accent,
+                    ),
                   ),
-                ),
                 const SizedBox(height: 8),
                 Row(
                   children: [

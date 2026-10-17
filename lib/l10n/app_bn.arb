@@ -2206,5 +2206,8 @@
   "lengthUnitLabel": "দেহের দৈর্ঘ্য",
   "centimetersShort": "সেন্টিমিটার (cm)",
   "inchesShort": "ইঞ্চি (in)",
-  "heightInches": "উচ্চতা (ইঞ্চি)"
+  "heightInches": "উচ্চতা (ইঞ্চি)",
+  "whoAreYou": "তুমি কে?",
+  "letsGo": "চলুন শুরু করি",
+  "onboardingWeightHint": "শরীরের ওজন, ঐচ্ছিক"
 }

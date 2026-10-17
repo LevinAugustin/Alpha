@@ -2206,5 +2206,8 @@
   "lengthUnitLabel": "جسم کی لمبائی",
   "centimetersShort": "سینٹی میٹر (cm)",
   "inchesShort": "انچ (in)",
-  "heightInches": "قد (انچ)"
+  "heightInches": "قد (انچ)",
+  "whoAreYou": "تم کون ہو؟",
+  "letsGo": "چلیں شروع کریں",
+  "onboardingWeightHint": "جسمانی وزن، اختیاری"
 }

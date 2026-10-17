@@ -2119,4 +2119,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get heightInches => 'Height (in)';
+
+  @override
+  String get whoAreYou => 'Who are you?';
+
+  @override
+  String get letsGo => 'Let\'s go';
+
+  @override
+  String get onboardingWeightHint => 'Body weight, optional';
 }

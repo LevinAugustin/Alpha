@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:flexify/home_page.dart';
 import 'package:flexify/l10n/l10n.dart';
+import 'package:flexify/profile/local_profiles.dart';
+import 'package:flexify/shell/onboarding_page.dart';
 import 'package:flexify/theme/alpha_theme.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +15,9 @@ class AlphaBoot extends StatefulWidget {
 }
 
 class _AlphaBootState extends State<AlphaBoot> {
-  var _ready = false;
+  var _home = false;
+  var _onboarding = false;
+  var _splash = false;
 
   @override
   void initState() {
@@ -22,20 +26,34 @@ class _AlphaBootState extends State<AlphaBoot> {
       'Test',
     );
     if (widgetTest) {
-      _ready = true;
+      _home = true;
       return;
     }
-    unawaited(_hold());
+    unawaited(_decide());
   }
 
-  Future<void> _hold() async {
+  Future<void> _decide() async {
+    final needed = await installNeedsOnboarding();
+    if (!mounted) return;
+    if (needed) {
+      setState(() => _onboarding = true);
+      return;
+    }
+    setState(() => _splash = true);
     await Future<void>.delayed(const Duration(milliseconds: 900));
-    if (mounted) setState(() => _ready = true);
+    if (mounted) setState(() => _home = true);
   }
 
   @override
   Widget build(BuildContext context) {
-    if (_ready) return const HomePage();
+    if (_home) return const HomePage();
+    if (_onboarding) {
+      return OnboardingPage(
+        onFinished: () {
+          if (mounted) setState(() => _home = true);
+        },
+      );
+    }
     final palette = AlphaTheme.of(context);
     return Scaffold(
       backgroundColor: palette.background,
@@ -44,20 +62,22 @@ class _AlphaBootState extends State<AlphaBoot> {
           mainAxisSize: MainAxisSize.min,
           children: [
             Image.asset(palette.figureAsset, height: 220),
-            Text(
-              'ALPHA',
-              style: TextStyle(
-                fontFamily: 'Bebas Neue',
-                fontSize: 72,
-                letterSpacing: 4,
-                color: palette.text,
+            if (_splash) ...[
+              Text(
+                'ALPHA',
+                style: TextStyle(
+                  fontFamily: 'Bebas Neue',
+                  fontSize: 72,
+                  letterSpacing: 4,
+                  color: palette.text,
+                ),
               ),
-            ),
-            const SizedBox(height: 8),
-            Text(
-              context.l10n.splashMotto,
-              style: TextStyle(color: palette.muted, fontFamily: 'Inter'),
-            ),
+              const SizedBox(height: 8),
+              Text(
+                context.l10n.splashMotto,
+                style: TextStyle(color: palette.muted, fontFamily: 'Inter'),
+              ),
+            ],
           ],
         ),
       ),

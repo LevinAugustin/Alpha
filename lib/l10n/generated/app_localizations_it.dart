@@ -2134,4 +2134,13 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get heightInches => 'Altezza (pollici)';
+
+  @override
+  String get whoAreYou => 'Chi sei?';
+
+  @override
+  String get letsGo => 'Si parte';
+
+  @override
+  String get onboardingWeightHint => 'Peso corporeo, facoltativo';
 }

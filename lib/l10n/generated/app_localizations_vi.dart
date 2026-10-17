@@ -2123,4 +2123,13 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get heightInches => 'Chiều cao (inch)';
+
+  @override
+  String get whoAreYou => 'Bạn là ai?';
+
+  @override
+  String get letsGo => 'Bắt đầu thôi';
+
+  @override
+  String get onboardingWeightHint => 'Cân nặng, không bắt buộc';
 }

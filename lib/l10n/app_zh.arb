@@ -662,5 +662,8 @@
   "lengthUnitLabel": "身高单位",
   "centimetersShort": "厘米 (cm)",
   "inchesShort": "英寸 (in)",
-  "heightInches": "身高（英寸）"
+  "heightInches": "身高（英寸）",
+  "whoAreYou": "你是谁？",
+  "letsGo": "开始吧",
+  "onboardingWeightHint": "体重，可选"
 }

@@ -2,10 +2,12 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:drift/drift.dart';
+import 'package:flexify/database/body_weight_repository.dart';
 import 'package:flexify/database/catalog_seed.dart';
 import 'package:flexify/database/database.dart';
 import 'package:flexify/main.dart';
 import 'package:flexify/storage/app_storage_native.dart';
+import 'package:flutter/foundation.dart';
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
 
@@ -38,18 +40,38 @@ class LocalProfile {
 }
 
 class ProfileRegistry {
-  ProfileRegistry({required this.activeId, required this.profiles});
+  ProfileRegistry({
+    required this.activeId,
+    required this.profiles,
+    required this.onboarded,
+  });
 
   String activeId;
   final List<LocalProfile> profiles;
+  final bool onboarded;
 
-  LocalProfile get active =>
-      profiles.firstWhere((profile) => profile.id == activeId);
+  LocalProfile get active {
+    for (final profile in profiles) {
+      if (profile.id == activeId) return profile;
+    }
+    if (profiles.isNotEmpty) return profiles.first;
+    return const LocalProfile(
+      id: defaultProfileId,
+      name: '',
+      fileName: databaseFileName,
+    );
+  }
 }
 
 Directory? _testSupportDirectory;
+Directory? profileSupportDirectoryOverride;
 
 Future<Directory> profileSupportDirectory() async {
+  final override = profileSupportDirectoryOverride;
+  if (override != null) {
+    override.createSync(recursive: true);
+    return override;
+  }
   if (Platform.environment.containsKey('FLUTTER_TEST')) {
     final cached = _testSupportDirectory;
     if (cached != null) return cached;
@@ -69,29 +91,109 @@ Future<File> _registryFile() async {
 
 Future<ProfileRegistry> loadProfileRegistry() async {
   final file = await _registryFile();
-  if (!file.existsSync()) {
-    final registry = ProfileRegistry(
-      activeId: defaultProfileId,
-      profiles: const [
-        LocalProfile(
-          id: defaultProfileId,
-          name: 'Levin',
-          fileName: databaseFileName,
-        ),
-      ],
-    );
-    await saveProfileRegistry(registry);
-    return registry;
+  if (file.existsSync()) return _readRegistry(file);
+  final support = await profileSupportDirectory();
+  final databaseFile = File(p.join(support.path, databaseFileName));
+  if (databaseFile.existsSync()) {
+    final adopted = await _adoptExistingDatabase(databaseFile);
+    await saveProfileRegistry(adopted);
+    return adopted;
   }
+  final fresh = ProfileRegistry(
+    activeId: defaultProfileId,
+    profiles: const [],
+    onboarded: false,
+  );
+  await saveProfileRegistry(fresh);
+  return fresh;
+}
+
+ProfileRegistry _readRegistry(File file) {
   final decoded = jsonDecode(file.readAsStringSync()) as Map<String, dynamic>;
-  final profiles = (decoded['profiles'] as List)
+  final profiles = (decoded['profiles'] as List? ?? const [])
       .map(
         (row) => LocalProfile.fromJson(Map<String, dynamic>.from(row as Map)),
       )
       .toList();
+  final marked = decoded['onboarded'];
   return ProfileRegistry(
-    activeId: decoded['active'] as String,
+    activeId: decoded['active'] as String? ?? defaultProfileId,
     profiles: profiles,
+    onboarded: marked is bool ? marked : profiles.isNotEmpty,
+  );
+}
+
+Future<ProfileRegistry> _adoptExistingDatabase(File databaseFile) async {
+  var name = 'Levin';
+  try {
+    final database = AppDatabase.forPath(databaseFile.path);
+    try {
+      final setting = await (database.settings.select()..limit(1))
+          .getSingleOrNull();
+      final stored = setting?.profileName?.trim() ?? '';
+      if (stored.isNotEmpty) {
+        name = stored;
+      } else if (setting != null) {
+        await database.settings.update().write(
+          const SettingsCompanion(profileName: Value('Levin')),
+        );
+      }
+    } finally {
+      await database.close();
+    }
+  } catch (error, stack) {
+    debugPrint('Could not read the existing profile: $error\n$stack');
+  }
+  return ProfileRegistry(
+    activeId: defaultProfileId,
+    profiles: [
+      LocalProfile(
+        id: defaultProfileId,
+        name: name,
+        fileName: databaseFileName,
+      ),
+    ],
+    onboarded: true,
+  );
+}
+
+Future<bool> installNeedsOnboarding() async {
+  final registry = await loadProfileRegistry();
+  return !registry.onboarded;
+}
+
+Future<void> completeOnboarding({
+  required String name,
+  double? bodyWeight,
+  String? unit,
+}) async {
+  final trimmed = name.trim();
+  if (trimmed.isEmpty) return;
+  final chosen = unit == 'lb' ? 'lb' : (unit == 'kg' ? 'kg' : null);
+  final kilos = bodyWeight == null
+      ? null
+      : canonicalBodyWeightKg(chosen ?? 'kg', bodyWeight);
+  await db.settings.update().write(
+    SettingsCompanion(
+      profileName: Value(trimmed),
+      strengthUnit: chosen == null ? const Value.absent() : Value(chosen),
+    ),
+  );
+  if (kilos != null && kilos > 0) {
+    await recordBodyWeight(db, timestamp: DateTime.now(), weightKg: kilos);
+  }
+  await saveProfileRegistry(
+    ProfileRegistry(
+      activeId: defaultProfileId,
+      profiles: [
+        LocalProfile(
+          id: defaultProfileId,
+          name: trimmed,
+          fileName: databaseFileName,
+        ),
+      ],
+      onboarded: true,
+    ),
   );
 }
 
@@ -100,6 +202,7 @@ Future<void> saveProfileRegistry(ProfileRegistry registry) async {
   file.writeAsStringSync(
     jsonEncode({
       'active': registry.activeId,
+      'onboarded': registry.onboarded,
       'profiles': registry.profiles.map((profile) => profile.toJson()).toList(),
     }),
   );
@@ -112,6 +215,13 @@ Future<AppDatabase> openProfileDatabase(LocalProfile profile) async {
 }
 
 Future<AppDatabase> openActiveProfile() async {
+  if (!Platform.environment.containsKey('FLUTTER_TEST')) {
+    try {
+      await getDatabaseFile();
+    } catch (error, stack) {
+      debugPrint('Database lookup failed: $error\n$stack');
+    }
+  }
   final registry = await loadProfileRegistry();
   return openProfileDatabase(registry.active);
 }

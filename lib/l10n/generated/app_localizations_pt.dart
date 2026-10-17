@@ -2141,6 +2141,15 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get heightInches => 'Altura (polegadas)';
+
+  @override
+  String get whoAreYou => 'Quem és tu?';
+
+  @override
+  String get letsGo => 'Vamos a isso';
+
+  @override
+  String get onboardingWeightHint => 'Peso corporal, opcional';
 }
 
 /// The translations for Portuguese, as used in Brazil (`pt_BR`).
@@ -4271,6 +4280,15 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
 
   @override
   String get heightInches => 'Altura (polegadas)';
+
+  @override
+  String get whoAreYou => 'Quem é você?';
+
+  @override
+  String get letsGo => 'Bora lá';
+
+  @override
+  String get onboardingWeightHint => 'Peso corporal, opcional';
 }
 
 /// The translations for Portuguese, as used in Portugal (`pt_PT`).
@@ -6410,4 +6428,13 @@ class AppLocalizationsPtPt extends AppLocalizationsPt {
 
   @override
   String get heightInches => 'Altura (polegadas)';
+
+  @override
+  String get whoAreYou => 'Quem és tu?';
+
+  @override
+  String get letsGo => 'Vamos a isso';
+
+  @override
+  String get onboardingWeightHint => 'Peso corporal, opcional';
 }

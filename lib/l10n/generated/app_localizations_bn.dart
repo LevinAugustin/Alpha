@@ -2112,4 +2112,13 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get heightInches => 'উচ্চতা (ইঞ্চি)';
+
+  @override
+  String get whoAreYou => 'তুমি কে?';
+
+  @override
+  String get letsGo => 'চলুন শুরু করি';
+
+  @override
+  String get onboardingWeightHint => 'শরীরের ওজন, ঐচ্ছিক';
 }

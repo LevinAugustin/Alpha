@@ -2126,4 +2126,13 @@ class AppLocalizationsMs extends AppLocalizations {
 
   @override
   String get heightInches => 'Tinggi (inci)';
+
+  @override
+  String get whoAreYou => 'Siapa anda?';
+
+  @override
+  String get letsGo => 'Jom mula';
+
+  @override
+  String get onboardingWeightHint => 'Berat badan, pilihan';
 }

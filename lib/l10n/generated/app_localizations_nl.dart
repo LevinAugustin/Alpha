@@ -2131,4 +2131,13 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get heightInches => 'Lengte (inch)';
+
+  @override
+  String get whoAreYou => 'Wie ben jij?';
+
+  @override
+  String get letsGo => 'Aan de slag';
+
+  @override
+  String get onboardingWeightHint => 'Lichaamsgewicht, optioneel';
 }

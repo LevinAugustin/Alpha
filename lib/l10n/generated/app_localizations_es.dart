@@ -2140,4 +2140,13 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get heightInches => 'Estatura (pulgadas)';
+
+  @override
+  String get whoAreYou => '¿Quién eres?';
+
+  @override
+  String get letsGo => 'Vamos allá';
+
+  @override
+  String get onboardingWeightHint => 'Peso corporal, opcional';
 }

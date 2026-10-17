@@ -663,5 +663,8 @@
   "lengthUnitLabel": "Körpermaß",
   "centimetersShort": "Zentimeter (cm)",
   "inchesShort": "Zoll (in)",
-  "heightInches": "Größe (Zoll)"
+  "heightInches": "Größe (Zoll)",
+  "whoAreYou": "Wer bist du?",
+  "letsGo": "Los geht's",
+  "onboardingWeightHint": "Körpergewicht, optional"
 }

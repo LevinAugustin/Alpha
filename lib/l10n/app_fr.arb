@@ -662,5 +662,8 @@
   "lengthUnitLabel": "Taille corporelle",
   "centimetersShort": "Centimètres (cm)",
   "inchesShort": "Pouces (in)",
-  "heightInches": "Taille (pouces)"
+  "heightInches": "Taille (pouces)",
+  "whoAreYou": "Qui es-tu ?",
+  "letsGo": "C'est parti",
+  "onboardingWeightHint": "Poids du corps, facultatif"
 }

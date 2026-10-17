@@ -2206,5 +2206,8 @@
   "lengthUnitLabel": "قد بدن",
   "centimetersShort": "سانتی‌متر (cm)",
   "inchesShort": "اینچ (in)",
-  "heightInches": "قد (اینچ)"
+  "heightInches": "قد (اینچ)",
+  "whoAreYou": "تو کیستی؟",
+  "letsGo": "بزن بریم",
+  "onboardingWeightHint": "وزن بدن، اختیاری"
 }

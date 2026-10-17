@@ -2206,5 +2206,8 @@
   "lengthUnitLabel": "Panjang badan",
   "centimetersShort": "Sentimeter (cm)",
   "inchesShort": "Inci (in)",
-  "heightInches": "Tinggi (inci)"
+  "heightInches": "Tinggi (inci)",
+  "whoAreYou": "Siapa anda?",
+  "letsGo": "Jom mula",
+  "onboardingWeightHint": "Berat badan, pilihan"
 }

@@ -662,5 +662,8 @@
   "lengthUnitLabel": "Vücut uzunluğu",
   "centimetersShort": "Santimetre (cm)",
   "inchesShort": "İnç (in)",
-  "heightInches": "Boy (inç)"
+  "heightInches": "Boy (inç)",
+  "whoAreYou": "Sen kimsin?",
+  "letsGo": "Hadi başlayalım",
+  "onboardingWeightHint": "Vücut ağırlığı, isteğe bağlı"
 }

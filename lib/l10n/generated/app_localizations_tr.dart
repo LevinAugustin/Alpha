@@ -2133,4 +2133,13 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get heightInches => 'Boy (inç)';
+
+  @override
+  String get whoAreYou => 'Sen kimsin?';
+
+  @override
+  String get letsGo => 'Hadi başlayalım';
+
+  @override
+  String get onboardingWeightHint => 'Vücut ağırlığı, isteğe bağlı';
 }

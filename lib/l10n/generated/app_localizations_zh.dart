@@ -2045,6 +2045,15 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get heightInches => '身高（英寸）';
+
+  @override
+  String get whoAreYou => '你是谁？';
+
+  @override
+  String get letsGo => '开始吧';
+
+  @override
+  String get onboardingWeightHint => '体重，可选';
 }
 
 /// The translations for Chinese, as used in China (`zh_CN`).
@@ -4088,6 +4097,15 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
 
   @override
   String get heightInches => '身高（英寸）';
+
+  @override
+  String get whoAreYou => '你是谁？';
+
+  @override
+  String get letsGo => '开始吧';
+
+  @override
+  String get onboardingWeightHint => '体重，可选';
 }
 
 /// The translations for Chinese, as used in Taiwan (`zh_TW`).
@@ -6131,4 +6149,13 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get heightInches => '身高（英吋）';
+
+  @override
+  String get whoAreYou => '你是誰？';
+
+  @override
+  String get letsGo => '開始吧';
+
+  @override
+  String get onboardingWeightHint => '體重，選填';
 }

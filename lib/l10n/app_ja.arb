@@ -662,5 +662,8 @@
   "lengthUnitLabel": "身長の単位",
   "centimetersShort": "センチメートル (cm)",
   "inchesShort": "インチ (in)",
-  "heightInches": "身長（インチ）"
+  "heightInches": "身長（インチ）",
+  "whoAreYou": "あなたは誰？",
+  "letsGo": "さあ始めよう",
+  "onboardingWeightHint": "体重（任意）"
 }

@@ -2144,4 +2144,13 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get heightInches => 'Рост (дюймы)';
+
+  @override
+  String get whoAreYou => 'Кто ты?';
+
+  @override
+  String get letsGo => 'Поехали';
+
+  @override
+  String get onboardingWeightHint => 'Вес тела, необязательно';
 }

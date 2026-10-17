@@ -2110,4 +2110,13 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get heightInches => 'कद (इंच)';
+
+  @override
+  String get whoAreYou => 'आप कौन हैं?';
+
+  @override
+  String get letsGo => 'चलिए शुरू करें';
+
+  @override
+  String get onboardingWeightHint => 'शरीर का वजन, वैकल्पिक';
 }

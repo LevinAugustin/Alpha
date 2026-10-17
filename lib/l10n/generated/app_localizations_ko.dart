@@ -2059,4 +2059,13 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get heightInches => '키 (인치)';
+
+  @override
+  String get whoAreYou => '당신은 누구인가요?';
+
+  @override
+  String get letsGo => '시작하기';
+
+  @override
+  String get onboardingWeightHint => '체중, 선택 사항';
 }

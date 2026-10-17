@@ -662,5 +662,8 @@
   "lengthUnitLabel": "Długość ciała",
   "centimetersShort": "Centymetry (cm)",
   "inchesShort": "Cale (in)",
-  "heightInches": "Wzrost (cale)"
+  "heightInches": "Wzrost (cale)",
+  "whoAreYou": "Kim jesteś?",
+  "letsGo": "Zaczynamy",
+  "onboardingWeightHint": "Masa ciała, opcjonalnie"
 }

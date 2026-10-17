@@ -2206,5 +2206,8 @@
   "lengthUnitLabel": "Đơn vị chiều cao",
   "centimetersShort": "Xentimét (cm)",
   "inchesShort": "Inch (in)",
-  "heightInches": "Chiều cao (inch)"
+  "heightInches": "Chiều cao (inch)",
+  "whoAreYou": "Bạn là ai?",
+  "letsGo": "Bắt đầu thôi",
+  "onboardingWeightHint": "Cân nặng, không bắt buộc"
 }

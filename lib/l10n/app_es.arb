@@ -662,5 +662,8 @@
   "lengthUnitLabel": "Longitud corporal",
   "centimetersShort": "Centímetros (cm)",
   "inchesShort": "Pulgadas (in)",
-  "heightInches": "Estatura (pulgadas)"
+  "heightInches": "Estatura (pulgadas)",
+  "whoAreYou": "¿Quién eres?",
+  "letsGo": "Vamos allá",
+  "onboardingWeightHint": "Peso corporal, opcional"
 }

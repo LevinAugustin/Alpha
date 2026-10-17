@@ -662,5 +662,8 @@
   "lengthUnitLabel": "Comprimento do corpo",
   "centimetersShort": "Centímetros (cm)",
   "inchesShort": "Polegadas (in)",
-  "heightInches": "Altura (polegadas)"
+  "heightInches": "Altura (polegadas)",
+  "whoAreYou": "Quem és tu?",
+  "letsGo": "Vamos a isso",
+  "onboardingWeightHint": "Peso corporal, opcional"
 }

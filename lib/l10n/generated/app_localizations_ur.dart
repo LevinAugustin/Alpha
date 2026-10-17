@@ -2115,4 +2115,13 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get heightInches => 'قد (انچ)';
+
+  @override
+  String get whoAreYou => 'تم کون ہو؟';
+
+  @override
+  String get letsGo => 'چلیں شروع کریں';
+
+  @override
+  String get onboardingWeightHint => 'جسمانی وزن، اختیاری';
 }

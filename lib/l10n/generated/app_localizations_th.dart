@@ -2100,4 +2100,13 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String get heightInches => 'ส่วนสูง (นิ้ว)';
+
+  @override
+  String get whoAreYou => 'คุณเป็นใคร?';
+
+  @override
+  String get letsGo => 'ไปกันเลย';
+
+  @override
+  String get onboardingWeightHint => 'น้ำหนักตัว ไม่บังคับ';
 }

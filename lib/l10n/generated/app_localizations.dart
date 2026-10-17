@@ -3923,6 +3923,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Height (in)'**
   String get heightInches;
+
+  /// Who are you?
+  ///
+  /// In en, this message translates to:
+  /// **'Who are you?'**
+  String get whoAreYou;
+
+  /// Let's go
+  ///
+  /// In en, this message translates to:
+  /// **'Let\'s go'**
+  String get letsGo;
+
+  /// Body weight, optional
+  ///
+  /// In en, this message translates to:
+  /// **'Body weight, optional'**
+  String get onboardingWeightHint;
 }
 
 class _AppLocalizationsDelegate

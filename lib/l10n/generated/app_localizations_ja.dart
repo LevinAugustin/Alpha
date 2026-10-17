@@ -2056,4 +2056,13 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get heightInches => '身長（インチ）';
+
+  @override
+  String get whoAreYou => 'あなたは誰？';
+
+  @override
+  String get letsGo => 'さあ始めよう';
+
+  @override
+  String get onboardingWeightHint => '体重（任意）';
 }

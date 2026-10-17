@@ -2824,5 +2824,17 @@
   "heightInches": "Height (in)",
   "@heightInches":   {
     "description": "Height (in)"
+  },
+  "whoAreYou": "Who are you?",
+  "@whoAreYou": {
+    "description": "Who are you?"
+  },
+  "letsGo": "Let's go",
+  "@letsGo": {
+    "description": "Let's go"
+  },
+  "onboardingWeightHint": "Body weight, optional",
+  "@onboardingWeightHint": {
+    "description": "Body weight, optional"
   }
 }

@@ -662,5 +662,8 @@
   "lengthUnitLabel": "Длина тела",
   "centimetersShort": "Сантиметры (см)",
   "inchesShort": "Дюймы (in)",
-  "heightInches": "Рост (дюймы)"
+  "heightInches": "Рост (дюймы)",
+  "whoAreYou": "Кто ты?",
+  "letsGo": "Поехали",
+  "onboardingWeightHint": "Вес тела, необязательно"
 }

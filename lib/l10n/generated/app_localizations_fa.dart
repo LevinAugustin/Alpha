@@ -2117,4 +2117,13 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String get heightInches => 'قد (اینچ)';
+
+  @override
+  String get whoAreYou => 'تو کیستی؟';
+
+  @override
+  String get letsGo => 'بزن بریم';
+
+  @override
+  String get onboardingWeightHint => 'وزن بدن، اختیاری';
 }

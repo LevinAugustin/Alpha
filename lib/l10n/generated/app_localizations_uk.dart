@@ -2141,4 +2141,13 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get heightInches => 'Зріст (дюйми)';
+
+  @override
+  String get whoAreYou => 'Хто ти?';
+
+  @override
+  String get letsGo => 'Поїхали';
+
+  @override
+  String get onboardingWeightHint => 'Вага тіла, необов\'язково';
 }
