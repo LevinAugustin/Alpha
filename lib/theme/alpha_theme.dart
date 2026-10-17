@@ -36,7 +36,7 @@ class AlphaPalette {
     accent: Color(0xFFE53935),
     onAccent: Color(0xFFFFFFFF),
     border: Color(0xFF2A2A2A),
-    figureAsset: 'assets/figures/gorilla.png',
+    figureAsset: 'assets/figures/gorilla_body.png',
     buttonGradient: null,
     glow: Color(0x66E53935),
   );
