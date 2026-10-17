@@ -2016,7 +2016,13 @@ class AppLocalizationsPl extends AppLocalizations {
 
   @override
   String get exerciseDbNotice =>
-      'Nazwy i zdjęcia ćwiczeń pochodzą z free-exercise-db, Unlicense.';
+      'Każde ćwiczenie podaje własne źródło i licencję.';
+
+  @override
+  String get sourceLabel => 'Źródło';
+
+  @override
+  String get tipsLabel => 'Wskazówki';
 
   @override
   String get aiCoachTitle => 'Trener SI';

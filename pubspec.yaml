@@ -75,7 +75,7 @@ flutter:
     - assets/
     - assets/figures/
     - assets/exercises/
-    - assets/gym_catalog.json
+    - assets/exercises/images/
     - assets/sound/
     - assets/changelogs/
     - assets/changelogs/l10n/

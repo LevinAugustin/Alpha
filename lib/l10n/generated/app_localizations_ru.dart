@@ -2018,7 +2018,13 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get exerciseDbNotice =>
-      'Названия и фото упражнений взяты из free-exercise-db, Unlicense.';
+      'Каждое упражнение указывает свой источник и лицензию.';
+
+  @override
+  String get sourceLabel => 'Источник';
+
+  @override
+  String get tipsLabel => 'Советы';
 
   @override
   String get aiCoachTitle => 'ИИ-тренер';

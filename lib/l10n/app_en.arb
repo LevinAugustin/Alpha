@@ -2642,9 +2642,17 @@
   "@flexifyMitNotice":   {
     "description": "Flexify is published under the MIT license. Copyright Brandon Dick."
   },
-  "exerciseDbNotice": "Exercise names and photos come from free-exercise-db under the Unlicense.",
+  "exerciseDbNotice": "Each exercise lists its own source and license.",
   "@exerciseDbNotice":   {
-    "description": "Exercise names and photos come from free-exercise-db under the Unlicense."
+    "description": "Each exercise lists its own source and license."
+  },
+  "sourceLabel": "Source",
+  "@sourceLabel": {
+    "description": "Source"
+  },
+  "tipsLabel": "Tips",
+  "@tipsLabel": {
+    "description": "Tips"
   },
   "aiCoachTitle": "AI coach",
   "@aiCoachTitle":   {

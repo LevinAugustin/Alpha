@@ -2014,7 +2014,13 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get exerciseDbNotice =>
-      'Назви й фото вправ узято з free-exercise-db, Unlicense.';
+      'Кожна вправа вказує власне джерело і ліцензію.';
+
+  @override
+  String get sourceLabel => 'Джерело';
+
+  @override
+  String get tipsLabel => 'Поради';
 
   @override
   String get aiCoachTitle => 'ШІ-тренер';

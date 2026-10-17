@@ -670,6 +670,122 @@ class $ExercisesTable extends Exercises
     type: DriftSqlType.string,
     requiredDuringInsert: false,
   );
+  static const VerificationMeta _catalogIdMeta = const VerificationMeta(
+    'catalogId',
+  );
+  @override
+  late final GeneratedColumn<String> catalogId = GeneratedColumn<String>(
+    'catalog_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways('UNIQUE'),
+  );
+  static const VerificationMeta _categoryNameMeta = const VerificationMeta(
+    'categoryName',
+  );
+  @override
+  late final GeneratedColumn<String> categoryName = GeneratedColumn<String>(
+    'category_name',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _equipmentMeta = const VerificationMeta(
+    'equipment',
+  );
+  @override
+  late final GeneratedColumn<String> equipment = GeneratedColumn<String>(
+    'equipment',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _primaryMusclesMeta = const VerificationMeta(
+    'primaryMuscles',
+  );
+  @override
+  late final GeneratedColumn<String> primaryMuscles = GeneratedColumn<String>(
+    'primary_muscles',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _secondaryMusclesMeta = const VerificationMeta(
+    'secondaryMuscles',
+  );
+  @override
+  late final GeneratedColumn<String> secondaryMuscles = GeneratedColumn<String>(
+    'secondary_muscles',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _splitMeta = const VerificationMeta('split');
+  @override
+  late final GeneratedColumn<String> split = GeneratedColumn<String>(
+    'split',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _mechanicMeta = const VerificationMeta(
+    'mechanic',
+  );
+  @override
+  late final GeneratedColumn<String> mechanic = GeneratedColumn<String>(
+    'mechanic',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _stepsMeta = const VerificationMeta('steps');
+  @override
+  late final GeneratedColumn<String> steps = GeneratedColumn<String>(
+    'steps',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _tipsMeta = const VerificationMeta('tips');
+  @override
+  late final GeneratedColumn<String> tips = GeneratedColumn<String>(
+    'tips',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _catalogSourceMeta = const VerificationMeta(
+    'catalogSource',
+  );
+  @override
+  late final GeneratedColumn<String> catalogSource = GeneratedColumn<String>(
+    'catalog_source',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _catalogLicenseMeta = const VerificationMeta(
+    'catalogLicense',
+  );
+  @override
+  late final GeneratedColumn<String> catalogLicense = GeneratedColumn<String>(
+    'catalog_license',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
   @override
   List<GeneratedColumn> get $columns => [
     id,
@@ -688,6 +804,17 @@ class $ExercisesTable extends Exercises
     germanName,
     aliases,
     muscle,
+    catalogId,
+    categoryName,
+    equipment,
+    primaryMuscles,
+    secondaryMuscles,
+    split,
+    mechanic,
+    steps,
+    tips,
+    catalogSource,
+    catalogLicense,
   ];
   @override
   String get aliasedName => _alias ?? actualTableName;
@@ -815,6 +942,87 @@ class $ExercisesTable extends Exercises
         muscle.isAcceptableOrUnknown(data['muscle']!, _muscleMeta),
       );
     }
+    if (data.containsKey('catalog_id')) {
+      context.handle(
+        _catalogIdMeta,
+        catalogId.isAcceptableOrUnknown(data['catalog_id']!, _catalogIdMeta),
+      );
+    }
+    if (data.containsKey('category_name')) {
+      context.handle(
+        _categoryNameMeta,
+        categoryName.isAcceptableOrUnknown(
+          data['category_name']!,
+          _categoryNameMeta,
+        ),
+      );
+    }
+    if (data.containsKey('equipment')) {
+      context.handle(
+        _equipmentMeta,
+        equipment.isAcceptableOrUnknown(data['equipment']!, _equipmentMeta),
+      );
+    }
+    if (data.containsKey('primary_muscles')) {
+      context.handle(
+        _primaryMusclesMeta,
+        primaryMuscles.isAcceptableOrUnknown(
+          data['primary_muscles']!,
+          _primaryMusclesMeta,
+        ),
+      );
+    }
+    if (data.containsKey('secondary_muscles')) {
+      context.handle(
+        _secondaryMusclesMeta,
+        secondaryMuscles.isAcceptableOrUnknown(
+          data['secondary_muscles']!,
+          _secondaryMusclesMeta,
+        ),
+      );
+    }
+    if (data.containsKey('split')) {
+      context.handle(
+        _splitMeta,
+        split.isAcceptableOrUnknown(data['split']!, _splitMeta),
+      );
+    }
+    if (data.containsKey('mechanic')) {
+      context.handle(
+        _mechanicMeta,
+        mechanic.isAcceptableOrUnknown(data['mechanic']!, _mechanicMeta),
+      );
+    }
+    if (data.containsKey('steps')) {
+      context.handle(
+        _stepsMeta,
+        steps.isAcceptableOrUnknown(data['steps']!, _stepsMeta),
+      );
+    }
+    if (data.containsKey('tips')) {
+      context.handle(
+        _tipsMeta,
+        tips.isAcceptableOrUnknown(data['tips']!, _tipsMeta),
+      );
+    }
+    if (data.containsKey('catalog_source')) {
+      context.handle(
+        _catalogSourceMeta,
+        catalogSource.isAcceptableOrUnknown(
+          data['catalog_source']!,
+          _catalogSourceMeta,
+        ),
+      );
+    }
+    if (data.containsKey('catalog_license')) {
+      context.handle(
+        _catalogLicenseMeta,
+        catalogLicense.isAcceptableOrUnknown(
+          data['catalog_license']!,
+          _catalogLicenseMeta,
+        ),
+      );
+    }
     return context;
   }
 
@@ -888,6 +1096,50 @@ class $ExercisesTable extends Exercises
         DriftSqlType.string,
         data['${effectivePrefix}muscle'],
       ),
+      catalogId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}catalog_id'],
+      ),
+      categoryName: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}category_name'],
+      ),
+      equipment: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}equipment'],
+      ),
+      primaryMuscles: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}primary_muscles'],
+      ),
+      secondaryMuscles: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}secondary_muscles'],
+      ),
+      split: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}split'],
+      ),
+      mechanic: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}mechanic'],
+      ),
+      steps: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}steps'],
+      ),
+      tips: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}tips'],
+      ),
+      catalogSource: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}catalog_source'],
+      ),
+      catalogLicense: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}catalog_license'],
+      ),
     );
   }
 
@@ -914,6 +1166,17 @@ class Exercise extends DataClass implements Insertable<Exercise> {
   final String? germanName;
   final String? aliases;
   final String? muscle;
+  final String? catalogId;
+  final String? categoryName;
+  final String? equipment;
+  final String? primaryMuscles;
+  final String? secondaryMuscles;
+  final String? split;
+  final String? mechanic;
+  final String? steps;
+  final String? tips;
+  final String? catalogSource;
+  final String? catalogLicense;
   const Exercise({
     required this.id,
     required this.name,
@@ -931,6 +1194,17 @@ class Exercise extends DataClass implements Insertable<Exercise> {
     this.germanName,
     this.aliases,
     this.muscle,
+    this.catalogId,
+    this.categoryName,
+    this.equipment,
+    this.primaryMuscles,
+    this.secondaryMuscles,
+    this.split,
+    this.mechanic,
+    this.steps,
+    this.tips,
+    this.catalogSource,
+    this.catalogLicense,
   });
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
@@ -964,6 +1238,39 @@ class Exercise extends DataClass implements Insertable<Exercise> {
     }
     if (!nullToAbsent || muscle != null) {
       map['muscle'] = Variable<String>(muscle);
+    }
+    if (!nullToAbsent || catalogId != null) {
+      map['catalog_id'] = Variable<String>(catalogId);
+    }
+    if (!nullToAbsent || categoryName != null) {
+      map['category_name'] = Variable<String>(categoryName);
+    }
+    if (!nullToAbsent || equipment != null) {
+      map['equipment'] = Variable<String>(equipment);
+    }
+    if (!nullToAbsent || primaryMuscles != null) {
+      map['primary_muscles'] = Variable<String>(primaryMuscles);
+    }
+    if (!nullToAbsent || secondaryMuscles != null) {
+      map['secondary_muscles'] = Variable<String>(secondaryMuscles);
+    }
+    if (!nullToAbsent || split != null) {
+      map['split'] = Variable<String>(split);
+    }
+    if (!nullToAbsent || mechanic != null) {
+      map['mechanic'] = Variable<String>(mechanic);
+    }
+    if (!nullToAbsent || steps != null) {
+      map['steps'] = Variable<String>(steps);
+    }
+    if (!nullToAbsent || tips != null) {
+      map['tips'] = Variable<String>(tips);
+    }
+    if (!nullToAbsent || catalogSource != null) {
+      map['catalog_source'] = Variable<String>(catalogSource);
+    }
+    if (!nullToAbsent || catalogLicense != null) {
+      map['catalog_license'] = Variable<String>(catalogLicense);
     }
     return map;
   }
@@ -1000,6 +1307,37 @@ class Exercise extends DataClass implements Insertable<Exercise> {
       muscle: muscle == null && nullToAbsent
           ? const Value.absent()
           : Value(muscle),
+      catalogId: catalogId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(catalogId),
+      categoryName: categoryName == null && nullToAbsent
+          ? const Value.absent()
+          : Value(categoryName),
+      equipment: equipment == null && nullToAbsent
+          ? const Value.absent()
+          : Value(equipment),
+      primaryMuscles: primaryMuscles == null && nullToAbsent
+          ? const Value.absent()
+          : Value(primaryMuscles),
+      secondaryMuscles: secondaryMuscles == null && nullToAbsent
+          ? const Value.absent()
+          : Value(secondaryMuscles),
+      split: split == null && nullToAbsent
+          ? const Value.absent()
+          : Value(split),
+      mechanic: mechanic == null && nullToAbsent
+          ? const Value.absent()
+          : Value(mechanic),
+      steps: steps == null && nullToAbsent
+          ? const Value.absent()
+          : Value(steps),
+      tips: tips == null && nullToAbsent ? const Value.absent() : Value(tips),
+      catalogSource: catalogSource == null && nullToAbsent
+          ? const Value.absent()
+          : Value(catalogSource),
+      catalogLicense: catalogLicense == null && nullToAbsent
+          ? const Value.absent()
+          : Value(catalogLicense),
     );
   }
 
@@ -1029,6 +1367,17 @@ class Exercise extends DataClass implements Insertable<Exercise> {
       germanName: serializer.fromJson<String?>(json['germanName']),
       aliases: serializer.fromJson<String?>(json['aliases']),
       muscle: serializer.fromJson<String?>(json['muscle']),
+      catalogId: serializer.fromJson<String?>(json['catalogId']),
+      categoryName: serializer.fromJson<String?>(json['categoryName']),
+      equipment: serializer.fromJson<String?>(json['equipment']),
+      primaryMuscles: serializer.fromJson<String?>(json['primaryMuscles']),
+      secondaryMuscles: serializer.fromJson<String?>(json['secondaryMuscles']),
+      split: serializer.fromJson<String?>(json['split']),
+      mechanic: serializer.fromJson<String?>(json['mechanic']),
+      steps: serializer.fromJson<String?>(json['steps']),
+      tips: serializer.fromJson<String?>(json['tips']),
+      catalogSource: serializer.fromJson<String?>(json['catalogSource']),
+      catalogLicense: serializer.fromJson<String?>(json['catalogLicense']),
     );
   }
   @override
@@ -1051,6 +1400,17 @@ class Exercise extends DataClass implements Insertable<Exercise> {
       'germanName': serializer.toJson<String?>(germanName),
       'aliases': serializer.toJson<String?>(aliases),
       'muscle': serializer.toJson<String?>(muscle),
+      'catalogId': serializer.toJson<String?>(catalogId),
+      'categoryName': serializer.toJson<String?>(categoryName),
+      'equipment': serializer.toJson<String?>(equipment),
+      'primaryMuscles': serializer.toJson<String?>(primaryMuscles),
+      'secondaryMuscles': serializer.toJson<String?>(secondaryMuscles),
+      'split': serializer.toJson<String?>(split),
+      'mechanic': serializer.toJson<String?>(mechanic),
+      'steps': serializer.toJson<String?>(steps),
+      'tips': serializer.toJson<String?>(tips),
+      'catalogSource': serializer.toJson<String?>(catalogSource),
+      'catalogLicense': serializer.toJson<String?>(catalogLicense),
     };
   }
 
@@ -1071,6 +1431,17 @@ class Exercise extends DataClass implements Insertable<Exercise> {
     Value<String?> germanName = const Value.absent(),
     Value<String?> aliases = const Value.absent(),
     Value<String?> muscle = const Value.absent(),
+    Value<String?> catalogId = const Value.absent(),
+    Value<String?> categoryName = const Value.absent(),
+    Value<String?> equipment = const Value.absent(),
+    Value<String?> primaryMuscles = const Value.absent(),
+    Value<String?> secondaryMuscles = const Value.absent(),
+    Value<String?> split = const Value.absent(),
+    Value<String?> mechanic = const Value.absent(),
+    Value<String?> steps = const Value.absent(),
+    Value<String?> tips = const Value.absent(),
+    Value<String?> catalogSource = const Value.absent(),
+    Value<String?> catalogLicense = const Value.absent(),
   }) => Exercise(
     id: id ?? this.id,
     name: name ?? this.name,
@@ -1090,6 +1461,25 @@ class Exercise extends DataClass implements Insertable<Exercise> {
     germanName: germanName.present ? germanName.value : this.germanName,
     aliases: aliases.present ? aliases.value : this.aliases,
     muscle: muscle.present ? muscle.value : this.muscle,
+    catalogId: catalogId.present ? catalogId.value : this.catalogId,
+    categoryName: categoryName.present ? categoryName.value : this.categoryName,
+    equipment: equipment.present ? equipment.value : this.equipment,
+    primaryMuscles: primaryMuscles.present
+        ? primaryMuscles.value
+        : this.primaryMuscles,
+    secondaryMuscles: secondaryMuscles.present
+        ? secondaryMuscles.value
+        : this.secondaryMuscles,
+    split: split.present ? split.value : this.split,
+    mechanic: mechanic.present ? mechanic.value : this.mechanic,
+    steps: steps.present ? steps.value : this.steps,
+    tips: tips.present ? tips.value : this.tips,
+    catalogSource: catalogSource.present
+        ? catalogSource.value
+        : this.catalogSource,
+    catalogLicense: catalogLicense.present
+        ? catalogLicense.value
+        : this.catalogLicense,
   );
   Exercise copyWithCompanion(ExercisesCompanion data) {
     return Exercise(
@@ -1125,6 +1515,27 @@ class Exercise extends DataClass implements Insertable<Exercise> {
           : this.germanName,
       aliases: data.aliases.present ? data.aliases.value : this.aliases,
       muscle: data.muscle.present ? data.muscle.value : this.muscle,
+      catalogId: data.catalogId.present ? data.catalogId.value : this.catalogId,
+      categoryName: data.categoryName.present
+          ? data.categoryName.value
+          : this.categoryName,
+      equipment: data.equipment.present ? data.equipment.value : this.equipment,
+      primaryMuscles: data.primaryMuscles.present
+          ? data.primaryMuscles.value
+          : this.primaryMuscles,
+      secondaryMuscles: data.secondaryMuscles.present
+          ? data.secondaryMuscles.value
+          : this.secondaryMuscles,
+      split: data.split.present ? data.split.value : this.split,
+      mechanic: data.mechanic.present ? data.mechanic.value : this.mechanic,
+      steps: data.steps.present ? data.steps.value : this.steps,
+      tips: data.tips.present ? data.tips.value : this.tips,
+      catalogSource: data.catalogSource.present
+          ? data.catalogSource.value
+          : this.catalogSource,
+      catalogLicense: data.catalogLicense.present
+          ? data.catalogLicense.value
+          : this.catalogLicense,
     );
   }
 
@@ -1146,13 +1557,24 @@ class Exercise extends DataClass implements Insertable<Exercise> {
           ..write('archived: $archived, ')
           ..write('germanName: $germanName, ')
           ..write('aliases: $aliases, ')
-          ..write('muscle: $muscle')
+          ..write('muscle: $muscle, ')
+          ..write('catalogId: $catalogId, ')
+          ..write('categoryName: $categoryName, ')
+          ..write('equipment: $equipment, ')
+          ..write('primaryMuscles: $primaryMuscles, ')
+          ..write('secondaryMuscles: $secondaryMuscles, ')
+          ..write('split: $split, ')
+          ..write('mechanic: $mechanic, ')
+          ..write('steps: $steps, ')
+          ..write('tips: $tips, ')
+          ..write('catalogSource: $catalogSource, ')
+          ..write('catalogLicense: $catalogLicense')
           ..write(')'))
         .toString();
   }
 
   @override
-  int get hashCode => Object.hash(
+  int get hashCode => Object.hashAll([
     id,
     name,
     kind,
@@ -1169,7 +1591,18 @@ class Exercise extends DataClass implements Insertable<Exercise> {
     germanName,
     aliases,
     muscle,
-  );
+    catalogId,
+    categoryName,
+    equipment,
+    primaryMuscles,
+    secondaryMuscles,
+    split,
+    mechanic,
+    steps,
+    tips,
+    catalogSource,
+    catalogLicense,
+  ]);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -1189,7 +1622,18 @@ class Exercise extends DataClass implements Insertable<Exercise> {
           other.archived == this.archived &&
           other.germanName == this.germanName &&
           other.aliases == this.aliases &&
-          other.muscle == this.muscle);
+          other.muscle == this.muscle &&
+          other.catalogId == this.catalogId &&
+          other.categoryName == this.categoryName &&
+          other.equipment == this.equipment &&
+          other.primaryMuscles == this.primaryMuscles &&
+          other.secondaryMuscles == this.secondaryMuscles &&
+          other.split == this.split &&
+          other.mechanic == this.mechanic &&
+          other.steps == this.steps &&
+          other.tips == this.tips &&
+          other.catalogSource == this.catalogSource &&
+          other.catalogLicense == this.catalogLicense);
 }
 
 class ExercisesCompanion extends UpdateCompanion<Exercise> {
@@ -1209,6 +1653,17 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
   final Value<String?> germanName;
   final Value<String?> aliases;
   final Value<String?> muscle;
+  final Value<String?> catalogId;
+  final Value<String?> categoryName;
+  final Value<String?> equipment;
+  final Value<String?> primaryMuscles;
+  final Value<String?> secondaryMuscles;
+  final Value<String?> split;
+  final Value<String?> mechanic;
+  final Value<String?> steps;
+  final Value<String?> tips;
+  final Value<String?> catalogSource;
+  final Value<String?> catalogLicense;
   const ExercisesCompanion({
     this.id = const Value.absent(),
     this.name = const Value.absent(),
@@ -1226,6 +1681,17 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
     this.germanName = const Value.absent(),
     this.aliases = const Value.absent(),
     this.muscle = const Value.absent(),
+    this.catalogId = const Value.absent(),
+    this.categoryName = const Value.absent(),
+    this.equipment = const Value.absent(),
+    this.primaryMuscles = const Value.absent(),
+    this.secondaryMuscles = const Value.absent(),
+    this.split = const Value.absent(),
+    this.mechanic = const Value.absent(),
+    this.steps = const Value.absent(),
+    this.tips = const Value.absent(),
+    this.catalogSource = const Value.absent(),
+    this.catalogLicense = const Value.absent(),
   });
   ExercisesCompanion.insert({
     this.id = const Value.absent(),
@@ -1244,6 +1710,17 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
     this.germanName = const Value.absent(),
     this.aliases = const Value.absent(),
     this.muscle = const Value.absent(),
+    this.catalogId = const Value.absent(),
+    this.categoryName = const Value.absent(),
+    this.equipment = const Value.absent(),
+    this.primaryMuscles = const Value.absent(),
+    this.secondaryMuscles = const Value.absent(),
+    this.split = const Value.absent(),
+    this.mechanic = const Value.absent(),
+    this.steps = const Value.absent(),
+    this.tips = const Value.absent(),
+    this.catalogSource = const Value.absent(),
+    this.catalogLicense = const Value.absent(),
   }) : name = Value(name),
        kind = Value(kind),
        displayUnit = Value(displayUnit);
@@ -1264,6 +1741,17 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
     Expression<String>? germanName,
     Expression<String>? aliases,
     Expression<String>? muscle,
+    Expression<String>? catalogId,
+    Expression<String>? categoryName,
+    Expression<String>? equipment,
+    Expression<String>? primaryMuscles,
+    Expression<String>? secondaryMuscles,
+    Expression<String>? split,
+    Expression<String>? mechanic,
+    Expression<String>? steps,
+    Expression<String>? tips,
+    Expression<String>? catalogSource,
+    Expression<String>? catalogLicense,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
@@ -1284,6 +1772,17 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
       if (germanName != null) 'german_name': germanName,
       if (aliases != null) 'aliases': aliases,
       if (muscle != null) 'muscle': muscle,
+      if (catalogId != null) 'catalog_id': catalogId,
+      if (categoryName != null) 'category_name': categoryName,
+      if (equipment != null) 'equipment': equipment,
+      if (primaryMuscles != null) 'primary_muscles': primaryMuscles,
+      if (secondaryMuscles != null) 'secondary_muscles': secondaryMuscles,
+      if (split != null) 'split': split,
+      if (mechanic != null) 'mechanic': mechanic,
+      if (steps != null) 'steps': steps,
+      if (tips != null) 'tips': tips,
+      if (catalogSource != null) 'catalog_source': catalogSource,
+      if (catalogLicense != null) 'catalog_license': catalogLicense,
     });
   }
 
@@ -1304,6 +1803,17 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
     Value<String?>? germanName,
     Value<String?>? aliases,
     Value<String?>? muscle,
+    Value<String?>? catalogId,
+    Value<String?>? categoryName,
+    Value<String?>? equipment,
+    Value<String?>? primaryMuscles,
+    Value<String?>? secondaryMuscles,
+    Value<String?>? split,
+    Value<String?>? mechanic,
+    Value<String?>? steps,
+    Value<String?>? tips,
+    Value<String?>? catalogSource,
+    Value<String?>? catalogLicense,
   }) {
     return ExercisesCompanion(
       id: id ?? this.id,
@@ -1323,6 +1833,17 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
       germanName: germanName ?? this.germanName,
       aliases: aliases ?? this.aliases,
       muscle: muscle ?? this.muscle,
+      catalogId: catalogId ?? this.catalogId,
+      categoryName: categoryName ?? this.categoryName,
+      equipment: equipment ?? this.equipment,
+      primaryMuscles: primaryMuscles ?? this.primaryMuscles,
+      secondaryMuscles: secondaryMuscles ?? this.secondaryMuscles,
+      split: split ?? this.split,
+      mechanic: mechanic ?? this.mechanic,
+      steps: steps ?? this.steps,
+      tips: tips ?? this.tips,
+      catalogSource: catalogSource ?? this.catalogSource,
+      catalogLicense: catalogLicense ?? this.catalogLicense,
     );
   }
 
@@ -1381,6 +1902,39 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
     if (muscle.present) {
       map['muscle'] = Variable<String>(muscle.value);
     }
+    if (catalogId.present) {
+      map['catalog_id'] = Variable<String>(catalogId.value);
+    }
+    if (categoryName.present) {
+      map['category_name'] = Variable<String>(categoryName.value);
+    }
+    if (equipment.present) {
+      map['equipment'] = Variable<String>(equipment.value);
+    }
+    if (primaryMuscles.present) {
+      map['primary_muscles'] = Variable<String>(primaryMuscles.value);
+    }
+    if (secondaryMuscles.present) {
+      map['secondary_muscles'] = Variable<String>(secondaryMuscles.value);
+    }
+    if (split.present) {
+      map['split'] = Variable<String>(split.value);
+    }
+    if (mechanic.present) {
+      map['mechanic'] = Variable<String>(mechanic.value);
+    }
+    if (steps.present) {
+      map['steps'] = Variable<String>(steps.value);
+    }
+    if (tips.present) {
+      map['tips'] = Variable<String>(tips.value);
+    }
+    if (catalogSource.present) {
+      map['catalog_source'] = Variable<String>(catalogSource.value);
+    }
+    if (catalogLicense.present) {
+      map['catalog_license'] = Variable<String>(catalogLicense.value);
+    }
     return map;
   }
 
@@ -1402,7 +1956,18 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
           ..write('archived: $archived, ')
           ..write('germanName: $germanName, ')
           ..write('aliases: $aliases, ')
-          ..write('muscle: $muscle')
+          ..write('muscle: $muscle, ')
+          ..write('catalogId: $catalogId, ')
+          ..write('categoryName: $categoryName, ')
+          ..write('equipment: $equipment, ')
+          ..write('primaryMuscles: $primaryMuscles, ')
+          ..write('secondaryMuscles: $secondaryMuscles, ')
+          ..write('split: $split, ')
+          ..write('mechanic: $mechanic, ')
+          ..write('steps: $steps, ')
+          ..write('tips: $tips, ')
+          ..write('catalogSource: $catalogSource, ')
+          ..write('catalogLicense: $catalogLicense')
           ..write(')'))
         .toString();
   }
@@ -6906,6 +7471,17 @@ typedef $$ExercisesTableCreateCompanionBuilder =
       Value<String?> germanName,
       Value<String?> aliases,
       Value<String?> muscle,
+      Value<String?> catalogId,
+      Value<String?> categoryName,
+      Value<String?> equipment,
+      Value<String?> primaryMuscles,
+      Value<String?> secondaryMuscles,
+      Value<String?> split,
+      Value<String?> mechanic,
+      Value<String?> steps,
+      Value<String?> tips,
+      Value<String?> catalogSource,
+      Value<String?> catalogLicense,
     });
 typedef $$ExercisesTableUpdateCompanionBuilder =
     ExercisesCompanion Function({
@@ -6925,6 +7501,17 @@ typedef $$ExercisesTableUpdateCompanionBuilder =
       Value<String?> germanName,
       Value<String?> aliases,
       Value<String?> muscle,
+      Value<String?> catalogId,
+      Value<String?> categoryName,
+      Value<String?> equipment,
+      Value<String?> primaryMuscles,
+      Value<String?> secondaryMuscles,
+      Value<String?> split,
+      Value<String?> mechanic,
+      Value<String?> steps,
+      Value<String?> tips,
+      Value<String?> catalogSource,
+      Value<String?> catalogLicense,
     });
 
 final class $$ExercisesTableReferences
@@ -7066,6 +7653,61 @@ class $$ExercisesTableFilterComposer
 
   ColumnFilters<String> get muscle => $composableBuilder(
     column: $table.muscle,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get catalogId => $composableBuilder(
+    column: $table.catalogId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get categoryName => $composableBuilder(
+    column: $table.categoryName,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get equipment => $composableBuilder(
+    column: $table.equipment,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get primaryMuscles => $composableBuilder(
+    column: $table.primaryMuscles,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get secondaryMuscles => $composableBuilder(
+    column: $table.secondaryMuscles,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get split => $composableBuilder(
+    column: $table.split,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get mechanic => $composableBuilder(
+    column: $table.mechanic,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get steps => $composableBuilder(
+    column: $table.steps,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get tips => $composableBuilder(
+    column: $table.tips,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get catalogSource => $composableBuilder(
+    column: $table.catalogSource,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get catalogLicense => $composableBuilder(
+    column: $table.catalogLicense,
     builder: (column) => ColumnFilters(column),
   );
 
@@ -7227,6 +7869,61 @@ class $$ExercisesTableOrderingComposer
     builder: (column) => ColumnOrderings(column),
   );
 
+  ColumnOrderings<String> get catalogId => $composableBuilder(
+    column: $table.catalogId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get categoryName => $composableBuilder(
+    column: $table.categoryName,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get equipment => $composableBuilder(
+    column: $table.equipment,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get primaryMuscles => $composableBuilder(
+    column: $table.primaryMuscles,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get secondaryMuscles => $composableBuilder(
+    column: $table.secondaryMuscles,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get split => $composableBuilder(
+    column: $table.split,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get mechanic => $composableBuilder(
+    column: $table.mechanic,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get steps => $composableBuilder(
+    column: $table.steps,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get tips => $composableBuilder(
+    column: $table.tips,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get catalogSource => $composableBuilder(
+    column: $table.catalogSource,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get catalogLicense => $composableBuilder(
+    column: $table.catalogLicense,
+    builder: (column) => ColumnOrderings(column),
+  );
+
   $$CategoriesTableOrderingComposer get categoryId {
     final $$CategoriesTableOrderingComposer composer = $composerBuilder(
       composer: this,
@@ -7318,6 +8015,49 @@ class $$ExercisesTableAnnotationComposer
 
   GeneratedColumn<String> get muscle =>
       $composableBuilder(column: $table.muscle, builder: (column) => column);
+
+  GeneratedColumn<String> get catalogId =>
+      $composableBuilder(column: $table.catalogId, builder: (column) => column);
+
+  GeneratedColumn<String> get categoryName => $composableBuilder(
+    column: $table.categoryName,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get equipment =>
+      $composableBuilder(column: $table.equipment, builder: (column) => column);
+
+  GeneratedColumn<String> get primaryMuscles => $composableBuilder(
+    column: $table.primaryMuscles,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get secondaryMuscles => $composableBuilder(
+    column: $table.secondaryMuscles,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get split =>
+      $composableBuilder(column: $table.split, builder: (column) => column);
+
+  GeneratedColumn<String> get mechanic =>
+      $composableBuilder(column: $table.mechanic, builder: (column) => column);
+
+  GeneratedColumn<String> get steps =>
+      $composableBuilder(column: $table.steps, builder: (column) => column);
+
+  GeneratedColumn<String> get tips =>
+      $composableBuilder(column: $table.tips, builder: (column) => column);
+
+  GeneratedColumn<String> get catalogSource => $composableBuilder(
+    column: $table.catalogSource,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get catalogLicense => $composableBuilder(
+    column: $table.catalogLicense,
+    builder: (column) => column,
+  );
 
   $$CategoriesTableAnnotationComposer get categoryId {
     final $$CategoriesTableAnnotationComposer composer = $composerBuilder(
@@ -7441,6 +8181,17 @@ class $$ExercisesTableTableManager
                 Value<String?> germanName = const Value.absent(),
                 Value<String?> aliases = const Value.absent(),
                 Value<String?> muscle = const Value.absent(),
+                Value<String?> catalogId = const Value.absent(),
+                Value<String?> categoryName = const Value.absent(),
+                Value<String?> equipment = const Value.absent(),
+                Value<String?> primaryMuscles = const Value.absent(),
+                Value<String?> secondaryMuscles = const Value.absent(),
+                Value<String?> split = const Value.absent(),
+                Value<String?> mechanic = const Value.absent(),
+                Value<String?> steps = const Value.absent(),
+                Value<String?> tips = const Value.absent(),
+                Value<String?> catalogSource = const Value.absent(),
+                Value<String?> catalogLicense = const Value.absent(),
               }) => ExercisesCompanion(
                 id: id,
                 name: name,
@@ -7458,6 +8209,17 @@ class $$ExercisesTableTableManager
                 germanName: germanName,
                 aliases: aliases,
                 muscle: muscle,
+                catalogId: catalogId,
+                categoryName: categoryName,
+                equipment: equipment,
+                primaryMuscles: primaryMuscles,
+                secondaryMuscles: secondaryMuscles,
+                split: split,
+                mechanic: mechanic,
+                steps: steps,
+                tips: tips,
+                catalogSource: catalogSource,
+                catalogLicense: catalogLicense,
               ),
           createCompanionCallback:
               ({
@@ -7477,6 +8239,17 @@ class $$ExercisesTableTableManager
                 Value<String?> germanName = const Value.absent(),
                 Value<String?> aliases = const Value.absent(),
                 Value<String?> muscle = const Value.absent(),
+                Value<String?> catalogId = const Value.absent(),
+                Value<String?> categoryName = const Value.absent(),
+                Value<String?> equipment = const Value.absent(),
+                Value<String?> primaryMuscles = const Value.absent(),
+                Value<String?> secondaryMuscles = const Value.absent(),
+                Value<String?> split = const Value.absent(),
+                Value<String?> mechanic = const Value.absent(),
+                Value<String?> steps = const Value.absent(),
+                Value<String?> tips = const Value.absent(),
+                Value<String?> catalogSource = const Value.absent(),
+                Value<String?> catalogLicense = const Value.absent(),
               }) => ExercisesCompanion.insert(
                 id: id,
                 name: name,
@@ -7494,6 +8267,17 @@ class $$ExercisesTableTableManager
                 germanName: germanName,
                 aliases: aliases,
                 muscle: muscle,
+                catalogId: catalogId,
+                categoryName: categoryName,
+                equipment: equipment,
+                primaryMuscles: primaryMuscles,
+                secondaryMuscles: secondaryMuscles,
+                split: split,
+                mechanic: mechanic,
+                steps: steps,
+                tips: tips,
+                catalogSource: catalogSource,
+                catalogLicense: catalogLicense,
               ),
           withReferenceMapper: (p0) => p0
               .map(

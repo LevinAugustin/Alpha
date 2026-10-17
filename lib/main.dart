@@ -3,10 +3,9 @@ import 'dart:async';
 import 'package:drift/drift.dart' hide Column;
 import 'package:flexify/alpha/alpha_prefs.dart';
 import 'package:flexify/crash_logger.dart';
-import 'package:flexify/database/gym_catalog.dart';
-import 'package:flexify/shell/live_workout_bar.dart';
-import 'package:flexify/database/catalog_seed.dart';
 import 'package:flexify/database/database.dart';
+import 'package:flexify/database/exercise_de_catalog.dart';
+import 'package:flexify/shell/live_workout_bar.dart';
 import 'package:flexify/database/failed_migrations_page.dart';
 import 'package:flexify/logging.dart';
 import 'package:flexify/l10n/generated/app_localizations.dart';
@@ -119,8 +118,7 @@ Future<void> main() async {
 
       talker.info('Loaded application settings');
       try {
-        await seedExerciseCatalog(db);
-        await applyGymCatalog(db);
+        await importExerciseCatalog(db);
         await _nameDefaultPlans(db);
         await alphaPrefs.load();
       } catch (error, stack) {

@@ -1976,8 +1976,13 @@ class AppLocalizationsAr extends AppLocalizations {
       'يُنشر Flexify برخصة MIT. Copyright Brandon Dick.';
 
   @override
-  String get exerciseDbNotice =>
-      'أسماء الصور والحركات من free-exercise-db برخصة Unlicense.';
+  String get exerciseDbNotice => 'كل تمرين يذكر مصدره وترخيصه.';
+
+  @override
+  String get sourceLabel => 'المصدر';
+
+  @override
+  String get tipsLabel => 'نصائح';
 
   @override
   String get aiCoachTitle => 'مدرب الذكاء';

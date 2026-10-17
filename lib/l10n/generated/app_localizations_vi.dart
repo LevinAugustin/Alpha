@@ -1995,8 +1995,13 @@ class AppLocalizationsVi extends AppLocalizations {
       'Flexify được phát hành theo giấy phép MIT. Copyright Brandon Dick.';
 
   @override
-  String get exerciseDbNotice =>
-      'Tên và ảnh bài tập lấy từ free-exercise-db, Unlicense.';
+  String get exerciseDbNotice => 'Mỗi bài tập ghi nguồn và giấy phép của nó.';
+
+  @override
+  String get sourceLabel => 'Nguồn';
+
+  @override
+  String get tipsLabel => 'Mẹo';
 
   @override
   String get aiCoachTitle => 'Huấn luyện viên AI';

@@ -3,7 +3,7 @@ import 'dart:io';
 
 import 'package:drift/drift.dart';
 import 'package:flexify/database/body_weight_repository.dart';
-import 'package:flexify/database/catalog_seed.dart';
+import 'package:flexify/database/exercise_de_catalog.dart';
 import 'package:flexify/database/database.dart';
 import 'package:flexify/main.dart';
 import 'package:flexify/storage/app_storage_native.dart';
@@ -270,7 +270,7 @@ Future<LocalProfile> createLocalProfile(String name) async {
   await database.settings.update().write(
     SettingsCompanion(profileName: Value(trimmed)),
   );
-  await seedExerciseCatalog(database);
+  await importExerciseCatalog(database);
   await database.close();
   final registry = await loadProfileRegistry();
   registry.profiles.add(profile);
@@ -284,7 +284,7 @@ Future<void> activateLocalProfile(LocalProfile profile) async {
   registry.activeId = profile.id;
   await saveProfileRegistry(registry);
   final next = await openProfileDatabase(profile);
-  await seedExerciseCatalog(next);
+  await importExerciseCatalog(next);
   final previous = db;
   db = next;
   dbVersion.value++;

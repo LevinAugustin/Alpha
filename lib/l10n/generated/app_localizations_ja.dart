@@ -1930,7 +1930,13 @@ class AppLocalizationsJa extends AppLocalizations {
       'Flexify は MIT ライセンスで公開されています。Copyright Brandon Dick。';
 
   @override
-  String get exerciseDbNotice => '種目名と写真は free-exercise-db（Unlicense）のものです。';
+  String get exerciseDbNotice => '各種目は出典とライセンスを示します。';
+
+  @override
+  String get sourceLabel => '出典';
+
+  @override
+  String get tipsLabel => 'コツ';
 
   @override
   String get aiCoachTitle => 'AIコーチ';

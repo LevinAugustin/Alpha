@@ -1989,8 +1989,13 @@ class AppLocalizationsFa extends AppLocalizations {
       'Flexify با مجوز MIT منتشر شده است. Copyright Brandon Dick.';
 
   @override
-  String get exerciseDbNotice =>
-      'نام و عکس حرکت‌ها از free-exercise-db با Unlicense است.';
+  String get exerciseDbNotice => 'هر حرکت منبع و مجوز خودش را نشان می‌دهد.';
+
+  @override
+  String get sourceLabel => 'منبع';
+
+  @override
+  String get tipsLabel => 'نکته‌ها';
 
   @override
   String get aiCoachTitle => 'مربی هوش مصنوعی';

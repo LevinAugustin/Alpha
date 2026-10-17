@@ -1101,6 +1101,26 @@ class AppDatabase extends _$AppDatabase {
               await m.addColumn(schema.settings, schema.settings.restVolume);
               await m.addColumn(schema.workouts, schema.workouts.exerciseOrder);
             },
+            from72To73: (Migrator m, Schema73 schema) async {
+              await m.alterTable(
+                TableMigration(
+                  schema.exercises,
+                  newColumns: [
+                    schema.exercises.catalogId,
+                    schema.exercises.categoryName,
+                    schema.exercises.equipment,
+                    schema.exercises.primaryMuscles,
+                    schema.exercises.secondaryMuscles,
+                    schema.exercises.split,
+                    schema.exercises.mechanic,
+                    schema.exercises.steps,
+                    schema.exercises.tips,
+                    schema.exercises.catalogSource,
+                    schema.exercises.catalogLicense,
+                  ],
+                ),
+              );
+            },
           );
           await transaction(() async {
             await upgrade(m, from, to);
@@ -1122,5 +1142,5 @@ class AppDatabase extends _$AppDatabase {
   }
 
   @override
-  int get schemaVersion => 72;
+  int get schemaVersion => 73;
 }

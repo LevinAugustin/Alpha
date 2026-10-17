@@ -2013,7 +2013,13 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get exerciseDbNotice =>
-      'Nomes e fotos dos exercícios vêm do free-exercise-db, Unlicense.';
+      'Cada exercício indica a própria fonte e licença.';
+
+  @override
+  String get sourceLabel => 'Fonte';
+
+  @override
+  String get tipsLabel => 'Dicas';
 
   @override
   String get aiCoachTitle => 'Treinador de IA';
@@ -4153,7 +4159,13 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
 
   @override
   String get exerciseDbNotice =>
-      'Nomes e fotos dos exercícios vêm do free-exercise-db, Unlicense.';
+      'Cada exercício indica a própria fonte e licença.';
+
+  @override
+  String get sourceLabel => 'Fonte';
+
+  @override
+  String get tipsLabel => 'Dicas';
 
   @override
   String get aiCoachTitle => 'Treinador de IA';
@@ -6300,7 +6312,13 @@ class AppLocalizationsPtPt extends AppLocalizationsPt {
 
   @override
   String get exerciseDbNotice =>
-      'Nomes e fotos dos exercícios vêm do free-exercise-db, Unlicense.';
+      'Cada exercício indica a própria fonte e licença.';
+
+  @override
+  String get sourceLabel => 'Fonte';
+
+  @override
+  String get tipsLabel => 'Dicas';
 
   @override
   String get aiCoachTitle => 'Treinador de IA';

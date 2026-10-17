@@ -2004,7 +2004,13 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get exerciseDbNotice =>
-      'Oefennamen en foto’s komen uit free-exercise-db, Unlicense.';
+      'Elke oefening noemt zijn eigen bron en licentie.';
+
+  @override
+  String get sourceLabel => 'Bron';
+
+  @override
+  String get tipsLabel => 'Aanwijzingen';
 
   @override
   String get aiCoachTitle => 'AI-coach';

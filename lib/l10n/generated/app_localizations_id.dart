@@ -2000,7 +2000,13 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get exerciseDbNotice =>
-      'Nama dan foto gerakan berasal dari free-exercise-db, Unlicense.';
+      'Setiap latihan mencantumkan sumber dan lisensinya.';
+
+  @override
+  String get sourceLabel => 'Sumber';
+
+  @override
+  String get tipsLabel => 'Saran';
 
   @override
   String get aiCoachTitle => 'Pelatih AI';

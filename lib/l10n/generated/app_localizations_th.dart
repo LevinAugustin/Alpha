@@ -1973,8 +1973,13 @@ class AppLocalizationsTh extends AppLocalizations {
       'Flexify เผยแพร่ภายใต้สัญญา MIT Copyright Brandon Dick.';
 
   @override
-  String get exerciseDbNotice =>
-      'ชื่อและรูปท่ามาจาก free-exercise-db สัญญา Unlicense';
+  String get exerciseDbNotice => 'แต่ละท่าบอกแหล่งที่มาและสัญญาอนุญาตของตัวเอง';
+
+  @override
+  String get sourceLabel => 'แหล่งที่มา';
+
+  @override
+  String get tipsLabel => 'เคล็ดลับ';
 
   @override
   String get aiCoachTitle => 'โค้ช AI';

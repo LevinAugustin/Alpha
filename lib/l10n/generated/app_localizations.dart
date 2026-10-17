@@ -3684,11 +3684,23 @@ abstract class AppLocalizations {
   /// **'Flexify is published under the MIT license. Copyright Brandon Dick.'**
   String get flexifyMitNotice;
 
-  /// Exercise names and photos come from free-exercise-db under the Unlicense.
+  /// Each exercise lists its own source and license.
   ///
   /// In en, this message translates to:
-  /// **'Exercise names and photos come from free-exercise-db under the Unlicense.'**
+  /// **'Each exercise lists its own source and license.'**
   String get exerciseDbNotice;
+
+  /// Source
+  ///
+  /// In en, this message translates to:
+  /// **'Source'**
+  String get sourceLabel;
+
+  /// Tips
+  ///
+  /// In en, this message translates to:
+  /// **'Tips'**
+  String get tipsLabel;
 
   /// AI coach
   ///

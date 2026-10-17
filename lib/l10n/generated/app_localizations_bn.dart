@@ -1986,7 +1986,13 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get exerciseDbNotice =>
-      'ব্যায়ামের নাম ও ছবি free-exercise-db, Unlicense থেকে।';
+      'প্রতিটি ব্যায়াম নিজের উৎস ও লাইসেন্স দেখায়।';
+
+  @override
+  String get sourceLabel => 'উৎস';
+
+  @override
+  String get tipsLabel => 'পরামর্শ';
 
   @override
   String get aiCoachTitle => 'এআই কোচ';

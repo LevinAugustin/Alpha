@@ -2013,7 +2013,13 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get exerciseDbNotice =>
-      'Los nombres y fotos de ejercicios vienen de free-exercise-db, Unlicense.';
+      'Cada ejercicio indica su propia fuente y licencia.';
+
+  @override
+  String get sourceLabel => 'Fuente';
+
+  @override
+  String get tipsLabel => 'Consejos';
 
   @override
   String get aiCoachTitle => 'Entrenador de IA';

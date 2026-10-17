@@ -2006,7 +2006,13 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get exerciseDbNotice =>
-      'Egzersiz adları ve fotoğrafları free-exercise-db, Unlicense kaynağındandır.';
+      'Her egzersiz kendi kaynağını ve lisansını gösterir.';
+
+  @override
+  String get sourceLabel => 'Kaynak';
+
+  @override
+  String get tipsLabel => 'İpuçları';
 
   @override
   String get aiCoachTitle => 'YZ koçu';

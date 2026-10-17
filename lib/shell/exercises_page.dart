@@ -1,6 +1,6 @@
 import 'package:drift/drift.dart' hide Column;
 import 'package:flexify/database/database.dart';
-import 'package:flexify/database/gym_catalog.dart';
+import 'package:flexify/database/catalog_seed.dart';
 import 'package:flexify/exercise_labels.dart';
 import 'package:flexify/exercises/exercise_detail_page.dart';
 import 'package:flexify/l10n/l10n.dart';
@@ -53,13 +53,16 @@ class _ExercisesPageState extends State<ExercisesPage> {
                     .watch(),
             builder: (context, snapshot) {
               final exercises = snapshot.data ?? const <Exercise>[];
-              final muscles =
-                  exercises
-                      .map((exercise) => exercise.muscle ?? '')
-                      .where((muscle) => muscle.isNotEmpty)
-                      .toSet()
-                      .toList()
-                    ..sort();
+              final muscles = _chipValues(
+                exercises.map((exercise) => exercise.categoryName),
+              );
+              final equipment = _chipValues(
+                exercises.map((exercise) => exercise.equipment),
+              );
+              final splits = _chipValues(
+                exercises.map((exercise) => exercise.split),
+                const ['push', 'pull', 'beine', 'core', 'cardio'],
+              );
               return ListView(
                 scrollDirection: Axis.horizontal,
                 padding: const EdgeInsets.symmetric(horizontal: 12),
@@ -72,43 +75,6 @@ class _ExercisesPageState extends State<ExercisesPage> {
                       onSelected: (_) => setState(() => _muscle = ''),
                     ),
                   ),
-                  for (final muscle in muscleGroups)
-                    Padding(
-                      padding: const EdgeInsets.only(right: 8),
-                      child: FilterChip(
-                        label: Text(muscle),
-                        selected: _muscle == muscle,
-                        onSelected: (_) => setState(() {
-                          _muscle = _muscle == muscle ? '' : muscle;
-                        }),
-                      ),
-                    ),
-                  for (final equipment in equipmentFilters)
-                    Padding(
-                      padding: const EdgeInsets.only(right: 8),
-                      child: FilterChip(
-                        label: Text(equipment),
-                        selected: _equipment == equipment,
-                        onSelected: (_) => setState(() {
-                          _equipment = _equipment == equipment ? '' : equipment;
-                        }),
-                      ),
-                    ),
-                  for (final split in const [
-                    (id: 'push', label: 'Push'),
-                    (id: 'pull', label: 'Pull'),
-                    (id: 'beine', label: 'Beine'),
-                  ])
-                    Padding(
-                      padding: const EdgeInsets.only(right: 8),
-                      child: FilterChip(
-                        label: Text(split.label),
-                        selected: _split == split.id,
-                        onSelected: (_) => setState(() {
-                          _split = _split == split.id ? '' : split.id;
-                        }),
-                      ),
-                    ),
                   for (final muscle in muscles)
                     Padding(
                       padding: const EdgeInsets.only(right: 8),
@@ -117,6 +83,28 @@ class _ExercisesPageState extends State<ExercisesPage> {
                         selected: _muscle == muscle,
                         onSelected: (_) => setState(() {
                           _muscle = _muscle == muscle ? '' : muscle;
+                        }),
+                      ),
+                    ),
+                  for (final item in equipment)
+                    Padding(
+                      padding: const EdgeInsets.only(right: 8),
+                      child: FilterChip(
+                        label: Text(item),
+                        selected: _equipment == item,
+                        onSelected: (_) => setState(() {
+                          _equipment = _equipment == item ? '' : item;
+                        }),
+                      ),
+                    ),
+                  for (final item in splits)
+                    Padding(
+                      padding: const EdgeInsets.only(right: 8),
+                      child: FilterChip(
+                        label: Text(item),
+                        selected: _split == item,
+                        onSelected: (_) => setState(() {
+                          _split = _split == item ? '' : item;
                         }),
                       ),
                     ),
@@ -141,10 +129,15 @@ class _ExercisesPageState extends State<ExercisesPage> {
                       germanName: exercise.germanName,
                       aliases: exercise.aliases,
                       muscle: exercise.muscle,
+                      category: exercise.categoryName,
+                      equipment: exercise.equipment,
+                      split: exercise.split,
+                      primaryMuscles: exercise.primaryMuscles,
+                      secondaryMuscles: exercise.secondaryMuscles,
                       query: query,
                       group: _muscle,
-                      equipment: _equipment,
-                      split: _split,
+                      equipmentFilter: _equipment,
+                      splitFilter: _split,
                     );
                   }).toList()..sort((a, b) {
                     final left = (a.germanName ?? a.name).toLowerCase();
@@ -183,4 +176,20 @@ class _ExercisesPageState extends State<ExercisesPage> {
       ],
     );
   }
+}
+
+List<String> _chipValues(
+  Iterable<String?> values, [
+  List<String> order = const [],
+]) {
+  final present = values
+      .map((value) => value?.trim() ?? '')
+      .where((value) => value.isNotEmpty)
+      .toSet();
+  final ordered = [
+    for (final item in order)
+      if (present.remove(item)) item,
+  ];
+  final rest = present.toList()..sort();
+  return [...ordered, ...rest];
 }

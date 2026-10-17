@@ -1,8 +1,8 @@
 import 'dart:io';
 
 import 'package:drift/drift.dart' hide Column;
+import 'package:flexify/database/catalog_seed.dart';
 import 'package:flexify/database/database.dart';
-import 'package:flexify/database/gym_catalog.dart';
 import 'package:flexify/exercise_labels.dart';
 import 'package:flexify/l10n/l10n.dart';
 import 'package:flexify/main.dart';
@@ -27,7 +27,6 @@ class _ExerciseDetailPageState extends State<ExerciseDetailPage> {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
     final palette = AlphaTheme.of(context);
-    final info = gymInfoFor(widget.exercise.name);
     final title = localizedExerciseName(
       context,
       widget.exercise.name,
@@ -72,9 +71,9 @@ class _ExerciseDetailPageState extends State<ExerciseDetailPage> {
             final sets = snapshot.data ?? const <ExerciseSet>[];
             return TabBarView(
               children: [
-                _overview(context, info, sets, title),
+                _overview(context, sets, title),
                 _history(context, sets),
-                _howto(context, info),
+                _howto(context),
               ],
             );
           },
@@ -83,14 +82,15 @@ class _ExerciseDetailPageState extends State<ExerciseDetailPage> {
     );
   }
 
-  Widget _overview(
-    BuildContext context,
-    GymInfo? info,
-    List<ExerciseSet> sets,
-    String title,
-  ) {
+  Widget _overview(BuildContext context, List<ExerciseSet> sets, String title) {
     final l10n = context.l10n;
     final palette = AlphaTheme.of(context);
+    final exercise = widget.exercise;
+    final primary = decodeCatalogList(exercise.primaryMuscles);
+    final secondary = decodeCatalogList(exercise.secondaryMuscles);
+    final primaryText = primary.isEmpty
+        ? (exercise.muscle ?? '')
+        : primary.join(', ');
     final working = sets.where((set) => !(set.notes ?? '').contains('warmup'));
     double bestWeight = 0;
     double bestEstimate = 0;
@@ -118,14 +118,21 @@ class _ExerciseDetailPageState extends State<ExerciseDetailPage> {
     return ListView(
       padding: const EdgeInsets.fromLTRB(16, 12, 16, 24),
       children: [
-        _image(info, widget.exercise.image, palette),
+        _image(exercise.image, palette),
         const SizedBox(height: 12),
         Text(
-          '${l10n.primaryMuscleLabel}: ${info?.detailMuscle ?? widget.exercise.muscle ?? '—'}',
+          '${l10n.primaryMuscleLabel}: ${primaryText.isEmpty ? '—' : primaryText}',
         ),
-        if ((info?.secondary ?? '').isNotEmpty)
-          Text('${l10n.secondaryMuscleLabel}: ${info!.secondary}'),
-        Text('${l10n.equipmentLabel}: ${info?.equipment ?? '—'}'),
+        if (secondary.isNotEmpty)
+          Text('${l10n.secondaryMuscleLabel}: ${secondary.join(', ')}'),
+        Text(
+          '${l10n.equipmentLabel}: ${(exercise.equipment ?? '').isEmpty ? '—' : exercise.equipment}',
+        ),
+        if ((exercise.catalogSource ?? '').isNotEmpty ||
+            (exercise.catalogLicense ?? '').isNotEmpty)
+          Text(
+            '${l10n.sourceLabel}: ${exercise.catalogSource ?? ''} · ${l10n.licenseLabel}: ${exercise.catalogLicense ?? ''}',
+          ),
         const SizedBox(height: 12),
         Wrap(
           spacing: 8,
@@ -186,12 +193,12 @@ class _ExerciseDetailPageState extends State<ExerciseDetailPage> {
     );
   }
 
-  Widget _howto(BuildContext context, GymInfo? info) {
-    final steps = (info?.steps ?? widget.exercise.notes ?? '')
-        .split('\n')
-        .where((line) => line.trim().isNotEmpty)
-        .toList();
-    if (steps.isEmpty) return Center(child: Text(context.l10n.noHistory));
+  Widget _howto(BuildContext context) {
+    final steps = decodeCatalogList(widget.exercise.steps);
+    final tips = decodeCatalogList(widget.exercise.tips);
+    if (steps.isEmpty && tips.isEmpty) {
+      return Center(child: Text(context.l10n.noHistory));
+    }
     return ListView(
       padding: const EdgeInsets.all(16),
       children: [
@@ -200,17 +207,35 @@ class _ExerciseDetailPageState extends State<ExerciseDetailPage> {
             padding: const EdgeInsets.only(bottom: 12),
             child: Text('${index + 1}. ${steps[index]}'),
           ),
+        if (tips.isNotEmpty) ...[
+          Text(
+            context.l10n.tipsLabel,
+            style: Theme.of(context).textTheme.titleMedium,
+          ),
+          const SizedBox(height: 8),
+          for (final tip in tips)
+            Padding(
+              padding: const EdgeInsets.only(bottom: 8),
+              child: Text(tip),
+            ),
+        ],
       ],
     );
   }
 
-  Widget _image(GymInfo? info, String? stored, AlphaPalette palette) {
-    final path = (stored ?? '').isNotEmpty ? stored! : info?.image;
-    if (path == null || path.isEmpty) {
+  Widget _image(String? stored, AlphaPalette palette) {
+    final path = (stored ?? '').trim();
+    if (path.isEmpty) {
       return Icon(Icons.fitness_center, size: 72, color: palette.muted);
     }
     if (path.startsWith('assets/')) {
-      return Image.asset(path, height: 180, fit: BoxFit.contain);
+      return Image.asset(
+        path,
+        height: 180,
+        fit: BoxFit.contain,
+        errorBuilder: (context, error, stack) =>
+            Icon(Icons.fitness_center, size: 72, color: palette.muted),
+      );
     }
     return Image.file(
       File(path),

@@ -1988,8 +1988,13 @@ class AppLocalizationsUr extends AppLocalizations {
       'Flexify MIT لائسنس میں ہے۔ Copyright Brandon Dick.';
 
   @override
-  String get exerciseDbNotice =>
-      'حرکتوں کے نام اور تصاویر free-exercise-db، Unlicense سے ہیں۔';
+  String get exerciseDbNotice => 'ہر مشق اپنا ماخذ اور لائسنس بتاتی ہے۔';
+
+  @override
+  String get sourceLabel => 'ماخذ';
+
+  @override
+  String get tipsLabel => 'مشورے';
 
   @override
   String get aiCoachTitle => 'اے آئی کوچ';

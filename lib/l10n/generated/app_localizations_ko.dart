@@ -1932,8 +1932,13 @@ class AppLocalizationsKo extends AppLocalizations {
       'Flexify는 MIT 라이선스로 공개됩니다. Copyright Brandon Dick.';
 
   @override
-  String get exerciseDbNotice =>
-      '동작 이름과 사진은 free-exercise-db, Unlicense에서 옵니다.';
+  String get exerciseDbNotice => '각 운동은 출처와 라이선스를 표시합니다.';
+
+  @override
+  String get sourceLabel => '출처';
+
+  @override
+  String get tipsLabel => '팁';
 
   @override
   String get aiCoachTitle => 'AI 코치';

@@ -1999,7 +1999,13 @@ class AppLocalizationsMs extends AppLocalizations {
 
   @override
   String get exerciseDbNotice =>
-      'Nama dan foto gerakan datang dari free-exercise-db, Unlicense.';
+      'Setiap latihan menyenaraikan sumber dan lesennya.';
+
+  @override
+  String get sourceLabel => 'Sumber';
+
+  @override
+  String get tipsLabel => 'Petua';
 
   @override
   String get aiCoachTitle => 'Jurulatih AI';

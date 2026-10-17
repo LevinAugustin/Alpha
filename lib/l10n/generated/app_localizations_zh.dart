@@ -1919,7 +1919,13 @@ class AppLocalizationsZh extends AppLocalizations {
   String get flexifyMitNotice => 'Flexify 以 MIT 许可证发布。Copyright Brandon Dick。';
 
   @override
-  String get exerciseDbNotice => '动作名称和照片来自 free-exercise-db，Unlicense。';
+  String get exerciseDbNotice => '每个动作都会列出自己的来源和许可。';
+
+  @override
+  String get sourceLabel => '来源';
+
+  @override
+  String get tipsLabel => '提示';
 
   @override
   String get aiCoachTitle => '智能教练';
@@ -3971,7 +3977,13 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
   String get flexifyMitNotice => 'Flexify 以 MIT 许可证发布。Copyright Brandon Dick。';
 
   @override
-  String get exerciseDbNotice => '动作名称和照片来自 free-exercise-db，Unlicense。';
+  String get exerciseDbNotice => '每个动作都会列出自己的来源和许可。';
+
+  @override
+  String get sourceLabel => '来源';
+
+  @override
+  String get tipsLabel => '提示';
 
   @override
   String get aiCoachTitle => '智能教练';
@@ -6023,7 +6035,13 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get flexifyMitNotice => 'Flexify 以 MIT 授權發布。Copyright Brandon Dick。';
 
   @override
-  String get exerciseDbNotice => '動作名稱與照片來自 free-exercise-db，Unlicense。';
+  String get exerciseDbNotice => '每個動作都會列出自己的來源和授權。';
+
+  @override
+  String get sourceLabel => '來源';
+
+  @override
+  String get tipsLabel => '提示';
 
   @override
   String get aiCoachTitle => '智慧教練';
