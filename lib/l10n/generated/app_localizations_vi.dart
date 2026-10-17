@@ -2010,22 +2010,52 @@ class AppLocalizationsVi extends AppLocalizations {
   String get imageLicenseLabel => 'Giấy phép ảnh';
 
   @override
-  String get gearLanghantel => 'Thanh đòn';
+  String get muscleUpperChest => 'Ngực trên';
 
   @override
-  String get gearKurzhantel => 'Tạ đơn';
+  String get muscleFrontShoulder => 'Vai trước';
 
   @override
-  String get gearKabelzug => 'Cáp';
+  String get muscleSideShoulder => 'Vai bên';
 
   @override
-  String get gearMaschine => 'Máy tập';
+  String get muscleRearShoulder => 'Vai sau';
 
   @override
-  String get gearMultipresse => 'Máy Smith';
+  String get muscleLatissimus => 'Cơ lưng lớn';
 
   @override
-  String get gearKoerpergewicht => 'Trọng lượng cơ thể';
+  String get muscleUpperBack => 'Lưng trên';
+
+  @override
+  String get muscleTrapez => 'Cơ thang';
+
+  @override
+  String get muscleLowerBack => 'Lưng dưới';
+
+  @override
+  String get muscleForearms => 'Cẳng tay';
+
+  @override
+  String get muscleRectus => 'Cơ bụng thẳng';
+
+  @override
+  String get muscleObliques => 'Cơ bụng chéo';
+
+  @override
+  String get muscleQuadriceps => 'Cơ tứ đầu';
+
+  @override
+  String get muscleAdductors => 'Cơ khép';
+
+  @override
+  String get muscleAbductors => 'Cơ dạng';
+
+  @override
+  String get muscleHipFlexors => 'Cơ gập hông';
+
+  @override
+  String get alternativesLabel => 'Bài thay thế';
 
   @override
   String get aiCoachTitle => 'Huấn luyện viên AI';

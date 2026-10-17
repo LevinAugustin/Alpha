@@ -1945,22 +1945,52 @@ class AppLocalizationsJa extends AppLocalizations {
   String get imageLicenseLabel => '画像のライセンス';
 
   @override
-  String get gearLanghantel => 'バーベル';
+  String get muscleUpperChest => '大胸筋上部';
 
   @override
-  String get gearKurzhantel => 'ダンベル';
+  String get muscleFrontShoulder => '三角筋前部';
 
   @override
-  String get gearKabelzug => 'ケーブル';
+  String get muscleSideShoulder => '三角筋中部';
 
   @override
-  String get gearMaschine => 'マシン';
+  String get muscleRearShoulder => '三角筋後部';
 
   @override
-  String get gearMultipresse => 'スミスマシン';
+  String get muscleLatissimus => '広背筋';
 
   @override
-  String get gearKoerpergewicht => '自重';
+  String get muscleUpperBack => '背中上部';
+
+  @override
+  String get muscleTrapez => '僧帽筋';
+
+  @override
+  String get muscleLowerBack => '背中下部';
+
+  @override
+  String get muscleForearms => '前腕';
+
+  @override
+  String get muscleRectus => '腹直筋';
+
+  @override
+  String get muscleObliques => '腹斜筋';
+
+  @override
+  String get muscleQuadriceps => '大腿四頭筋';
+
+  @override
+  String get muscleAdductors => '内転筋';
+
+  @override
+  String get muscleAbductors => '外転筋';
+
+  @override
+  String get muscleHipFlexors => '腸腰筋';
+
+  @override
+  String get alternativesLabel => '代替種目';
 
   @override
   String get aiCoachTitle => 'AIコーチ';

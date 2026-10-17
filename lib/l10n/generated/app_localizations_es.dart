@@ -2028,22 +2028,52 @@ class AppLocalizationsEs extends AppLocalizations {
   String get imageLicenseLabel => 'Licencia de la imagen';
 
   @override
-  String get gearLanghantel => 'Barra';
+  String get muscleUpperChest => 'Pecho superior';
 
   @override
-  String get gearKurzhantel => 'Mancuerna';
+  String get muscleFrontShoulder => 'Hombro frontal';
 
   @override
-  String get gearKabelzug => 'Polea';
+  String get muscleSideShoulder => 'Hombro lateral';
 
   @override
-  String get gearMaschine => 'Aparato';
+  String get muscleRearShoulder => 'Hombro posterior';
 
   @override
-  String get gearMultipresse => 'Multipower';
+  String get muscleLatissimus => 'Dorsal ancho';
 
   @override
-  String get gearKoerpergewicht => 'Peso corporal';
+  String get muscleUpperBack => 'Espalda alta';
+
+  @override
+  String get muscleTrapez => 'Trapecio';
+
+  @override
+  String get muscleLowerBack => 'Espalda baja';
+
+  @override
+  String get muscleForearms => 'Antebrazos';
+
+  @override
+  String get muscleRectus => 'Recto abdominal';
+
+  @override
+  String get muscleObliques => 'Oblicuos';
+
+  @override
+  String get muscleQuadriceps => 'Cuádriceps';
+
+  @override
+  String get muscleAdductors => 'Aductores';
+
+  @override
+  String get muscleAbductors => 'Abductores';
+
+  @override
+  String get muscleHipFlexors => 'Flexores de cadera';
+
+  @override
+  String get alternativesLabel => 'Alternativas';
 
   @override
   String get aiCoachTitle => 'Entrenador de IA';

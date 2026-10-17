@@ -1998,22 +1998,52 @@ class AppLocalizationsHi extends AppLocalizations {
   String get imageLicenseLabel => 'चित्र लाइसेंस';
 
   @override
-  String get gearLanghantel => 'बारबेल';
+  String get muscleUpperChest => 'ऊपरी छाती';
 
   @override
-  String get gearKurzhantel => 'डंबल';
+  String get muscleFrontShoulder => 'आगे का कंधा';
 
   @override
-  String get gearKabelzug => 'केबल';
+  String get muscleSideShoulder => 'बगल का कंधा';
 
   @override
-  String get gearMaschine => 'यंत्र';
+  String get muscleRearShoulder => 'पीछे का कंधा';
 
   @override
-  String get gearMultipresse => 'स्मिथ मशीन';
+  String get muscleLatissimus => 'लेटिसिमस';
 
   @override
-  String get gearKoerpergewicht => 'शरीर का वजन';
+  String get muscleUpperBack => 'ऊपरी पीठ';
+
+  @override
+  String get muscleTrapez => 'ट्रैपेजियस';
+
+  @override
+  String get muscleLowerBack => 'निचली पीठ';
+
+  @override
+  String get muscleForearms => 'बाहों का निचला भाग';
+
+  @override
+  String get muscleRectus => 'सीधी पेट की मांसपेशी';
+
+  @override
+  String get muscleObliques => 'तिरछी पेट की मांसपेशी';
+
+  @override
+  String get muscleQuadriceps => 'क्वाड्रिसेप्स';
+
+  @override
+  String get muscleAdductors => 'एडक्टर';
+
+  @override
+  String get muscleAbductors => 'एबडक्टर';
+
+  @override
+  String get muscleHipFlexors => 'हिप फ्लेक्सर';
+
+  @override
+  String get alternativesLabel => 'विकल्प';
 
   @override
   String get aiCoachTitle => 'एआई कोच';

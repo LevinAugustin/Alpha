@@ -2019,22 +2019,52 @@ class AppLocalizationsNl extends AppLocalizations {
   String get imageLicenseLabel => 'Licentie van de afbeelding';
 
   @override
-  String get gearLanghantel => 'Halterstang';
+  String get muscleUpperChest => 'Bovenste borst';
 
   @override
-  String get gearKurzhantel => 'Halter';
+  String get muscleFrontShoulder => 'Voorste schouder';
 
   @override
-  String get gearKabelzug => 'Kabel';
+  String get muscleSideShoulder => 'Zijdelingse schouder';
 
   @override
-  String get gearMaschine => 'Apparaat';
+  String get muscleRearShoulder => 'Achterste schouder';
 
   @override
-  String get gearMultipresse => 'Smithmachine';
+  String get muscleLatissimus => 'Brede rugspier';
 
   @override
-  String get gearKoerpergewicht => 'Lichaamsgewicht';
+  String get muscleUpperBack => 'Bovenrug';
+
+  @override
+  String get muscleTrapez => 'Monnikskapspier';
+
+  @override
+  String get muscleLowerBack => 'Onderrug';
+
+  @override
+  String get muscleForearms => 'Onderarmen';
+
+  @override
+  String get muscleRectus => 'Rechte buikspier';
+
+  @override
+  String get muscleObliques => 'Schuine buikspieren';
+
+  @override
+  String get muscleQuadriceps => 'Bovenbeenspieren';
+
+  @override
+  String get muscleAdductors => 'Adductoren';
+
+  @override
+  String get muscleAbductors => 'Abductoren';
+
+  @override
+  String get muscleHipFlexors => 'Heupbuigers';
+
+  @override
+  String get alternativesLabel => 'Alternatieven';
 
   @override
   String get aiCoachTitle => 'AI-coach';

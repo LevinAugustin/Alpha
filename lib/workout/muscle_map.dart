@@ -8,29 +8,27 @@ const muscleRegions = exerciseMuscleKeys;
 
 String muscleLabel(AppLocalizations l10n, String id) {
   return switch (id) {
-    'chest' => l10n.muscleChest,
-    'delts' => l10n.muscleShoulders,
-    'biceps' => l10n.muscleBiceps,
-    'triceps' => l10n.muscleTriceps,
-    'abs' => l10n.muscleAbs,
-    'quads' => l10n.muscleQuads,
-    'calves' => l10n.muscleCalves,
-    'traps' => l10n.muscleTraps,
-    'lats' => l10n.muscleBack,
-    'glutes' => l10n.muscleGlutes,
-    'hams' => l10n.muscleHams,
-    _ => id,
-  };
-}
-
-String gearLabel(AppLocalizations l10n, String id) {
-  return switch (id) {
-    'langhantel' => l10n.gearLanghantel,
-    'kurzhantel' => l10n.gearKurzhantel,
-    'kabelzug' => l10n.gearKabelzug,
-    'maschine' => l10n.gearMaschine,
-    'multipresse' => l10n.gearMultipresse,
-    'koerpergewicht' => l10n.gearKoerpergewicht,
+    'brust' => l10n.muscleChest,
+    'brust_oben' => l10n.muscleUpperChest,
+    'schulter_vorne' => l10n.muscleFrontShoulder,
+    'schulter_seitlich' => l10n.muscleSideShoulder,
+    'schulter_hinten' => l10n.muscleRearShoulder,
+    'latissimus' => l10n.muscleLatissimus,
+    'oberer_ruecken' => l10n.muscleUpperBack,
+    'trapez' => l10n.muscleTrapez,
+    'unterer_ruecken' => l10n.muscleLowerBack,
+    'bizeps' => l10n.muscleBiceps,
+    'unterarme' => l10n.muscleForearms,
+    'trizeps' => l10n.muscleTriceps,
+    'bauch_gerade' => l10n.muscleRectus,
+    'bauch_schraeg' => l10n.muscleObliques,
+    'quadrizeps' => l10n.muscleQuadriceps,
+    'beinbeuger' => l10n.muscleHams,
+    'gesaess' => l10n.muscleGlutes,
+    'adduktoren' => l10n.muscleAdductors,
+    'abduktoren' => l10n.muscleAbductors,
+    'waden' => l10n.muscleCalves,
+    'hueftbeuger' => l10n.muscleHipFlexors,
     _ => id,
   };
 }
@@ -38,12 +36,14 @@ String gearLabel(AppLocalizations l10n, String id) {
 String? regionForGroup(String? muscle) {
   if (muscle != null && exerciseMuscleKeys.contains(muscle)) return muscle;
   return switch (muscle) {
-    'Brust' => 'chest',
-    'Schultern' => 'delts',
-    'Arme' => 'biceps',
-    'Bauch' => 'abs',
-    'Beine' => 'quads',
-    'Rücken' => 'lats',
+    'Brust' => 'brust',
+    'Schultern' => 'schulter_vorne',
+    'Arme' => 'bizeps',
+    'Bauch' => 'bauch_gerade',
+    'Beine' => 'quadrizeps',
+    'Rücken' => 'latissimus',
+    'Bizeps' => 'bizeps',
+    'Trizeps' => 'trizeps',
     'Cardio' => null,
     _ => null,
   };
@@ -79,16 +79,16 @@ void contributeMuscleHeat(
     heat[region] = (heat[region] ?? 0) + load;
   }
   if (group == 'Arme') {
-    heat['triceps'] = (heat['triceps'] ?? 0) + load * 0.5;
-    heat['biceps'] = (heat['biceps'] ?? 0) + load * 0.5;
+    heat['trizeps'] = (heat['trizeps'] ?? 0) + load * 0.5;
+    heat['bizeps'] = (heat['bizeps'] ?? 0) + load * 0.5;
   }
   if (group == 'Beine') {
-    heat['hams'] = (heat['hams'] ?? 0) + load * 0.4;
-    heat['glutes'] = (heat['glutes'] ?? 0) + load * 0.3;
-    heat['calves'] = (heat['calves'] ?? 0) + load * 0.15;
+    heat['beinbeuger'] = (heat['beinbeuger'] ?? 0) + load * 0.4;
+    heat['gesaess'] = (heat['gesaess'] ?? 0) + load * 0.3;
+    heat['waden'] = (heat['waden'] ?? 0) + load * 0.15;
   }
   if (group == 'Rücken') {
-    heat['traps'] = (heat['traps'] ?? 0) + load * 0.35;
+    heat['trapez'] = (heat['trapez'] ?? 0) + load * 0.35;
   }
 }
 
@@ -177,39 +177,62 @@ class _Figure extends StatelessWidget {
   }
 }
 
+class _Mark {
+  const _Mark(this.id, this.rect);
+
+  final String id;
+  final Rect rect;
+}
+
+const _frontMarks = [
+  _Mark('brust_oben', Rect.fromLTWH(19, 22, 22, 6)),
+  _Mark('brust', Rect.fromLTWH(19, 28, 22, 9)),
+  _Mark('schulter_vorne', Rect.fromLTWH(14, 19, 7, 8)),
+  _Mark('schulter_vorne', Rect.fromLTWH(39, 19, 7, 8)),
+  _Mark('schulter_seitlich', Rect.fromLTWH(8, 20, 6, 10)),
+  _Mark('schulter_seitlich', Rect.fromLTWH(46, 20, 6, 10)),
+  _Mark('bauch_schraeg', Rect.fromLTWH(18, 39, 6, 15)),
+  _Mark('bauch_schraeg', Rect.fromLTWH(36, 39, 6, 15)),
+  _Mark('bauch_gerade', Rect.fromLTWH(24, 39, 12, 16)),
+  _Mark('bizeps', Rect.fromLTWH(7, 31, 7, 12)),
+  _Mark('bizeps', Rect.fromLTWH(46, 31, 7, 12)),
+  _Mark('unterarme', Rect.fromLTWH(6, 44, 7, 12)),
+  _Mark('unterarme', Rect.fromLTWH(47, 44, 7, 12)),
+  _Mark('hueftbeuger', Rect.fromLTWH(21, 56, 7, 7)),
+  _Mark('hueftbeuger', Rect.fromLTWH(32, 56, 7, 7)),
+  _Mark('abduktoren', Rect.fromLTWH(13, 64, 5, 16)),
+  _Mark('abduktoren', Rect.fromLTWH(42, 64, 5, 16)),
+  _Mark('adduktoren', Rect.fromLTWH(25, 68, 5, 24)),
+  _Mark('adduktoren', Rect.fromLTWH(30, 68, 5, 24)),
+  _Mark('quadrizeps', Rect.fromLTWH(17, 66, 8, 28)),
+  _Mark('quadrizeps', Rect.fromLTWH(35, 66, 8, 28)),
+  _Mark('waden', Rect.fromLTWH(19, 100, 8, 18)),
+  _Mark('waden', Rect.fromLTWH(33, 100, 8, 18)),
+];
+
+const _backMarks = [
+  _Mark('trapez', Rect.fromLTWH(22, 16, 16, 8)),
+  _Mark('schulter_hinten', Rect.fromLTWH(12, 18, 8, 8)),
+  _Mark('schulter_hinten', Rect.fromLTWH(40, 18, 8, 8)),
+  _Mark('oberer_ruecken', Rect.fromLTWH(20, 25, 20, 8)),
+  _Mark('unterer_ruecken', Rect.fromLTWH(22, 50, 16, 9)),
+  _Mark('latissimus', Rect.fromLTWH(14, 33, 32, 16)),
+  _Mark('trizeps', Rect.fromLTWH(5, 30, 8, 14)),
+  _Mark('trizeps', Rect.fromLTWH(47, 30, 8, 14)),
+  _Mark('unterarme', Rect.fromLTWH(5, 44, 8, 12)),
+  _Mark('unterarme', Rect.fromLTWH(47, 44, 8, 12)),
+  _Mark('gesaess', Rect.fromLTWH(18, 60, 24, 12)),
+  _Mark('beinbeuger', Rect.fromLTWH(18, 74, 10, 22)),
+  _Mark('beinbeuger', Rect.fromLTWH(32, 74, 10, 22)),
+  _Mark('waden', Rect.fromLTWH(19, 100, 8, 18)),
+  _Mark('waden', Rect.fromLTWH(33, 100, 8, 18)),
+];
+
 String? _hit(Offset point, double height, bool front) {
   final scale = height / 130;
-  final x = point.dx / scale;
-  final y = point.dy / scale;
-  bool inside(Rect rect) => rect.contains(Offset(x, y));
-  if (front) {
-    if (inside(const Rect.fromLTWH(18, 22, 24, 16))) return 'chest';
-    if (inside(const Rect.fromLTWH(8, 22, 12, 14)) ||
-        inside(const Rect.fromLTWH(40, 22, 12, 14))) {
-      return 'delts';
-    }
-    if (inside(const Rect.fromLTWH(6, 36, 10, 22)) ||
-        inside(const Rect.fromLTWH(44, 36, 10, 22))) {
-      return 'biceps';
-    }
-    if (inside(const Rect.fromLTWH(22, 40, 16, 18))) return 'abs';
-    if (inside(const Rect.fromLTWH(16, 68, 12, 28)) ||
-        inside(const Rect.fromLTWH(32, 68, 12, 28))) {
-      return 'quads';
-    }
-    if (y > 98) return 'calves';
-  } else {
-    if (inside(const Rect.fromLTWH(20, 20, 20, 12))) return 'traps';
-    if (inside(const Rect.fromLTWH(12, 32, 36, 28))) return 'lats';
-    if (inside(const Rect.fromLTWH(18, 62, 24, 16))) return 'glutes';
-    if (inside(const Rect.fromLTWH(16, 78, 12, 22)) ||
-        inside(const Rect.fromLTWH(32, 78, 12, 22))) {
-      return 'hams';
-    }
-    if (inside(const Rect.fromLTWH(4, 34, 10, 20)) ||
-        inside(const Rect.fromLTWH(46, 34, 10, 20))) {
-      return 'triceps';
-    }
+  final local = Offset(point.dx / scale, point.dy / scale);
+  for (final mark in front ? _frontMarks : _backMarks) {
+    if (mark.rect.contains(local)) return mark.id;
   }
   return null;
 }
@@ -271,27 +294,8 @@ class _BodyPainter extends CustomPainter {
       );
     }
 
-    if (front) {
-      blob('delts', const Rect.fromLTWH(10, 20, 10, 12));
-      blob('delts', const Rect.fromLTWH(40, 20, 10, 12));
-      blob('chest', const Rect.fromLTWH(18, 24, 24, 14));
-      blob('biceps', const Rect.fromLTWH(8, 34, 8, 18));
-      blob('biceps', const Rect.fromLTWH(44, 34, 8, 18));
-      blob('abs', const Rect.fromLTWH(23, 40, 14, 18));
-      blob('quads', const Rect.fromLTWH(18, 70, 10, 26));
-      blob('quads', const Rect.fromLTWH(32, 70, 10, 26));
-      blob('calves', const Rect.fromLTWH(20, 100, 7, 18));
-      blob('calves', const Rect.fromLTWH(33, 100, 7, 18));
-    } else {
-      blob('traps', const Rect.fromLTWH(22, 18, 16, 10));
-      blob('lats', const Rect.fromLTWH(14, 30, 32, 24));
-      blob('triceps', const Rect.fromLTWH(6, 32, 8, 18));
-      blob('triceps', const Rect.fromLTWH(46, 32, 8, 18));
-      blob('glutes', const Rect.fromLTWH(18, 60, 24, 14));
-      blob('hams', const Rect.fromLTWH(18, 78, 10, 20));
-      blob('hams', const Rect.fromLTWH(32, 78, 10, 20));
-      blob('calves', const Rect.fromLTWH(20, 100, 7, 18));
-      blob('calves', const Rect.fromLTWH(33, 100, 7, 18));
+    for (final mark in front ? _frontMarks : _backMarks) {
+      blob(mark.id, mark.rect);
     }
   }
 

@@ -40,4 +40,5 @@ class Exercises extends Table {
   TextColumn get imageSource => text().nullable()();
   TextColumn get imageLicense => text().nullable()();
   TextColumn get alternatives => text().nullable()();
+  TextColumn get schulterRisiko => text().nullable()();
 }

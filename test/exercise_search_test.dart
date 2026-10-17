@@ -19,7 +19,7 @@ void main() {
         name: 'bankdruecken-multipresse',
         germanName: 'Bankdrücken an der Multipresse',
         aliases: 'Smith Machine|Multipresse',
-        equipment: 'multipresse',
+        equipment: 'Multipresse',
         query: 'Multipresse',
       ),
       isTrue,
@@ -45,11 +45,11 @@ void main() {
     expect(
       matchesExerciseFilters(
         name: 'bankdruecken-multipresse',
-        equipment: 'multipresse',
+        equipment: 'Multipresse',
         split: 'push',
         category: 'Brust',
         query: '',
-        equipmentFilter: 'multipresse',
+        equipmentFilter: 'Multipresse',
         splitFilter: 'pull',
       ),
       isFalse,
@@ -62,16 +62,16 @@ void main() {
       heat,
       load: 100,
       group: 'Brust',
-      primaryMuscles: '["chest"]',
-      secondaryMuscles: '["triceps"]',
+      primaryMuscles: '["brust"]',
+      secondaryMuscles: '["trizeps"]',
     );
-    expect(heat['chest'], 100);
-    expect(heat['triceps'], closeTo(35, 0.001));
+    expect(heat['brust'], 100);
+    expect(heat['trizeps'], closeTo(35, 0.001));
     expect(heat.containsKey('Brust'), isFalse);
 
     final legacy = <String, double>{};
     contributeMuscleHeat(legacy, load: 80, group: 'Beine');
-    expect(legacy['quads'], 80);
-    expect(legacy['hams'], closeTo(32, 0.001));
+    expect(legacy['quadrizeps'], 80);
+    expect(legacy['beinbeuger'], closeTo(32, 0.001));
   });
 }

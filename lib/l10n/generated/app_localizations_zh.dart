@@ -1934,22 +1934,52 @@ class AppLocalizationsZh extends AppLocalizations {
   String get imageLicenseLabel => '图片许可';
 
   @override
-  String get gearLanghantel => '杠铃';
+  String get muscleUpperChest => '上胸';
 
   @override
-  String get gearKurzhantel => '哑铃';
+  String get muscleFrontShoulder => '前束';
 
   @override
-  String get gearKabelzug => '绳索';
+  String get muscleSideShoulder => '中束';
 
   @override
-  String get gearMaschine => '器械';
+  String get muscleRearShoulder => '后束';
 
   @override
-  String get gearMultipresse => '史密斯机';
+  String get muscleLatissimus => '背阔肌';
 
   @override
-  String get gearKoerpergewicht => '自重';
+  String get muscleUpperBack => '上背';
+
+  @override
+  String get muscleTrapez => '斜方肌';
+
+  @override
+  String get muscleLowerBack => '下背';
+
+  @override
+  String get muscleForearms => '前臂';
+
+  @override
+  String get muscleRectus => '腹直肌';
+
+  @override
+  String get muscleObliques => '腹斜肌';
+
+  @override
+  String get muscleQuadriceps => '股四头肌';
+
+  @override
+  String get muscleAdductors => '内收肌';
+
+  @override
+  String get muscleAbductors => '外展肌';
+
+  @override
+  String get muscleHipFlexors => '髋屈肌';
+
+  @override
+  String get alternativesLabel => '替代动作';
 
   @override
   String get aiCoachTitle => '智能教练';
@@ -4016,22 +4046,52 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
   String get imageLicenseLabel => '图片许可';
 
   @override
-  String get gearLanghantel => '杠铃';
+  String get muscleUpperChest => '上胸';
 
   @override
-  String get gearKurzhantel => '哑铃';
+  String get muscleFrontShoulder => '前束';
 
   @override
-  String get gearKabelzug => '绳索';
+  String get muscleSideShoulder => '中束';
 
   @override
-  String get gearMaschine => '器械';
+  String get muscleRearShoulder => '后束';
 
   @override
-  String get gearMultipresse => '史密斯机';
+  String get muscleLatissimus => '背阔肌';
 
   @override
-  String get gearKoerpergewicht => '自重';
+  String get muscleUpperBack => '上背';
+
+  @override
+  String get muscleTrapez => '斜方肌';
+
+  @override
+  String get muscleLowerBack => '下背';
+
+  @override
+  String get muscleForearms => '前臂';
+
+  @override
+  String get muscleRectus => '腹直肌';
+
+  @override
+  String get muscleObliques => '腹斜肌';
+
+  @override
+  String get muscleQuadriceps => '股四头肌';
+
+  @override
+  String get muscleAdductors => '内收肌';
+
+  @override
+  String get muscleAbductors => '外展肌';
+
+  @override
+  String get muscleHipFlexors => '髋屈肌';
+
+  @override
+  String get alternativesLabel => '替代动作';
 
   @override
   String get aiCoachTitle => '智能教练';
@@ -6098,22 +6158,52 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get imageLicenseLabel => '圖片授權';
 
   @override
-  String get gearLanghantel => '槓鈴';
+  String get muscleUpperChest => '上胸';
 
   @override
-  String get gearKurzhantel => '啞鈴';
+  String get muscleFrontShoulder => '前束';
 
   @override
-  String get gearKabelzug => '繩索';
+  String get muscleSideShoulder => '中束';
 
   @override
-  String get gearMaschine => '器械';
+  String get muscleRearShoulder => '後束';
 
   @override
-  String get gearMultipresse => '史密斯機';
+  String get muscleLatissimus => '闊背肌';
 
   @override
-  String get gearKoerpergewicht => '自重';
+  String get muscleUpperBack => '上背';
+
+  @override
+  String get muscleTrapez => '斜方肌';
+
+  @override
+  String get muscleLowerBack => '下背';
+
+  @override
+  String get muscleForearms => '前臂';
+
+  @override
+  String get muscleRectus => '腹直肌';
+
+  @override
+  String get muscleObliques => '腹斜肌';
+
+  @override
+  String get muscleQuadriceps => '股四頭肌';
+
+  @override
+  String get muscleAdductors => '內收肌';
+
+  @override
+  String get muscleAbductors => '外展肌';
+
+  @override
+  String get muscleHipFlexors => '髖屈肌';
+
+  @override
+  String get alternativesLabel => '替代動作';
 
   @override
   String get aiCoachTitle => '智慧教練';

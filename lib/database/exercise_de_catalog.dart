@@ -12,6 +12,8 @@ const exerciseImageDirectory = 'assets/exercises/img';
 
 const allowedExerciseSplits = {'push', 'pull', 'beine', 'core', 'cardio'};
 const allowedExerciseMechanics = {'grund', 'isolation'};
+const allowedExerciseCategories = {...exerciseCategories};
+const allowedShoulderRisk = {...shoulderRiskValues};
 
 final catalogIdPattern = RegExp(r'^[a-z0-9]+(?:-[a-z0-9]+)*$');
 
@@ -34,6 +36,7 @@ class ExerciseDeEntry {
     required this.imageSource,
     required this.imageLicense,
     required this.alternatives,
+    required this.shoulderRisk,
     required this.legacyNames,
   });
 
@@ -54,6 +57,7 @@ class ExerciseDeEntry {
   final String imageSource;
   final String imageLicense;
   final List<String> alternatives;
+  final String shoulderRisk;
   final List<String> legacyNames;
 }
 
@@ -136,6 +140,7 @@ ExerciseCatalogParse parseExerciseCatalog(String raw) {
         imageSource: _string(json['bild_quelle']),
         imageLicense: _string(json['bild_lizenz']),
         alternatives: _strings(json['alternativen']),
+        shoulderRisk: _string(json['schulter_risiko']),
         legacyNames: _strings(json['legacy_names']),
       ),
     );
@@ -330,6 +335,12 @@ String? _validate(Map<String, dynamic> json, String id) {
   }
   final alternatives = _alternatives(json, id);
   if (alternatives != null) return alternatives;
+  final shoulderRisk = _shoulderRisk(json, id);
+  if (shoulderRisk != null) return shoulderRisk;
+  final category = _string(json['kategorie']);
+  if (!allowedExerciseCategories.contains(category)) {
+    return '$id kategorie "$category" is not allowed.';
+  }
   final split = _string(json['split']);
   if (!allowedExerciseSplits.contains(split)) {
     return '$id split "$split" is not allowed.';
@@ -339,7 +350,7 @@ String? _validate(Map<String, dynamic> json, String id) {
     return '$id mechanik "$mechanic" is not allowed.';
   }
   final gear = _string(json['geraet']);
-  if (!exerciseGearKeys.contains(gear)) {
+  if (!exerciseGearValues.contains(gear)) {
     return '$id geraet "$gear" is not allowed.';
   }
   final bild = _string(json['bild']);
@@ -365,6 +376,15 @@ String? _muscleList(Map<String, dynamic> json, String key, String id) {
     if (item is! String || !exerciseMuscleKeys.contains(item.trim())) {
       return '$id field $key must use a muscle map key.';
     }
+  }
+  return null;
+}
+
+String? _shoulderRisk(Map<String, dynamic> json, String id) {
+  if (!json.containsKey('schulter_risiko')) return null;
+  final value = json['schulter_risiko'];
+  if (value is! String || !allowedShoulderRisk.contains(value.trim())) {
+    return '$id schulter_risiko is not allowed.';
   }
   return null;
 }
@@ -430,6 +450,9 @@ class _Fields {
       imageSource: Value(entry.imageSource),
       imageLicense: Value(entry.imageLicense),
       alternatives: Value(alternatives),
+      schulterRisiko: Value(
+        entry.shoulderRisk.isEmpty ? null : entry.shoulderRisk,
+      ),
     );
   }
 
@@ -454,6 +477,9 @@ class _Fields {
       imageSource: Value(entry.imageSource),
       imageLicense: Value(entry.imageLicense),
       alternatives: Value(alternatives),
+      schulterRisiko: Value(
+        entry.shoulderRisk.isEmpty ? null : entry.shoulderRisk,
+      ),
     );
   }
 }
@@ -481,7 +507,8 @@ bool _same(Exercise row, ExerciseDeEntry entry, int? categoryId) {
       row.catalogLicense == entry.license &&
       row.imageSource == entry.imageSource &&
       row.imageLicense == entry.imageLicense &&
-      row.alternatives == fields.alternatives;
+      row.alternatives == fields.alternatives &&
+      (row.schulterRisiko ?? '') == entry.shoulderRisk;
 }
 
 Future<void> _moveHistory(

@@ -6,6 +6,7 @@ import 'package:flexify/database/database.dart';
 import 'package:flexify/exercise_labels.dart';
 import 'package:flexify/l10n/l10n.dart';
 import 'package:flexify/main.dart';
+import 'package:flexify/platform_page_route.dart';
 import 'package:flexify/shell/training_stats.dart';
 import 'package:flexify/theme/alpha_theme.dart';
 import 'package:flexify/workout/muscle_map.dart';
@@ -129,9 +130,8 @@ class _ExerciseDetailPageState extends State<ExerciseDetailPage> {
           Text(
             '${l10n.secondaryMuscleLabel}: ${secondary.map((key) => muscleLabel(l10n, key)).join(', ')}',
           ),
-        Text(
-          '${l10n.equipmentLabel}: ${gear.isEmpty ? '—' : gearLabel(l10n, gear)}',
-        ),
+        Text('${l10n.equipmentLabel}: ${gear.isEmpty ? '—' : gear}'),
+        _alternatives(context, exercise),
         if ((exercise.catalogSource ?? '').trim().isNotEmpty ||
             (exercise.catalogLicense ?? '').trim().isNotEmpty)
           Text(
@@ -232,18 +232,56 @@ class _ExerciseDetailPageState extends State<ExerciseDetailPage> {
     );
   }
 
+  Widget _alternatives(BuildContext context, Exercise exercise) {
+    final ids = decodeCatalogList(exercise.alternatives);
+    if (ids.isEmpty) return const SizedBox.shrink();
+    return FutureBuilder<List<Exercise>>(
+      future: (db.select(
+        db.exercises,
+      )..where((row) => row.catalogId.isIn(ids))).get(),
+      builder: (context, snapshot) {
+        final rows = snapshot.data ?? const <Exercise>[];
+        if (rows.isEmpty) return const SizedBox.shrink();
+        return Padding(
+          padding: const EdgeInsets.only(top: 8),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(context.l10n.alternativesLabel),
+              for (final row in rows)
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      FlexPageRoute(
+                        builder: (context) => ExerciseDetailPage(exercise: row),
+                      ),
+                    );
+                  },
+                  child: Text(
+                    localizedExerciseName(
+                      context,
+                      row.name,
+                      german: row.germanName,
+                    ),
+                  ),
+                ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
   Widget _image(String? stored, AlphaPalette palette) {
     final path = (stored ?? '').trim();
-    if (path.isEmpty) {
-      return Icon(Icons.fitness_center, size: 72, color: palette.muted);
-    }
+    if (path.isEmpty) return _NeutralExerciseImage(palette: palette);
     if (path.startsWith('assets/')) {
       return Image.asset(
         path,
         height: 180,
         fit: BoxFit.contain,
         errorBuilder: (context, error, stack) =>
-            Icon(Icons.fitness_center, size: 72, color: palette.muted),
+            _NeutralExerciseImage(palette: palette),
       );
     }
     return Image.file(
@@ -251,9 +289,63 @@ class _ExerciseDetailPageState extends State<ExerciseDetailPage> {
       height: 180,
       fit: BoxFit.contain,
       errorBuilder: (context, error, stack) =>
-          Icon(Icons.fitness_center, color: palette.muted),
+          _NeutralExerciseImage(palette: palette),
     );
   }
+}
+
+class _NeutralExerciseImage extends StatelessWidget {
+  const _NeutralExerciseImage({required this.palette});
+
+  final AlphaPalette palette;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 180,
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          color: palette.card,
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(color: palette.border),
+        ),
+        child: CustomPaint(painter: _NeutralFigurePainter(palette.muted)),
+      ),
+    );
+  }
+}
+
+class _NeutralFigurePainter extends CustomPainter {
+  const _NeutralFigurePainter(this.color);
+
+  final Color color;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..color = color
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 3
+      ..strokeCap = StrokeCap.round;
+    final center = Offset(size.width / 2, size.height / 2);
+    canvas.drawCircle(center + const Offset(0, -48), 14, paint);
+    final body = Path()
+      ..moveTo(center.dx, center.dy - 32)
+      ..lineTo(center.dx, center.dy + 18)
+      ..moveTo(center.dx, center.dy - 18)
+      ..lineTo(center.dx - 28, center.dy + 4)
+      ..moveTo(center.dx, center.dy - 18)
+      ..lineTo(center.dx + 28, center.dy + 4)
+      ..moveTo(center.dx, center.dy + 18)
+      ..lineTo(center.dx - 18, center.dy + 58)
+      ..moveTo(center.dx, center.dy + 18)
+      ..lineTo(center.dx + 18, center.dy + 58);
+    canvas.drawPath(body, paint);
+  }
+
+  @override
+  bool shouldRepaint(covariant _NeutralFigurePainter oldDelegate) =>
+      oldDelegate.color != color;
 }
 
 String _num(double value) {

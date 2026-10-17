@@ -2028,22 +2028,52 @@ class AppLocalizationsPt extends AppLocalizations {
   String get imageLicenseLabel => 'Licença da imagem';
 
   @override
-  String get gearLanghantel => 'Barra';
+  String get muscleUpperChest => 'Peito superior';
 
   @override
-  String get gearKurzhantel => 'Halter';
+  String get muscleFrontShoulder => 'Ombro frontal';
 
   @override
-  String get gearKabelzug => 'Cabo';
+  String get muscleSideShoulder => 'Ombro lateral';
 
   @override
-  String get gearMaschine => 'Aparelho';
+  String get muscleRearShoulder => 'Ombro posterior';
 
   @override
-  String get gearMultipresse => 'Máquina Smith';
+  String get muscleLatissimus => 'Grande dorsal';
 
   @override
-  String get gearKoerpergewicht => 'Peso corporal';
+  String get muscleUpperBack => 'Costas superiores';
+
+  @override
+  String get muscleTrapez => 'Trapézio';
+
+  @override
+  String get muscleLowerBack => 'Costas inferiores';
+
+  @override
+  String get muscleForearms => 'Antebraços';
+
+  @override
+  String get muscleRectus => 'Reto abdominal';
+
+  @override
+  String get muscleObliques => 'Oblíquos';
+
+  @override
+  String get muscleQuadriceps => 'Quadríceps';
+
+  @override
+  String get muscleAdductors => 'Adutores';
+
+  @override
+  String get muscleAbductors => 'Abdutores';
+
+  @override
+  String get muscleHipFlexors => 'Flexores da anca';
+
+  @override
+  String get alternativesLabel => 'Alternativas';
 
   @override
   String get aiCoachTitle => 'Treinador de IA';
@@ -4198,22 +4228,52 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get imageLicenseLabel => 'Licença da imagem';
 
   @override
-  String get gearLanghantel => 'Barra';
+  String get muscleUpperChest => 'Peito superior';
 
   @override
-  String get gearKurzhantel => 'Halter';
+  String get muscleFrontShoulder => 'Ombro frontal';
 
   @override
-  String get gearKabelzug => 'Cabo';
+  String get muscleSideShoulder => 'Ombro lateral';
 
   @override
-  String get gearMaschine => 'Aparelho';
+  String get muscleRearShoulder => 'Ombro posterior';
 
   @override
-  String get gearMultipresse => 'Máquina Smith';
+  String get muscleLatissimus => 'Grande dorsal';
 
   @override
-  String get gearKoerpergewicht => 'Peso corporal';
+  String get muscleUpperBack => 'Costas superiores';
+
+  @override
+  String get muscleTrapez => 'Trapézio';
+
+  @override
+  String get muscleLowerBack => 'Costas inferiores';
+
+  @override
+  String get muscleForearms => 'Antebraços';
+
+  @override
+  String get muscleRectus => 'Reto abdominal';
+
+  @override
+  String get muscleObliques => 'Oblíquos';
+
+  @override
+  String get muscleQuadriceps => 'Quadríceps';
+
+  @override
+  String get muscleAdductors => 'Adutores';
+
+  @override
+  String get muscleAbductors => 'Abdutores';
+
+  @override
+  String get muscleHipFlexors => 'Flexores da anca';
+
+  @override
+  String get alternativesLabel => 'Alternativas';
 
   @override
   String get aiCoachTitle => 'Treinador de IA';
@@ -6375,22 +6435,52 @@ class AppLocalizationsPtPt extends AppLocalizationsPt {
   String get imageLicenseLabel => 'Licença da imagem';
 
   @override
-  String get gearLanghantel => 'Barra';
+  String get muscleUpperChest => 'Peito superior';
 
   @override
-  String get gearKurzhantel => 'Halter';
+  String get muscleFrontShoulder => 'Ombro frontal';
 
   @override
-  String get gearKabelzug => 'Cabo';
+  String get muscleSideShoulder => 'Ombro lateral';
 
   @override
-  String get gearMaschine => 'Aparelho';
+  String get muscleRearShoulder => 'Ombro posterior';
 
   @override
-  String get gearMultipresse => 'Máquina Smith';
+  String get muscleLatissimus => 'Grande dorsal';
 
   @override
-  String get gearKoerpergewicht => 'Peso corporal';
+  String get muscleUpperBack => 'Costas superiores';
+
+  @override
+  String get muscleTrapez => 'Trapézio';
+
+  @override
+  String get muscleLowerBack => 'Costas inferiores';
+
+  @override
+  String get muscleForearms => 'Antebraços';
+
+  @override
+  String get muscleRectus => 'Reto abdominal';
+
+  @override
+  String get muscleObliques => 'Oblíquos';
+
+  @override
+  String get muscleQuadriceps => 'Quadríceps';
+
+  @override
+  String get muscleAdductors => 'Adutores';
+
+  @override
+  String get muscleAbductors => 'Abdutores';
+
+  @override
+  String get muscleHipFlexors => 'Flexores da anca';
+
+  @override
+  String get alternativesLabel => 'Alternativas';
 
   @override
   String get aiCoachTitle => 'Treinador de IA';

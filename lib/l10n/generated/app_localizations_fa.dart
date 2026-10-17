@@ -2004,22 +2004,52 @@ class AppLocalizationsFa extends AppLocalizations {
   String get imageLicenseLabel => 'مجوز تصویر';
 
   @override
-  String get gearLanghantel => 'هالتر';
+  String get muscleUpperChest => 'سینه بالا';
 
   @override
-  String get gearKurzhantel => 'دمبل';
+  String get muscleFrontShoulder => 'سرشانه جلو';
 
   @override
-  String get gearKabelzug => 'کابل';
+  String get muscleSideShoulder => 'سرشانه بغل';
 
   @override
-  String get gearMaschine => 'دستگاه';
+  String get muscleRearShoulder => 'سرشانه پشت';
 
   @override
-  String get gearMultipresse => 'دستگاه اسمیت';
+  String get muscleLatissimus => 'لت';
 
   @override
-  String get gearKoerpergewicht => 'وزن بدن';
+  String get muscleUpperBack => 'بالای کمر';
+
+  @override
+  String get muscleTrapez => 'کول';
+
+  @override
+  String get muscleLowerBack => 'پایین کمر';
+
+  @override
+  String get muscleForearms => 'ساعد';
+
+  @override
+  String get muscleRectus => 'عضله راست شکم';
+
+  @override
+  String get muscleObliques => 'مورب شکم';
+
+  @override
+  String get muscleQuadriceps => 'چهارسر';
+
+  @override
+  String get muscleAdductors => 'نزدیک‌کننده';
+
+  @override
+  String get muscleAbductors => 'دورکننده';
+
+  @override
+  String get muscleHipFlexors => 'خم‌کننده لگن';
+
+  @override
+  String get alternativesLabel => 'جایگزین‌ها';
 
   @override
   String get aiCoachTitle => 'مربی هوش مصنوعی';

@@ -2001,22 +2001,52 @@ class AppLocalizationsBn extends AppLocalizations {
   String get imageLicenseLabel => 'ছবির লাইসেন্স';
 
   @override
-  String get gearLanghantel => 'বারবেল';
+  String get muscleUpperChest => 'উপরের বুক';
 
   @override
-  String get gearKurzhantel => 'ডাম্বেল';
+  String get muscleFrontShoulder => 'সামনের কাঁধ';
 
   @override
-  String get gearKabelzug => 'কেবল';
+  String get muscleSideShoulder => 'পাশের কাঁধ';
 
   @override
-  String get gearMaschine => 'যন্ত্র';
+  String get muscleRearShoulder => 'পেছনের কাঁধ';
 
   @override
-  String get gearMultipresse => 'স্মিথ যন্ত্র';
+  String get muscleLatissimus => 'ল্যাটিসিমাস';
 
   @override
-  String get gearKoerpergewicht => 'শরীরের ওজন';
+  String get muscleUpperBack => 'উপরের পিঠ';
+
+  @override
+  String get muscleTrapez => 'ট্রাপিজিয়াস';
+
+  @override
+  String get muscleLowerBack => 'নিচের পিঠ';
+
+  @override
+  String get muscleForearms => 'বাহুর নিচ';
+
+  @override
+  String get muscleRectus => 'সোজা পেটের পেশি';
+
+  @override
+  String get muscleObliques => 'তির্যক পেটের পেশি';
+
+  @override
+  String get muscleQuadriceps => 'কোয়াড্রিসেপস';
+
+  @override
+  String get muscleAdductors => 'অ্যাডাক্টর';
+
+  @override
+  String get muscleAbductors => 'অ্যাবডাক্টর';
+
+  @override
+  String get muscleHipFlexors => 'হিপ ফ্লেক্সর';
+
+  @override
+  String get alternativesLabel => 'বিকল্প';
 
   @override
   String get aiCoachTitle => 'এআই কোচ';

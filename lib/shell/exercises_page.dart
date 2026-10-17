@@ -63,7 +63,7 @@ class _ExercisesPageState extends State<ExercisesPage> {
               ], exerciseMuscleKeys);
               final equipment = _chipValues(
                 exercises.map((exercise) => exercise.equipment),
-                exerciseGearKeys,
+                exerciseGearValues,
               );
               final splits = _chipValues(
                 exercises.map((exercise) => exercise.split),
@@ -96,7 +96,7 @@ class _ExercisesPageState extends State<ExercisesPage> {
                     Padding(
                       padding: const EdgeInsets.only(right: 8),
                       child: FilterChip(
-                        label: Text(gearLabel(context.l10n, item)),
+                        label: Text(item),
                         selected: _equipment == item,
                         onSelected: (_) => setState(() {
                           _equipment = _equipment == item ? '' : item;

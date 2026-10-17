@@ -3714,41 +3714,101 @@ abstract class AppLocalizations {
   /// **'Image license'**
   String get imageLicenseLabel;
 
-  /// Barbell
+  /// Upper chest
   ///
   /// In en, this message translates to:
-  /// **'Barbell'**
-  String get gearLanghantel;
+  /// **'Upper chest'**
+  String get muscleUpperChest;
 
-  /// Dumbbell
+  /// Front shoulder
   ///
   /// In en, this message translates to:
-  /// **'Dumbbell'**
-  String get gearKurzhantel;
+  /// **'Front shoulder'**
+  String get muscleFrontShoulder;
 
-  /// Cable
+  /// Side shoulder
   ///
   /// In en, this message translates to:
-  /// **'Cable'**
-  String get gearKabelzug;
+  /// **'Side shoulder'**
+  String get muscleSideShoulder;
 
-  /// Machine
+  /// Rear shoulder
   ///
   /// In en, this message translates to:
-  /// **'Machine'**
-  String get gearMaschine;
+  /// **'Rear shoulder'**
+  String get muscleRearShoulder;
 
-  /// Smith machine
+  /// Lats
   ///
   /// In en, this message translates to:
-  /// **'Smith machine'**
-  String get gearMultipresse;
+  /// **'Lats'**
+  String get muscleLatissimus;
 
-  /// Bodyweight
+  /// Upper back
   ///
   /// In en, this message translates to:
-  /// **'Bodyweight'**
-  String get gearKoerpergewicht;
+  /// **'Upper back'**
+  String get muscleUpperBack;
+
+  /// Traps and neck
+  ///
+  /// In en, this message translates to:
+  /// **'Traps and neck'**
+  String get muscleTrapez;
+
+  /// Lower back
+  ///
+  /// In en, this message translates to:
+  /// **'Lower back'**
+  String get muscleLowerBack;
+
+  /// Forearms
+  ///
+  /// In en, this message translates to:
+  /// **'Forearms'**
+  String get muscleForearms;
+
+  /// Rectus abdominis
+  ///
+  /// In en, this message translates to:
+  /// **'Rectus abdominis'**
+  String get muscleRectus;
+
+  /// Obliques
+  ///
+  /// In en, this message translates to:
+  /// **'Obliques'**
+  String get muscleObliques;
+
+  /// Quadriceps
+  ///
+  /// In en, this message translates to:
+  /// **'Quadriceps'**
+  String get muscleQuadriceps;
+
+  /// Adductors
+  ///
+  /// In en, this message translates to:
+  /// **'Adductors'**
+  String get muscleAdductors;
+
+  /// Abductors
+  ///
+  /// In en, this message translates to:
+  /// **'Abductors'**
+  String get muscleAbductors;
+
+  /// Hip flexors
+  ///
+  /// In en, this message translates to:
+  /// **'Hip flexors'**
+  String get muscleHipFlexors;
+
+  /// Alternatives
+  ///
+  /// In en, this message translates to:
+  /// **'Alternatives'**
+  String get alternativesLabel;
 
   /// AI coach
   ///

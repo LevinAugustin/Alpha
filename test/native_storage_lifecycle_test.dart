@@ -189,6 +189,7 @@ void main() {
           'image_source': null,
           'image_license': null,
           'alternatives': null,
+          'schulter_risiko': null,
         },
     ],
     'plan_exercises': [

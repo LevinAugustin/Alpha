@@ -1947,22 +1947,52 @@ class AppLocalizationsKo extends AppLocalizations {
   String get imageLicenseLabel => '이미지 라이선스';
 
   @override
-  String get gearLanghantel => '바벨';
+  String get muscleUpperChest => '상부 가슴';
 
   @override
-  String get gearKurzhantel => '덤벨';
+  String get muscleFrontShoulder => '전면 어깨';
 
   @override
-  String get gearKabelzug => '케이블';
+  String get muscleSideShoulder => '측면 어깨';
 
   @override
-  String get gearMaschine => '기구';
+  String get muscleRearShoulder => '후면 어깨';
 
   @override
-  String get gearMultipresse => '스미스 머신';
+  String get muscleLatissimus => '광배근';
 
   @override
-  String get gearKoerpergewicht => '맨몸';
+  String get muscleUpperBack => '상부 등';
+
+  @override
+  String get muscleTrapez => '승모근';
+
+  @override
+  String get muscleLowerBack => '하부 등';
+
+  @override
+  String get muscleForearms => '전완';
+
+  @override
+  String get muscleRectus => '복직근';
+
+  @override
+  String get muscleObliques => '복사근';
+
+  @override
+  String get muscleQuadriceps => '대퇴사두근';
+
+  @override
+  String get muscleAdductors => '내전근';
+
+  @override
+  String get muscleAbductors => '외전근';
+
+  @override
+  String get muscleHipFlexors => '고관절 굴곡근';
+
+  @override
+  String get alternativesLabel => '대체 운동';
 
   @override
   String get aiCoachTitle => 'AI 코치';

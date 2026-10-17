@@ -2029,22 +2029,52 @@ class AppLocalizationsUk extends AppLocalizations {
   String get imageLicenseLabel => 'Ліцензія зображення';
 
   @override
-  String get gearLanghantel => 'Штанга';
+  String get muscleUpperChest => 'Верх грудей';
 
   @override
-  String get gearKurzhantel => 'Гантель';
+  String get muscleFrontShoulder => 'Передня дельта';
 
   @override
-  String get gearKabelzug => 'Блок';
+  String get muscleSideShoulder => 'Середня дельта';
 
   @override
-  String get gearMaschine => 'Тренажер';
+  String get muscleRearShoulder => 'Задня дельта';
 
   @override
-  String get gearMultipresse => 'Машина Сміта';
+  String get muscleLatissimus => 'Найширші';
 
   @override
-  String get gearKoerpergewicht => 'Вага тіла';
+  String get muscleUpperBack => 'Верх спини';
+
+  @override
+  String get muscleTrapez => 'Трапеції';
+
+  @override
+  String get muscleLowerBack => 'Низ спини';
+
+  @override
+  String get muscleForearms => 'Передпліччя';
+
+  @override
+  String get muscleRectus => 'Прямий мяз живота';
+
+  @override
+  String get muscleObliques => 'Косі мязи живота';
+
+  @override
+  String get muscleQuadriceps => 'Квадрицепс';
+
+  @override
+  String get muscleAdductors => 'Привідні';
+
+  @override
+  String get muscleAbductors => 'Відвідні';
+
+  @override
+  String get muscleHipFlexors => 'Згиначі стегна';
+
+  @override
+  String get alternativesLabel => 'Альтернативи';
 
   @override
   String get aiCoachTitle => 'ШІ-тренер';

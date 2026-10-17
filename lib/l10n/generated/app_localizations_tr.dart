@@ -2021,22 +2021,52 @@ class AppLocalizationsTr extends AppLocalizations {
   String get imageLicenseLabel => 'Görsel lisansı';
 
   @override
-  String get gearLanghantel => 'Halter';
+  String get muscleUpperChest => 'Üst göğüs';
 
   @override
-  String get gearKurzhantel => 'Dambıl';
+  String get muscleFrontShoulder => 'Ön omuz';
 
   @override
-  String get gearKabelzug => 'Kablo';
+  String get muscleSideShoulder => 'Yan omuz';
 
   @override
-  String get gearMaschine => 'Alet';
+  String get muscleRearShoulder => 'Arka omuz';
 
   @override
-  String get gearMultipresse => 'Smith aleti';
+  String get muscleLatissimus => 'Latissimus';
 
   @override
-  String get gearKoerpergewicht => 'Vücut ağırlığı';
+  String get muscleUpperBack => 'Üst sırt';
+
+  @override
+  String get muscleTrapez => 'Trapez';
+
+  @override
+  String get muscleLowerBack => 'Alt sırt';
+
+  @override
+  String get muscleForearms => 'Ön kollar';
+
+  @override
+  String get muscleRectus => 'Düz karın';
+
+  @override
+  String get muscleObliques => 'Yan karın';
+
+  @override
+  String get muscleQuadriceps => 'Kuadriseps';
+
+  @override
+  String get muscleAdductors => 'Addüktörler';
+
+  @override
+  String get muscleAbductors => 'Abdüktörler';
+
+  @override
+  String get muscleHipFlexors => 'Kalça fleksörleri';
+
+  @override
+  String get alternativesLabel => 'Seçenekler';
 
   @override
   String get aiCoachTitle => 'YZ koçu';

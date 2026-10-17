@@ -2014,22 +2014,52 @@ class AppLocalizationsMs extends AppLocalizations {
   String get imageLicenseLabel => 'Lesen imej';
 
   @override
-  String get gearLanghantel => 'Barbel';
+  String get muscleUpperChest => 'Dada atas';
 
   @override
-  String get gearKurzhantel => 'Dumbel';
+  String get muscleFrontShoulder => 'Bahu depan';
 
   @override
-  String get gearKabelzug => 'Kabel';
+  String get muscleSideShoulder => 'Bahu sisi';
 
   @override
-  String get gearMaschine => 'Mesin';
+  String get muscleRearShoulder => 'Bahu belakang';
 
   @override
-  String get gearMultipresse => 'Mesin Smith';
+  String get muscleLatissimus => 'Latissimus';
 
   @override
-  String get gearKoerpergewicht => 'Berat badan';
+  String get muscleUpperBack => 'Belakang atas';
+
+  @override
+  String get muscleTrapez => 'Trapezium';
+
+  @override
+  String get muscleLowerBack => 'Belakang bawah';
+
+  @override
+  String get muscleForearms => 'Lengan bawah';
+
+  @override
+  String get muscleRectus => 'Otot perut lurus';
+
+  @override
+  String get muscleObliques => 'Otot perut serong';
+
+  @override
+  String get muscleQuadriceps => 'Paha depan';
+
+  @override
+  String get muscleAdductors => 'Adduktor';
+
+  @override
+  String get muscleAbductors => 'Abduktor';
+
+  @override
+  String get muscleHipFlexors => 'Fleksor pinggul';
+
+  @override
+  String get alternativesLabel => 'Alternatif';
 
   @override
   String get aiCoachTitle => 'Jurulatih AI';

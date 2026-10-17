@@ -42,9 +42,10 @@ void main() {
     expect(after.catalogId, 'bankdruecken-langhantel');
     expect(after.germanName, 'Bankdrücken');
     expect(after.muscle, 'Brust');
-    expect(after.equipment, 'langhantel');
-    expect(after.primaryMuscles, '["chest"]');
-    expect(after.secondaryMuscles, '["triceps","delts"]');
+    expect(after.equipment, 'Langhantel');
+    expect(after.primaryMuscles, '["brust","brust_oben"]');
+    expect(after.secondaryMuscles, '["trizeps","schulter_vorne"]');
+    expect(after.schulterRisiko, 'mittel');
     expect(after.split, 'push');
     expect(after.catalogSource, 'placeholder');
     expect(after.catalogLicense, 'placeholder');
@@ -60,6 +61,7 @@ void main() {
     expect(crunch.imageSource, '');
     expect(crunch.imageLicense, '');
     expect(crunch.alternatives, '[]');
+    expect(crunch.schulterRisiko, isNull);
 
     final licenses = await exerciseLicenseRows(db);
     expect(
@@ -124,9 +126,9 @@ void main() {
     "name_de": "Bankdrücken",
     "synonyme": ["Bench Press"],
     "kategorie": "Brust",
-    "primaermuskeln": ["chest"],
+    "primaermuskeln": ["brust"],
     "sekundaermuskeln": [],
-    "geraet": "langhantel",
+    "geraet": "Langhantel",
     "split": "push",
     "mechanik": "grund",
     "ausfuehrung_de": ["Platzhalter."],
@@ -194,7 +196,7 @@ void main() {
     "kategorie": "Brust",
     "primaermuskeln": [],
     "sekundaermuskeln": [],
-    "geraet": "langhantel",
+    "geraet": "Langhantel",
     "split": "legs",
     "mechanik": "grund",
     "ausfuehrung_de": [],
@@ -217,9 +219,9 @@ void main() {
   "name_de": "Bankdrücken",
   "synonyme": [],
   "kategorie": "Brust",
-  "primaermuskeln": ["chest"],
+  "primaermuskeln": ["brust"],
   "sekundaermuskeln": [],
-  "geraet": "langhantel",
+  "geraet": "Langhantel",
   "split": "push",
   "mechanik": "grund",
   "ausfuehrung_de": [],
@@ -272,8 +274,8 @@ void main() {
     expect(
       parseExerciseCatalog(
         '[$valid]'.replaceFirst(
+          '"primaermuskeln": ["brust"]',
           '"primaermuskeln": ["chest"]',
-          '"primaermuskeln": ["Brust"]',
         ),
       ).entries,
       isEmpty,
@@ -281,11 +283,27 @@ void main() {
     expect(
       parseExerciseCatalog(
         '[$valid]'.replaceFirst(
-          '"geraet": "langhantel"',
           '"geraet": "Langhantel"',
+          '"geraet": "langhantel"',
         ),
       ).entries,
       isEmpty,
+    );
+    expect(
+      parseExerciseCatalog(
+        '[$valid]'.replaceFirst('"kategorie": "Brust"', '"kategorie": "Arme"'),
+      ).entries,
+      isEmpty,
+    );
+    expect(
+      parseExerciseCatalog(row('"schulter_risiko": "extrem"')).entries,
+      isEmpty,
+    );
+    expect(
+      parseExerciseCatalog(
+        row('"schulter_risiko": "hoch"'),
+      ).entries.single.shoulderRisk,
+      'hoch',
     );
     expect(parseExerciseCatalog(row('"bild_quelle": 1')).entries, isEmpty);
     expect(

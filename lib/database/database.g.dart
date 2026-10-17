@@ -819,6 +819,17 @@ class $ExercisesTable extends Exercises
     type: DriftSqlType.string,
     requiredDuringInsert: false,
   );
+  static const VerificationMeta _schulterRisikoMeta = const VerificationMeta(
+    'schulterRisiko',
+  );
+  @override
+  late final GeneratedColumn<String> schulterRisiko = GeneratedColumn<String>(
+    'schulter_risiko',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
   @override
   List<GeneratedColumn> get $columns => [
     id,
@@ -851,6 +862,7 @@ class $ExercisesTable extends Exercises
     imageSource,
     imageLicense,
     alternatives,
+    schulterRisiko,
   ];
   @override
   String get aliasedName => _alias ?? actualTableName;
@@ -1086,6 +1098,15 @@ class $ExercisesTable extends Exercises
         ),
       );
     }
+    if (data.containsKey('schulter_risiko')) {
+      context.handle(
+        _schulterRisikoMeta,
+        schulterRisiko.isAcceptableOrUnknown(
+          data['schulter_risiko']!,
+          _schulterRisikoMeta,
+        ),
+      );
+    }
     return context;
   }
 
@@ -1215,6 +1236,10 @@ class $ExercisesTable extends Exercises
         DriftSqlType.string,
         data['${effectivePrefix}alternatives'],
       ),
+      schulterRisiko: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}schulter_risiko'],
+      ),
     );
   }
 
@@ -1255,6 +1280,7 @@ class Exercise extends DataClass implements Insertable<Exercise> {
   final String? imageSource;
   final String? imageLicense;
   final String? alternatives;
+  final String? schulterRisiko;
   const Exercise({
     required this.id,
     required this.name,
@@ -1286,6 +1312,7 @@ class Exercise extends DataClass implements Insertable<Exercise> {
     this.imageSource,
     this.imageLicense,
     this.alternatives,
+    this.schulterRisiko,
   });
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
@@ -1362,6 +1389,9 @@ class Exercise extends DataClass implements Insertable<Exercise> {
     if (!nullToAbsent || alternatives != null) {
       map['alternatives'] = Variable<String>(alternatives);
     }
+    if (!nullToAbsent || schulterRisiko != null) {
+      map['schulter_risiko'] = Variable<String>(schulterRisiko);
+    }
     return map;
   }
 
@@ -1437,6 +1467,9 @@ class Exercise extends DataClass implements Insertable<Exercise> {
       alternatives: alternatives == null && nullToAbsent
           ? const Value.absent()
           : Value(alternatives),
+      schulterRisiko: schulterRisiko == null && nullToAbsent
+          ? const Value.absent()
+          : Value(schulterRisiko),
     );
   }
 
@@ -1480,6 +1513,7 @@ class Exercise extends DataClass implements Insertable<Exercise> {
       imageSource: serializer.fromJson<String?>(json['imageSource']),
       imageLicense: serializer.fromJson<String?>(json['imageLicense']),
       alternatives: serializer.fromJson<String?>(json['alternatives']),
+      schulterRisiko: serializer.fromJson<String?>(json['schulterRisiko']),
     );
   }
   @override
@@ -1516,6 +1550,7 @@ class Exercise extends DataClass implements Insertable<Exercise> {
       'imageSource': serializer.toJson<String?>(imageSource),
       'imageLicense': serializer.toJson<String?>(imageLicense),
       'alternatives': serializer.toJson<String?>(alternatives),
+      'schulterRisiko': serializer.toJson<String?>(schulterRisiko),
     };
   }
 
@@ -1550,6 +1585,7 @@ class Exercise extends DataClass implements Insertable<Exercise> {
     Value<String?> imageSource = const Value.absent(),
     Value<String?> imageLicense = const Value.absent(),
     Value<String?> alternatives = const Value.absent(),
+    Value<String?> schulterRisiko = const Value.absent(),
   }) => Exercise(
     id: id ?? this.id,
     name: name ?? this.name,
@@ -1591,6 +1627,9 @@ class Exercise extends DataClass implements Insertable<Exercise> {
     imageSource: imageSource.present ? imageSource.value : this.imageSource,
     imageLicense: imageLicense.present ? imageLicense.value : this.imageLicense,
     alternatives: alternatives.present ? alternatives.value : this.alternatives,
+    schulterRisiko: schulterRisiko.present
+        ? schulterRisiko.value
+        : this.schulterRisiko,
   );
   Exercise copyWithCompanion(ExercisesCompanion data) {
     return Exercise(
@@ -1656,6 +1695,9 @@ class Exercise extends DataClass implements Insertable<Exercise> {
       alternatives: data.alternatives.present
           ? data.alternatives.value
           : this.alternatives,
+      schulterRisiko: data.schulterRisiko.present
+          ? data.schulterRisiko.value
+          : this.schulterRisiko,
     );
   }
 
@@ -1691,7 +1733,8 @@ class Exercise extends DataClass implements Insertable<Exercise> {
           ..write('catalogLicense: $catalogLicense, ')
           ..write('imageSource: $imageSource, ')
           ..write('imageLicense: $imageLicense, ')
-          ..write('alternatives: $alternatives')
+          ..write('alternatives: $alternatives, ')
+          ..write('schulterRisiko: $schulterRisiko')
           ..write(')'))
         .toString();
   }
@@ -1728,6 +1771,7 @@ class Exercise extends DataClass implements Insertable<Exercise> {
     imageSource,
     imageLicense,
     alternatives,
+    schulterRisiko,
   ]);
   @override
   bool operator ==(Object other) =>
@@ -1762,7 +1806,8 @@ class Exercise extends DataClass implements Insertable<Exercise> {
           other.catalogLicense == this.catalogLicense &&
           other.imageSource == this.imageSource &&
           other.imageLicense == this.imageLicense &&
-          other.alternatives == this.alternatives);
+          other.alternatives == this.alternatives &&
+          other.schulterRisiko == this.schulterRisiko);
 }
 
 class ExercisesCompanion extends UpdateCompanion<Exercise> {
@@ -1796,6 +1841,7 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
   final Value<String?> imageSource;
   final Value<String?> imageLicense;
   final Value<String?> alternatives;
+  final Value<String?> schulterRisiko;
   const ExercisesCompanion({
     this.id = const Value.absent(),
     this.name = const Value.absent(),
@@ -1827,6 +1873,7 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
     this.imageSource = const Value.absent(),
     this.imageLicense = const Value.absent(),
     this.alternatives = const Value.absent(),
+    this.schulterRisiko = const Value.absent(),
   });
   ExercisesCompanion.insert({
     this.id = const Value.absent(),
@@ -1859,6 +1906,7 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
     this.imageSource = const Value.absent(),
     this.imageLicense = const Value.absent(),
     this.alternatives = const Value.absent(),
+    this.schulterRisiko = const Value.absent(),
   }) : name = Value(name),
        kind = Value(kind),
        displayUnit = Value(displayUnit);
@@ -1893,6 +1941,7 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
     Expression<String>? imageSource,
     Expression<String>? imageLicense,
     Expression<String>? alternatives,
+    Expression<String>? schulterRisiko,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
@@ -1927,6 +1976,7 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
       if (imageSource != null) 'image_source': imageSource,
       if (imageLicense != null) 'image_license': imageLicense,
       if (alternatives != null) 'alternatives': alternatives,
+      if (schulterRisiko != null) 'schulter_risiko': schulterRisiko,
     });
   }
 
@@ -1961,6 +2011,7 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
     Value<String?>? imageSource,
     Value<String?>? imageLicense,
     Value<String?>? alternatives,
+    Value<String?>? schulterRisiko,
   }) {
     return ExercisesCompanion(
       id: id ?? this.id,
@@ -1994,6 +2045,7 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
       imageSource: imageSource ?? this.imageSource,
       imageLicense: imageLicense ?? this.imageLicense,
       alternatives: alternatives ?? this.alternatives,
+      schulterRisiko: schulterRisiko ?? this.schulterRisiko,
     );
   }
 
@@ -2094,6 +2146,9 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
     if (alternatives.present) {
       map['alternatives'] = Variable<String>(alternatives.value);
     }
+    if (schulterRisiko.present) {
+      map['schulter_risiko'] = Variable<String>(schulterRisiko.value);
+    }
     return map;
   }
 
@@ -2129,7 +2184,8 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
           ..write('catalogLicense: $catalogLicense, ')
           ..write('imageSource: $imageSource, ')
           ..write('imageLicense: $imageLicense, ')
-          ..write('alternatives: $alternatives')
+          ..write('alternatives: $alternatives, ')
+          ..write('schulterRisiko: $schulterRisiko')
           ..write(')'))
         .toString();
   }
@@ -7647,6 +7703,7 @@ typedef $$ExercisesTableCreateCompanionBuilder =
       Value<String?> imageSource,
       Value<String?> imageLicense,
       Value<String?> alternatives,
+      Value<String?> schulterRisiko,
     });
 typedef $$ExercisesTableUpdateCompanionBuilder =
     ExercisesCompanion Function({
@@ -7680,6 +7737,7 @@ typedef $$ExercisesTableUpdateCompanionBuilder =
       Value<String?> imageSource,
       Value<String?> imageLicense,
       Value<String?> alternatives,
+      Value<String?> schulterRisiko,
     });
 
 final class $$ExercisesTableReferences
@@ -7891,6 +7949,11 @@ class $$ExercisesTableFilterComposer
 
   ColumnFilters<String> get alternatives => $composableBuilder(
     column: $table.alternatives,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get schulterRisiko => $composableBuilder(
+    column: $table.schulterRisiko,
     builder: (column) => ColumnFilters(column),
   );
 
@@ -8122,6 +8185,11 @@ class $$ExercisesTableOrderingComposer
     builder: (column) => ColumnOrderings(column),
   );
 
+  ColumnOrderings<String> get schulterRisiko => $composableBuilder(
+    column: $table.schulterRisiko,
+    builder: (column) => ColumnOrderings(column),
+  );
+
   $$CategoriesTableOrderingComposer get categoryId {
     final $$CategoriesTableOrderingComposer composer = $composerBuilder(
       composer: this,
@@ -8272,6 +8340,11 @@ class $$ExercisesTableAnnotationComposer
     builder: (column) => column,
   );
 
+  GeneratedColumn<String> get schulterRisiko => $composableBuilder(
+    column: $table.schulterRisiko,
+    builder: (column) => column,
+  );
+
   $$CategoriesTableAnnotationComposer get categoryId {
     final $$CategoriesTableAnnotationComposer composer = $composerBuilder(
       composer: this,
@@ -8408,6 +8481,7 @@ class $$ExercisesTableTableManager
                 Value<String?> imageSource = const Value.absent(),
                 Value<String?> imageLicense = const Value.absent(),
                 Value<String?> alternatives = const Value.absent(),
+                Value<String?> schulterRisiko = const Value.absent(),
               }) => ExercisesCompanion(
                 id: id,
                 name: name,
@@ -8439,6 +8513,7 @@ class $$ExercisesTableTableManager
                 imageSource: imageSource,
                 imageLicense: imageLicense,
                 alternatives: alternatives,
+                schulterRisiko: schulterRisiko,
               ),
           createCompanionCallback:
               ({
@@ -8472,6 +8547,7 @@ class $$ExercisesTableTableManager
                 Value<String?> imageSource = const Value.absent(),
                 Value<String?> imageLicense = const Value.absent(),
                 Value<String?> alternatives = const Value.absent(),
+                Value<String?> schulterRisiko = const Value.absent(),
               }) => ExercisesCompanion.insert(
                 id: id,
                 name: name,
@@ -8503,6 +8579,7 @@ class $$ExercisesTableTableManager
                 imageSource: imageSource,
                 imageLicense: imageLicense,
                 alternatives: alternatives,
+                schulterRisiko: schulterRisiko,
               ),
           withReferenceMapper: (p0) => p0
               .map(

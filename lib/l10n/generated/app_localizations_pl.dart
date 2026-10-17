@@ -2031,22 +2031,52 @@ class AppLocalizationsPl extends AppLocalizations {
   String get imageLicenseLabel => 'Licencja obrazu';
 
   @override
-  String get gearLanghantel => 'Sztanga';
+  String get muscleUpperChest => 'Górna klatka';
 
   @override
-  String get gearKurzhantel => 'Hantle';
+  String get muscleFrontShoulder => 'Przedni bark';
 
   @override
-  String get gearKabelzug => 'Wyciąg';
+  String get muscleSideShoulder => 'Boczny bark';
 
   @override
-  String get gearMaschine => 'Maszyna';
+  String get muscleRearShoulder => 'Tylny bark';
 
   @override
-  String get gearMultipresse => 'Maszyna Smitha';
+  String get muscleLatissimus => 'Najszerszy grzbietu';
 
   @override
-  String get gearKoerpergewicht => 'Masa ciała';
+  String get muscleUpperBack => 'Górne plecy';
+
+  @override
+  String get muscleTrapez => 'Kaptury';
+
+  @override
+  String get muscleLowerBack => 'Dolne plecy';
+
+  @override
+  String get muscleForearms => 'Przedramiona';
+
+  @override
+  String get muscleRectus => 'Prosty brzucha';
+
+  @override
+  String get muscleObliques => 'Skośne brzucha';
+
+  @override
+  String get muscleQuadriceps => 'Czworogłowy';
+
+  @override
+  String get muscleAdductors => 'Przywodziciele';
+
+  @override
+  String get muscleAbductors => 'Odwodziciele';
+
+  @override
+  String get muscleHipFlexors => 'Zginacze biodra';
+
+  @override
+  String get alternativesLabel => 'Zamienniki';
 
   @override
   String get aiCoachTitle => 'Trener SI';

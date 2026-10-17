@@ -1988,22 +1988,52 @@ class AppLocalizationsTh extends AppLocalizations {
   String get imageLicenseLabel => 'สัญญาอนุญาตของภาพ';
 
   @override
-  String get gearLanghantel => 'บาร์เบล';
+  String get muscleUpperChest => 'อกบน';
 
   @override
-  String get gearKurzhantel => 'ดัมเบล';
+  String get muscleFrontShoulder => 'ไหล่หน้า';
 
   @override
-  String get gearKabelzug => 'เคเบิล';
+  String get muscleSideShoulder => 'ไหล่ข้าง';
 
   @override
-  String get gearMaschine => 'เครื่องฝึก';
+  String get muscleRearShoulder => 'ไหล่หลัง';
 
   @override
-  String get gearMultipresse => 'สมิธแมชชีน';
+  String get muscleLatissimus => 'แลต';
 
   @override
-  String get gearKoerpergewicht => 'น้ำหนักตัว';
+  String get muscleUpperBack => 'หลังบน';
+
+  @override
+  String get muscleTrapez => 'ทราพีเซียส';
+
+  @override
+  String get muscleLowerBack => 'หลังล่าง';
+
+  @override
+  String get muscleForearms => 'ปลายแขน';
+
+  @override
+  String get muscleRectus => 'หน้าท้องตรง';
+
+  @override
+  String get muscleObliques => 'หน้าท้องเฉียง';
+
+  @override
+  String get muscleQuadriceps => 'ควอดริเซปส์';
+
+  @override
+  String get muscleAdductors => 'กล้ามเนื้อหุบขา';
+
+  @override
+  String get muscleAbductors => 'กล้ามเนื้อกางขา';
+
+  @override
+  String get muscleHipFlexors => 'งอสะโพก';
+
+  @override
+  String get alternativesLabel => 'ทางเลือก';
 
   @override
   String get aiCoachTitle => 'โค้ช AI';

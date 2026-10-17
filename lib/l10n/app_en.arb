@@ -2662,30 +2662,71 @@
   "@imageLicenseLabel": {
     "description": "Image license"
   },
-  "gearLanghantel": "Barbell",
-  "@gearLanghantel": {
-    "description": "Barbell"
+  "muscleUpperChest": "Upper chest",
+  "@muscleUpperChest": {
+    "description": "Upper chest"
   },
-  "gearKurzhantel": "Dumbbell",
-  "@gearKurzhantel": {
-    "description": "Dumbbell"
+  "muscleFrontShoulder": "Front shoulder",
+  "@muscleFrontShoulder": {
+    "description": "Front shoulder"
   },
-  "gearKabelzug": "Cable",
-  "@gearKabelzug": {
-    "description": "Cable"
+  "muscleSideShoulder": "Side shoulder",
+  "@muscleSideShoulder": {
+    "description": "Side shoulder"
   },
-  "gearMaschine": "Machine",
-  "@gearMaschine": {
-    "description": "Machine"
+  "muscleRearShoulder": "Rear shoulder",
+  "@muscleRearShoulder": {
+    "description": "Rear shoulder"
   },
-  "gearMultipresse": "Smith machine",
-  "@gearMultipresse": {
-    "description": "Smith machine"
+  "muscleLatissimus": "Lats",
+  "@muscleLatissimus": {
+    "description": "Lats"
   },
-  "gearKoerpergewicht": "Bodyweight",
-  "@gearKoerpergewicht": {
-    "description": "Bodyweight"
+  "muscleUpperBack": "Upper back",
+  "@muscleUpperBack": {
+    "description": "Upper back"
   },
+  "muscleTrapez": "Traps and neck",
+  "@muscleTrapez": {
+    "description": "Traps and neck"
+  },
+  "muscleLowerBack": "Lower back",
+  "@muscleLowerBack": {
+    "description": "Lower back"
+  },
+  "muscleForearms": "Forearms",
+  "@muscleForearms": {
+    "description": "Forearms"
+  },
+  "muscleRectus": "Rectus abdominis",
+  "@muscleRectus": {
+    "description": "Rectus abdominis"
+  },
+  "muscleObliques": "Obliques",
+  "@muscleObliques": {
+    "description": "Obliques"
+  },
+  "muscleQuadriceps": "Quadriceps",
+  "@muscleQuadriceps": {
+    "description": "Quadriceps"
+  },
+  "muscleAdductors": "Adductors",
+  "@muscleAdductors": {
+    "description": "Adductors"
+  },
+  "muscleAbductors": "Abductors",
+  "@muscleAbductors": {
+    "description": "Abductors"
+  },
+  "muscleHipFlexors": "Hip flexors",
+  "@muscleHipFlexors": {
+    "description": "Hip flexors"
+  },
+  "alternativesLabel": "Alternatives",
+  "@alternativesLabel": {
+    "description": "Alternatives"
+  },
+
   "aiCoachTitle": "AI coach",
   "@aiCoachTitle":   {
     "description": "AI coach"

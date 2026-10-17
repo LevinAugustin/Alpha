@@ -1991,22 +1991,52 @@ class AppLocalizationsAr extends AppLocalizations {
   String get imageLicenseLabel => 'ترخيص الصورة';
 
   @override
-  String get gearLanghantel => 'بار حديد';
+  String get muscleUpperChest => 'أعلى الصدر';
 
   @override
-  String get gearKurzhantel => 'دمبل';
+  String get muscleFrontShoulder => 'الكتف الأمامي';
 
   @override
-  String get gearKabelzug => 'كابل';
+  String get muscleSideShoulder => 'الكتف الجانبي';
 
   @override
-  String get gearMaschine => 'جهاز';
+  String get muscleRearShoulder => 'الكتف الخلفي';
 
   @override
-  String get gearMultipresse => 'جهاز سميث';
+  String get muscleLatissimus => 'العضلة العريضة';
 
   @override
-  String get gearKoerpergewicht => 'وزن الجسم';
+  String get muscleUpperBack => 'أعلى الظهر';
+
+  @override
+  String get muscleTrapez => 'شبه المنحرف';
+
+  @override
+  String get muscleLowerBack => 'أسفل الظهر';
+
+  @override
+  String get muscleForearms => 'الساعدان';
+
+  @override
+  String get muscleRectus => 'عضلة البطن المستقيمة';
+
+  @override
+  String get muscleObliques => 'عضلات البطن المائلة';
+
+  @override
+  String get muscleQuadriceps => 'العضلة الرباعية';
+
+  @override
+  String get muscleAdductors => 'المقربات';
+
+  @override
+  String get muscleAbductors => 'المبعدات';
+
+  @override
+  String get muscleHipFlexors => 'مثنيات الورك';
+
+  @override
+  String get alternativesLabel => 'بدائل';
 
   @override
   String get aiCoachTitle => 'مدرب الذكاء';

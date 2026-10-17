@@ -2003,22 +2003,52 @@ class AppLocalizationsUr extends AppLocalizations {
   String get imageLicenseLabel => 'تصویر کا لائسنس';
 
   @override
-  String get gearLanghantel => 'باربل';
+  String get muscleUpperChest => 'اوپری سینہ';
 
   @override
-  String get gearKurzhantel => 'ڈمبل';
+  String get muscleFrontShoulder => 'اگلا کندھا';
 
   @override
-  String get gearKabelzug => 'کیبل';
+  String get muscleSideShoulder => 'سائیڈ کندھا';
 
   @override
-  String get gearMaschine => 'مشین';
+  String get muscleRearShoulder => 'پچھلا کندھا';
 
   @override
-  String get gearMultipresse => 'اسمتھ مشین';
+  String get muscleLatissimus => 'لیٹسیموس';
 
   @override
-  String get gearKoerpergewicht => 'جسمانی وزن';
+  String get muscleUpperBack => 'اوپری پیٹھ';
+
+  @override
+  String get muscleTrapez => 'ٹریپیزیئس';
+
+  @override
+  String get muscleLowerBack => 'نچلی پیٹھ';
+
+  @override
+  String get muscleForearms => 'بازو کا نچلا حصہ';
+
+  @override
+  String get muscleRectus => 'سیدھے پیٹ کے عضلات';
+
+  @override
+  String get muscleObliques => 'ترچھے پیٹ کے عضلات';
+
+  @override
+  String get muscleQuadriceps => 'کواڈریسیپس';
+
+  @override
+  String get muscleAdductors => 'ایڈکٹرز';
+
+  @override
+  String get muscleAbductors => 'ایبڈکٹرز';
+
+  @override
+  String get muscleHipFlexors => 'ہپ فلیکسزر';
+
+  @override
+  String get alternativesLabel => 'متبادل';
 
   @override
   String get aiCoachTitle => 'اے آئی کوچ';
