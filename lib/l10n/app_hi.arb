@@ -2207,7 +2207,7 @@
   "centimetersShort": "सेंटीमीटर (cm)",
   "inchesShort": "इंच (in)",
   "heightInches": "कद (इंच)",
-  "whoAreYou": "आप कौन हैं?",
-  "letsGo": "चलिए शुरू करें",
+  "welcomeToAlpha": "Alpha में आपका स्वागत है",
+  "createProfileButton": "प्रोफ़ाइल बनाएँ",
   "onboardingWeightHint": "शरीर का वजन, वैकल्पिक"
 }

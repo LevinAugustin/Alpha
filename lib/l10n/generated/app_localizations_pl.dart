@@ -2145,10 +2145,10 @@ class AppLocalizationsPl extends AppLocalizations {
   String get heightInches => 'Wzrost (cale)';
 
   @override
-  String get whoAreYou => 'Kim jesteś?';
+  String get welcomeToAlpha => 'Witaj w Alpha';
 
   @override
-  String get letsGo => 'Zaczynamy';
+  String get createProfileButton => 'Utwórz profil';
 
   @override
   String get onboardingWeightHint => 'Masa ciała, opcjonalnie';

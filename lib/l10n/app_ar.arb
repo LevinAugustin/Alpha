@@ -2207,7 +2207,7 @@
   "centimetersShort": "سنتيمتر (سم)",
   "inchesShort": "بوصة (in)",
   "heightInches": "الطول (بوصة)",
-  "whoAreYou": "من أنت؟",
-  "letsGo": "هيا بنا",
+  "welcomeToAlpha": "مرحبًا بك في Alpha",
+  "createProfileButton": "إنشاء ملف",
   "onboardingWeightHint": "وزن الجسم، اختياري"
 }

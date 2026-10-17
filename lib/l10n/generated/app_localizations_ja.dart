@@ -2058,10 +2058,10 @@ class AppLocalizationsJa extends AppLocalizations {
   String get heightInches => '身長（インチ）';
 
   @override
-  String get whoAreYou => 'あなたは誰？';
+  String get welcomeToAlpha => 'Alphaへようこそ';
 
   @override
-  String get letsGo => 'さあ始めよう';
+  String get createProfileButton => 'プロフィールを作成';
 
   @override
   String get onboardingWeightHint => '体重（任意）';

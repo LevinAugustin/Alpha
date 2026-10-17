@@ -2102,10 +2102,10 @@ class AppLocalizationsTh extends AppLocalizations {
   String get heightInches => 'ส่วนสูง (นิ้ว)';
 
   @override
-  String get whoAreYou => 'คุณเป็นใคร?';
+  String get welcomeToAlpha => 'ยินดีต้อนรับสู่ Alpha';
 
   @override
-  String get letsGo => 'ไปกันเลย';
+  String get createProfileButton => 'สร้างโปรไฟล์';
 
   @override
   String get onboardingWeightHint => 'น้ำหนักตัว ไม่บังคับ';

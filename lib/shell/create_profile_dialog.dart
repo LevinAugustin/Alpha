@@ -4,16 +4,22 @@ import 'package:flexify/theme/alpha_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class OnboardingPage extends StatefulWidget {
-  const OnboardingPage({super.key, required this.onFinished});
-
-  final VoidCallback onFinished;
-
-  @override
-  State<OnboardingPage> createState() => _OnboardingPageState();
+Future<bool> showCreateProfileDialog(BuildContext context) async {
+  final saved = await showDialog<bool>(
+    context: context,
+    builder: (context) => const _CreateProfileDialog(),
+  );
+  return saved ?? false;
 }
 
-class _OnboardingPageState extends State<OnboardingPage> {
+class _CreateProfileDialog extends StatefulWidget {
+  const _CreateProfileDialog();
+
+  @override
+  State<_CreateProfileDialog> createState() => _CreateProfileDialogState();
+}
+
+class _CreateProfileDialogState extends State<_CreateProfileDialog> {
   final _name = TextEditingController();
   final _weight = TextEditingController();
   String? _unit;
@@ -45,7 +51,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
     try {
       await completeOnboarding(name: name, bodyWeight: weight, unit: _unit);
       if (!mounted) return;
-      widget.onFinished();
+      Navigator.of(context).pop(true);
     } finally {
       if (mounted) setState(() => _saving = false);
     }
@@ -58,56 +64,20 @@ class _OnboardingPageState extends State<OnboardingPage> {
     final nameReady = _name.text.trim().isNotEmpty;
     final weightInvalid =
         _weight.text.trim().isNotEmpty && ((_parsedWeight() ?? 0) <= 0);
-    return Scaffold(
-      backgroundColor: palette.background,
-      body: SafeArea(
-        child: ListView(
-          padding: const EdgeInsets.fromLTRB(24, 12, 24, 24),
+    return AlertDialog(
+      backgroundColor: palette.card,
+      title: Text(l10n.createProfileButton),
+      content: SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
-            SizedBox(
-              height: 280,
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  Container(
-                    width: 220,
-                    height: 220,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      gradient: RadialGradient(
-                        colors: [
-                          palette.accent.withValues(alpha: 0.45),
-                          palette.accent.withValues(alpha: 0),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Image.asset(palette.figureAsset, height: 250),
-                ],
-              ),
-            ),
-            Text(
-              l10n.whoAreYou,
-              style: TextStyle(
-                fontFamily: 'Bebas Neue',
-                fontSize: 48,
-                height: 0.9,
-                color: palette.accent,
-              ),
-            ),
-            const SizedBox(height: 20),
             TextField(
               key: const Key('onboarding-name'),
               controller: _name,
-              textCapitalization: TextCapitalization.words,
               autofocus: true,
+              textCapitalization: TextCapitalization.words,
               onChanged: (_) => setState(() {}),
-              style: TextStyle(color: palette.text),
-              decoration: InputDecoration(
-                hintText: l10n.profileNameHint,
-                filled: true,
-                fillColor: palette.card,
-              ),
+              decoration: InputDecoration(hintText: l10n.profileNameHint),
             ),
             const SizedBox(height: 12),
             TextField(
@@ -120,12 +90,9 @@ class _OnboardingPageState extends State<OnboardingPage> {
                 FilteringTextInputFormatter.allow(RegExp(r'[0-9.,]')),
               ],
               onChanged: (_) => setState(() {}),
-              style: TextStyle(color: palette.text),
               decoration: InputDecoration(
                 hintText: l10n.onboardingWeightHint,
                 errorText: weightInvalid ? l10n.onboardingWeightHint : null,
-                filled: true,
-                fillColor: palette.card,
               ),
             ),
             const SizedBox(height: 12),
@@ -148,38 +115,20 @@ class _OnboardingPageState extends State<OnboardingPage> {
                 ),
               ],
             ),
-            const SizedBox(height: 24),
-            SizedBox(
-              height: 52,
-              child: DecoratedBox(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(14),
-                  color: nameReady && !weightInvalid
-                      ? (palette.buttonGradient == null ? palette.accent : null)
-                      : palette.card,
-                  gradient: nameReady && !weightInvalid
-                      ? palette.buttonGradient
-                      : null,
-                ),
-                child: TextButton(
-                  key: const Key('onboarding-start'),
-                  onPressed: nameReady && !weightInvalid && !_saving
-                      ? _submit
-                      : null,
-                  child: Text(
-                    l10n.letsGo,
-                    style: TextStyle(
-                      fontFamily: 'Bebas Neue',
-                      fontSize: 22,
-                      color: nameReady ? palette.onAccent : palette.muted,
-                    ),
-                  ),
-                ),
-              ),
-            ),
           ],
         ),
       ),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.of(context).pop(false),
+          child: Text(l10n.actionCancel),
+        ),
+        TextButton(
+          key: const Key('onboarding-save'),
+          onPressed: nameReady && !weightInvalid && !_saving ? _submit : null,
+          child: Text(l10n.actionSave),
+        ),
+      ],
     );
   }
 }

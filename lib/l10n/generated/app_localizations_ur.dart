@@ -2117,10 +2117,10 @@ class AppLocalizationsUr extends AppLocalizations {
   String get heightInches => 'قد (انچ)';
 
   @override
-  String get whoAreYou => 'تم کون ہو؟';
+  String get welcomeToAlpha => 'Alpha میں خوش آمدید';
 
   @override
-  String get letsGo => 'چلیں شروع کریں';
+  String get createProfileButton => 'پروفائل بنائیں';
 
   @override
   String get onboardingWeightHint => 'جسمانی وزن، اختیاری';

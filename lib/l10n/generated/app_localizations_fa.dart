@@ -2119,10 +2119,10 @@ class AppLocalizationsFa extends AppLocalizations {
   String get heightInches => 'قد (اینچ)';
 
   @override
-  String get whoAreYou => 'تو کیستی؟';
+  String get welcomeToAlpha => 'به Alpha خوش آمدید';
 
   @override
-  String get letsGo => 'بزن بریم';
+  String get createProfileButton => 'ساختن نمایه';
 
   @override
   String get onboardingWeightHint => 'وزن بدن، اختیاری';

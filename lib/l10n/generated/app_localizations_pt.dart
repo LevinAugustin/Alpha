@@ -2143,10 +2143,10 @@ class AppLocalizationsPt extends AppLocalizations {
   String get heightInches => 'Altura (polegadas)';
 
   @override
-  String get whoAreYou => 'Quem és tu?';
+  String get welcomeToAlpha => 'Bem-vindo ao Alpha';
 
   @override
-  String get letsGo => 'Vamos a isso';
+  String get createProfileButton => 'Criar perfil';
 
   @override
   String get onboardingWeightHint => 'Peso corporal, opcional';
@@ -4282,10 +4282,10 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get heightInches => 'Altura (polegadas)';
 
   @override
-  String get whoAreYou => 'Quem é você?';
+  String get welcomeToAlpha => 'Bem-vindo ao Alpha';
 
   @override
-  String get letsGo => 'Bora lá';
+  String get createProfileButton => 'Criar perfil';
 
   @override
   String get onboardingWeightHint => 'Peso corporal, opcional';
@@ -6430,10 +6430,10 @@ class AppLocalizationsPtPt extends AppLocalizationsPt {
   String get heightInches => 'Altura (polegadas)';
 
   @override
-  String get whoAreYou => 'Quem és tu?';
+  String get welcomeToAlpha => 'Bem-vindo ao Alpha';
 
   @override
-  String get letsGo => 'Vamos a isso';
+  String get createProfileButton => 'Criar perfil';
 
   @override
   String get onboardingWeightHint => 'Peso corporal, opcional';

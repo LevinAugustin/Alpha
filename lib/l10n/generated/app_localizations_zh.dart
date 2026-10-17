@@ -2047,10 +2047,10 @@ class AppLocalizationsZh extends AppLocalizations {
   String get heightInches => '身高（英寸）';
 
   @override
-  String get whoAreYou => '你是谁？';
+  String get welcomeToAlpha => '欢迎使用 Alpha';
 
   @override
-  String get letsGo => '开始吧';
+  String get createProfileButton => '创建档案';
 
   @override
   String get onboardingWeightHint => '体重，可选';
@@ -4099,10 +4099,10 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
   String get heightInches => '身高（英寸）';
 
   @override
-  String get whoAreYou => '你是谁？';
+  String get welcomeToAlpha => '欢迎使用 Alpha';
 
   @override
-  String get letsGo => '开始吧';
+  String get createProfileButton => '创建档案';
 
   @override
   String get onboardingWeightHint => '体重，可选';
@@ -6151,10 +6151,10 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get heightInches => '身高（英吋）';
 
   @override
-  String get whoAreYou => '你是誰？';
+  String get welcomeToAlpha => '歡迎使用 Alpha';
 
   @override
-  String get letsGo => '開始吧';
+  String get createProfileButton => '建立檔案';
 
   @override
   String get onboardingWeightHint => '體重，選填';

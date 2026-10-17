@@ -2,6 +2,7 @@ import 'package:drift/drift.dart' hide Column;
 import 'package:flexify/alpha/alpha_prefs.dart';
 import 'package:flexify/database/database.dart';
 import 'package:flexify/settings/alpha_settings_page.dart';
+import 'package:flexify/shell/create_profile_dialog.dart';
 import 'package:flexify/workout/muscle_atlas_page.dart';
 import 'package:flexify/l10n/l10n.dart';
 import 'package:flexify/main.dart';
@@ -46,6 +47,21 @@ class _StartPageState extends State<StartPage> {
         );
         final storedName = stored?.trim() ?? '';
         final name = storedName.isEmpty ? data.profileName : storedName;
+        if (name.isEmpty) {
+          return Padding(
+            padding: const EdgeInsets.fromLTRB(16, 4, 16, 24),
+            child: _GuestHero(
+              palette: palette,
+              onCreate: () async {
+                final saved = await showCreateProfileDialog(context);
+                if (!saved || !mounted) return;
+                setState(() {
+                  _future = _load();
+                });
+              },
+            ),
+          );
+        }
         return ListView(
           padding: const EdgeInsets.fromLTRB(16, 4, 16, 24),
           children: [
@@ -56,7 +72,9 @@ class _StartPageState extends State<StartPage> {
               onGoal: () async {
                 final saved = await editWeeklyGoal(context);
                 if (!saved || !mounted) return;
-                setState(() => _future = _load());
+                setState(() {
+                  _future = _load();
+                });
               },
             ),
             ValueListenableBuilder(
@@ -332,6 +350,112 @@ class _Lift {
   final String name;
   final String? germanName;
   final double best;
+}
+
+class _GuestHero extends StatelessWidget {
+  const _GuestHero({required this.palette, required this.onCreate});
+
+  final AlphaPalette palette;
+  final VoidCallback onCreate;
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = context.l10n;
+    return SizedBox.expand(
+      child: Container(
+        clipBehavior: Clip.antiAlias,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(22),
+          border: Border.all(color: palette.border),
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [
+              Color.alphaBlend(
+                palette.accent.withValues(alpha: 0.28),
+                palette.card,
+              ),
+              palette.card,
+              palette.background,
+            ],
+          ),
+        ),
+        child: Stack(
+          children: [
+            Positioned(
+              right: -20,
+              top: 20,
+              child: Container(
+                width: 220,
+                height: 220,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  gradient: RadialGradient(
+                    colors: [
+                      palette.accent.withValues(alpha: 0.45),
+                      palette.accent.withValues(alpha: 0),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+              right: -30,
+              bottom: 70,
+              child: Image.asset(
+                palette.figureAsset,
+                height: palette.id == 'pink' ? 360 : 320,
+                fit: BoxFit.contain,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(18, 16, 18, 14),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    l10n.welcomeToAlpha,
+                    style: TextStyle(
+                      fontFamily: 'Bebas Neue',
+                      fontSize: 40,
+                      height: 0.9,
+                      color: palette.accent,
+                    ),
+                  ),
+                  const Spacer(),
+                  SizedBox(
+                    width: double.infinity,
+                    height: 52,
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(14),
+                        color: palette.buttonGradient == null
+                            ? palette.accent
+                            : null,
+                        gradient: palette.buttonGradient,
+                      ),
+                      child: TextButton(
+                        key: const Key('create-profile'),
+                        onPressed: onCreate,
+                        child: Text(
+                          l10n.createProfileButton,
+                          style: TextStyle(
+                            fontFamily: 'Bebas Neue',
+                            fontSize: 22,
+                            color: palette.onAccent,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 }
 
 class _Hero extends StatelessWidget {

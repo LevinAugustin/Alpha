@@ -2143,10 +2143,10 @@ class AppLocalizationsUk extends AppLocalizations {
   String get heightInches => 'Зріст (дюйми)';
 
   @override
-  String get whoAreYou => 'Хто ти?';
+  String get welcomeToAlpha => 'Ласкаво просимо до Alpha';
 
   @override
-  String get letsGo => 'Поїхали';
+  String get createProfileButton => 'Створити профіль';
 
   @override
   String get onboardingWeightHint => 'Вага тіла, необов\'язково';

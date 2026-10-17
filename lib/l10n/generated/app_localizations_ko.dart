@@ -2061,10 +2061,10 @@ class AppLocalizationsKo extends AppLocalizations {
   String get heightInches => '키 (인치)';
 
   @override
-  String get whoAreYou => '당신은 누구인가요?';
+  String get welcomeToAlpha => 'Alpha에 오신 것을 환영합니다';
 
   @override
-  String get letsGo => '시작하기';
+  String get createProfileButton => '프로필 만들기';
 
   @override
   String get onboardingWeightHint => '체중, 선택 사항';

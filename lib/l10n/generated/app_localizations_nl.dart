@@ -2133,10 +2133,10 @@ class AppLocalizationsNl extends AppLocalizations {
   String get heightInches => 'Lengte (inch)';
 
   @override
-  String get whoAreYou => 'Wie ben jij?';
+  String get welcomeToAlpha => 'Welkom bij Alpha';
 
   @override
-  String get letsGo => 'Aan de slag';
+  String get createProfileButton => 'Profiel maken';
 
   @override
   String get onboardingWeightHint => 'Lichaamsgewicht, optioneel';

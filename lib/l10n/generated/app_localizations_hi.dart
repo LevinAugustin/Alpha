@@ -2112,10 +2112,10 @@ class AppLocalizationsHi extends AppLocalizations {
   String get heightInches => 'कद (इंच)';
 
   @override
-  String get whoAreYou => 'आप कौन हैं?';
+  String get welcomeToAlpha => 'Alpha में आपका स्वागत है';
 
   @override
-  String get letsGo => 'चलिए शुरू करें';
+  String get createProfileButton => 'प्रोफ़ाइल बनाएँ';
 
   @override
   String get onboardingWeightHint => 'शरीर का वजन, वैकल्पिक';

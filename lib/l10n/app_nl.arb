@@ -663,7 +663,7 @@
   "centimetersShort": "Centimeter (cm)",
   "inchesShort": "Inch (in)",
   "heightInches": "Lengte (inch)",
-  "whoAreYou": "Wie ben jij?",
-  "letsGo": "Aan de slag",
+  "welcomeToAlpha": "Welkom bij Alpha",
+  "createProfileButton": "Profiel maken",
   "onboardingWeightHint": "Lichaamsgewicht, optioneel"
 }

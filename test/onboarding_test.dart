@@ -5,7 +5,6 @@ import 'package:flexify/database/database.dart';
 import 'package:flexify/home_page.dart';
 import 'package:flexify/main.dart';
 import 'package:flexify/profile/local_profiles.dart';
-import 'package:flexify/shell/onboarding_page.dart';
 import 'package:flexify/storage/app_storage_native.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -103,11 +102,11 @@ void main() {
   test(
     'a 2.4.0 database without a stored name still skips onboarding',
     () async {
-    final database = AppDatabase.forPath(
-      p.join(support.path, databaseFileName),
-    );
-    await database.settings.select().getSingle();
-    await database.close();
+      final database = AppDatabase.forPath(
+        p.join(support.path, databaseFileName),
+      );
+      await database.settings.select().getSingle();
+      await database.close();
 
       final registry = await loadProfileRegistry();
       expect(registry.onboarded, isTrue);
@@ -116,45 +115,10 @@ void main() {
     },
   );
 
-  testWidgets('welcome screen requires a name and opens the home page', (
-    tester,
-  ) async {
+  testWidgets('home without a profile offers to create one', (tester) async {
     final harness = await FlexifyTestHarness.create();
     addTearDown(harness.database.close);
     await loadProfileRegistry();
-
-    await harness.pump(
-      tester,
-      OnboardingPage(onFinished: () {}),
-      locale: const Locale('de'),
-      surfaceSize: const Size(400, 900),
-    );
-    await tester.pump();
-
-    expect(find.text('Wer bist du?'), findsOneWidget);
-    expect(find.text('ALPHA'), findsNothing);
-    final button = tester.widget<TextButton>(
-      find.byKey(const Key('onboarding-start')),
-    );
-    expect(button.onPressed, isNull);
-
-    await tester.enterText(find.byKey(const Key('onboarding-name')), 'Mia');
-    await tester.enterText(find.byKey(const Key('onboarding-weight')), '80');
-    await tester.tap(find.byKey(const Key('onboarding-unit-kg')));
-    await tester.pump();
-    expect(
-      tester
-          .widget<TextButton>(find.byKey(const Key('onboarding-start')))
-          .onPressed,
-      isNotNull,
-    );
-
-    await tester.tap(find.byKey(const Key('onboarding-start')));
-    await tester.pumpAndSettle();
-
-    final setting = await harness.database.settings.select().getSingle();
-    expect(setting.profileName, 'Mia');
-    expect(setting.strengthUnit, 'kg');
 
     await harness.pump(
       tester,
@@ -165,8 +129,49 @@ void main() {
     await tester.pump();
     await tester.pump(const Duration(milliseconds: 400));
 
+    expect(find.text('Willkommen bei Alpha'), findsOneWidget);
+    expect(find.text('Profil erstellen'), findsWidgets);
+    expect(find.textContaining('Training starten'), findsNothing);
+    expect(find.text('Diese Woche'), findsNothing);
+    expect(find.textContaining('Tage in Folge'), findsNothing);
+    expect(find.text('ALPHA'), findsNothing);
+
+    await tester.tap(find.byKey(const Key('create-profile')));
+    await tester.pumpAndSettle();
+
+    expect(
+      tester
+          .widget<TextButton>(find.byKey(const Key('onboarding-save')))
+          .onPressed,
+      isNull,
+    );
+
+    await tester.enterText(find.byKey(const Key('onboarding-name')), 'Mia');
+    await tester.enterText(find.byKey(const Key('onboarding-weight')), '80');
+    await tester.tap(find.byKey(const Key('onboarding-unit-kg')));
+    await tester.pump();
+    expect(
+      tester
+          .widget<TextButton>(find.byKey(const Key('onboarding-save')))
+          .onPressed,
+      isNotNull,
+    );
+
+    await tester.tap(find.byKey(const Key('onboarding-save')));
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 400));
+
+    final setting = await harness.database.settings.select().getSingle();
+    expect(setting.profileName, 'Mia');
+    expect(setting.strengthUnit, 'kg');
+    final weight = await harness.database.bodyWeights.select().getSingle();
+    expect(weight.weightKg, closeTo(80, 0.001));
+
     expect(find.text('Hallo'), findsWidgets);
     expect(find.text('Mia'), findsWidgets);
+    expect(find.text('Willkommen bei Alpha'), findsNothing);
+    expect(find.text('Diese Woche'), findsOneWidget);
+    expect(find.textContaining('Tage in Folge'), findsWidgets);
     expect(find.text('ALPHA'), findsNothing);
   });
 }

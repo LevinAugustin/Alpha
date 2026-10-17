@@ -2207,7 +2207,7 @@
   "centimetersShort": "সেন্টিমিটার (cm)",
   "inchesShort": "ইঞ্চি (in)",
   "heightInches": "উচ্চতা (ইঞ্চি)",
-  "whoAreYou": "তুমি কে?",
-  "letsGo": "চলুন শুরু করি",
+  "welcomeToAlpha": "Alpha-তে স্বাগতম",
+  "createProfileButton": "প্রোফাইল তৈরি করুন",
   "onboardingWeightHint": "শরীরের ওজন, ঐচ্ছিক"
 }

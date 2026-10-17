@@ -663,7 +663,7 @@
   "centimetersShort": "Centymetry (cm)",
   "inchesShort": "Cale (in)",
   "heightInches": "Wzrost (cale)",
-  "whoAreYou": "Kim jesteś?",
-  "letsGo": "Zaczynamy",
+  "welcomeToAlpha": "Witaj w Alpha",
+  "createProfileButton": "Utwórz profil",
   "onboardingWeightHint": "Masa ciała, opcjonalnie"
 }

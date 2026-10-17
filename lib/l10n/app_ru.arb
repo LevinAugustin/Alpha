@@ -663,7 +663,7 @@
   "centimetersShort": "Сантиметры (см)",
   "inchesShort": "Дюймы (in)",
   "heightInches": "Рост (дюймы)",
-  "whoAreYou": "Кто ты?",
-  "letsGo": "Поехали",
+  "welcomeToAlpha": "Добро пожаловать в Alpha",
+  "createProfileButton": "Создать профиль",
   "onboardingWeightHint": "Вес тела, необязательно"
 }

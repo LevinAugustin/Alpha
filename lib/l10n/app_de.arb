@@ -226,7 +226,7 @@
   "noExercisesFound": "Keine Übungen gefunden",
   "savePlan": "Plan speichern",
   "titleOptional": "Titel (optional)",
-  "searchExercises": "Übungen suchen...",
+  "searchExercises": "Übungen suchen",
   "warmupSets": "Aufwärmsätze",
   "workingSetsMax": "Arbeitssätze (max. 20)",
   "actionUndo": "Rückgängig",
@@ -508,7 +508,6 @@
   "newTemplate": "Neue Vorlage",
   "templateLimit": "Du kannst bis zu 7 Vorlagen speichern.",
   "templatesEmpty": "In dieser Vorlage sind noch keine Übungen.",
-  "searchExercises": "Übungen suchen",
   "allMuscles": "Alle",
   "noHistory": "Noch kein Verlauf",
   "bestOneRepMax": "Geschätztes 1RM {value} kg",
@@ -664,7 +663,7 @@
   "centimetersShort": "Zentimeter (cm)",
   "inchesShort": "Zoll (in)",
   "heightInches": "Größe (Zoll)",
-  "whoAreYou": "Wer bist du?",
-  "letsGo": "Los geht's",
+  "welcomeToAlpha": "Willkommen bei Alpha",
+  "createProfileButton": "Profil erstellen",
   "onboardingWeightHint": "Körpergewicht, optional"
 }

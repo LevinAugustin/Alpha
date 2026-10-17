@@ -663,7 +663,7 @@
   "centimetersShort": "센티미터 (cm)",
   "inchesShort": "인치 (in)",
   "heightInches": "키 (인치)",
-  "whoAreYou": "당신은 누구인가요?",
-  "letsGo": "시작하기",
+  "welcomeToAlpha": "Alpha에 오신 것을 환영합니다",
+  "createProfileButton": "프로필 만들기",
   "onboardingWeightHint": "체중, 선택 사항"
 }

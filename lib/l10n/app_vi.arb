@@ -2207,7 +2207,7 @@
   "centimetersShort": "Xentimét (cm)",
   "inchesShort": "Inch (in)",
   "heightInches": "Chiều cao (inch)",
-  "whoAreYou": "Bạn là ai?",
-  "letsGo": "Bắt đầu thôi",
+  "welcomeToAlpha": "Chào mừng đến với Alpha",
+  "createProfileButton": "Tạo hồ sơ",
   "onboardingWeightHint": "Cân nặng, không bắt buộc"
 }

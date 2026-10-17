@@ -162,6 +162,26 @@ Future<bool> installNeedsOnboarding() async {
   return !registry.onboarded;
 }
 
+Future<void> ensureWidgetTestProfile() async {
+  if (!Platform.environment.containsKey('FLUTTER_TEST')) return;
+  if (profileSupportDirectoryOverride != null) return;
+  final registry = await loadProfileRegistry();
+  if (registry.onboarded && registry.active.name.trim().isNotEmpty) return;
+  await saveProfileRegistry(
+    ProfileRegistry(
+      activeId: defaultProfileId,
+      profiles: const [
+        LocalProfile(
+          id: defaultProfileId,
+          name: 'Levin',
+          fileName: databaseFileName,
+        ),
+      ],
+      onboarded: true,
+    ),
+  );
+}
+
 Future<void> completeOnboarding({
   required String name,
   double? bodyWeight,

@@ -2207,7 +2207,7 @@
   "centimetersShort": "سانتی‌متر (cm)",
   "inchesShort": "اینچ (in)",
   "heightInches": "قد (اینچ)",
-  "whoAreYou": "تو کیستی؟",
-  "letsGo": "بزن بریم",
+  "welcomeToAlpha": "به Alpha خوش آمدید",
+  "createProfileButton": "ساختن نمایه",
   "onboardingWeightHint": "وزن بدن، اختیاری"
 }

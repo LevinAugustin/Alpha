@@ -2136,10 +2136,10 @@ class AppLocalizationsIt extends AppLocalizations {
   String get heightInches => 'Altezza (pollici)';
 
   @override
-  String get whoAreYou => 'Chi sei?';
+  String get welcomeToAlpha => 'Benvenuto in Alpha';
 
   @override
-  String get letsGo => 'Si parte';
+  String get createProfileButton => 'Crea profilo';
 
   @override
   String get onboardingWeightHint => 'Peso corporeo, facoltativo';

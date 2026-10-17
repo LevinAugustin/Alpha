@@ -2129,10 +2129,10 @@ class AppLocalizationsId extends AppLocalizations {
   String get heightInches => 'Tinggi (inci)';
 
   @override
-  String get whoAreYou => 'Siapa kamu?';
+  String get welcomeToAlpha => 'Selamat datang di Alpha';
 
   @override
-  String get letsGo => 'Ayo mulai';
+  String get createProfileButton => 'Buat profil';
 
   @override
   String get onboardingWeightHint => 'Berat badan, opsional';

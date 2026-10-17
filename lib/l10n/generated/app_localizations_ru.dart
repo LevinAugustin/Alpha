@@ -2146,10 +2146,10 @@ class AppLocalizationsRu extends AppLocalizations {
   String get heightInches => 'Рост (дюймы)';
 
   @override
-  String get whoAreYou => 'Кто ты?';
+  String get welcomeToAlpha => 'Добро пожаловать в Alpha';
 
   @override
-  String get letsGo => 'Поехали';
+  String get createProfileButton => 'Создать профиль';
 
   @override
   String get onboardingWeightHint => 'Вес тела, необязательно';

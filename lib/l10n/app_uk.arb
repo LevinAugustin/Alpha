@@ -2216,7 +2216,7 @@
   "centimetersShort": "Сантиметри (см)",
   "inchesShort": "Дюйми (in)",
   "heightInches": "Зріст (дюйми)",
-  "whoAreYou": "Хто ти?",
-  "letsGo": "Поїхали",
+  "welcomeToAlpha": "Ласкаво просимо до Alpha",
+  "createProfileButton": "Створити профіль",
   "onboardingWeightHint": "Вага тіла, необов'язково"
 }

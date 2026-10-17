@@ -663,7 +663,7 @@
   "centimetersShort": "Centímetros (cm)",
   "inchesShort": "Pulgadas (in)",
   "heightInches": "Estatura (pulgadas)",
-  "whoAreYou": "¿Quién eres?",
-  "letsGo": "Vamos allá",
+  "welcomeToAlpha": "Bienvenido a Alpha",
+  "createProfileButton": "Crear perfil",
   "onboardingWeightHint": "Peso corporal, opcional"
 }

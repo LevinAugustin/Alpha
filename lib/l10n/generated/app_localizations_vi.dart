@@ -2125,10 +2125,10 @@ class AppLocalizationsVi extends AppLocalizations {
   String get heightInches => 'Chiều cao (inch)';
 
   @override
-  String get whoAreYou => 'Bạn là ai?';
+  String get welcomeToAlpha => 'Chào mừng đến với Alpha';
 
   @override
-  String get letsGo => 'Bắt đầu thôi';
+  String get createProfileButton => 'Tạo hồ sơ';
 
   @override
   String get onboardingWeightHint => 'Cân nặng, không bắt buộc';

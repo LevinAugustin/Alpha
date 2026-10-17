@@ -2128,10 +2128,10 @@ class AppLocalizationsMs extends AppLocalizations {
   String get heightInches => 'Tinggi (inci)';
 
   @override
-  String get whoAreYou => 'Siapa anda?';
+  String get welcomeToAlpha => 'Selamat datang ke Alpha';
 
   @override
-  String get letsGo => 'Jom mula';
+  String get createProfileButton => 'Cipta profil';
 
   @override
   String get onboardingWeightHint => 'Berat badan, pilihan';

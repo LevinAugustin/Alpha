@@ -2207,7 +2207,7 @@
   "centimetersShort": "سینٹی میٹر (cm)",
   "inchesShort": "انچ (in)",
   "heightInches": "قد (انچ)",
-  "whoAreYou": "تم کون ہو؟",
-  "letsGo": "چلیں شروع کریں",
+  "welcomeToAlpha": "Alpha میں خوش آمدید",
+  "createProfileButton": "پروفائل بنائیں",
   "onboardingWeightHint": "جسمانی وزن، اختیاری"
 }

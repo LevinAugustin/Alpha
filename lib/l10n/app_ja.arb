@@ -663,7 +663,7 @@
   "centimetersShort": "センチメートル (cm)",
   "inchesShort": "インチ (in)",
   "heightInches": "身長（インチ）",
-  "whoAreYou": "あなたは誰？",
-  "letsGo": "さあ始めよう",
+  "welcomeToAlpha": "Alphaへようこそ",
+  "createProfileButton": "プロフィールを作成",
   "onboardingWeightHint": "体重（任意）"
 }

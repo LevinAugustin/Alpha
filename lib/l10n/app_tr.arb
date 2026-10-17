@@ -663,7 +663,7 @@
   "centimetersShort": "Santimetre (cm)",
   "inchesShort": "İnç (in)",
   "heightInches": "Boy (inç)",
-  "whoAreYou": "Sen kimsin?",
-  "letsGo": "Hadi başlayalım",
+  "welcomeToAlpha": "Alpha'ya hoş geldin",
+  "createProfileButton": "Profil oluştur",
   "onboardingWeightHint": "Vücut ağırlığı, isteğe bağlı"
 }

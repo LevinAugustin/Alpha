@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flexify/home_page.dart';
 import 'package:flexify/l10n/l10n.dart';
 import 'package:flexify/profile/local_profiles.dart';
-import 'package:flexify/shell/onboarding_page.dart';
 import 'package:flexify/theme/alpha_theme.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +15,6 @@ class AlphaBoot extends StatefulWidget {
 
 class _AlphaBootState extends State<AlphaBoot> {
   var _home = false;
-  var _onboarding = false;
   var _splash = false;
 
   @override
@@ -29,14 +27,14 @@ class _AlphaBootState extends State<AlphaBoot> {
       _home = true;
       return;
     }
-    unawaited(_decide());
+    unawaited(_open());
   }
 
-  Future<void> _decide() async {
+  Future<void> _open() async {
     final needed = await installNeedsOnboarding();
     if (!mounted) return;
     if (needed) {
-      setState(() => _onboarding = true);
+      setState(() => _home = true);
       return;
     }
     setState(() => _splash = true);
@@ -47,13 +45,6 @@ class _AlphaBootState extends State<AlphaBoot> {
   @override
   Widget build(BuildContext context) {
     if (_home) return const HomePage();
-    if (_onboarding) {
-      return OnboardingPage(
-        onFinished: () {
-          if (mounted) setState(() => _home = true);
-        },
-      );
-    }
     final palette = AlphaTheme.of(context);
     return Scaffold(
       backgroundColor: palette.background,

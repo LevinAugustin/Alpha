@@ -663,7 +663,7 @@
   "centimetersShort": "厘米 (cm)",
   "inchesShort": "英寸 (in)",
   "heightInches": "身高（英寸）",
-  "whoAreYou": "你是谁？",
-  "letsGo": "开始吧",
+  "welcomeToAlpha": "欢迎使用 Alpha",
+  "createProfileButton": "创建档案",
   "onboardingWeightHint": "体重，可选"
 }

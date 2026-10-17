@@ -3924,17 +3924,17 @@ abstract class AppLocalizations {
   /// **'Height (in)'**
   String get heightInches;
 
-  /// Who are you?
+  /// Welcome to Alpha
   ///
   /// In en, this message translates to:
-  /// **'Who are you?'**
-  String get whoAreYou;
+  /// **'Welcome to Alpha'**
+  String get welcomeToAlpha;
 
-  /// Let's go
+  /// Create profile
   ///
   /// In en, this message translates to:
-  /// **'Let\'s go'**
-  String get letsGo;
+  /// **'Create profile'**
+  String get createProfileButton;
 
   /// Body weight, optional
   ///

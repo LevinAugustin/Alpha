@@ -2207,7 +2207,7 @@
   "centimetersShort": "เซนติเมตร (cm)",
   "inchesShort": "นิ้ว (in)",
   "heightInches": "ส่วนสูง (นิ้ว)",
-  "whoAreYou": "คุณเป็นใคร?",
-  "letsGo": "ไปกันเลย",
+  "welcomeToAlpha": "ยินดีต้อนรับสู่ Alpha",
+  "createProfileButton": "สร้างโปรไฟล์",
   "onboardingWeightHint": "น้ำหนักตัว ไม่บังคับ"
 }

@@ -2148,10 +2148,10 @@ class AppLocalizationsFr extends AppLocalizations {
   String get heightInches => 'Taille (pouces)';
 
   @override
-  String get whoAreYou => 'Qui es-tu ?';
+  String get welcomeToAlpha => 'Bienvenue sur Alpha';
 
   @override
-  String get letsGo => 'C\'est parti';
+  String get createProfileButton => 'Créer un profil';
 
   @override
   String get onboardingWeightHint => 'Poids du corps, facultatif';

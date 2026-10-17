@@ -2825,13 +2825,13 @@
   "@heightInches":   {
     "description": "Height (in)"
   },
-  "whoAreYou": "Who are you?",
-  "@whoAreYou": {
-    "description": "Who are you?"
+  "welcomeToAlpha": "Welcome to Alpha",
+  "@welcomeToAlpha": {
+    "description": "Welcome to Alpha"
   },
-  "letsGo": "Let's go",
-  "@letsGo": {
-    "description": "Let's go"
+  "createProfileButton": "Create profile",
+  "@createProfileButton": {
+    "description": "Create profile"
   },
   "onboardingWeightHint": "Body weight, optional",
   "@onboardingWeightHint": {

@@ -2207,7 +2207,7 @@
   "centimetersShort": "Sentimeter (cm)",
   "inchesShort": "Inci (in)",
   "heightInches": "Tinggi (inci)",
-  "whoAreYou": "Siapa kamu?",
-  "letsGo": "Ayo mulai",
+  "welcomeToAlpha": "Selamat datang di Alpha",
+  "createProfileButton": "Buat profil",
   "onboardingWeightHint": "Berat badan, opsional"
 }
