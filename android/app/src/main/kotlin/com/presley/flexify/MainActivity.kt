@@ -20,7 +20,6 @@ import android.os.IBinder
 import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsControllerCompat
@@ -37,19 +36,6 @@ class MainActivity : FlutterActivity() {
     private var pendingPickResult: MethodChannel.Result? = null
     private var pendingNotificationTarget: String? = null
     private var speechResult: MethodChannel.Result? = null
-    private val speechLauncher = registerForActivityResult(
-        ActivityResultContracts.StartActivityForResult()
-    ) { result ->
-        val pending = speechResult
-        speechResult = null
-        if (pending == null) return@registerForActivityResult
-        if (result.resultCode != RESULT_OK) {
-            pending.success("")
-            return@registerForActivityResult
-        }
-        val spoken = result.data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)
-        pending.success(if (spoken.isNullOrEmpty()) "" else spoken.first())
-    }
 
     private val timerConnection = object : ServiceConnection {
         override fun onServiceConnected(className: ComponentName, service: IBinder) {
@@ -203,7 +189,7 @@ class MainActivity : FlutterActivity() {
                     }
                     speechResult = result
                     try {
-                        speechLauncher.launch(intent)
+                        startActivityForResult(intent, SPEECH_REQUEST_CODE)
                     } catch (_: Exception) {
                         speechResult = null
                         result.success("")
@@ -439,6 +425,18 @@ class MainActivity : FlutterActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == SPEECH_REQUEST_CODE) {
+            val pending = speechResult
+            speechResult = null
+            if (pending == null) return
+            if (resultCode != RESULT_OK) {
+                pending.success("")
+                return
+            }
+            val spoken = data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)
+            pending.success(if (spoken.isNullOrEmpty()) "" else spoken.first())
+            return
+        }
         if (requestCode != WRITE_REQUEST_CODE) return
 
         data?.data?.also { uri ->
@@ -519,6 +517,7 @@ class MainActivity : FlutterActivity() {
     companion object {
         const val FLUTTER_CHANNEL = "com.presley.flexify/android"
         const val WRITE_REQUEST_CODE = 43
+        const val SPEECH_REQUEST_CODE = 45
         const val TIMER_PERMISSION_REQUEST_CODE = 44
         const val TICK_BROADCAST = "tick-event"
         const val PERMISSION_INSTALL_MARKER = "permission-prompt-state-v1"
