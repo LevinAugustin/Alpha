@@ -9,13 +9,13 @@ class AppLocalizationsIt extends AppLocalizations {
   AppLocalizationsIt([String locale = 'it']) : super(locale);
 
   @override
-  String get appTitle => 'Flexify';
+  String get appTitle => 'Alpha';
 
   @override
   String get settingsLanguage => 'Lingua';
 
   @override
-  String get settingsLanguageDescription => 'Scegli la lingua usata da Flexify';
+  String get settingsLanguageDescription => 'Scegli la lingua usata da Alpha';
 
   @override
   String get languageSystemDefault => 'Predefinita di sistema';
@@ -385,7 +385,7 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get backupArchiveMissingDatabase =>
-      'Il backup non contiene il database di Flexify.';
+      'Il backup non contiene il database di Alpha.';
 
   @override
   String failedToImportGraphs(String error) {
@@ -513,7 +513,7 @@ class AppLocalizationsIt extends AppLocalizations {
   String get privacyPolicy => 'Informativa sulla privacy';
 
   @override
-  String get privacyPolicyDescription => 'Come Flexify gestisce i tuoi dati';
+  String get privacyPolicyDescription => 'Come Alpha gestisce i tuoi dati';
 
   @override
   String get licenseLabel => 'Licenza';
@@ -528,7 +528,7 @@ class AppLocalizationsIt extends AppLocalizations {
   String get leaveReview => 'Lascia una recensione';
 
   @override
-  String get leaveReviewDescription => 'Valuta Flexify sul Play Store';
+  String get leaveReviewDescription => 'Valuta Alpha sul Play Store';
 
   @override
   String get reportBug => 'Segnala un bug';
@@ -1291,7 +1291,7 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get automaticBackupNotificationBody =>
-      'Flexify eseguirà automaticamente ogni giorno il backup di dati e immagini nella cartella selezionata.';
+      'Alpha eseguirà automaticamente ogni giorno il backup di dati e immagini nella cartella selezionata.';
 
   @override
   String get backupSettingsChannel => 'Impostazioni backup';
@@ -1305,7 +1305,7 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get backupChannelDescription =>
-      'Backup automatici di dati e immagini di Flexify';
+      'Backup automatici di dati e immagini di Alpha';
 
   @override
   String get backupCompletedTitle => 'Dati e immagini salvati';

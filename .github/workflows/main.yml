@@ -7,10 +7,6 @@ on:
       - "pubspec.yaml"
   pull_request:
     branches: [main]
-  # GitHub cron cannot express a true fortnightly interval. Run weekly,
-  # then release only when the previous published release is at least 14 days old.
-  schedule:
-    - cron: "0 2 * * 1"
   workflow_dispatch:
 
 permissions:
@@ -102,7 +98,7 @@ jobs:
 
   generate-screenshots:
     needs: release-gate
-    if: ${{ !cancelled() && (github.event_name != 'schedule' || needs.release-gate.outputs.should_release == 'true') && (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository) }}
+    if: false
 
     runs-on: ubuntu-latest
     timeout-minutes: 30
@@ -191,7 +187,7 @@ jobs:
           retention-days: 7
 
   version-bump:
-    if: ${{ (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch') && needs.release-gate.outputs.should_release == 'true' }}
+    if: false
     needs: [release-gate, quality-checks, generate-screenshots]
     runs-on: ubuntu-latest
     permissions:

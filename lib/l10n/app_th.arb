@@ -1,6 +1,6 @@
 {
   "@@locale": "th",
-  "appTitle": "Flexify",
+  "appTitle": "Alpha",
   "@appTitle": {
     "description": "Application title shown by the operating system and app shell."
   },
@@ -8,7 +8,7 @@
   "@settingsLanguage": {
     "description": "Title for the application language preference."
   },
-  "settingsLanguageDescription": "เลือกภาษาที่ใช้ใน Flexify",
+  "settingsLanguageDescription": "เลือกภาษาที่ใช้ใน Alpha",
   "@settingsLanguageDescription": {
     "description": "Description for the application language preference."
   },
@@ -337,7 +337,7 @@
   },
   "disableBatteryOptimizations": "ปิดการเพิ่มประสิทธิภาพแบตเตอรี่",
   "@disableBatteryOptimizations": {
-    "description": "Android permission action for excluding Flexify from battery optimizations."
+    "description": "Android permission action for excluding Alpha from battery optimizations."
   },
   "batteryOptimizationWarning": "ความคืบหน้าอาจหยุดชั่วคราวหากยังเปิดการเพิ่มประสิทธิภาพแบตเตอรี่",
   "@batteryOptimizationWarning": {
@@ -445,7 +445,7 @@
   },
   "deleteDatabaseConfirmation": "คุณแน่ใจหรือไม่ว่าต้องการลบฐานข้อมูล? การดำเนินการนี้ย้อนกลับไม่ได้และจะทำลายข้อมูลทั้งหมดของคุณ",
   "@deleteDatabaseConfirmation": {
-    "description": "Confirmation text for deleting the complete Flexify database."
+    "description": "Confirmation text for deleting the complete Alpha database."
   },
   "importData": "นำเข้าข้อมูล",
   "@importData": {
@@ -476,9 +476,9 @@
       }
     }
   },
-  "backupArchiveMissingDatabase": "ไฟล์สำรองไม่มีฐานข้อมูล Flexify",
+  "backupArchiveMissingDatabase": "ไฟล์สำรองไม่มีฐานข้อมูล Alpha",
   "@backupArchiveMissingDatabase": {
-    "description": "Validation error shown when an imported backup archive is missing the Flexify database file."
+    "description": "Validation error shown when an imported backup archive is missing the Alpha database file."
   },
   "failedToImportGraphs": "ไม่สามารถนำเข้ากราฟ: {error}",
   "@failedToImportGraphs": {
@@ -673,7 +673,7 @@
   "@privacyPolicy": {
     "description": "Label for opening the privacy policy."
   },
-  "privacyPolicyDescription": "Flexify จัดการข้อมูลของคุณอย่างไร",
+  "privacyPolicyDescription": "Alpha จัดการข้อมูลของคุณอย่างไร",
   "@privacyPolicyDescription": {
     "description": "Description for the privacy policy action."
   },
@@ -693,7 +693,7 @@
   "@leaveReview": {
     "description": "Label for opening the app-store review page."
   },
-  "leaveReviewDescription": "ให้คะแนน Flexify บน Play Store",
+  "leaveReviewDescription": "ให้คะแนน Alpha บน Play Store",
   "@leaveReviewDescription": {
     "description": "Description for the app-store review action."
   },
@@ -1689,7 +1689,7 @@
   "@inputStyleDescription": {
     "description": "Description of the text input style setting."
   },
-  "automaticBackupNotificationBody": "Flexify จะสำรองข้อมูลและรูปภาพของคุณไปยังโฟลเดอร์ที่เลือกโดยอัตโนมัติทุกวัน",
+  "automaticBackupNotificationBody": "Alpha จะสำรองข้อมูลและรูปภาพของคุณไปยังโฟลเดอร์ที่เลือกโดยอัตโนมัติทุกวัน",
   "@automaticBackupNotificationBody": {
     "description": "Notification body shown when automatic backups are enabled."
   },
@@ -1705,7 +1705,7 @@
   "@backupChannelName": {
     "description": "Android notification channel name for completed automatic backups."
   },
-  "backupChannelDescription": "การสำรองข้อมูลและรูปภาพของ Flexify โดยอัตโนมัติ",
+  "backupChannelDescription": "การสำรองข้อมูลและรูปภาพของ Alpha โดยอัตโนมัติ",
   "@backupChannelDescription": {
     "description": "Android notification channel description for automatic backups."
   },

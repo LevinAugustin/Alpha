@@ -9,13 +9,13 @@ class AppLocalizationsDe extends AppLocalizations {
   AppLocalizationsDe([String locale = 'de']) : super(locale);
 
   @override
-  String get appTitle => 'Flexify';
+  String get appTitle => 'Alpha';
 
   @override
   String get settingsLanguage => 'Sprache';
 
   @override
-  String get settingsLanguageDescription => 'Wähle die Sprache für Flexify';
+  String get settingsLanguageDescription => 'Wähle die Sprache für Alpha';
 
   @override
   String get languageSystemDefault => 'Systemstandard';
@@ -389,7 +389,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get backupArchiveMissingDatabase =>
-      'Die Sicherung enthält die Flexify-Datenbank nicht.';
+      'Die Sicherung enthält die Alpha-Datenbank nicht.';
 
   @override
   String failedToImportGraphs(String error) {
@@ -518,7 +518,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get privacyPolicy => 'Datenschutzerklärung';
 
   @override
-  String get privacyPolicyDescription => 'Wie Flexify mit deinen Daten umgeht';
+  String get privacyPolicyDescription => 'Wie Alpha mit deinen Daten umgeht';
 
   @override
   String get licenseLabel => 'Lizenz';
@@ -533,7 +533,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get leaveReview => 'Bewertung abgeben';
 
   @override
-  String get leaveReviewDescription => 'Flexify im Play Store bewerten';
+  String get leaveReviewDescription => 'Alpha im Play Store bewerten';
 
   @override
   String get reportBug => 'Fehler melden';
@@ -1298,7 +1298,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get automaticBackupNotificationBody =>
-      'Flexify sichert deine Daten und Bilder jeden Tag automatisch im ausgewählten Ordner.';
+      'Alpha sichert deine Daten und Bilder jeden Tag automatisch im ausgewählten Ordner.';
 
   @override
   String get backupSettingsChannel => 'Sicherungseinstellungen';
@@ -1312,7 +1312,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get backupChannelDescription =>
-      'Automatische Sicherungen von Flexify-Daten und -Bildern';
+      'Automatische Sicherungen von Alpha-Daten und -Bildern';
 
   @override
   String get backupCompletedTitle => 'Daten und Bilder gesichert';

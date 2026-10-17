@@ -9,13 +9,13 @@ class AppLocalizationsJa extends AppLocalizations {
   AppLocalizationsJa([String locale = 'ja']) : super(locale);
 
   @override
-  String get appTitle => 'Flexify';
+  String get appTitle => 'Alpha';
 
   @override
   String get settingsLanguage => '言語';
 
   @override
-  String get settingsLanguageDescription => 'Flexifyで使用する言語を選択します';
+  String get settingsLanguageDescription => 'Alphaで使用する言語を選択します';
 
   @override
   String get languageSystemDefault => 'システムのデフォルト';
@@ -369,8 +369,7 @@ class AppLocalizationsJa extends AppLocalizations {
   }
 
   @override
-  String get backupArchiveMissingDatabase =>
-      'バックアップに Flexify のデータベースが含まれていません。';
+  String get backupArchiveMissingDatabase => 'バックアップに Alpha のデータベースが含まれていません。';
 
   @override
   String failedToImportGraphs(String error) {
@@ -497,7 +496,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get privacyPolicy => 'プライバシーポリシー';
 
   @override
-  String get privacyPolicyDescription => 'Flexifyによるデータの取り扱い';
+  String get privacyPolicyDescription => 'Alphaによるデータの取り扱い';
 
   @override
   String get licenseLabel => 'ライセンス';
@@ -512,7 +511,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get leaveReview => 'レビューを書く';
 
   @override
-  String get leaveReviewDescription => 'Play ストアでFlexifyを評価';
+  String get leaveReviewDescription => 'Play ストアでAlphaを評価';
 
   @override
   String get reportBug => 'バグを報告';
@@ -1255,7 +1254,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get automaticBackupNotificationBody =>
-      'Flexifyは毎日、データと画像を選択したフォルダーへ自動的にバックアップします。';
+      'Alphaは毎日、データと画像を選択したフォルダーへ自動的にバックアップします。';
 
   @override
   String get backupSettingsChannel => 'バックアップ設定';
@@ -1267,7 +1266,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get backupChannelName => 'バックアップチャンネル';
 
   @override
-  String get backupChannelDescription => 'Flexifyのデータと画像の自動バックアップ';
+  String get backupChannelDescription => 'Alphaのデータと画像の自動バックアップ';
 
   @override
   String get backupCompletedTitle => 'データと画像をバックアップしました';

@@ -55,7 +55,8 @@ enum StrengthMetric {
 enum GraphSort { dateDesc, dateAsc, name }
 
 final defaultSettings = SettingsCompanion.insert(
-  themeMode: ThemeMode.system.toString(),
+  themeMode: ThemeMode.dark.toString(),
+  localeOverride: const Value('de'),
   planTrailing: PlanTrailing.reorder.toString(),
   longDateFormat: 'timeago',
   shortDateFormat: 'd/M/yy',

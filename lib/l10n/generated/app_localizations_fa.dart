@@ -9,14 +9,14 @@ class AppLocalizationsFa extends AppLocalizations {
   AppLocalizationsFa([String locale = 'fa']) : super(locale);
 
   @override
-  String get appTitle => 'Flexify';
+  String get appTitle => 'Alpha';
 
   @override
   String get settingsLanguage => 'زبان';
 
   @override
   String get settingsLanguageDescription =>
-      'زبان مورد استفاده در Flexify را انتخاب کنید';
+      'زبان مورد استفاده در Alpha را انتخاب کنید';
 
   @override
   String get languageSystemDefault => 'پیش‌فرض سیستم';
@@ -383,7 +383,7 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String get backupArchiveMissingDatabase =>
-      'بایگانی پشتیبان شامل پایگاه داده Flexify نیست.';
+      'بایگانی پشتیبان شامل پایگاه داده Alpha نیست.';
 
   @override
   String failedToImportGraphs(String error) {
@@ -511,7 +511,7 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String get privacyPolicyDescription =>
-      'Flexify چگونه با داده‌های شما برخورد می‌کند';
+      'Alpha چگونه با داده‌های شما برخورد می‌کند';
 
   @override
   String get licenseLabel => 'مجوز';
@@ -526,7 +526,7 @@ class AppLocalizationsFa extends AppLocalizations {
   String get leaveReview => 'ثبت نظر';
 
   @override
-  String get leaveReviewDescription => 'به Flexify در Play Store امتیاز دهید';
+  String get leaveReviewDescription => 'به Alpha در Play Store امتیاز دهید';
 
   @override
   String get reportBug => 'گزارش باگ';
@@ -1284,7 +1284,7 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String get automaticBackupNotificationBody =>
-      'Flexify هر روز به‌طور خودکار از داده‌ها و تصاویر شما در پوشه انتخاب‌شده پشتیبان می‌گیرد.';
+      'Alpha هر روز به‌طور خودکار از داده‌ها و تصاویر شما در پوشه انتخاب‌شده پشتیبان می‌گیرد.';
 
   @override
   String get backupSettingsChannel => 'تنظیمات پشتیبان‌گیری';
@@ -1298,7 +1298,7 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String get backupChannelDescription =>
-      'پشتیبان‌گیری خودکار از داده‌ها و تصاویر Flexify';
+      'پشتیبان‌گیری خودکار از داده‌ها و تصاویر Alpha';
 
   @override
   String get backupCompletedTitle =>

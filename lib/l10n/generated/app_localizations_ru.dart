@@ -9,13 +9,13 @@ class AppLocalizationsRu extends AppLocalizations {
   AppLocalizationsRu([String locale = 'ru']) : super(locale);
 
   @override
-  String get appTitle => 'Flexify';
+  String get appTitle => 'Alpha';
 
   @override
   String get settingsLanguage => 'Язык';
 
   @override
-  String get settingsLanguageDescription => 'Выберите язык интерфейса Flexify';
+  String get settingsLanguageDescription => 'Выберите язык интерфейса Alpha';
 
   @override
   String get languageSystemDefault => 'Система по умолчанию';
@@ -390,7 +390,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get backupArchiveMissingDatabase =>
-      'В архиве резервной копии нет базы данных Flexify.';
+      'В архиве резервной копии нет базы данных Alpha.';
 
   @override
   String failedToImportGraphs(String error) {
@@ -518,7 +518,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get privacyPolicy => 'Политика конфиденциальности';
 
   @override
-  String get privacyPolicyDescription => 'Как Flexify обрабатывает ваши данные';
+  String get privacyPolicyDescription => 'Как Alpha обрабатывает ваши данные';
 
   @override
   String get licenseLabel => 'Лицензия';
@@ -533,7 +533,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get leaveReview => 'Оставить отзыв';
 
   @override
-  String get leaveReviewDescription => 'Оцените Flexify в Play Store';
+  String get leaveReviewDescription => 'Оцените Alpha в Play Store';
 
   @override
   String get reportBug => 'Сообщить об ошибке';
@@ -1306,7 +1306,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get automaticBackupNotificationBody =>
-      'Flexify будет ежедневно автоматически создавать резервную копию данных и изображений в выбранной папке.';
+      'Alpha будет ежедневно автоматически создавать резервную копию данных и изображений в выбранной папке.';
 
   @override
   String get backupSettingsChannel => 'Настройки резервного копирования';
@@ -1320,7 +1320,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get backupChannelDescription =>
-      'Автоматические резервные копии данных и изображений Flexify';
+      'Автоматические резервные копии данных и изображений Alpha';
 
   @override
   String get backupCompletedTitle =>

@@ -9,14 +9,13 @@ class AppLocalizationsId extends AppLocalizations {
   AppLocalizationsId([String locale = 'id']) : super(locale);
 
   @override
-  String get appTitle => 'Flexify';
+  String get appTitle => 'Alpha';
 
   @override
   String get settingsLanguage => 'Bahasa';
 
   @override
-  String get settingsLanguageDescription =>
-      'Pilih bahasa yang digunakan Flexify';
+  String get settingsLanguageDescription => 'Pilih bahasa yang digunakan Alpha';
 
   @override
   String get languageSystemDefault => 'Default sistem';
@@ -386,7 +385,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get backupArchiveMissingDatabase =>
-      'Arsip cadangan tidak berisi basis data Flexify.';
+      'Arsip cadangan tidak berisi basis data Alpha.';
 
   @override
   String failedToImportGraphs(String error) {
@@ -514,7 +513,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get privacyPolicy => 'Kebijakan privasi';
 
   @override
-  String get privacyPolicyDescription => 'Cara Flexify menangani data Anda';
+  String get privacyPolicyDescription => 'Cara Alpha menangani data Anda';
 
   @override
   String get licenseLabel => 'Lisensi';
@@ -529,7 +528,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get leaveReview => 'Beri ulasan';
 
   @override
-  String get leaveReviewDescription => 'Beri nilai Flexify di Play Store';
+  String get leaveReviewDescription => 'Beri nilai Alpha di Play Store';
 
   @override
   String get reportBug => 'Laporkan bug';
@@ -1290,7 +1289,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get automaticBackupNotificationBody =>
-      'Flexify akan mencadangkan data dan gambar Anda secara otomatis ke folder yang dipilih setiap hari.';
+      'Alpha akan mencadangkan data dan gambar Anda secara otomatis ke folder yang dipilih setiap hari.';
 
   @override
   String get backupSettingsChannel => 'Pengaturan cadangan';
@@ -1304,7 +1303,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get backupChannelDescription =>
-      'Pencadangan otomatis data dan gambar Flexify';
+      'Pencadangan otomatis data dan gambar Alpha';
 
   @override
   String get backupCompletedTitle => 'Data dan gambar berhasil dicadangkan';

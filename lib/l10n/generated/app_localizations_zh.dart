@@ -9,13 +9,13 @@ class AppLocalizationsZh extends AppLocalizations {
   AppLocalizationsZh([String locale = 'zh']) : super(locale);
 
   @override
-  String get appTitle => 'Flexify';
+  String get appTitle => 'Alpha';
 
   @override
   String get settingsLanguage => '语言';
 
   @override
-  String get settingsLanguageDescription => '选择 Flexify 使用的语言';
+  String get settingsLanguageDescription => '选择 Alpha 使用的语言';
 
   @override
   String get languageSystemDefault => '跟随系统';
@@ -368,7 +368,7 @@ class AppLocalizationsZh extends AppLocalizations {
   }
 
   @override
-  String get backupArchiveMissingDatabase => '备份中不包含 Flexify 数据库。';
+  String get backupArchiveMissingDatabase => '备份中不包含 Alpha 数据库。';
 
   @override
   String failedToImportGraphs(String error) {
@@ -495,7 +495,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get privacyPolicy => '隐私政策';
 
   @override
-  String get privacyPolicyDescription => 'Flexify 如何处理你的数据';
+  String get privacyPolicyDescription => 'Alpha 如何处理你的数据';
 
   @override
   String get licenseLabel => '许可证';
@@ -510,7 +510,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get leaveReview => '留下评价';
 
   @override
-  String get leaveReviewDescription => '在 Play 商店评价 Flexify';
+  String get leaveReviewDescription => '在 Play 商店评价 Alpha';
 
   @override
   String get reportBug => '报告错误';
@@ -1250,7 +1250,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get inputStyleDescription => '文本输入框的视觉样式';
 
   @override
-  String get automaticBackupNotificationBody => 'Flexify 每天会自动将数据和图片备份到所选文件夹。';
+  String get automaticBackupNotificationBody => 'Alpha 每天会自动将数据和图片备份到所选文件夹。';
 
   @override
   String get backupSettingsChannel => '备份设置';
@@ -1262,7 +1262,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get backupChannelName => '备份通知';
 
   @override
-  String get backupChannelDescription => '自动备份 Flexify 的数据和图片';
+  String get backupChannelDescription => '自动备份 Alpha 的数据和图片';
 
   @override
   String get backupCompletedTitle => '数据和图片备份完成';
@@ -1509,13 +1509,13 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
   AppLocalizationsZhCn() : super('zh_CN');
 
   @override
-  String get appTitle => 'Flexify';
+  String get appTitle => 'Alpha';
 
   @override
   String get settingsLanguage => '语言';
 
   @override
-  String get settingsLanguageDescription => '选择 Flexify 使用的语言';
+  String get settingsLanguageDescription => '选择 Alpha 使用的语言';
 
   @override
   String get languageSystemDefault => '跟随系统';
@@ -1868,7 +1868,7 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
   }
 
   @override
-  String get backupArchiveMissingDatabase => '备份中不包含 Flexify 数据库。';
+  String get backupArchiveMissingDatabase => '备份中不包含 Alpha 数据库。';
 
   @override
   String failedToImportGraphs(String error) {
@@ -1995,7 +1995,7 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
   String get privacyPolicy => '隐私政策';
 
   @override
-  String get privacyPolicyDescription => 'Flexify 如何处理你的数据';
+  String get privacyPolicyDescription => 'Alpha 如何处理你的数据';
 
   @override
   String get licenseLabel => '许可证';
@@ -2010,7 +2010,7 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
   String get leaveReview => '留下评价';
 
   @override
-  String get leaveReviewDescription => '在 Play 商店评价 Flexify';
+  String get leaveReviewDescription => '在 Play 商店评价 Alpha';
 
   @override
   String get reportBug => '报告错误';
@@ -2750,7 +2750,7 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
   String get inputStyleDescription => '文本输入框的视觉样式';
 
   @override
-  String get automaticBackupNotificationBody => 'Flexify 每天会自动将数据和图片备份到所选文件夹。';
+  String get automaticBackupNotificationBody => 'Alpha 每天会自动将数据和图片备份到所选文件夹。';
 
   @override
   String get backupSettingsChannel => '备份设置';
@@ -2762,7 +2762,7 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
   String get backupChannelName => '备份通知';
 
   @override
-  String get backupChannelDescription => '自动备份 Flexify 的数据和图片';
+  String get backupChannelDescription => '自动备份 Alpha 的数据和图片';
 
   @override
   String get backupCompletedTitle => '数据和图片备份完成';
@@ -3009,13 +3009,13 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   AppLocalizationsZhTw() : super('zh_TW');
 
   @override
-  String get appTitle => 'Flexify';
+  String get appTitle => 'Alpha';
 
   @override
   String get settingsLanguage => '語言';
 
   @override
-  String get settingsLanguageDescription => '選擇 Flexify 使用的語言';
+  String get settingsLanguageDescription => '選擇 Alpha 使用的語言';
 
   @override
   String get languageSystemDefault => '跟隨系統';
@@ -3368,7 +3368,7 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   }
 
   @override
-  String get backupArchiveMissingDatabase => '備份中不包含 Flexify 資料庫。';
+  String get backupArchiveMissingDatabase => '備份中不包含 Alpha 資料庫。';
 
   @override
   String failedToImportGraphs(String error) {
@@ -3495,7 +3495,7 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get privacyPolicy => '隱私政策';
 
   @override
-  String get privacyPolicyDescription => 'Flexify 如何處理你的資料';
+  String get privacyPolicyDescription => 'Alpha 如何處理你的資料';
 
   @override
   String get licenseLabel => '許可證';
@@ -3510,7 +3510,7 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get leaveReview => '留下評價';
 
   @override
-  String get leaveReviewDescription => '在 Play 商店評價 Flexify';
+  String get leaveReviewDescription => '在 Play 商店評價 Alpha';
 
   @override
   String get reportBug => '報告錯誤';
@@ -4250,7 +4250,7 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get inputStyleDescription => '文字輸入框的視覺樣式';
 
   @override
-  String get automaticBackupNotificationBody => 'Flexify 每天會自動將資料和圖片備份到所選資料夾。';
+  String get automaticBackupNotificationBody => 'Alpha 每天會自動將資料和圖片備份到所選資料夾。';
 
   @override
   String get backupSettingsChannel => '備份設定';
@@ -4262,7 +4262,7 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get backupChannelName => '備份通知';
 
   @override
-  String get backupChannelDescription => '自動備份 Flexify 的資料和圖片';
+  String get backupChannelDescription => '自動備份 Alpha 的資料和圖片';
 
   @override
   String get backupCompletedTitle => '資料和圖片備份完成';

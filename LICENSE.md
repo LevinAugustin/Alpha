@@ -1,3 +1,7 @@
+Alpha is a modified version of Flexify by Brandon Dick.
+Flexify is Copyright © 2024 Flexify and remains under the MIT License.
+This notice and the license below must stay with every copy.
+
 The MIT License (MIT)
 Copyright © 2024 Flexify
 

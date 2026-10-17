@@ -8,6 +8,8 @@ void main() {
     final harness = await FlexifyTestHarness.create();
     final settings = await harness.database.settings.select().getSingle();
 
+    expect(settings.themeMode, 'ThemeMode.dark');
+    expect(settings.localeOverride, 'de');
     expect(settings.showUnits, isFalse);
     expect(settings.showBodyWeight, isFalse);
     expect(settings.showCategories, isFalse);

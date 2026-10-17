@@ -9,13 +9,13 @@ class AppLocalizationsAr extends AppLocalizations {
   AppLocalizationsAr([String locale = 'ar']) : super(locale);
 
   @override
-  String get appTitle => 'Flexify';
+  String get appTitle => 'Alpha';
 
   @override
   String get settingsLanguage => 'اللغة';
 
   @override
-  String get settingsLanguageDescription => 'اختر اللغة التي يستخدمها Flexify';
+  String get settingsLanguageDescription => 'اختر اللغة التي يستخدمها Alpha';
 
   @override
   String get languageSystemDefault => 'إعداد النظام الافتراضي';
@@ -381,7 +381,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get backupArchiveMissingDatabase =>
-      'لا يحتوي أرشيف النسخة الاحتياطية على قاعدة بيانات Flexify.';
+      'لا يحتوي أرشيف النسخة الاحتياطية على قاعدة بيانات Alpha.';
 
   @override
   String failedToImportGraphs(String error) {
@@ -509,7 +509,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get privacyPolicy => 'سياسة الخصوصية';
 
   @override
-  String get privacyPolicyDescription => 'كيف يتعامل Flexify مع بياناتك';
+  String get privacyPolicyDescription => 'كيف يتعامل Alpha مع بياناتك';
 
   @override
   String get licenseLabel => 'الترخيص';
@@ -524,7 +524,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get leaveReview => 'اكتب مراجعة';
 
   @override
-  String get leaveReviewDescription => 'قيّم Flexify على متجر Play';
+  String get leaveReviewDescription => 'قيّم Alpha على متجر Play';
 
   @override
   String get reportBug => 'الإبلاغ عن خطأ';
@@ -1280,7 +1280,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get automaticBackupNotificationBody =>
-      'سيقوم Flexify تلقائيًا بنسخ بياناتك وصورك احتياطيًا إلى المجلد المحدد كل يوم.';
+      'سيقوم Alpha تلقائيًا بنسخ بياناتك وصورك احتياطيًا إلى المجلد المحدد كل يوم.';
 
   @override
   String get backupSettingsChannel => 'إعدادات النسخ الاحتياطي';
@@ -1294,7 +1294,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get backupChannelDescription =>
-      'نسخ احتياطية تلقائية لبيانات Flexify وصوره';
+      'نسخ احتياطية تلقائية لبيانات Alpha وصوره';
 
   @override
   String get backupCompletedTitle => 'تم نسخ البيانات والصور احتياطيًا';

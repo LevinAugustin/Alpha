@@ -9,13 +9,13 @@ class AppLocalizationsUk extends AppLocalizations {
   AppLocalizationsUk([String locale = 'uk']) : super(locale);
 
   @override
-  String get appTitle => 'Flexify';
+  String get appTitle => 'Alpha';
 
   @override
   String get settingsLanguage => 'Мова';
 
   @override
-  String get settingsLanguageDescription => 'Виберіть мову інтерфейсу Flexify';
+  String get settingsLanguageDescription => 'Виберіть мову інтерфейсу Alpha';
 
   @override
   String get languageSystemDefault => 'Системна за замовчуванням';
@@ -389,7 +389,7 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get backupArchiveMissingDatabase =>
-      'Архів резервної копії не містить бази даних Flexify.';
+      'Архів резервної копії не містить бази даних Alpha.';
 
   @override
   String failedToImportGraphs(String error) {
@@ -517,7 +517,7 @@ class AppLocalizationsUk extends AppLocalizations {
   String get privacyPolicy => 'Політика конфіденційності';
 
   @override
-  String get privacyPolicyDescription => 'Як Flexify обробляє ваші дані';
+  String get privacyPolicyDescription => 'Як Alpha обробляє ваші дані';
 
   @override
   String get licenseLabel => 'Ліцензія';
@@ -532,7 +532,7 @@ class AppLocalizationsUk extends AppLocalizations {
   String get leaveReview => 'Залишити відгук';
 
   @override
-  String get leaveReviewDescription => 'Оцінити Flexify у Play Store';
+  String get leaveReviewDescription => 'Оцінити Alpha у Play Store';
 
   @override
   String get reportBug => 'Повідомити про помилку';
@@ -1305,7 +1305,7 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get automaticBackupNotificationBody =>
-      'Flexify автоматично створюватиме резервну копію даних і зображень у вибраній папці щодня.';
+      'Alpha автоматично створюватиме резервну копію даних і зображень у вибраній папці щодня.';
 
   @override
   String get backupSettingsChannel => 'Налаштування резервного копіювання';
@@ -1319,7 +1319,7 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get backupChannelDescription =>
-      'Автоматичні резервні копії даних і зображень Flexify';
+      'Автоматичні резервні копії даних і зображень Alpha';
 
   @override
   String get backupCompletedTitle =>

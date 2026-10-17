@@ -5,7 +5,7 @@ import 'package:flutter/widgets.dart';
 ///
 /// Generated localizations can include language-only fallback locales, such as
 /// `pt`, that are needed for platform locale resolution but are not separate
-/// choices in Flexify's language setting.
+/// choices in Alpha's language setting.
 const selectableLocales = <Locale>[
   Locale('en'),
   Locale('es'),
@@ -37,22 +37,23 @@ const selectableLocales = <Locale>[
 /// Returns the canonical identifier persisted for a supported [locale].
 String localeIdentifier(Locale locale) => locale.toLanguageTag();
 
-/// Resolves system locales while keeping English as the final fallback.
+/// Resolves system locales while keeping German as the final fallback.
 ///
 /// Flutter otherwise falls back to the first generated supported locale when
 /// none of the device locales match. Generated locale lists are alphabetical,
 /// so an unsupported system language can unexpectedly open the app in an
-/// unrelated language.
+/// unrelated language. A supported device language is still used when the
+/// stored locale is unset.
 Locale resolveSystemLocale(
   List<Locale>? preferredLocales,
   Iterable<Locale> supportedLocales,
 ) {
   final locales = supportedLocales.toList(growable: false);
-  final english = locales.where((locale) => locale.languageCode == 'en');
+  final german = locales.where((locale) => locale.languageCode == 'de');
 
   return basicLocaleListResolution(preferredLocales, [
-    ...english,
-    ...locales.where((locale) => locale.languageCode != 'en'),
+    ...german,
+    ...locales.where((locale) => locale.languageCode != 'de'),
   ]);
 }
 
@@ -75,7 +76,7 @@ Locale? localeOverrideFromIdentifier(String? identifier) {
 String? canonicalLocaleOverride(String? identifier) =>
     localeOverrideFromIdentifier(identifier)?.toLanguageTag();
 
-/// Returns a stable display name for a locale exposed by Flexify.
+/// Returns a stable display name for a locale exposed by Alpha.
 String localeDisplayName(AppLocalizations l10n, Locale locale) {
   return switch (locale.toLanguageTag()) {
     'en' => l10n.languageNameEnglish,

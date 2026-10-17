@@ -107,16 +107,6 @@ class AboutPage extends StatelessWidget {
             },
           ),
           ListTile(
-            title: Text(context.l10n.leaveReview),
-            leading: const Icon(Icons.reviews_outlined),
-            subtitle: Text(context.l10n.leaveReviewDescription),
-            onTap: () async {
-              const url =
-                  'https://play.google.com/store/apps/details?id=com.presley.flexify';
-              await launchUrlString(url);
-            },
-          ),
-          ListTile(
             title: Text(context.l10n.reportBug),
             leading: const Icon(Icons.bug_report),
             subtitle: Text(context.l10n.reportBugDescription),

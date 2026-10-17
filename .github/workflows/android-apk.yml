@@ -1,0 +1,85 @@
+name: Android APK
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: android-apk-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+env:
+  PUB_SUMMARY_ONLY: true
+
+jobs:
+  build-apk:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+
+      - name: Setup Java
+        uses: actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961 # v5
+        with:
+          distribution: "zulu"
+          java-version: "21"
+
+      - name: Setup Flutter from submodule
+        run: |
+          git submodule update --init --recursive flutter
+          chmod +x flutter/bin/*
+          echo "$PWD/flutter/bin" >> "$GITHUB_PATH"
+          flutter/bin/flutter --version
+          flutter/bin/flutter config --no-analytics
+
+      - name: Get dependencies
+        run: flutter pub get --enforce-lockfile
+
+      - name: Run build_runner
+        run: dart run build_runner build -d
+
+      - name: Tune Gradle for CI runner memory
+        run: |
+          sed -i \
+            -e 's/^org.gradle.jvmargs=.*/org.gradle.jvmargs=-Xmx3G -XX:MaxMetaspaceSize=512m -XX:ReservedCodeCacheSize=512m -XX:ActiveProcessorCount=2/' \
+            -e 's/^org.gradle.workers.max=.*/org.gradle.workers.max=2/' \
+            android/gradle.properties
+
+      - name: Install pinned Android NDK with recovery
+        run: bash ./scripts/ensure-ci-ndk.sh 28.2.13676358
+
+      - name: Build release APK
+        run: |
+          flutter build apk --release
+          mv build/app/outputs/flutter-apk/app-release.apk alpha.apk
+          ./scripts/verify-android-release-signing.sh alpha.apk
+
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: alpha-apk
+          path: alpha.apk
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Publish APK release
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: softprops/action-gh-release@efb35369e0ad2afab669f228072c1b0d510eae64 # v3.0.3
+        with:
+          tag_name: alpha-${{ github.run_number }}
+          name: Alpha ${{ github.run_number }}
+          body: |
+            Sideload-APK für Alpha (`com.levinaugustin.alpha`).
+
+            Die Datei ist mit dem Debug-Keystore signiert und kann neben dem originalen Flexify installiert werden.
+
+            Installation auf dem Telefon: APK herunterladen, öffnen und die Installation aus dieser Quelle erlauben. Ein vorhandenes Alpha-Update erfolgt über dieselbe Datei; Flexify bleibt getrennt.
+          files: alpha.apk
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -10,6 +10,7 @@ permissions:
 
 jobs:
   close-awaiting-release:
+    if: false
     runs-on: ubuntu-latest
     steps:
       - name: Close issues awaiting this release

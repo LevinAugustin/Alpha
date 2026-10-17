@@ -1,5 +1,5 @@
 name: flexify
-description: Track gym progress, visualize graphs, enjoy offline support & timers
+description: Alpha, an offline-first gym tracker based on Flexify
 publish_to: none
 version: 2.2.34+448
 environment:
@@ -75,25 +75,16 @@ flutter:
     - assets/changelogs/
     - assets/changelogs/l10n/
 flutter_launcher_icons:
-  android: false
-  ios: true
+  android: true
+  ios: false
   image_path: assets/ic_launcher.png
+  adaptive_icon_background: "#000000"
+  adaptive_icon_foreground: assets/ic_launcher.png
+  adaptive_icon_foreground_inset: 16
   min_sdk_android: 21
-  web:
-    generate: true
-    image_path: assets/ic_launcher.png
-    background_color: "#hexcode"
-    theme_color: "#hexcode"
-  windows:
-    generate: true
-    image_path: assets/ic_launcher.png
-    icon_size: 48
-  macos:
-    generate: true
-    image_path: assets/ic_launcher.png
 msix_config:
   msstore_appId: 9P13THVK7F69
-  display_name: Flexify
+  display_name: Alpha
   publisher_display_name: Brandon Dick
   identity_name: FrisbeeSoftware.Flexify
   msix_version: 1.0.285.0
