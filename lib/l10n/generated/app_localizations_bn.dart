@@ -1801,4 +1801,315 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get alphaSettingsDescription => 'Profile, Design und Pausenton';
+
+  @override
+  String get finishWorkoutAsk => 'এই ওয়ার্কআউট শেষ করবেন?';
+
+  @override
+  String get finishWorkoutBody => 'সেশন সেভ হয় এবং টেমপ্লেট একই থাকে।';
+
+  @override
+  String get discardWorkoutAsk => 'এই ওয়ার্কআউট বাতিল করবেন?';
+
+  @override
+  String get discardWorkoutBody => 'এই সেশনের লেখা সেট মুছে যায়।';
+
+  @override
+  String get noRest => 'বিশ্রাম নেই';
+
+  @override
+  String get restWheelTitle => 'বিশ্রাম';
+
+  @override
+  String get deleteTemplateAsk => 'এই টেমপ্লেট মুছবেন?';
+
+  @override
+  String deleteTemplateBody(String name) {
+    return '“$name” মুছবেন? সেভ করা ওয়ার্কআউট থাকবে।';
+  }
+
+  @override
+  String get warmupAction => 'ওয়ার্ম-আপ';
+
+  @override
+  String get warmupMark => 'W';
+
+  @override
+  String get confirmAddExercise => 'ব্যায়াম যোগ করুন';
+
+  @override
+  String get tabOverview => 'সারাংশ';
+
+  @override
+  String get tabHistory => 'ইতিহাস';
+
+  @override
+  String get tabHowTo => 'করার নিয়ম';
+
+  @override
+  String get primaryMuscleLabel => 'প্রধান পেশি';
+
+  @override
+  String get secondaryMuscleLabel => 'সহায়ক পেশি';
+
+  @override
+  String get equipmentLabel => 'সরঞ্জাম';
+
+  @override
+  String get heaviestWeight => 'সবচেয়ে ভারী ওজন';
+
+  @override
+  String get estimatedOneRm => 'আনুমানিক 1RM';
+
+  @override
+  String get volumeChart => 'প্রশিক্ষণের পরিমাণ';
+
+  @override
+  String get recordsTitle => 'রেকর্ড';
+
+  @override
+  String get weekGoal => 'সপ্তাহের লক্ষ্য';
+
+  @override
+  String weekGoalProgress(int done, int goal) {
+    return '$done এর মধ্যে $goal';
+  }
+
+  @override
+  String startWorkoutNamed(String name) {
+    return 'ওয়ার্কআউট শুরু · $name';
+  }
+
+  @override
+  String get musclesThisWeek => 'এই সপ্তাহের পেশি';
+
+  @override
+  String get progressHeading => 'অগ্রগতি';
+
+  @override
+  String get lastEightWeeks => 'গত আট সপ্তাহ';
+
+  @override
+  String get chooseProfile => 'একটি প্রোফাইল বেছে নিন';
+
+  @override
+  String get createProfileAction => 'প্রোফাইল তৈরি';
+
+  @override
+  String get plateCalculator => 'প্লেট হিসাব';
+
+  @override
+  String get barbellCalc => 'বারবেল';
+
+  @override
+  String get cableCalc => 'কেবল টাওয়ার';
+
+  @override
+  String get extraWeight => 'অতিরিক্ত ওজন';
+
+  @override
+  String get barWeightLabel => 'বারের ওজন';
+
+  @override
+  String get plateSetLabel => 'প্রতি পাশে প্লেট';
+
+  @override
+  String get cableStepLabel => 'স্ট্যাকের ধাপ';
+
+  @override
+  String get chooseGym => 'জিম বেছে নিন';
+
+  @override
+  String get gymsTitle => 'জিমগুলো';
+
+  @override
+  String get newGym => 'নতুন জিম';
+
+  @override
+  String get progressionHelp => 'অগ্রগতির সাহায্য';
+
+  @override
+  String progressionAsk(String name, String weight, int reps) {
+    return '$name: পরের বার $weight কেজি এবং আবার $reps বার থেকে শুরু?';
+  }
+
+  @override
+  String get actionAccept => 'গ্রহণ';
+
+  @override
+  String get actionReject => 'প্রত্যাখ্যান';
+
+  @override
+  String get importExportTitle => 'ডেটা আমদানি ও রপ্তানি';
+
+  @override
+  String get importWorkouts => 'ওয়ার্কআউট আমদানি';
+
+  @override
+  String get importMeasurements => 'মাপ আমদানি';
+
+  @override
+  String get exportAlphaData => 'Alpha ডেটা রপ্তানি';
+
+  @override
+  String get importPreviewTitle => 'আমদানির প্রাকদর্শন';
+
+  @override
+  String importSummary(int workouts, int exercises) {
+    return '$workouts ওয়ার্কআউট, $exercises ব্যায়াম';
+  }
+
+  @override
+  String get templatesDetected => 'চেনা টেমপ্লেট';
+
+  @override
+  String get renameLabel => 'নাম বদলান';
+
+  @override
+  String get mapExercise => 'ব্যায়াম মেলান';
+
+  @override
+  String get checkForUpdates => 'আপডেট খুঁজুন';
+
+  @override
+  String get upToDate => 'আপনি হালনাগাদ আছেন';
+
+  @override
+  String get updateCheckFailed => 'আপডেট খোঁজা ব্যর্থ হয়েছে';
+
+  @override
+  String get licensesTitle => 'লাইসেন্স';
+
+  @override
+  String get flexifyMitNotice =>
+      'Flexify MIT লাইসেন্সে প্রকাশিত। Copyright Brandon Dick.';
+
+  @override
+  String get exerciseDbNotice =>
+      'ব্যায়ামের নাম ও ছবি free-exercise-db, Unlicense থেকে।';
+
+  @override
+  String get aiCoachTitle => 'এআই কোচ';
+
+  @override
+  String get aiProviderLabel => 'প্রদানকারী';
+
+  @override
+  String get aiOffNotice => 'নিজের চাবি সেভ না করা পর্যন্ত কোচ বন্ধ থাকে।';
+
+  @override
+  String get coachHint => 'কোচকে জিজ্ঞাসা';
+
+  @override
+  String get voiceInput => 'কণ্ঠ ইনপুট';
+
+  @override
+  String voiceUnderstood(String text) {
+    return 'বোঝা গেছে: $text';
+  }
+
+  @override
+  String get speechFailed => 'কণ্ঠ ইনপুট ব্যর্থ';
+
+  @override
+  String get confirmVoiceSet => 'এই সেট নেবেন?';
+
+  @override
+  String get periodSession => 'এই ওয়ার্কআউট';
+
+  @override
+  String get muscleMapTitle => 'পেশির মানচিত্র';
+
+  @override
+  String get frontView => 'সামনে';
+
+  @override
+  String get backView => 'পিছনে';
+
+  @override
+  String quoteKeepGoing(int done, int goal) {
+    return 'এই সপ্তাহে $done এর মধ্যে $goal সেশন। চালিয়ে যান।';
+  }
+
+  @override
+  String quoteRemaining(int count) {
+    return 'এই সপ্তাহে আর $count সেশন বাকি।';
+  }
+
+  @override
+  String get quotePullDay => 'টানার দিন। পিঠ আর বাইসেপ প্রস্তুত।';
+
+  @override
+  String get quotePushDay => 'ঠেলার দিন। বুক, কাঁধ আর ট্রাইসেপ।';
+
+  @override
+  String get quoteLegDay => 'পায়ের দিন। উরু, হ্যামস্ট্রিং আর নিতম্ব।';
+
+  @override
+  String versionAndLicenses(String version) {
+    return 'সংস্করণ $version · লাইসেন্স';
+  }
+
+  @override
+  String get liveWorkoutLabel => 'ওয়ার্কআউট চলছে';
+
+  @override
+  String get muscleChest => 'বুক';
+
+  @override
+  String get muscleShoulders => 'কাঁধ';
+
+  @override
+  String get muscleBiceps => 'বাইসেপ';
+
+  @override
+  String get muscleTriceps => 'ট্রাইসেপ';
+
+  @override
+  String get muscleAbs => 'পেট';
+
+  @override
+  String get muscleQuads => 'উরুর সামনে';
+
+  @override
+  String get muscleCalves => 'পিণ্ডলী';
+
+  @override
+  String get muscleTraps => 'ট্রাপিজিয়াস';
+
+  @override
+  String get muscleBack => 'পিঠ';
+
+  @override
+  String get muscleGlutes => 'নিতম্ব';
+
+  @override
+  String get muscleHams => 'হ্যামস্ট্রিং';
+
+  @override
+  String get weekGoalManual => 'সপ্তাহের লক্ষ্য নিজে ঠিক করুন';
+
+  @override
+  String get sessionsPerWeek => 'সপ্তাহে সেশন';
+
+  @override
+  String get gymNameHint => 'জিমের নাম';
+
+  @override
+  String get coachProfileNote => 'কোচের নোট';
+
+  @override
+  String get openPackageLicenses => 'প্যাকেজ লাইসেন্স খুলুন';
+
+  @override
+  String get lengthUnitLabel => 'দেহের দৈর্ঘ্য';
+
+  @override
+  String get centimetersShort => 'সেন্টিমিটার (cm)';
+
+  @override
+  String get inchesShort => 'ইঞ্চি (in)';
+
+  @override
+  String get heightInches => 'উচ্চতা (ইঞ্চি)';
 }

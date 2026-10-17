@@ -63,9 +63,13 @@ const defaultExercises = [
 ];
 
 const defaultPlans = [
-  PlansCompanion(id: Value(1), days: Value('Monday')),
-  PlansCompanion(id: Value(2), days: Value('Wednesday')),
-  PlansCompanion(id: Value(3), days: Value('Friday')),
+  PlansCompanion(id: Value(1), days: Value('Monday'), title: Value('Montag')),
+  PlansCompanion(
+    id: Value(2),
+    days: Value('Wednesday'),
+    title: Value('Mittwoch'),
+  ),
+  PlansCompanion(id: Value(3), days: Value('Friday'), title: Value('Freitag')),
 ];
 
 const defaultPlanExerciseNames = <(int, String)>[

@@ -5,6 +5,8 @@ import 'package:flexify/database/database.dart';
 import 'package:flexify/l10n/l10n.dart';
 import 'package:flexify/main.dart';
 import 'package:flexify/platform_page_route.dart';
+import 'package:flexify/profile/local_profiles.dart';
+import 'package:flexify/theme/alpha_theme.dart';
 import 'package:flexify/workout/gym_workout_page.dart';
 import 'package:flexify/settings/whats_new.dart';
 import 'package:flexify/shell/calendar_page.dart';
@@ -18,6 +20,60 @@ import 'package:flexify/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:provider/provider.dart';
+
+class _ProfileButton extends StatelessWidget {
+  const _ProfileButton({required this.name});
+
+  final String? name;
+
+  @override
+  Widget build(BuildContext context) {
+    final palette = AlphaTheme.of(context);
+    final label = (name ?? '').trim();
+    return InkWell(
+      onTap: () => _switch(context),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            CircleAvatar(
+              radius: 14,
+              backgroundColor: palette.card,
+              backgroundImage: AssetImage(palette.figureAsset),
+            ),
+            if (label.isNotEmpty) ...[const SizedBox(width: 6), Text(label)],
+          ],
+        ),
+      ),
+    );
+  }
+
+  Future<void> _switch(BuildContext context) async {
+    final registry = await loadProfileRegistry();
+    if (!context.mounted) return;
+    await showDialog<void>(
+      context: context,
+      builder: (context) => SimpleDialog(
+        title: Text(context.l10n.chooseProfile),
+        children: [
+          for (final profile in registry.profiles)
+            SimpleDialogOption(
+              onPressed: () async {
+                await activateLocalProfile(profile);
+                if (context.mounted) Navigator.pop(context);
+              },
+              child: Text(profile.name),
+            ),
+          SimpleDialogOption(
+            onPressed: () => Navigator.pop(context),
+            child: Text(context.l10n.createProfileAction),
+          ),
+        ],
+      ),
+    );
+  }
+}
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -39,6 +95,44 @@ class _HomePageState extends State<HomePage> {
       _handleTimerNotificationTarget();
     });
     unawaited(_announceVersion());
+    unawaited(_offerProfileChoice());
+  }
+
+  Future<void> _offerProfileChoice() async {
+    if (WidgetsBinding.instance.runtimeType.toString().contains('Test')) return;
+    try {
+      final registry = await loadProfileRegistry();
+      if (!mounted || registry.profiles.length < 2) return;
+      await showDialog<void>(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) => AlertDialog(
+          title: Text(context.l10n.chooseProfile),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              for (final profile in registry.profiles)
+                ListTile(
+                  title: Text(profile.name),
+                  trailing: profile.id == registry.activeId
+                      ? const Icon(Icons.check)
+                      : null,
+                  onTap: () async {
+                    await activateLocalProfile(profile);
+                    if (context.mounted) Navigator.pop(context);
+                  },
+                ),
+              TextButton(
+                onPressed: () async {
+                  Navigator.pop(context);
+                },
+                child: Text(context.l10n.createProfileAction),
+              ),
+            ],
+          ),
+        ),
+      );
+    } catch (_) {}
   }
 
   Future<void> _announceVersion() async {
@@ -105,6 +199,9 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text(titles[_index]),
         actions: [
+          _ProfileButton(
+            name: context.select<Setting, String?>((s) => s.profileName),
+          ),
           IconButton(
             key: const Key('open-calendar'),
             tooltip: l10n.calendarTitle,

@@ -1828,4 +1828,317 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get alphaSettingsDescription => 'Profile, Design und Pausenton';
+
+  @override
+  String get finishWorkoutAsk => 'Завершити це тренування?';
+
+  @override
+  String get finishWorkoutBody =>
+      'Сесію буде збережено, шаблон лишиться без змін.';
+
+  @override
+  String get discardWorkoutAsk => 'Скасувати це тренування?';
+
+  @override
+  String get discardWorkoutBody => 'Записані підходи цієї сесії буде видалено.';
+
+  @override
+  String get noRest => 'Без відпочинку';
+
+  @override
+  String get restWheelTitle => 'Відпочинок';
+
+  @override
+  String get deleteTemplateAsk => 'Видалити цей шаблон?';
+
+  @override
+  String deleteTemplateBody(String name) {
+    return 'Видалити «$name»? Збережені тренування лишаться.';
+  }
+
+  @override
+  String get warmupAction => 'Розминка';
+
+  @override
+  String get warmupMark => 'W';
+
+  @override
+  String get confirmAddExercise => 'Додати вправу';
+
+  @override
+  String get tabOverview => 'Огляд';
+
+  @override
+  String get tabHistory => 'Історія';
+
+  @override
+  String get tabHowTo => 'Техніка';
+
+  @override
+  String get primaryMuscleLabel => 'Основний м’яз';
+
+  @override
+  String get secondaryMuscleLabel => 'Додаткові м’язи';
+
+  @override
+  String get equipmentLabel => 'Спорядження';
+
+  @override
+  String get heaviestWeight => 'Найбільша вага';
+
+  @override
+  String get estimatedOneRm => 'Оцінений 1ПМ';
+
+  @override
+  String get volumeChart => 'Тренувальний обсяг';
+
+  @override
+  String get recordsTitle => 'Рекорди';
+
+  @override
+  String get weekGoal => 'Ціль тижня';
+
+  @override
+  String weekGoalProgress(int done, int goal) {
+    return '$done з $goal';
+  }
+
+  @override
+  String startWorkoutNamed(String name) {
+    return 'Почати тренування · $name';
+  }
+
+  @override
+  String get musclesThisWeek => 'М’язи цього тижня';
+
+  @override
+  String get progressHeading => 'Прогрес';
+
+  @override
+  String get lastEightWeeks => 'Останні вісім тижнів';
+
+  @override
+  String get chooseProfile => 'Оберіть профіль';
+
+  @override
+  String get createProfileAction => 'Створити профіль';
+
+  @override
+  String get plateCalculator => 'Калькулятор дисків';
+
+  @override
+  String get barbellCalc => 'Штанга';
+
+  @override
+  String get cableCalc => 'Блочна рама';
+
+  @override
+  String get extraWeight => 'Додаткова вага';
+
+  @override
+  String get barWeightLabel => 'Вага грифа';
+
+  @override
+  String get plateSetLabel => 'Диски на бік';
+
+  @override
+  String get cableStepLabel => 'Крок стека';
+
+  @override
+  String get chooseGym => 'Оберіть зал';
+
+  @override
+  String get gymsTitle => 'Зали';
+
+  @override
+  String get newGym => 'Новий зал';
+
+  @override
+  String get progressionHelp => 'Допомога з прогресією';
+
+  @override
+  String progressionAsk(String name, String weight, int reps) {
+    return '$name: наступного разу $weight кг і знову почати з $reps повторень?';
+  }
+
+  @override
+  String get actionAccept => 'Прийняти';
+
+  @override
+  String get actionReject => 'Відхилити';
+
+  @override
+  String get importExportTitle => 'Імпорт і експорт даних';
+
+  @override
+  String get importWorkouts => 'Імпортувати тренування';
+
+  @override
+  String get importMeasurements => 'Імпортувати виміри';
+
+  @override
+  String get exportAlphaData => 'Експортувати дані Alpha';
+
+  @override
+  String get importPreviewTitle => 'Попередній перегляд імпорту';
+
+  @override
+  String importSummary(int workouts, int exercises) {
+    return '$workouts тренувань, $exercises вправ';
+  }
+
+  @override
+  String get templatesDetected => 'Знайдені шаблони';
+
+  @override
+  String get renameLabel => 'Перейменувати';
+
+  @override
+  String get mapExercise => 'Зіставити вправу';
+
+  @override
+  String get checkForUpdates => 'Перевірити оновлення';
+
+  @override
+  String get upToDate => 'У вас актуальна версія';
+
+  @override
+  String get updateCheckFailed => 'Перевірка оновлень не вдалася';
+
+  @override
+  String get licensesTitle => 'Ліцензії';
+
+  @override
+  String get flexifyMitNotice =>
+      'Flexify опубліковано за ліцензією MIT. Copyright Brandon Dick.';
+
+  @override
+  String get exerciseDbNotice =>
+      'Назви й фото вправ узято з free-exercise-db, Unlicense.';
+
+  @override
+  String get aiCoachTitle => 'ШІ-тренер';
+
+  @override
+  String get aiProviderLabel => 'Постачальник';
+
+  @override
+  String get aiOffNotice =>
+      'Тренер вимкнений, доки ви не збережете власний ключ.';
+
+  @override
+  String get coachHint => 'Запитати тренера';
+
+  @override
+  String get voiceInput => 'Голосове введення';
+
+  @override
+  String voiceUnderstood(String text) {
+    return 'Зрозуміло: $text';
+  }
+
+  @override
+  String get speechFailed => 'Голосове введення не вдалося';
+
+  @override
+  String get confirmVoiceSet => 'Застосувати цей підхід?';
+
+  @override
+  String get periodSession => 'Це тренування';
+
+  @override
+  String get muscleMapTitle => 'Карта м’язів';
+
+  @override
+  String get frontView => 'Спереду';
+
+  @override
+  String get backView => 'Ззаду';
+
+  @override
+  String quoteKeepGoing(int done, int goal) {
+    return '$done із $goal сесій цього тижня. Продовжуйте.';
+  }
+
+  @override
+  String quoteRemaining(int count) {
+    return 'Лишилось $count сесій цього тижня.';
+  }
+
+  @override
+  String get quotePullDay => 'День тяги. Спина й біцепс готові.';
+
+  @override
+  String get quotePushDay => 'День жиму. Груди, плечі й трицепс.';
+
+  @override
+  String get quoteLegDay => 'День ніг. Квадрицепс, біцепс стегна й сідниці.';
+
+  @override
+  String versionAndLicenses(String version) {
+    return 'Версія $version · Ліцензії';
+  }
+
+  @override
+  String get liveWorkoutLabel => 'Тренування триває';
+
+  @override
+  String get muscleChest => 'Груди';
+
+  @override
+  String get muscleShoulders => 'Плечі';
+
+  @override
+  String get muscleBiceps => 'Біцепс';
+
+  @override
+  String get muscleTriceps => 'Трицепс';
+
+  @override
+  String get muscleAbs => 'Прес';
+
+  @override
+  String get muscleQuads => 'Квадрицепс';
+
+  @override
+  String get muscleCalves => 'Литки';
+
+  @override
+  String get muscleTraps => 'Трапеції';
+
+  @override
+  String get muscleBack => 'Спина';
+
+  @override
+  String get muscleGlutes => 'Сідниці';
+
+  @override
+  String get muscleHams => 'Біцепс стегна';
+
+  @override
+  String get weekGoalManual => 'Задати тижневу ціль вручну';
+
+  @override
+  String get sessionsPerWeek => 'Сесій на тиждень';
+
+  @override
+  String get gymNameHint => 'Назва залу';
+
+  @override
+  String get coachProfileNote => 'Нотатка тренера';
+
+  @override
+  String get openPackageLicenses => 'Відкрити ліцензії пакунків';
+
+  @override
+  String get lengthUnitLabel => 'Довжина тіла';
+
+  @override
+  String get centimetersShort => 'Сантиметри (см)';
+
+  @override
+  String get inchesShort => 'Дюйми (in)';
+
+  @override
+  String get heightInches => 'Зріст (дюйми)';
 }

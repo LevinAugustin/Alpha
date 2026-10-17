@@ -70,6 +70,7 @@ const _alwaysEnglishEquivalentKeys = <String>{
   'languageNameUkrainian',
   'stoneUnitShort',
   'columnKg',
+  'warmupMark',
 };
 
 const _localeSpecificEnglishEquivalentKeys = <String, Set<String>>{

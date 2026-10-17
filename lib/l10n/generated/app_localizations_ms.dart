@@ -1814,4 +1814,316 @@ class AppLocalizationsMs extends AppLocalizations {
 
   @override
   String get alphaSettingsDescription => 'Profile, Design und Pausenton';
+
+  @override
+  String get finishWorkoutAsk => 'Tamatkan latihan ini?';
+
+  @override
+  String get finishWorkoutBody => 'Sesi disimpan dan templat kekal.';
+
+  @override
+  String get discardWorkoutAsk => 'Buang latihan ini?';
+
+  @override
+  String get discardWorkoutBody => 'Set yang direkod untuk sesi ini dipadam.';
+
+  @override
+  String get noRest => 'Tiada rehat';
+
+  @override
+  String get restWheelTitle => 'Rehat';
+
+  @override
+  String get deleteTemplateAsk => 'Padam templat ini?';
+
+  @override
+  String deleteTemplateBody(String name) {
+    return 'Padam “$name”? Latihan tersimpan kekal.';
+  }
+
+  @override
+  String get warmupAction => 'Pemanasan';
+
+  @override
+  String get warmupMark => 'W';
+
+  @override
+  String get confirmAddExercise => 'Tambah gerakan';
+
+  @override
+  String get tabOverview => 'Ringkasan';
+
+  @override
+  String get tabHistory => 'Sejarah';
+
+  @override
+  String get tabHowTo => 'Cara laku';
+
+  @override
+  String get primaryMuscleLabel => 'Otot utama';
+
+  @override
+  String get secondaryMuscleLabel => 'Otot sampingan';
+
+  @override
+  String get equipmentLabel => 'Peralatan';
+
+  @override
+  String get heaviestWeight => 'Berat paling berat';
+
+  @override
+  String get estimatedOneRm => '1RM anggaran';
+
+  @override
+  String get volumeChart => 'Isipadu latihan';
+
+  @override
+  String get recordsTitle => 'Rekod terbaik';
+
+  @override
+  String get weekGoal => 'Matlamat minggu';
+
+  @override
+  String weekGoalProgress(int done, int goal) {
+    return '$done daripada $goal';
+  }
+
+  @override
+  String startWorkoutNamed(String name) {
+    return 'Mula latihan · $name';
+  }
+
+  @override
+  String get musclesThisWeek => 'Otot minggu ini';
+
+  @override
+  String get progressHeading => 'Kemajuan';
+
+  @override
+  String get lastEightWeeks => 'Lapan minggu terakhir';
+
+  @override
+  String get chooseProfile => 'Pilih profil';
+
+  @override
+  String get createProfileAction => 'Cipta profil';
+
+  @override
+  String get plateCalculator => 'Kalkulator plat';
+
+  @override
+  String get barbellCalc => 'Barbel';
+
+  @override
+  String get cableCalc => 'Menara kabel';
+
+  @override
+  String get extraWeight => 'Berat tambahan';
+
+  @override
+  String get barWeightLabel => 'Berat palang';
+
+  @override
+  String get plateSetLabel => 'Plat setiap sisi';
+
+  @override
+  String get cableStepLabel => 'Langkah timbunan';
+
+  @override
+  String get chooseGym => 'Pilih gim';
+
+  @override
+  String get gymsTitle => 'Senarai gim';
+
+  @override
+  String get newGym => 'Gim baharu';
+
+  @override
+  String get progressionHelp => 'Bantuan progres';
+
+  @override
+  String progressionAsk(String name, String weight, int reps) {
+    return '$name: lain kali $weight kg dan mula semula pada $reps ulangan?';
+  }
+
+  @override
+  String get actionAccept => 'Terima';
+
+  @override
+  String get actionReject => 'Tolak';
+
+  @override
+  String get importExportTitle => 'Import dan eksport data';
+
+  @override
+  String get importWorkouts => 'Import latihan';
+
+  @override
+  String get importMeasurements => 'Import ukuran';
+
+  @override
+  String get exportAlphaData => 'Eksport data Alpha';
+
+  @override
+  String get importPreviewTitle => 'Pratonton import';
+
+  @override
+  String importSummary(int workouts, int exercises) {
+    return '$workouts latihan, $exercises gerakan';
+  }
+
+  @override
+  String get templatesDetected => 'Templat dikesan';
+
+  @override
+  String get renameLabel => 'Tukar nama';
+
+  @override
+  String get mapExercise => 'Padankan gerakan';
+
+  @override
+  String get checkForUpdates => 'Semak kemas kini';
+
+  @override
+  String get upToDate => 'Anda sudah terkini';
+
+  @override
+  String get updateCheckFailed => 'Semakan kemas kini gagal';
+
+  @override
+  String get licensesTitle => 'Lesen';
+
+  @override
+  String get flexifyMitNotice =>
+      'Flexify diterbitkan di bawah lesen MIT. Copyright Brandon Dick.';
+
+  @override
+  String get exerciseDbNotice =>
+      'Nama dan foto gerakan datang dari free-exercise-db, Unlicense.';
+
+  @override
+  String get aiCoachTitle => 'Jurulatih AI';
+
+  @override
+  String get aiProviderLabel => 'Pembekal';
+
+  @override
+  String get aiOffNotice =>
+      'Jurulatih kekal mati sehingga anda simpan kunci sendiri.';
+
+  @override
+  String get coachHint => 'Tanya jurulatih';
+
+  @override
+  String get voiceInput => 'Input suara';
+
+  @override
+  String voiceUnderstood(String text) {
+    return 'Difahami: $text';
+  }
+
+  @override
+  String get speechFailed => 'Input suara gagal';
+
+  @override
+  String get confirmVoiceSet => 'Guna set ini?';
+
+  @override
+  String get periodSession => 'Latihan ini';
+
+  @override
+  String get muscleMapTitle => 'Peta otot';
+
+  @override
+  String get frontView => 'Hadapan';
+
+  @override
+  String get backView => 'Belakang';
+
+  @override
+  String quoteKeepGoing(int done, int goal) {
+    return '$done daripada $goal sesi minggu ini. Teruskan.';
+  }
+
+  @override
+  String quoteRemaining(int count) {
+    return 'Tinggal $count sesi minggu ini.';
+  }
+
+  @override
+  String get quotePullDay => 'Hari tarik. Belakang dan bisep sedia.';
+
+  @override
+  String get quotePushDay => 'Hari tolak. Dada, bahu dan trisep.';
+
+  @override
+  String get quoteLegDay => 'Hari kaki. Paha, hamstring dan punggung.';
+
+  @override
+  String versionAndLicenses(String version) {
+    return 'Versi $version · Lesen';
+  }
+
+  @override
+  String get liveWorkoutLabel => 'Latihan sedang berjalan';
+
+  @override
+  String get muscleChest => 'Dada';
+
+  @override
+  String get muscleShoulders => 'Bahu';
+
+  @override
+  String get muscleBiceps => 'Bisep';
+
+  @override
+  String get muscleTriceps => 'Trisep';
+
+  @override
+  String get muscleAbs => 'Perut';
+
+  @override
+  String get muscleQuads => 'Paha depan';
+
+  @override
+  String get muscleCalves => 'Betis';
+
+  @override
+  String get muscleTraps => 'Otot trapezius';
+
+  @override
+  String get muscleBack => 'Belakang badan';
+
+  @override
+  String get muscleGlutes => 'Punggung';
+
+  @override
+  String get muscleHams => 'Paha belakang';
+
+  @override
+  String get weekGoalManual => 'Tetapkan matlamat minggu sendiri';
+
+  @override
+  String get sessionsPerWeek => 'Sesi seminggu';
+
+  @override
+  String get gymNameHint => 'Nama gim';
+
+  @override
+  String get coachProfileNote => 'Nota jurulatih';
+
+  @override
+  String get openPackageLicenses => 'Buka lesen pakej';
+
+  @override
+  String get lengthUnitLabel => 'Panjang badan';
+
+  @override
+  String get centimetersShort => 'Sentimeter (cm)';
+
+  @override
+  String get inchesShort => 'Inci (in)';
+
+  @override
+  String get heightInches => 'Tinggi (inci)';
 }

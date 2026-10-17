@@ -1746,4 +1746,314 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get alphaSettingsDescription => 'Profile, Design und Pausenton';
+
+  @override
+  String get finishWorkoutAsk => 'このトレーニングを終える？';
+
+  @override
+  String get finishWorkoutBody => 'セッションは保存され、テンプレートはそのままです。';
+
+  @override
+  String get discardWorkoutAsk => 'このトレーニングを破棄する？';
+
+  @override
+  String get discardWorkoutBody => 'このセッションで記録したセットは削除されます。';
+
+  @override
+  String get noRest => '休憩なし';
+
+  @override
+  String get restWheelTitle => '休憩';
+
+  @override
+  String get deleteTemplateAsk => 'このテンプレートを削除する？';
+
+  @override
+  String deleteTemplateBody(String name) {
+    return '「$name」を削除する？記録済みのトレーニングは残ります。';
+  }
+
+  @override
+  String get warmupAction => 'ウォームアップ';
+
+  @override
+  String get warmupMark => 'W';
+
+  @override
+  String get confirmAddExercise => '種目を追加';
+
+  @override
+  String get tabOverview => '概要';
+
+  @override
+  String get tabHistory => '履歴';
+
+  @override
+  String get tabHowTo => 'やり方';
+
+  @override
+  String get primaryMuscleLabel => '主働筋';
+
+  @override
+  String get secondaryMuscleLabel => '補助筋';
+
+  @override
+  String get equipmentLabel => '器具';
+
+  @override
+  String get heaviestWeight => '最大重量';
+
+  @override
+  String get estimatedOneRm => '推定1RM';
+
+  @override
+  String get volumeChart => 'トレーニング量';
+
+  @override
+  String get recordsTitle => '自己記録';
+
+  @override
+  String get weekGoal => '週の目標';
+
+  @override
+  String weekGoalProgress(int done, int goal) {
+    return '$done / $goal';
+  }
+
+  @override
+  String startWorkoutNamed(String name) {
+    return 'トレーニング開始 · $name';
+  }
+
+  @override
+  String get musclesThisWeek => '今週の筋肉';
+
+  @override
+  String get progressHeading => '進捗';
+
+  @override
+  String get lastEightWeeks => '直近8週間';
+
+  @override
+  String get chooseProfile => 'プロフィールを選ぶ';
+
+  @override
+  String get createProfileAction => 'プロフィールを作成';
+
+  @override
+  String get plateCalculator => 'プレート計算';
+
+  @override
+  String get barbellCalc => 'バーベル';
+
+  @override
+  String get cableCalc => 'ケーブル';
+
+  @override
+  String get extraWeight => '追加重量';
+
+  @override
+  String get barWeightLabel => 'バーの重さ';
+
+  @override
+  String get plateSetLabel => '片側のプレート';
+
+  @override
+  String get cableStepLabel => 'スタック間隔';
+
+  @override
+  String get chooseGym => 'ジムを選ぶ';
+
+  @override
+  String get gymsTitle => 'ジム';
+
+  @override
+  String get newGym => '新しいジム';
+
+  @override
+  String get progressionHelp => '漸進の手助け';
+
+  @override
+  String progressionAsk(String name, String weight, int reps) {
+    return '$name: 次回は $weight kg で、$reps 回から再開しますか？';
+  }
+
+  @override
+  String get actionAccept => '採用';
+
+  @override
+  String get actionReject => '却下';
+
+  @override
+  String get importExportTitle => 'データの読み込みと書き出し';
+
+  @override
+  String get importWorkouts => 'ワークアウトを読み込む';
+
+  @override
+  String get importMeasurements => '測定値を読み込む';
+
+  @override
+  String get exportAlphaData => 'Alphaデータを書き出す';
+
+  @override
+  String get importPreviewTitle => '読み込みの確認';
+
+  @override
+  String importSummary(int workouts, int exercises) {
+    return 'ワークアウト $workouts 件、種目 $exercises 件';
+  }
+
+  @override
+  String get templatesDetected => '見つかったテンプレート';
+
+  @override
+  String get renameLabel => '名前を変更';
+
+  @override
+  String get mapExercise => '種目を対応づける';
+
+  @override
+  String get checkForUpdates => '更新を確認';
+
+  @override
+  String get upToDate => '最新です';
+
+  @override
+  String get updateCheckFailed => '更新の確認に失敗しました';
+
+  @override
+  String get licensesTitle => 'ライセンス';
+
+  @override
+  String get flexifyMitNotice =>
+      'Flexify は MIT ライセンスで公開されています。Copyright Brandon Dick。';
+
+  @override
+  String get exerciseDbNotice => '種目名と写真は free-exercise-db（Unlicense）のものです。';
+
+  @override
+  String get aiCoachTitle => 'AIコーチ';
+
+  @override
+  String get aiProviderLabel => '提供元';
+
+  @override
+  String get aiOffNotice => '自分の鍵を保存するまでコーチはオフです。';
+
+  @override
+  String get coachHint => 'コーチに聞く';
+
+  @override
+  String get voiceInput => '音声入力';
+
+  @override
+  String voiceUnderstood(String text) {
+    return '聞き取り: $text';
+  }
+
+  @override
+  String get speechFailed => '音声入力に失敗しました';
+
+  @override
+  String get confirmVoiceSet => 'このセットを反映する？';
+
+  @override
+  String get periodSession => 'このトレーニング';
+
+  @override
+  String get muscleMapTitle => '筋肉マップ';
+
+  @override
+  String get frontView => '前面';
+
+  @override
+  String get backView => '背面';
+
+  @override
+  String quoteKeepGoing(int done, int goal) {
+    return '今週は $done/$goal 回。この調子。';
+  }
+
+  @override
+  String quoteRemaining(int count) {
+    return '今週はあと $count 回。';
+  }
+
+  @override
+  String get quotePullDay => '引く日。背中と上腕二頭筋の番です。';
+
+  @override
+  String get quotePushDay => '押す日。胸、肩、上腕三頭筋。';
+
+  @override
+  String get quoteLegDay => '脚の日。大腿四頭筋、ハム、臀筋。';
+
+  @override
+  String versionAndLicenses(String version) {
+    return 'バージョン $version · ライセンス';
+  }
+
+  @override
+  String get liveWorkoutLabel => 'トレーニング中';
+
+  @override
+  String get muscleChest => '胸';
+
+  @override
+  String get muscleShoulders => '肩';
+
+  @override
+  String get muscleBiceps => '上腕二頭筋';
+
+  @override
+  String get muscleTriceps => '上腕三頭筋';
+
+  @override
+  String get muscleAbs => '腹';
+
+  @override
+  String get muscleQuads => '大腿四頭筋';
+
+  @override
+  String get muscleCalves => 'ふくらはぎ';
+
+  @override
+  String get muscleTraps => '僧帽筋';
+
+  @override
+  String get muscleBack => '背中';
+
+  @override
+  String get muscleGlutes => '臀筋';
+
+  @override
+  String get muscleHams => 'ハムストリング';
+
+  @override
+  String get weekGoalManual => '週の目標を自分で決める';
+
+  @override
+  String get sessionsPerWeek => '週あたりの回数';
+
+  @override
+  String get gymNameHint => 'ジムの名前';
+
+  @override
+  String get coachProfileNote => 'コーチからのメモ';
+
+  @override
+  String get openPackageLicenses => 'パッケージのライセンスを開く';
+
+  @override
+  String get lengthUnitLabel => '身長の単位';
+
+  @override
+  String get centimetersShort => 'センチメートル (cm)';
+
+  @override
+  String get inchesShort => 'インチ (in)';
+
+  @override
+  String get heightInches => '身長（インチ）';
 }

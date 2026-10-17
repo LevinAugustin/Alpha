@@ -14,6 +14,27 @@ String normalizeExerciseKey(String value) {
       .trim();
 }
 
+const _searchGroups = <List<String>>[
+  [
+    'push',
+    'brust',
+    'schulter',
+    'schultern',
+    'trizeps',
+    'chest',
+    'shoulder',
+    'triceps',
+  ],
+  ['pull', 'rücken', 'ruecken', 'bizeps', 'lat', 'back', 'biceps'],
+  ['beine', 'legs', 'quad', 'oberschenkel', 'beinbeuger', 'gesäß'],
+  ['multipresse', 'smith machine', 'smith'],
+  ['kabelzug', 'kabelturm', 'cable', 'kabel'],
+  ['langhantel', 'barbell'],
+  ['kurzhantel', 'dumbbell'],
+  ['körpergewicht', 'koerpergewicht', 'bodyweight'],
+  ['maschine', 'machine'],
+];
+
 bool exerciseMatchesQuery({
   required String name,
   String? germanName,
@@ -22,9 +43,21 @@ bool exerciseMatchesQuery({
 }) {
   final needle = query.trim().toLowerCase();
   if (needle.isEmpty) return true;
-  return '$name ${germanName ?? ''} ${aliases ?? ''}'.toLowerCase().contains(
-    needle,
-  );
+  final haystack = '$name ${germanName ?? ''} ${aliases ?? ''}'.toLowerCase();
+  if (_containsTerm(haystack, needle)) return true;
+  for (final group in _searchGroups) {
+    final asked =
+        group.contains(needle) ||
+        group.any((word) => word.length >= 5 && needle.contains(word));
+    if (!asked) continue;
+    if (group.any((word) => _containsTerm(haystack, word))) return true;
+  }
+  return false;
+}
+
+bool _containsTerm(String haystack, String word) {
+  if (word.length >= 5) return haystack.contains(word);
+  return RegExp('\\b${RegExp.escape(word)}\\b').hasMatch(haystack);
 }
 
 Future<void> seedExerciseCatalog(AppDatabase database) async {
@@ -36,7 +69,6 @@ Future<void> seedExerciseCatalog(AppDatabase database) async {
 
   final missing = <ExerciseSeed>[];
   var needsLabels = false;
-  var staleGerman = false;
   for (final seed in exerciseCatalog) {
     final current = byKey[normalizeExerciseKey(seed.name)];
     if (current == null) {
@@ -45,11 +77,9 @@ Future<void> seedExerciseCatalog(AppDatabase database) async {
     }
     if ((current.germanName ?? '').isEmpty || (current.muscle ?? '').isEmpty) {
       needsLabels = true;
-    } else if (current.germanName != seed.germanName) {
-      staleGerman = true;
     }
   }
-  if (missing.isEmpty && !needsLabels && !staleGerman) return;
+  if (missing.isEmpty && !needsLabels) return;
 
   final categoryIds = {
     for (final category in await database.select(database.categories).get())
@@ -78,8 +108,7 @@ Future<void> seedExerciseCatalog(AppDatabase database) async {
       if (current == null) continue;
       final germanEmpty = (current.germanName ?? '').isEmpty;
       final muscleEmpty = (current.muscle ?? '').isEmpty;
-      final germanStale = current.germanName != seed.germanName;
-      if (!germanEmpty && !muscleEmpty && !germanStale) continue;
+      if (!germanEmpty && !muscleEmpty) continue;
       await (database.update(
         database.exercises,
       )..where((row) => row.id.equals(current.id))).write(

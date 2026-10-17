@@ -62,6 +62,8 @@ void main() {
 
     await tester.tap(find.byKey(const Key('finish-workout')));
     await tester.pumpAndSettle();
+    await tester.tap(find.byKey(const Key('confirm-finish')));
+    await tester.pumpAndSettle();
 
     final workout = await harness.database.workouts.select().getSingle();
     expect(workout.endedAt, isNotNull);

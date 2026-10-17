@@ -1821,4 +1821,316 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get alphaSettingsDescription => 'Profile, Design und Pausenton';
+
+  @override
+  String get finishWorkoutAsk => 'Bu antrenmanı bitir?';
+
+  @override
+  String get finishWorkoutBody => 'Seans kaydedilir ve şablon aynı kalır.';
+
+  @override
+  String get discardWorkoutAsk => 'Bu antrenmanı sil?';
+
+  @override
+  String get discardWorkoutBody => 'Bu seansta yazılan setler silinir.';
+
+  @override
+  String get noRest => 'Dinlenme yok';
+
+  @override
+  String get restWheelTitle => 'Dinlenme';
+
+  @override
+  String get deleteTemplateAsk => 'Bu şablon silinsin mi?';
+
+  @override
+  String deleteTemplateBody(String name) {
+    return '“$name” silinsin mi? Kayıtlı antrenmanlar durur.';
+  }
+
+  @override
+  String get warmupAction => 'Isınma';
+
+  @override
+  String get warmupMark => 'W';
+
+  @override
+  String get confirmAddExercise => 'Egzersizi ekle';
+
+  @override
+  String get tabOverview => 'Genel bakış';
+
+  @override
+  String get tabHistory => 'Geçmiş';
+
+  @override
+  String get tabHowTo => 'Uygulama';
+
+  @override
+  String get primaryMuscleLabel => 'Ana kas';
+
+  @override
+  String get secondaryMuscleLabel => 'Yardımcı kaslar';
+
+  @override
+  String get equipmentLabel => 'Ekipman';
+
+  @override
+  String get heaviestWeight => 'En ağır yük';
+
+  @override
+  String get estimatedOneRm => 'Tahmini 1RM';
+
+  @override
+  String get volumeChart => 'Antrenman hacmi';
+
+  @override
+  String get recordsTitle => 'Rekorlar';
+
+  @override
+  String get weekGoal => 'Haftalık hedef';
+
+  @override
+  String weekGoalProgress(int done, int goal) {
+    return '$done / $goal';
+  }
+
+  @override
+  String startWorkoutNamed(String name) {
+    return 'Antrenmanı başlat · $name';
+  }
+
+  @override
+  String get musclesThisWeek => 'Bu haftanın kasları';
+
+  @override
+  String get progressHeading => 'İlerleme';
+
+  @override
+  String get lastEightWeeks => 'Son sekiz hafta';
+
+  @override
+  String get chooseProfile => 'Bir profil seç';
+
+  @override
+  String get createProfileAction => 'Profil oluştur';
+
+  @override
+  String get plateCalculator => 'Plaka hesaplayıcı';
+
+  @override
+  String get barbellCalc => 'Halter';
+
+  @override
+  String get cableCalc => 'Kablo istasyonu';
+
+  @override
+  String get extraWeight => 'Ek ağırlık';
+
+  @override
+  String get barWeightLabel => 'Bar ağırlığı';
+
+  @override
+  String get plateSetLabel => 'Yan başına plaka';
+
+  @override
+  String get cableStepLabel => 'Yığın adımı';
+
+  @override
+  String get chooseGym => 'Salon seç';
+
+  @override
+  String get gymsTitle => 'Salonlar';
+
+  @override
+  String get newGym => 'Yeni salon';
+
+  @override
+  String get progressionHelp => 'İlerleme yardımı';
+
+  @override
+  String progressionAsk(String name, String weight, int reps) {
+    return '$name: gelecek sefer $weight kg ve yeniden $reps tekrardan başla?';
+  }
+
+  @override
+  String get actionAccept => 'Kabul et';
+
+  @override
+  String get actionReject => 'Reddet';
+
+  @override
+  String get importExportTitle => 'Verileri içe ve dışa aktar';
+
+  @override
+  String get importWorkouts => 'Antrenmanları içe aktar';
+
+  @override
+  String get importMeasurements => 'Ölçümleri içe aktar';
+
+  @override
+  String get exportAlphaData => 'Alpha verisini dışa aktar';
+
+  @override
+  String get importPreviewTitle => 'İçe aktarma önizlemesi';
+
+  @override
+  String importSummary(int workouts, int exercises) {
+    return '$workouts antrenman, $exercises egzersiz';
+  }
+
+  @override
+  String get templatesDetected => 'Bulunan şablonlar';
+
+  @override
+  String get renameLabel => 'Yeniden adlandır';
+
+  @override
+  String get mapExercise => 'Egzersizi eşle';
+
+  @override
+  String get checkForUpdates => 'Güncellemeleri denetle';
+
+  @override
+  String get upToDate => 'Güncelsin';
+
+  @override
+  String get updateCheckFailed => 'Güncelleme denetimi başarısız oldu';
+
+  @override
+  String get licensesTitle => 'Lisanslar';
+
+  @override
+  String get flexifyMitNotice =>
+      'Flexify, MIT lisansı ile yayımlanır. Copyright Brandon Dick.';
+
+  @override
+  String get exerciseDbNotice =>
+      'Egzersiz adları ve fotoğrafları free-exercise-db, Unlicense kaynağındandır.';
+
+  @override
+  String get aiCoachTitle => 'YZ koçu';
+
+  @override
+  String get aiProviderLabel => 'Sağlayıcı';
+
+  @override
+  String get aiOffNotice =>
+      'Kendi anahtarını kaydedene kadar koç kapalı kalır.';
+
+  @override
+  String get coachHint => 'Koça sor';
+
+  @override
+  String get voiceInput => 'Ses girişi';
+
+  @override
+  String voiceUnderstood(String text) {
+    return 'Anlaşıldı: $text';
+  }
+
+  @override
+  String get speechFailed => 'Ses girişi başarısız oldu';
+
+  @override
+  String get confirmVoiceSet => 'Bu set uygulansın mı?';
+
+  @override
+  String get periodSession => 'Bu antrenman';
+
+  @override
+  String get muscleMapTitle => 'Kas haritası';
+
+  @override
+  String get frontView => 'Ön';
+
+  @override
+  String get backView => 'Arka';
+
+  @override
+  String quoteKeepGoing(int done, int goal) {
+    return 'Bu hafta $done / $goal seans. Devam et.';
+  }
+
+  @override
+  String quoteRemaining(int count) {
+    return 'Bu hafta $count seans kaldı.';
+  }
+
+  @override
+  String get quotePullDay => 'Çekiş günü. Sırt ve pazı hazır.';
+
+  @override
+  String get quotePushDay => 'İtiş günü. Göğüs, omuz ve arka kol.';
+
+  @override
+  String get quoteLegDay => 'Bacak günü. Kuadriseps, hamstring ve kalça.';
+
+  @override
+  String versionAndLicenses(String version) {
+    return 'Sürüm $version · Lisanslar';
+  }
+
+  @override
+  String get liveWorkoutLabel => 'Antrenman sürüyor';
+
+  @override
+  String get muscleChest => 'Göğüs';
+
+  @override
+  String get muscleShoulders => 'Omuzlar';
+
+  @override
+  String get muscleBiceps => 'Pazı';
+
+  @override
+  String get muscleTriceps => 'Arka kol';
+
+  @override
+  String get muscleAbs => 'Karın';
+
+  @override
+  String get muscleQuads => 'Ön bacak';
+
+  @override
+  String get muscleCalves => 'Baldır';
+
+  @override
+  String get muscleTraps => 'Trapez';
+
+  @override
+  String get muscleBack => 'Sırt';
+
+  @override
+  String get muscleGlutes => 'Kalça';
+
+  @override
+  String get muscleHams => 'Arka bacak';
+
+  @override
+  String get weekGoalManual => 'Haftalık hedefi kendin belirle';
+
+  @override
+  String get sessionsPerWeek => 'Haftalık seans';
+
+  @override
+  String get gymNameHint => 'Salon adı';
+
+  @override
+  String get coachProfileNote => 'Koçunun notu';
+
+  @override
+  String get openPackageLicenses => 'Paket lisanslarını aç';
+
+  @override
+  String get lengthUnitLabel => 'Vücut uzunluğu';
+
+  @override
+  String get centimetersShort => 'Santimetre (cm)';
+
+  @override
+  String get inchesShort => 'İnç (in)';
+
+  @override
+  String get heightInches => 'Boy (inç)';
 }

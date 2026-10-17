@@ -1805,4 +1805,316 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String get alphaSettingsDescription => 'Profile, Design und Pausenton';
+
+  @override
+  String get finishWorkoutAsk => 'این تمرین تمام شود؟';
+
+  @override
+  String get finishWorkoutBody => 'جلسه ذخیره می‌شود و قالب همان می‌ماند.';
+
+  @override
+  String get discardWorkoutAsk => 'این تمرین کنار گذاشته شود؟';
+
+  @override
+  String get discardWorkoutBody => 'ست‌های ثبت‌شده این جلسه حذف می‌شوند.';
+
+  @override
+  String get noRest => 'بدون استراحت';
+
+  @override
+  String get restWheelTitle => 'استراحت';
+
+  @override
+  String get deleteTemplateAsk => 'این قالب حذف شود؟';
+
+  @override
+  String deleteTemplateBody(String name) {
+    return '«$name» حذف شود؟ تمرین‌های ذخیره‌شده می‌مانند.';
+  }
+
+  @override
+  String get warmupAction => 'گرم کردن';
+
+  @override
+  String get warmupMark => 'W';
+
+  @override
+  String get confirmAddExercise => 'افزودن حرکت';
+
+  @override
+  String get tabOverview => 'نمای کلی';
+
+  @override
+  String get tabHistory => 'تاریخچه';
+
+  @override
+  String get tabHowTo => 'اجرا';
+
+  @override
+  String get primaryMuscleLabel => 'عضله اصلی';
+
+  @override
+  String get secondaryMuscleLabel => 'عضله‌های کمکی';
+
+  @override
+  String get equipmentLabel => 'وسیله';
+
+  @override
+  String get heaviestWeight => 'سنگین‌ترین وزن';
+
+  @override
+  String get estimatedOneRm => '۱RM تخمینی';
+
+  @override
+  String get volumeChart => 'حجم تمرین';
+
+  @override
+  String get recordsTitle => 'رکوردها';
+
+  @override
+  String get weekGoal => 'هدف هفته';
+
+  @override
+  String weekGoalProgress(int done, int goal) {
+    return '$done از $goal';
+  }
+
+  @override
+  String startWorkoutNamed(String name) {
+    return 'شروع تمرین · $name';
+  }
+
+  @override
+  String get musclesThisWeek => 'عضله‌های این هفته';
+
+  @override
+  String get progressHeading => 'پیشرفت';
+
+  @override
+  String get lastEightWeeks => 'هشت هفته اخیر';
+
+  @override
+  String get chooseProfile => 'یک نمایه انتخاب کنید';
+
+  @override
+  String get createProfileAction => 'ساخت نمایه';
+
+  @override
+  String get plateCalculator => 'ماشین‌حساب صفحه';
+
+  @override
+  String get barbellCalc => 'هالتر';
+
+  @override
+  String get cableCalc => 'برج کابل';
+
+  @override
+  String get extraWeight => 'وزن اضافه';
+
+  @override
+  String get barWeightLabel => 'وزن میله';
+
+  @override
+  String get plateSetLabel => 'صفحه در هر سمت';
+
+  @override
+  String get cableStepLabel => 'گام دسته وزنه';
+
+  @override
+  String get chooseGym => 'باشگاه را انتخاب کنید';
+
+  @override
+  String get gymsTitle => 'باشگاه‌ها';
+
+  @override
+  String get newGym => 'باشگاه تازه';
+
+  @override
+  String get progressionHelp => 'کمک پیشرفت';
+
+  @override
+  String progressionAsk(String name, String weight, int reps) {
+    return '$name: دفعه بعد $weight کیلو و شروع دوباره از $reps تکرار؟';
+  }
+
+  @override
+  String get actionAccept => 'پذیرفتن';
+
+  @override
+  String get actionReject => 'رد کردن';
+
+  @override
+  String get importExportTitle => 'وارد و خارج کردن داده';
+
+  @override
+  String get importWorkouts => 'وارد کردن تمرین‌ها';
+
+  @override
+  String get importMeasurements => 'وارد کردن اندازه‌ها';
+
+  @override
+  String get exportAlphaData => 'خروجی داده Alpha';
+
+  @override
+  String get importPreviewTitle => 'پیش‌نمایش ورود';
+
+  @override
+  String importSummary(int workouts, int exercises) {
+    return '$workouts تمرین، $exercises حرکت';
+  }
+
+  @override
+  String get templatesDetected => 'قالب‌های شناخته‌شده';
+
+  @override
+  String get renameLabel => 'تغییر نام';
+
+  @override
+  String get mapExercise => 'تطبیق حرکت';
+
+  @override
+  String get checkForUpdates => 'جستجوی به‌روزرسانی';
+
+  @override
+  String get upToDate => 'نسخه شما تازه است';
+
+  @override
+  String get updateCheckFailed => 'جستجوی به‌روزرسانی ناموفق بود';
+
+  @override
+  String get licensesTitle => 'مجوزها';
+
+  @override
+  String get flexifyMitNotice =>
+      'Flexify با مجوز MIT منتشر شده است. Copyright Brandon Dick.';
+
+  @override
+  String get exerciseDbNotice =>
+      'نام و عکس حرکت‌ها از free-exercise-db با Unlicense است.';
+
+  @override
+  String get aiCoachTitle => 'مربی هوش مصنوعی';
+
+  @override
+  String get aiProviderLabel => 'ارائه‌دهنده';
+
+  @override
+  String get aiOffNotice =>
+      'تا وقتی کلید خودتان را ذخیره نکنید مربی خاموش است.';
+
+  @override
+  String get coachHint => 'از مربی بپرس';
+
+  @override
+  String get voiceInput => 'ورود صوتی';
+
+  @override
+  String voiceUnderstood(String text) {
+    return 'فهمیدم: $text';
+  }
+
+  @override
+  String get speechFailed => 'ورود صوتی ناموفق بود';
+
+  @override
+  String get confirmVoiceSet => 'این ست اعمال شود؟';
+
+  @override
+  String get periodSession => 'این تمرین';
+
+  @override
+  String get muscleMapTitle => 'نقشه عضله';
+
+  @override
+  String get frontView => 'جلو';
+
+  @override
+  String get backView => 'پشت';
+
+  @override
+  String quoteKeepGoing(int done, int goal) {
+    return '$done از $goal جلسه این هفته. ادامه بده.';
+  }
+
+  @override
+  String quoteRemaining(int count) {
+    return '$count جلسه این هفته مانده است.';
+  }
+
+  @override
+  String get quotePullDay => 'روز کشش. پشت و دوسر بازو آماده‌اند.';
+
+  @override
+  String get quotePushDay => 'روز فشار. سینه، شانه و سه‌سر.';
+
+  @override
+  String get quoteLegDay => 'روز پا. چهارسر، همسترینگ و سرینی.';
+
+  @override
+  String versionAndLicenses(String version) {
+    return 'نسخه $version · مجوزها';
+  }
+
+  @override
+  String get liveWorkoutLabel => 'تمرین در جریان است';
+
+  @override
+  String get muscleChest => 'سینه';
+
+  @override
+  String get muscleShoulders => 'شانه‌ها';
+
+  @override
+  String get muscleBiceps => 'دوسر بازو';
+
+  @override
+  String get muscleTriceps => 'سه‌سر بازو';
+
+  @override
+  String get muscleAbs => 'شکم';
+
+  @override
+  String get muscleQuads => 'چهارسر';
+
+  @override
+  String get muscleCalves => 'ساق';
+
+  @override
+  String get muscleTraps => 'ذوزنقه‌ای';
+
+  @override
+  String get muscleBack => 'پشت';
+
+  @override
+  String get muscleGlutes => 'سرینی';
+
+  @override
+  String get muscleHams => 'همسترینگ';
+
+  @override
+  String get weekGoalManual => 'هدف هفته را خودت بگذار';
+
+  @override
+  String get sessionsPerWeek => 'جلسه در هفته';
+
+  @override
+  String get gymNameHint => 'نام باشگاه';
+
+  @override
+  String get coachProfileNote => 'یادداشت مربی';
+
+  @override
+  String get openPackageLicenses => 'مجوز بسته‌ها را باز کن';
+
+  @override
+  String get lengthUnitLabel => 'قد بدن';
+
+  @override
+  String get centimetersShort => 'سانتی‌متر (cm)';
+
+  @override
+  String get inchesShort => 'اینچ (in)';
+
+  @override
+  String get heightInches => 'قد (اینچ)';
 }

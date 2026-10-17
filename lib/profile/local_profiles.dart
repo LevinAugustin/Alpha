@@ -47,7 +47,16 @@ class ProfileRegistry {
       profiles.firstWhere((profile) => profile.id == activeId);
 }
 
+Directory? _testSupportDirectory;
+
 Future<Directory> profileSupportDirectory() async {
+  if (Platform.environment.containsKey('FLUTTER_TEST')) {
+    final cached = _testSupportDirectory;
+    if (cached != null) return cached;
+    final created = Directory.systemTemp.createTempSync('alpha-test-support-');
+    _testSupportDirectory = created;
+    return created;
+  }
   final support = await getApplicationSupportDirectory();
   await support.create(recursive: true);
   return support;
@@ -60,7 +69,7 @@ Future<File> _registryFile() async {
 
 Future<ProfileRegistry> loadProfileRegistry() async {
   final file = await _registryFile();
-  if (!await file.exists()) {
+  if (!file.existsSync()) {
     final registry = ProfileRegistry(
       activeId: defaultProfileId,
       profiles: const [
@@ -74,7 +83,7 @@ Future<ProfileRegistry> loadProfileRegistry() async {
     await saveProfileRegistry(registry);
     return registry;
   }
-  final decoded = jsonDecode(await file.readAsString()) as Map<String, dynamic>;
+  final decoded = jsonDecode(file.readAsStringSync()) as Map<String, dynamic>;
   final profiles = (decoded['profiles'] as List)
       .map(
         (row) => LocalProfile.fromJson(Map<String, dynamic>.from(row as Map)),
@@ -88,7 +97,7 @@ Future<ProfileRegistry> loadProfileRegistry() async {
 
 Future<void> saveProfileRegistry(ProfileRegistry registry) async {
   final file = await _registryFile();
-  await file.writeAsString(
+  file.writeAsStringSync(
     jsonEncode({
       'active': registry.activeId,
       'profiles': registry.profiles.map((profile) => profile.toJson()).toList(),
@@ -135,6 +144,7 @@ Future<LocalProfile> createLocalProfile(String name) async {
   await database.close();
   final registry = await loadProfileRegistry();
   registry.profiles.add(profile);
+  registry.activeId = profile.id;
   await saveProfileRegistry(registry);
   return profile;
 }

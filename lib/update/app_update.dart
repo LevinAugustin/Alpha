@@ -19,15 +19,20 @@ class AppRelease {
 
 final pendingAppUpdate = ValueNotifier<AppRelease?>(null);
 
-Future<void> checkForAppUpdate() async {
+Future<bool> checkForAppUpdate() async {
   try {
     final latest = await _latestRelease();
-    if (latest == null) return;
+    if (latest == null) return true;
     final current = (await PackageInfo.fromPlatform()).version;
-    if (!_isNewer(latest.version, current)) return;
+    if (!_isNewer(latest.version, current)) {
+      pendingAppUpdate.value = null;
+      return true;
+    }
     pendingAppUpdate.value = latest;
+    return true;
   } catch (error, stack) {
     talker.handle(error, stack, 'Update check failed');
+    return false;
   }
 }
 

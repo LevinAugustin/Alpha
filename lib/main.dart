@@ -1,7 +1,10 @@
 import 'dart:async';
 
-import 'package:drift/drift.dart';
+import 'package:drift/drift.dart' hide Column;
+import 'package:flexify/alpha/alpha_prefs.dart';
 import 'package:flexify/crash_logger.dart';
+import 'package:flexify/database/gym_catalog.dart';
+import 'package:flexify/shell/live_workout_bar.dart';
 import 'package:flexify/database/catalog_seed.dart';
 import 'package:flexify/database/database.dart';
 import 'package:flexify/database/failed_migrations_page.dart';
@@ -117,6 +120,9 @@ Future<void> main() async {
       talker.info('Loaded application settings');
       try {
         await seedExerciseCatalog(db);
+        await applyGymCatalog(db);
+        await _nameDefaultPlans(db);
+        await alphaPrefs.load();
       } catch (error, stack) {
         talker.error('Exercise catalog seed failed', error, stack);
       }
@@ -126,6 +132,24 @@ Future<void> main() async {
     (error, stack) =>
         CrashLogger.instance?.record(error, stack, context: 'zone'),
   );
+}
+
+Future<void> _nameDefaultPlans(AppDatabase database) async {
+  const titles = {
+    'Monday': 'Montag',
+    'Wednesday': 'Mittwoch',
+    'Friday': 'Freitag',
+  };
+  final plans = await database.select(database.plans).get();
+  for (final plan in plans) {
+    final mapped = titles[plan.days];
+    if (mapped == null) continue;
+    final title = (plan.title ?? '').trim();
+    if (title.isNotEmpty && !titles.containsKey(title)) continue;
+    await (database.update(database.plans)
+          ..where((row) => row.id.equals(plan.id)))
+        .write(PlansCompanion(title: Value(mapped)));
+  }
 }
 
 AppDatabase db = AppDatabase.persistent();
@@ -207,7 +231,14 @@ class App extends StatelessWidget {
           exactAlarmRequestUnavailable:
               context.l10n.exactAlarmRequestUnavailable,
         );
-        return KeyboardUnfocusWrapper(child: child ?? const SizedBox.shrink());
+        return KeyboardUnfocusWrapper(
+          child: Column(
+            children: [
+              Expanded(child: child ?? const SizedBox.shrink()),
+              const LiveWorkoutBar(),
+            ],
+          ),
+        );
       },
       onGenerateTitle: (context) => context.l10n.appTitle,
       theme: theme,

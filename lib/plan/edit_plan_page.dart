@@ -58,7 +58,9 @@ class _EditPlanPageState extends State<EditPlanPage> {
         if (a.planExercise.enabled.value != b.planExercise.enabled.value) {
           return b.planExercise.enabled.value ? 1 : -1;
         }
-        return a.exerciseName.compareTo(b.exerciseName);
+        final left = a.planExercise.sequence.value;
+        final right = b.planExercise.sequence.value;
+        return left.compareTo(right);
       });
       _search = '';
       _hasUnsavedChanges = true;
@@ -78,7 +80,10 @@ class _EditPlanPageState extends State<EditPlanPage> {
               .join(', ');
 
     final matched = _search.isEmpty
-        ? _exercises.where((draft) => draft.planExercise.enabled.value)
+        ? _exercises.where(
+            (draft) =>
+                draft.planExercise.enabled.value || !widget.plan.id.present,
+          )
         : filterPlanExerciseDrafts(_exercises, _search);
     final exercises = matched.take(80).toList();
     final desktop = isDesktopLayout(context);
@@ -259,11 +264,7 @@ class _EditPlanPageState extends State<EditPlanPage> {
     _titleCtrl.text = widget.plan.title.value ?? '';
     final list = widget.plan.days.value.split(',');
     _days = weekdays.map((day) => list.contains(day)).toList();
-    if (widget.plan.id.present) {
-      _loadExercises();
-    } else {
-      _loadingExercises = false;
-    }
+    _loadExercises();
   }
 
   Future<void> _loadExercises() async {

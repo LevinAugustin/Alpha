@@ -8,6 +8,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import android.speech.RecognizerIntent
 import android.content.ServiceConnection
 import android.content.pm.PackageManager
 import android.net.Uri
@@ -19,6 +20,7 @@ import android.os.IBinder
 import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsControllerCompat
@@ -34,6 +36,20 @@ class MainActivity : FlutterActivity() {
     private var timerService: TimerService? = null
     private var pendingPickResult: MethodChannel.Result? = null
     private var pendingNotificationTarget: String? = null
+    private var speechResult: MethodChannel.Result? = null
+    private val speechLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        val pending = speechResult
+        speechResult = null
+        if (pending == null) return@registerForActivityResult
+        if (result.resultCode != RESULT_OK) {
+            pending.success("")
+            return@registerForActivityResult
+        }
+        val spoken = result.data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)
+        pending.success(if (spoken.isNullOrEmpty()) "" else spoken.first())
+    }
 
     private val timerConnection = object : ServiceConnection {
         override fun onServiceConnected(className: ComponentName, service: IBinder) {
@@ -175,6 +191,23 @@ class MainActivity : FlutterActivity() {
                     val target = pendingNotificationTarget
                     pendingNotificationTarget = null
                     result.success(target)
+                }
+
+                "listenSpeech" -> {
+                    val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH).apply {
+                        putExtra(
+                            RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                            RecognizerIntent.LANGUAGE_MODEL_FREE_FORM
+                        )
+                        putExtra(RecognizerIntent.EXTRA_LANGUAGE, "de-DE")
+                    }
+                    speechResult = result
+                    try {
+                        speechLauncher.launch(intent)
+                    } catch (_: Exception) {
+                        speechResult = null
+                        result.success("")
+                    }
                 }
 
                 "pick" -> {
@@ -368,7 +401,7 @@ class MainActivity : FlutterActivity() {
             localization.forEach { (key, value) -> putExtra(key, value) }
         }
 
-        context.startForegroundService(intent)
+        ContextCompat.startForegroundService(context, intent)
     }
 
     private fun installApk(path: String, result: io.flutter.plugin.common.MethodChannel.Result) {
