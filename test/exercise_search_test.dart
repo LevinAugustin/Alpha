@@ -9,7 +9,7 @@ void main() {
         name: 'Barbell bench press',
         germanName: 'Bankdrücken',
         aliases: 'Bench Press|Flachbank',
-        split: 'push',
+        category: 'Brust',
         query: 'Push',
       ),
       isTrue,
@@ -46,11 +46,9 @@ void main() {
       matchesExerciseFilters(
         name: 'bankdruecken-multipresse',
         equipment: 'Multipresse',
-        split: 'push',
         category: 'Brust',
-        query: '',
+        query: 'Pull',
         equipmentFilter: 'Multipresse',
-        splitFilter: 'pull',
       ),
       isFalse,
     );

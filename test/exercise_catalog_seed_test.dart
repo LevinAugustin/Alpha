@@ -22,7 +22,7 @@ List<Map<String, dynamic>> _probeWithNullCardioMechanic() {
   return [
     for (final row in decoded)
       Map<String, dynamic>.from(row as Map)
-        ..['mechanik'] = row['split'] == 'cardio' ? null : row['mechanik'],
+        ..['mechanik'] = row['kategorie'] == 'Cardio' ? null : row['mechanik'],
   ];
 }
 
@@ -157,7 +157,7 @@ void main() {
     expect(after.primaryMuscles, '["brust"]');
     expect(after.secondaryMuscles, '["schulter_vorne","trizeps"]');
     expect(after.schulterRisiko, 'mittel');
-    expect(after.split, 'push');
+    expect(after.kind, 'strength');
     expect(
       after.catalogSource,
       'free-exercise-db: Barbell_Bench_Press_-_Medium_Grip',
@@ -415,7 +415,7 @@ void main() {
     );
   });
 
-  test('invalid catalog rows are skipped', () async {
+  test('split in the catalog file is ignored', () {
     const raw = '''
 [
   {
@@ -437,8 +437,9 @@ void main() {
 ]
 ''';
     final parsed = parseExerciseCatalog(raw);
-    expect(parsed.entries, isEmpty);
-    expect(parsed.skipped, isNotEmpty);
+    expect(parsed.skipped, isEmpty);
+    expect(parsed.entries, hasLength(1));
+    expect(parsed.entries.single.id, 'bad-split');
   });
 
   test('ids, images, muscles, gear and unknown fields', () {
@@ -466,6 +467,18 @@ void main() {
     );
 
     expect(parseExerciseCatalog('[$valid]').entries, hasLength(1));
+    expect(
+      parseExerciseCatalog(
+        '[$valid]'.replaceFirst('"split": "push",', ''),
+      ).entries,
+      hasLength(1),
+    );
+    expect(
+      parseExerciseCatalog(
+        '[$valid]'.replaceFirst('"split": "push"', '"split": null'),
+      ).entries,
+      hasLength(1),
+    );
     expect(parseExerciseCatalog('[$valid]').entries.single.imageSource, '');
     expect(
       parseExerciseCatalog('[$valid]').entries.single.alternatives,
@@ -583,7 +596,7 @@ void main() {
       expect(parsed.skipped, isEmpty);
       expect(
         parsed.entries
-            .where((entry) => entry.split == 'cardio')
+            .where((entry) => entry.category == 'Cardio')
             .map((entry) => entry.mechanic),
         everyElement(isEmpty),
       );
@@ -618,15 +631,43 @@ void main() {
         ),
         isFalse,
       );
+      expect(cardio.kind, 'cardio');
       expect(
-        matchesExerciseFilters(
+        exerciseMatchesQuery(
           name: cardio.name,
-          split: cardio.split,
-          mechanic: cardio.mechanic,
-          query: '',
-          splitFilter: 'cardio',
+          category: cardio.categoryName,
+          query: 'Push',
+        ),
+        isFalse,
+      );
+      expect(
+        exerciseMatchesQuery(
+          name: bench.name,
+          category: bench.categoryName,
+          muscle: bench.muscle,
+          query: 'Push',
         ),
         isTrue,
+      );
+      expect(
+        exerciseMatchesQuery(
+          name: 'Latziehen',
+          category: 'Rücken',
+          query: 'Pull',
+        ),
+        isTrue,
+      );
+      expect(
+        exerciseMatchesQuery(
+          name: 'Kniebeuge',
+          category: 'Beine',
+          query: 'Beine',
+        ),
+        isTrue,
+      );
+      expect(
+        exerciseMatchesQuery(name: 'Crunch', category: 'Bauch', query: 'Pull'),
+        isFalse,
       );
       expect(
         exerciseMatchesQuery(

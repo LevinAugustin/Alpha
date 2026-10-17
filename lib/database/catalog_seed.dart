@@ -1,5 +1,11 @@
 import 'dart:convert';
 
+const searchCategoryHelp = <String, Set<String>>{
+  'push': {'brust', 'schultern', 'trizeps'},
+  'pull': {'rücken', 'bizeps'},
+  'beine': {'beine'},
+};
+
 String? catalogText(String? value) {
   final text = value?.trim() ?? '';
   if (text.isEmpty || text.toLowerCase() == 'null') return null;
@@ -31,7 +37,6 @@ bool exerciseMatchesQuery({
   String? muscle,
   String? category,
   String? equipment,
-  String? split,
   String? mechanic,
   String? primaryMuscles,
   String? secondaryMuscles,
@@ -39,6 +44,14 @@ bool exerciseMatchesQuery({
 }) {
   final needle = query.trim().toLowerCase();
   if (needle.isEmpty) return true;
+  final help = searchCategoryHelp[needle];
+  if (help != null) {
+    final categories = {
+      if ((category ?? '').trim().isNotEmpty) category!.trim().toLowerCase(),
+      if ((muscle ?? '').trim().isNotEmpty) muscle!.trim().toLowerCase(),
+    };
+    if (categories.any(help.contains)) return true;
+  }
   final haystack = [
     name,
     germanName ?? '',
@@ -46,7 +59,6 @@ bool exerciseMatchesQuery({
     muscle ?? '',
     category ?? '',
     equipment ?? '',
-    split ?? '',
     catalogText(mechanic) ?? '',
     decodeCatalogList(primaryMuscles).join(' '),
     decodeCatalogList(secondaryMuscles).join(' '),
@@ -61,14 +73,12 @@ bool matchesExerciseFilters({
   String? muscle,
   String? category,
   String? equipment,
-  String? split,
   String? mechanic,
   String? primaryMuscles,
   String? secondaryMuscles,
   required String query,
   String group = '',
   String equipmentFilter = '',
-  String splitFilter = '',
   String mechanicFilter = '',
 }) {
   if (group.isNotEmpty) {
@@ -85,10 +95,6 @@ bool matchesExerciseFilters({
       (equipment ?? '').trim().toLowerCase() != equipmentFilter.toLowerCase()) {
     return false;
   }
-  if (splitFilter.isNotEmpty &&
-      (split ?? '').trim().toLowerCase() != splitFilter.toLowerCase()) {
-    return false;
-  }
   if (mechanicFilter.isNotEmpty &&
       (catalogText(mechanic) ?? '').toLowerCase() !=
           mechanicFilter.toLowerCase()) {
@@ -101,7 +107,6 @@ bool matchesExerciseFilters({
     muscle: muscle,
     category: category,
     equipment: equipment,
-    split: split,
     mechanic: mechanic,
     primaryMuscles: primaryMuscles,
     secondaryMuscles: secondaryMuscles,

@@ -31,7 +31,6 @@ class Exercises extends Table {
   TextColumn get equipment => text().nullable()();
   TextColumn get primaryMuscles => text().nullable()();
   TextColumn get secondaryMuscles => text().nullable()();
-  TextColumn get split => text().nullable()();
   TextColumn get mechanic => text().nullable()();
   TextColumn get steps => text().nullable()();
   TextColumn get tips => text().nullable()();

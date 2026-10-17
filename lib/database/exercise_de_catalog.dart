@@ -11,7 +11,6 @@ const exerciseCatalogAsset = 'assets/exercises/exercises_de.json';
 const exerciseLegacyMapAsset = 'assets/exercises/legacy_map.json';
 const exerciseImageDirectory = 'assets/exercises/img';
 
-const allowedExerciseSplits = {'push', 'pull', 'beine', 'core', 'cardio'};
 const allowedExerciseMechanics = {'grund', 'isolation'};
 const allowedExerciseCategories = {...exerciseCategories};
 const allowedShoulderRisk = {...shoulderRiskValues};
@@ -27,7 +26,6 @@ class ExerciseDeEntry {
     required this.primaryMuscles,
     required this.secondaryMuscles,
     required this.equipment,
-    required this.split,
     required this.mechanic,
     required this.steps,
     required this.tips,
@@ -48,7 +46,6 @@ class ExerciseDeEntry {
   final List<String> primaryMuscles;
   final List<String> secondaryMuscles;
   final String equipment;
-  final String split;
   final String mechanic;
   final List<String> steps;
   final List<String> tips;
@@ -70,7 +67,6 @@ class ExerciseDeEntry {
       primaryMuscles: primaryMuscles,
       secondaryMuscles: secondaryMuscles,
       equipment: equipment,
-      split: split,
       mechanic: mechanic,
       steps: steps,
       tips: tips,
@@ -155,7 +151,6 @@ ExerciseCatalogParse parseExerciseCatalog(String raw) {
         primaryMuscles: _strings(json['primaermuskeln']),
         secondaryMuscles: _strings(json['sekundaermuskeln']),
         equipment: _string(json['geraet']),
-        split: _string(json['split']),
         mechanic: _string(json['mechanik']),
         steps: _strings(json['ausfuehrung_de']),
         tips: _strings(json['tipps_de']),
@@ -399,14 +394,7 @@ String? _validate(Map<String, dynamic> json, String id) {
     final reason = _stringList(json, 'legacy_names', id);
     if (reason != null) return reason;
   }
-  for (final key in [
-    'kategorie',
-    'geraet',
-    'split',
-    'bild',
-    'quelle',
-    'lizenz',
-  ]) {
+  for (final key in ['kategorie', 'geraet', 'bild', 'quelle', 'lizenz']) {
     if (json[key] is! String) return '$id field $key must be a string.';
   }
   final mechanic = _mechanic(json, id);
@@ -424,10 +412,6 @@ String? _validate(Map<String, dynamic> json, String id) {
   final category = _string(json['kategorie']);
   if (!allowedExerciseCategories.contains(category)) {
     return '$id kategorie "$category" is not allowed.';
-  }
-  final split = _string(json['split']);
-  if (!allowedExerciseSplits.contains(split)) {
-    return '$id split "$split" is not allowed.';
   }
   final gear = _string(json['geraet']);
   if (!exerciseGearValues.contains(gear)) {
@@ -529,7 +513,7 @@ class _Fields {
   String? get mechanic => entry.mechanic.isEmpty ? null : entry.mechanic;
 
   ExercisesCompanion insert({required String name}) {
-    final cardio = entry.split == 'cardio';
+    final cardio = entry.category == 'Cardio';
     return ExercisesCompanion.insert(
       name: name,
       kind: cardio ? 'cardio' : 'strength',
@@ -544,7 +528,6 @@ class _Fields {
       equipment: Value(entry.equipment),
       primaryMuscles: Value(primary),
       secondaryMuscles: Value(secondary),
-      split: Value(entry.split),
       mechanic: Value(mechanic),
       steps: Value(steps),
       tips: Value(tips),
@@ -571,7 +554,6 @@ class _Fields {
       equipment: Value(entry.equipment),
       primaryMuscles: Value(primary),
       secondaryMuscles: Value(secondary),
-      split: Value(entry.split),
       mechanic: Value(mechanic),
       steps: Value(steps),
       tips: Value(tips),
@@ -625,7 +607,6 @@ bool _same(Exercise row, ExerciseDeEntry entry, int? categoryId) {
       row.equipment == entry.equipment &&
       row.primaryMuscles == fields.primary &&
       row.secondaryMuscles == fields.secondary &&
-      row.split == entry.split &&
       (row.mechanic ?? '') == entry.mechanic &&
       row.steps == fields.steps &&
       row.tips == fields.tips &&

@@ -180,7 +180,6 @@ void main() {
           'equipment': null,
           'primary_muscles': null,
           'secondary_muscles': null,
-          'split': null,
           'mechanic': null,
           'steps': null,
           'tips': null,

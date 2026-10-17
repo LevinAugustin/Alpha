@@ -21,7 +21,6 @@ class _ExercisesPageState extends State<ExercisesPage> {
   final _search = TextEditingController();
   String _muscle = '';
   String _equipment = '';
-  String _split = '';
   String _mechanic = '';
 
   @override
@@ -56,20 +55,6 @@ class _ExercisesPageState extends State<ExercisesPage> {
                     .watch(),
             builder: (context, snapshot) {
               final exercises = snapshot.data ?? const <Exercise>[];
-              final muscles = _chipValues([
-                for (final exercise in exercises) ...[
-                  ...decodeCatalogList(exercise.primaryMuscles),
-                  ...decodeCatalogList(exercise.secondaryMuscles),
-                ],
-              ], exerciseMuscleKeys);
-              final equipment = _chipValues(
-                exercises.map((exercise) => exercise.equipment),
-                exerciseGearValues,
-              );
-              final splits = _chipValues(
-                exercises.map((exercise) => exercise.split),
-                const ['push', 'pull', 'beine', 'core', 'cardio'],
-              );
               final mechanics = _chipValues(
                 exercises.map((exercise) => catalogText(exercise.mechanic)),
                 const ['grund', 'isolation'],
@@ -87,7 +72,7 @@ class _ExercisesPageState extends State<ExercisesPage> {
                       onSelected: (_) => setState(() => _muscle = ''),
                     ),
                   ),
-                  for (final muscle in muscles)
+                  for (final muscle in exerciseMuscleKeys)
                     Padding(
                       padding: const EdgeInsets.only(right: 8),
                       child: FilterChip(
@@ -98,7 +83,7 @@ class _ExercisesPageState extends State<ExercisesPage> {
                         }),
                       ),
                     ),
-                  for (final item in equipment)
+                  for (final item in exerciseGearValues)
                     Padding(
                       padding: const EdgeInsets.only(right: 8),
                       child: FilterChip(
@@ -106,17 +91,6 @@ class _ExercisesPageState extends State<ExercisesPage> {
                         selected: _equipment == item,
                         onSelected: (_) => setState(() {
                           _equipment = _equipment == item ? '' : item;
-                        }),
-                      ),
-                    ),
-                  for (final item in splits)
-                    Padding(
-                      padding: const EdgeInsets.only(right: 8),
-                      child: FilterChip(
-                        label: Text(item),
-                        selected: _split == item,
-                        onSelected: (_) => setState(() {
-                          _split = _split == item ? '' : item;
                         }),
                       ),
                     ),
@@ -154,14 +128,12 @@ class _ExercisesPageState extends State<ExercisesPage> {
                       muscle: exercise.muscle,
                       category: exercise.categoryName,
                       equipment: exercise.equipment,
-                      split: exercise.split,
                       mechanic: exercise.mechanic,
                       primaryMuscles: exercise.primaryMuscles,
                       secondaryMuscles: exercise.secondaryMuscles,
                       query: query,
                       group: _muscle,
                       equipmentFilter: _equipment,
-                      splitFilter: _split,
                       mechanicFilter: _mechanic,
                     );
                   }).toList()..sort((a, b) {

@@ -726,15 +726,6 @@ class $ExercisesTable extends Exercises
     type: DriftSqlType.string,
     requiredDuringInsert: false,
   );
-  static const VerificationMeta _splitMeta = const VerificationMeta('split');
-  @override
-  late final GeneratedColumn<String> split = GeneratedColumn<String>(
-    'split',
-    aliasedName,
-    true,
-    type: DriftSqlType.string,
-    requiredDuringInsert: false,
-  );
   static const VerificationMeta _mechanicMeta = const VerificationMeta(
     'mechanic',
   );
@@ -853,7 +844,6 @@ class $ExercisesTable extends Exercises
     equipment,
     primaryMuscles,
     secondaryMuscles,
-    split,
     mechanic,
     steps,
     tips,
@@ -1029,12 +1019,6 @@ class $ExercisesTable extends Exercises
         ),
       );
     }
-    if (data.containsKey('split')) {
-      context.handle(
-        _splitMeta,
-        split.isAcceptableOrUnknown(data['split']!, _splitMeta),
-      );
-    }
     if (data.containsKey('mechanic')) {
       context.handle(
         _mechanicMeta,
@@ -1200,10 +1184,6 @@ class $ExercisesTable extends Exercises
         DriftSqlType.string,
         data['${effectivePrefix}secondary_muscles'],
       ),
-      split: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}split'],
-      ),
       mechanic: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}mechanic'],
@@ -1271,7 +1251,6 @@ class Exercise extends DataClass implements Insertable<Exercise> {
   final String? equipment;
   final String? primaryMuscles;
   final String? secondaryMuscles;
-  final String? split;
   final String? mechanic;
   final String? steps;
   final String? tips;
@@ -1303,7 +1282,6 @@ class Exercise extends DataClass implements Insertable<Exercise> {
     this.equipment,
     this.primaryMuscles,
     this.secondaryMuscles,
-    this.split,
     this.mechanic,
     this.steps,
     this.tips,
@@ -1361,9 +1339,6 @@ class Exercise extends DataClass implements Insertable<Exercise> {
     }
     if (!nullToAbsent || secondaryMuscles != null) {
       map['secondary_muscles'] = Variable<String>(secondaryMuscles);
-    }
-    if (!nullToAbsent || split != null) {
-      map['split'] = Variable<String>(split);
     }
     if (!nullToAbsent || mechanic != null) {
       map['mechanic'] = Variable<String>(mechanic);
@@ -1442,9 +1417,6 @@ class Exercise extends DataClass implements Insertable<Exercise> {
       secondaryMuscles: secondaryMuscles == null && nullToAbsent
           ? const Value.absent()
           : Value(secondaryMuscles),
-      split: split == null && nullToAbsent
-          ? const Value.absent()
-          : Value(split),
       mechanic: mechanic == null && nullToAbsent
           ? const Value.absent()
           : Value(mechanic),
@@ -1504,7 +1476,6 @@ class Exercise extends DataClass implements Insertable<Exercise> {
       equipment: serializer.fromJson<String?>(json['equipment']),
       primaryMuscles: serializer.fromJson<String?>(json['primaryMuscles']),
       secondaryMuscles: serializer.fromJson<String?>(json['secondaryMuscles']),
-      split: serializer.fromJson<String?>(json['split']),
       mechanic: serializer.fromJson<String?>(json['mechanic']),
       steps: serializer.fromJson<String?>(json['steps']),
       tips: serializer.fromJson<String?>(json['tips']),
@@ -1541,7 +1512,6 @@ class Exercise extends DataClass implements Insertable<Exercise> {
       'equipment': serializer.toJson<String?>(equipment),
       'primaryMuscles': serializer.toJson<String?>(primaryMuscles),
       'secondaryMuscles': serializer.toJson<String?>(secondaryMuscles),
-      'split': serializer.toJson<String?>(split),
       'mechanic': serializer.toJson<String?>(mechanic),
       'steps': serializer.toJson<String?>(steps),
       'tips': serializer.toJson<String?>(tips),
@@ -1576,7 +1546,6 @@ class Exercise extends DataClass implements Insertable<Exercise> {
     Value<String?> equipment = const Value.absent(),
     Value<String?> primaryMuscles = const Value.absent(),
     Value<String?> secondaryMuscles = const Value.absent(),
-    Value<String?> split = const Value.absent(),
     Value<String?> mechanic = const Value.absent(),
     Value<String?> steps = const Value.absent(),
     Value<String?> tips = const Value.absent(),
@@ -1614,7 +1583,6 @@ class Exercise extends DataClass implements Insertable<Exercise> {
     secondaryMuscles: secondaryMuscles.present
         ? secondaryMuscles.value
         : this.secondaryMuscles,
-    split: split.present ? split.value : this.split,
     mechanic: mechanic.present ? mechanic.value : this.mechanic,
     steps: steps.present ? steps.value : this.steps,
     tips: tips.present ? tips.value : this.tips,
@@ -1676,7 +1644,6 @@ class Exercise extends DataClass implements Insertable<Exercise> {
       secondaryMuscles: data.secondaryMuscles.present
           ? data.secondaryMuscles.value
           : this.secondaryMuscles,
-      split: data.split.present ? data.split.value : this.split,
       mechanic: data.mechanic.present ? data.mechanic.value : this.mechanic,
       steps: data.steps.present ? data.steps.value : this.steps,
       tips: data.tips.present ? data.tips.value : this.tips,
@@ -1725,7 +1692,6 @@ class Exercise extends DataClass implements Insertable<Exercise> {
           ..write('equipment: $equipment, ')
           ..write('primaryMuscles: $primaryMuscles, ')
           ..write('secondaryMuscles: $secondaryMuscles, ')
-          ..write('split: $split, ')
           ..write('mechanic: $mechanic, ')
           ..write('steps: $steps, ')
           ..write('tips: $tips, ')
@@ -1762,7 +1728,6 @@ class Exercise extends DataClass implements Insertable<Exercise> {
     equipment,
     primaryMuscles,
     secondaryMuscles,
-    split,
     mechanic,
     steps,
     tips,
@@ -1798,7 +1763,6 @@ class Exercise extends DataClass implements Insertable<Exercise> {
           other.equipment == this.equipment &&
           other.primaryMuscles == this.primaryMuscles &&
           other.secondaryMuscles == this.secondaryMuscles &&
-          other.split == this.split &&
           other.mechanic == this.mechanic &&
           other.steps == this.steps &&
           other.tips == this.tips &&
@@ -1832,7 +1796,6 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
   final Value<String?> equipment;
   final Value<String?> primaryMuscles;
   final Value<String?> secondaryMuscles;
-  final Value<String?> split;
   final Value<String?> mechanic;
   final Value<String?> steps;
   final Value<String?> tips;
@@ -1864,7 +1827,6 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
     this.equipment = const Value.absent(),
     this.primaryMuscles = const Value.absent(),
     this.secondaryMuscles = const Value.absent(),
-    this.split = const Value.absent(),
     this.mechanic = const Value.absent(),
     this.steps = const Value.absent(),
     this.tips = const Value.absent(),
@@ -1897,7 +1859,6 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
     this.equipment = const Value.absent(),
     this.primaryMuscles = const Value.absent(),
     this.secondaryMuscles = const Value.absent(),
-    this.split = const Value.absent(),
     this.mechanic = const Value.absent(),
     this.steps = const Value.absent(),
     this.tips = const Value.absent(),
@@ -1932,7 +1893,6 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
     Expression<String>? equipment,
     Expression<String>? primaryMuscles,
     Expression<String>? secondaryMuscles,
-    Expression<String>? split,
     Expression<String>? mechanic,
     Expression<String>? steps,
     Expression<String>? tips,
@@ -1967,7 +1927,6 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
       if (equipment != null) 'equipment': equipment,
       if (primaryMuscles != null) 'primary_muscles': primaryMuscles,
       if (secondaryMuscles != null) 'secondary_muscles': secondaryMuscles,
-      if (split != null) 'split': split,
       if (mechanic != null) 'mechanic': mechanic,
       if (steps != null) 'steps': steps,
       if (tips != null) 'tips': tips,
@@ -2002,7 +1961,6 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
     Value<String?>? equipment,
     Value<String?>? primaryMuscles,
     Value<String?>? secondaryMuscles,
-    Value<String?>? split,
     Value<String?>? mechanic,
     Value<String?>? steps,
     Value<String?>? tips,
@@ -2036,7 +1994,6 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
       equipment: equipment ?? this.equipment,
       primaryMuscles: primaryMuscles ?? this.primaryMuscles,
       secondaryMuscles: secondaryMuscles ?? this.secondaryMuscles,
-      split: split ?? this.split,
       mechanic: mechanic ?? this.mechanic,
       steps: steps ?? this.steps,
       tips: tips ?? this.tips,
@@ -2119,9 +2076,6 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
     if (secondaryMuscles.present) {
       map['secondary_muscles'] = Variable<String>(secondaryMuscles.value);
     }
-    if (split.present) {
-      map['split'] = Variable<String>(split.value);
-    }
     if (mechanic.present) {
       map['mechanic'] = Variable<String>(mechanic.value);
     }
@@ -2176,7 +2130,6 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
           ..write('equipment: $equipment, ')
           ..write('primaryMuscles: $primaryMuscles, ')
           ..write('secondaryMuscles: $secondaryMuscles, ')
-          ..write('split: $split, ')
           ..write('mechanic: $mechanic, ')
           ..write('steps: $steps, ')
           ..write('tips: $tips, ')
@@ -7694,7 +7647,6 @@ typedef $$ExercisesTableCreateCompanionBuilder =
       Value<String?> equipment,
       Value<String?> primaryMuscles,
       Value<String?> secondaryMuscles,
-      Value<String?> split,
       Value<String?> mechanic,
       Value<String?> steps,
       Value<String?> tips,
@@ -7728,7 +7680,6 @@ typedef $$ExercisesTableUpdateCompanionBuilder =
       Value<String?> equipment,
       Value<String?> primaryMuscles,
       Value<String?> secondaryMuscles,
-      Value<String?> split,
       Value<String?> mechanic,
       Value<String?> steps,
       Value<String?> tips,
@@ -7904,11 +7855,6 @@ class $$ExercisesTableFilterComposer
 
   ColumnFilters<String> get secondaryMuscles => $composableBuilder(
     column: $table.secondaryMuscles,
-    builder: (column) => ColumnFilters(column),
-  );
-
-  ColumnFilters<String> get split => $composableBuilder(
-    column: $table.split,
     builder: (column) => ColumnFilters(column),
   );
 
@@ -8140,11 +8086,6 @@ class $$ExercisesTableOrderingComposer
     builder: (column) => ColumnOrderings(column),
   );
 
-  ColumnOrderings<String> get split => $composableBuilder(
-    column: $table.split,
-    builder: (column) => ColumnOrderings(column),
-  );
-
   ColumnOrderings<String> get mechanic => $composableBuilder(
     column: $table.mechanic,
     builder: (column) => ColumnOrderings(column),
@@ -8302,9 +8243,6 @@ class $$ExercisesTableAnnotationComposer
     column: $table.secondaryMuscles,
     builder: (column) => column,
   );
-
-  GeneratedColumn<String> get split =>
-      $composableBuilder(column: $table.split, builder: (column) => column);
 
   GeneratedColumn<String> get mechanic =>
       $composableBuilder(column: $table.mechanic, builder: (column) => column);
@@ -8472,7 +8410,6 @@ class $$ExercisesTableTableManager
                 Value<String?> equipment = const Value.absent(),
                 Value<String?> primaryMuscles = const Value.absent(),
                 Value<String?> secondaryMuscles = const Value.absent(),
-                Value<String?> split = const Value.absent(),
                 Value<String?> mechanic = const Value.absent(),
                 Value<String?> steps = const Value.absent(),
                 Value<String?> tips = const Value.absent(),
@@ -8504,7 +8441,6 @@ class $$ExercisesTableTableManager
                 equipment: equipment,
                 primaryMuscles: primaryMuscles,
                 secondaryMuscles: secondaryMuscles,
-                split: split,
                 mechanic: mechanic,
                 steps: steps,
                 tips: tips,
@@ -8538,7 +8474,6 @@ class $$ExercisesTableTableManager
                 Value<String?> equipment = const Value.absent(),
                 Value<String?> primaryMuscles = const Value.absent(),
                 Value<String?> secondaryMuscles = const Value.absent(),
-                Value<String?> split = const Value.absent(),
                 Value<String?> mechanic = const Value.absent(),
                 Value<String?> steps = const Value.absent(),
                 Value<String?> tips = const Value.absent(),
@@ -8570,7 +8505,6 @@ class $$ExercisesTableTableManager
                 equipment: equipment,
                 primaryMuscles: primaryMuscles,
                 secondaryMuscles: secondaryMuscles,
-                split: split,
                 mechanic: mechanic,
                 steps: steps,
                 tips: tips,
