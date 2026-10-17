@@ -9,6 +9,7 @@ import 'package:flutter/services.dart';
 
 const exerciseCatalogAsset = 'assets/exercises/exercises_de.json';
 const exerciseLegacyMapAsset = 'assets/exercises/legacy_map.json';
+const exerciseFlexifyMapAsset = 'assets/exercises/flexify_mapping.json';
 const exerciseImageDirectory = 'assets/exercises/img';
 
 const allowedExerciseMechanics = {'grund', 'isolation'};
@@ -193,13 +194,66 @@ Future<ExerciseImportResult> importExerciseCatalog(AppDatabase database) async {
     );
   }
   final raw = await rootBundle.loadString(exerciseCatalogAsset);
-  String? legacyMapRaw;
+  String? flexifyMapRaw;
   try {
-    legacyMapRaw = await rootBundle.loadString(exerciseLegacyMapAsset);
+    flexifyMapRaw = await rootBundle.loadString(exerciseFlexifyMapAsset);
   } catch (error) {
-    debugPrint('Exercise legacy map was not loaded: $error');
+    debugPrint('Exercise flexify map was not loaded: $error');
   }
-  return importExerciseCatalogJson(database, raw, legacyMapRaw: legacyMapRaw);
+  return importExerciseCatalogJson(database, raw, flexifyMapRaw: flexifyMapRaw);
+}
+
+Map<String, List<String>> parseFlexifyMapping(String raw) {
+  Object? decoded;
+  try {
+    decoded = jsonDecode(raw);
+  } catch (error) {
+    debugPrint('Exercise flexify map was ignored: $error');
+    return const {};
+  }
+  if (decoded is! Map) return const {};
+  final names = <String, List<String>>{};
+  for (final entry in decoded.entries) {
+    final id = entry.key;
+    if (id is! String || !catalogIdPattern.hasMatch(id)) continue;
+    final value = entry.value;
+    if (value is! Map) continue;
+    final legacy = <String>[];
+    final seen = <String>{};
+    for (final key in const [
+      'seed_namen',
+      'aussortiert_naechste_entsprechung',
+    ]) {
+      final list = value[key];
+      if (list is! List) continue;
+      for (final item in list) {
+        if (item is! String) continue;
+        final trimmed = item.trim();
+        if (trimmed.isEmpty || !seen.add(trimmed.toLowerCase())) continue;
+        legacy.add(trimmed);
+      }
+    }
+    if (legacy.isEmpty) continue;
+    names[id] = legacy;
+  }
+  return names;
+}
+
+Map<String, List<String>> _combineNameMaps(
+  Iterable<Map<String, List<String>>> maps,
+) {
+  final names = <String, List<String>>{};
+  for (final source in maps) {
+    for (final entry in source.entries) {
+      final current = names[entry.key] ?? <String>[];
+      final seen = current.map((name) => name.toLowerCase()).toSet();
+      for (final name in entry.value) {
+        if (seen.add(name.toLowerCase())) current.add(name);
+      }
+      if (current.isNotEmpty) names[entry.key] = current;
+    }
+  }
+  return names;
 }
 
 Map<String, List<String>> parseLegacyNameMap(String raw) {
@@ -234,11 +288,13 @@ Future<ExerciseImportResult> importExerciseCatalogJson(
   AppDatabase database,
   String raw, {
   String? legacyMapRaw,
+  String? flexifyMapRaw,
 }) async {
   final parsed = parseExerciseCatalog(raw);
-  final legacyMap = legacyMapRaw == null
-      ? const <String, List<String>>{}
-      : parseLegacyNameMap(legacyMapRaw);
+  final legacyMap = _combineNameMaps([
+    if (legacyMapRaw != null) parseLegacyNameMap(legacyMapRaw),
+    if (flexifyMapRaw != null) parseFlexifyMapping(flexifyMapRaw),
+  ]);
   final entries = [
     for (final entry in parsed.entries)
       _attachLegacyNames(entry, legacyMap[entry.id]),

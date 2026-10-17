@@ -814,6 +814,89 @@ void main() {
     expect(find.text('null'), findsNothing);
   });
 
+  test(
+    'flexify mapping moves seed and retired names without dropping sets',
+    () async {
+      final mapping = File(
+        'assets/exercises/flexify_mapping.json',
+      ).readAsStringSync();
+      final map = parseFlexifyMapping(mapping);
+      final catalogIds = _probeRows().map((row) => row['id']).toSet();
+      expect((jsonDecode(mapping) as Map).length, 150);
+      expect(catalogIds, everyElement(isIn(map.keys.toSet())));
+      expect(map['bankdruecken-langhantel'], contains('Barbell bench press'));
+      expect(map['bankdruecken-langhantel'], contains('Board Press'));
+      expect(parseFlexifyMapping('{'), isEmpty);
+      expect(parseFlexifyMapping('[]'), isEmpty);
+      expect(
+        parseFlexifyMapping(
+          '{"Bad Id": {"seed_namen": ["X"]}, "dips": {"seed_namen": ["Triceps dip", 1, ""], "aussortiert_naechste_entsprechung": ["Bench Dips"], "note": true}, "plank": []}',
+        ),
+        {
+          'dips': ['Triceps dip', 'Bench Dips'],
+        },
+      );
+
+      final bench =
+          await (db.exercises.select()
+                ..where((row) => row.name.equals('Barbell bench press')))
+              .getSingle();
+      final boardId = await db.exercises.insertOne(
+        ExercisesCompanion.insert(
+          name: 'Board Press',
+          kind: 'strength',
+          displayUnit: 'kg',
+        ),
+      );
+      final boardSet = await db.exerciseSets.insertOne(
+        ExerciseSetsCompanion.insert(
+          exerciseId: boardId,
+          timestamp: DateTime(2024, 7, 1),
+          reps: const Value(4),
+          loadKg: const Value(100),
+        ),
+      );
+      final arnold =
+          await (db.exercises.select()
+                ..where((row) => row.name.equals('Arnold press')))
+              .getSingle();
+      final neck =
+          await (db.exercises.select()
+                ..where((row) => row.name.equals('Neck curl')))
+              .getSingle();
+
+      final imported = await importExerciseCatalogJson(
+        db,
+        File('assets/exercises/exercises_de.json').readAsStringSync(),
+        flexifyMapRaw: mapping,
+      );
+      expect(imported.skipped, isEmpty);
+      expect(
+        await (db.exercises.select()..where((row) => row.id.equals(boardId)))
+            .getSingleOrNull(),
+        isNull,
+      );
+      expect(
+        (await (db.exerciseSets.select()
+                  ..where((row) => row.id.equals(boardSet)))
+                .getSingle())
+            .exerciseId,
+        bench.id,
+      );
+      final arnoldAfter =
+          await (db.exercises.select()
+                ..where((row) => row.id.equals(arnold.id)))
+              .getSingle();
+      expect(arnoldAfter.name, 'Arnold press');
+      expect(arnoldAfter.catalogId, isNull);
+      final neckAfter =
+          await (db.exercises.select()..where((row) => row.id.equals(neck.id)))
+              .getSingle();
+      expect(neckAfter.name, 'Neck curl');
+      expect(neckAfter.catalogId, isNull);
+    },
+  );
+
   test('legacy map entries can be extended and bad ones are skipped', () {
     expect(parseLegacyNameMap('{'), isEmpty);
     expect(parseLegacyNameMap('[]'), isEmpty);

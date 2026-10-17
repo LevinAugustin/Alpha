@@ -239,6 +239,52 @@ void main() {
     );
     expect(volume, 352);
   });
+
+  testWidgets('family variants stay visible across categories', (tester) async {
+    final harness = await FlexifyTestHarness.create();
+    addTearDown(harness.database.close);
+    db = harness.database;
+    await importExerciseCatalogJson(
+      harness.database,
+      File('assets/exercises/exercises_de.json').readAsStringSync(),
+    );
+    final dips =
+        await (harness.database.exercises.select()
+              ..where((row) => row.catalogId.equals('dips')))
+            .getSingle();
+    expect(dips.categoryName, 'Trizeps');
+    expect(dips.familie, 'dips');
+    await harness.database.exercises.insertOne(
+      ExercisesCompanion.insert(
+        name: 'Dips Brust',
+        kind: 'strength',
+        displayUnit: 'kg',
+        germanName: const Value('Dips an der Brust'),
+        familie: const Value('dips'),
+        categoryName: const Value('Brust'),
+        muscle: const Value('Brust'),
+        catalogId: const Value('dips-brust'),
+      ),
+    );
+    await harness.pump(
+      tester,
+      ExerciseDetailPage(exercise: dips),
+      locale: const Locale('de'),
+      surfaceSize: const Size(390, 1400),
+    );
+    await tester.pump();
+    final chest = find.byKey(const Key('family-dips-brust'));
+    await tester.ensureVisible(chest);
+    await tester.pump();
+    expect(chest, findsOneWidget);
+    expect(find.text('Dips an der Brust · Brust'), findsOneWidget);
+
+    await tester.tap(chest);
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 400));
+    expect(find.byKey(const Key('family-dips')), findsOneWidget);
+    expect(find.textContaining('· Trizeps'), findsOneWidget);
+  });
 }
 
 Future<void> _shot(WidgetTester tester, String name) async {

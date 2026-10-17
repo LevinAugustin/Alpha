@@ -306,6 +306,17 @@ class _ExerciseDetailPageState extends State<ExerciseDetailPage> {
     );
   }
 
+  String _variantLabel(BuildContext context, Exercise row) {
+    final title = localizedExerciseName(
+      context,
+      row.name,
+      german: row.germanName,
+    );
+    final category = (row.categoryName ?? '').trim();
+    if (category.isEmpty) return title;
+    return '$title · $category';
+  }
+
   String _sideLabel(BuildContext context, String? side) {
     return switch (side) {
       'links' => ' · ${context.l10n.sideLeft}',
@@ -345,13 +356,7 @@ class _ExerciseDetailPageState extends State<ExerciseDetailPage> {
                       ),
                     );
                   },
-                  child: Text(
-                    localizedExerciseName(
-                      context,
-                      row.name,
-                      german: row.germanName,
-                    ),
-                  ),
+                  child: Text(_variantLabel(context, row)),
                 ),
             ],
           ),
