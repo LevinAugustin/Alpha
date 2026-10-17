@@ -5,6 +5,7 @@ import 'package:drift/drift.dart' hide isNull, isNotNull;
 import 'package:flexify/database/catalog_seed.dart';
 import 'package:flexify/database/database.dart';
 import 'package:flexify/database/exercise_de_catalog.dart';
+import 'package:flexify/exercises/custom_exercise.dart';
 import 'package:flexify/exercises/exercise_detail_page.dart';
 import 'package:flexify/exercises/exercise_image.dart';
 import 'package:flexify/main.dart';
@@ -814,6 +815,9 @@ void main() {
     await tester.pump();
     expect(find.text('Mechanic: grund'), findsOneWidget);
     expect(find.textContaining('null'), findsNothing);
+    expect(bench.image, 'assets/exercises/img/bankdruecken-langhantel.webp');
+    expect(File(bench.image!).existsSync(), isFalse);
+    expect(bundledExerciseImages, isNot(contains(bench.image)));
     expect(find.byType(ExerciseImagePlaceholder), findsOneWidget);
     expect(tester.takeException(), isNull);
     expect(logged, isEmpty);
@@ -865,6 +869,17 @@ void main() {
       expect(rawMap.length, 294);
       expect(catalogIds, rawMap.keys.toSet());
       expect(map.length, 276);
+      final ohneRaw =
+          jsonDecode(
+                File(
+                  'assets/exercises/flexify_ohne_ziel.json',
+                ).readAsStringSync(),
+              )
+              as Map;
+      expect(ohneRaw['anzahl_seed'], 920);
+      final eintraege = ohneRaw['eintraege'] as List;
+      expect(eintraege, hasLength(278));
+      expect((eintraege.first as Map)['seed_name'], isA<String>());
       final ohne = parseFlexifyOhneZiel(
         File('assets/exercises/flexify_ohne_ziel.json').readAsStringSync(),
       );
@@ -952,6 +967,130 @@ void main() {
               .getSingle();
       expect(neckAfter.name, 'Neck curl');
       expect(neckAfter.catalogId, isNull);
+    },
+  );
+
+  test(
+    'trained ohne-ziel seeds become custom exercises and keep records',
+    () async {
+      final raw = File('assets/exercises/exercises_de.json').readAsStringSync();
+      final mapping = File(
+        'assets/exercises/flexify_mapping.json',
+      ).readAsStringSync();
+      final ohneZielRaw = File(
+        'assets/exercises/flexify_ohne_ziel.json',
+      ).readAsStringSync();
+      final neck =
+          await (db.exercises.select()
+                ..where((row) => row.name.equals('Neck curl')))
+              .getSingle();
+      final light = await db.exerciseSets.insertOne(
+        ExerciseSetsCompanion.insert(
+          exerciseId: neck.id,
+          timestamp: DateTime(2024, 9, 1),
+          reps: const Value(12),
+          loadKg: const Value(10),
+        ),
+      );
+      final heavy = await db.exerciseSets.insertOne(
+        ExerciseSetsCompanion.insert(
+          exerciseId: neck.id,
+          timestamp: DateTime(2024, 9, 8),
+          reps: const Value(6),
+          loadKg: const Value(25),
+        ),
+      );
+      final planId = await db.plans.insertOne(
+        PlansCompanion.insert(days: '', title: const Value('Nacken')),
+      );
+      final planExerciseId = await db.planExercises.insertOne(
+        PlanExercisesCompanion.insert(
+          enabled: true,
+          exerciseId: neck.id,
+          planId: planId,
+        ),
+      );
+      final idleId = await db.exercises.insertOne(
+        ExercisesCompanion.insert(
+          name: '90/90 Hamstring',
+          kind: 'strength',
+          displayUnit: 'kg',
+        ),
+      );
+
+      final imported = await importExerciseCatalogJson(
+        db,
+        raw,
+        flexifyMapRaw: mapping,
+        ohneZielRaw: ohneZielRaw,
+      );
+      expect(imported.skipped, isEmpty);
+
+      final kept =
+          await (db.exercises.select()..where((row) => row.id.equals(neck.id)))
+              .getSingle();
+      expect(kept.name, 'Neck curl');
+      expect(kept.catalogId, 'eigen-neck-curl');
+      expect(kept.germanName, 'Neck curl');
+      expect(kept.archived, isFalse);
+      expect(isCustomExercise(kept), isTrue);
+      expect(
+        exerciseMatchesQuery(
+          name: kept.name,
+          germanName: kept.germanName,
+          query: 'Neck',
+        ),
+        isTrue,
+      );
+      final sets =
+          await (db.exerciseSets.select()
+                ..where((row) => row.exerciseId.equals(neck.id)))
+              .get();
+      expect(sets, hasLength(2));
+      expect(sets.map((set) => set.id).toSet(), {light, heavy});
+      final record = sets.reduce(
+        (left, right) =>
+            (left.loadKg ?? 0) >= (right.loadKg ?? 0) ? left : right,
+      );
+      expect(record.id, heavy);
+      expect(record.loadKg, 25);
+      expect(record.reps, 6);
+      final planExercise =
+          await (db.planExercises.select()
+                ..where((row) => row.id.equals(planExerciseId)))
+              .getSingle();
+      expect(planExercise.exerciseId, neck.id);
+
+      final idle =
+          await (db.exercises.select()..where((row) => row.id.equals(idleId)))
+              .getSingle();
+      expect(idle.name, '90/90 Hamstring');
+      expect(idle.catalogId, isNull);
+      expect(
+        await (db.exercises.select()
+              ..where((row) => row.catalogId.equals('eigen-90-90-hamstring')))
+            .getSingleOrNull(),
+        isNull,
+      );
+
+      final again = await importExerciseCatalogJson(
+        db,
+        raw,
+        flexifyMapRaw: mapping,
+        ohneZielRaw: ohneZielRaw,
+      );
+      expect(again.skipped, isEmpty);
+      final still =
+          await (db.exercises.select()..where((row) => row.id.equals(neck.id)))
+              .getSingle();
+      expect(still.catalogId, 'eigen-neck-curl');
+      expect(still.name, 'Neck curl');
+      expect(
+        await (db.exerciseSets.select()
+              ..where((row) => row.exerciseId.equals(neck.id)))
+            .get(),
+        hasLength(2),
+      );
     },
   );
 
@@ -1180,7 +1319,8 @@ void main() {
               ..where((exercise) => exercise.id.equals(keptId)))
             .getSingle();
     expect(kept.name, 'Shoulder Press');
-    expect(kept.catalogId, isNull);
+    expect(kept.catalogId, 'eigen-shoulder-press');
+    expect(isCustomExercise(kept), isTrue);
     final apostropheKept =
         await (db.exercises.select()
               ..where((exercise) => exercise.id.equals(apostropheKeptId)))

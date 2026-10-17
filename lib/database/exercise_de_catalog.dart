@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:drift/drift.dart';
 import 'package:flexify/database/database.dart';
 import 'package:flexify/exercise_keys.dart';
+import 'package:flexify/exercises/custom_exercise.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
@@ -501,6 +502,7 @@ Future<ExerciseImportResult> importExerciseCatalogJson(
       remember(refreshed);
       updated++;
     }
+    await _keepTrainedOhneZiel(database, ohneZiel);
   });
 
   if (parsed.skipped.isNotEmpty) {
@@ -798,6 +800,43 @@ List<String> _uniqueNames(Iterable<String> names) {
     result.add(trimmed);
   }
   return result;
+}
+
+Future<void> _keepTrainedOhneZiel(
+  AppDatabase database,
+  Set<String> ohneZiel,
+) async {
+  if (ohneZiel.isEmpty) return;
+  final trained = <int>{
+    for (final set in await database.select(database.exerciseSets).get())
+      set.exerciseId,
+  };
+  if (trained.isEmpty) return;
+  final rows = await database.select(database.exercises).get();
+  rows.sort((left, right) => left.id.compareTo(right.id));
+  for (final row in rows) {
+    if (!trained.contains(row.id)) continue;
+    if ((row.catalogId ?? '').isNotEmpty) continue;
+    if (!ohneZiel.contains(normalizedExerciseName(row.name))) continue;
+    final catalogId = await uniqueCustomCatalogId(
+      database,
+      row.name,
+      keepId: row.id,
+    );
+    final german = (row.germanName ?? '').trim();
+    final source = (row.catalogSource ?? '').trim();
+    await (database.update(
+      database.exercises,
+    )..where((item) => item.id.equals(row.id))).write(
+      ExercisesCompanion(
+        catalogId: Value(catalogId),
+        germanName: german.isEmpty ? Value(row.name) : const Value.absent(),
+        catalogSource: source.isEmpty
+            ? const Value('custom')
+            : const Value.absent(),
+      ),
+    );
+  }
 }
 
 bool _claimable(Exercise row, String catalogId) {
