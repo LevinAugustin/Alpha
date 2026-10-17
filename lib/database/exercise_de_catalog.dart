@@ -10,6 +10,7 @@ import 'package:flutter/services.dart';
 const exerciseCatalogAsset = 'assets/exercises/exercises_de.json';
 const exerciseLegacyMapAsset = 'assets/exercises/legacy_map.json';
 const exerciseFlexifyMapAsset = 'assets/exercises/flexify_mapping.json';
+const exerciseFlexifyOhneZielAsset = 'assets/exercises/flexify_ohne_ziel.json';
 const exerciseImageDirectory = 'assets/exercises/img';
 
 const allowedExerciseMechanics = {'grund', 'isolation'};
@@ -200,7 +201,26 @@ Future<ExerciseImportResult> importExerciseCatalog(AppDatabase database) async {
   } catch (error) {
     debugPrint('Exercise flexify map was not loaded: $error');
   }
-  return importExerciseCatalogJson(database, raw, flexifyMapRaw: flexifyMapRaw);
+  String? ohneZielRaw;
+  try {
+    ohneZielRaw = await rootBundle.loadString(exerciseFlexifyOhneZielAsset);
+  } catch (_) {}
+  return importExerciseCatalogJson(
+    database,
+    raw,
+    flexifyMapRaw: flexifyMapRaw,
+    ohneZielRaw: ohneZielRaw,
+  );
+}
+
+String normalizedExerciseName(String name) {
+  return name
+      .trim()
+      .toLowerCase()
+      .replaceAll("\\'", "'")
+      .replaceAll('\u2018', "'")
+      .replaceAll('\u2019', "'")
+      .replaceAll('\u02BC', "'");
 }
 
 Map<String, List<String>> parseFlexifyMapping(String raw) {
@@ -229,7 +249,9 @@ Map<String, List<String>> parseFlexifyMapping(String raw) {
       for (final item in list) {
         if (item is! String) continue;
         final trimmed = item.trim();
-        if (trimmed.isEmpty || !seen.add(trimmed.toLowerCase())) continue;
+        if (trimmed.isEmpty || !seen.add(normalizedExerciseName(trimmed))) {
+          continue;
+        }
         legacy.add(trimmed);
       }
     }
@@ -246,9 +268,9 @@ Map<String, List<String>> _combineNameMaps(
   for (final source in maps) {
     for (final entry in source.entries) {
       final current = names[entry.key] ?? <String>[];
-      final seen = current.map((name) => name.toLowerCase()).toSet();
+      final seen = current.map(normalizedExerciseName).toSet();
       for (final name in entry.value) {
-        if (seen.add(name.toLowerCase())) current.add(name);
+        if (seen.add(normalizedExerciseName(name))) current.add(name);
       }
       if (current.isNotEmpty) names[entry.key] = current;
     }
@@ -284,11 +306,32 @@ Map<String, List<String>> parseLegacyNameMap(String raw) {
   return names;
 }
 
+Set<String> parseFlexifyOhneZiel(String? raw) {
+  if (raw == null || raw.trim().isEmpty) return const {};
+  Object? decoded;
+  try {
+    decoded = jsonDecode(raw);
+  } catch (error) {
+    debugPrint('Exercise flexify ohne ziel was ignored: $error');
+    return const {};
+  }
+  if (decoded is! List) return const {};
+  final names = <String>{};
+  for (final item in decoded) {
+    if (item is! String) continue;
+    final key = normalizedExerciseName(item);
+    if (key.isEmpty) continue;
+    names.add(key);
+  }
+  return names;
+}
+
 Future<ExerciseImportResult> importExerciseCatalogJson(
   AppDatabase database,
   String raw, {
   String? legacyMapRaw,
   String? flexifyMapRaw,
+  String? ohneZielRaw,
 }) async {
   final parsed = parseExerciseCatalog(raw);
   final legacyMap = _combineNameMaps([
@@ -304,9 +347,27 @@ Future<ExerciseImportResult> importExerciseCatalogJson(
     for (final exercise in existing)
       if ((exercise.catalogId ?? '').isNotEmpty) exercise.catalogId!: exercise,
   };
-  final byName = <String, Exercise>{
-    for (final exercise in existing) exercise.name.toLowerCase(): exercise,
-  };
+  final ohneZiel = parseFlexifyOhneZiel(ohneZielRaw);
+  final byName = <String, List<Exercise>>{};
+  void remember(Exercise row) {
+    final key = normalizedExerciseName(row.name);
+    if (key.isEmpty) return;
+    final rows = byName.putIfAbsent(key, () => <Exercise>[]);
+    rows.removeWhere((item) => item.id == row.id);
+    rows.add(row);
+  }
+
+  void forget(Exercise row) {
+    final key = normalizedExerciseName(row.name);
+    final rows = byName[key];
+    if (rows == null) return;
+    rows.removeWhere((item) => item.id == row.id);
+    if (rows.isEmpty) byName.remove(key);
+  }
+
+  for (final exercise in existing) {
+    remember(exercise);
+  }
   final categoryIds = {
     for (final category in await database.select(database.categories).get())
       category.name: category.id,
@@ -344,15 +405,20 @@ Future<ExerciseImportResult> importExerciseCatalogJson(
 
       consider(byCatalog[entry.id]);
       for (final legacy in entry.legacyNames) {
-        consider(byName[legacy.toLowerCase()]);
+        final key = normalizedExerciseName(legacy);
+        if (ohneZiel.contains(key)) continue;
+        for (final row in byName[key] ?? const <Exercise>[]) {
+          consider(row);
+        }
       }
-      consider(byName[entry.id.toLowerCase()]);
 
       final categoryId = await categoryIdFor(entry.category);
       final companion = _companion(entry, categoryId);
       if (matches.isEmpty) {
-        final blocked = byName[entry.id.toLowerCase()];
-        if (blocked != null) continue;
+        final blocked =
+            (byName[normalizedExerciseName(entry.id)] ?? const <Exercise>[])
+                .any((row) => row.name == entry.id);
+        if (blocked) continue;
         final id = await database
             .into(database.exercises)
             .insert(companion.insert(name: entry.id));
@@ -360,17 +426,20 @@ Future<ExerciseImportResult> importExerciseCatalogJson(
           database.exercises,
         )..where((row) => row.id.equals(id))).getSingle();
         byCatalog[entry.id] = created;
-        byName[created.name.toLowerCase()] = created;
+        remember(created);
         inserted++;
         continue;
       }
 
       Exercise? smallestLegacy;
       for (final legacy in entry.legacyNames) {
-        final found = byName[legacy.toLowerCase()];
-        if (found == null || !matches.containsKey(found.id)) continue;
-        final current = smallestLegacy;
-        if (current == null || found.id < current.id) smallestLegacy = found;
+        final key = normalizedExerciseName(legacy);
+        if (ohneZiel.contains(key)) continue;
+        for (final found in byName[key] ?? const <Exercise>[]) {
+          if (!matches.containsKey(found.id)) continue;
+          final current = smallestLegacy;
+          if (current == null || found.id < current.id) smallestLegacy = found;
+        }
       }
       final survivor =
           smallestLegacy ??
@@ -383,7 +452,7 @@ Future<ExerciseImportResult> importExerciseCatalogJson(
       ];
       for (final duplicate in duplicates) {
         await _moveHistory(database, fromId: duplicate.id, toId: survivor.id);
-        byName.remove(duplicate.name.toLowerCase());
+        forget(duplicate);
         final catalogId = duplicate.catalogId;
         if (catalogId != null && byCatalog[catalogId]?.id == duplicate.id) {
           byCatalog.remove(catalogId);
@@ -402,7 +471,7 @@ Future<ExerciseImportResult> importExerciseCatalogJson(
         database.exercises,
       )..where((row) => row.id.equals(survivor.id))).getSingle();
       byCatalog[entry.id] = refreshed;
-      byName[refreshed.name.toLowerCase()] = refreshed;
+      remember(refreshed);
       updated++;
     }
   });
@@ -606,7 +675,7 @@ class _Fields {
     final parts = <String>[];
     for (final name in [...entry.synonyms, ...entry.legacyNames]) {
       final trimmed = name.trim();
-      final key = trimmed.toLowerCase();
+      final key = normalizedExerciseName(trimmed);
       if (key.isEmpty || !seen.add(key)) continue;
       parts.add(trimmed);
     }
@@ -697,7 +766,7 @@ List<String> _uniqueNames(Iterable<String> names) {
   final result = <String>[];
   for (final name in names) {
     final trimmed = name.trim();
-    final key = trimmed.toLowerCase();
+    final key = normalizedExerciseName(trimmed);
     if (key.isEmpty || !seen.add(key)) continue;
     result.add(trimmed);
   }

@@ -897,6 +897,246 @@ void main() {
     },
   );
 
+  test('flexify names match apostrophes only through the mapping', () async {
+    expect(
+      normalizedExerciseName("  Farmer's Walk "),
+      normalizedExerciseName("Farmer\u2019s Walk"),
+    );
+    expect(normalizedExerciseName("Farmer\\'s Walk"), "farmer's walk");
+    expect(
+      parseFlexifyOhneZiel(
+        File('assets/exercises/flexify_ohne_ziel.json').readAsStringSync(),
+      ),
+      isEmpty,
+    );
+    expect(parseFlexifyOhneZiel(null), isEmpty);
+    expect(parseFlexifyOhneZiel('{'), isEmpty);
+
+    String row({
+      required String id,
+      required String name,
+      required String category,
+      required String movement,
+      required String gear,
+      String? mechanic,
+    }) {
+      return jsonEncode({
+        'id': id,
+        'name_de': name,
+        'synonyme': <String>[],
+        'kategorie': category,
+        'primaermuskeln': category == 'Cardio' ? <String>[] : ['brust'],
+        'sekundaermuskeln': <String>[],
+        'geraet': gear,
+        'mechanik': mechanic,
+        'ausfuehrung_de': <String>[],
+        'tipps_de': <String>[],
+        'bild': '$id.webp',
+        'quelle': 'placeholder',
+        'lizenz': 'placeholder',
+        'familie': id,
+        'bewegung': movement,
+        'einseitig': false,
+      });
+    }
+
+    final straightId = await db.exercises.insertOne(
+      ExercisesCompanion.insert(
+        name: "Farmer's Walk",
+        kind: 'strength',
+        displayUnit: 'kg',
+      ),
+    );
+    final curlyId = await db.exercises.insertOne(
+      ExercisesCompanion.insert(
+        name: 'Farmer\u2019s Walk',
+        kind: 'strength',
+        displayUnit: 'kg',
+      ),
+    );
+    final escapedId = await db.exercises.insertOne(
+      ExercisesCompanion.insert(
+        name: " Farmer\\'s Carry ",
+        kind: 'strength',
+        displayUnit: 'kg',
+      ),
+    );
+    final straightSet = await db.exerciseSets.insertOne(
+      ExerciseSetsCompanion.insert(
+        exerciseId: straightId,
+        timestamp: DateTime(2024, 8, 1),
+        reps: const Value(8),
+        loadKg: const Value(40),
+      ),
+    );
+    final curlySet = await db.exerciseSets.insertOne(
+      ExerciseSetsCompanion.insert(
+        exerciseId: curlyId,
+        timestamp: DateTime(2024, 8, 2),
+        reps: const Value(6),
+        loadKg: const Value(36),
+      ),
+    );
+    final escapedSet = await db.exerciseSets.insertOne(
+      ExerciseSetsCompanion.insert(
+        exerciseId: escapedId,
+        timestamp: DateTime(2024, 8, 3),
+        reps: const Value(4),
+        loadKg: const Value(32),
+      ),
+    );
+    final airBikeId = await db.exercises.insertOne(
+      ExercisesCompanion.insert(
+        name: 'Air Bike',
+        kind: 'strength',
+        displayUnit: 'kg',
+      ),
+    );
+    final airBikeSet = await db.exerciseSets.insertOne(
+      ExerciseSetsCompanion.insert(
+        exerciseId: airBikeId,
+        timestamp: DateTime(2024, 8, 4),
+        reps: const Value(20),
+      ),
+    );
+    final sameId = await db.exercises.insertOne(
+      ExercisesCompanion.insert(
+        name: 'Air-Bike',
+        kind: 'cardio',
+        displayUnit: 'km',
+      ),
+    );
+    final sameSet = await db.exerciseSets.insertOne(
+      ExerciseSetsCompanion.insert(
+        exerciseId: sameId,
+        timestamp: DateTime(2024, 8, 5),
+        reps: const Value(12),
+      ),
+    );
+    final keptId = await db.exercises.insertOne(
+      ExercisesCompanion.insert(
+        name: 'Shoulder Press',
+        kind: 'strength',
+        displayUnit: 'kg',
+      ),
+    );
+    final apostropheKeptId = await db.exercises.insertOne(
+      ExercisesCompanion.insert(
+        name: "Shoulder's Press",
+        kind: 'strength',
+        displayUnit: 'kg',
+      ),
+    );
+    final keptSet = await db.exerciseSets.insertOne(
+      ExerciseSetsCompanion.insert(
+        exerciseId: keptId,
+        timestamp: DateTime(2024, 8, 6),
+        reps: const Value(10),
+        loadKg: const Value(20),
+      ),
+    );
+
+    final imported = await importExerciseCatalogJson(
+      db,
+      '[${row(id: 'bicycle-crunches', name: 'Bicycle Crunches', category: 'Bauch', movement: 'rumpf', gear: 'Körpergewicht', mechanic: 'isolation')},${row(id: 'farmers-walk', name: 'Farmers Walk', category: 'Beine', movement: 'beine_huefte', gear: 'Langhantel', mechanic: 'grund')},${row(id: 'air-bike', name: 'Air Bike', category: 'Cardio', movement: 'cardio', gear: 'Cardiogerät')}]',
+      flexifyMapRaw: jsonEncode({
+        'bicycle-crunches': {
+          'seed_namen': ['Air Bike'],
+          'aussortiert_naechste_entsprechung': <String>[],
+        },
+        'farmers-walk': {
+          'seed_namen': ["Farmer's Walk"],
+          'aussortiert_naechste_entsprechung': ["Farmer's Carry"],
+        },
+        'air-bike': {
+          'seed_namen': ['Shoulder Press', "Shoulder's Press"],
+          'aussortiert_naechste_entsprechung': <String>[],
+        },
+      }),
+      ohneZielRaw: jsonEncode(['Shoulder Press', ' Shoulder\u2019s Press ']),
+    );
+
+    expect(imported.skipped, isEmpty);
+    final farmer =
+        await (db.exercises.select()
+              ..where((exercise) => exercise.id.equals(straightId)))
+            .getSingle();
+    expect(farmer.catalogId, 'farmers-walk');
+    expect(farmer.name, "Farmer's Walk");
+    expect(
+      await (db.exercises.select()
+            ..where((exercise) => exercise.id.equals(curlyId)))
+          .getSingleOrNull(),
+      isNull,
+    );
+    expect(
+      await (db.exercises.select()
+            ..where((exercise) => exercise.id.equals(escapedId)))
+          .getSingleOrNull(),
+      isNull,
+    );
+    for (final setId in [straightSet, curlySet, escapedSet]) {
+      expect(
+        (await (db.exerciseSets.select()..where((row) => row.id.equals(setId)))
+                .getSingle())
+            .exerciseId,
+        straightId,
+      );
+    }
+
+    final crunch =
+        await (db.exercises.select()
+              ..where((exercise) => exercise.id.equals(airBikeId)))
+            .getSingle();
+    expect(crunch.name, 'Air Bike');
+    expect(crunch.catalogId, 'bicycle-crunches');
+    expect(
+      (await (db.exerciseSets.select()
+                ..where((row) => row.id.equals(airBikeSet)))
+              .getSingle())
+          .exerciseId,
+      airBikeId,
+    );
+    final untouched =
+        await (db.exercises.select()
+              ..where((exercise) => exercise.id.equals(sameId)))
+            .getSingle();
+    expect(untouched.name, 'Air-Bike');
+    expect(untouched.catalogId, isNull);
+    expect(
+      (await (db.exerciseSets.select()..where((row) => row.id.equals(sameSet)))
+              .getSingle())
+          .exerciseId,
+      sameId,
+    );
+    final cardio =
+        await (db.exercises.select()
+              ..where((exercise) => exercise.catalogId.equals('air-bike')))
+            .getSingle();
+    expect(cardio.name, 'air-bike');
+    expect(cardio.id, isNot(sameId));
+    expect(cardio.id, isNot(airBikeId));
+    expect(cardio.id, isNot(keptId));
+    final kept =
+        await (db.exercises.select()
+              ..where((exercise) => exercise.id.equals(keptId)))
+            .getSingle();
+    expect(kept.name, 'Shoulder Press');
+    expect(kept.catalogId, isNull);
+    final apostropheKept =
+        await (db.exercises.select()
+              ..where((exercise) => exercise.id.equals(apostropheKeptId)))
+            .getSingle();
+    expect(apostropheKept.name, "Shoulder's Press");
+    expect(apostropheKept.catalogId, isNull);
+    expect(
+      (await (db.exerciseSets.select()..where((row) => row.id.equals(keptSet)))
+              .getSingle())
+          .exerciseId,
+      keptId,
+    );
+  });
+
   test('legacy map entries can be extended and bad ones are skipped', () {
     expect(parseLegacyNameMap('{'), isEmpty);
     expect(parseLegacyNameMap('[]'), isEmpty);
