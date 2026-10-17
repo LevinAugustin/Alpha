@@ -2230,5 +2230,20 @@
   "heightInches": "Chiều cao (inch)",
   "welcomeToAlpha": "Chào mừng đến với Alpha",
   "createProfileButton": "Tạo hồ sơ",
-  "onboardingWeightHint": "Cân nặng, không bắt buộc"
+  "onboardingWeightHint": "Cân nặng, không bắt buộc",
+  "familyLabel": "Nhóm",
+  "gripLabel": "Cách nắm",
+  "positionLabel": "Tư thế",
+  "unilateralLabel": "Một bên",
+  "otherVariants": "Biến thể khác",
+  "sideLeft": "Trái",
+  "sideRight": "Phải",
+  "createCustomExercise": "Tạo bài tập",
+  "editCustomExercise": "Sửa bài tập",
+  "deleteCustomExercise": "Xóa bài tập",
+  "deleteCustomExerciseBody": "Xóa bài tập này? Các buổi tập cũ vẫn ở trong lịch sử.",
+  "customExerciseName": "Tên",
+  "customExerciseFamily": "Mã nhóm",
+  "createAsCustomExercise": "Tạo thành bài tập riêng",
+  "customExerciseInvalid": "Hãy chọn tên, cơ và dụng cụ."
 }

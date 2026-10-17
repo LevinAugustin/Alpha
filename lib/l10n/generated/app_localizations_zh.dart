@@ -2117,6 +2117,51 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get onboardingWeightHint => '体重，可选';
+
+  @override
+  String get familyLabel => '动作族';
+
+  @override
+  String get gripLabel => '握法';
+
+  @override
+  String get positionLabel => '体位';
+
+  @override
+  String get unilateralLabel => '单侧';
+
+  @override
+  String get otherVariants => '其他变式';
+
+  @override
+  String get sideLeft => '左侧';
+
+  @override
+  String get sideRight => '右侧';
+
+  @override
+  String get createCustomExercise => '新建动作';
+
+  @override
+  String get editCustomExercise => '编辑动作';
+
+  @override
+  String get deleteCustomExercise => '删除动作';
+
+  @override
+  String get deleteCustomExerciseBody => '删除这个动作？以往的训练仍留在历史中。';
+
+  @override
+  String get customExerciseName => '名称';
+
+  @override
+  String get customExerciseFamily => '动作族编号';
+
+  @override
+  String get createAsCustomExercise => '创建为自定义动作';
+
+  @override
+  String get customExerciseInvalid => '请选择名称、肌肉和器械。';
 }
 
 /// The translations for Chinese, as used in China (`zh_CN`).
@@ -4232,6 +4277,51 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
 
   @override
   String get onboardingWeightHint => '体重，可选';
+
+  @override
+  String get familyLabel => '动作族';
+
+  @override
+  String get gripLabel => '握法';
+
+  @override
+  String get positionLabel => '体位';
+
+  @override
+  String get unilateralLabel => '单侧';
+
+  @override
+  String get otherVariants => '其他变式';
+
+  @override
+  String get sideLeft => '左侧';
+
+  @override
+  String get sideRight => '右侧';
+
+  @override
+  String get createCustomExercise => '新建动作';
+
+  @override
+  String get editCustomExercise => '编辑动作';
+
+  @override
+  String get deleteCustomExercise => '删除动作';
+
+  @override
+  String get deleteCustomExerciseBody => '删除这个动作？以往的训练仍留在历史中。';
+
+  @override
+  String get customExerciseName => '名称';
+
+  @override
+  String get customExerciseFamily => '动作族编号';
+
+  @override
+  String get createAsCustomExercise => '创建为自定义动作';
+
+  @override
+  String get customExerciseInvalid => '请选择名称、肌肉和器械。';
 }
 
 /// The translations for Chinese, as used in Taiwan (`zh_TW`).
@@ -6347,4 +6437,49 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get onboardingWeightHint => '體重，選填';
+
+  @override
+  String get familyLabel => '動作族';
+
+  @override
+  String get gripLabel => '握法';
+
+  @override
+  String get positionLabel => '體位';
+
+  @override
+  String get unilateralLabel => '單側';
+
+  @override
+  String get otherVariants => '其他變式';
+
+  @override
+  String get sideLeft => '左側';
+
+  @override
+  String get sideRight => '右側';
+
+  @override
+  String get createCustomExercise => '新建動作';
+
+  @override
+  String get editCustomExercise => '編輯動作';
+
+  @override
+  String get deleteCustomExercise => '刪除動作';
+
+  @override
+  String get deleteCustomExerciseBody => '刪除這個動作？過去的訓練仍留在歷史中。';
+
+  @override
+  String get customExerciseName => '名稱';
+
+  @override
+  String get customExerciseFamily => '動作族編號';
+
+  @override
+  String get createAsCustomExercise => '建立為自訂動作';
+
+  @override
+  String get customExerciseInvalid => '請選擇名稱、肌肉和器材。';
 }

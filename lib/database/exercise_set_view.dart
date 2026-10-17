@@ -22,6 +22,7 @@ class ExerciseSetView {
     this.restMs,
     required this.unit,
     required this.weight,
+    this.side,
   });
 
   final double bodyWeight;
@@ -40,6 +41,7 @@ class ExerciseSetView {
   final int? restMs;
   final String unit;
   final double weight;
+  final String? side;
 
   ExerciseSetView copyWith({
     double? bodyWeight,
@@ -58,6 +60,7 @@ class ExerciseSetView {
     Value<int?> restMs = const Value.absent(),
     String? unit,
     double? weight,
+    Value<String?> side = const Value.absent(),
   }) {
     return ExerciseSetView(
       bodyWeight: bodyWeight ?? this.bodyWeight,
@@ -76,6 +79,7 @@ class ExerciseSetView {
       restMs: restMs.present ? restMs.value : this.restMs,
       unit: unit ?? this.unit,
       weight: weight ?? this.weight,
+      side: side.present ? side.value : this.side,
     );
   }
 }

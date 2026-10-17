@@ -668,6 +668,7 @@ void main() {
           name: bench.name,
           category: bench.categoryName,
           muscle: bench.muscle,
+          primaryMuscles: bench.primaryMuscles,
           query: 'Push',
         ),
         isTrue,
@@ -678,18 +679,33 @@ void main() {
           category: 'Rücken',
           query: 'Pull',
         ),
+        isFalse,
+      );
+      expect(
+        exerciseMatchesQuery(
+          name: 'Face Pulls',
+          category: 'Schultern',
+          primaryMuscles: '["schulter_hinten"]',
+          query: 'Pull',
+        ),
         isTrue,
       );
       expect(
         exerciseMatchesQuery(
           name: 'Kniebeuge',
           category: 'Beine',
+          primaryMuscles: '["quadrizeps","gesaess"]',
           query: 'Beine',
         ),
         isTrue,
       );
       expect(
-        exerciseMatchesQuery(name: 'Crunch', category: 'Bauch', query: 'Pull'),
+        exerciseMatchesQuery(
+          name: 'Crunch',
+          category: 'Bauch',
+          primaryMuscles: '["bauch_gerade"]',
+          query: 'Pull',
+        ),
         isFalse,
       );
       expect(

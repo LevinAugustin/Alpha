@@ -2921,5 +2921,65 @@
   "onboardingWeightHint": "Body weight, optional",
   "@onboardingWeightHint": {
     "description": "Body weight, optional"
+  },
+  "familyLabel": "Family",
+  "@familyLabel": {
+    "description": "Label for an exercise family."
+  },
+  "gripLabel": "Grip",
+  "@gripLabel": {
+    "description": "Label for grip."
+  },
+  "positionLabel": "Position",
+  "@positionLabel": {
+    "description": "Label for body position."
+  },
+  "unilateralLabel": "Each side",
+  "@unilateralLabel": {
+    "description": "Label for a per-side exercise."
+  },
+  "otherVariants": "Other variants",
+  "@otherVariants": {
+    "description": "Heading for other exercises in the same family."
+  },
+  "sideLeft": "Left",
+  "@sideLeft": {
+    "description": "Left side of a unilateral set."
+  },
+  "sideRight": "Right",
+  "@sideRight": {
+    "description": "Right side of a unilateral set."
+  },
+  "createCustomExercise": "Create exercise",
+  "@createCustomExercise": {
+    "description": "Action for creating a custom exercise."
+  },
+  "editCustomExercise": "Edit exercise",
+  "@editCustomExercise": {
+    "description": "Action for editing a custom exercise."
+  },
+  "deleteCustomExercise": "Delete exercise",
+  "@deleteCustomExercise": {
+    "description": "Action for deleting a custom exercise."
+  },
+  "deleteCustomExerciseBody": "Delete this exercise? Past workouts stay in the history.",
+  "@deleteCustomExerciseBody": {
+    "description": "Confirmation that deleting a custom exercise keeps history."
+  },
+  "customExerciseName": "Name",
+  "@customExerciseName": {
+    "description": "Name field for a custom exercise."
+  },
+  "customExerciseFamily": "Family id",
+  "@customExerciseFamily": {
+    "description": "Optional family id field."
+  },
+  "createAsCustomExercise": "Create as custom exercise",
+  "@createAsCustomExercise": {
+    "description": "Import action that creates a custom exercise."
+  },
+  "customExerciseInvalid": "Choose a name, muscles and gear.",
+  "@customExerciseInvalid": {
+    "description": "Shown when a custom exercise form is incomplete."
   }
 }

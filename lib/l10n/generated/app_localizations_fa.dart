@@ -2188,4 +2188,50 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String get onboardingWeightHint => 'وزن بدن، اختیاری';
+
+  @override
+  String get familyLabel => 'خانواده';
+
+  @override
+  String get gripLabel => 'گرفتن';
+
+  @override
+  String get positionLabel => 'وضعیت';
+
+  @override
+  String get unilateralLabel => 'یک‌طرفه';
+
+  @override
+  String get otherVariants => 'گونه‌های دیگر';
+
+  @override
+  String get sideLeft => 'چپ';
+
+  @override
+  String get sideRight => 'راست';
+
+  @override
+  String get createCustomExercise => 'ساخت حرکت';
+
+  @override
+  String get editCustomExercise => 'ویرایش حرکت';
+
+  @override
+  String get deleteCustomExercise => 'حذف حرکت';
+
+  @override
+  String get deleteCustomExerciseBody =>
+      'این حرکت حذف شود؟ تمرین‌های قبلی در تاریخچه می‌مانند.';
+
+  @override
+  String get customExerciseName => 'نام';
+
+  @override
+  String get customExerciseFamily => 'شناسه خانواده';
+
+  @override
+  String get createAsCustomExercise => 'ساخت به‌عنوان حرکت شخصی';
+
+  @override
+  String get customExerciseInvalid => 'نام، عضله‌ها و وسیله را انتخاب کنید.';
 }

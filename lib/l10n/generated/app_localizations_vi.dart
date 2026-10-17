@@ -2194,4 +2194,50 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get onboardingWeightHint => 'Cân nặng, không bắt buộc';
+
+  @override
+  String get familyLabel => 'Nhóm';
+
+  @override
+  String get gripLabel => 'Cách nắm';
+
+  @override
+  String get positionLabel => 'Tư thế';
+
+  @override
+  String get unilateralLabel => 'Một bên';
+
+  @override
+  String get otherVariants => 'Biến thể khác';
+
+  @override
+  String get sideLeft => 'Trái';
+
+  @override
+  String get sideRight => 'Phải';
+
+  @override
+  String get createCustomExercise => 'Tạo bài tập';
+
+  @override
+  String get editCustomExercise => 'Sửa bài tập';
+
+  @override
+  String get deleteCustomExercise => 'Xóa bài tập';
+
+  @override
+  String get deleteCustomExerciseBody =>
+      'Xóa bài tập này? Các buổi tập cũ vẫn ở trong lịch sử.';
+
+  @override
+  String get customExerciseName => 'Tên';
+
+  @override
+  String get customExerciseFamily => 'Mã nhóm';
+
+  @override
+  String get createAsCustomExercise => 'Tạo thành bài tập riêng';
+
+  @override
+  String get customExerciseInvalid => 'Hãy chọn tên, cơ và dụng cụ.';
 }

@@ -686,5 +686,20 @@
   "heightInches": "Рост (дюймы)",
   "welcomeToAlpha": "Добро пожаловать в Alpha",
   "createProfileButton": "Создать профиль",
-  "onboardingWeightHint": "Вес тела, необязательно"
+  "onboardingWeightHint": "Вес тела, необязательно",
+  "familyLabel": "Семья",
+  "gripLabel": "Хват",
+  "positionLabel": "Положение",
+  "unilateralLabel": "На каждую сторону",
+  "otherVariants": "Другие варианты",
+  "sideLeft": "Левая",
+  "sideRight": "Правая",
+  "createCustomExercise": "Создать упражнение",
+  "editCustomExercise": "Изменить упражнение",
+  "deleteCustomExercise": "Удалить упражнение",
+  "deleteCustomExerciseBody": "Удалить это упражнение? Прошлые тренировки остаются в истории.",
+  "customExerciseName": "Название",
+  "customExerciseFamily": "Идентификатор семьи",
+  "createAsCustomExercise": "Создать как своё упражнение",
+  "customExerciseInvalid": "Выберите название, мышцы и снаряд."
 }

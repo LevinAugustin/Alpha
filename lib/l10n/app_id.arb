@@ -2230,5 +2230,20 @@
   "heightInches": "Tinggi (inci)",
   "welcomeToAlpha": "Selamat datang di Alpha",
   "createProfileButton": "Buat profil",
-  "onboardingWeightHint": "Berat badan, opsional"
+  "onboardingWeightHint": "Berat badan, opsional",
+  "familyLabel": "Keluarga",
+  "gripLabel": "Genggaman",
+  "positionLabel": "Posisi",
+  "unilateralLabel": "Satu sisi",
+  "otherVariants": "Varian lain",
+  "sideLeft": "Kiri",
+  "sideRight": "Kanan",
+  "createCustomExercise": "Buat latihan",
+  "editCustomExercise": "Ubah latihan",
+  "deleteCustomExercise": "Hapus latihan",
+  "deleteCustomExerciseBody": "Hapus latihan ini? Latihan lama tetap ada di riwayat.",
+  "customExerciseName": "Nama",
+  "customExerciseFamily": "Id keluarga",
+  "createAsCustomExercise": "Buat sebagai latihan sendiri",
+  "customExerciseInvalid": "Pilih nama, otot, dan alat."
 }

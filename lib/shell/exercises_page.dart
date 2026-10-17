@@ -3,6 +3,7 @@ import 'package:flexify/database/database.dart';
 import 'package:flexify/database/catalog_seed.dart';
 import 'package:flexify/exercise_keys.dart';
 import 'package:flexify/exercise_labels.dart';
+import 'package:flexify/exercises/custom_exercise_page.dart';
 import 'package:flexify/exercises/exercise_detail_page.dart';
 import 'package:flexify/l10n/l10n.dart';
 import 'package:flexify/main.dart';
@@ -22,6 +23,8 @@ class _ExercisesPageState extends State<ExercisesPage> {
   String _muscle = '';
   String _equipment = '';
   String _mechanic = '';
+  String _grip = '';
+  String _position = '';
 
   @override
   void dispose() {
@@ -94,6 +97,28 @@ class _ExercisesPageState extends State<ExercisesPage> {
                         }),
                       ),
                     ),
+                  for (final item in exerciseGripValues)
+                    Padding(
+                      padding: const EdgeInsets.only(right: 8),
+                      child: FilterChip(
+                        label: Text(item),
+                        selected: _grip == item,
+                        onSelected: (_) => setState(() {
+                          _grip = _grip == item ? '' : item;
+                        }),
+                      ),
+                    ),
+                  for (final item in exercisePositionValues)
+                    Padding(
+                      padding: const EdgeInsets.only(right: 8),
+                      child: FilterChip(
+                        label: Text(item),
+                        selected: _position == item,
+                        onSelected: (_) => setState(() {
+                          _position = _position == item ? '' : item;
+                        }),
+                      ),
+                    ),
                   for (final item in mechanics)
                     Padding(
                       padding: const EdgeInsets.only(right: 8),
@@ -108,6 +133,19 @@ class _ExercisesPageState extends State<ExercisesPage> {
                 ],
               );
             },
+          ),
+        ),
+        Align(
+          alignment: Alignment.centerLeft,
+          child: TextButton.icon(
+            key: const Key('create-custom-exercise'),
+            onPressed: () {
+              Navigator.of(context).push(
+                FlexPageRoute(builder: (context) => const CustomExercisePage()),
+              );
+            },
+            icon: const Icon(Icons.add),
+            label: Text(context.l10n.createCustomExercise),
           ),
         ),
         Expanded(
@@ -131,10 +169,14 @@ class _ExercisesPageState extends State<ExercisesPage> {
                       mechanic: exercise.mechanic,
                       primaryMuscles: exercise.primaryMuscles,
                       secondaryMuscles: exercise.secondaryMuscles,
+                      grip: exercise.griff,
+                      position: exercise.position,
                       query: query,
                       group: _muscle,
                       equipmentFilter: _equipment,
                       mechanicFilter: _mechanic,
+                      gripFilter: _grip,
+                      positionFilter: _position,
                     );
                   }).toList()..sort((a, b) {
                     final left = (a.germanName ?? a.name).toLowerCase();

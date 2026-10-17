@@ -2230,5 +2230,20 @@
   "heightInches": "कद (इंच)",
   "welcomeToAlpha": "Alpha में आपका स्वागत है",
   "createProfileButton": "प्रोफ़ाइल बनाएँ",
-  "onboardingWeightHint": "शरीर का वजन, वैकल्पिक"
+  "onboardingWeightHint": "शरीर का वजन, वैकल्पिक",
+  "familyLabel": "परिवार",
+  "gripLabel": "ग्रिप",
+  "positionLabel": "स्थिति",
+  "unilateralLabel": "एक तरफ",
+  "otherVariants": "अन्य रूप",
+  "sideLeft": "बायाँ",
+  "sideRight": "दायाँ",
+  "createCustomExercise": "व्यायाम बनाएँ",
+  "editCustomExercise": "व्यायाम संपादित करें",
+  "deleteCustomExercise": "व्यायाम हटाएँ",
+  "deleteCustomExerciseBody": "यह व्यायाम हटाएँ? पिछले वर्कआउट इतिहास में रहेंगे।",
+  "customExerciseName": "नाम",
+  "customExerciseFamily": "परिवार आईडी",
+  "createAsCustomExercise": "कस्टम व्यायाम के रूप में बनाएँ",
+  "customExerciseInvalid": "नाम, मांसपेशियाँ और उपकरण चुनें।"
 }

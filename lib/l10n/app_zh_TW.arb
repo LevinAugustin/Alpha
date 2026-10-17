@@ -686,5 +686,20 @@
   "heightInches": "身高（英吋）",
   "welcomeToAlpha": "歡迎使用 Alpha",
   "createProfileButton": "建立檔案",
-  "onboardingWeightHint": "體重，選填"
+  "onboardingWeightHint": "體重，選填",
+  "familyLabel": "動作族",
+  "gripLabel": "握法",
+  "positionLabel": "體位",
+  "unilateralLabel": "單側",
+  "otherVariants": "其他變式",
+  "sideLeft": "左側",
+  "sideRight": "右側",
+  "createCustomExercise": "新建動作",
+  "editCustomExercise": "編輯動作",
+  "deleteCustomExercise": "刪除動作",
+  "deleteCustomExerciseBody": "刪除這個動作？過去的訓練仍留在歷史中。",
+  "customExerciseName": "名稱",
+  "customExerciseFamily": "動作族編號",
+  "createAsCustomExercise": "建立為自訂動作",
+  "customExerciseInvalid": "請選擇名稱、肌肉和器材。"
 }

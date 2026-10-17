@@ -189,7 +189,15 @@ void main() {
           'image_license': null,
           'alternatives': null,
           'schulter_risiko': null,
+          'familie': null,
+          'griff': null,
+          'position': null,
+          'einseitig': 0,
         },
+    ],
+    'exercise_sets': [
+      for (final row in before['exercise_sets'] ?? const [])
+        {...row, 'side': null},
     ],
     'plan_exercises': [
       for (final row in before['plan_exercises'] ?? const [])

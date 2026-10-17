@@ -4067,6 +4067,96 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Body weight, optional'**
   String get onboardingWeightHint;
+
+  /// Label for an exercise family.
+  ///
+  /// In en, this message translates to:
+  /// **'Family'**
+  String get familyLabel;
+
+  /// Label for grip.
+  ///
+  /// In en, this message translates to:
+  /// **'Grip'**
+  String get gripLabel;
+
+  /// Label for body position.
+  ///
+  /// In en, this message translates to:
+  /// **'Position'**
+  String get positionLabel;
+
+  /// Label for a per-side exercise.
+  ///
+  /// In en, this message translates to:
+  /// **'Each side'**
+  String get unilateralLabel;
+
+  /// Heading for other exercises in the same family.
+  ///
+  /// In en, this message translates to:
+  /// **'Other variants'**
+  String get otherVariants;
+
+  /// Left side of a unilateral set.
+  ///
+  /// In en, this message translates to:
+  /// **'Left'**
+  String get sideLeft;
+
+  /// Right side of a unilateral set.
+  ///
+  /// In en, this message translates to:
+  /// **'Right'**
+  String get sideRight;
+
+  /// Action for creating a custom exercise.
+  ///
+  /// In en, this message translates to:
+  /// **'Create exercise'**
+  String get createCustomExercise;
+
+  /// Action for editing a custom exercise.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit exercise'**
+  String get editCustomExercise;
+
+  /// Action for deleting a custom exercise.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete exercise'**
+  String get deleteCustomExercise;
+
+  /// Confirmation that deleting a custom exercise keeps history.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete this exercise? Past workouts stay in the history.'**
+  String get deleteCustomExerciseBody;
+
+  /// Name field for a custom exercise.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get customExerciseName;
+
+  /// Optional family id field.
+  ///
+  /// In en, this message translates to:
+  /// **'Family id'**
+  String get customExerciseFamily;
+
+  /// Import action that creates a custom exercise.
+  ///
+  /// In en, this message translates to:
+  /// **'Create as custom exercise'**
+  String get createAsCustomExercise;
+
+  /// Shown when a custom exercise form is incomplete.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a name, muscles and gear.'**
+  String get customExerciseInvalid;
 }
 
 class _AppLocalizationsDelegate

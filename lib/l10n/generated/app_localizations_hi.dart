@@ -2181,4 +2181,50 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get onboardingWeightHint => 'शरीर का वजन, वैकल्पिक';
+
+  @override
+  String get familyLabel => 'परिवार';
+
+  @override
+  String get gripLabel => 'ग्रिप';
+
+  @override
+  String get positionLabel => 'स्थिति';
+
+  @override
+  String get unilateralLabel => 'एक तरफ';
+
+  @override
+  String get otherVariants => 'अन्य रूप';
+
+  @override
+  String get sideLeft => 'बायाँ';
+
+  @override
+  String get sideRight => 'दायाँ';
+
+  @override
+  String get createCustomExercise => 'व्यायाम बनाएँ';
+
+  @override
+  String get editCustomExercise => 'व्यायाम संपादित करें';
+
+  @override
+  String get deleteCustomExercise => 'व्यायाम हटाएँ';
+
+  @override
+  String get deleteCustomExerciseBody =>
+      'यह व्यायाम हटाएँ? पिछले वर्कआउट इतिहास में रहेंगे।';
+
+  @override
+  String get customExerciseName => 'नाम';
+
+  @override
+  String get customExerciseFamily => 'परिवार आईडी';
+
+  @override
+  String get createAsCustomExercise => 'कस्टम व्यायाम के रूप में बनाएँ';
+
+  @override
+  String get customExerciseInvalid => 'नाम, मांसपेशियाँ और उपकरण चुनें।';
 }

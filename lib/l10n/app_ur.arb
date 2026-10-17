@@ -2230,5 +2230,20 @@
   "heightInches": "قد (انچ)",
   "welcomeToAlpha": "Alpha میں خوش آمدید",
   "createProfileButton": "پروفائل بنائیں",
-  "onboardingWeightHint": "جسمانی وزن، اختیاری"
+  "onboardingWeightHint": "جسمانی وزن، اختیاری",
+  "familyLabel": "خاندان",
+  "gripLabel": "گرفت",
+  "positionLabel": "حالت",
+  "unilateralLabel": "ایک طرف",
+  "otherVariants": "دیگر اقسام",
+  "sideLeft": "بائیں",
+  "sideRight": "دائیں",
+  "createCustomExercise": "ورزش بنائیں",
+  "editCustomExercise": "ورزش میں ترمیم",
+  "deleteCustomExercise": "ورزش حذف کریں",
+  "deleteCustomExerciseBody": "یہ ورزش حذف کریں؟ پرانی مشقیں تاریخ میں رہیں گی۔",
+  "customExerciseName": "نام",
+  "customExerciseFamily": "خاندان کا شناختی نمبر",
+  "createAsCustomExercise": "اپنی ورزش کے طور پر بنائیں",
+  "customExerciseInvalid": "نام، پٹھے اور آلہ منتخب کریں۔"
 }

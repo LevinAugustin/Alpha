@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:drift/drift.dart' hide Column;
 import 'package:file_picker/file_picker.dart';
 import 'package:flexify/database/catalog_seed.dart';
+import 'package:flexify/exercises/custom_exercise_page.dart';
 import 'package:flexify/database/database.dart';
 import 'package:flexify/database/exercise_set_repository.dart';
 import 'package:flexify/import/hevy_import.dart';
@@ -228,21 +229,44 @@ class _ImportPreviewPageState extends State<ImportPreviewPage> {
       ),
       trailing: known != null
           ? null
-          : DropdownButton<int>(
-              hint: Text(context.l10n.mapExercise),
-              value: mapped,
-              items: [
-                for (final exercise in _exercises.take(80))
-                  DropdownMenuItem(
-                    value: exercise.id,
-                    child: Text(
-                      (exercise.germanName ?? '').isEmpty
-                          ? exercise.name
-                          : exercise.germanName!,
-                    ),
-                  ),
+          : Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                DropdownButton<int>(
+                  hint: Text(context.l10n.mapExercise),
+                  value: mapped,
+                  items: [
+                    for (final exercise in _exercises.take(80))
+                      DropdownMenuItem(
+                        value: exercise.id,
+                        child: Text(
+                          (exercise.germanName ?? '').isEmpty
+                              ? exercise.name
+                              : exercise.germanName!,
+                        ),
+                      ),
+                  ],
+                  onChanged: (value) => setState(() => _mapping[name] = value),
+                ),
+                IconButton(
+                  key: Key('create-custom-import-$name'),
+                  tooltip: context.l10n.createAsCustomExercise,
+                  onPressed: () async {
+                    final created = await Navigator.of(context).push<Exercise>(
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            CustomExercisePage(initialName: name),
+                      ),
+                    );
+                    if (created == null || !mounted) return;
+                    setState(() {
+                      _exercises = [..._exercises, created];
+                      _mapping[name] = created.id;
+                    });
+                  },
+                  icon: const Icon(Icons.add),
+                ),
               ],
-              onChanged: (value) => setState(() => _mapping[name] = value),
             ),
     );
   }

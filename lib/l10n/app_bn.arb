@@ -2230,5 +2230,20 @@
   "heightInches": "উচ্চতা (ইঞ্চি)",
   "welcomeToAlpha": "Alpha-তে স্বাগতম",
   "createProfileButton": "প্রোফাইল তৈরি করুন",
-  "onboardingWeightHint": "শরীরের ওজন, ঐচ্ছিক"
+  "onboardingWeightHint": "শরীরের ওজন, ঐচ্ছিক",
+  "familyLabel": "পরিবার",
+  "gripLabel": "গ্রিপ",
+  "positionLabel": "অবস্থান",
+  "unilateralLabel": "একপাশে",
+  "otherVariants": "অন্য ভ্যারিয়েন্ট",
+  "sideLeft": "বাম",
+  "sideRight": "ডান",
+  "createCustomExercise": "ব্যায়াম তৈরি করুন",
+  "editCustomExercise": "ব্যায়াম সম্পাদনা",
+  "deleteCustomExercise": "ব্যায়াম মুছুন",
+  "deleteCustomExerciseBody": "এই ব্যায়াম মুছবেন? আগের ওয়ার্কআউট ইতিহাসে থাকবে।",
+  "customExerciseName": "নাম",
+  "customExerciseFamily": "পরিবার আইডি",
+  "createAsCustomExercise": "কাস্টম ব্যায়াম হিসেবে তৈরি করুন",
+  "customExerciseInvalid": "নাম, পেশি এবং সরঞ্জাম বেছে নিন।"
 }

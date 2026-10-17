@@ -1,9 +1,31 @@
 import 'dart:convert';
 
-const searchCategoryHelp = <String, Set<String>>{
-  'push': {'brust', 'schultern', 'trizeps'},
-  'pull': {'rücken', 'bizeps'},
-  'beine': {'beine'},
+const searchPrimaryHelp = <String, Set<String>>{
+  'push': {
+    'brust',
+    'brust_oben',
+    'schulter_vorne',
+    'schulter_seitlich',
+    'trizeps',
+  },
+  'pull': {
+    'latissimus',
+    'oberer_ruecken',
+    'schulter_hinten',
+    'bizeps',
+    'trapez',
+    'unterarme',
+    'unterer_ruecken',
+  },
+  'beine': {
+    'quadrizeps',
+    'beinbeuger',
+    'gesaess',
+    'adduktoren',
+    'abduktoren',
+    'waden',
+    'hueftbeuger',
+  },
 };
 
 String? catalogText(String? value) {
@@ -44,13 +66,12 @@ bool exerciseMatchesQuery({
 }) {
   final needle = query.trim().toLowerCase();
   if (needle.isEmpty) return true;
-  final help = searchCategoryHelp[needle];
+  final help = searchPrimaryHelp[needle];
   if (help != null) {
-    final categories = {
-      if ((category ?? '').trim().isNotEmpty) category!.trim().toLowerCase(),
-      if ((muscle ?? '').trim().isNotEmpty) muscle!.trim().toLowerCase(),
-    };
-    if (categories.any(help.contains)) return true;
+    final primary = decodeCatalogList(
+      primaryMuscles,
+    ).map((key) => key.toLowerCase());
+    if (primary.any(help.contains)) return true;
   }
   final haystack = [
     name,
@@ -76,10 +97,14 @@ bool matchesExerciseFilters({
   String? mechanic,
   String? primaryMuscles,
   String? secondaryMuscles,
+  String? grip,
+  String? position,
   required String query,
   String group = '',
   String equipmentFilter = '',
   String mechanicFilter = '',
+  String gripFilter = '',
+  String positionFilter = '',
 }) {
   if (group.isNotEmpty) {
     final groups = <String>{
@@ -98,6 +123,14 @@ bool matchesExerciseFilters({
   if (mechanicFilter.isNotEmpty &&
       (catalogText(mechanic) ?? '').toLowerCase() !=
           mechanicFilter.toLowerCase()) {
+    return false;
+  }
+  if (gripFilter.isNotEmpty &&
+      (grip ?? '').trim().toLowerCase() != gripFilter.toLowerCase()) {
+    return false;
+  }
+  if (positionFilter.isNotEmpty &&
+      (position ?? '').trim().toLowerCase() != positionFilter.toLowerCase()) {
     return false;
   }
   return exerciseMatchesQuery(

@@ -2213,6 +2213,53 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get onboardingWeightHint => 'Peso corporal, opcional';
+
+  @override
+  String get familyLabel => 'Família';
+
+  @override
+  String get gripLabel => 'Pegada';
+
+  @override
+  String get positionLabel => 'Postura';
+
+  @override
+  String get unilateralLabel => 'Unilateral';
+
+  @override
+  String get otherVariants => 'Outras variantes';
+
+  @override
+  String get sideLeft => 'Esquerda';
+
+  @override
+  String get sideRight => 'Direita';
+
+  @override
+  String get createCustomExercise => 'Criar exercício';
+
+  @override
+  String get editCustomExercise => 'Editar exercício';
+
+  @override
+  String get deleteCustomExercise => 'Eliminar exercício';
+
+  @override
+  String get deleteCustomExerciseBody =>
+      'Eliminar este exercício? Os treinos anteriores ficam no histórico.';
+
+  @override
+  String get customExerciseName => 'Nome';
+
+  @override
+  String get customExerciseFamily => 'Id da família';
+
+  @override
+  String get createAsCustomExercise => 'Criar como exercício próprio';
+
+  @override
+  String get customExerciseInvalid =>
+      'Escolhe um nome, músculos e um aparelho.';
 }
 
 /// The translations for Portuguese, as used in Brazil (`pt_BR`).
@@ -4415,6 +4462,53 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
 
   @override
   String get onboardingWeightHint => 'Peso corporal, opcional';
+
+  @override
+  String get familyLabel => 'Família';
+
+  @override
+  String get gripLabel => 'Pegada';
+
+  @override
+  String get positionLabel => 'Postura';
+
+  @override
+  String get unilateralLabel => 'Unilateral';
+
+  @override
+  String get otherVariants => 'Outras variantes';
+
+  @override
+  String get sideLeft => 'Esquerda';
+
+  @override
+  String get sideRight => 'Direita';
+
+  @override
+  String get createCustomExercise => 'Criar exercício';
+
+  @override
+  String get editCustomExercise => 'Editar exercício';
+
+  @override
+  String get deleteCustomExercise => 'Excluir exercício';
+
+  @override
+  String get deleteCustomExerciseBody =>
+      'Excluir este exercício? Os treinos anteriores permanecem no histórico.';
+
+  @override
+  String get customExerciseName => 'Nome';
+
+  @override
+  String get customExerciseFamily => 'Id da família';
+
+  @override
+  String get createAsCustomExercise => 'Criar como exercício próprio';
+
+  @override
+  String get customExerciseInvalid =>
+      'Escolha um nome, músculos e um aparelho.';
 }
 
 /// The translations for Portuguese, as used in Portugal (`pt_PT`).
@@ -6626,4 +6720,51 @@ class AppLocalizationsPtPt extends AppLocalizationsPt {
 
   @override
   String get onboardingWeightHint => 'Peso corporal, opcional';
+
+  @override
+  String get familyLabel => 'Família';
+
+  @override
+  String get gripLabel => 'Pegada';
+
+  @override
+  String get positionLabel => 'Postura';
+
+  @override
+  String get unilateralLabel => 'Unilateral';
+
+  @override
+  String get otherVariants => 'Outras variantes';
+
+  @override
+  String get sideLeft => 'Esquerda';
+
+  @override
+  String get sideRight => 'Direita';
+
+  @override
+  String get createCustomExercise => 'Criar exercício';
+
+  @override
+  String get editCustomExercise => 'Editar exercício';
+
+  @override
+  String get deleteCustomExercise => 'Eliminar exercício';
+
+  @override
+  String get deleteCustomExerciseBody =>
+      'Eliminar este exercício? Os treinos anteriores ficam no histórico.';
+
+  @override
+  String get customExerciseName => 'Nome';
+
+  @override
+  String get customExerciseFamily => 'Id da família';
+
+  @override
+  String get createAsCustomExercise => 'Criar como exercício próprio';
+
+  @override
+  String get customExerciseInvalid =>
+      'Escolhe um nome, músculos e um aparelho.';
 }

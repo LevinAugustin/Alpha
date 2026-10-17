@@ -4,6 +4,8 @@ import 'package:drift/drift.dart' hide Column;
 import 'package:flexify/database/catalog_seed.dart';
 import 'package:flexify/database/database.dart';
 import 'package:flexify/exercise_labels.dart';
+import 'package:flexify/exercises/custom_exercise.dart';
+import 'package:flexify/exercises/custom_exercise_page.dart';
 import 'package:flexify/l10n/l10n.dart';
 import 'package:flexify/main.dart';
 import 'package:flexify/platform_page_route.dart';
@@ -40,6 +42,63 @@ class _ExerciseDetailPageState extends State<ExerciseDetailPage> {
         backgroundColor: palette.background,
         appBar: AppBar(
           title: Text(title),
+          actions: [
+            if (isCustomExercise(widget.exercise)) ...[
+              IconButton(
+                key: const Key('edit-custom-exercise'),
+                tooltip: l10n.editCustomExercise,
+                onPressed: () async {
+                  final navigator = Navigator.of(context);
+                  final saved = await navigator.push<Exercise>(
+                    FlexPageRoute(
+                      builder: (context) =>
+                          CustomExercisePage(exercise: widget.exercise),
+                    ),
+                  );
+                  if (saved == null || !mounted) return;
+                  navigator.pushReplacement(
+                    FlexPageRoute(
+                      builder: (context) => ExerciseDetailPage(
+                        exercise: saved,
+                        onAdd: widget.onAdd,
+                      ),
+                    ),
+                  );
+                },
+                icon: const Icon(Icons.edit_outlined),
+              ),
+              IconButton(
+                key: const Key('delete-custom-exercise'),
+                tooltip: l10n.deleteCustomExercise,
+                onPressed: () async {
+                  final navigator = Navigator.of(context);
+                  final confirmed = await showDialog<bool>(
+                    context: context,
+                    builder: (context) => AlertDialog(
+                      title: Text(l10n.deleteCustomExercise),
+                      content: Text(l10n.deleteCustomExerciseBody),
+                      actions: [
+                        TextButton(
+                          onPressed: () => Navigator.pop(context, false),
+                          child: Text(l10n.actionReject),
+                        ),
+                        FilledButton(
+                          key: const Key('confirm-delete-custom-exercise'),
+                          onPressed: () => Navigator.pop(context, true),
+                          child: Text(l10n.deleteCustomExercise),
+                        ),
+                      ],
+                    ),
+                  );
+                  if (confirmed != true || !mounted) return;
+                  await deleteCustomExercise(db, widget.exercise);
+                  if (!mounted) return;
+                  navigator.pop();
+                },
+                icon: const Icon(Icons.delete_outline),
+              ),
+            ],
+          ],
           bottom: TabBar(
             tabs: [
               Tab(text: l10n.tabOverview),
@@ -111,6 +170,10 @@ class _ExerciseDetailPageState extends State<ExerciseDetailPage> {
         'volume' => load * reps,
         _ => load,
       };
+      if (_metric == 'volume' && exercise.einseitig) {
+        byDay[day] = (byDay[day] ?? 0) + metric;
+        continue;
+      }
       final previous = byDay[day] ?? 0;
       if (metric > previous) byDay[day] = metric;
     }
@@ -119,6 +182,7 @@ class _ExerciseDetailPageState extends State<ExerciseDetailPage> {
       points.add((x: day, y: byDay[day]!));
     }
     return ListView(
+      key: const Key('exercise-overview'),
       padding: const EdgeInsets.fromLTRB(16, 12, 16, 24),
       children: [
         _image(exercise.image, palette),
@@ -133,6 +197,12 @@ class _ExerciseDetailPageState extends State<ExerciseDetailPage> {
         Text('${l10n.equipmentLabel}: ${gear.isEmpty ? '—' : gear}'),
         if (catalogText(exercise.mechanic) case final mechanic?)
           Text('${l10n.mechanicLabel}: $mechanic'),
+        if (catalogText(exercise.griff) case final grip?)
+          Text('${l10n.gripLabel}: $grip'),
+        if (catalogText(exercise.position) case final position?)
+          Text('${l10n.positionLabel}: $position'),
+        if (exercise.einseitig) Text(l10n.unilateralLabel),
+        _family(context, exercise),
         _alternatives(context, exercise),
         if ((exercise.catalogSource ?? '').trim().isNotEmpty ||
             (exercise.catalogLicense ?? '').trim().isNotEmpty)
@@ -194,7 +264,7 @@ class _ExerciseDetailPageState extends State<ExerciseDetailPage> {
             (set.notes ?? '').contains('warmup]');
         return ListTile(
           title: Text(
-            '${warmup ? '${context.l10n.warmupMark} ' : ''}${_num(set.loadKg ?? 0)} kg × ${_num(set.reps ?? 0)}',
+            '${warmup ? '${context.l10n.warmupMark} ' : ''}${_num(set.loadKg ?? 0)} kg × ${_num(set.reps ?? 0)}${_sideLabel(context, set.side)}',
           ),
           subtitle: Text(
             MaterialLocalizations.of(context).formatShortDate(set.timestamp),
@@ -231,6 +301,60 @@ class _ExerciseDetailPageState extends State<ExerciseDetailPage> {
             ),
         ],
       ],
+    );
+  }
+
+  String _sideLabel(BuildContext context, String? side) {
+    return switch (side) {
+      'links' => ' · ${context.l10n.sideLeft}',
+      'rechts' => ' · ${context.l10n.sideRight}',
+      _ => '',
+    };
+  }
+
+  Widget _family(BuildContext context, Exercise exercise) {
+    final family = (exercise.familie ?? '').trim();
+    if (family.isEmpty) return const SizedBox.shrink();
+    return FutureBuilder<List<Exercise>>(
+      future:
+          (db.select(db.exercises)..where(
+                (row) =>
+                    row.familie.equals(family) &
+                    row.archived.equals(false) &
+                    row.id.isNotValue(exercise.id),
+              ))
+              .get(),
+      builder: (context, snapshot) {
+        final rows = snapshot.data ?? const <Exercise>[];
+        if (rows.isEmpty) return const SizedBox.shrink();
+        return Padding(
+          padding: const EdgeInsets.only(top: 8),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(context.l10n.otherVariants),
+              for (final row in rows)
+                TextButton(
+                  key: Key('family-${row.catalogId ?? row.id}'),
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      FlexPageRoute(
+                        builder: (context) => ExerciseDetailPage(exercise: row),
+                      ),
+                    );
+                  },
+                  child: Text(
+                    localizedExerciseName(
+                      context,
+                      row.name,
+                      german: row.germanName,
+                    ),
+                  ),
+                ),
+            ],
+          ),
+        );
+      },
     );
   }
 

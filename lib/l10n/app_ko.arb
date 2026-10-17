@@ -686,5 +686,20 @@
   "heightInches": "키 (인치)",
   "welcomeToAlpha": "Alpha에 오신 것을 환영합니다",
   "createProfileButton": "프로필 만들기",
-  "onboardingWeightHint": "체중, 선택 사항"
+  "onboardingWeightHint": "체중, 선택 사항",
+  "familyLabel": "운동 계열",
+  "gripLabel": "그립",
+  "positionLabel": "자세",
+  "unilateralLabel": "한쪽",
+  "otherVariants": "다른 변형",
+  "sideLeft": "왼쪽",
+  "sideRight": "오른쪽",
+  "createCustomExercise": "운동 만들기",
+  "editCustomExercise": "운동 편집",
+  "deleteCustomExercise": "운동 삭제",
+  "deleteCustomExerciseBody": "이 운동을 삭제할까요? 지난 운동 기록은 히스토리에 남습니다.",
+  "customExerciseName": "이름",
+  "customExerciseFamily": "계열 ID",
+  "createAsCustomExercise": "맞춤 운동으로 만들기",
+  "customExerciseInvalid": "이름, 근육, 기구를 선택하세요."
 }

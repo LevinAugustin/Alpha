@@ -821,6 +821,52 @@ class $ExercisesTable extends Exercises
     type: DriftSqlType.string,
     requiredDuringInsert: false,
   );
+  static const VerificationMeta _familieMeta = const VerificationMeta(
+    'familie',
+  );
+  @override
+  late final GeneratedColumn<String> familie = GeneratedColumn<String>(
+    'familie',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _griffMeta = const VerificationMeta('griff');
+  @override
+  late final GeneratedColumn<String> griff = GeneratedColumn<String>(
+    'griff',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _positionMeta = const VerificationMeta(
+    'position',
+  );
+  @override
+  late final GeneratedColumn<String> position = GeneratedColumn<String>(
+    'position',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _einseitigMeta = const VerificationMeta(
+    'einseitig',
+  );
+  @override
+  late final GeneratedColumn<bool> einseitig = GeneratedColumn<bool>(
+    'einseitig',
+    aliasedName,
+    false,
+    type: DriftSqlType.bool,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'CHECK ("einseitig" IN (0, 1))',
+    ),
+    defaultValue: const Constant(false),
+  );
   @override
   List<GeneratedColumn> get $columns => [
     id,
@@ -853,6 +899,10 @@ class $ExercisesTable extends Exercises
     imageLicense,
     alternatives,
     schulterRisiko,
+    familie,
+    griff,
+    position,
+    einseitig,
   ];
   @override
   String get aliasedName => _alias ?? actualTableName;
@@ -1091,6 +1141,30 @@ class $ExercisesTable extends Exercises
         ),
       );
     }
+    if (data.containsKey('familie')) {
+      context.handle(
+        _familieMeta,
+        familie.isAcceptableOrUnknown(data['familie']!, _familieMeta),
+      );
+    }
+    if (data.containsKey('griff')) {
+      context.handle(
+        _griffMeta,
+        griff.isAcceptableOrUnknown(data['griff']!, _griffMeta),
+      );
+    }
+    if (data.containsKey('position')) {
+      context.handle(
+        _positionMeta,
+        position.isAcceptableOrUnknown(data['position']!, _positionMeta),
+      );
+    }
+    if (data.containsKey('einseitig')) {
+      context.handle(
+        _einseitigMeta,
+        einseitig.isAcceptableOrUnknown(data['einseitig']!, _einseitigMeta),
+      );
+    }
     return context;
   }
 
@@ -1220,6 +1294,22 @@ class $ExercisesTable extends Exercises
         DriftSqlType.string,
         data['${effectivePrefix}schulter_risiko'],
       ),
+      familie: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}familie'],
+      ),
+      griff: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}griff'],
+      ),
+      position: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}position'],
+      ),
+      einseitig: attachedDatabase.typeMapping.read(
+        DriftSqlType.bool,
+        data['${effectivePrefix}einseitig'],
+      )!,
     );
   }
 
@@ -1260,6 +1350,10 @@ class Exercise extends DataClass implements Insertable<Exercise> {
   final String? imageLicense;
   final String? alternatives;
   final String? schulterRisiko;
+  final String? familie;
+  final String? griff;
+  final String? position;
+  final bool einseitig;
   const Exercise({
     required this.id,
     required this.name,
@@ -1291,6 +1385,10 @@ class Exercise extends DataClass implements Insertable<Exercise> {
     this.imageLicense,
     this.alternatives,
     this.schulterRisiko,
+    this.familie,
+    this.griff,
+    this.position,
+    required this.einseitig,
   });
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
@@ -1367,6 +1465,16 @@ class Exercise extends DataClass implements Insertable<Exercise> {
     if (!nullToAbsent || schulterRisiko != null) {
       map['schulter_risiko'] = Variable<String>(schulterRisiko);
     }
+    if (!nullToAbsent || familie != null) {
+      map['familie'] = Variable<String>(familie);
+    }
+    if (!nullToAbsent || griff != null) {
+      map['griff'] = Variable<String>(griff);
+    }
+    if (!nullToAbsent || position != null) {
+      map['position'] = Variable<String>(position);
+    }
+    map['einseitig'] = Variable<bool>(einseitig);
     return map;
   }
 
@@ -1442,6 +1550,16 @@ class Exercise extends DataClass implements Insertable<Exercise> {
       schulterRisiko: schulterRisiko == null && nullToAbsent
           ? const Value.absent()
           : Value(schulterRisiko),
+      familie: familie == null && nullToAbsent
+          ? const Value.absent()
+          : Value(familie),
+      griff: griff == null && nullToAbsent
+          ? const Value.absent()
+          : Value(griff),
+      position: position == null && nullToAbsent
+          ? const Value.absent()
+          : Value(position),
+      einseitig: Value(einseitig),
     );
   }
 
@@ -1485,6 +1603,10 @@ class Exercise extends DataClass implements Insertable<Exercise> {
       imageLicense: serializer.fromJson<String?>(json['imageLicense']),
       alternatives: serializer.fromJson<String?>(json['alternatives']),
       schulterRisiko: serializer.fromJson<String?>(json['schulterRisiko']),
+      familie: serializer.fromJson<String?>(json['familie']),
+      griff: serializer.fromJson<String?>(json['griff']),
+      position: serializer.fromJson<String?>(json['position']),
+      einseitig: serializer.fromJson<bool>(json['einseitig']),
     );
   }
   @override
@@ -1521,6 +1643,10 @@ class Exercise extends DataClass implements Insertable<Exercise> {
       'imageLicense': serializer.toJson<String?>(imageLicense),
       'alternatives': serializer.toJson<String?>(alternatives),
       'schulterRisiko': serializer.toJson<String?>(schulterRisiko),
+      'familie': serializer.toJson<String?>(familie),
+      'griff': serializer.toJson<String?>(griff),
+      'position': serializer.toJson<String?>(position),
+      'einseitig': serializer.toJson<bool>(einseitig),
     };
   }
 
@@ -1555,6 +1681,10 @@ class Exercise extends DataClass implements Insertable<Exercise> {
     Value<String?> imageLicense = const Value.absent(),
     Value<String?> alternatives = const Value.absent(),
     Value<String?> schulterRisiko = const Value.absent(),
+    Value<String?> familie = const Value.absent(),
+    Value<String?> griff = const Value.absent(),
+    Value<String?> position = const Value.absent(),
+    bool? einseitig,
   }) => Exercise(
     id: id ?? this.id,
     name: name ?? this.name,
@@ -1598,6 +1728,10 @@ class Exercise extends DataClass implements Insertable<Exercise> {
     schulterRisiko: schulterRisiko.present
         ? schulterRisiko.value
         : this.schulterRisiko,
+    familie: familie.present ? familie.value : this.familie,
+    griff: griff.present ? griff.value : this.griff,
+    position: position.present ? position.value : this.position,
+    einseitig: einseitig ?? this.einseitig,
   );
   Exercise copyWithCompanion(ExercisesCompanion data) {
     return Exercise(
@@ -1665,6 +1799,10 @@ class Exercise extends DataClass implements Insertable<Exercise> {
       schulterRisiko: data.schulterRisiko.present
           ? data.schulterRisiko.value
           : this.schulterRisiko,
+      familie: data.familie.present ? data.familie.value : this.familie,
+      griff: data.griff.present ? data.griff.value : this.griff,
+      position: data.position.present ? data.position.value : this.position,
+      einseitig: data.einseitig.present ? data.einseitig.value : this.einseitig,
     );
   }
 
@@ -1700,7 +1838,11 @@ class Exercise extends DataClass implements Insertable<Exercise> {
           ..write('imageSource: $imageSource, ')
           ..write('imageLicense: $imageLicense, ')
           ..write('alternatives: $alternatives, ')
-          ..write('schulterRisiko: $schulterRisiko')
+          ..write('schulterRisiko: $schulterRisiko, ')
+          ..write('familie: $familie, ')
+          ..write('griff: $griff, ')
+          ..write('position: $position, ')
+          ..write('einseitig: $einseitig')
           ..write(')'))
         .toString();
   }
@@ -1737,6 +1879,10 @@ class Exercise extends DataClass implements Insertable<Exercise> {
     imageLicense,
     alternatives,
     schulterRisiko,
+    familie,
+    griff,
+    position,
+    einseitig,
   ]);
   @override
   bool operator ==(Object other) =>
@@ -1771,7 +1917,11 @@ class Exercise extends DataClass implements Insertable<Exercise> {
           other.imageSource == this.imageSource &&
           other.imageLicense == this.imageLicense &&
           other.alternatives == this.alternatives &&
-          other.schulterRisiko == this.schulterRisiko);
+          other.schulterRisiko == this.schulterRisiko &&
+          other.familie == this.familie &&
+          other.griff == this.griff &&
+          other.position == this.position &&
+          other.einseitig == this.einseitig);
 }
 
 class ExercisesCompanion extends UpdateCompanion<Exercise> {
@@ -1805,6 +1955,10 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
   final Value<String?> imageLicense;
   final Value<String?> alternatives;
   final Value<String?> schulterRisiko;
+  final Value<String?> familie;
+  final Value<String?> griff;
+  final Value<String?> position;
+  final Value<bool> einseitig;
   const ExercisesCompanion({
     this.id = const Value.absent(),
     this.name = const Value.absent(),
@@ -1836,6 +1990,10 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
     this.imageLicense = const Value.absent(),
     this.alternatives = const Value.absent(),
     this.schulterRisiko = const Value.absent(),
+    this.familie = const Value.absent(),
+    this.griff = const Value.absent(),
+    this.position = const Value.absent(),
+    this.einseitig = const Value.absent(),
   });
   ExercisesCompanion.insert({
     this.id = const Value.absent(),
@@ -1868,6 +2026,10 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
     this.imageLicense = const Value.absent(),
     this.alternatives = const Value.absent(),
     this.schulterRisiko = const Value.absent(),
+    this.familie = const Value.absent(),
+    this.griff = const Value.absent(),
+    this.position = const Value.absent(),
+    this.einseitig = const Value.absent(),
   }) : name = Value(name),
        kind = Value(kind),
        displayUnit = Value(displayUnit);
@@ -1902,6 +2064,10 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
     Expression<String>? imageLicense,
     Expression<String>? alternatives,
     Expression<String>? schulterRisiko,
+    Expression<String>? familie,
+    Expression<String>? griff,
+    Expression<String>? position,
+    Expression<bool>? einseitig,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
@@ -1936,6 +2102,10 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
       if (imageLicense != null) 'image_license': imageLicense,
       if (alternatives != null) 'alternatives': alternatives,
       if (schulterRisiko != null) 'schulter_risiko': schulterRisiko,
+      if (familie != null) 'familie': familie,
+      if (griff != null) 'griff': griff,
+      if (position != null) 'position': position,
+      if (einseitig != null) 'einseitig': einseitig,
     });
   }
 
@@ -1970,6 +2140,10 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
     Value<String?>? imageLicense,
     Value<String?>? alternatives,
     Value<String?>? schulterRisiko,
+    Value<String?>? familie,
+    Value<String?>? griff,
+    Value<String?>? position,
+    Value<bool>? einseitig,
   }) {
     return ExercisesCompanion(
       id: id ?? this.id,
@@ -2003,6 +2177,10 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
       imageLicense: imageLicense ?? this.imageLicense,
       alternatives: alternatives ?? this.alternatives,
       schulterRisiko: schulterRisiko ?? this.schulterRisiko,
+      familie: familie ?? this.familie,
+      griff: griff ?? this.griff,
+      position: position ?? this.position,
+      einseitig: einseitig ?? this.einseitig,
     );
   }
 
@@ -2103,6 +2281,18 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
     if (schulterRisiko.present) {
       map['schulter_risiko'] = Variable<String>(schulterRisiko.value);
     }
+    if (familie.present) {
+      map['familie'] = Variable<String>(familie.value);
+    }
+    if (griff.present) {
+      map['griff'] = Variable<String>(griff.value);
+    }
+    if (position.present) {
+      map['position'] = Variable<String>(position.value);
+    }
+    if (einseitig.present) {
+      map['einseitig'] = Variable<bool>(einseitig.value);
+    }
     return map;
   }
 
@@ -2138,7 +2328,11 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
           ..write('imageSource: $imageSource, ')
           ..write('imageLicense: $imageLicense, ')
           ..write('alternatives: $alternatives, ')
-          ..write('schulterRisiko: $schulterRisiko')
+          ..write('schulterRisiko: $schulterRisiko, ')
+          ..write('familie: $familie, ')
+          ..write('griff: $griff, ')
+          ..write('position: $position, ')
+          ..write('einseitig: $einseitig')
           ..write(')'))
         .toString();
   }
@@ -2639,6 +2833,15 @@ class $ExerciseSetsTable extends ExerciseSets
     type: DriftSqlType.string,
     requiredDuringInsert: false,
   );
+  static const VerificationMeta _sideMeta = const VerificationMeta('side');
+  @override
+  late final GeneratedColumn<String> side = GeneratedColumn<String>(
+    'side',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
   @override
   List<GeneratedColumn> get $columns => [
     id,
@@ -2652,6 +2855,7 @@ class $ExerciseSetsTable extends ExerciseSets
     incline,
     bodyWeightKg,
     notes,
+    side,
   ];
   @override
   String get aliasedName => _alias ?? actualTableName;
@@ -2738,6 +2942,12 @@ class $ExerciseSetsTable extends ExerciseSets
         notes.isAcceptableOrUnknown(data['notes']!, _notesMeta),
       );
     }
+    if (data.containsKey('side')) {
+      context.handle(
+        _sideMeta,
+        side.isAcceptableOrUnknown(data['side']!, _sideMeta),
+      );
+    }
     return context;
   }
 
@@ -2791,6 +3001,10 @@ class $ExerciseSetsTable extends ExerciseSets
         DriftSqlType.string,
         data['${effectivePrefix}notes'],
       ),
+      side: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}side'],
+      ),
     );
   }
 
@@ -2812,6 +3026,7 @@ class ExerciseSet extends DataClass implements Insertable<ExerciseSet> {
   final double? incline;
   final double? bodyWeightKg;
   final String? notes;
+  final String? side;
   const ExerciseSet({
     required this.id,
     required this.exerciseId,
@@ -2824,6 +3039,7 @@ class ExerciseSet extends DataClass implements Insertable<ExerciseSet> {
     this.incline,
     this.bodyWeightKg,
     this.notes,
+    this.side,
   });
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
@@ -2855,6 +3071,9 @@ class ExerciseSet extends DataClass implements Insertable<ExerciseSet> {
     if (!nullToAbsent || notes != null) {
       map['notes'] = Variable<String>(notes);
     }
+    if (!nullToAbsent || side != null) {
+      map['side'] = Variable<String>(side);
+    }
     return map;
   }
 
@@ -2885,6 +3104,7 @@ class ExerciseSet extends DataClass implements Insertable<ExerciseSet> {
       notes: notes == null && nullToAbsent
           ? const Value.absent()
           : Value(notes),
+      side: side == null && nullToAbsent ? const Value.absent() : Value(side),
     );
   }
 
@@ -2905,6 +3125,7 @@ class ExerciseSet extends DataClass implements Insertable<ExerciseSet> {
       incline: serializer.fromJson<double?>(json['incline']),
       bodyWeightKg: serializer.fromJson<double?>(json['bodyWeightKg']),
       notes: serializer.fromJson<String?>(json['notes']),
+      side: serializer.fromJson<String?>(json['side']),
     );
   }
   @override
@@ -2922,6 +3143,7 @@ class ExerciseSet extends DataClass implements Insertable<ExerciseSet> {
       'incline': serializer.toJson<double?>(incline),
       'bodyWeightKg': serializer.toJson<double?>(bodyWeightKg),
       'notes': serializer.toJson<String?>(notes),
+      'side': serializer.toJson<String?>(side),
     };
   }
 
@@ -2937,6 +3159,7 @@ class ExerciseSet extends DataClass implements Insertable<ExerciseSet> {
     Value<double?> incline = const Value.absent(),
     Value<double?> bodyWeightKg = const Value.absent(),
     Value<String?> notes = const Value.absent(),
+    Value<String?> side = const Value.absent(),
   }) => ExerciseSet(
     id: id ?? this.id,
     exerciseId: exerciseId ?? this.exerciseId,
@@ -2951,6 +3174,7 @@ class ExerciseSet extends DataClass implements Insertable<ExerciseSet> {
     incline: incline.present ? incline.value : this.incline,
     bodyWeightKg: bodyWeightKg.present ? bodyWeightKg.value : this.bodyWeightKg,
     notes: notes.present ? notes.value : this.notes,
+    side: side.present ? side.value : this.side,
   );
   ExerciseSet copyWithCompanion(ExerciseSetsCompanion data) {
     return ExerciseSet(
@@ -2973,6 +3197,7 @@ class ExerciseSet extends DataClass implements Insertable<ExerciseSet> {
           ? data.bodyWeightKg.value
           : this.bodyWeightKg,
       notes: data.notes.present ? data.notes.value : this.notes,
+      side: data.side.present ? data.side.value : this.side,
     );
   }
 
@@ -2989,7 +3214,8 @@ class ExerciseSet extends DataClass implements Insertable<ExerciseSet> {
           ..write('distanceMetres: $distanceMetres, ')
           ..write('incline: $incline, ')
           ..write('bodyWeightKg: $bodyWeightKg, ')
-          ..write('notes: $notes')
+          ..write('notes: $notes, ')
+          ..write('side: $side')
           ..write(')'))
         .toString();
   }
@@ -3007,6 +3233,7 @@ class ExerciseSet extends DataClass implements Insertable<ExerciseSet> {
     incline,
     bodyWeightKg,
     notes,
+    side,
   );
   @override
   bool operator ==(Object other) =>
@@ -3022,7 +3249,8 @@ class ExerciseSet extends DataClass implements Insertable<ExerciseSet> {
           other.distanceMetres == this.distanceMetres &&
           other.incline == this.incline &&
           other.bodyWeightKg == this.bodyWeightKg &&
-          other.notes == this.notes);
+          other.notes == this.notes &&
+          other.side == this.side);
 }
 
 class ExerciseSetsCompanion extends UpdateCompanion<ExerciseSet> {
@@ -3037,6 +3265,7 @@ class ExerciseSetsCompanion extends UpdateCompanion<ExerciseSet> {
   final Value<double?> incline;
   final Value<double?> bodyWeightKg;
   final Value<String?> notes;
+  final Value<String?> side;
   const ExerciseSetsCompanion({
     this.id = const Value.absent(),
     this.exerciseId = const Value.absent(),
@@ -3049,6 +3278,7 @@ class ExerciseSetsCompanion extends UpdateCompanion<ExerciseSet> {
     this.incline = const Value.absent(),
     this.bodyWeightKg = const Value.absent(),
     this.notes = const Value.absent(),
+    this.side = const Value.absent(),
   });
   ExerciseSetsCompanion.insert({
     this.id = const Value.absent(),
@@ -3062,6 +3292,7 @@ class ExerciseSetsCompanion extends UpdateCompanion<ExerciseSet> {
     this.incline = const Value.absent(),
     this.bodyWeightKg = const Value.absent(),
     this.notes = const Value.absent(),
+    this.side = const Value.absent(),
   }) : exerciseId = Value(exerciseId),
        timestamp = Value(timestamp);
   static Insertable<ExerciseSet> custom({
@@ -3076,6 +3307,7 @@ class ExerciseSetsCompanion extends UpdateCompanion<ExerciseSet> {
     Expression<double>? incline,
     Expression<double>? bodyWeightKg,
     Expression<String>? notes,
+    Expression<String>? side,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
@@ -3089,6 +3321,7 @@ class ExerciseSetsCompanion extends UpdateCompanion<ExerciseSet> {
       if (incline != null) 'incline': incline,
       if (bodyWeightKg != null) 'body_weight_kg': bodyWeightKg,
       if (notes != null) 'notes': notes,
+      if (side != null) 'side': side,
     });
   }
 
@@ -3104,6 +3337,7 @@ class ExerciseSetsCompanion extends UpdateCompanion<ExerciseSet> {
     Value<double?>? incline,
     Value<double?>? bodyWeightKg,
     Value<String?>? notes,
+    Value<String?>? side,
   }) {
     return ExerciseSetsCompanion(
       id: id ?? this.id,
@@ -3117,6 +3351,7 @@ class ExerciseSetsCompanion extends UpdateCompanion<ExerciseSet> {
       incline: incline ?? this.incline,
       bodyWeightKg: bodyWeightKg ?? this.bodyWeightKg,
       notes: notes ?? this.notes,
+      side: side ?? this.side,
     );
   }
 
@@ -3156,6 +3391,9 @@ class ExerciseSetsCompanion extends UpdateCompanion<ExerciseSet> {
     if (notes.present) {
       map['notes'] = Variable<String>(notes.value);
     }
+    if (side.present) {
+      map['side'] = Variable<String>(side.value);
+    }
     return map;
   }
 
@@ -3172,7 +3410,8 @@ class ExerciseSetsCompanion extends UpdateCompanion<ExerciseSet> {
           ..write('distanceMetres: $distanceMetres, ')
           ..write('incline: $incline, ')
           ..write('bodyWeightKg: $bodyWeightKg, ')
-          ..write('notes: $notes')
+          ..write('notes: $notes, ')
+          ..write('side: $side')
           ..write(')'))
         .toString();
   }
@@ -7656,6 +7895,10 @@ typedef $$ExercisesTableCreateCompanionBuilder =
       Value<String?> imageLicense,
       Value<String?> alternatives,
       Value<String?> schulterRisiko,
+      Value<String?> familie,
+      Value<String?> griff,
+      Value<String?> position,
+      Value<bool> einseitig,
     });
 typedef $$ExercisesTableUpdateCompanionBuilder =
     ExercisesCompanion Function({
@@ -7689,6 +7932,10 @@ typedef $$ExercisesTableUpdateCompanionBuilder =
       Value<String?> imageLicense,
       Value<String?> alternatives,
       Value<String?> schulterRisiko,
+      Value<String?> familie,
+      Value<String?> griff,
+      Value<String?> position,
+      Value<bool> einseitig,
     });
 
 final class $$ExercisesTableReferences
@@ -7900,6 +8147,26 @@ class $$ExercisesTableFilterComposer
 
   ColumnFilters<String> get schulterRisiko => $composableBuilder(
     column: $table.schulterRisiko,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get familie => $composableBuilder(
+    column: $table.familie,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get griff => $composableBuilder(
+    column: $table.griff,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get position => $composableBuilder(
+    column: $table.position,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<bool> get einseitig => $composableBuilder(
+    column: $table.einseitig,
     builder: (column) => ColumnFilters(column),
   );
 
@@ -8131,6 +8398,26 @@ class $$ExercisesTableOrderingComposer
     builder: (column) => ColumnOrderings(column),
   );
 
+  ColumnOrderings<String> get familie => $composableBuilder(
+    column: $table.familie,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get griff => $composableBuilder(
+    column: $table.griff,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get position => $composableBuilder(
+    column: $table.position,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<bool> get einseitig => $composableBuilder(
+    column: $table.einseitig,
+    builder: (column) => ColumnOrderings(column),
+  );
+
   $$CategoriesTableOrderingComposer get categoryId {
     final $$CategoriesTableOrderingComposer composer = $composerBuilder(
       composer: this,
@@ -8283,6 +8570,18 @@ class $$ExercisesTableAnnotationComposer
     builder: (column) => column,
   );
 
+  GeneratedColumn<String> get familie =>
+      $composableBuilder(column: $table.familie, builder: (column) => column);
+
+  GeneratedColumn<String> get griff =>
+      $composableBuilder(column: $table.griff, builder: (column) => column);
+
+  GeneratedColumn<String> get position =>
+      $composableBuilder(column: $table.position, builder: (column) => column);
+
+  GeneratedColumn<bool> get einseitig =>
+      $composableBuilder(column: $table.einseitig, builder: (column) => column);
+
   $$CategoriesTableAnnotationComposer get categoryId {
     final $$CategoriesTableAnnotationComposer composer = $composerBuilder(
       composer: this,
@@ -8419,6 +8718,10 @@ class $$ExercisesTableTableManager
                 Value<String?> imageLicense = const Value.absent(),
                 Value<String?> alternatives = const Value.absent(),
                 Value<String?> schulterRisiko = const Value.absent(),
+                Value<String?> familie = const Value.absent(),
+                Value<String?> griff = const Value.absent(),
+                Value<String?> position = const Value.absent(),
+                Value<bool> einseitig = const Value.absent(),
               }) => ExercisesCompanion(
                 id: id,
                 name: name,
@@ -8450,6 +8753,10 @@ class $$ExercisesTableTableManager
                 imageLicense: imageLicense,
                 alternatives: alternatives,
                 schulterRisiko: schulterRisiko,
+                familie: familie,
+                griff: griff,
+                position: position,
+                einseitig: einseitig,
               ),
           createCompanionCallback:
               ({
@@ -8483,6 +8790,10 @@ class $$ExercisesTableTableManager
                 Value<String?> imageLicense = const Value.absent(),
                 Value<String?> alternatives = const Value.absent(),
                 Value<String?> schulterRisiko = const Value.absent(),
+                Value<String?> familie = const Value.absent(),
+                Value<String?> griff = const Value.absent(),
+                Value<String?> position = const Value.absent(),
+                Value<bool> einseitig = const Value.absent(),
               }) => ExercisesCompanion.insert(
                 id: id,
                 name: name,
@@ -8514,6 +8825,10 @@ class $$ExercisesTableTableManager
                 imageLicense: imageLicense,
                 alternatives: alternatives,
                 schulterRisiko: schulterRisiko,
+                familie: familie,
+                griff: griff,
+                position: position,
+                einseitig: einseitig,
               ),
           withReferenceMapper: (p0) => p0
               .map(
@@ -9050,6 +9365,7 @@ typedef $$ExerciseSetsTableCreateCompanionBuilder =
       Value<double?> incline,
       Value<double?> bodyWeightKg,
       Value<String?> notes,
+      Value<String?> side,
     });
 typedef $$ExerciseSetsTableUpdateCompanionBuilder =
     ExerciseSetsCompanion Function({
@@ -9064,6 +9380,7 @@ typedef $$ExerciseSetsTableUpdateCompanionBuilder =
       Value<double?> incline,
       Value<double?> bodyWeightKg,
       Value<String?> notes,
+      Value<String?> side,
     });
 
 final class $$ExerciseSetsTableReferences
@@ -9156,6 +9473,11 @@ class $$ExerciseSetsTableFilterComposer
 
   ColumnFilters<String> get notes => $composableBuilder(
     column: $table.notes,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get side => $composableBuilder(
+    column: $table.side,
     builder: (column) => ColumnFilters(column),
   );
 
@@ -9260,6 +9582,11 @@ class $$ExerciseSetsTableOrderingComposer
     builder: (column) => ColumnOrderings(column),
   );
 
+  ColumnOrderings<String> get side => $composableBuilder(
+    column: $table.side,
+    builder: (column) => ColumnOrderings(column),
+  );
+
   $$ExercisesTableOrderingComposer get exerciseId {
     final $$ExercisesTableOrderingComposer composer = $composerBuilder(
       composer: this,
@@ -9349,6 +9676,9 @@ class $$ExerciseSetsTableAnnotationComposer
   GeneratedColumn<String> get notes =>
       $composableBuilder(column: $table.notes, builder: (column) => column);
 
+  GeneratedColumn<String> get side =>
+      $composableBuilder(column: $table.side, builder: (column) => column);
+
   $$ExercisesTableAnnotationComposer get exerciseId {
     final $$ExercisesTableAnnotationComposer composer = $composerBuilder(
       composer: this,
@@ -9435,6 +9765,7 @@ class $$ExerciseSetsTableTableManager
                 Value<double?> incline = const Value.absent(),
                 Value<double?> bodyWeightKg = const Value.absent(),
                 Value<String?> notes = const Value.absent(),
+                Value<String?> side = const Value.absent(),
               }) => ExerciseSetsCompanion(
                 id: id,
                 exerciseId: exerciseId,
@@ -9447,6 +9778,7 @@ class $$ExerciseSetsTableTableManager
                 incline: incline,
                 bodyWeightKg: bodyWeightKg,
                 notes: notes,
+                side: side,
               ),
           createCompanionCallback:
               ({
@@ -9461,6 +9793,7 @@ class $$ExerciseSetsTableTableManager
                 Value<double?> incline = const Value.absent(),
                 Value<double?> bodyWeightKg = const Value.absent(),
                 Value<String?> notes = const Value.absent(),
+                Value<String?> side = const Value.absent(),
               }) => ExerciseSetsCompanion.insert(
                 id: id,
                 exerciseId: exerciseId,
@@ -9473,6 +9806,7 @@ class $$ExerciseSetsTableTableManager
                 incline: incline,
                 bodyWeightKg: bodyWeightKg,
                 notes: notes,
+                side: side,
               ),
           withReferenceMapper: (p0) => p0
               .map(

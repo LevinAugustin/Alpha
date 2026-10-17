@@ -2205,4 +2205,50 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get onboardingWeightHint => 'Vücut ağırlığı, isteğe bağlı';
+
+  @override
+  String get familyLabel => 'Aile';
+
+  @override
+  String get gripLabel => 'Tutuş';
+
+  @override
+  String get positionLabel => 'Konum';
+
+  @override
+  String get unilateralLabel => 'Tek taraf';
+
+  @override
+  String get otherVariants => 'Diğer varyantlar';
+
+  @override
+  String get sideLeft => 'Sol';
+
+  @override
+  String get sideRight => 'Sağ';
+
+  @override
+  String get createCustomExercise => 'Egzersiz oluştur';
+
+  @override
+  String get editCustomExercise => 'Egzersizi düzenle';
+
+  @override
+  String get deleteCustomExercise => 'Egzersizi sil';
+
+  @override
+  String get deleteCustomExerciseBody =>
+      'Bu egzersiz silinsin mi? Geçmiş antrenmanlar geçmişte kalır.';
+
+  @override
+  String get customExerciseName => 'Ad';
+
+  @override
+  String get customExerciseFamily => 'Aile kimliği';
+
+  @override
+  String get createAsCustomExercise => 'Özel egzersiz olarak oluştur';
+
+  @override
+  String get customExerciseInvalid => 'Bir ad, kaslar ve ekipman seç.';
 }

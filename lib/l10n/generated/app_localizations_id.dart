@@ -2199,4 +2199,50 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get onboardingWeightHint => 'Berat badan, opsional';
+
+  @override
+  String get familyLabel => 'Keluarga';
+
+  @override
+  String get gripLabel => 'Genggaman';
+
+  @override
+  String get positionLabel => 'Posisi';
+
+  @override
+  String get unilateralLabel => 'Satu sisi';
+
+  @override
+  String get otherVariants => 'Varian lain';
+
+  @override
+  String get sideLeft => 'Kiri';
+
+  @override
+  String get sideRight => 'Kanan';
+
+  @override
+  String get createCustomExercise => 'Buat latihan';
+
+  @override
+  String get editCustomExercise => 'Ubah latihan';
+
+  @override
+  String get deleteCustomExercise => 'Hapus latihan';
+
+  @override
+  String get deleteCustomExerciseBody =>
+      'Hapus latihan ini? Latihan lama tetap ada di riwayat.';
+
+  @override
+  String get customExerciseName => 'Nama';
+
+  @override
+  String get customExerciseFamily => 'Id keluarga';
+
+  @override
+  String get createAsCustomExercise => 'Buat sebagai latihan sendiri';
+
+  @override
+  String get customExerciseInvalid => 'Pilih nama, otot, dan alat.';
 }

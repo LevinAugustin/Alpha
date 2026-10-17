@@ -2186,4 +2186,50 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get onboardingWeightHint => 'جسمانی وزن، اختیاری';
+
+  @override
+  String get familyLabel => 'خاندان';
+
+  @override
+  String get gripLabel => 'گرفت';
+
+  @override
+  String get positionLabel => 'حالت';
+
+  @override
+  String get unilateralLabel => 'ایک طرف';
+
+  @override
+  String get otherVariants => 'دیگر اقسام';
+
+  @override
+  String get sideLeft => 'بائیں';
+
+  @override
+  String get sideRight => 'دائیں';
+
+  @override
+  String get createCustomExercise => 'ورزش بنائیں';
+
+  @override
+  String get editCustomExercise => 'ورزش میں ترمیم';
+
+  @override
+  String get deleteCustomExercise => 'ورزش حذف کریں';
+
+  @override
+  String get deleteCustomExerciseBody =>
+      'یہ ورزش حذف کریں؟ پرانی مشقیں تاریخ میں رہیں گی۔';
+
+  @override
+  String get customExerciseName => 'نام';
+
+  @override
+  String get customExerciseFamily => 'خاندان کا شناختی نمبر';
+
+  @override
+  String get createAsCustomExercise => 'اپنی ورزش کے طور پر بنائیں';
+
+  @override
+  String get customExerciseInvalid => 'نام، پٹھے اور آلہ منتخب کریں۔';
 }

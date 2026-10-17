@@ -686,5 +686,20 @@
   "heightInches": "Altezza (pollici)",
   "welcomeToAlpha": "Benvenuto in Alpha",
   "createProfileButton": "Crea profilo",
-  "onboardingWeightHint": "Peso corporeo, facoltativo"
+  "onboardingWeightHint": "Peso corporeo, facoltativo",
+  "familyLabel": "Famiglia",
+  "gripLabel": "Presa",
+  "positionLabel": "Posizione",
+  "unilateralLabel": "Unilaterale",
+  "otherVariants": "Altre varianti",
+  "sideLeft": "Sinistra",
+  "sideRight": "Destra",
+  "createCustomExercise": "Crea esercizio",
+  "editCustomExercise": "Modifica esercizio",
+  "deleteCustomExercise": "Elimina esercizio",
+  "deleteCustomExerciseBody": "Eliminare questo esercizio? Gli allenamenti passati restano nello storico.",
+  "customExerciseName": "Nome",
+  "customExerciseFamily": "Id famiglia",
+  "createAsCustomExercise": "Crea come esercizio personale",
+  "customExerciseInvalid": "Scegli un nome, i muscoli e un attrezzo."
 }

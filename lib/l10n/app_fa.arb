@@ -2230,5 +2230,20 @@
   "heightInches": "قد (اینچ)",
   "welcomeToAlpha": "به Alpha خوش آمدید",
   "createProfileButton": "ساختن نمایه",
-  "onboardingWeightHint": "وزن بدن، اختیاری"
+  "onboardingWeightHint": "وزن بدن، اختیاری",
+  "familyLabel": "خانواده",
+  "gripLabel": "گرفتن",
+  "positionLabel": "وضعیت",
+  "unilateralLabel": "یک‌طرفه",
+  "otherVariants": "گونه‌های دیگر",
+  "sideLeft": "چپ",
+  "sideRight": "راست",
+  "createCustomExercise": "ساخت حرکت",
+  "editCustomExercise": "ویرایش حرکت",
+  "deleteCustomExercise": "حذف حرکت",
+  "deleteCustomExerciseBody": "این حرکت حذف شود؟ تمرین‌های قبلی در تاریخچه می‌مانند.",
+  "customExerciseName": "نام",
+  "customExerciseFamily": "شناسه خانواده",
+  "createAsCustomExercise": "ساخت به‌عنوان حرکت شخصی",
+  "customExerciseInvalid": "نام، عضله‌ها و وسیله را انتخاب کنید."
 }

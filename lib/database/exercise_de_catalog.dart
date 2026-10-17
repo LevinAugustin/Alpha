@@ -37,6 +37,10 @@ class ExerciseDeEntry {
     required this.alternatives,
     required this.shoulderRisk,
     required this.legacyNames,
+    required this.family,
+    required this.grip,
+    required this.position,
+    required this.unilateral,
   });
 
   final String id;
@@ -57,6 +61,10 @@ class ExerciseDeEntry {
   final List<String> alternatives;
   final String shoulderRisk;
   final List<String> legacyNames;
+  final String family;
+  final String grip;
+  final String position;
+  final bool unilateral;
 
   ExerciseDeEntry copyWith({List<String>? legacyNames}) {
     return ExerciseDeEntry(
@@ -78,6 +86,10 @@ class ExerciseDeEntry {
       alternatives: alternatives,
       shoulderRisk: shoulderRisk,
       legacyNames: legacyNames ?? this.legacyNames,
+      family: family,
+      grip: grip,
+      position: position,
+      unilateral: unilateral,
     );
   }
 }
@@ -162,6 +174,10 @@ ExerciseCatalogParse parseExerciseCatalog(String raw) {
         alternatives: _strings(json['alternativen']),
         shoulderRisk: _string(json['schulter_risiko']),
         legacyNames: _strings(json['legacy_names']),
+        family: _string(json['familie']),
+        grip: _string(json['griff']),
+        position: _string(json['position']),
+        unilateral: json['einseitig'] == true,
       ),
     );
   }
@@ -409,6 +425,14 @@ String? _validate(Map<String, dynamic> json, String id) {
   if (alternatives != null) return alternatives;
   final shoulderRisk = _shoulderRisk(json, id);
   if (shoulderRisk != null) return shoulderRisk;
+  final family = _family(json, id);
+  if (family != null) return family;
+  final grip = _optionalToken(json, 'griff', id, exerciseGripValues);
+  if (grip != null) return grip;
+  final position = _optionalToken(json, 'position', id, exercisePositionValues);
+  if (position != null) return position;
+  final unilateral = _unilateral(json, id);
+  if (unilateral != null) return unilateral;
   final category = _string(json['kategorie']);
   if (!allowedExerciseCategories.contains(category)) {
     return '$id kategorie "$category" is not allowed.';
@@ -440,6 +464,39 @@ String? _muscleList(Map<String, dynamic> json, String key, String id) {
     if (item is! String || !exerciseMuscleKeys.contains(item.trim())) {
       return '$id field $key must use a muscle map key.';
     }
+  }
+  return null;
+}
+
+String? _family(Map<String, dynamic> json, String id) {
+  if (!json.containsKey('familie') || json['familie'] == null) return null;
+  final value = json['familie'];
+  if (value is String && value.trim().isEmpty) return null;
+  if (value is! String || !catalogIdPattern.hasMatch(value.trim())) {
+    return '$id familie is not a family id.';
+  }
+  return null;
+}
+
+String? _optionalToken(
+  Map<String, dynamic> json,
+  String key,
+  String id,
+  Iterable<String> allowed,
+) {
+  if (!json.containsKey(key) || json[key] == null) return null;
+  final value = json[key];
+  if (value is String && value.trim().isEmpty) return null;
+  if (value is! String || !allowed.contains(value.trim())) {
+    return '$id $key is not allowed.';
+  }
+  return null;
+}
+
+String? _unilateral(Map<String, dynamic> json, String id) {
+  if (!json.containsKey('einseitig') || json['einseitig'] == null) return null;
+  if (json['einseitig'] is! bool) {
+    return '$id einseitig must be true or false.';
   }
   return null;
 }
@@ -539,6 +596,10 @@ class _Fields {
       schulterRisiko: Value(
         entry.shoulderRisk.isEmpty ? null : entry.shoulderRisk,
       ),
+      familie: Value(entry.family.isEmpty ? null : entry.family),
+      griff: Value(entry.grip.isEmpty ? null : entry.grip),
+      position: Value(entry.position.isEmpty ? null : entry.position),
+      einseitig: Value(entry.unilateral),
     );
   }
 
@@ -565,6 +626,10 @@ class _Fields {
       schulterRisiko: Value(
         entry.shoulderRisk.isEmpty ? null : entry.shoulderRisk,
       ),
+      familie: Value(entry.family.isEmpty ? null : entry.family),
+      griff: Value(entry.grip.isEmpty ? null : entry.grip),
+      position: Value(entry.position.isEmpty ? null : entry.position),
+      einseitig: Value(entry.unilateral),
     );
   }
 }
@@ -616,7 +681,11 @@ bool _same(Exercise row, ExerciseDeEntry entry, int? categoryId) {
       row.imageSource == entry.imageSource &&
       row.imageLicense == entry.imageLicense &&
       row.alternatives == fields.alternatives &&
-      (row.schulterRisiko ?? '') == entry.shoulderRisk;
+      (row.schulterRisiko ?? '') == entry.shoulderRisk &&
+      (row.familie ?? '') == entry.family &&
+      (row.griff ?? '') == entry.grip &&
+      (row.position ?? '') == entry.position &&
+      row.einseitig == entry.unilateral;
 }
 
 Future<void> _moveHistory(

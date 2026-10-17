@@ -2174,4 +2174,50 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get onboardingWeightHint => 'وزن الجسم، اختياري';
+
+  @override
+  String get familyLabel => 'عائلة';
+
+  @override
+  String get gripLabel => 'قبضة';
+
+  @override
+  String get positionLabel => 'وضع';
+
+  @override
+  String get unilateralLabel => 'لكل جانب';
+
+  @override
+  String get otherVariants => 'أنواع أخرى';
+
+  @override
+  String get sideLeft => 'يسار';
+
+  @override
+  String get sideRight => 'يمين';
+
+  @override
+  String get createCustomExercise => 'إنشاء تمرين';
+
+  @override
+  String get editCustomExercise => 'تعديل التمرين';
+
+  @override
+  String get deleteCustomExercise => 'حذف التمرين';
+
+  @override
+  String get deleteCustomExerciseBody =>
+      'حذف هذا التمرين؟ تبقى التمارين السابقة في السجل.';
+
+  @override
+  String get customExerciseName => 'الاسم';
+
+  @override
+  String get customExerciseFamily => 'معرّف العائلة';
+
+  @override
+  String get createAsCustomExercise => 'إنشاء كتمرين خاص';
+
+  @override
+  String get customExerciseInvalid => 'اختر اسماً وعضلات وأداة.';
 }

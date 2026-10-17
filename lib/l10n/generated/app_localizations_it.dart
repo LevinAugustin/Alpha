@@ -2206,4 +2206,51 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get onboardingWeightHint => 'Peso corporeo, facoltativo';
+
+  @override
+  String get familyLabel => 'Famiglia';
+
+  @override
+  String get gripLabel => 'Presa';
+
+  @override
+  String get positionLabel => 'Posizione';
+
+  @override
+  String get unilateralLabel => 'Unilaterale';
+
+  @override
+  String get otherVariants => 'Altre varianti';
+
+  @override
+  String get sideLeft => 'Sinistra';
+
+  @override
+  String get sideRight => 'Destra';
+
+  @override
+  String get createCustomExercise => 'Crea esercizio';
+
+  @override
+  String get editCustomExercise => 'Modifica esercizio';
+
+  @override
+  String get deleteCustomExercise => 'Elimina esercizio';
+
+  @override
+  String get deleteCustomExerciseBody =>
+      'Eliminare questo esercizio? Gli allenamenti passati restano nello storico.';
+
+  @override
+  String get customExerciseName => 'Nome';
+
+  @override
+  String get customExerciseFamily => 'Id famiglia';
+
+  @override
+  String get createAsCustomExercise => 'Crea come esercizio personale';
+
+  @override
+  String get customExerciseInvalid =>
+      'Scegli un nome, i muscoli e un attrezzo.';
 }

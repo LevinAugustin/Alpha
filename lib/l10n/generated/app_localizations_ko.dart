@@ -2130,4 +2130,49 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get onboardingWeightHint => '체중, 선택 사항';
+
+  @override
+  String get familyLabel => '운동 계열';
+
+  @override
+  String get gripLabel => '그립';
+
+  @override
+  String get positionLabel => '자세';
+
+  @override
+  String get unilateralLabel => '한쪽';
+
+  @override
+  String get otherVariants => '다른 변형';
+
+  @override
+  String get sideLeft => '왼쪽';
+
+  @override
+  String get sideRight => '오른쪽';
+
+  @override
+  String get createCustomExercise => '운동 만들기';
+
+  @override
+  String get editCustomExercise => '운동 편집';
+
+  @override
+  String get deleteCustomExercise => '운동 삭제';
+
+  @override
+  String get deleteCustomExerciseBody => '이 운동을 삭제할까요? 지난 운동 기록은 히스토리에 남습니다.';
+
+  @override
+  String get customExerciseName => '이름';
+
+  @override
+  String get customExerciseFamily => '계열 ID';
+
+  @override
+  String get createAsCustomExercise => '맞춤 운동으로 만들기';
+
+  @override
+  String get customExerciseInvalid => '이름, 근육, 기구를 선택하세요.';
 }

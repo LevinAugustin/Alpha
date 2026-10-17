@@ -686,5 +686,20 @@
   "heightInches": "Boy (inç)",
   "welcomeToAlpha": "Alpha'ya hoş geldin",
   "createProfileButton": "Profil oluştur",
-  "onboardingWeightHint": "Vücut ağırlığı, isteğe bağlı"
+  "onboardingWeightHint": "Vücut ağırlığı, isteğe bağlı",
+  "familyLabel": "Aile",
+  "gripLabel": "Tutuş",
+  "positionLabel": "Konum",
+  "unilateralLabel": "Tek taraf",
+  "otherVariants": "Diğer varyantlar",
+  "sideLeft": "Sol",
+  "sideRight": "Sağ",
+  "createCustomExercise": "Egzersiz oluştur",
+  "editCustomExercise": "Egzersizi düzenle",
+  "deleteCustomExercise": "Egzersizi sil",
+  "deleteCustomExerciseBody": "Bu egzersiz silinsin mi? Geçmiş antrenmanlar geçmişte kalır.",
+  "customExerciseName": "Ad",
+  "customExerciseFamily": "Aile kimliği",
+  "createAsCustomExercise": "Özel egzersiz olarak oluştur",
+  "customExerciseInvalid": "Bir ad, kaslar ve ekipman seç."
 }

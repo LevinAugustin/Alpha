@@ -686,5 +686,20 @@
   "heightInches": "身長（インチ）",
   "welcomeToAlpha": "Alphaへようこそ",
   "createProfileButton": "プロフィールを作成",
-  "onboardingWeightHint": "体重（任意）"
+  "onboardingWeightHint": "体重（任意）",
+  "familyLabel": "種目ファミリー",
+  "gripLabel": "グリップ",
+  "positionLabel": "姿勢",
+  "unilateralLabel": "片側",
+  "otherVariants": "ほかのバリエーション",
+  "sideLeft": "左",
+  "sideRight": "右",
+  "createCustomExercise": "種目を作成",
+  "editCustomExercise": "種目を編集",
+  "deleteCustomExercise": "種目を削除",
+  "deleteCustomExerciseBody": "この種目を削除しますか？過去のワークアウトは履歴に残ります。",
+  "customExerciseName": "名前",
+  "customExerciseFamily": "ファミリーID",
+  "createAsCustomExercise": "カスタム種目として作成",
+  "customExerciseInvalid": "名前、筋肉、器具を選んでください。"
 }

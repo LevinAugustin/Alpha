@@ -34,19 +34,34 @@ class GymWorkoutPage extends StatefulWidget {
   State<GymWorkoutPage> createState() => _GymWorkoutPageState();
 }
 
+class _SidePair {
+  const _SidePair({this.left, this.right});
+
+  final ExerciseSet? left;
+  final ExerciseSet? right;
+}
+
 class _SetRow {
-  _SetRow({required this.kg, required this.reps, required this.previous});
+  _SetRow({
+    required this.kg,
+    required this.reps,
+    required this.repsRight,
+    required this.previous,
+  });
 
   final TextEditingController kg;
   final TextEditingController reps;
+  final TextEditingController repsRight;
   String previous;
   bool done = false;
   bool warmup = false;
   int? setId;
+  int? rightSetId;
 
   void dispose() {
     kg.dispose();
     reps.dispose();
+    repsRight.dispose();
   }
 }
 
@@ -276,30 +291,69 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
     final logged = [...current]
       ..sort((a, b) => a.timestamp.compareTo(b.timestamp));
     final previous = await _previousSets(exercise.id, workoutId);
-    final count = [
-      targetSets,
-      previous.length,
-      logged.length,
-      1,
-    ].reduce((a, b) => a > b ? a : b);
     final rows = <_SetRow>[];
-    for (var index = 0; index < count; index++) {
-      final earlier = index < previous.length ? previous[index] : null;
-      final saved = index < logged.length ? logged[index] : null;
-      final source = saved ?? earlier;
-      final row = _SetRow(
-        kg: TextEditingController(
-          text: _prefill(exercise.id, source?.loadKg, index),
-        ),
-        reps: TextEditingController(text: _number(source?.reps)),
-        previous: _previousLabel(earlier),
-      );
-      row.warmup = notesAreWarmup(saved?.notes);
-      if (saved != null) {
-        row.done = true;
-        row.setId = saved.id;
+    if (exercise.einseitig) {
+      final loggedPairs = _sidePairs(logged);
+      final previousPairs = _sidePairs(previous);
+      final count = [
+        targetSets,
+        previousPairs.length,
+        loggedPairs.length,
+        1,
+      ].reduce((a, b) => a > b ? a : b);
+      for (var index = 0; index < count; index++) {
+        final saved = index < loggedPairs.length ? loggedPairs[index] : null;
+        final earlier = index < previousPairs.length
+            ? previousPairs[index]
+            : null;
+        final source =
+            saved?.left ?? saved?.right ?? earlier?.left ?? earlier?.right;
+        final row = _SetRow(
+          kg: TextEditingController(
+            text: _prefill(exercise.id, source?.loadKg, index),
+          ),
+          reps: TextEditingController(
+            text: _number((saved?.left ?? earlier?.left)?.reps),
+          ),
+          repsRight: TextEditingController(
+            text: _number((saved?.right ?? earlier?.right)?.reps),
+          ),
+          previous: _pairPrevious(earlier),
+        );
+        row.warmup = notesAreWarmup((saved?.left ?? saved?.right)?.notes);
+        if (saved != null) {
+          row.done = true;
+          row.setId = saved.left?.id;
+          row.rightSetId = saved.right?.id;
+        }
+        rows.add(row);
       }
-      rows.add(row);
+    } else {
+      final count = [
+        targetSets,
+        previous.length,
+        logged.length,
+        1,
+      ].reduce((a, b) => a > b ? a : b);
+      for (var index = 0; index < count; index++) {
+        final earlier = index < previous.length ? previous[index] : null;
+        final saved = index < logged.length ? logged[index] : null;
+        final source = saved ?? earlier;
+        final row = _SetRow(
+          kg: TextEditingController(
+            text: _prefill(exercise.id, source?.loadKg, index),
+          ),
+          reps: TextEditingController(text: _number(source?.reps)),
+          repsRight: TextEditingController(),
+          previous: _previousLabel(earlier),
+        );
+        row.warmup = notesAreWarmup(saved?.notes);
+        if (saved != null) {
+          row.done = true;
+          row.setId = saved.id;
+        }
+        rows.add(row);
+      }
     }
     final block = _ExerciseBlock(
       exercise: exercise,
@@ -309,6 +363,80 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
     block.repMin = repMin;
     block.repMax = repMax;
     return block;
+  }
+
+  List<_SidePair> _sidePairs(List<ExerciseSet> sets) {
+    final pairs = <_SidePair>[];
+    final open = <int, ExerciseSet>{};
+    for (final set in sets) {
+      final stamp = set.timestamp.millisecondsSinceEpoch ~/ 1000;
+      final other = open.remove(stamp);
+      if (other == null) {
+        open[stamp] = set;
+        continue;
+      }
+      pairs.add(_combineSides(other, set));
+    }
+    for (final set in open.values) {
+      pairs.add(_combineSides(set, null));
+    }
+    return pairs;
+  }
+
+  _SidePair _combineSides(ExerciseSet first, ExerciseSet? second) {
+    ExerciseSet? left;
+    ExerciseSet? right;
+    void take(ExerciseSet set) {
+      if (set.side == 'rechts') {
+        right ??= set;
+      } else {
+        left ??= set;
+      }
+    }
+
+    take(first);
+    if (second != null) take(second);
+    return _SidePair(left: left, right: right);
+  }
+
+  String _pairPrevious(_SidePair? pair) {
+    if (pair == null || (pair.left == null && pair.right == null)) return '—';
+    final load = pair.left?.loadKg ?? pair.right?.loadKg;
+    return '${_number(load)} kg × ${_number(pair.left?.reps)}/${_number(pair.right?.reps)}';
+  }
+
+  Future<ExerciseSetView> _saveSide(
+    _ExerciseBlock block, {
+    required double kg,
+    required double reps,
+    required String side,
+    required DateTime created,
+    required bool warmup,
+  }) {
+    return insertExerciseSet(
+      db,
+      exerciseId: block.exercise.id,
+      workoutId: _workout!.id,
+      exerciseSet: ExerciseSetView(
+        id: 0,
+        bodyWeight: 0,
+        cardio: block.exercise.kind == 'cardio',
+        created: created,
+        distance: 0,
+        duration: 0,
+        name: block.exercise.name,
+        notes: encodeSetNotes(
+          gymId: alphaPrefs.activeGymId,
+          warmup: warmup,
+          userNote: block.note,
+        ),
+        planId: widget.plan.id,
+        reps: reps,
+        unit: 'kg',
+        weight: kg,
+        side: side,
+      ),
+    );
   }
 
   String _prefill(int exerciseId, double? logged, int index) {
@@ -366,7 +494,10 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
       for (final set in block.sets.where((row) => row.done && !row.warmup)) {
         final kg = double.tryParse(set.kg.text.replaceAll(',', '.')) ?? 0;
         final reps = double.tryParse(set.reps.text.replaceAll(',', '.')) ?? 0;
+        final right =
+            double.tryParse(set.repsRight.text.replaceAll(',', '.')) ?? 0;
         total += kg * reps;
+        if (block.exercise.einseitig) total += kg * right;
       }
     }
     return total;
@@ -388,11 +519,50 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
     final row = block.sets[setIndex];
     setState(() => _busy = true);
     try {
-      if (row.done && row.setId != null) {
-        await deleteExerciseSets(db, [row.setId!]);
+      if (row.done && (row.setId != null || row.rightSetId != null)) {
+        await deleteExerciseSets(db, [
+          if (row.setId != null) row.setId!,
+          if (row.rightSetId != null) row.rightSetId!,
+        ]);
         row.done = false;
         row.setId = null;
+        row.rightSetId = null;
         if (mounted) context.read<TimerState>().stopTimer();
+      } else if (block.exercise.einseitig) {
+        final kg = double.tryParse(row.kg.text.replaceAll(',', '.')) ?? 0;
+        final left = double.tryParse(row.reps.text.replaceAll(',', '.')) ?? 0;
+        final right =
+            double.tryParse(row.repsRight.text.replaceAll(',', '.')) ?? 0;
+        if (left == 0 && right == 0) return;
+        final now = DateTime.now();
+        var best = false;
+        if (left > 0) {
+          final saved = await _saveSide(
+            block,
+            kg: kg,
+            reps: left,
+            side: 'links',
+            created: now,
+            warmup: row.warmup,
+          );
+          row.setId = saved.id;
+          best = await isBestExerciseSet(db, saved) || best;
+        }
+        if (right > 0) {
+          final saved = await _saveSide(
+            block,
+            kg: kg,
+            reps: right,
+            side: 'rechts',
+            created: now,
+            warmup: row.warmup,
+          );
+          row.rightSetId = saved.id;
+          best = await isBestExerciseSet(db, saved) || best;
+        }
+        row.done = true;
+        await _startRest(block);
+        if (best && mounted) await _showRecord(kg, left > right ? left : right);
       } else {
         final kg = double.tryParse(row.kg.text.replaceAll(',', '.')) ?? 0;
         final reps = double.tryParse(row.reps.text.replaceAll(',', '.')) ?? 0;
@@ -605,6 +775,7 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
         _SetRow(
           kg: TextEditingController(),
           reps: TextEditingController(),
+          repsRight: TextEditingController(),
           previous: '—',
         ),
       );
@@ -613,7 +784,12 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
 
   Future<void> _removeBlock(int index) async {
     final block = _blocks[index];
-    final ids = block.sets.map((set) => set.setId).whereType<int>();
+    final ids = [
+      for (final set in block.sets) ...[
+        if (set.setId != null) set.setId!,
+        if (set.rightSetId != null) set.rightSetId!,
+      ],
+    ];
     await deleteExerciseSets(db, ids);
     block.dispose();
     setState(() => _blocks.removeAt(index));
@@ -1077,7 +1253,7 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
               onPressed: () => _editNote(block),
               child: Text(block.note.isEmpty ? l10n.addNote : block.note),
             ),
-            _tableHeader(palette, l10n),
+            _tableHeader(palette, l10n, block.exercise.einseitig),
             for (var setIndex = 0; setIndex < block.sets.length; setIndex++)
               _setLine(index, setIndex, palette, l10n),
             Align(
@@ -1118,7 +1294,11 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
     );
   }
 
-  Widget _tableHeader(AlphaPalette palette, AppLocalizations l10n) {
+  Widget _tableHeader(
+    AlphaPalette palette,
+    AppLocalizations l10n,
+    bool unilateral,
+  ) {
     Widget cell(String text) => Expanded(
       child: Text(
         text,
@@ -1133,7 +1313,8 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
           cell(l10n.columnSet),
           cell(l10n.columnPrevious),
           cell(l10n.columnKg),
-          cell(l10n.columnReps),
+          if (unilateral) cell(l10n.sideLeft) else cell(l10n.columnReps),
+          if (unilateral) cell(l10n.sideRight),
           const SizedBox(width: 40),
         ],
       ),
@@ -1179,6 +1360,14 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
           Expanded(
             child: _field(row.reps, row.done, Key('set-reps-$id-$setIndex')),
           ),
+          if (block.exercise.einseitig)
+            Expanded(
+              child: _field(
+                row.repsRight,
+                row.done,
+                Key('set-reps-right-$id-$setIndex'),
+              ),
+            ),
           IconButton(
             key: Key('set-check-$id-$setIndex'),
             onPressed: () => _toggle(blockIndex, setIndex),
@@ -1203,6 +1392,7 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
         _SetRow(
           kg: TextEditingController(text: _number(kg / 2)),
           reps: TextEditingController(text: '5'),
+          repsRight: TextEditingController(text: '5'),
           previous: '—',
         )..warmup = true,
       );
@@ -1211,6 +1401,7 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
         _SetRow(
           kg: TextEditingController(text: _number(20)),
           reps: TextEditingController(text: '10'),
+          repsRight: TextEditingController(text: '10'),
           previous: '—',
         )..warmup = true,
       );

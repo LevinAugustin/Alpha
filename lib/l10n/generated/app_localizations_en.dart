@@ -2191,4 +2191,50 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get onboardingWeightHint => 'Body weight, optional';
+
+  @override
+  String get familyLabel => 'Family';
+
+  @override
+  String get gripLabel => 'Grip';
+
+  @override
+  String get positionLabel => 'Position';
+
+  @override
+  String get unilateralLabel => 'Each side';
+
+  @override
+  String get otherVariants => 'Other variants';
+
+  @override
+  String get sideLeft => 'Left';
+
+  @override
+  String get sideRight => 'Right';
+
+  @override
+  String get createCustomExercise => 'Create exercise';
+
+  @override
+  String get editCustomExercise => 'Edit exercise';
+
+  @override
+  String get deleteCustomExercise => 'Delete exercise';
+
+  @override
+  String get deleteCustomExerciseBody =>
+      'Delete this exercise? Past workouts stay in the history.';
+
+  @override
+  String get customExerciseName => 'Name';
+
+  @override
+  String get customExerciseFamily => 'Family id';
+
+  @override
+  String get createAsCustomExercise => 'Create as custom exercise';
+
+  @override
+  String get customExerciseInvalid => 'Choose a name, muscles and gear.';
 }

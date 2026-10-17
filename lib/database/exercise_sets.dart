@@ -28,4 +28,5 @@ class ExerciseSets extends Table {
   RealColumn get incline => real().nullable()();
   RealColumn get bodyWeightKg => real().nullable()();
   TextColumn get notes => text().nullable()();
+  TextColumn get side => text().nullable()();
 }

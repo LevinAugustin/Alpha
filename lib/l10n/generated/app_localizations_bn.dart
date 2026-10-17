@@ -2184,4 +2184,50 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get onboardingWeightHint => 'শরীরের ওজন, ঐচ্ছিক';
+
+  @override
+  String get familyLabel => 'পরিবার';
+
+  @override
+  String get gripLabel => 'গ্রিপ';
+
+  @override
+  String get positionLabel => 'অবস্থান';
+
+  @override
+  String get unilateralLabel => 'একপাশে';
+
+  @override
+  String get otherVariants => 'অন্য ভ্যারিয়েন্ট';
+
+  @override
+  String get sideLeft => 'বাম';
+
+  @override
+  String get sideRight => 'ডান';
+
+  @override
+  String get createCustomExercise => 'ব্যায়াম তৈরি করুন';
+
+  @override
+  String get editCustomExercise => 'ব্যায়াম সম্পাদনা';
+
+  @override
+  String get deleteCustomExercise => 'ব্যায়াম মুছুন';
+
+  @override
+  String get deleteCustomExerciseBody =>
+      'এই ব্যায়াম মুছবেন? আগের ওয়ার্কআউট ইতিহাসে থাকবে।';
+
+  @override
+  String get customExerciseName => 'নাম';
+
+  @override
+  String get customExerciseFamily => 'পরিবার আইডি';
+
+  @override
+  String get createAsCustomExercise => 'কাস্টম ব্যায়াম হিসেবে তৈরি করুন';
+
+  @override
+  String get customExerciseInvalid => 'নাম, পেশি এবং সরঞ্জাম বেছে নিন।';
 }

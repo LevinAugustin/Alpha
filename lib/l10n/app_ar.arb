@@ -2230,5 +2230,20 @@
   "heightInches": "الطول (بوصة)",
   "welcomeToAlpha": "مرحبًا بك في Alpha",
   "createProfileButton": "إنشاء ملف",
-  "onboardingWeightHint": "وزن الجسم، اختياري"
+  "onboardingWeightHint": "وزن الجسم، اختياري",
+  "familyLabel": "عائلة",
+  "gripLabel": "قبضة",
+  "positionLabel": "وضع",
+  "unilateralLabel": "لكل جانب",
+  "otherVariants": "أنواع أخرى",
+  "sideLeft": "يسار",
+  "sideRight": "يمين",
+  "createCustomExercise": "إنشاء تمرين",
+  "editCustomExercise": "تعديل التمرين",
+  "deleteCustomExercise": "حذف التمرين",
+  "deleteCustomExerciseBody": "حذف هذا التمرين؟ تبقى التمارين السابقة في السجل.",
+  "customExerciseName": "الاسم",
+  "customExerciseFamily": "معرّف العائلة",
+  "createAsCustomExercise": "إنشاء كتمرين خاص",
+  "customExerciseInvalid": "اختر اسماً وعضلات وأداة."
 }

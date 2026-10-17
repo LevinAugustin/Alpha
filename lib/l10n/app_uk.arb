@@ -2239,5 +2239,20 @@
   "heightInches": "Зріст (дюйми)",
   "welcomeToAlpha": "Ласкаво просимо до Alpha",
   "createProfileButton": "Створити профіль",
-  "onboardingWeightHint": "Вага тіла, необов'язково"
+  "onboardingWeightHint": "Вага тіла, необов'язково",
+  "familyLabel": "Сімейство",
+  "gripLabel": "Хват",
+  "positionLabel": "Положення",
+  "unilateralLabel": "На кожну сторону",
+  "otherVariants": "Інші варіанти",
+  "sideLeft": "Ліва",
+  "sideRight": "Права",
+  "createCustomExercise": "Створити вправу",
+  "editCustomExercise": "Змінити вправу",
+  "deleteCustomExercise": "Видалити вправу",
+  "deleteCustomExerciseBody": "Видалити цю вправу? Минулі тренування залишаються в історії.",
+  "customExerciseName": "Назва",
+  "customExerciseFamily": "Ідентифікатор сімейства",
+  "createAsCustomExercise": "Створити як власну вправу",
+  "customExerciseInvalid": "Оберіть назву, м'язи та снаряд."
 }

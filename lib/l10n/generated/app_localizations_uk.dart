@@ -2213,4 +2213,50 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get onboardingWeightHint => 'Вага тіла, необов\'язково';
+
+  @override
+  String get familyLabel => 'Сімейство';
+
+  @override
+  String get gripLabel => 'Хват';
+
+  @override
+  String get positionLabel => 'Положення';
+
+  @override
+  String get unilateralLabel => 'На кожну сторону';
+
+  @override
+  String get otherVariants => 'Інші варіанти';
+
+  @override
+  String get sideLeft => 'Ліва';
+
+  @override
+  String get sideRight => 'Права';
+
+  @override
+  String get createCustomExercise => 'Створити вправу';
+
+  @override
+  String get editCustomExercise => 'Змінити вправу';
+
+  @override
+  String get deleteCustomExercise => 'Видалити вправу';
+
+  @override
+  String get deleteCustomExerciseBody =>
+      'Видалити цю вправу? Минулі тренування залишаються в історії.';
+
+  @override
+  String get customExerciseName => 'Назва';
+
+  @override
+  String get customExerciseFamily => 'Ідентифікатор сімейства';
+
+  @override
+  String get createAsCustomExercise => 'Створити як власну вправу';
+
+  @override
+  String get customExerciseInvalid => 'Оберіть назву, м\'язи та снаряд.';
 }

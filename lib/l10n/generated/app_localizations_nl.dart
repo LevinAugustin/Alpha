@@ -2203,4 +2203,50 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get onboardingWeightHint => 'Lichaamsgewicht, optioneel';
+
+  @override
+  String get familyLabel => 'Familie';
+
+  @override
+  String get gripLabel => 'Greep';
+
+  @override
+  String get positionLabel => 'Houding';
+
+  @override
+  String get unilateralLabel => 'Eenzijdig';
+
+  @override
+  String get otherVariants => 'Andere varianten';
+
+  @override
+  String get sideLeft => 'Links';
+
+  @override
+  String get sideRight => 'Rechts';
+
+  @override
+  String get createCustomExercise => 'Oefening maken';
+
+  @override
+  String get editCustomExercise => 'Oefening bewerken';
+
+  @override
+  String get deleteCustomExercise => 'Oefening verwijderen';
+
+  @override
+  String get deleteCustomExerciseBody =>
+      'Deze oefening verwijderen? Eerdere trainingen blijven in de geschiedenis.';
+
+  @override
+  String get customExerciseName => 'Naam';
+
+  @override
+  String get customExerciseFamily => 'Familie-id';
+
+  @override
+  String get createAsCustomExercise => 'Als eigen oefening maken';
+
+  @override
+  String get customExerciseInvalid => 'Kies een naam, spieren en materiaal.';
 }

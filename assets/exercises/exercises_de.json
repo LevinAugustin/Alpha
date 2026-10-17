@@ -43,7 +43,9 @@
       "schraegbankdruecken-multipresse",
       "butterfly-maschine",
       "dips"
-    ]
+    ],
+    "familie": "bankdruecken",
+    "position": "flach"
   },
   {
     "id": "schraegbankdruecken-multipresse",
@@ -86,7 +88,9 @@
       "schraegbankdruecken-kurzhantel",
       "bankdruecken-langhantel",
       "kabelzug-crossover"
-    ]
+    ],
+    "familie": "bankdruecken",
+    "position": "schraeg"
   },
   {
     "id": "butterfly-maschine",
@@ -210,7 +214,9 @@
     "alternativen": [
       "latziehen-breit",
       "rudern-kabel-sitzend"
-    ]
+    ],
+    "familie": "klimmzuege",
+    "griff": "obergriff"
   },
   {
     "id": "latziehen-breit",
@@ -254,7 +260,9 @@
     "alternativen": [
       "klimmzuege",
       "rudern-kabel-sitzend"
-    ]
+    ],
+    "familie": "latziehen",
+    "griff": "breit"
   },
   {
     "id": "rudern-kabel-sitzend",
@@ -428,7 +436,8 @@
     "alternativen": [
       "schulterdruecken-kurzhantel",
       "seitheben-kurzhantel"
-    ]
+    ],
+    "familie": "schulterdruecken"
   },
   {
     "id": "seitheben-kurzhantel",
@@ -679,7 +688,8 @@
     "alternativen": [
       "kreuzheben-langhantel",
       "hip-thrust-langhantel"
-    ]
+    ],
+    "position": "sitzend"
   },
   {
     "id": "wadenheben-stehend",
@@ -715,7 +725,8 @@
     "quelle": "free-exercise-db: Standing_Calf_Raises",
     "lizenz": "Unlicense",
     "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Standing_Calf_Raises/0.jpg",
-    "schulter_risiko": "niedrig"
+    "schulter_risiko": "niedrig",
+    "position": "stehend"
   },
   {
     "id": "hip-thrust-langhantel",
@@ -797,7 +808,8 @@
     "alternativen": [
       "bizepscurls-kurzhantel",
       "hammercurls"
-    ]
+    ],
+    "familie": "bizepscurls"
   },
   {
     "id": "bizepscurls-kurzhantel",
@@ -838,7 +850,8 @@
     "alternativen": [
       "bizepscurls-sz-stange",
       "hammercurls"
-    ]
+    ],
+    "familie": "bizepscurls"
   },
   {
     "id": "hammercurls",
@@ -875,7 +888,9 @@
     "schulter_risiko": "niedrig",
     "alternativen": [
       "bizepscurls-kurzhantel"
-    ]
+    ],
+    "familie": "bizepscurls",
+    "griff": "neutral"
   },
   {
     "id": "trizepsdruecken-kabel",
@@ -1288,7 +1303,9 @@
       "schraegbankdruecken-multipresse",
       "bankdruecken-langhantel",
       "butterfly-maschine"
-    ]
+    ],
+    "familie": "bankdruecken",
+    "position": "schraeg"
   },
   {
     "id": "schulterdruecken-kurzhantel",
@@ -1332,6 +1349,8 @@
     "alternativen": [
       "schulterdruecken-multipresse",
       "seitheben-kurzhantel"
-    ]
+    ],
+    "familie": "schulterdruecken",
+    "position": "sitzend"
   }
 ]

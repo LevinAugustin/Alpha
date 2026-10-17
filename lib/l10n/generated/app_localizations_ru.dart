@@ -2216,4 +2216,50 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get onboardingWeightHint => 'Вес тела, необязательно';
+
+  @override
+  String get familyLabel => 'Семья';
+
+  @override
+  String get gripLabel => 'Хват';
+
+  @override
+  String get positionLabel => 'Положение';
+
+  @override
+  String get unilateralLabel => 'На каждую сторону';
+
+  @override
+  String get otherVariants => 'Другие варианты';
+
+  @override
+  String get sideLeft => 'Левая';
+
+  @override
+  String get sideRight => 'Правая';
+
+  @override
+  String get createCustomExercise => 'Создать упражнение';
+
+  @override
+  String get editCustomExercise => 'Изменить упражнение';
+
+  @override
+  String get deleteCustomExercise => 'Удалить упражнение';
+
+  @override
+  String get deleteCustomExerciseBody =>
+      'Удалить это упражнение? Прошлые тренировки остаются в истории.';
+
+  @override
+  String get customExerciseName => 'Название';
+
+  @override
+  String get customExerciseFamily => 'Идентификатор семьи';
+
+  @override
+  String get createAsCustomExercise => 'Создать как своё упражнение';
+
+  @override
+  String get customExerciseInvalid => 'Выберите название, мышцы и снаряд.';
 }

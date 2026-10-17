@@ -686,5 +686,20 @@
   "heightInches": "Wzrost (cale)",
   "welcomeToAlpha": "Witaj w Alpha",
   "createProfileButton": "Utwórz profil",
-  "onboardingWeightHint": "Masa ciała, opcjonalnie"
+  "onboardingWeightHint": "Masa ciała, opcjonalnie",
+  "familyLabel": "Rodzina",
+  "gripLabel": "Chwyt",
+  "positionLabel": "Pozycja",
+  "unilateralLabel": "Jednostronne",
+  "otherVariants": "Inne warianty",
+  "sideLeft": "Lewa",
+  "sideRight": "Prawa",
+  "createCustomExercise": "Utwórz ćwiczenie",
+  "editCustomExercise": "Edytuj ćwiczenie",
+  "deleteCustomExercise": "Usuń ćwiczenie",
+  "deleteCustomExerciseBody": "Usunąć to ćwiczenie? Dotychczasowe treningi zostają w historii.",
+  "customExerciseName": "Nazwa",
+  "customExerciseFamily": "Identyfikator rodziny",
+  "createAsCustomExercise": "Utwórz jako własne ćwiczenie",
+  "customExerciseInvalid": "Wybierz nazwę, mięśnie i sprzęt."
 }

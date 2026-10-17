@@ -2171,4 +2171,50 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String get onboardingWeightHint => 'น้ำหนักตัว ไม่บังคับ';
+
+  @override
+  String get familyLabel => 'ตระกูล';
+
+  @override
+  String get gripLabel => 'การจับ';
+
+  @override
+  String get positionLabel => 'ท่าทาง';
+
+  @override
+  String get unilateralLabel => 'ข้างเดียว';
+
+  @override
+  String get otherVariants => 'รูปแบบอื่น';
+
+  @override
+  String get sideLeft => 'ซ้าย';
+
+  @override
+  String get sideRight => 'ขวา';
+
+  @override
+  String get createCustomExercise => 'สร้างท่า';
+
+  @override
+  String get editCustomExercise => 'แก้ไขท่า';
+
+  @override
+  String get deleteCustomExercise => 'ลบท่า';
+
+  @override
+  String get deleteCustomExerciseBody =>
+      'ลบท่านี้หรือไม่ การฝึกที่ผ่านมายังอยู่ในประวัติ';
+
+  @override
+  String get customExerciseName => 'ชื่อ';
+
+  @override
+  String get customExerciseFamily => 'รหัสตระกูล';
+
+  @override
+  String get createAsCustomExercise => 'สร้างเป็นท่าของตัวเอง';
+
+  @override
+  String get customExerciseInvalid => 'เลือกชื่อ กล้ามเนื้อ และอุปกรณ์';
 }

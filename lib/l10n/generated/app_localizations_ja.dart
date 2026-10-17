@@ -2128,4 +2128,49 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get onboardingWeightHint => '体重（任意）';
+
+  @override
+  String get familyLabel => '種目ファミリー';
+
+  @override
+  String get gripLabel => 'グリップ';
+
+  @override
+  String get positionLabel => '姿勢';
+
+  @override
+  String get unilateralLabel => '片側';
+
+  @override
+  String get otherVariants => 'ほかのバリエーション';
+
+  @override
+  String get sideLeft => '左';
+
+  @override
+  String get sideRight => '右';
+
+  @override
+  String get createCustomExercise => '種目を作成';
+
+  @override
+  String get editCustomExercise => '種目を編集';
+
+  @override
+  String get deleteCustomExercise => '種目を削除';
+
+  @override
+  String get deleteCustomExerciseBody => 'この種目を削除しますか？過去のワークアウトは履歴に残ります。';
+
+  @override
+  String get customExerciseName => '名前';
+
+  @override
+  String get customExerciseFamily => 'ファミリーID';
+
+  @override
+  String get createAsCustomExercise => 'カスタム種目として作成';
+
+  @override
+  String get customExerciseInvalid => '名前、筋肉、器具を選んでください。';
 }

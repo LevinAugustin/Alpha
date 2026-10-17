@@ -686,5 +686,20 @@
   "heightInches": "Lengte (inch)",
   "welcomeToAlpha": "Welkom bij Alpha",
   "createProfileButton": "Profiel maken",
-  "onboardingWeightHint": "Lichaamsgewicht, optioneel"
+  "onboardingWeightHint": "Lichaamsgewicht, optioneel",
+  "familyLabel": "Familie",
+  "gripLabel": "Greep",
+  "positionLabel": "Houding",
+  "unilateralLabel": "Eenzijdig",
+  "otherVariants": "Andere varianten",
+  "sideLeft": "Links",
+  "sideRight": "Rechts",
+  "createCustomExercise": "Oefening maken",
+  "editCustomExercise": "Oefening bewerken",
+  "deleteCustomExercise": "Oefening verwijderen",
+  "deleteCustomExerciseBody": "Deze oefening verwijderen? Eerdere trainingen blijven in de geschiedenis.",
+  "customExerciseName": "Naam",
+  "customExerciseFamily": "Familie-id",
+  "createAsCustomExercise": "Als eigen oefening maken",
+  "customExerciseInvalid": "Kies een naam, spieren en materiaal."
 }

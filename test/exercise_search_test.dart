@@ -10,6 +10,7 @@ void main() {
         germanName: 'Bankdrücken',
         aliases: 'Bench Press|Flachbank',
         category: 'Brust',
+        primaryMuscles: '["brust"]',
         query: 'Push',
       ),
       isTrue,
@@ -43,10 +44,28 @@ void main() {
       isFalse,
     );
     expect(
+      exerciseMatchesQuery(
+        name: 'Face Pulls',
+        category: 'Schultern',
+        primaryMuscles: '["schulter_hinten"]',
+        query: 'Pull',
+      ),
+      isTrue,
+    );
+    expect(
+      exerciseMatchesQuery(
+        name: 'Bankdrücken',
+        category: 'Brust',
+        query: 'Push',
+      ),
+      isFalse,
+    );
+    expect(
       matchesExerciseFilters(
         name: 'bankdruecken-multipresse',
         equipment: 'Multipresse',
         category: 'Brust',
+        primaryMuscles: '["brust"]',
         query: 'Pull',
         equipmentFilter: 'Multipresse',
       ),

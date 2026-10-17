@@ -80,6 +80,7 @@ ExerciseSetView _toExerciseSetView(AppDatabase database, TypedResult row) {
     restMs: exercise.defaultRestDurationMs,
     unit: unit,
     weight: displayLoad(unit, set.loadKg),
+    side: set.side,
   );
 }
 
@@ -379,6 +380,7 @@ Future<ExerciseSetView> insertExerciseSet(
       incline: Value(exerciseSet.incline?.toDouble()),
       bodyWeightKg: Value(resolvedBodyWeightKg),
       notes: Value(exerciseSet.notes),
+      side: Value(exerciseSet.side),
     ),
   );
   return (await getExerciseSetById(database, id))!;
@@ -414,6 +416,7 @@ Future<void> updateExerciseSet(
                 _canonicalBodyWeight(exerciseSet.unit, exerciseSet.bodyWeight),
           ),
           notes: Value(exerciseSet.notes),
+          side: Value(exerciseSet.side),
         ),
       );
 }
@@ -439,11 +442,14 @@ Future<bool> isBestExerciseSet(
   if (exercise == null) return false;
 
   final previous = database.exerciseSets.select()
-    ..where(
-      (set) =>
+    ..where((set) {
+      final sameExercise =
           set.exerciseId.equals(exercise.id) &
-          set.id.isNotValue(exerciseSet.id),
-    );
+          set.id.isNotValue(exerciseSet.id);
+      final side = exerciseSet.side;
+      if (side == null || side.isEmpty) return sameExercise;
+      return sameExercise & set.side.equals(side);
+    });
 
   if (exerciseSet.cardio &&
       const {'kg', 'lb', 'stone'}.contains(exerciseSet.unit)) {

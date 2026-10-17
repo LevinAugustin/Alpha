@@ -2230,5 +2230,20 @@
   "heightInches": "ส่วนสูง (นิ้ว)",
   "welcomeToAlpha": "ยินดีต้อนรับสู่ Alpha",
   "createProfileButton": "สร้างโปรไฟล์",
-  "onboardingWeightHint": "น้ำหนักตัว ไม่บังคับ"
+  "onboardingWeightHint": "น้ำหนักตัว ไม่บังคับ",
+  "familyLabel": "ตระกูล",
+  "gripLabel": "การจับ",
+  "positionLabel": "ท่าทาง",
+  "unilateralLabel": "ข้างเดียว",
+  "otherVariants": "รูปแบบอื่น",
+  "sideLeft": "ซ้าย",
+  "sideRight": "ขวา",
+  "createCustomExercise": "สร้างท่า",
+  "editCustomExercise": "แก้ไขท่า",
+  "deleteCustomExercise": "ลบท่า",
+  "deleteCustomExerciseBody": "ลบท่านี้หรือไม่ การฝึกที่ผ่านมายังอยู่ในประวัติ",
+  "customExerciseName": "ชื่อ",
+  "customExerciseFamily": "รหัสตระกูล",
+  "createAsCustomExercise": "สร้างเป็นท่าของตัวเอง",
+  "customExerciseInvalid": "เลือกชื่อ กล้ามเนื้อ และอุปกรณ์"
 }
