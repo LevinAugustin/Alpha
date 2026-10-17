@@ -9,13 +9,13 @@ class AppLocalizationsJa extends AppLocalizations {
   AppLocalizationsJa([String locale = 'ja']) : super(locale);
 
   @override
-  String get appTitle => 'Flexify';
+  String get appTitle => 'Alpha';
 
   @override
   String get settingsLanguage => '言語';
 
   @override
-  String get settingsLanguageDescription => 'Flexifyで使用する言語を選択します';
+  String get settingsLanguageDescription => 'Alphaで使用する言語を選択します';
 
   @override
   String get languageSystemDefault => 'システムのデフォルト';
@@ -369,8 +369,7 @@ class AppLocalizationsJa extends AppLocalizations {
   }
 
   @override
-  String get backupArchiveMissingDatabase =>
-      'バックアップに Flexify のデータベースが含まれていません。';
+  String get backupArchiveMissingDatabase => 'バックアップに Alpha のデータベースが含まれていません。';
 
   @override
   String failedToImportGraphs(String error) {
@@ -497,7 +496,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get privacyPolicy => 'プライバシーポリシー';
 
   @override
-  String get privacyPolicyDescription => 'Flexifyによるデータの取り扱い';
+  String get privacyPolicyDescription => 'Alphaによるデータの取り扱い';
 
   @override
   String get licenseLabel => 'ライセンス';
@@ -512,7 +511,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get leaveReview => 'レビューを書く';
 
   @override
-  String get leaveReviewDescription => 'Play ストアでFlexifyを評価';
+  String get leaveReviewDescription => 'Play ストアでAlphaを評価';
 
   @override
   String get reportBug => 'バグを報告';
@@ -635,7 +634,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get titleOptional => 'タイトル（任意）';
 
   @override
-  String get searchExercises => '種目を検索...';
+  String get searchExercises => '種目を検索';
 
   @override
   String get warmupSets => 'ウォームアップセット';
@@ -1255,7 +1254,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get automaticBackupNotificationBody =>
-      'Flexifyは毎日、データと画像を選択したフォルダーへ自動的にバックアップします。';
+      'Alphaは毎日、データと画像を選択したフォルダーへ自動的にバックアップします。';
 
   @override
   String get backupSettingsChannel => 'バックアップ設定';
@@ -1267,7 +1266,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get backupChannelName => 'バックアップチャンネル';
 
   @override
-  String get backupChannelDescription => 'Flexifyのデータと画像の自動バックアップ';
+  String get backupChannelDescription => 'Alphaのデータと画像の自動バックアップ';
 
   @override
   String get backupCompletedTitle => 'データと画像をバックアップしました';
@@ -1513,4 +1512,238 @@ class AppLocalizationsJa extends AppLocalizations {
   String setNumber(int number) {
     return 'セット $number';
   }
+
+  @override
+  String get tabStart => 'スタート';
+
+  @override
+  String get tabTraining => 'トレーニング';
+
+  @override
+  String get tabExercises => '種目';
+
+  @override
+  String get tabProfile => 'プロフィール';
+
+  @override
+  String get calendarTitle => 'カレンダー';
+
+  @override
+  String dayStreak(int count) {
+    return '$count日連続';
+  }
+
+  @override
+  String weekStreak(int count) {
+    return '$count週連続';
+  }
+
+  @override
+  String get thisWeek => '今週';
+
+  @override
+  String get bodyWeightChart => '体重';
+
+  @override
+  String get strengthChart => '筋力';
+
+  @override
+  String get weeklyVolumeChart => '週間ボリューム';
+
+  @override
+  String get noChartData => 'データがまだ足りません';
+
+  @override
+  String get newTemplate => '新しいテンプレート';
+
+  @override
+  String get templateLimit => 'テンプレートは7件まで保存できます。';
+
+  @override
+  String get templatesEmpty => 'このテンプレートには種目がありません。';
+
+  @override
+  String get allMuscles => 'すべて';
+
+  @override
+  String get noHistory => '履歴はまだありません';
+
+  @override
+  String bestOneRepMax(String value) {
+    return '推定1RM $value kg';
+  }
+
+  @override
+  String bestLoad(String value) {
+    return '最大重量 $value kg';
+  }
+
+  @override
+  String get profileName => '名前';
+
+  @override
+  String get heightCm => '身長 (cm)';
+
+  @override
+  String get ageOptional => '年齢（任意）';
+
+  @override
+  String get goals => '目標';
+
+  @override
+  String get bodyData => '身体データ';
+
+  @override
+  String get addBodyWeight => '体重を追加';
+
+  @override
+  String get weightKg => '体重 (kg)';
+
+  @override
+  String get aiCoaching => 'AIコーチング';
+
+  @override
+  String get apiKey => 'APIキー';
+
+  @override
+  String get apiKeyStoredLocally => 'この端末だけに保存されます。まだ使いません。';
+
+  @override
+  String get profileSaved => 'プロフィールを保存しました';
+
+  @override
+  String get noTrainingThisDay => 'この日の記録はありません';
+
+  @override
+  String targetSets(int count) {
+    return '$countセット';
+  }
+
+  @override
+  String repRangeLabel(String range) {
+    return '$range回';
+  }
+
+  @override
+  String get repMinLabel => '回数（から）';
+
+  @override
+  String get repMaxLabel => '回数（まで）';
+
+  @override
+  String get exerciseDatabaseCreditTitle => '種目ライブラリ';
+
+  @override
+  String get exerciseDatabaseCreditBody =>
+      '名称は yuhonas の free-exercise-db（Unlicense、パブリックドメイン）より。Alpha がドイツ語名と別名を追加しました。';
+
+  @override
+  String get workoutFinish => 'Beenden';
+
+  @override
+  String get volumeLabel => 'Volumen';
+
+  @override
+  String get setsLabel => 'Sätze';
+
+  @override
+  String get restSkip => 'Überspringen';
+
+  @override
+  String get columnSet => 'SATZ';
+
+  @override
+  String get columnPrevious => 'VORHERIGE';
+
+  @override
+  String get columnKg => 'KG';
+
+  @override
+  String get columnReps => 'WDH';
+
+  @override
+  String get addExerciseWorkout => 'Übung hinzufügen';
+
+  @override
+  String get addNote => 'Notiz hinzufügen';
+
+  @override
+  String get swapExercise => 'Übung tauschen';
+
+  @override
+  String get moveExerciseUp => 'Nach oben';
+
+  @override
+  String get moveExerciseDown => 'Nach unten';
+
+  @override
+  String get removeExercise => 'Entfernen';
+
+  @override
+  String get restSecondsLabel => 'Pause in Sekunden';
+
+  @override
+  String get newRecordTitle => 'NEUER REKORD!';
+
+  @override
+  String get recordKeepGoing => 'Weiter so';
+
+  @override
+  String get exerciseSearchHint => 'Übung suchen';
+
+  @override
+  String get installUpdate => 'Update installieren';
+
+  @override
+  String get updateAvailable => 'Eine neuere Version ist da';
+
+  @override
+  String get localProfiles => 'Profile';
+
+  @override
+  String get newProfile => 'Neues Profil';
+
+  @override
+  String get profileNameHint => 'Profilname';
+
+  @override
+  String get profileActive => 'Aktiv';
+
+  @override
+  String get switchProfile => 'Wechseln';
+
+  @override
+  String get themeSetting => 'Design';
+
+  @override
+  String get themeTiefschwarz => 'Tiefschwarz';
+
+  @override
+  String get themeEisblau => 'Eisblau';
+
+  @override
+  String get themePink => 'Pink';
+
+  @override
+  String get restSound => 'Pausenton';
+
+  @override
+  String get restSoundVolume => 'Lautstärke der Pause';
+
+  @override
+  String get restSoundCredit => 'Notification Sound von yfjesse, CC0';
+
+  @override
+  String get splashMotto => 'Stärke. Disziplin. Fortschritt.';
+
+  @override
+  String helloName(String name) {
+    return 'Hallo, $name';
+  }
+
+  @override
+  String get alphaSettings => 'Alpha';
+
+  @override
+  String get alphaSettingsDescription => 'Profile, Design und Pausenton';
 }

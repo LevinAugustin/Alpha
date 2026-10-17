@@ -1,0 +1,112 @@
+name: Android APK
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: android-apk-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+env:
+  PUB_SUMMARY_ONLY: true
+
+jobs:
+  build-apk:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+
+      - name: Setup Java
+        uses: actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961 # v5
+        with:
+          distribution: "zulu"
+          java-version: "21"
+
+      - name: Setup Flutter from submodule
+        run: |
+          git submodule update --init --recursive flutter
+          chmod +x flutter/bin/*
+          echo "$PWD/flutter/bin" >> "$GITHUB_PATH"
+          flutter/bin/flutter --version
+          flutter/bin/flutter config --no-analytics
+
+      - name: Get dependencies
+        run: flutter pub get --enforce-lockfile
+
+      - name: Run build_runner
+        run: dart run build_runner build -d
+
+      - name: Tune Gradle for CI runner memory
+        run: |
+          sed -i \
+            -e 's/^org.gradle.jvmargs=.*/org.gradle.jvmargs=-Xmx3G -XX:MaxMetaspaceSize=512m -XX:ReservedCodeCacheSize=512m -XX:ActiveProcessorCount=2/' \
+            -e 's/^org.gradle.workers.max=.*/org.gradle.workers.max=2/' \
+            android/gradle.properties
+
+      - name: Install pinned Android NDK with recovery
+        run: bash ./scripts/ensure-ci-ndk.sh 28.2.13676358
+
+      - name: Prepare release signing
+        env:
+          ALPHA_KEYSTORE_BASE64: ${{ secrets.ALPHA_KEYSTORE_BASE64 }}
+          ALPHA_STORE_PASSWORD: ${{ secrets.ALPHA_STORE_PASSWORD }}
+          ALPHA_KEY_ALIAS: ${{ secrets.ALPHA_KEY_ALIAS }}
+          ALPHA_KEY_PASSWORD: ${{ secrets.ALPHA_KEY_PASSWORD }}
+        run: |
+          if [ -n "$ALPHA_KEYSTORE_BASE64" ] && [ -n "$ALPHA_STORE_PASSWORD" ] && [ -n "$ALPHA_KEY_ALIAS" ] && [ -n "$ALPHA_KEY_PASSWORD" ]; then
+            printf '%s' "$ALPHA_KEYSTORE_BASE64" | base64 -d > android/app/alpha-release.jks
+            umask 077
+            {
+              echo "storePassword=$ALPHA_STORE_PASSWORD"
+              echo "keyPassword=$ALPHA_KEY_PASSWORD"
+              echo "keyAlias=$ALPHA_KEY_ALIAS"
+              echo "storeFile=alpha-release.jks"
+            } > android/key.properties
+            echo "Signing with the fixed release keystore from GitHub secrets."
+          else
+            echo "Release keystore secrets are not set. The APK is signed with the debug key."
+          fi
+
+      - name: Read app version
+        id: version
+        run: |
+          version=$(awk '/^version:/ {print $2}' pubspec.yaml | cut -d+ -f1)
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+
+      - name: Build release APK
+        run: |
+          flutter build apk --release
+          mv build/app/outputs/flutter-apk/app-release.apk alpha.apk
+          ./scripts/verify-android-release-signing.sh alpha.apk
+
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: alpha-apk
+          path: alpha.apk
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Publish APK release
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: softprops/action-gh-release@efb35369e0ad2afab669f228072c1b0d510eae64 # v3.0.3
+        with:
+          tag_name: v${{ steps.version.outputs.version }}
+          name: Alpha ${{ steps.version.outputs.version }}
+          body: |
+            Sideload-APK für Alpha (`com.levinaugustin.alpha`), Version ${{ steps.version.outputs.version }}.
+
+            Signiert mit dem festen Release-Keystore, wenn die Secrets ALPHA_KEYSTORE_BASE64, ALPHA_STORE_PASSWORD, ALPHA_KEY_ALIAS und ALPHA_KEY_PASSWORD gesetzt sind. Sonst mit dem Debug-Key.
+
+            Installation auf dem Telefon: APK herunterladen, öffnen und die Installation aus dieser Quelle erlauben. Ein Update über dieselbe Signatur behält die App-Daten. Der einmalige Wechsel vom Debug-Key von 2.3.0 auf den Release-Key braucht eine Neuinstallation.
+          files: alpha.apk
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -34,15 +34,27 @@ List<Plan> filterPlans(
 }
 
 class PlanExerciseDraft {
-  PlanExerciseDraft({required this.planExercise, required this.exerciseName})
-    : normalizedExerciseName = exerciseName.toLowerCase();
+  PlanExerciseDraft({
+    required this.planExercise,
+    required this.exerciseName,
+    this.germanName = '',
+    this.aliases = '',
+  }) : normalizedExerciseName = '$exerciseName $germanName $aliases'
+           .toLowerCase();
 
   final PlanExercisesCompanion planExercise;
   final String exerciseName;
+  final String germanName;
+  final String aliases;
   final String normalizedExerciseName;
 
   PlanExerciseDraft copyWithPlanExercise(PlanExercisesCompanion value) =>
-      PlanExerciseDraft(planExercise: value, exerciseName: exerciseName);
+      PlanExerciseDraft(
+        planExercise: value,
+        exerciseName: exerciseName,
+        germanName: germanName,
+        aliases: aliases,
+      );
 }
 
 List<PlanExerciseDraft> filterPlanExerciseDrafts(
@@ -197,7 +209,12 @@ Future<List<PlanExerciseDraft>> loadPlanExerciseDrafts(
   PlansCompanion plan,
 ) async {
   final query = db.exercises.selectOnly()
-    ..addColumns([db.exercises.id, db.exercises.name])
+    ..addColumns([
+      db.exercises.id,
+      db.exercises.name,
+      db.exercises.germanName,
+      db.exercises.aliases,
+    ])
     ..where(db.exercises.archived.equals(false))
     ..join([
       leftOuterJoin(
@@ -233,10 +250,14 @@ Future<List<PlanExerciseDraft>> loadPlanExerciseDrafts(
       warmupSets: Value(row.read(db.planExercises.warmupSets)),
       timers: Value(row.read(db.planExercises.timers) ?? true),
       sequence: Value(row.read(db.planExercises.sequence) ?? 0),
+      repMin: Value(row.read(db.planExercises.repMin)),
+      repMax: Value(row.read(db.planExercises.repMax)),
     );
     final draft = PlanExerciseDraft(
       planExercise: planExercise,
       exerciseName: row.read(db.exercises.name)!,
+      germanName: row.read(db.exercises.germanName) ?? '',
+      aliases: row.read(db.exercises.aliases) ?? '',
     );
     drafts.add(draft);
   }

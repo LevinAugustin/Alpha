@@ -9,13 +9,13 @@ class AppLocalizationsZh extends AppLocalizations {
   AppLocalizationsZh([String locale = 'zh']) : super(locale);
 
   @override
-  String get appTitle => 'Flexify';
+  String get appTitle => 'Alpha';
 
   @override
   String get settingsLanguage => '语言';
 
   @override
-  String get settingsLanguageDescription => '选择 Flexify 使用的语言';
+  String get settingsLanguageDescription => '选择 Alpha 使用的语言';
 
   @override
   String get languageSystemDefault => '跟随系统';
@@ -368,7 +368,7 @@ class AppLocalizationsZh extends AppLocalizations {
   }
 
   @override
-  String get backupArchiveMissingDatabase => '备份中不包含 Flexify 数据库。';
+  String get backupArchiveMissingDatabase => '备份中不包含 Alpha 数据库。';
 
   @override
   String failedToImportGraphs(String error) {
@@ -495,7 +495,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get privacyPolicy => '隐私政策';
 
   @override
-  String get privacyPolicyDescription => 'Flexify 如何处理你的数据';
+  String get privacyPolicyDescription => 'Alpha 如何处理你的数据';
 
   @override
   String get licenseLabel => '许可证';
@@ -510,7 +510,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get leaveReview => '留下评价';
 
   @override
-  String get leaveReviewDescription => '在 Play 商店评价 Flexify';
+  String get leaveReviewDescription => '在 Play 商店评价 Alpha';
 
   @override
   String get reportBug => '报告错误';
@@ -633,7 +633,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get titleOptional => '标题（可选）';
 
   @override
-  String get searchExercises => '搜索动作...';
+  String get searchExercises => '搜索动作';
 
   @override
   String get warmupSets => '热身组';
@@ -1250,7 +1250,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get inputStyleDescription => '文本输入框的视觉样式';
 
   @override
-  String get automaticBackupNotificationBody => 'Flexify 每天会自动将数据和图片备份到所选文件夹。';
+  String get automaticBackupNotificationBody => 'Alpha 每天会自动将数据和图片备份到所选文件夹。';
 
   @override
   String get backupSettingsChannel => '备份设置';
@@ -1262,7 +1262,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get backupChannelName => '备份通知';
 
   @override
-  String get backupChannelDescription => '自动备份 Flexify 的数据和图片';
+  String get backupChannelDescription => '自动备份 Alpha 的数据和图片';
 
   @override
   String get backupCompletedTitle => '数据和图片备份完成';
@@ -1502,6 +1502,240 @@ class AppLocalizationsZh extends AppLocalizations {
   String setNumber(int number) {
     return '第 $number 组';
   }
+
+  @override
+  String get tabStart => '开始';
+
+  @override
+  String get tabTraining => '训练';
+
+  @override
+  String get tabExercises => '动作';
+
+  @override
+  String get tabProfile => '个人资料';
+
+  @override
+  String get calendarTitle => '日历';
+
+  @override
+  String dayStreak(int count) {
+    return '连续 $count 天';
+  }
+
+  @override
+  String weekStreak(int count) {
+    return '连续 $count 周';
+  }
+
+  @override
+  String get thisWeek => '本周';
+
+  @override
+  String get bodyWeightChart => '体重';
+
+  @override
+  String get strengthChart => '力量';
+
+  @override
+  String get weeklyVolumeChart => '每周训练量';
+
+  @override
+  String get noChartData => '数据还不够';
+
+  @override
+  String get newTemplate => '新模板';
+
+  @override
+  String get templateLimit => '最多可以保存 7 个模板。';
+
+  @override
+  String get templatesEmpty => '这个模板还没有动作。';
+
+  @override
+  String get allMuscles => '全部';
+
+  @override
+  String get noHistory => '还没有记录';
+
+  @override
+  String bestOneRepMax(String value) {
+    return '估计 1RM $value kg';
+  }
+
+  @override
+  String bestLoad(String value) {
+    return '最大重量 $value kg';
+  }
+
+  @override
+  String get profileName => '姓名';
+
+  @override
+  String get heightCm => '身高（厘米）';
+
+  @override
+  String get ageOptional => '年龄（可选）';
+
+  @override
+  String get goals => '目标';
+
+  @override
+  String get bodyData => '身体数据';
+
+  @override
+  String get addBodyWeight => '添加体重';
+
+  @override
+  String get weightKg => '体重（千克）';
+
+  @override
+  String get aiCoaching => 'AI 教练';
+
+  @override
+  String get apiKey => 'API 密钥';
+
+  @override
+  String get apiKeyStoredLocally => '只保存在这台手机上。尚未使用。';
+
+  @override
+  String get profileSaved => '资料已保存';
+
+  @override
+  String get noTrainingThisDay => '这一天没有训练';
+
+  @override
+  String targetSets(int count) {
+    return '$count 组';
+  }
+
+  @override
+  String repRangeLabel(String range) {
+    return '$range 次';
+  }
+
+  @override
+  String get repMinLabel => '次数从';
+
+  @override
+  String get repMaxLabel => '次数到';
+
+  @override
+  String get exerciseDatabaseCreditTitle => '动作库';
+
+  @override
+  String get exerciseDatabaseCreditBody =>
+      '名称来自 yuhonas 的 free-exercise-db（Unlicense，公有领域）。Alpha 补充了名称和别名。';
+
+  @override
+  String get workoutFinish => 'Beenden';
+
+  @override
+  String get volumeLabel => 'Volumen';
+
+  @override
+  String get setsLabel => 'Sätze';
+
+  @override
+  String get restSkip => 'Überspringen';
+
+  @override
+  String get columnSet => 'SATZ';
+
+  @override
+  String get columnPrevious => 'VORHERIGE';
+
+  @override
+  String get columnKg => 'KG';
+
+  @override
+  String get columnReps => 'WDH';
+
+  @override
+  String get addExerciseWorkout => 'Übung hinzufügen';
+
+  @override
+  String get addNote => 'Notiz hinzufügen';
+
+  @override
+  String get swapExercise => 'Übung tauschen';
+
+  @override
+  String get moveExerciseUp => 'Nach oben';
+
+  @override
+  String get moveExerciseDown => 'Nach unten';
+
+  @override
+  String get removeExercise => 'Entfernen';
+
+  @override
+  String get restSecondsLabel => 'Pause in Sekunden';
+
+  @override
+  String get newRecordTitle => 'NEUER REKORD!';
+
+  @override
+  String get recordKeepGoing => 'Weiter so';
+
+  @override
+  String get exerciseSearchHint => 'Übung suchen';
+
+  @override
+  String get installUpdate => 'Update installieren';
+
+  @override
+  String get updateAvailable => 'Eine neuere Version ist da';
+
+  @override
+  String get localProfiles => 'Profile';
+
+  @override
+  String get newProfile => 'Neues Profil';
+
+  @override
+  String get profileNameHint => 'Profilname';
+
+  @override
+  String get profileActive => 'Aktiv';
+
+  @override
+  String get switchProfile => 'Wechseln';
+
+  @override
+  String get themeSetting => 'Design';
+
+  @override
+  String get themeTiefschwarz => 'Tiefschwarz';
+
+  @override
+  String get themeEisblau => 'Eisblau';
+
+  @override
+  String get themePink => 'Pink';
+
+  @override
+  String get restSound => 'Pausenton';
+
+  @override
+  String get restSoundVolume => 'Lautstärke der Pause';
+
+  @override
+  String get restSoundCredit => 'Notification Sound von yfjesse, CC0';
+
+  @override
+  String get splashMotto => 'Stärke. Disziplin. Fortschritt.';
+
+  @override
+  String helloName(String name) {
+    return 'Hallo, $name';
+  }
+
+  @override
+  String get alphaSettings => 'Alpha';
+
+  @override
+  String get alphaSettingsDescription => 'Profile, Design und Pausenton';
 }
 
 /// The translations for Chinese, as used in China (`zh_CN`).
@@ -1509,13 +1743,13 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
   AppLocalizationsZhCn() : super('zh_CN');
 
   @override
-  String get appTitle => 'Flexify';
+  String get appTitle => 'Alpha';
 
   @override
   String get settingsLanguage => '语言';
 
   @override
-  String get settingsLanguageDescription => '选择 Flexify 使用的语言';
+  String get settingsLanguageDescription => '选择 Alpha 使用的语言';
 
   @override
   String get languageSystemDefault => '跟随系统';
@@ -1868,7 +2102,7 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
   }
 
   @override
-  String get backupArchiveMissingDatabase => '备份中不包含 Flexify 数据库。';
+  String get backupArchiveMissingDatabase => '备份中不包含 Alpha 数据库。';
 
   @override
   String failedToImportGraphs(String error) {
@@ -1995,7 +2229,7 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
   String get privacyPolicy => '隐私政策';
 
   @override
-  String get privacyPolicyDescription => 'Flexify 如何处理你的数据';
+  String get privacyPolicyDescription => 'Alpha 如何处理你的数据';
 
   @override
   String get licenseLabel => '许可证';
@@ -2010,7 +2244,7 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
   String get leaveReview => '留下评价';
 
   @override
-  String get leaveReviewDescription => '在 Play 商店评价 Flexify';
+  String get leaveReviewDescription => '在 Play 商店评价 Alpha';
 
   @override
   String get reportBug => '报告错误';
@@ -2133,7 +2367,7 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
   String get titleOptional => '标题（可选）';
 
   @override
-  String get searchExercises => '搜索动作...';
+  String get searchExercises => '搜索动作';
 
   @override
   String get warmupSets => '热身组';
@@ -2750,7 +2984,7 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
   String get inputStyleDescription => '文本输入框的视觉样式';
 
   @override
-  String get automaticBackupNotificationBody => 'Flexify 每天会自动将数据和图片备份到所选文件夹。';
+  String get automaticBackupNotificationBody => 'Alpha 每天会自动将数据和图片备份到所选文件夹。';
 
   @override
   String get backupSettingsChannel => '备份设置';
@@ -2762,7 +2996,7 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
   String get backupChannelName => '备份通知';
 
   @override
-  String get backupChannelDescription => '自动备份 Flexify 的数据和图片';
+  String get backupChannelDescription => '自动备份 Alpha 的数据和图片';
 
   @override
   String get backupCompletedTitle => '数据和图片备份完成';
@@ -3002,6 +3236,240 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
   String setNumber(int number) {
     return '第 $number 组';
   }
+
+  @override
+  String get tabStart => '开始';
+
+  @override
+  String get tabTraining => '训练';
+
+  @override
+  String get tabExercises => '动作';
+
+  @override
+  String get tabProfile => '个人资料';
+
+  @override
+  String get calendarTitle => '日历';
+
+  @override
+  String dayStreak(int count) {
+    return '连续 $count 天';
+  }
+
+  @override
+  String weekStreak(int count) {
+    return '连续 $count 周';
+  }
+
+  @override
+  String get thisWeek => '本周';
+
+  @override
+  String get bodyWeightChart => '体重';
+
+  @override
+  String get strengthChart => '力量';
+
+  @override
+  String get weeklyVolumeChart => '每周训练量';
+
+  @override
+  String get noChartData => '数据还不够';
+
+  @override
+  String get newTemplate => '新模板';
+
+  @override
+  String get templateLimit => '最多可以保存 7 个模板。';
+
+  @override
+  String get templatesEmpty => '这个模板还没有动作。';
+
+  @override
+  String get allMuscles => '全部';
+
+  @override
+  String get noHistory => '还没有记录';
+
+  @override
+  String bestOneRepMax(String value) {
+    return '估计 1RM $value kg';
+  }
+
+  @override
+  String bestLoad(String value) {
+    return '最大重量 $value kg';
+  }
+
+  @override
+  String get profileName => '姓名';
+
+  @override
+  String get heightCm => '身高（厘米）';
+
+  @override
+  String get ageOptional => '年龄（可选）';
+
+  @override
+  String get goals => '目标';
+
+  @override
+  String get bodyData => '身体数据';
+
+  @override
+  String get addBodyWeight => '添加体重';
+
+  @override
+  String get weightKg => '体重（千克）';
+
+  @override
+  String get aiCoaching => 'AI 教练';
+
+  @override
+  String get apiKey => 'API 密钥';
+
+  @override
+  String get apiKeyStoredLocally => '只保存在这台手机上。尚未使用。';
+
+  @override
+  String get profileSaved => '资料已保存';
+
+  @override
+  String get noTrainingThisDay => '这一天没有训练';
+
+  @override
+  String targetSets(int count) {
+    return '$count 组';
+  }
+
+  @override
+  String repRangeLabel(String range) {
+    return '$range 次';
+  }
+
+  @override
+  String get repMinLabel => '次数从';
+
+  @override
+  String get repMaxLabel => '次数到';
+
+  @override
+  String get exerciseDatabaseCreditTitle => '动作库';
+
+  @override
+  String get exerciseDatabaseCreditBody =>
+      '名称来自 yuhonas 的 free-exercise-db（Unlicense，公有领域）。Alpha 补充了名称和别名。';
+
+  @override
+  String get workoutFinish => 'Beenden';
+
+  @override
+  String get volumeLabel => 'Volumen';
+
+  @override
+  String get setsLabel => 'Sätze';
+
+  @override
+  String get restSkip => 'Überspringen';
+
+  @override
+  String get columnSet => 'SATZ';
+
+  @override
+  String get columnPrevious => 'VORHERIGE';
+
+  @override
+  String get columnKg => 'KG';
+
+  @override
+  String get columnReps => 'WDH';
+
+  @override
+  String get addExerciseWorkout => 'Übung hinzufügen';
+
+  @override
+  String get addNote => 'Notiz hinzufügen';
+
+  @override
+  String get swapExercise => 'Übung tauschen';
+
+  @override
+  String get moveExerciseUp => 'Nach oben';
+
+  @override
+  String get moveExerciseDown => 'Nach unten';
+
+  @override
+  String get removeExercise => 'Entfernen';
+
+  @override
+  String get restSecondsLabel => 'Pause in Sekunden';
+
+  @override
+  String get newRecordTitle => 'NEUER REKORD!';
+
+  @override
+  String get recordKeepGoing => 'Weiter so';
+
+  @override
+  String get exerciseSearchHint => 'Übung suchen';
+
+  @override
+  String get installUpdate => 'Update installieren';
+
+  @override
+  String get updateAvailable => 'Eine neuere Version ist da';
+
+  @override
+  String get localProfiles => 'Profile';
+
+  @override
+  String get newProfile => 'Neues Profil';
+
+  @override
+  String get profileNameHint => 'Profilname';
+
+  @override
+  String get profileActive => 'Aktiv';
+
+  @override
+  String get switchProfile => 'Wechseln';
+
+  @override
+  String get themeSetting => 'Design';
+
+  @override
+  String get themeTiefschwarz => 'Tiefschwarz';
+
+  @override
+  String get themeEisblau => 'Eisblau';
+
+  @override
+  String get themePink => 'Pink';
+
+  @override
+  String get restSound => 'Pausenton';
+
+  @override
+  String get restSoundVolume => 'Lautstärke der Pause';
+
+  @override
+  String get restSoundCredit => 'Notification Sound von yfjesse, CC0';
+
+  @override
+  String get splashMotto => 'Stärke. Disziplin. Fortschritt.';
+
+  @override
+  String helloName(String name) {
+    return 'Hallo, $name';
+  }
+
+  @override
+  String get alphaSettings => 'Alpha';
+
+  @override
+  String get alphaSettingsDescription => 'Profile, Design und Pausenton';
 }
 
 /// The translations for Chinese, as used in Taiwan (`zh_TW`).
@@ -3009,13 +3477,13 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   AppLocalizationsZhTw() : super('zh_TW');
 
   @override
-  String get appTitle => 'Flexify';
+  String get appTitle => 'Alpha';
 
   @override
   String get settingsLanguage => '語言';
 
   @override
-  String get settingsLanguageDescription => '選擇 Flexify 使用的語言';
+  String get settingsLanguageDescription => '選擇 Alpha 使用的語言';
 
   @override
   String get languageSystemDefault => '跟隨系統';
@@ -3368,7 +3836,7 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   }
 
   @override
-  String get backupArchiveMissingDatabase => '備份中不包含 Flexify 資料庫。';
+  String get backupArchiveMissingDatabase => '備份中不包含 Alpha 資料庫。';
 
   @override
   String failedToImportGraphs(String error) {
@@ -3495,7 +3963,7 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get privacyPolicy => '隱私政策';
 
   @override
-  String get privacyPolicyDescription => 'Flexify 如何處理你的資料';
+  String get privacyPolicyDescription => 'Alpha 如何處理你的資料';
 
   @override
   String get licenseLabel => '許可證';
@@ -3510,7 +3978,7 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get leaveReview => '留下評價';
 
   @override
-  String get leaveReviewDescription => '在 Play 商店評價 Flexify';
+  String get leaveReviewDescription => '在 Play 商店評價 Alpha';
 
   @override
   String get reportBug => '報告錯誤';
@@ -3633,7 +4101,7 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get titleOptional => '標題（可選）';
 
   @override
-  String get searchExercises => '搜尋動作...';
+  String get searchExercises => '搜尋動作';
 
   @override
   String get warmupSets => '熱身組';
@@ -4250,7 +4718,7 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get inputStyleDescription => '文字輸入框的視覺樣式';
 
   @override
-  String get automaticBackupNotificationBody => 'Flexify 每天會自動將資料和圖片備份到所選資料夾。';
+  String get automaticBackupNotificationBody => 'Alpha 每天會自動將資料和圖片備份到所選資料夾。';
 
   @override
   String get backupSettingsChannel => '備份設定';
@@ -4262,7 +4730,7 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get backupChannelName => '備份通知';
 
   @override
-  String get backupChannelDescription => '自動備份 Flexify 的資料和圖片';
+  String get backupChannelDescription => '自動備份 Alpha 的資料和圖片';
 
   @override
   String get backupCompletedTitle => '資料和圖片備份完成';
@@ -4502,4 +4970,238 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String setNumber(int number) {
     return '第 $number 組';
   }
+
+  @override
+  String get tabStart => '開始';
+
+  @override
+  String get tabTraining => '訓練';
+
+  @override
+  String get tabExercises => '動作';
+
+  @override
+  String get tabProfile => '個人資料';
+
+  @override
+  String get calendarTitle => '日曆';
+
+  @override
+  String dayStreak(int count) {
+    return '連續 $count 天';
+  }
+
+  @override
+  String weekStreak(int count) {
+    return '連續 $count 週';
+  }
+
+  @override
+  String get thisWeek => '本週';
+
+  @override
+  String get bodyWeightChart => '體重';
+
+  @override
+  String get strengthChart => '力量';
+
+  @override
+  String get weeklyVolumeChart => '每週訓練量';
+
+  @override
+  String get noChartData => '資料還不夠';
+
+  @override
+  String get newTemplate => '新範本';
+
+  @override
+  String get templateLimit => '最多可以儲存 7 個範本。';
+
+  @override
+  String get templatesEmpty => '這個範本還沒有動作。';
+
+  @override
+  String get allMuscles => '全部';
+
+  @override
+  String get noHistory => '還沒有紀錄';
+
+  @override
+  String bestOneRepMax(String value) {
+    return '估計 1RM $value kg';
+  }
+
+  @override
+  String bestLoad(String value) {
+    return '最大重量 $value kg';
+  }
+
+  @override
+  String get profileName => '姓名';
+
+  @override
+  String get heightCm => '身高（公分）';
+
+  @override
+  String get ageOptional => '年齡（選填）';
+
+  @override
+  String get goals => '目標';
+
+  @override
+  String get bodyData => '身體資料';
+
+  @override
+  String get addBodyWeight => '新增體重';
+
+  @override
+  String get weightKg => '體重（公斤）';
+
+  @override
+  String get aiCoaching => 'AI 教練';
+
+  @override
+  String get apiKey => 'API 金鑰';
+
+  @override
+  String get apiKeyStoredLocally => '只儲存在這支手機上。尚未使用。';
+
+  @override
+  String get profileSaved => '資料已儲存';
+
+  @override
+  String get noTrainingThisDay => '這一天沒有訓練';
+
+  @override
+  String targetSets(int count) {
+    return '$count 組';
+  }
+
+  @override
+  String repRangeLabel(String range) {
+    return '$range 次';
+  }
+
+  @override
+  String get repMinLabel => '次數從';
+
+  @override
+  String get repMaxLabel => '次數到';
+
+  @override
+  String get exerciseDatabaseCreditTitle => '動作庫';
+
+  @override
+  String get exerciseDatabaseCreditBody =>
+      '名稱來自 yuhonas 的 free-exercise-db（Unlicense，公有領域）。Alpha 補充了名稱和別名。';
+
+  @override
+  String get workoutFinish => 'Beenden';
+
+  @override
+  String get volumeLabel => 'Volumen';
+
+  @override
+  String get setsLabel => 'Sätze';
+
+  @override
+  String get restSkip => 'Überspringen';
+
+  @override
+  String get columnSet => 'SATZ';
+
+  @override
+  String get columnPrevious => 'VORHERIGE';
+
+  @override
+  String get columnKg => 'KG';
+
+  @override
+  String get columnReps => 'WDH';
+
+  @override
+  String get addExerciseWorkout => 'Übung hinzufügen';
+
+  @override
+  String get addNote => 'Notiz hinzufügen';
+
+  @override
+  String get swapExercise => 'Übung tauschen';
+
+  @override
+  String get moveExerciseUp => 'Nach oben';
+
+  @override
+  String get moveExerciseDown => 'Nach unten';
+
+  @override
+  String get removeExercise => 'Entfernen';
+
+  @override
+  String get restSecondsLabel => 'Pause in Sekunden';
+
+  @override
+  String get newRecordTitle => 'NEUER REKORD!';
+
+  @override
+  String get recordKeepGoing => 'Weiter so';
+
+  @override
+  String get exerciseSearchHint => 'Übung suchen';
+
+  @override
+  String get installUpdate => 'Update installieren';
+
+  @override
+  String get updateAvailable => 'Eine neuere Version ist da';
+
+  @override
+  String get localProfiles => 'Profile';
+
+  @override
+  String get newProfile => 'Neues Profil';
+
+  @override
+  String get profileNameHint => 'Profilname';
+
+  @override
+  String get profileActive => 'Aktiv';
+
+  @override
+  String get switchProfile => 'Wechseln';
+
+  @override
+  String get themeSetting => 'Design';
+
+  @override
+  String get themeTiefschwarz => 'Tiefschwarz';
+
+  @override
+  String get themeEisblau => 'Eisblau';
+
+  @override
+  String get themePink => 'Pink';
+
+  @override
+  String get restSound => 'Pausenton';
+
+  @override
+  String get restSoundVolume => 'Lautstärke der Pause';
+
+  @override
+  String get restSoundCredit => 'Notification Sound von yfjesse, CC0';
+
+  @override
+  String get splashMotto => 'Stärke. Disziplin. Fortschritt.';
+
+  @override
+  String helloName(String name) {
+    return 'Hallo, $name';
+  }
+
+  @override
+  String get alphaSettings => 'Alpha';
+
+  @override
+  String get alphaSettingsDescription => 'Profile, Design und Pausenton';
 }

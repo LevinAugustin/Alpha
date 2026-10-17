@@ -159,7 +159,26 @@ void main() {
           for (final entry in setting.entries)
             if (entry.key != 'rep_estimation') entry.key: entry.value,
           'default_graph_limit': 30,
+          'profile_name': null,
+          'height_cm': null,
+          'age_years': null,
+          'goals': null,
+          'api_key': null,
+          'theme_id': 'tiefschwarz',
+          'rest_volume': 0.35,
         },
+    ],
+    'exercises': [
+      for (final exercise in before['exercises'] ?? const [])
+        {...exercise, 'german_name': null, 'aliases': null, 'muscle': null},
+    ],
+    'plan_exercises': [
+      for (final row in before['plan_exercises'] ?? const [])
+        {...row, 'rep_min': null, 'rep_max': null},
+    ],
+    'workouts': [
+      for (final row in before['workouts'] ?? const [])
+        {...row, 'exercise_order': null},
     ],
   };
 
@@ -292,8 +311,9 @@ Future<void> main(List<String> args) async {
 
       final database = openPersistent();
       final actual = await snapshot(database);
-      for (final table in expected.keys.where((name) => name != 'settings')) {
-        expect(actual[table], expected[table], reason: table);
+      final upgraded = afterGraphLimitUpgrade(expected);
+      for (final table in upgraded.keys.where((name) => name != 'settings')) {
+        expect(actual[table], upgraded[table], reason: table);
       }
       final settings = await database.settings.select().getSingle();
       expect(settings.localeOverride, 'en');

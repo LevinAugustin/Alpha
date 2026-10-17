@@ -9,13 +9,13 @@ class AppLocalizationsRu extends AppLocalizations {
   AppLocalizationsRu([String locale = 'ru']) : super(locale);
 
   @override
-  String get appTitle => 'Flexify';
+  String get appTitle => 'Alpha';
 
   @override
   String get settingsLanguage => 'Язык';
 
   @override
-  String get settingsLanguageDescription => 'Выберите язык интерфейса Flexify';
+  String get settingsLanguageDescription => 'Выберите язык интерфейса Alpha';
 
   @override
   String get languageSystemDefault => 'Система по умолчанию';
@@ -390,7 +390,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get backupArchiveMissingDatabase =>
-      'В архиве резервной копии нет базы данных Flexify.';
+      'В архиве резервной копии нет базы данных Alpha.';
 
   @override
   String failedToImportGraphs(String error) {
@@ -518,7 +518,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get privacyPolicy => 'Политика конфиденциальности';
 
   @override
-  String get privacyPolicyDescription => 'Как Flexify обрабатывает ваши данные';
+  String get privacyPolicyDescription => 'Как Alpha обрабатывает ваши данные';
 
   @override
   String get licenseLabel => 'Лицензия';
@@ -533,7 +533,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get leaveReview => 'Оставить отзыв';
 
   @override
-  String get leaveReviewDescription => 'Оцените Flexify в Play Store';
+  String get leaveReviewDescription => 'Оцените Alpha в Play Store';
 
   @override
   String get reportBug => 'Сообщить об ошибке';
@@ -657,7 +657,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get titleOptional => 'Название (необязательно)';
 
   @override
-  String get searchExercises => 'Поиск упражнений...';
+  String get searchExercises => 'Поиск упражнений';
 
   @override
   String get warmupSets => 'Разминочные подходы';
@@ -1306,7 +1306,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get automaticBackupNotificationBody =>
-      'Flexify будет ежедневно автоматически создавать резервную копию данных и изображений в выбранной папке.';
+      'Alpha будет ежедневно автоматически создавать резервную копию данных и изображений в выбранной папке.';
 
   @override
   String get backupSettingsChannel => 'Настройки резервного копирования';
@@ -1320,7 +1320,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get backupChannelDescription =>
-      'Автоматические резервные копии данных и изображений Flexify';
+      'Автоматические резервные копии данных и изображений Alpha';
 
   @override
   String get backupCompletedTitle =>
@@ -1596,4 +1596,239 @@ class AppLocalizationsRu extends AppLocalizations {
   String setNumber(int number) {
     return 'Подход $number';
   }
+
+  @override
+  String get tabStart => 'Старт';
+
+  @override
+  String get tabTraining => 'Тренировка';
+
+  @override
+  String get tabExercises => 'Упражнения';
+
+  @override
+  String get tabProfile => 'Профиль';
+
+  @override
+  String get calendarTitle => 'Календарь';
+
+  @override
+  String dayStreak(int count) {
+    return '$count дней подряд';
+  }
+
+  @override
+  String weekStreak(int count) {
+    return '$count недель подряд';
+  }
+
+  @override
+  String get thisWeek => 'Эта неделя';
+
+  @override
+  String get bodyWeightChart => 'Вес тела';
+
+  @override
+  String get strengthChart => 'Сила';
+
+  @override
+  String get weeklyVolumeChart => 'Недельный объём';
+
+  @override
+  String get noChartData => 'Пока мало данных';
+
+  @override
+  String get newTemplate => 'Новый шаблон';
+
+  @override
+  String get templateLimit => 'Можно сохранить до 7 шаблонов.';
+
+  @override
+  String get templatesEmpty => 'В этом шаблоне ещё нет упражнений.';
+
+  @override
+  String get allMuscles => 'Все';
+
+  @override
+  String get noHistory => 'Истории пока нет';
+
+  @override
+  String bestOneRepMax(String value) {
+    return 'Оценка 1ПМ $value кг';
+  }
+
+  @override
+  String bestLoad(String value) {
+    return 'Лучший вес $value кг';
+  }
+
+  @override
+  String get profileName => 'Имя';
+
+  @override
+  String get heightCm => 'Рост (см)';
+
+  @override
+  String get ageOptional => 'Возраст (необязательно)';
+
+  @override
+  String get goals => 'Цели';
+
+  @override
+  String get bodyData => 'Данные тела';
+
+  @override
+  String get addBodyWeight => 'Добавить вес';
+
+  @override
+  String get weightKg => 'Вес (кг)';
+
+  @override
+  String get aiCoaching => 'ИИ-коучинг';
+
+  @override
+  String get apiKey => 'Ключ API';
+
+  @override
+  String get apiKeyStoredLocally =>
+      'Хранится только на этом телефоне. Пока не используется.';
+
+  @override
+  String get profileSaved => 'Профиль сохранён';
+
+  @override
+  String get noTrainingThisDay => 'В этот день ничего нет';
+
+  @override
+  String targetSets(int count) {
+    return '$count подходов';
+  }
+
+  @override
+  String repRangeLabel(String range) {
+    return '$range повт.';
+  }
+
+  @override
+  String get repMinLabel => 'Повторы от';
+
+  @override
+  String get repMaxLabel => 'Повторы до';
+
+  @override
+  String get exerciseDatabaseCreditTitle => 'Библиотека упражнений';
+
+  @override
+  String get exerciseDatabaseCreditBody =>
+      'Названия из free-exercise-db автора yuhonas, Unlicense (общественное достояние). Alpha добавила названия и псевдонимы.';
+
+  @override
+  String get workoutFinish => 'Beenden';
+
+  @override
+  String get volumeLabel => 'Volumen';
+
+  @override
+  String get setsLabel => 'Sätze';
+
+  @override
+  String get restSkip => 'Überspringen';
+
+  @override
+  String get columnSet => 'SATZ';
+
+  @override
+  String get columnPrevious => 'VORHERIGE';
+
+  @override
+  String get columnKg => 'KG';
+
+  @override
+  String get columnReps => 'WDH';
+
+  @override
+  String get addExerciseWorkout => 'Übung hinzufügen';
+
+  @override
+  String get addNote => 'Notiz hinzufügen';
+
+  @override
+  String get swapExercise => 'Übung tauschen';
+
+  @override
+  String get moveExerciseUp => 'Nach oben';
+
+  @override
+  String get moveExerciseDown => 'Nach unten';
+
+  @override
+  String get removeExercise => 'Entfernen';
+
+  @override
+  String get restSecondsLabel => 'Pause in Sekunden';
+
+  @override
+  String get newRecordTitle => 'NEUER REKORD!';
+
+  @override
+  String get recordKeepGoing => 'Weiter so';
+
+  @override
+  String get exerciseSearchHint => 'Übung suchen';
+
+  @override
+  String get installUpdate => 'Update installieren';
+
+  @override
+  String get updateAvailable => 'Eine neuere Version ist da';
+
+  @override
+  String get localProfiles => 'Profile';
+
+  @override
+  String get newProfile => 'Neues Profil';
+
+  @override
+  String get profileNameHint => 'Profilname';
+
+  @override
+  String get profileActive => 'Aktiv';
+
+  @override
+  String get switchProfile => 'Wechseln';
+
+  @override
+  String get themeSetting => 'Design';
+
+  @override
+  String get themeTiefschwarz => 'Tiefschwarz';
+
+  @override
+  String get themeEisblau => 'Eisblau';
+
+  @override
+  String get themePink => 'Pink';
+
+  @override
+  String get restSound => 'Pausenton';
+
+  @override
+  String get restSoundVolume => 'Lautstärke der Pause';
+
+  @override
+  String get restSoundCredit => 'Notification Sound von yfjesse, CC0';
+
+  @override
+  String get splashMotto => 'Stärke. Disziplin. Fortschritt.';
+
+  @override
+  String helloName(String name) {
+    return 'Hallo, $name';
+  }
+
+  @override
+  String get alphaSettings => 'Alpha';
+
+  @override
+  String get alphaSettingsDescription => 'Profile, Design und Pausenton';
 }

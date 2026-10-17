@@ -49,7 +49,9 @@ void main() {
     await tester.tap(find.text('Thu'));
     await scrollTo(tester, find.text('Arnold press'));
     await tester.tap(find.text('Arnold press'));
-    await tester.tap(find.text('Barbell biceps curl'));
+    await tester.enterText(find.byType(SearchBar), 'Barbell biceps curl');
+    await tester.pumpAndSettle();
+    await tester.tap(find.widgetWithText(ListTile, 'Barbell biceps curl'));
 
     await tester.tap(find.text('Save'));
     await tester.pumpAndSettle();

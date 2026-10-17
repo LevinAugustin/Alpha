@@ -1,13 +1,6 @@
 name: Sync Google Play listing
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - "fastlane/metadata/android/**"
-      - "fastlane/Fastfile"
-      - "fastlane/Appfile"
-      - ".github/workflows/google-play-metadata.yml"
   workflow_dispatch:
 
 permissions:
@@ -19,6 +12,7 @@ concurrency:
 
 jobs:
   upload:
+    if: false
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5

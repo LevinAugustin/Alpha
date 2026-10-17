@@ -81,6 +81,15 @@ class AboutPage extends StatelessWidget {
             },
           ),
           ListTile(
+            title: Text(context.l10n.exerciseDatabaseCreditTitle),
+            leading: const Icon(Icons.fitness_center),
+            subtitle: Text(context.l10n.exerciseDatabaseCreditBody),
+            onTap: () async {
+              const url = 'https://github.com/yuhonas/free-exercise-db';
+              await launchUrlString(url);
+            },
+          ),
+          ListTile(
             title: Text(context.l10n.licenseLabel),
             leading: const Icon(Icons.balance),
             subtitle: FutureBuilder(
@@ -103,16 +112,6 @@ class AboutPage extends StatelessWidget {
             ),
             onTap: () async {
               const url = 'https://github.com/brandonp2412/Flexify';
-              await launchUrlString(url);
-            },
-          ),
-          ListTile(
-            title: Text(context.l10n.leaveReview),
-            leading: const Icon(Icons.reviews_outlined),
-            subtitle: Text(context.l10n.leaveReviewDescription),
-            onTap: () async {
-              const url =
-                  'https://play.google.com/store/apps/details?id=com.presley.flexify';
               await launchUrlString(url);
             },
           ),

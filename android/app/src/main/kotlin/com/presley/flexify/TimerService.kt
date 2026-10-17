@@ -14,6 +14,9 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.content.pm.PackageManager
 import android.content.pm.ServiceInfo.FOREGROUND_SERVICE_TYPE_SPECIAL_USE
+import android.media.AudioAttributes
+import android.media.AudioFocusRequest
+import android.media.AudioManager
 import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Binder
@@ -45,6 +48,8 @@ class TimerService : Service() {
     private var currentTarget = "timer"
     private var alarmSound: String? = null
     private var shouldVibrate = true
+    private var restVolume = 0.35f
+    private var focusRequest: AudioFocusRequest? = null
     private var shouldKeepRinging = false
     private var stopLabel = ""
     private var addOneMinuteLabel = ""
@@ -233,6 +238,7 @@ class TimerService : Service() {
             ?: "android.resource://$packageName/${R.raw.argon}"
         shouldVibrate = intent?.getBooleanExtra("vibrate", true) ?: true
         shouldKeepRinging = intent?.getBooleanExtra("keepRinging", false) ?: false
+        restVolume = intent?.getFloatExtra("restVolume", 0.35f) ?: 0.35f
         stopLabel = intent?.getStringExtra("stopLabel").orEmpty()
         addOneMinuteLabel = intent?.getStringExtra("addOneMinuteLabel").orEmpty()
         timerChannelName = intent?.getStringExtra("timerChannelName").orEmpty()
@@ -308,20 +314,56 @@ class TimerService : Service() {
         if (!enableSound) return
 
         try {
-            mediaPlayer = if (alarmSound?.isNotEmpty() == true)
-                MediaPlayer.create(applicationContext, Uri.parse(alarmSound)).apply {
-                    isLooping = shouldKeepRinging
-                    start()
-                    setOnCompletionListener { vibrator?.cancel() }
-                }
-            else
-                MediaPlayer.create(applicationContext, R.raw.argon).apply {
-                    isLooping = shouldKeepRinging
-                    start()
-                    setOnCompletionListener { vibrator?.cancel() }
-                }
+            val attributes = AudioAttributes.Builder()
+                .setUsage(AudioAttributes.USAGE_ASSISTANCE_SONIFICATION)
+                .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                .build()
+            val player = MediaPlayer()
+            player.setAudioAttributes(attributes)
+            resources.openRawResourceFd(R.raw.rest_end).use { descriptor ->
+                player.setDataSource(
+                    descriptor.fileDescriptor,
+                    descriptor.startOffset,
+                    descriptor.length
+                )
+            }
+            val volume = restVolume.coerceIn(0f, 1f)
+            player.setVolume(volume, volume)
+            player.isLooping = false
+            val audioManager = getSystemService(AUDIO_SERVICE) as AudioManager
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                val request = AudioFocusRequest.Builder(AudioManager.AUDIOFOCUS_GAIN_TRANSIENT_MAY_DUCK)
+                    .setAudioAttributes(attributes)
+                    .build()
+                focusRequest = request
+                audioManager.requestAudioFocus(request)
+            } else {
+                @Suppress("DEPRECATION")
+                audioManager.requestAudioFocus(
+                    null,
+                    AudioManager.STREAM_NOTIFICATION,
+                    AudioManager.AUDIOFOCUS_GAIN_TRANSIENT_MAY_DUCK
+                )
+            }
+            player.setOnCompletionListener {
+                vibrator?.cancel()
+                abandonRestFocus()
+            }
+            player.prepare()
+            player.start()
+            mediaPlayer = player
         } catch (e: Exception) {
-            Log.e("TimerService", "Invalid URI or non-existing file: $alarmSound", e)
+            Log.e("TimerService", "Rest sound failed", e)
+        }
+    }
+
+    private fun abandonRestFocus() {
+        val audioManager = getSystemService(AUDIO_SERVICE) as AudioManager
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            focusRequest?.let { audioManager.abandonAudioFocusRequest(it) }
+        } else {
+            @Suppress("DEPRECATION")
+            audioManager.abandonAudioFocus(null)
         }
     }
 
@@ -392,8 +434,7 @@ class TimerService : Service() {
 
     private fun vibrate() {
         if (!shouldVibrate) return
-        val pattern =
-            longArrayOf(0, 1000, 1000, 1000, 1000, 1000)
+        val pattern = longArrayOf(0, 180, 80, 180)
         vibrator = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             val vibratorManager =
                 getSystemService(Context.VIBRATOR_MANAGER_SERVICE) as VibratorManager
@@ -402,7 +443,7 @@ class TimerService : Service() {
             @Suppress("DEPRECATION")
             getSystemService(VIBRATOR_SERVICE) as Vibrator
         }
-        val repeatIndex = if (shouldKeepRinging) 2 else -1
+        val repeatIndex = -1
         vibrator!!.vibrate(VibrationEffect.createWaveform(pattern, repeatIndex))
     }
 

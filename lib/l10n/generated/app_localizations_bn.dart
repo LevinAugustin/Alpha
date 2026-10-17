@@ -9,13 +9,13 @@ class AppLocalizationsBn extends AppLocalizations {
   AppLocalizationsBn([String locale = 'bn']) : super(locale);
 
   @override
-  String get appTitle => 'Flexify';
+  String get appTitle => 'Alpha';
 
   @override
   String get settingsLanguage => 'ভাষা';
 
   @override
-  String get settingsLanguageDescription => 'Flexify-এ ব্যবহৃত ভাষা বেছে নিন';
+  String get settingsLanguageDescription => 'Alpha-এ ব্যবহৃত ভাষা বেছে নিন';
 
   @override
   String get languageSystemDefault => 'সিস্টেমের ডিফল্ট';
@@ -387,7 +387,7 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get backupArchiveMissingDatabase =>
-      'ব্যাকআপ আর্কাইভে Flexify ডেটাবেস নেই।';
+      'ব্যাকআপ আর্কাইভে Alpha ডেটাবেস নেই।';
 
   @override
   String failedToImportGraphs(String error) {
@@ -514,8 +514,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get privacyPolicy => 'গোপনীয়তা নীতি';
 
   @override
-  String get privacyPolicyDescription =>
-      'Flexify কীভাবে আপনার ডেটা ব্যবহার করে';
+  String get privacyPolicyDescription => 'Alpha কীভাবে আপনার ডেটা ব্যবহার করে';
 
   @override
   String get licenseLabel => 'লাইসেন্স';
@@ -530,7 +529,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get leaveReview => 'রিভিউ দিন';
 
   @override
-  String get leaveReviewDescription => 'Play Store-এ Flexify-কে রেট দিন';
+  String get leaveReviewDescription => 'Play Store-এ Alpha-কে রেট দিন';
 
   @override
   String get reportBug => 'বাগ রিপোর্ট করুন';
@@ -654,7 +653,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get titleOptional => 'শিরোনাম (ঐচ্ছিক)';
 
   @override
-  String get searchExercises => 'ব্যায়াম খুঁজুন...';
+  String get searchExercises => 'ব্যায়াম খুঁজুন';
 
   @override
   String get warmupSets => 'ওয়ার্ম-আপ সেট';
@@ -1286,7 +1285,7 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get automaticBackupNotificationBody =>
-      'Flexify প্রতিদিন নির্বাচিত ফোল্ডারে আপনার ডেটা ও ছবি স্বয়ংক্রিয়ভাবে ব্যাকআপ করবে।';
+      'Alpha প্রতিদিন নির্বাচিত ফোল্ডারে আপনার ডেটা ও ছবি স্বয়ংক্রিয়ভাবে ব্যাকআপ করবে।';
 
   @override
   String get backupSettingsChannel => 'ব্যাকআপ সেটিংস';
@@ -1300,7 +1299,7 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get backupChannelDescription =>
-      'Flexify-এর ডেটা ও ছবির স্বয়ংক্রিয় ব্যাকআপ';
+      'Alpha-এর ডেটা ও ছবির স্বয়ংক্রিয় ব্যাকআপ';
 
   @override
   String get backupCompletedTitle => 'ডেটা ও ছবি ব্যাকআপ হয়েছে';
@@ -1567,4 +1566,239 @@ class AppLocalizationsBn extends AppLocalizations {
   String setNumber(int number) {
     return 'সেট $number';
   }
+
+  @override
+  String get tabStart => 'শুরু';
+
+  @override
+  String get tabTraining => 'প্রশিক্ষণ';
+
+  @override
+  String get tabExercises => 'ব্যায়াম';
+
+  @override
+  String get tabProfile => 'প্রোফাইল';
+
+  @override
+  String get calendarTitle => 'ক্যালেন্ডার';
+
+  @override
+  String dayStreak(int count) {
+    return 'টানা $count দিন';
+  }
+
+  @override
+  String weekStreak(int count) {
+    return 'টানা $count সপ্তাহ';
+  }
+
+  @override
+  String get thisWeek => 'এই সপ্তাহ';
+
+  @override
+  String get bodyWeightChart => 'শরীরের ওজন';
+
+  @override
+  String get strengthChart => 'শক্তি';
+
+  @override
+  String get weeklyVolumeChart => 'সাপ্তাহিক ভলিউম';
+
+  @override
+  String get noChartData => 'এখনও যথেষ্ট তথ্য নেই';
+
+  @override
+  String get newTemplate => 'নতুন টেমপ্লেট';
+
+  @override
+  String get templateLimit => 'আপনি সর্বোচ্চ ৭টি টেমপ্লেট রাখতে পারেন।';
+
+  @override
+  String get templatesEmpty => 'এই টেমপ্লেটে এখনও ব্যায়াম নেই।';
+
+  @override
+  String get allMuscles => 'সব';
+
+  @override
+  String get noHistory => 'এখনও কোনো ইতিহাস নেই';
+
+  @override
+  String bestOneRepMax(String value) {
+    return 'আনুমানিক 1RM $value কেজি';
+  }
+
+  @override
+  String bestLoad(String value) {
+    return 'সেরা ভার $value কেজি';
+  }
+
+  @override
+  String get profileName => 'নাম';
+
+  @override
+  String get heightCm => 'উচ্চতা (সেমি)';
+
+  @override
+  String get ageOptional => 'বয়স (ঐচ্ছিক)';
+
+  @override
+  String get goals => 'লক্ষ্য';
+
+  @override
+  String get bodyData => 'শরীরের তথ্য';
+
+  @override
+  String get addBodyWeight => 'ওজন যোগ করুন';
+
+  @override
+  String get weightKg => 'ওজন (কেজি)';
+
+  @override
+  String get aiCoaching => 'এআই কোচিং';
+
+  @override
+  String get apiKey => 'এপিআই কী';
+
+  @override
+  String get apiKeyStoredLocally =>
+      'শুধু এই ফোনে সংরক্ষিত। এখনও ব্যবহৃত হয় না।';
+
+  @override
+  String get profileSaved => 'প্রোফাইল সংরক্ষিত';
+
+  @override
+  String get noTrainingThisDay => 'এই দিনে কিছু নেই';
+
+  @override
+  String targetSets(int count) {
+    return '$count সেট';
+  }
+
+  @override
+  String repRangeLabel(String range) {
+    return '$range রেপ';
+  }
+
+  @override
+  String get repMinLabel => 'রেপ থেকে';
+
+  @override
+  String get repMaxLabel => 'রেপ পর্যন্ত';
+
+  @override
+  String get exerciseDatabaseCreditTitle => 'ব্যায়াম সংগ্রহ';
+
+  @override
+  String get exerciseDatabaseCreditBody =>
+      'নাম yuhonas-এর free-exercise-db থেকে, Unlicense (পাবলিক ডোমেইন)। Alpha নাম ও ডাকনাম যোগ করেছে।';
+
+  @override
+  String get workoutFinish => 'Beenden';
+
+  @override
+  String get volumeLabel => 'Volumen';
+
+  @override
+  String get setsLabel => 'Sätze';
+
+  @override
+  String get restSkip => 'Überspringen';
+
+  @override
+  String get columnSet => 'SATZ';
+
+  @override
+  String get columnPrevious => 'VORHERIGE';
+
+  @override
+  String get columnKg => 'KG';
+
+  @override
+  String get columnReps => 'WDH';
+
+  @override
+  String get addExerciseWorkout => 'Übung hinzufügen';
+
+  @override
+  String get addNote => 'Notiz hinzufügen';
+
+  @override
+  String get swapExercise => 'Übung tauschen';
+
+  @override
+  String get moveExerciseUp => 'Nach oben';
+
+  @override
+  String get moveExerciseDown => 'Nach unten';
+
+  @override
+  String get removeExercise => 'Entfernen';
+
+  @override
+  String get restSecondsLabel => 'Pause in Sekunden';
+
+  @override
+  String get newRecordTitle => 'NEUER REKORD!';
+
+  @override
+  String get recordKeepGoing => 'Weiter so';
+
+  @override
+  String get exerciseSearchHint => 'Übung suchen';
+
+  @override
+  String get installUpdate => 'Update installieren';
+
+  @override
+  String get updateAvailable => 'Eine neuere Version ist da';
+
+  @override
+  String get localProfiles => 'Profile';
+
+  @override
+  String get newProfile => 'Neues Profil';
+
+  @override
+  String get profileNameHint => 'Profilname';
+
+  @override
+  String get profileActive => 'Aktiv';
+
+  @override
+  String get switchProfile => 'Wechseln';
+
+  @override
+  String get themeSetting => 'Design';
+
+  @override
+  String get themeTiefschwarz => 'Tiefschwarz';
+
+  @override
+  String get themeEisblau => 'Eisblau';
+
+  @override
+  String get themePink => 'Pink';
+
+  @override
+  String get restSound => 'Pausenton';
+
+  @override
+  String get restSoundVolume => 'Lautstärke der Pause';
+
+  @override
+  String get restSoundCredit => 'Notification Sound von yfjesse, CC0';
+
+  @override
+  String get splashMotto => 'Stärke. Disziplin. Fortschritt.';
+
+  @override
+  String helloName(String name) {
+    return 'Hallo, $name';
+  }
+
+  @override
+  String get alphaSettings => 'Alpha';
+
+  @override
+  String get alphaSettingsDescription => 'Profile, Design und Pausenton';
 }

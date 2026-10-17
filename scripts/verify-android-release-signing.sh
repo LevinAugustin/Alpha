@@ -3,36 +3,38 @@ set -euo pipefail
 
 repo_root=$(git rev-parse --show-toplevel)
 policy_file="$repo_root/android/signing-policy.properties"
-
-expected=$(
-  sed -n 's/^githubReleaseCertificateSha256=//p' "$policy_file" \
-    | tr '[:upper:]' '[:lower:]' \
-    | tr -cd '0-9a-f'
+expected_package=$(
+  sed -n 's/^productionApplicationId=//p' "$policy_file" | head -n 1 | tr -d '[:space:]'
 )
 
-if [[ ${#expected} -ne 64 ]]; then
-  echo "Invalid githubReleaseCertificateSha256 in $policy_file" >&2
+if [[ -z "$expected_package" ]]; then
+  echo "Missing productionApplicationId in $policy_file" >&2
   exit 2
 fi
 
-find_apksigner() {
-  if command -v apksigner >/dev/null 2>&1; then
-    command -v apksigner
+find_tool() {
+  local name="$1"
+  if command -v "$name" >/dev/null 2>&1; then
+    command -v "$name"
     return
   fi
 
   local sdk
-  for sdk in "${ANDROID_SDK_ROOT:-}" "${ANDROID_HOME:-}" /opt/android-sdk; do
-    [[ -n "$sdk" && -d "$sdk/build-tools" ]] || continue
-    find "$sdk/build-tools" -mindepth 2 -maxdepth 2 -type f -name apksigner -print \
-      | sort -V \
-      | tail -n 1
+  for sdk in "${ANDROID_SDK_ROOT:-}" "${ANDROID_HOME:-}" /opt/android-sdk "$HOME/android-sdk"; do
+    [[ -n "$sdk" && -d "$sdk" ]] || continue
+    find "$sdk" -type f -name "$name" -print | sort -V | tail -n 1
   done | tail -n 1
 }
 
-apksigner_bin=$(find_apksigner)
+apksigner_bin=$(find_tool apksigner)
 if [[ -z "$apksigner_bin" ]]; then
   echo "Could not find apksigner" >&2
+  exit 2
+fi
+
+aapt_bin=$(find_tool aapt)
+if [[ -z "$aapt_bin" ]]; then
+  echo "Could not find aapt" >&2
   exit 2
 fi
 
@@ -47,20 +49,19 @@ for apk in "$@"; do
     exit 2
   }
 
-  actual=$(
-    "$apksigner_bin" verify --print-certs "$apk" \
-      | sed -n 's/.*certificate SHA-256 digest: //p' \
-      | head -n 1 \
-      | tr '[:upper:]' '[:lower:]' \
-      | tr -cd '0-9a-f'
-  )
+  "$apksigner_bin" verify "$apk"
 
-  if [[ "$actual" != "$expected" ]]; then
-    echo "Wrong signer for $apk" >&2
-    echo "  expected: $expected" >&2
-    echo "  actual:   ${actual:-<missing>}" >&2
+  package=$(
+    "$aapt_bin" dump badging "$apk" \
+      | sed -n 's/^package: name='"'"'\([^'"'"']*\)'"'"'.*/\1/p' \
+      | head -n 1
+  )
+  if [[ "$package" != "$expected_package" ]]; then
+    echo "Wrong application id for $apk" >&2
+    echo "  expected: $expected_package" >&2
+    echo "  actual:   ${package:-<missing>}" >&2
     exit 1
   fi
 
-  echo "Verified release signer: $apk ($actual)"
+  echo "Verified signed APK: $apk ($package)"
 done

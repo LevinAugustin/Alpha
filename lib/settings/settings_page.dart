@@ -6,6 +6,7 @@ import 'package:flexify/database/database.dart';
 import 'package:flexify/empty_state.dart';
 import 'package:flexify/l10n/l10n.dart';
 import 'package:flexify/responsive.dart';
+import 'package:flexify/settings/alpha_settings_page.dart';
 import 'package:flexify/settings/appearance_settings.dart';
 import 'package:flexify/settings/data_settings.dart';
 import 'package:flexify/settings/format_settings.dart';
@@ -250,6 +251,12 @@ class _SettingsPageState extends State<SettingsPage>
   }
 
   List<(IconData, String, String, Widget)> get _categories => [
+    (
+      Icons.tune_rounded,
+      context.l10n.alphaSettings,
+      context.l10n.alphaSettingsDescription,
+      const AlphaSettingsPage(),
+    ),
     (
       Icons.fitness_center_rounded,
       context.l10n.workouts,

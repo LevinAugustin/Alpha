@@ -35,21 +35,44 @@ class SafeAudioPlayer {
   }
 
   /// Plays a bundled asset when audio is available.
-  Future<void> playAsset(String asset, {bool loop = false}) async {
-    await _play(AssetSource(asset), loop: loop);
+  Future<void> playAsset(
+    String asset, {
+    bool loop = false,
+    double volume = 1,
+  }) async {
+    await _play(AssetSource(asset), loop: loop, volume: volume);
   }
 
   /// Plays a file from the local filesystem when audio is available.
-  Future<void> playFile(String path, {bool loop = false}) async {
-    await _play(DeviceFileSource(path), loop: loop);
+  Future<void> playFile(
+    String path, {
+    bool loop = false,
+    double volume = 1,
+  }) async {
+    await _play(DeviceFileSource(path), loop: loop, volume: volume);
   }
 
-  Future<void> _play(Source source, {required bool loop}) async {
+  Future<void> _play(
+    Source source, {
+    required bool loop,
+    double volume = 1,
+  }) async {
     try {
       final player = await _getPlayer();
+      await player?.setAudioContext(
+        AudioContext(
+          android: const AudioContextAndroid(
+            contentType: AndroidContentType.sonification,
+            usageType: AndroidUsageType.assistanceSonification,
+            audioFocus: AndroidAudioFocus.gainTransientMayDuck,
+          ),
+          iOS: AudioContextIOS(category: AVAudioSessionCategory.ambient),
+        ),
+      );
       await player?.setReleaseMode(
         loop ? ReleaseMode.loop : ReleaseMode.release,
       );
+      await player?.setVolume(volume.clamp(0, 1));
       await player?.play(source);
     } catch (error, stackTrace) {
       talker.handle(error, stackTrace, 'Failed to play audio');

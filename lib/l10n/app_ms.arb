@@ -1,6 +1,6 @@
 {
   "@@locale": "ms",
-  "appTitle": "Flexify",
+  "appTitle": "Alpha",
   "@appTitle": {
     "description": "Application title shown by the operating system and app shell."
   },
@@ -8,7 +8,7 @@
   "@settingsLanguage": {
     "description": "Title for the application language preference."
   },
-  "settingsLanguageDescription": "Pilih bahasa yang digunakan Flexify",
+  "settingsLanguageDescription": "Pilih bahasa yang digunakan Alpha",
   "@settingsLanguageDescription": {
     "description": "Description for the application language preference."
   },
@@ -337,7 +337,7 @@
   },
   "disableBatteryOptimizations": "Lumpuhkan optimasi baterai",
   "@disableBatteryOptimizations": {
-    "description": "Android permission action for excluding Flexify from battery optimizations."
+    "description": "Android permission action for excluding Alpha from battery optimizations."
   },
   "batteryOptimizationWarning": "Kemajuan mungkin akan berhenti jika optimasi baterai tetap berjalan.",
   "@batteryOptimizationWarning": {
@@ -445,7 +445,7 @@
   },
   "deleteDatabaseConfirmation": "Adakah anda pasti mahu memadam pangkalan data anda? Tindakan ini tidak boleh dibuat asal dan akan memadam semua data anda.",
   "@deleteDatabaseConfirmation": {
-    "description": "Confirmation text for deleting the complete Flexify database."
+    "description": "Confirmation text for deleting the complete Alpha database."
   },
   "importData": "Import data",
   "@importData": {
@@ -476,9 +476,9 @@
       }
     }
   },
-  "backupArchiveMissingDatabase": "Arsip cadangan tidak berisi pangkalan data Flexify.",
+  "backupArchiveMissingDatabase": "Arsip cadangan tidak berisi pangkalan data Alpha.",
   "@backupArchiveMissingDatabase": {
-    "description": "Validation error shown when an imported backup archive is missing the Flexify database file."
+    "description": "Validation error shown when an imported backup archive is missing the Alpha database file."
   },
   "failedToImportGraphs": "Gagal mengimportt graf: {error}",
   "@failedToImportGraphs": {
@@ -673,7 +673,7 @@
   "@privacyPolicy": {
     "description": "Label for opening the privacy policy."
   },
-  "privacyPolicyDescription": "Cara Flexify menangani data Anda",
+  "privacyPolicyDescription": "Cara Alpha menangani data Anda",
   "@privacyPolicyDescription": {
     "description": "Description for the privacy policy action."
   },
@@ -693,7 +693,7 @@
   "@leaveReview": {
     "description": "Label for opening the app-store review page."
   },
-  "leaveReviewDescription": "Beri nilai Flexify di Play Store",
+  "leaveReviewDescription": "Beri nilai Alpha di Play Store",
   "@leaveReviewDescription": {
     "description": "Description for the app-store review action."
   },
@@ -864,7 +864,7 @@
   "@titleOptional": {
     "description": "Optional plan title field label."
   },
-  "searchExercises": "Cari senaman…",
+  "searchExercises": "Cari senaman",
   "@searchExercises": {
     "description": "Hint for searching exercises."
   },
@@ -1689,7 +1689,7 @@
   "@inputStyleDescription": {
     "description": "Description of the text input style setting."
   },
-  "automaticBackupNotificationBody": "Flexify akan mencadangkan data dan gambar Anda secara automatik ke folder yang dipilih setiap hari.",
+  "automaticBackupNotificationBody": "Alpha akan mencadangkan data dan gambar Anda secara automatik ke folder yang dipilih setiap hari.",
   "@automaticBackupNotificationBody": {
     "description": "Notification body shown when automatic backups are enabled."
   },
@@ -1705,7 +1705,7 @@
   "@backupChannelName": {
     "description": "Android notification channel name for completed automatic backups."
   },
-  "backupChannelDescription": "Sandaran automatik data dan gambar Flexify",
+  "backupChannelDescription": "Sandaran automatik data dan gambar Alpha",
   "@backupChannelDescription": {
     "description": "Android notification channel description for automatic backups."
   },
@@ -2036,5 +2036,78 @@
         "type": "int"
       }
     }
-  }
+  },
+  "tabStart": "Mula",
+  "tabTraining": "Latihan",
+  "tabExercises": "Senaman",
+  "tabProfile": "Profil",
+  "calendarTitle": "Kalendar",
+  "dayStreak": "{count} hari berturut-turut",
+  "weekStreak": "{count} minggu berturut-turut",
+  "thisWeek": "Minggu ini",
+  "bodyWeightChart": "Berat badan",
+  "strengthChart": "Kekuatan",
+  "weeklyVolumeChart": "Volum mingguan",
+  "noChartData": "Data masih kurang",
+  "newTemplate": "Templat baharu",
+  "templateLimit": "Anda boleh simpan sehingga 7 templat.",
+  "templatesEmpty": "Templat ini belum ada senaman.",
+  "allMuscles": "Semua",
+  "noHistory": "Belum ada sejarah",
+  "bestOneRepMax": "1RM anggaran {value} kg",
+  "bestLoad": "Beban terbaik {value} kg",
+  "profileName": "Nama",
+  "heightCm": "Tinggi (cm)",
+  "ageOptional": "Umur (pilihan)",
+  "goals": "Matlamat",
+  "bodyData": "Data badan",
+  "addBodyWeight": "Tambah berat",
+  "weightKg": "Berat (kg)",
+  "aiCoaching": "Bimbingan AI",
+  "apiKey": "Kunci API",
+  "apiKeyStoredLocally": "Hanya disimpan pada telefon ini. Belum digunakan.",
+  "profileSaved": "Profil disimpan",
+  "noTrainingThisDay": "Tiada rekod pada hari ini",
+  "targetSets": "{count} set",
+  "repRangeLabel": "{range} ulangan",
+  "repMinLabel": "Ulangan dari",
+  "repMaxLabel": "Ulangan hingga",
+  "exerciseDatabaseCreditTitle": "Pustaka senaman",
+  "exerciseDatabaseCreditBody": "Nama daripada free-exercise-db oleh yuhonas, Unlicense (domain awam). Alpha menambah nama dan alias.",
+  "workoutFinish": "Beenden",
+  "volumeLabel": "Volumen",
+  "setsLabel": "Sätze",
+  "restSkip": "Überspringen",
+  "columnSet": "SATZ",
+  "columnPrevious": "VORHERIGE",
+  "columnKg": "KG",
+  "columnReps": "WDH",
+  "addExerciseWorkout": "Übung hinzufügen",
+  "addNote": "Notiz hinzufügen",
+  "swapExercise": "Übung tauschen",
+  "moveExerciseUp": "Nach oben",
+  "moveExerciseDown": "Nach unten",
+  "removeExercise": "Entfernen",
+  "restSecondsLabel": "Pause in Sekunden",
+  "newRecordTitle": "NEUER REKORD!",
+  "recordKeepGoing": "Weiter so",
+  "exerciseSearchHint": "Übung suchen",
+  "installUpdate": "Update installieren",
+  "updateAvailable": "Eine neuere Version ist da",
+  "localProfiles": "Profile",
+  "newProfile": "Neues Profil",
+  "profileNameHint": "Profilname",
+  "profileActive": "Aktiv",
+  "switchProfile": "Wechseln",
+  "themeSetting": "Design",
+  "themeTiefschwarz": "Tiefschwarz",
+  "themeEisblau": "Eisblau",
+  "themePink": "Pink",
+  "restSound": "Pausenton",
+  "restSoundVolume": "Lautstärke der Pause",
+  "restSoundCredit": "Notification Sound von yfjesse, CC0",
+  "splashMotto": "Stärke. Disziplin. Fortschritt.",
+  "helloName": "Hallo, {name}",
+  "alphaSettings": "Alpha",
+  "alphaSettingsDescription": "Profile, Design und Pausenton"
 }

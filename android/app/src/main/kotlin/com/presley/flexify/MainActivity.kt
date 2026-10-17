@@ -10,6 +10,8 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.content.ServiceConnection
 import android.content.pm.PackageManager
+import android.net.Uri
+import androidx.core.content.FileProvider
 import android.database.sqlite.SQLiteDatabase
 import android.os.Build
 import android.os.Bundle
@@ -145,6 +147,7 @@ class MainActivity : FlutterActivity() {
                     val vibrate = call.argument<Boolean>("vibrate")!!
                     val keepRinging = call.argument<Boolean>("keepRinging") ?: false
                     val target = call.argument<String>("target") ?: "timer"
+                    val restVolume = (call.argument<Double>("restVolume") ?: 0.35).toFloat()
                     timer(
                         restMs,
                         title,
@@ -153,8 +156,19 @@ class MainActivity : FlutterActivity() {
                         vibrate,
                         keepRinging,
                         target,
+                        restVolume,
                         timerLocalization(call)
                     )
+                    result.success(null)
+                }
+
+                "installApk" -> {
+                    val path = call.argument<String>("path")
+                    if (path.isNullOrEmpty()) {
+                        result.error("bad_path", "Missing APK path", null)
+                    } else {
+                        installApk(path, result)
+                    }
                 }
 
                 "getNotificationTarget" -> {
@@ -232,6 +246,7 @@ class MainActivity : FlutterActivity() {
                             vibrate!!,
                             keepRinging,
                             target,
+                            0.35f,
                             localization
                         )
                     }
@@ -331,6 +346,7 @@ class MainActivity : FlutterActivity() {
         vibrate: Boolean,
         keepRinging: Boolean,
         target: String,
+        restVolume: Float,
         localization: Map<String, String>
     ) {
         Log.d("MainActivity", "Queue $description for $durationMs delay")
@@ -347,11 +363,40 @@ class MainActivity : FlutterActivity() {
             putExtra("alarmSound", alarmSound)
             putExtra("vibrate", vibrate)
             putExtra("keepRinging", keepRinging)
+            putExtra("restVolume", restVolume)
             putExtra(TIMER_TARGET_EXTRA, target)
             localization.forEach { (key, value) -> putExtra(key, value) }
         }
 
         context.startForegroundService(intent)
+    }
+
+    private fun installApk(path: String, result: io.flutter.plugin.common.MethodChannel.Result) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O &&
+            !packageManager.canRequestPackageInstalls()
+        ) {
+            val settings = Intent(
+                android.provider.Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES,
+                Uri.parse("package:$packageName")
+            )
+            settings.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(settings)
+            result.success(false)
+            return
+        }
+        val file = java.io.File(path)
+        val uri = FileProvider.getUriForFile(
+            this,
+            "$packageName.fileprovider",
+            file
+        )
+        val intent = Intent(Intent.ACTION_VIEW).apply {
+            setDataAndType(uri, "application/vnd.android.package-archive")
+            addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        }
+        startActivity(intent)
+        result.success(true)
     }
 
     private fun pick(path: String) {

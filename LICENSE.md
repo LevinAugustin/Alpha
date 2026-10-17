@@ -1,3 +1,12 @@
+Alpha is a modified version of Flexify by Brandon Dick.
+Flexify is Copyright © 2024 Flexify and remains under the MIT License.
+This notice and the license below must stay with every copy.
+
+Exercise names in the built-in library are adapted from
+free-exercise-db by yuhonas (https://github.com/yuhonas/free-exercise-db),
+which is released under the Unlicense into the public domain.
+German names and aliases were added for Alpha.
+
 The MIT License (MIT)
 Copyright © 2024 Flexify
 

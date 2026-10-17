@@ -92,6 +92,8 @@ void main() {
   testWidgets('SettingsPage searches and persists language', (
     WidgetTester tester,
   ) async {
+    await tester.binding.setSurfaceSize(const Size(800, 2400));
+    addTearDown(() => tester.binding.setSurfaceSize(null));
     final harness = await render(tester);
 
     await tester.enterText(find.bySemanticsLabel('Search...'), 'Language');

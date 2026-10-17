@@ -1,6 +1,6 @@
 {
   "@@locale": "hi",
-  "appTitle": "Flexify",
+  "appTitle": "Alpha",
   "@appTitle": {
     "description": "Application title shown by the operating system and app shell."
   },
@@ -8,7 +8,7 @@
   "@settingsLanguage": {
     "description": "Title for the application language preference."
   },
-  "settingsLanguageDescription": "Flexify में इस्तेमाल होने वाली भाषा चुनें",
+  "settingsLanguageDescription": "Alpha में इस्तेमाल होने वाली भाषा चुनें",
   "@settingsLanguageDescription": {
     "description": "Description for the application language preference."
   },
@@ -337,7 +337,7 @@
   },
   "disableBatteryOptimizations": "बैटरी ऑप्टिमाइज़ेशन बंद करें",
   "@disableBatteryOptimizations": {
-    "description": "Android permission action for excluding Flexify from battery optimizations."
+    "description": "Android permission action for excluding Alpha from battery optimizations."
   },
   "batteryOptimizationWarning": "बैटरी ऑप्टिमाइज़ेशन चालू रहने पर प्रगति रुक सकती है।",
   "@batteryOptimizationWarning": {
@@ -445,7 +445,7 @@
   },
   "deleteDatabaseConfirmation": "क्या आप वाकई अपना डेटाबेस हटाना चाहते हैं? यह कार्रवाई वापस नहीं ली जा सकती और आपका सारा डेटा नष्ट हो जाएगा।",
   "@deleteDatabaseConfirmation": {
-    "description": "Confirmation text for deleting the complete Flexify database."
+    "description": "Confirmation text for deleting the complete Alpha database."
   },
   "importData": "डेटा आयात करें",
   "@importData": {
@@ -476,9 +476,9 @@
       }
     }
   },
-  "backupArchiveMissingDatabase": "बैकअप आर्काइव में Flexify डेटाबेस नहीं है।",
+  "backupArchiveMissingDatabase": "बैकअप आर्काइव में Alpha डेटाबेस नहीं है।",
   "@backupArchiveMissingDatabase": {
-    "description": "Validation error shown when an imported backup archive is missing the Flexify database file."
+    "description": "Validation error shown when an imported backup archive is missing the Alpha database file."
   },
   "failedToImportGraphs": "ग्राफ़ आयात नहीं हो सके: {error}",
   "@failedToImportGraphs": {
@@ -673,7 +673,7 @@
   "@privacyPolicy": {
     "description": "Label for opening the privacy policy."
   },
-  "privacyPolicyDescription": "Flexify आपके डेटा को कैसे संभालता है",
+  "privacyPolicyDescription": "Alpha आपके डेटा को कैसे संभालता है",
   "@privacyPolicyDescription": {
     "description": "Description for the privacy policy action."
   },
@@ -693,7 +693,7 @@
   "@leaveReview": {
     "description": "Label for opening the app-store review page."
   },
-  "leaveReviewDescription": "Play Store पर Flexify को रेट करें",
+  "leaveReviewDescription": "Play Store पर Alpha को रेट करें",
   "@leaveReviewDescription": {
     "description": "Description for the app-store review action."
   },
@@ -864,7 +864,7 @@
   "@titleOptional": {
     "description": "Optional plan title field label."
   },
-  "searchExercises": "व्यायाम खोजें...",
+  "searchExercises": "व्यायाम खोजें",
   "@searchExercises": {
     "description": "Hint for searching exercises."
   },
@@ -1689,7 +1689,7 @@
   "@inputStyleDescription": {
     "description": "Description of the text input style setting."
   },
-  "automaticBackupNotificationBody": "Flexify हर दिन चुने हुए फ़ोल्डर में आपके डेटा और चित्रों का स्वचालित बैकअप बनाएगा।",
+  "automaticBackupNotificationBody": "Alpha हर दिन चुने हुए फ़ोल्डर में आपके डेटा और चित्रों का स्वचालित बैकअप बनाएगा।",
   "@automaticBackupNotificationBody": {
     "description": "Notification body shown when automatic backups are enabled."
   },
@@ -1705,7 +1705,7 @@
   "@backupChannelName": {
     "description": "Android notification channel name for completed automatic backups."
   },
-  "backupChannelDescription": "Flexify डेटा और चित्रों के स्वचालित बैकअप",
+  "backupChannelDescription": "Alpha डेटा और चित्रों के स्वचालित बैकअप",
   "@backupChannelDescription": {
     "description": "Android notification channel description for automatic backups."
   },
@@ -2036,5 +2036,78 @@
         "type": "int"
       }
     }
-  }
+  },
+  "tabStart": "शुरू",
+  "tabTraining": "ट्रेनिंग",
+  "tabExercises": "व्यायाम",
+  "tabProfile": "प्रोफ़ाइल",
+  "calendarTitle": "कैलेंडर",
+  "dayStreak": "लगातार {count} दिन",
+  "weekStreak": "लगातार {count} सप्ताह",
+  "thisWeek": "यह सप्ताह",
+  "bodyWeightChart": "शरीर का वज़न",
+  "strengthChart": "ताकत",
+  "weeklyVolumeChart": "साप्ताहिक वॉल्यूम",
+  "noChartData": "अभी पर्याप्त डेटा नहीं",
+  "newTemplate": "नया टेम्पलेट",
+  "templateLimit": "आप 7 टेम्पलेट तक सहेज सकते हैं।",
+  "templatesEmpty": "इस टेम्पलेट में अभी व्यायाम नहीं हैं।",
+  "allMuscles": "सभी",
+  "noHistory": "अभी कोई इतिहास नहीं",
+  "bestOneRepMax": "अनुमानित 1RM {value} किग्रा",
+  "bestLoad": "सर्वश्रेष्ठ भार {value} किग्रा",
+  "profileName": "नाम",
+  "heightCm": "कद (सेमी)",
+  "ageOptional": "आयु (वैकल्पिक)",
+  "goals": "लक्ष्य",
+  "bodyData": "शरीर के आंकड़े",
+  "addBodyWeight": "वज़न जोड़ें",
+  "weightKg": "वज़न (किग्रा)",
+  "aiCoaching": "एआई कोचिंग",
+  "apiKey": "एपीआई कुंजी",
+  "apiKeyStoredLocally": "केवल इस फ़ोन पर सहेजी जाती है। अभी उपयोग नहीं होती।",
+  "profileSaved": "प्रोफ़ाइल सहेजी गई",
+  "noTrainingThisDay": "इस दिन कुछ दर्ज नहीं है",
+  "targetSets": "{count} सेट",
+  "repRangeLabel": "{range} रेप",
+  "repMinLabel": "रेप से",
+  "repMaxLabel": "रेप तक",
+  "exerciseDatabaseCreditTitle": "व्यायाम संग्रह",
+  "exerciseDatabaseCreditBody": "नाम yuhonas के free-exercise-db से हैं, Unlicense (पब्लिक डोमेन)। Alpha ने नाम और उपनाम जोड़े।",
+  "workoutFinish": "Beenden",
+  "volumeLabel": "Volumen",
+  "setsLabel": "Sätze",
+  "restSkip": "Überspringen",
+  "columnSet": "SATZ",
+  "columnPrevious": "VORHERIGE",
+  "columnKg": "KG",
+  "columnReps": "WDH",
+  "addExerciseWorkout": "Übung hinzufügen",
+  "addNote": "Notiz hinzufügen",
+  "swapExercise": "Übung tauschen",
+  "moveExerciseUp": "Nach oben",
+  "moveExerciseDown": "Nach unten",
+  "removeExercise": "Entfernen",
+  "restSecondsLabel": "Pause in Sekunden",
+  "newRecordTitle": "NEUER REKORD!",
+  "recordKeepGoing": "Weiter so",
+  "exerciseSearchHint": "Übung suchen",
+  "installUpdate": "Update installieren",
+  "updateAvailable": "Eine neuere Version ist da",
+  "localProfiles": "Profile",
+  "newProfile": "Neues Profil",
+  "profileNameHint": "Profilname",
+  "profileActive": "Aktiv",
+  "switchProfile": "Wechseln",
+  "themeSetting": "Design",
+  "themeTiefschwarz": "Tiefschwarz",
+  "themeEisblau": "Eisblau",
+  "themePink": "Pink",
+  "restSound": "Pausenton",
+  "restSoundVolume": "Lautstärke der Pause",
+  "restSoundCredit": "Notification Sound von yfjesse, CC0",
+  "splashMotto": "Stärke. Disziplin. Fortschritt.",
+  "helloName": "Hallo, {name}",
+  "alphaSettings": "Alpha",
+  "alphaSettingsDescription": "Profile, Design und Pausenton"
 }

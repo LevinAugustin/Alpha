@@ -145,16 +145,16 @@ void main() {
     );
   });
 
-  test('system locale resolution falls back to English', () {
+  test('system locale resolution falls back to German', () {
     expect(
       resolveSystemLocale(const [
         Locale('sv', 'SE'),
       ], AppLocalizations.supportedLocales),
-      const Locale('en'),
+      const Locale('de'),
     );
     expect(
       resolveSystemLocale(const [], AppLocalizations.supportedLocales),
-      const Locale('en'),
+      const Locale('de'),
     );
   });
 
@@ -222,7 +222,8 @@ void main() {
     await tester.pump();
 
     MaterialApp app = tester.widget(find.byType(MaterialApp));
-    expect(app.locale, isNull);
+    expect(app.locale, const Locale('de'));
+    expect(app.themeMode, ThemeMode.dark);
 
     await database.settings.update().write(
       const SettingsCompanion(localeOverride: Value('es')),

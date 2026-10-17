@@ -176,6 +176,7 @@ class TimerState extends ChangeNotifier {
     bool enableSound, [
     String target = 'timer',
     bool keepRinging = false,
+    double volume = 0.35,
   ]) async {
     talker.info('Starting rest timer for ${rest.inSeconds} seconds');
     _target = target;
@@ -199,6 +200,7 @@ class TimerState extends ChangeNotifier {
       'vibrate': vibrate,
       'enableSound': enableSound,
       'keepRinging': keepRinging,
+      'restVolume': volume,
       'target': target,
       'stopLabel': _stopLabel,
       'addOneMinuteLabel': _addOneMinuteLabel,
@@ -216,7 +218,13 @@ class TimerState extends ChangeNotifier {
       next?.cancel();
       next = Timer(
         rest,
-        () => _expireDesktopTimer(title, alarmSound, enableSound, keepRinging),
+        () => _expireDesktopTimer(
+          title,
+          alarmSound,
+          enableSound,
+          keepRinging,
+          volume,
+        ),
       );
     }
   }
@@ -225,8 +233,9 @@ class TimerState extends ChangeNotifier {
     String? title,
     String alarmSound,
     bool enableSound,
-    bool keepRinging,
-  ) async {
+    bool keepRinging, [
+    double volume = 0.35,
+  ]) async {
     final duration = timer.getDuration();
     justExpired = true;
     updateTimer(
@@ -237,7 +246,7 @@ class TimerState extends ChangeNotifier {
         NativeTimerState.expired,
       ),
     );
-    await notify(title, alarmSound, enableSound, keepRinging);
+    await notify(title, alarmSound, enableSound, keepRinging, volume);
   }
 
   /// Lazily builds and initializes the notification plugin a single time.
@@ -275,15 +284,12 @@ class TimerState extends ChangeNotifier {
     String? title,
     String? alarmSound,
     bool enableSound,
-    bool keepRinging,
-  ) async {
+    bool keepRinging, [
+    double volume = 0.35,
+  ]) async {
     talker.info('Rest timer expired');
     if (enableSound) {
-      if (alarmSound?.isNotEmpty == true) {
-        await player.playFile(alarmSound!, loop: keepRinging);
-      } else {
-        await player.playAsset('argon.mp3', loop: keepRinging);
-      }
+      await player.playAsset('sound/rest_end.mp3', loop: false, volume: volume);
     }
 
     try {

@@ -1,6 +1,6 @@
 {
   "@@locale": "uk",
-  "appTitle": "Flexify",
+  "appTitle": "Alpha",
   "@appTitle": {
     "description": "Application title shown by the operating system and app shell."
   },
@@ -8,7 +8,7 @@
   "@settingsLanguage": {
     "description": "Title for the application language preference."
   },
-  "settingsLanguageDescription": "Виберіть мову інтерфейсу Flexify",
+  "settingsLanguageDescription": "Виберіть мову інтерфейсу Alpha",
   "@settingsLanguageDescription": {
     "description": "Description for the application language preference."
   },
@@ -346,7 +346,7 @@
   },
   "disableBatteryOptimizations": "Вимкнути оптимізацію батареї",
   "@disableBatteryOptimizations": {
-    "description": "Android permission action for excluding Flexify from battery optimizations."
+    "description": "Android permission action for excluding Alpha from battery optimizations."
   },
   "batteryOptimizationWarning": "Якщо оптимізація батареї залишиться ввімкненою, прогрес може призупинятися.",
   "@batteryOptimizationWarning": {
@@ -454,7 +454,7 @@
   },
   "deleteDatabaseConfirmation": "Ви впевнені, що хочете видалити базу даних? Цю дію не можна скасувати, і всі ваші дані буде знищено.",
   "@deleteDatabaseConfirmation": {
-    "description": "Confirmation text for deleting the complete Flexify database."
+    "description": "Confirmation text for deleting the complete Alpha database."
   },
   "importData": "Імпортувати дані",
   "@importData": {
@@ -485,9 +485,9 @@
       }
     }
   },
-  "backupArchiveMissingDatabase": "Архів резервної копії не містить бази даних Flexify.",
+  "backupArchiveMissingDatabase": "Архів резервної копії не містить бази даних Alpha.",
   "@backupArchiveMissingDatabase": {
-    "description": "Validation error shown when an imported backup archive is missing the Flexify database file."
+    "description": "Validation error shown when an imported backup archive is missing the Alpha database file."
   },
   "failedToImportGraphs": "Не вдалося імпортувати графіки: {error}",
   "@failedToImportGraphs": {
@@ -682,7 +682,7 @@
   "@privacyPolicy": {
     "description": "Label for opening the privacy policy."
   },
-  "privacyPolicyDescription": "Як Flexify обробляє ваші дані",
+  "privacyPolicyDescription": "Як Alpha обробляє ваші дані",
   "@privacyPolicyDescription": {
     "description": "Description for the privacy policy action."
   },
@@ -702,7 +702,7 @@
   "@leaveReview": {
     "description": "Label for opening the app-store review page."
   },
-  "leaveReviewDescription": "Оцінити Flexify у Play Store",
+  "leaveReviewDescription": "Оцінити Alpha у Play Store",
   "@leaveReviewDescription": {
     "description": "Description for the app-store review action."
   },
@@ -873,7 +873,7 @@
   "@titleOptional": {
     "description": "Optional plan title field label."
   },
-  "searchExercises": "Пошук вправ…",
+  "searchExercises": "Пошук вправ",
   "@searchExercises": {
     "description": "Hint for searching exercises."
   },
@@ -1698,7 +1698,7 @@
   "@inputStyleDescription": {
     "description": "Description of the text input style setting."
   },
-  "automaticBackupNotificationBody": "Flexify автоматично створюватиме резервну копію даних і зображень у вибраній папці щодня.",
+  "automaticBackupNotificationBody": "Alpha автоматично створюватиме резервну копію даних і зображень у вибраній папці щодня.",
   "@automaticBackupNotificationBody": {
     "description": "Notification body shown when automatic backups are enabled."
   },
@@ -1714,7 +1714,7 @@
   "@backupChannelName": {
     "description": "Android notification channel name for completed automatic backups."
   },
-  "backupChannelDescription": "Автоматичні резервні копії даних і зображень Flexify",
+  "backupChannelDescription": "Автоматичні резервні копії даних і зображень Alpha",
   "@backupChannelDescription": {
     "description": "Android notification channel description for automatic backups."
   },
@@ -2045,5 +2045,78 @@
         "type": "int"
       }
     }
-  }
+  },
+  "tabStart": "Старт",
+  "tabTraining": "Тренування",
+  "tabExercises": "Вправи",
+  "tabProfile": "Профіль",
+  "calendarTitle": "Календар",
+  "dayStreak": "{count} днів поспіль",
+  "weekStreak": "{count} тижнів поспіль",
+  "thisWeek": "Цей тиждень",
+  "bodyWeightChart": "Вага тіла",
+  "strengthChart": "Сила",
+  "weeklyVolumeChart": "Тижневий обсяг",
+  "noChartData": "Ще замало даних",
+  "newTemplate": "Новий шаблон",
+  "templateLimit": "Можна зберегти до 7 шаблонів.",
+  "templatesEmpty": "У цьому шаблоні ще немає вправ.",
+  "allMuscles": "Усі",
+  "noHistory": "Історії ще немає",
+  "bestOneRepMax": "Оцінка 1ПМ {value} кг",
+  "bestLoad": "Найбільша вага {value} кг",
+  "profileName": "Ім’я",
+  "heightCm": "Зріст (см)",
+  "ageOptional": "Вік (необов’язково)",
+  "goals": "Цілі",
+  "bodyData": "Дані тіла",
+  "addBodyWeight": "Додати вагу",
+  "weightKg": "Вага (кг)",
+  "aiCoaching": "ШІ-коучинг",
+  "apiKey": "Ключ API",
+  "apiKeyStoredLocally": "Зберігається лише на цьому телефоні. Ще не використовується.",
+  "profileSaved": "Профіль збережено",
+  "noTrainingThisDay": "Цього дня нічого немає",
+  "targetSets": "{count} підходи",
+  "repRangeLabel": "{range} повт.",
+  "repMinLabel": "Повтори від",
+  "repMaxLabel": "Повтори до",
+  "exerciseDatabaseCreditTitle": "Бібліотека вправ",
+  "exerciseDatabaseCreditBody": "Назви з free-exercise-db автора yuhonas, Unlicense (суспільне надбання). Alpha додала назви та псевдоніми.",
+  "workoutFinish": "Beenden",
+  "volumeLabel": "Volumen",
+  "setsLabel": "Sätze",
+  "restSkip": "Überspringen",
+  "columnSet": "SATZ",
+  "columnPrevious": "VORHERIGE",
+  "columnKg": "KG",
+  "columnReps": "WDH",
+  "addExerciseWorkout": "Übung hinzufügen",
+  "addNote": "Notiz hinzufügen",
+  "swapExercise": "Übung tauschen",
+  "moveExerciseUp": "Nach oben",
+  "moveExerciseDown": "Nach unten",
+  "removeExercise": "Entfernen",
+  "restSecondsLabel": "Pause in Sekunden",
+  "newRecordTitle": "NEUER REKORD!",
+  "recordKeepGoing": "Weiter so",
+  "exerciseSearchHint": "Übung suchen",
+  "installUpdate": "Update installieren",
+  "updateAvailable": "Eine neuere Version ist da",
+  "localProfiles": "Profile",
+  "newProfile": "Neues Profil",
+  "profileNameHint": "Profilname",
+  "profileActive": "Aktiv",
+  "switchProfile": "Wechseln",
+  "themeSetting": "Design",
+  "themeTiefschwarz": "Tiefschwarz",
+  "themeEisblau": "Eisblau",
+  "themePink": "Pink",
+  "restSound": "Pausenton",
+  "restSoundVolume": "Lautstärke der Pause",
+  "restSoundCredit": "Notification Sound von yfjesse, CC0",
+  "splashMotto": "Stärke. Disziplin. Fortschritt.",
+  "helloName": "Hallo, {name}",
+  "alphaSettings": "Alpha",
+  "alphaSettingsDescription": "Profile, Design und Pausenton"
 }

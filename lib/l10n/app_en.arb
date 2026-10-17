@@ -1,6 +1,6 @@
 {
   "@@locale": "en",
-  "appTitle": "Flexify",
+  "appTitle": "Alpha",
   "@appTitle": {
     "description": "Application title shown by the operating system and app shell."
   },
@@ -8,7 +8,7 @@
   "@settingsLanguage": {
     "description": "Title for the application language preference."
   },
-  "settingsLanguageDescription": "Choose the language used by Flexify",
+  "settingsLanguageDescription": "Choose the language used by Alpha",
   "@settingsLanguageDescription": {
     "description": "Description for the application language preference."
   },
@@ -346,7 +346,7 @@
   },
   "disableBatteryOptimizations": "Disable battery optimizations",
   "@disableBatteryOptimizations": {
-    "description": "Android permission action for excluding Flexify from battery optimizations."
+    "description": "Android permission action for excluding Alpha from battery optimizations."
   },
   "batteryOptimizationWarning": "Progress may pause if battery optimizations stay on.",
   "@batteryOptimizationWarning": {
@@ -454,7 +454,7 @@
   },
   "deleteDatabaseConfirmation": "Are you sure you want to delete your database? This action is not reversible and will destroy all your data.",
   "@deleteDatabaseConfirmation": {
-    "description": "Confirmation text for deleting the complete Flexify database."
+    "description": "Confirmation text for deleting the complete Alpha database."
   },
   "importData": "Import data",
   "@importData": {
@@ -485,9 +485,9 @@
       }
     }
   },
-  "backupArchiveMissingDatabase": "The backup archive does not contain the Flexify database.",
+  "backupArchiveMissingDatabase": "The backup archive does not contain the Alpha database.",
   "@backupArchiveMissingDatabase": {
-    "description": "Validation error shown when an imported backup archive is missing the Flexify database file."
+    "description": "Validation error shown when an imported backup archive is missing the Alpha database file."
   },
   "failedToImportGraphs": "Failed to import graphs: {error}",
   "@failedToImportGraphs": {
@@ -682,7 +682,7 @@
   "@privacyPolicy": {
     "description": "Label for opening the privacy policy."
   },
-  "privacyPolicyDescription": "How Flexify handles your data",
+  "privacyPolicyDescription": "How Alpha handles your data",
   "@privacyPolicyDescription": {
     "description": "Description for the privacy policy action."
   },
@@ -702,7 +702,7 @@
   "@leaveReview": {
     "description": "Label for opening the app-store review page."
   },
-  "leaveReviewDescription": "Rate Flexify on the Play Store",
+  "leaveReviewDescription": "Rate Alpha on the Play Store",
   "@leaveReviewDescription": {
     "description": "Description for the app-store review action."
   },
@@ -1698,7 +1698,7 @@
   "@inputStyleDescription": {
     "description": "Description of the text input style setting."
   },
-  "automaticBackupNotificationBody": "Flexify will automatically back up your data and images to the selected folder each day.",
+  "automaticBackupNotificationBody": "Alpha will automatically back up your data and images to the selected folder each day.",
   "@automaticBackupNotificationBody": {
     "description": "Notification body shown when automatic backups are enabled."
   },
@@ -1714,7 +1714,7 @@
   "@backupChannelName": {
     "description": "Android notification channel name for completed automatic backups."
   },
-  "backupChannelDescription": "Automatic backups of Flexify data and images",
+  "backupChannelDescription": "Automatic backups of Alpha data and images",
   "@backupChannelDescription": {
     "description": "Android notification channel description for automatic backups."
   },
@@ -2045,5 +2045,336 @@
         "type": "int"
       }
     }
+  },
+  "tabStart": "Start",
+  "@tabStart": {
+    "description": "Bottom navigation label for the dashboard."
+  },
+  "tabTraining": "Training",
+  "@tabTraining": {
+    "description": "Bottom navigation label for workout templates."
+  },
+  "tabExercises": "Exercises",
+  "@tabExercises": {
+    "description": "Bottom navigation label for the exercise library."
+  },
+  "tabProfile": "Profile",
+  "@tabProfile": {
+    "description": "Bottom navigation label for the profile."
+  },
+  "calendarTitle": "Calendar",
+  "@calendarTitle": {
+    "description": "Title of the training calendar."
+  },
+  "dayStreak": "{count} days in a row",
+  "@dayStreak": {
+    "description": "Current streak of consecutive training days.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "weekStreak": "{count} weeks in a row",
+  "@weekStreak": {
+    "description": "Current streak of consecutive training weeks.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "thisWeek": "This week",
+  "@thisWeek": {
+    "description": "Heading for the current training week."
+  },
+  "bodyWeightChart": "Body weight",
+  "@bodyWeightChart": {
+    "description": "Chart title for body weight over time."
+  },
+  "strengthChart": "Strength",
+  "@strengthChart": {
+    "description": "Chart title for estimated one-rep max."
+  },
+  "weeklyVolumeChart": "Weekly volume",
+  "@weeklyVolumeChart": {
+    "description": "Chart title for weekly training volume."
+  },
+  "noChartData": "Not enough data yet",
+  "@noChartData": {
+    "description": "Empty state when a chart has fewer than two points."
+  },
+  "newTemplate": "New template",
+  "@newTemplate": {
+    "description": "Action that creates a workout template."
+  },
+  "templateLimit": "You can save up to 7 templates.",
+  "@templateLimit": {
+    "description": "Message shown when the template limit is reached."
+  },
+  "templatesEmpty": "No exercises in this template yet.",
+  "@templatesEmpty": {
+    "description": "Empty state for a workout template."
+  },
+  "searchExercises": "Search exercises",
+  "@searchExercises": {
+    "description": "Hint for the exercise library search field."
+  },
+  "allMuscles": "All",
+  "@allMuscles": {
+    "description": "Filter chip that shows every muscle group."
+  },
+  "noHistory": "No history yet",
+  "@noHistory": {
+    "description": "Empty state when an exercise has no logged sets."
+  },
+  "bestOneRepMax": "Estimated 1RM {value} kg",
+  "@bestOneRepMax": {
+    "description": "Personal record line for estimated one-rep max.",
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "bestLoad": "Best load {value} kg",
+  "@bestLoad": {
+    "description": "Personal record line for the heaviest load.",
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "profileName": "Name",
+  "@profileName": {
+    "description": "Profile field for the user's name."
+  },
+  "heightCm": "Height (cm)",
+  "@heightCm": {
+    "description": "Profile field for height in centimeters."
+  },
+  "ageOptional": "Age (optional)",
+  "@ageOptional": {
+    "description": "Optional profile field for age."
+  },
+  "goals": "Goals",
+  "@goals": {
+    "description": "Profile field for training goals."
+  },
+  "bodyData": "Body data",
+  "@bodyData": {
+    "description": "Section title for body measurements."
+  },
+  "addBodyWeight": "Add weight",
+  "@addBodyWeight": {
+    "description": "Action that records a body-weight entry."
+  },
+  "weightKg": "Weight (kg)",
+  "@weightKg": {
+    "description": "Label for a body-weight value in kilograms."
+  },
+  "aiCoaching": "AI coaching",
+  "@aiCoaching": {
+    "description": "Section title for the unused coaching placeholder."
+  },
+  "apiKey": "API key",
+  "@apiKey": {
+    "description": "Label for a locally stored API key."
+  },
+  "apiKeyStoredLocally": "Stored only on this phone. Not used yet.",
+  "@apiKeyStoredLocally": {
+    "description": "Explanation that the API key stays on the device."
+  },
+  "profileSaved": "Profile saved",
+  "@profileSaved": {
+    "description": "Confirmation after profile fields are stored."
+  },
+  "noTrainingThisDay": "Nothing logged on this day",
+  "@noTrainingThisDay": {
+    "description": "Empty state for a calendar day without training."
+  },
+  "targetSets": "{count} sets",
+  "@targetSets": {
+    "description": "Target number of working sets.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "repRangeLabel": "{range} reps",
+  "@repRangeLabel": {
+    "description": "Target repetition range.",
+    "placeholders": {
+      "range": {
+        "type": "String"
+      }
+    }
+  },
+  "repMinLabel": "Reps from",
+  "@repMinLabel": {
+    "description": "Lower bound of a repetition range."
+  },
+  "repMaxLabel": "Reps to",
+  "@repMaxLabel": {
+    "description": "Upper bound of a repetition range."
+  },
+  "exerciseDatabaseCreditTitle": "Exercise library",
+  "@exerciseDatabaseCreditTitle": {
+    "description": "About-screen title for the exercise database credit."
+  },
+  "exerciseDatabaseCreditBody": "Names from free-exercise-db by yuhonas, Unlicense (public domain). German names and aliases were added for Alpha.",
+  "@exerciseDatabaseCreditBody": {
+    "description": "About-screen credit for the Unlicense exercise database."
+  },
+  "workoutFinish": "Finish",
+  "@workoutFinish":   {
+    "description": "Button that ends the current workout."
+  },
+  "volumeLabel": "Volume",
+  "@volumeLabel":   {
+    "description": "Label for the total lifted volume."
+  },
+  "setsLabel": "Sets",
+  "@setsLabel":   {
+    "description": "Label for the number of completed sets."
+  },
+  "restSkip": "Skip",
+  "@restSkip":   {
+    "description": "Skips the remaining rest."
+  },
+  "columnSet": "SET",
+  "@columnSet":   {
+    "description": "Column title for the set number."
+  },
+  "columnPrevious": "PREVIOUS",
+  "@columnPrevious":   {
+    "description": "Column title for the previous session."
+  },
+  "columnKg": "KG",
+  "@columnKg":   {
+    "description": "Column title for the load."
+  },
+  "columnReps": "REPS",
+  "@columnReps":   {
+    "description": "Column title for repetitions."
+  },
+  "addExerciseWorkout": "Add exercise",
+  "@addExerciseWorkout":   {
+    "description": "Adds an exercise during the workout."
+  },
+  "addNote": "Add note",
+  "@addNote":   {
+    "description": "Adds a note to the exercise."
+  },
+  "swapExercise": "Swap exercise",
+  "@swapExercise":   {
+    "description": "Replaces an exercise during the workout."
+  },
+  "moveExerciseUp": "Move up",
+  "@moveExerciseUp":   {
+    "description": "Moves an exercise up."
+  },
+  "moveExerciseDown": "Move down",
+  "@moveExerciseDown":   {
+    "description": "Moves an exercise down."
+  },
+  "removeExercise": "Remove",
+  "@removeExercise":   {
+    "description": "Removes an exercise from this workout."
+  },
+  "restSecondsLabel": "Rest in seconds",
+  "@restSecondsLabel":   {
+    "description": "Label for the rest duration of an exercise."
+  },
+  "newRecordTitle": "NEW RECORD!",
+  "@newRecordTitle":   {
+    "description": "Title of the record notice."
+  },
+  "recordKeepGoing": "Keep going",
+  "@recordKeepGoing":   {
+    "description": "Closes the record notice."
+  },
+  "exerciseSearchHint": "Search exercises",
+  "@exerciseSearchHint":   {
+    "description": "Hint in the exercise search field."
+  },
+  "installUpdate": "Install update",
+  "@installUpdate":   {
+    "description": "Button that downloads and installs an update."
+  },
+  "updateAvailable": "A newer version is available",
+  "@updateAvailable":   {
+    "description": "Hint that an update can be installed."
+  },
+  "localProfiles": "Profiles",
+  "@localProfiles":   {
+    "description": "Heading for local profiles."
+  },
+  "newProfile": "New profile",
+  "@newProfile":   {
+    "description": "Creates another local profile."
+  },
+  "profileNameHint": "Profile name",
+  "@profileNameHint":   {
+    "description": "Hint for a new profile name."
+  },
+  "profileActive": "Active",
+  "@profileActive":   {
+    "description": "Marks the profile that is in use."
+  },
+  "switchProfile": "Switch",
+  "@switchProfile":   {
+    "description": "Switches to another profile."
+  },
+  "themeSetting": "Theme",
+  "@themeSetting":   {
+    "description": "Heading for the visual theme."
+  },
+  "themeTiefschwarz": "Deep black",
+  "@themeTiefschwarz":   {
+    "description": "Name of the default theme."
+  },
+  "themeEisblau": "Ice blue",
+  "@themeEisblau":   {
+    "description": "Name of the ice-blue theme."
+  },
+  "themePink": "Hot pink",
+  "@themePink":   {
+    "description": "Name of the pink theme."
+  },
+  "restSound": "Rest sound",
+  "@restSound":   {
+    "description": "Switch for the sound at the end of rest."
+  },
+  "restSoundVolume": "Rest volume",
+  "@restSoundVolume":   {
+    "description": "Slider for the rest sound volume."
+  },
+  "restSoundCredit": "Notification Sound by yfjesse, CC0",
+  "@restSoundCredit":   {
+    "description": "Credit for the rest sound."
+  },
+  "splashMotto": "Strength. Discipline. Progress.",
+  "@splashMotto":   {
+    "description": "Motto on the splash screen."
+  },
+  "helloName": "Hello, {name}",
+  "@helloName":   {
+    "description": "Greeting with the profile name.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "alphaSettings": "Alpha setup",
+  "@alphaSettings":   {
+    "description": "Title of the Alpha settings."
+  },
+  "alphaSettingsDescription": "Profiles, theme and rest sound",
+  "@alphaSettingsDescription":   {
+    "description": "Description of the Alpha settings."
   }
 }

@@ -1,6 +1,6 @@
 {
   "@@locale": "bn",
-  "appTitle": "Flexify",
+  "appTitle": "Alpha",
   "@appTitle": {
     "description": "Application title shown by the operating system and app shell."
   },
@@ -8,7 +8,7 @@
   "@settingsLanguage": {
     "description": "Title for the application language preference."
   },
-  "settingsLanguageDescription": "Flexify-এ ব্যবহৃত ভাষা বেছে নিন",
+  "settingsLanguageDescription": "Alpha-এ ব্যবহৃত ভাষা বেছে নিন",
   "@settingsLanguageDescription": {
     "description": "Description for the application language preference."
   },
@@ -337,7 +337,7 @@
   },
   "disableBatteryOptimizations": "ব্যাটারি অপ্টিমাইজেশন বন্ধ করুন",
   "@disableBatteryOptimizations": {
-    "description": "Android permission action for excluding Flexify from battery optimizations."
+    "description": "Android permission action for excluding Alpha from battery optimizations."
   },
   "batteryOptimizationWarning": "ব্যাটারি অপ্টিমাইজেশন চালু থাকলে অগ্রগতি থেমে যেতে পারে।",
   "@batteryOptimizationWarning": {
@@ -445,7 +445,7 @@
   },
   "deleteDatabaseConfirmation": "আপনি কি নিশ্চিত যে আপনার ডেটাবেস মুছতে চান? এই কাজটি ফিরিয়ে নেওয়া যাবে না এবং আপনার সব ডেটা নষ্ট হবে।",
   "@deleteDatabaseConfirmation": {
-    "description": "Confirmation text for deleting the complete Flexify database."
+    "description": "Confirmation text for deleting the complete Alpha database."
   },
   "importData": "ডেটা আমদানি করুন",
   "@importData": {
@@ -476,9 +476,9 @@
       }
     }
   },
-  "backupArchiveMissingDatabase": "ব্যাকআপ আর্কাইভে Flexify ডেটাবেস নেই।",
+  "backupArchiveMissingDatabase": "ব্যাকআপ আর্কাইভে Alpha ডেটাবেস নেই।",
   "@backupArchiveMissingDatabase": {
-    "description": "Validation error shown when an imported backup archive is missing the Flexify database file."
+    "description": "Validation error shown when an imported backup archive is missing the Alpha database file."
   },
   "failedToImportGraphs": "গ্রাফ আমদানি ব্যর্থ হয়েছে: {error}",
   "@failedToImportGraphs": {
@@ -673,7 +673,7 @@
   "@privacyPolicy": {
     "description": "Label for opening the privacy policy."
   },
-  "privacyPolicyDescription": "Flexify কীভাবে আপনার ডেটা ব্যবহার করে",
+  "privacyPolicyDescription": "Alpha কীভাবে আপনার ডেটা ব্যবহার করে",
   "@privacyPolicyDescription": {
     "description": "Description for the privacy policy action."
   },
@@ -693,7 +693,7 @@
   "@leaveReview": {
     "description": "Label for opening the app-store review page."
   },
-  "leaveReviewDescription": "Play Store-এ Flexify-কে রেট দিন",
+  "leaveReviewDescription": "Play Store-এ Alpha-কে রেট দিন",
   "@leaveReviewDescription": {
     "description": "Description for the app-store review action."
   },
@@ -864,7 +864,7 @@
   "@titleOptional": {
     "description": "Optional plan title field label."
   },
-  "searchExercises": "ব্যায়াম খুঁজুন...",
+  "searchExercises": "ব্যায়াম খুঁজুন",
   "@searchExercises": {
     "description": "Hint for searching exercises."
   },
@@ -1689,7 +1689,7 @@
   "@inputStyleDescription": {
     "description": "Description of the text input style setting."
   },
-  "automaticBackupNotificationBody": "Flexify প্রতিদিন নির্বাচিত ফোল্ডারে আপনার ডেটা ও ছবি স্বয়ংক্রিয়ভাবে ব্যাকআপ করবে।",
+  "automaticBackupNotificationBody": "Alpha প্রতিদিন নির্বাচিত ফোল্ডারে আপনার ডেটা ও ছবি স্বয়ংক্রিয়ভাবে ব্যাকআপ করবে।",
   "@automaticBackupNotificationBody": {
     "description": "Notification body shown when automatic backups are enabled."
   },
@@ -1705,7 +1705,7 @@
   "@backupChannelName": {
     "description": "Android notification channel name for completed automatic backups."
   },
-  "backupChannelDescription": "Flexify-এর ডেটা ও ছবির স্বয়ংক্রিয় ব্যাকআপ",
+  "backupChannelDescription": "Alpha-এর ডেটা ও ছবির স্বয়ংক্রিয় ব্যাকআপ",
   "@backupChannelDescription": {
     "description": "Android notification channel description for automatic backups."
   },
@@ -2036,5 +2036,78 @@
         "type": "int"
       }
     }
-  }
+  },
+  "tabStart": "শুরু",
+  "tabTraining": "প্রশিক্ষণ",
+  "tabExercises": "ব্যায়াম",
+  "tabProfile": "প্রোফাইল",
+  "calendarTitle": "ক্যালেন্ডার",
+  "dayStreak": "টানা {count} দিন",
+  "weekStreak": "টানা {count} সপ্তাহ",
+  "thisWeek": "এই সপ্তাহ",
+  "bodyWeightChart": "শরীরের ওজন",
+  "strengthChart": "শক্তি",
+  "weeklyVolumeChart": "সাপ্তাহিক ভলিউম",
+  "noChartData": "এখনও যথেষ্ট তথ্য নেই",
+  "newTemplate": "নতুন টেমপ্লেট",
+  "templateLimit": "আপনি সর্বোচ্চ ৭টি টেমপ্লেট রাখতে পারেন।",
+  "templatesEmpty": "এই টেমপ্লেটে এখনও ব্যায়াম নেই।",
+  "allMuscles": "সব",
+  "noHistory": "এখনও কোনো ইতিহাস নেই",
+  "bestOneRepMax": "আনুমানিক 1RM {value} কেজি",
+  "bestLoad": "সেরা ভার {value} কেজি",
+  "profileName": "নাম",
+  "heightCm": "উচ্চতা (সেমি)",
+  "ageOptional": "বয়স (ঐচ্ছিক)",
+  "goals": "লক্ষ্য",
+  "bodyData": "শরীরের তথ্য",
+  "addBodyWeight": "ওজন যোগ করুন",
+  "weightKg": "ওজন (কেজি)",
+  "aiCoaching": "এআই কোচিং",
+  "apiKey": "এপিআই কী",
+  "apiKeyStoredLocally": "শুধু এই ফোনে সংরক্ষিত। এখনও ব্যবহৃত হয় না।",
+  "profileSaved": "প্রোফাইল সংরক্ষিত",
+  "noTrainingThisDay": "এই দিনে কিছু নেই",
+  "targetSets": "{count} সেট",
+  "repRangeLabel": "{range} রেপ",
+  "repMinLabel": "রেপ থেকে",
+  "repMaxLabel": "রেপ পর্যন্ত",
+  "exerciseDatabaseCreditTitle": "ব্যায়াম সংগ্রহ",
+  "exerciseDatabaseCreditBody": "নাম yuhonas-এর free-exercise-db থেকে, Unlicense (পাবলিক ডোমেইন)। Alpha নাম ও ডাকনাম যোগ করেছে।",
+  "workoutFinish": "Beenden",
+  "volumeLabel": "Volumen",
+  "setsLabel": "Sätze",
+  "restSkip": "Überspringen",
+  "columnSet": "SATZ",
+  "columnPrevious": "VORHERIGE",
+  "columnKg": "KG",
+  "columnReps": "WDH",
+  "addExerciseWorkout": "Übung hinzufügen",
+  "addNote": "Notiz hinzufügen",
+  "swapExercise": "Übung tauschen",
+  "moveExerciseUp": "Nach oben",
+  "moveExerciseDown": "Nach unten",
+  "removeExercise": "Entfernen",
+  "restSecondsLabel": "Pause in Sekunden",
+  "newRecordTitle": "NEUER REKORD!",
+  "recordKeepGoing": "Weiter so",
+  "exerciseSearchHint": "Übung suchen",
+  "installUpdate": "Update installieren",
+  "updateAvailable": "Eine neuere Version ist da",
+  "localProfiles": "Profile",
+  "newProfile": "Neues Profil",
+  "profileNameHint": "Profilname",
+  "profileActive": "Aktiv",
+  "switchProfile": "Wechseln",
+  "themeSetting": "Design",
+  "themeTiefschwarz": "Tiefschwarz",
+  "themeEisblau": "Eisblau",
+  "themePink": "Pink",
+  "restSound": "Pausenton",
+  "restSoundVolume": "Lautstärke der Pause",
+  "restSoundCredit": "Notification Sound von yfjesse, CC0",
+  "splashMotto": "Stärke. Disziplin. Fortschritt.",
+  "helloName": "Hallo, {name}",
+  "alphaSettings": "Alpha",
+  "alphaSettingsDescription": "Profile, Design und Pausenton"
 }

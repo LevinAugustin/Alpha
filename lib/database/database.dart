@@ -1078,6 +1078,29 @@ class AppDatabase extends _$AppDatabase {
             from69To70: (Migrator m, Schema70 schema) async {
               await m.alterTable(TableMigration(schema.settings));
             },
+            from70To71: (Migrator m, Schema71 schema) async {
+              await m.addColumn(schema.exercises, schema.exercises.germanName);
+              await m.addColumn(schema.exercises, schema.exercises.aliases);
+              await m.addColumn(schema.exercises, schema.exercises.muscle);
+              await m.addColumn(
+                schema.planExercises,
+                schema.planExercises.repMin,
+              );
+              await m.addColumn(
+                schema.planExercises,
+                schema.planExercises.repMax,
+              );
+              await m.addColumn(schema.settings, schema.settings.profileName);
+              await m.addColumn(schema.settings, schema.settings.heightCm);
+              await m.addColumn(schema.settings, schema.settings.ageYears);
+              await m.addColumn(schema.settings, schema.settings.goals);
+              await m.addColumn(schema.settings, schema.settings.apiKey);
+            },
+            from71To72: (Migrator m, Schema72 schema) async {
+              await m.addColumn(schema.settings, schema.settings.themeId);
+              await m.addColumn(schema.settings, schema.settings.restVolume);
+              await m.addColumn(schema.workouts, schema.workouts.exerciseOrder);
+            },
           );
           await transaction(() async {
             await upgrade(m, from, to);
@@ -1099,5 +1122,5 @@ class AppDatabase extends _$AppDatabase {
   }
 
   @override
-  int get schemaVersion => 70;
+  int get schemaVersion => 72;
 }

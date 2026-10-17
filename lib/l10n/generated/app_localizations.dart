@@ -147,7 +147,7 @@ abstract class AppLocalizations {
   /// Application title shown by the operating system and app shell.
   ///
   /// In en, this message translates to:
-  /// **'Flexify'**
+  /// **'Alpha'**
   String get appTitle;
 
   /// Title for the application language preference.
@@ -159,7 +159,7 @@ abstract class AppLocalizations {
   /// Description for the application language preference.
   ///
   /// In en, this message translates to:
-  /// **'Choose the language used by Flexify'**
+  /// **'Choose the language used by Alpha'**
   String get settingsLanguageDescription;
 
   /// Language option that follows the device or operating system locale.
@@ -624,7 +624,7 @@ abstract class AppLocalizations {
   /// **'Rest timers'**
   String get restTimers;
 
-  /// Android permission action for excluding Flexify from battery optimizations.
+  /// Android permission action for excluding Alpha from battery optimizations.
   ///
   /// In en, this message translates to:
   /// **'Disable battery optimizations'**
@@ -786,7 +786,7 @@ abstract class AppLocalizations {
   /// **'Are you sure you want to delete all plans? This action is not reversible.'**
   String get deleteAllPlansConfirmation;
 
-  /// Confirmation text for deleting the complete Flexify database.
+  /// Confirmation text for deleting the complete Alpha database.
   ///
   /// In en, this message translates to:
   /// **'Are you sure you want to delete your database? This action is not reversible and will destroy all your data.'**
@@ -828,10 +828,10 @@ abstract class AppLocalizations {
   /// **'Failed to import database: {error}'**
   String failedToImportDatabase(String error);
 
-  /// Validation error shown when an imported backup archive is missing the Flexify database file.
+  /// Validation error shown when an imported backup archive is missing the Alpha database file.
   ///
   /// In en, this message translates to:
-  /// **'The backup archive does not contain the Flexify database.'**
+  /// **'The backup archive does not contain the Alpha database.'**
   String get backupArchiveMissingDatabase;
 
   /// Toast shown when a graph CSV import fails.
@@ -1059,7 +1059,7 @@ abstract class AppLocalizations {
   /// Description for the privacy policy action.
   ///
   /// In en, this message translates to:
-  /// **'How Flexify handles your data'**
+  /// **'How Alpha handles your data'**
   String get privacyPolicyDescription;
 
   /// Label for opening the software license.
@@ -1089,7 +1089,7 @@ abstract class AppLocalizations {
   /// Description for the app-store review action.
   ///
   /// In en, this message translates to:
-  /// **'Rate Flexify on the Play Store'**
+  /// **'Rate Alpha on the Play Store'**
   String get leaveReviewDescription;
 
   /// Label for opening the bug-report form.
@@ -1320,10 +1320,10 @@ abstract class AppLocalizations {
   /// **'Title (optional)'**
   String get titleOptional;
 
-  /// Hint for searching exercises.
+  /// Hint for the exercise library search field.
   ///
   /// In en, this message translates to:
-  /// **'Search exercises...'**
+  /// **'Search exercises'**
   String get searchExercises;
 
   /// Label for the number of warmup sets.
@@ -2415,7 +2415,7 @@ abstract class AppLocalizations {
   /// Notification body shown when automatic backups are enabled.
   ///
   /// In en, this message translates to:
-  /// **'Flexify will automatically back up your data and images to the selected folder each day.'**
+  /// **'Alpha will automatically back up your data and images to the selected folder each day.'**
   String get automaticBackupNotificationBody;
 
   /// Notification channel name for backup settings.
@@ -2439,7 +2439,7 @@ abstract class AppLocalizations {
   /// Android notification channel description for automatic backups.
   ///
   /// In en, this message translates to:
-  /// **'Automatic backups of Flexify data and images'**
+  /// **'Automatic backups of Alpha data and images'**
   String get backupChannelDescription;
 
   /// Android notification title shown after an automatic backup succeeds.
@@ -2903,6 +2903,444 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Set {number}'**
   String setNumber(int number);
+
+  /// Bottom navigation label for the dashboard.
+  ///
+  /// In en, this message translates to:
+  /// **'Start'**
+  String get tabStart;
+
+  /// Bottom navigation label for workout templates.
+  ///
+  /// In en, this message translates to:
+  /// **'Training'**
+  String get tabTraining;
+
+  /// Bottom navigation label for the exercise library.
+  ///
+  /// In en, this message translates to:
+  /// **'Exercises'**
+  String get tabExercises;
+
+  /// Bottom navigation label for the profile.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get tabProfile;
+
+  /// Title of the training calendar.
+  ///
+  /// In en, this message translates to:
+  /// **'Calendar'**
+  String get calendarTitle;
+
+  /// Current streak of consecutive training days.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} days in a row'**
+  String dayStreak(int count);
+
+  /// Current streak of consecutive training weeks.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} weeks in a row'**
+  String weekStreak(int count);
+
+  /// Heading for the current training week.
+  ///
+  /// In en, this message translates to:
+  /// **'This week'**
+  String get thisWeek;
+
+  /// Chart title for body weight over time.
+  ///
+  /// In en, this message translates to:
+  /// **'Body weight'**
+  String get bodyWeightChart;
+
+  /// Chart title for estimated one-rep max.
+  ///
+  /// In en, this message translates to:
+  /// **'Strength'**
+  String get strengthChart;
+
+  /// Chart title for weekly training volume.
+  ///
+  /// In en, this message translates to:
+  /// **'Weekly volume'**
+  String get weeklyVolumeChart;
+
+  /// Empty state when a chart has fewer than two points.
+  ///
+  /// In en, this message translates to:
+  /// **'Not enough data yet'**
+  String get noChartData;
+
+  /// Action that creates a workout template.
+  ///
+  /// In en, this message translates to:
+  /// **'New template'**
+  String get newTemplate;
+
+  /// Message shown when the template limit is reached.
+  ///
+  /// In en, this message translates to:
+  /// **'You can save up to 7 templates.'**
+  String get templateLimit;
+
+  /// Empty state for a workout template.
+  ///
+  /// In en, this message translates to:
+  /// **'No exercises in this template yet.'**
+  String get templatesEmpty;
+
+  /// Filter chip that shows every muscle group.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get allMuscles;
+
+  /// Empty state when an exercise has no logged sets.
+  ///
+  /// In en, this message translates to:
+  /// **'No history yet'**
+  String get noHistory;
+
+  /// Personal record line for estimated one-rep max.
+  ///
+  /// In en, this message translates to:
+  /// **'Estimated 1RM {value} kg'**
+  String bestOneRepMax(String value);
+
+  /// Personal record line for the heaviest load.
+  ///
+  /// In en, this message translates to:
+  /// **'Best load {value} kg'**
+  String bestLoad(String value);
+
+  /// Profile field for the user's name.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get profileName;
+
+  /// Profile field for height in centimeters.
+  ///
+  /// In en, this message translates to:
+  /// **'Height (cm)'**
+  String get heightCm;
+
+  /// Optional profile field for age.
+  ///
+  /// In en, this message translates to:
+  /// **'Age (optional)'**
+  String get ageOptional;
+
+  /// Profile field for training goals.
+  ///
+  /// In en, this message translates to:
+  /// **'Goals'**
+  String get goals;
+
+  /// Section title for body measurements.
+  ///
+  /// In en, this message translates to:
+  /// **'Body data'**
+  String get bodyData;
+
+  /// Action that records a body-weight entry.
+  ///
+  /// In en, this message translates to:
+  /// **'Add weight'**
+  String get addBodyWeight;
+
+  /// Label for a body-weight value in kilograms.
+  ///
+  /// In en, this message translates to:
+  /// **'Weight (kg)'**
+  String get weightKg;
+
+  /// Section title for the unused coaching placeholder.
+  ///
+  /// In en, this message translates to:
+  /// **'AI coaching'**
+  String get aiCoaching;
+
+  /// Label for a locally stored API key.
+  ///
+  /// In en, this message translates to:
+  /// **'API key'**
+  String get apiKey;
+
+  /// Explanation that the API key stays on the device.
+  ///
+  /// In en, this message translates to:
+  /// **'Stored only on this phone. Not used yet.'**
+  String get apiKeyStoredLocally;
+
+  /// Confirmation after profile fields are stored.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile saved'**
+  String get profileSaved;
+
+  /// Empty state for a calendar day without training.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing logged on this day'**
+  String get noTrainingThisDay;
+
+  /// Target number of working sets.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} sets'**
+  String targetSets(int count);
+
+  /// Target repetition range.
+  ///
+  /// In en, this message translates to:
+  /// **'{range} reps'**
+  String repRangeLabel(String range);
+
+  /// Lower bound of a repetition range.
+  ///
+  /// In en, this message translates to:
+  /// **'Reps from'**
+  String get repMinLabel;
+
+  /// Upper bound of a repetition range.
+  ///
+  /// In en, this message translates to:
+  /// **'Reps to'**
+  String get repMaxLabel;
+
+  /// About-screen title for the exercise database credit.
+  ///
+  /// In en, this message translates to:
+  /// **'Exercise library'**
+  String get exerciseDatabaseCreditTitle;
+
+  /// About-screen credit for the Unlicense exercise database.
+  ///
+  /// In en, this message translates to:
+  /// **'Names from free-exercise-db by yuhonas, Unlicense (public domain). German names and aliases were added for Alpha.'**
+  String get exerciseDatabaseCreditBody;
+
+  /// Button that ends the current workout.
+  ///
+  /// In en, this message translates to:
+  /// **'Finish'**
+  String get workoutFinish;
+
+  /// Label for the total lifted volume.
+  ///
+  /// In en, this message translates to:
+  /// **'Volume'**
+  String get volumeLabel;
+
+  /// Label for the number of completed sets.
+  ///
+  /// In en, this message translates to:
+  /// **'Sets'**
+  String get setsLabel;
+
+  /// Skips the remaining rest.
+  ///
+  /// In en, this message translates to:
+  /// **'Skip'**
+  String get restSkip;
+
+  /// Column title for the set number.
+  ///
+  /// In en, this message translates to:
+  /// **'SET'**
+  String get columnSet;
+
+  /// Column title for the previous session.
+  ///
+  /// In en, this message translates to:
+  /// **'PREVIOUS'**
+  String get columnPrevious;
+
+  /// Column title for the load.
+  ///
+  /// In en, this message translates to:
+  /// **'KG'**
+  String get columnKg;
+
+  /// Column title for repetitions.
+  ///
+  /// In en, this message translates to:
+  /// **'REPS'**
+  String get columnReps;
+
+  /// Adds an exercise during the workout.
+  ///
+  /// In en, this message translates to:
+  /// **'Add exercise'**
+  String get addExerciseWorkout;
+
+  /// Adds a note to the exercise.
+  ///
+  /// In en, this message translates to:
+  /// **'Add note'**
+  String get addNote;
+
+  /// Replaces an exercise during the workout.
+  ///
+  /// In en, this message translates to:
+  /// **'Swap exercise'**
+  String get swapExercise;
+
+  /// Moves an exercise up.
+  ///
+  /// In en, this message translates to:
+  /// **'Move up'**
+  String get moveExerciseUp;
+
+  /// Moves an exercise down.
+  ///
+  /// In en, this message translates to:
+  /// **'Move down'**
+  String get moveExerciseDown;
+
+  /// Removes an exercise from this workout.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove'**
+  String get removeExercise;
+
+  /// Label for the rest duration of an exercise.
+  ///
+  /// In en, this message translates to:
+  /// **'Rest in seconds'**
+  String get restSecondsLabel;
+
+  /// Title of the record notice.
+  ///
+  /// In en, this message translates to:
+  /// **'NEW RECORD!'**
+  String get newRecordTitle;
+
+  /// Closes the record notice.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep going'**
+  String get recordKeepGoing;
+
+  /// Hint in the exercise search field.
+  ///
+  /// In en, this message translates to:
+  /// **'Search exercises'**
+  String get exerciseSearchHint;
+
+  /// Button that downloads and installs an update.
+  ///
+  /// In en, this message translates to:
+  /// **'Install update'**
+  String get installUpdate;
+
+  /// Hint that an update can be installed.
+  ///
+  /// In en, this message translates to:
+  /// **'A newer version is available'**
+  String get updateAvailable;
+
+  /// Heading for local profiles.
+  ///
+  /// In en, this message translates to:
+  /// **'Profiles'**
+  String get localProfiles;
+
+  /// Creates another local profile.
+  ///
+  /// In en, this message translates to:
+  /// **'New profile'**
+  String get newProfile;
+
+  /// Hint for a new profile name.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile name'**
+  String get profileNameHint;
+
+  /// Marks the profile that is in use.
+  ///
+  /// In en, this message translates to:
+  /// **'Active'**
+  String get profileActive;
+
+  /// Switches to another profile.
+  ///
+  /// In en, this message translates to:
+  /// **'Switch'**
+  String get switchProfile;
+
+  /// Heading for the visual theme.
+  ///
+  /// In en, this message translates to:
+  /// **'Theme'**
+  String get themeSetting;
+
+  /// Name of the default theme.
+  ///
+  /// In en, this message translates to:
+  /// **'Deep black'**
+  String get themeTiefschwarz;
+
+  /// Name of the ice-blue theme.
+  ///
+  /// In en, this message translates to:
+  /// **'Ice blue'**
+  String get themeEisblau;
+
+  /// Name of the pink theme.
+  ///
+  /// In en, this message translates to:
+  /// **'Hot pink'**
+  String get themePink;
+
+  /// Switch for the sound at the end of rest.
+  ///
+  /// In en, this message translates to:
+  /// **'Rest sound'**
+  String get restSound;
+
+  /// Slider for the rest sound volume.
+  ///
+  /// In en, this message translates to:
+  /// **'Rest volume'**
+  String get restSoundVolume;
+
+  /// Credit for the rest sound.
+  ///
+  /// In en, this message translates to:
+  /// **'Notification Sound by yfjesse, CC0'**
+  String get restSoundCredit;
+
+  /// Motto on the splash screen.
+  ///
+  /// In en, this message translates to:
+  /// **'Strength. Discipline. Progress.'**
+  String get splashMotto;
+
+  /// Greeting with the profile name.
+  ///
+  /// In en, this message translates to:
+  /// **'Hello, {name}'**
+  String helloName(String name);
+
+  /// Title of the Alpha settings.
+  ///
+  /// In en, this message translates to:
+  /// **'Alpha setup'**
+  String get alphaSettings;
+
+  /// Description of the Alpha settings.
+  ///
+  /// In en, this message translates to:
+  /// **'Profiles, theme and rest sound'**
+  String get alphaSettingsDescription;
 }
 
 class _AppLocalizationsDelegate

@@ -639,6 +639,37 @@ class $ExercisesTable extends Exercises
     ),
     defaultValue: const Constant(false),
   );
+  static const VerificationMeta _germanNameMeta = const VerificationMeta(
+    'germanName',
+  );
+  @override
+  late final GeneratedColumn<String> germanName = GeneratedColumn<String>(
+    'german_name',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _aliasesMeta = const VerificationMeta(
+    'aliases',
+  );
+  @override
+  late final GeneratedColumn<String> aliases = GeneratedColumn<String>(
+    'aliases',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _muscleMeta = const VerificationMeta('muscle');
+  @override
+  late final GeneratedColumn<String> muscle = GeneratedColumn<String>(
+    'muscle',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
   @override
   List<GeneratedColumn> get $columns => [
     id,
@@ -654,6 +685,9 @@ class $ExercisesTable extends Exercises
     graphLimit,
     graphTimeBasedXAxis,
     archived,
+    germanName,
+    aliases,
+    muscle,
   ];
   @override
   String get aliasedName => _alias ?? actualTableName;
@@ -763,6 +797,24 @@ class $ExercisesTable extends Exercises
         archived.isAcceptableOrUnknown(data['archived']!, _archivedMeta),
       );
     }
+    if (data.containsKey('german_name')) {
+      context.handle(
+        _germanNameMeta,
+        germanName.isAcceptableOrUnknown(data['german_name']!, _germanNameMeta),
+      );
+    }
+    if (data.containsKey('aliases')) {
+      context.handle(
+        _aliasesMeta,
+        aliases.isAcceptableOrUnknown(data['aliases']!, _aliasesMeta),
+      );
+    }
+    if (data.containsKey('muscle')) {
+      context.handle(
+        _muscleMeta,
+        muscle.isAcceptableOrUnknown(data['muscle']!, _muscleMeta),
+      );
+    }
     return context;
   }
 
@@ -824,6 +876,18 @@ class $ExercisesTable extends Exercises
         DriftSqlType.bool,
         data['${effectivePrefix}archived'],
       )!,
+      germanName: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}german_name'],
+      ),
+      aliases: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}aliases'],
+      ),
+      muscle: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}muscle'],
+      ),
     );
   }
 
@@ -847,6 +911,9 @@ class Exercise extends DataClass implements Insertable<Exercise> {
   final int graphLimit;
   final bool graphTimeBasedXAxis;
   final bool archived;
+  final String? germanName;
+  final String? aliases;
+  final String? muscle;
   const Exercise({
     required this.id,
     required this.name,
@@ -861,6 +928,9 @@ class Exercise extends DataClass implements Insertable<Exercise> {
     required this.graphLimit,
     required this.graphTimeBasedXAxis,
     required this.archived,
+    this.germanName,
+    this.aliases,
+    this.muscle,
   });
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
@@ -886,6 +956,15 @@ class Exercise extends DataClass implements Insertable<Exercise> {
     map['graph_limit'] = Variable<int>(graphLimit);
     map['graph_time_based_x_axis'] = Variable<bool>(graphTimeBasedXAxis);
     map['archived'] = Variable<bool>(archived);
+    if (!nullToAbsent || germanName != null) {
+      map['german_name'] = Variable<String>(germanName);
+    }
+    if (!nullToAbsent || aliases != null) {
+      map['aliases'] = Variable<String>(aliases);
+    }
+    if (!nullToAbsent || muscle != null) {
+      map['muscle'] = Variable<String>(muscle);
+    }
     return map;
   }
 
@@ -912,6 +991,15 @@ class Exercise extends DataClass implements Insertable<Exercise> {
       graphLimit: Value(graphLimit),
       graphTimeBasedXAxis: Value(graphTimeBasedXAxis),
       archived: Value(archived),
+      germanName: germanName == null && nullToAbsent
+          ? const Value.absent()
+          : Value(germanName),
+      aliases: aliases == null && nullToAbsent
+          ? const Value.absent()
+          : Value(aliases),
+      muscle: muscle == null && nullToAbsent
+          ? const Value.absent()
+          : Value(muscle),
     );
   }
 
@@ -938,6 +1026,9 @@ class Exercise extends DataClass implements Insertable<Exercise> {
         json['graphTimeBasedXAxis'],
       ),
       archived: serializer.fromJson<bool>(json['archived']),
+      germanName: serializer.fromJson<String?>(json['germanName']),
+      aliases: serializer.fromJson<String?>(json['aliases']),
+      muscle: serializer.fromJson<String?>(json['muscle']),
     );
   }
   @override
@@ -957,6 +1048,9 @@ class Exercise extends DataClass implements Insertable<Exercise> {
       'graphLimit': serializer.toJson<int>(graphLimit),
       'graphTimeBasedXAxis': serializer.toJson<bool>(graphTimeBasedXAxis),
       'archived': serializer.toJson<bool>(archived),
+      'germanName': serializer.toJson<String?>(germanName),
+      'aliases': serializer.toJson<String?>(aliases),
+      'muscle': serializer.toJson<String?>(muscle),
     };
   }
 
@@ -974,6 +1068,9 @@ class Exercise extends DataClass implements Insertable<Exercise> {
     int? graphLimit,
     bool? graphTimeBasedXAxis,
     bool? archived,
+    Value<String?> germanName = const Value.absent(),
+    Value<String?> aliases = const Value.absent(),
+    Value<String?> muscle = const Value.absent(),
   }) => Exercise(
     id: id ?? this.id,
     name: name ?? this.name,
@@ -990,6 +1087,9 @@ class Exercise extends DataClass implements Insertable<Exercise> {
     graphLimit: graphLimit ?? this.graphLimit,
     graphTimeBasedXAxis: graphTimeBasedXAxis ?? this.graphTimeBasedXAxis,
     archived: archived ?? this.archived,
+    germanName: germanName.present ? germanName.value : this.germanName,
+    aliases: aliases.present ? aliases.value : this.aliases,
+    muscle: muscle.present ? muscle.value : this.muscle,
   );
   Exercise copyWithCompanion(ExercisesCompanion data) {
     return Exercise(
@@ -1020,6 +1120,11 @@ class Exercise extends DataClass implements Insertable<Exercise> {
           ? data.graphTimeBasedXAxis.value
           : this.graphTimeBasedXAxis,
       archived: data.archived.present ? data.archived.value : this.archived,
+      germanName: data.germanName.present
+          ? data.germanName.value
+          : this.germanName,
+      aliases: data.aliases.present ? data.aliases.value : this.aliases,
+      muscle: data.muscle.present ? data.muscle.value : this.muscle,
     );
   }
 
@@ -1038,7 +1143,10 @@ class Exercise extends DataClass implements Insertable<Exercise> {
           ..write('graphPeriod: $graphPeriod, ')
           ..write('graphLimit: $graphLimit, ')
           ..write('graphTimeBasedXAxis: $graphTimeBasedXAxis, ')
-          ..write('archived: $archived')
+          ..write('archived: $archived, ')
+          ..write('germanName: $germanName, ')
+          ..write('aliases: $aliases, ')
+          ..write('muscle: $muscle')
           ..write(')'))
         .toString();
   }
@@ -1058,6 +1166,9 @@ class Exercise extends DataClass implements Insertable<Exercise> {
     graphLimit,
     graphTimeBasedXAxis,
     archived,
+    germanName,
+    aliases,
+    muscle,
   );
   @override
   bool operator ==(Object other) =>
@@ -1075,7 +1186,10 @@ class Exercise extends DataClass implements Insertable<Exercise> {
           other.graphPeriod == this.graphPeriod &&
           other.graphLimit == this.graphLimit &&
           other.graphTimeBasedXAxis == this.graphTimeBasedXAxis &&
-          other.archived == this.archived);
+          other.archived == this.archived &&
+          other.germanName == this.germanName &&
+          other.aliases == this.aliases &&
+          other.muscle == this.muscle);
 }
 
 class ExercisesCompanion extends UpdateCompanion<Exercise> {
@@ -1092,6 +1206,9 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
   final Value<int> graphLimit;
   final Value<bool> graphTimeBasedXAxis;
   final Value<bool> archived;
+  final Value<String?> germanName;
+  final Value<String?> aliases;
+  final Value<String?> muscle;
   const ExercisesCompanion({
     this.id = const Value.absent(),
     this.name = const Value.absent(),
@@ -1106,6 +1223,9 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
     this.graphLimit = const Value.absent(),
     this.graphTimeBasedXAxis = const Value.absent(),
     this.archived = const Value.absent(),
+    this.germanName = const Value.absent(),
+    this.aliases = const Value.absent(),
+    this.muscle = const Value.absent(),
   });
   ExercisesCompanion.insert({
     this.id = const Value.absent(),
@@ -1121,6 +1241,9 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
     this.graphLimit = const Value.absent(),
     this.graphTimeBasedXAxis = const Value.absent(),
     this.archived = const Value.absent(),
+    this.germanName = const Value.absent(),
+    this.aliases = const Value.absent(),
+    this.muscle = const Value.absent(),
   }) : name = Value(name),
        kind = Value(kind),
        displayUnit = Value(displayUnit);
@@ -1138,6 +1261,9 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
     Expression<int>? graphLimit,
     Expression<bool>? graphTimeBasedXAxis,
     Expression<bool>? archived,
+    Expression<String>? germanName,
+    Expression<String>? aliases,
+    Expression<String>? muscle,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
@@ -1155,6 +1281,9 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
       if (graphTimeBasedXAxis != null)
         'graph_time_based_x_axis': graphTimeBasedXAxis,
       if (archived != null) 'archived': archived,
+      if (germanName != null) 'german_name': germanName,
+      if (aliases != null) 'aliases': aliases,
+      if (muscle != null) 'muscle': muscle,
     });
   }
 
@@ -1172,6 +1301,9 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
     Value<int>? graphLimit,
     Value<bool>? graphTimeBasedXAxis,
     Value<bool>? archived,
+    Value<String?>? germanName,
+    Value<String?>? aliases,
+    Value<String?>? muscle,
   }) {
     return ExercisesCompanion(
       id: id ?? this.id,
@@ -1188,6 +1320,9 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
       graphLimit: graphLimit ?? this.graphLimit,
       graphTimeBasedXAxis: graphTimeBasedXAxis ?? this.graphTimeBasedXAxis,
       archived: archived ?? this.archived,
+      germanName: germanName ?? this.germanName,
+      aliases: aliases ?? this.aliases,
+      muscle: muscle ?? this.muscle,
     );
   }
 
@@ -1237,6 +1372,15 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
     if (archived.present) {
       map['archived'] = Variable<bool>(archived.value);
     }
+    if (germanName.present) {
+      map['german_name'] = Variable<String>(germanName.value);
+    }
+    if (aliases.present) {
+      map['aliases'] = Variable<String>(aliases.value);
+    }
+    if (muscle.present) {
+      map['muscle'] = Variable<String>(muscle.value);
+    }
     return map;
   }
 
@@ -1255,7 +1399,10 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
           ..write('graphPeriod: $graphPeriod, ')
           ..write('graphLimit: $graphLimit, ')
           ..write('graphTimeBasedXAxis: $graphTimeBasedXAxis, ')
-          ..write('archived: $archived')
+          ..write('archived: $archived, ')
+          ..write('germanName: $germanName, ')
+          ..write('aliases: $aliases, ')
+          ..write('muscle: $muscle')
           ..write(')'))
         .toString();
   }
@@ -1313,8 +1460,25 @@ class $WorkoutsTable extends Workouts with TableInfo<$WorkoutsTable, Workout> {
     type: DriftSqlType.dateTime,
     requiredDuringInsert: false,
   );
+  static const VerificationMeta _exerciseOrderMeta = const VerificationMeta(
+    'exerciseOrder',
+  );
   @override
-  List<GeneratedColumn> get $columns => [id, planId, startedAt, endedAt];
+  late final GeneratedColumn<String> exerciseOrder = GeneratedColumn<String>(
+    'exercise_order',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    planId,
+    startedAt,
+    endedAt,
+    exerciseOrder,
+  ];
   @override
   String get aliasedName => _alias ?? actualTableName;
   @override
@@ -1350,6 +1514,15 @@ class $WorkoutsTable extends Workouts with TableInfo<$WorkoutsTable, Workout> {
         endedAt.isAcceptableOrUnknown(data['ended_at']!, _endedAtMeta),
       );
     }
+    if (data.containsKey('exercise_order')) {
+      context.handle(
+        _exerciseOrderMeta,
+        exerciseOrder.isAcceptableOrUnknown(
+          data['exercise_order']!,
+          _exerciseOrderMeta,
+        ),
+      );
+    }
     return context;
   }
 
@@ -1375,6 +1548,10 @@ class $WorkoutsTable extends Workouts with TableInfo<$WorkoutsTable, Workout> {
         DriftSqlType.dateTime,
         data['${effectivePrefix}ended_at'],
       ),
+      exerciseOrder: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}exercise_order'],
+      ),
     );
   }
 
@@ -1389,11 +1566,16 @@ class Workout extends DataClass implements Insertable<Workout> {
   final int? planId;
   final DateTime startedAt;
   final DateTime? endedAt;
+
+  /// Exercise ids for this session, in the order they were performed.
+  /// Null until the session is opened. The plan template is never rewritten.
+  final String? exerciseOrder;
   const Workout({
     required this.id,
     this.planId,
     required this.startedAt,
     this.endedAt,
+    this.exerciseOrder,
   });
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
@@ -1405,6 +1587,9 @@ class Workout extends DataClass implements Insertable<Workout> {
     map['started_at'] = Variable<DateTime>(startedAt);
     if (!nullToAbsent || endedAt != null) {
       map['ended_at'] = Variable<DateTime>(endedAt);
+    }
+    if (!nullToAbsent || exerciseOrder != null) {
+      map['exercise_order'] = Variable<String>(exerciseOrder);
     }
     return map;
   }
@@ -1419,6 +1604,9 @@ class Workout extends DataClass implements Insertable<Workout> {
       endedAt: endedAt == null && nullToAbsent
           ? const Value.absent()
           : Value(endedAt),
+      exerciseOrder: exerciseOrder == null && nullToAbsent
+          ? const Value.absent()
+          : Value(exerciseOrder),
     );
   }
 
@@ -1432,6 +1620,7 @@ class Workout extends DataClass implements Insertable<Workout> {
       planId: serializer.fromJson<int?>(json['planId']),
       startedAt: serializer.fromJson<DateTime>(json['startedAt']),
       endedAt: serializer.fromJson<DateTime?>(json['endedAt']),
+      exerciseOrder: serializer.fromJson<String?>(json['exerciseOrder']),
     );
   }
   @override
@@ -1442,6 +1631,7 @@ class Workout extends DataClass implements Insertable<Workout> {
       'planId': serializer.toJson<int?>(planId),
       'startedAt': serializer.toJson<DateTime>(startedAt),
       'endedAt': serializer.toJson<DateTime?>(endedAt),
+      'exerciseOrder': serializer.toJson<String?>(exerciseOrder),
     };
   }
 
@@ -1450,11 +1640,15 @@ class Workout extends DataClass implements Insertable<Workout> {
     Value<int?> planId = const Value.absent(),
     DateTime? startedAt,
     Value<DateTime?> endedAt = const Value.absent(),
+    Value<String?> exerciseOrder = const Value.absent(),
   }) => Workout(
     id: id ?? this.id,
     planId: planId.present ? planId.value : this.planId,
     startedAt: startedAt ?? this.startedAt,
     endedAt: endedAt.present ? endedAt.value : this.endedAt,
+    exerciseOrder: exerciseOrder.present
+        ? exerciseOrder.value
+        : this.exerciseOrder,
   );
   Workout copyWithCompanion(WorkoutsCompanion data) {
     return Workout(
@@ -1462,6 +1656,9 @@ class Workout extends DataClass implements Insertable<Workout> {
       planId: data.planId.present ? data.planId.value : this.planId,
       startedAt: data.startedAt.present ? data.startedAt.value : this.startedAt,
       endedAt: data.endedAt.present ? data.endedAt.value : this.endedAt,
+      exerciseOrder: data.exerciseOrder.present
+          ? data.exerciseOrder.value
+          : this.exerciseOrder,
     );
   }
 
@@ -1471,13 +1668,15 @@ class Workout extends DataClass implements Insertable<Workout> {
           ..write('id: $id, ')
           ..write('planId: $planId, ')
           ..write('startedAt: $startedAt, ')
-          ..write('endedAt: $endedAt')
+          ..write('endedAt: $endedAt, ')
+          ..write('exerciseOrder: $exerciseOrder')
           ..write(')'))
         .toString();
   }
 
   @override
-  int get hashCode => Object.hash(id, planId, startedAt, endedAt);
+  int get hashCode =>
+      Object.hash(id, planId, startedAt, endedAt, exerciseOrder);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -1485,7 +1684,8 @@ class Workout extends DataClass implements Insertable<Workout> {
           other.id == this.id &&
           other.planId == this.planId &&
           other.startedAt == this.startedAt &&
-          other.endedAt == this.endedAt);
+          other.endedAt == this.endedAt &&
+          other.exerciseOrder == this.exerciseOrder);
 }
 
 class WorkoutsCompanion extends UpdateCompanion<Workout> {
@@ -1493,29 +1693,34 @@ class WorkoutsCompanion extends UpdateCompanion<Workout> {
   final Value<int?> planId;
   final Value<DateTime> startedAt;
   final Value<DateTime?> endedAt;
+  final Value<String?> exerciseOrder;
   const WorkoutsCompanion({
     this.id = const Value.absent(),
     this.planId = const Value.absent(),
     this.startedAt = const Value.absent(),
     this.endedAt = const Value.absent(),
+    this.exerciseOrder = const Value.absent(),
   });
   WorkoutsCompanion.insert({
     this.id = const Value.absent(),
     this.planId = const Value.absent(),
     required DateTime startedAt,
     this.endedAt = const Value.absent(),
+    this.exerciseOrder = const Value.absent(),
   }) : startedAt = Value(startedAt);
   static Insertable<Workout> custom({
     Expression<int>? id,
     Expression<int>? planId,
     Expression<DateTime>? startedAt,
     Expression<DateTime>? endedAt,
+    Expression<String>? exerciseOrder,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
       if (planId != null) 'plan_id': planId,
       if (startedAt != null) 'started_at': startedAt,
       if (endedAt != null) 'ended_at': endedAt,
+      if (exerciseOrder != null) 'exercise_order': exerciseOrder,
     });
   }
 
@@ -1524,12 +1729,14 @@ class WorkoutsCompanion extends UpdateCompanion<Workout> {
     Value<int?>? planId,
     Value<DateTime>? startedAt,
     Value<DateTime?>? endedAt,
+    Value<String?>? exerciseOrder,
   }) {
     return WorkoutsCompanion(
       id: id ?? this.id,
       planId: planId ?? this.planId,
       startedAt: startedAt ?? this.startedAt,
       endedAt: endedAt ?? this.endedAt,
+      exerciseOrder: exerciseOrder ?? this.exerciseOrder,
     );
   }
 
@@ -1548,6 +1755,9 @@ class WorkoutsCompanion extends UpdateCompanion<Workout> {
     if (endedAt.present) {
       map['ended_at'] = Variable<DateTime>(endedAt.value);
     }
+    if (exerciseOrder.present) {
+      map['exercise_order'] = Variable<String>(exerciseOrder.value);
+    }
     return map;
   }
 
@@ -1557,7 +1767,8 @@ class WorkoutsCompanion extends UpdateCompanion<Workout> {
           ..write('id: $id, ')
           ..write('planId: $planId, ')
           ..write('startedAt: $startedAt, ')
-          ..write('endedAt: $endedAt')
+          ..write('endedAt: $endedAt, ')
+          ..write('exerciseOrder: $exerciseOrder')
           ..write(')'))
         .toString();
   }
@@ -3122,6 +3333,81 @@ class $SettingsTable extends Settings with TableInfo<$SettingsTable, Setting> {
     requiredDuringInsert: false,
     defaultValue: const Constant("underline"),
   );
+  static const VerificationMeta _profileNameMeta = const VerificationMeta(
+    'profileName',
+  );
+  @override
+  late final GeneratedColumn<String> profileName = GeneratedColumn<String>(
+    'profile_name',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _heightCmMeta = const VerificationMeta(
+    'heightCm',
+  );
+  @override
+  late final GeneratedColumn<double> heightCm = GeneratedColumn<double>(
+    'height_cm',
+    aliasedName,
+    true,
+    type: DriftSqlType.double,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _ageYearsMeta = const VerificationMeta(
+    'ageYears',
+  );
+  @override
+  late final GeneratedColumn<int> ageYears = GeneratedColumn<int>(
+    'age_years',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _goalsMeta = const VerificationMeta('goals');
+  @override
+  late final GeneratedColumn<String> goals = GeneratedColumn<String>(
+    'goals',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _apiKeyMeta = const VerificationMeta('apiKey');
+  @override
+  late final GeneratedColumn<String> apiKey = GeneratedColumn<String>(
+    'api_key',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _themeIdMeta = const VerificationMeta(
+    'themeId',
+  );
+  @override
+  late final GeneratedColumn<String> themeId = GeneratedColumn<String>(
+    'theme_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('tiefschwarz'),
+  );
+  static const VerificationMeta _restVolumeMeta = const VerificationMeta(
+    'restVolume',
+  );
+  @override
+  late final GeneratedColumn<double> restVolume = GeneratedColumn<double>(
+    'rest_volume',
+    aliasedName,
+    false,
+    type: DriftSqlType.double,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0.35),
+  );
   @override
   List<GeneratedColumn> get $columns => [
     alarmSound,
@@ -3169,6 +3455,13 @@ class $SettingsTable extends Settings with TableInfo<$SettingsTable, Setting> {
     keepRinging,
     keepScreenOn,
     inputStyle,
+    profileName,
+    heightCm,
+    ageYears,
+    goals,
+    apiKey,
+    themeId,
+    restVolume,
   ];
   @override
   String get aliasedName => _alias ?? actualTableName;
@@ -3568,6 +3861,51 @@ class $SettingsTable extends Settings with TableInfo<$SettingsTable, Setting> {
         inputStyle.isAcceptableOrUnknown(data['input_style']!, _inputStyleMeta),
       );
     }
+    if (data.containsKey('profile_name')) {
+      context.handle(
+        _profileNameMeta,
+        profileName.isAcceptableOrUnknown(
+          data['profile_name']!,
+          _profileNameMeta,
+        ),
+      );
+    }
+    if (data.containsKey('height_cm')) {
+      context.handle(
+        _heightCmMeta,
+        heightCm.isAcceptableOrUnknown(data['height_cm']!, _heightCmMeta),
+      );
+    }
+    if (data.containsKey('age_years')) {
+      context.handle(
+        _ageYearsMeta,
+        ageYears.isAcceptableOrUnknown(data['age_years']!, _ageYearsMeta),
+      );
+    }
+    if (data.containsKey('goals')) {
+      context.handle(
+        _goalsMeta,
+        goals.isAcceptableOrUnknown(data['goals']!, _goalsMeta),
+      );
+    }
+    if (data.containsKey('api_key')) {
+      context.handle(
+        _apiKeyMeta,
+        apiKey.isAcceptableOrUnknown(data['api_key']!, _apiKeyMeta),
+      );
+    }
+    if (data.containsKey('theme_id')) {
+      context.handle(
+        _themeIdMeta,
+        themeId.isAcceptableOrUnknown(data['theme_id']!, _themeIdMeta),
+      );
+    }
+    if (data.containsKey('rest_volume')) {
+      context.handle(
+        _restVolumeMeta,
+        restVolume.isAcceptableOrUnknown(data['rest_volume']!, _restVolumeMeta),
+      );
+    }
     return context;
   }
 
@@ -3757,6 +4095,34 @@ class $SettingsTable extends Settings with TableInfo<$SettingsTable, Setting> {
         DriftSqlType.string,
         data['${effectivePrefix}input_style'],
       )!,
+      profileName: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}profile_name'],
+      ),
+      heightCm: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}height_cm'],
+      ),
+      ageYears: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}age_years'],
+      ),
+      goals: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}goals'],
+      ),
+      apiKey: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}api_key'],
+      ),
+      themeId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}theme_id'],
+      )!,
+      restVolume: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}rest_volume'],
+      )!,
     );
   }
 
@@ -3812,6 +4178,13 @@ class Setting extends DataClass implements Insertable<Setting> {
   final bool keepRinging;
   final bool keepScreenOn;
   final String inputStyle;
+  final String? profileName;
+  final double? heightCm;
+  final int? ageYears;
+  final String? goals;
+  final String? apiKey;
+  final String themeId;
+  final double restVolume;
   const Setting({
     required this.alarmSound,
     required this.automaticBackups,
@@ -3858,6 +4231,13 @@ class Setting extends DataClass implements Insertable<Setting> {
     required this.keepRinging,
     required this.keepScreenOn,
     required this.inputStyle,
+    this.profileName,
+    this.heightCm,
+    this.ageYears,
+    this.goals,
+    this.apiKey,
+    required this.themeId,
+    required this.restVolume,
   });
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
@@ -3921,6 +4301,23 @@ class Setting extends DataClass implements Insertable<Setting> {
     map['keep_ringing'] = Variable<bool>(keepRinging);
     map['keep_screen_on'] = Variable<bool>(keepScreenOn);
     map['input_style'] = Variable<String>(inputStyle);
+    if (!nullToAbsent || profileName != null) {
+      map['profile_name'] = Variable<String>(profileName);
+    }
+    if (!nullToAbsent || heightCm != null) {
+      map['height_cm'] = Variable<double>(heightCm);
+    }
+    if (!nullToAbsent || ageYears != null) {
+      map['age_years'] = Variable<int>(ageYears);
+    }
+    if (!nullToAbsent || goals != null) {
+      map['goals'] = Variable<String>(goals);
+    }
+    if (!nullToAbsent || apiKey != null) {
+      map['api_key'] = Variable<String>(apiKey);
+    }
+    map['theme_id'] = Variable<String>(themeId);
+    map['rest_volume'] = Variable<double>(restVolume);
     return map;
   }
 
@@ -3981,6 +4378,23 @@ class Setting extends DataClass implements Insertable<Setting> {
       keepRinging: Value(keepRinging),
       keepScreenOn: Value(keepScreenOn),
       inputStyle: Value(inputStyle),
+      profileName: profileName == null && nullToAbsent
+          ? const Value.absent()
+          : Value(profileName),
+      heightCm: heightCm == null && nullToAbsent
+          ? const Value.absent()
+          : Value(heightCm),
+      ageYears: ageYears == null && nullToAbsent
+          ? const Value.absent()
+          : Value(ageYears),
+      goals: goals == null && nullToAbsent
+          ? const Value.absent()
+          : Value(goals),
+      apiKey: apiKey == null && nullToAbsent
+          ? const Value.absent()
+          : Value(apiKey),
+      themeId: Value(themeId),
+      restVolume: Value(restVolume),
     );
   }
 
@@ -4045,6 +4459,13 @@ class Setting extends DataClass implements Insertable<Setting> {
       keepRinging: serializer.fromJson<bool>(json['keepRinging']),
       keepScreenOn: serializer.fromJson<bool>(json['keepScreenOn']),
       inputStyle: serializer.fromJson<String>(json['inputStyle']),
+      profileName: serializer.fromJson<String?>(json['profileName']),
+      heightCm: serializer.fromJson<double?>(json['heightCm']),
+      ageYears: serializer.fromJson<int?>(json['ageYears']),
+      goals: serializer.fromJson<String?>(json['goals']),
+      apiKey: serializer.fromJson<String?>(json['apiKey']),
+      themeId: serializer.fromJson<String>(json['themeId']),
+      restVolume: serializer.fromJson<double>(json['restVolume']),
     );
   }
   @override
@@ -4100,6 +4521,13 @@ class Setting extends DataClass implements Insertable<Setting> {
       'keepRinging': serializer.toJson<bool>(keepRinging),
       'keepScreenOn': serializer.toJson<bool>(keepScreenOn),
       'inputStyle': serializer.toJson<String>(inputStyle),
+      'profileName': serializer.toJson<String?>(profileName),
+      'heightCm': serializer.toJson<double?>(heightCm),
+      'ageYears': serializer.toJson<int?>(ageYears),
+      'goals': serializer.toJson<String?>(goals),
+      'apiKey': serializer.toJson<String?>(apiKey),
+      'themeId': serializer.toJson<String>(themeId),
+      'restVolume': serializer.toJson<double>(restVolume),
     };
   }
 
@@ -4149,6 +4577,13 @@ class Setting extends DataClass implements Insertable<Setting> {
     bool? keepRinging,
     bool? keepScreenOn,
     String? inputStyle,
+    Value<String?> profileName = const Value.absent(),
+    Value<double?> heightCm = const Value.absent(),
+    Value<int?> ageYears = const Value.absent(),
+    Value<String?> goals = const Value.absent(),
+    Value<String?> apiKey = const Value.absent(),
+    String? themeId,
+    double? restVolume,
   }) => Setting(
     alarmSound: alarmSound ?? this.alarmSound,
     automaticBackups: automaticBackups ?? this.automaticBackups,
@@ -4201,6 +4636,13 @@ class Setting extends DataClass implements Insertable<Setting> {
     keepRinging: keepRinging ?? this.keepRinging,
     keepScreenOn: keepScreenOn ?? this.keepScreenOn,
     inputStyle: inputStyle ?? this.inputStyle,
+    profileName: profileName.present ? profileName.value : this.profileName,
+    heightCm: heightCm.present ? heightCm.value : this.heightCm,
+    ageYears: ageYears.present ? ageYears.value : this.ageYears,
+    goals: goals.present ? goals.value : this.goals,
+    apiKey: apiKey.present ? apiKey.value : this.apiKey,
+    themeId: themeId ?? this.themeId,
+    restVolume: restVolume ?? this.restVolume,
   );
   Setting copyWithCompanion(SettingsCompanion data) {
     return Setting(
@@ -4324,6 +4766,17 @@ class Setting extends DataClass implements Insertable<Setting> {
       inputStyle: data.inputStyle.present
           ? data.inputStyle.value
           : this.inputStyle,
+      profileName: data.profileName.present
+          ? data.profileName.value
+          : this.profileName,
+      heightCm: data.heightCm.present ? data.heightCm.value : this.heightCm,
+      ageYears: data.ageYears.present ? data.ageYears.value : this.ageYears,
+      goals: data.goals.present ? data.goals.value : this.goals,
+      apiKey: data.apiKey.present ? data.apiKey.value : this.apiKey,
+      themeId: data.themeId.present ? data.themeId.value : this.themeId,
+      restVolume: data.restVolume.present
+          ? data.restVolume.value
+          : this.restVolume,
     );
   }
 
@@ -4376,7 +4829,14 @@ class Setting extends DataClass implements Insertable<Setting> {
           ..write('defaultGraphTimeBasedXAxis: $defaultGraphTimeBasedXAxis, ')
           ..write('keepRinging: $keepRinging, ')
           ..write('keepScreenOn: $keepScreenOn, ')
-          ..write('inputStyle: $inputStyle')
+          ..write('inputStyle: $inputStyle, ')
+          ..write('profileName: $profileName, ')
+          ..write('heightCm: $heightCm, ')
+          ..write('ageYears: $ageYears, ')
+          ..write('goals: $goals, ')
+          ..write('apiKey: $apiKey, ')
+          ..write('themeId: $themeId, ')
+          ..write('restVolume: $restVolume')
           ..write(')'))
         .toString();
   }
@@ -4428,6 +4888,13 @@ class Setting extends DataClass implements Insertable<Setting> {
     keepRinging,
     keepScreenOn,
     inputStyle,
+    profileName,
+    heightCm,
+    ageYears,
+    goals,
+    apiKey,
+    themeId,
+    restVolume,
   ]);
   @override
   bool operator ==(Object other) =>
@@ -4478,7 +4945,14 @@ class Setting extends DataClass implements Insertable<Setting> {
           other.defaultGraphTimeBasedXAxis == this.defaultGraphTimeBasedXAxis &&
           other.keepRinging == this.keepRinging &&
           other.keepScreenOn == this.keepScreenOn &&
-          other.inputStyle == this.inputStyle);
+          other.inputStyle == this.inputStyle &&
+          other.profileName == this.profileName &&
+          other.heightCm == this.heightCm &&
+          other.ageYears == this.ageYears &&
+          other.goals == this.goals &&
+          other.apiKey == this.apiKey &&
+          other.themeId == this.themeId &&
+          other.restVolume == this.restVolume);
 }
 
 class SettingsCompanion extends UpdateCompanion<Setting> {
@@ -4527,6 +5001,13 @@ class SettingsCompanion extends UpdateCompanion<Setting> {
   final Value<bool> keepRinging;
   final Value<bool> keepScreenOn;
   final Value<String> inputStyle;
+  final Value<String?> profileName;
+  final Value<double?> heightCm;
+  final Value<int?> ageYears;
+  final Value<String?> goals;
+  final Value<String?> apiKey;
+  final Value<String> themeId;
+  final Value<double> restVolume;
   const SettingsCompanion({
     this.alarmSound = const Value.absent(),
     this.automaticBackups = const Value.absent(),
@@ -4573,6 +5054,13 @@ class SettingsCompanion extends UpdateCompanion<Setting> {
     this.keepRinging = const Value.absent(),
     this.keepScreenOn = const Value.absent(),
     this.inputStyle = const Value.absent(),
+    this.profileName = const Value.absent(),
+    this.heightCm = const Value.absent(),
+    this.ageYears = const Value.absent(),
+    this.goals = const Value.absent(),
+    this.apiKey = const Value.absent(),
+    this.themeId = const Value.absent(),
+    this.restVolume = const Value.absent(),
   });
   SettingsCompanion.insert({
     required String alarmSound,
@@ -4620,6 +5108,13 @@ class SettingsCompanion extends UpdateCompanion<Setting> {
     this.keepRinging = const Value.absent(),
     this.keepScreenOn = const Value.absent(),
     this.inputStyle = const Value.absent(),
+    this.profileName = const Value.absent(),
+    this.heightCm = const Value.absent(),
+    this.ageYears = const Value.absent(),
+    this.goals = const Value.absent(),
+    this.apiKey = const Value.absent(),
+    this.themeId = const Value.absent(),
+    this.restVolume = const Value.absent(),
   }) : alarmSound = Value(alarmSound),
        cardioUnit = Value(cardioUnit),
        curveLines = Value(curveLines),
@@ -4682,6 +5177,13 @@ class SettingsCompanion extends UpdateCompanion<Setting> {
     Expression<bool>? keepRinging,
     Expression<bool>? keepScreenOn,
     Expression<String>? inputStyle,
+    Expression<String>? profileName,
+    Expression<double>? heightCm,
+    Expression<int>? ageYears,
+    Expression<String>? goals,
+    Expression<String>? apiKey,
+    Expression<String>? themeId,
+    Expression<double>? restVolume,
   }) {
     return RawValuesInsertable({
       if (alarmSound != null) 'alarm_sound': alarmSound,
@@ -4735,6 +5237,13 @@ class SettingsCompanion extends UpdateCompanion<Setting> {
       if (keepRinging != null) 'keep_ringing': keepRinging,
       if (keepScreenOn != null) 'keep_screen_on': keepScreenOn,
       if (inputStyle != null) 'input_style': inputStyle,
+      if (profileName != null) 'profile_name': profileName,
+      if (heightCm != null) 'height_cm': heightCm,
+      if (ageYears != null) 'age_years': ageYears,
+      if (goals != null) 'goals': goals,
+      if (apiKey != null) 'api_key': apiKey,
+      if (themeId != null) 'theme_id': themeId,
+      if (restVolume != null) 'rest_volume': restVolume,
     });
   }
 
@@ -4784,6 +5293,13 @@ class SettingsCompanion extends UpdateCompanion<Setting> {
     Value<bool>? keepRinging,
     Value<bool>? keepScreenOn,
     Value<String>? inputStyle,
+    Value<String?>? profileName,
+    Value<double?>? heightCm,
+    Value<int?>? ageYears,
+    Value<String?>? goals,
+    Value<String?>? apiKey,
+    Value<String>? themeId,
+    Value<double>? restVolume,
   }) {
     return SettingsCompanion(
       alarmSound: alarmSound ?? this.alarmSound,
@@ -4834,6 +5350,13 @@ class SettingsCompanion extends UpdateCompanion<Setting> {
       keepRinging: keepRinging ?? this.keepRinging,
       keepScreenOn: keepScreenOn ?? this.keepScreenOn,
       inputStyle: inputStyle ?? this.inputStyle,
+      profileName: profileName ?? this.profileName,
+      heightCm: heightCm ?? this.heightCm,
+      ageYears: ageYears ?? this.ageYears,
+      goals: goals ?? this.goals,
+      apiKey: apiKey ?? this.apiKey,
+      themeId: themeId ?? this.themeId,
+      restVolume: restVolume ?? this.restVolume,
     );
   }
 
@@ -4979,6 +5502,27 @@ class SettingsCompanion extends UpdateCompanion<Setting> {
     if (inputStyle.present) {
       map['input_style'] = Variable<String>(inputStyle.value);
     }
+    if (profileName.present) {
+      map['profile_name'] = Variable<String>(profileName.value);
+    }
+    if (heightCm.present) {
+      map['height_cm'] = Variable<double>(heightCm.value);
+    }
+    if (ageYears.present) {
+      map['age_years'] = Variable<int>(ageYears.value);
+    }
+    if (goals.present) {
+      map['goals'] = Variable<String>(goals.value);
+    }
+    if (apiKey.present) {
+      map['api_key'] = Variable<String>(apiKey.value);
+    }
+    if (themeId.present) {
+      map['theme_id'] = Variable<String>(themeId.value);
+    }
+    if (restVolume.present) {
+      map['rest_volume'] = Variable<double>(restVolume.value);
+    }
     return map;
   }
 
@@ -5031,7 +5575,14 @@ class SettingsCompanion extends UpdateCompanion<Setting> {
           ..write('defaultGraphTimeBasedXAxis: $defaultGraphTimeBasedXAxis, ')
           ..write('keepRinging: $keepRinging, ')
           ..write('keepScreenOn: $keepScreenOn, ')
-          ..write('inputStyle: $inputStyle')
+          ..write('inputStyle: $inputStyle, ')
+          ..write('profileName: $profileName, ')
+          ..write('heightCm: $heightCm, ')
+          ..write('ageYears: $ageYears, ')
+          ..write('goals: $goals, ')
+          ..write('apiKey: $apiKey, ')
+          ..write('themeId: $themeId, ')
+          ..write('restVolume: $restVolume')
           ..write(')'))
         .toString();
   }
@@ -5143,6 +5694,24 @@ class $PlanExercisesTable extends PlanExercises
     requiredDuringInsert: false,
     defaultValue: const Constant(0),
   );
+  static const VerificationMeta _repMinMeta = const VerificationMeta('repMin');
+  @override
+  late final GeneratedColumn<int> repMin = GeneratedColumn<int>(
+    'rep_min',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _repMaxMeta = const VerificationMeta('repMax');
+  @override
+  late final GeneratedColumn<int> repMax = GeneratedColumn<int>(
+    'rep_max',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
   @override
   List<GeneratedColumn> get $columns => [
     enabled,
@@ -5153,6 +5722,8 @@ class $PlanExercisesTable extends PlanExercises
     planId,
     warmupSets,
     sequence,
+    repMin,
+    repMax,
   ];
   @override
   String get aliasedName => _alias ?? actualTableName;
@@ -5217,6 +5788,18 @@ class $PlanExercisesTable extends PlanExercises
         sequence.isAcceptableOrUnknown(data['sequence']!, _sequenceMeta),
       );
     }
+    if (data.containsKey('rep_min')) {
+      context.handle(
+        _repMinMeta,
+        repMin.isAcceptableOrUnknown(data['rep_min']!, _repMinMeta),
+      );
+    }
+    if (data.containsKey('rep_max')) {
+      context.handle(
+        _repMaxMeta,
+        repMax.isAcceptableOrUnknown(data['rep_max']!, _repMaxMeta),
+      );
+    }
     return context;
   }
 
@@ -5258,6 +5841,14 @@ class $PlanExercisesTable extends PlanExercises
         DriftSqlType.int,
         data['${effectivePrefix}sequence'],
       )!,
+      repMin: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}rep_min'],
+      ),
+      repMax: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}rep_max'],
+      ),
     );
   }
 
@@ -5276,6 +5867,8 @@ class PlanExercise extends DataClass implements Insertable<PlanExercise> {
   final int planId;
   final int? warmupSets;
   final int sequence;
+  final int? repMin;
+  final int? repMax;
   const PlanExercise({
     required this.enabled,
     required this.timers,
@@ -5285,6 +5878,8 @@ class PlanExercise extends DataClass implements Insertable<PlanExercise> {
     required this.planId,
     this.warmupSets,
     required this.sequence,
+    this.repMin,
+    this.repMax,
   });
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
@@ -5301,6 +5896,12 @@ class PlanExercise extends DataClass implements Insertable<PlanExercise> {
       map['warmup_sets'] = Variable<int>(warmupSets);
     }
     map['sequence'] = Variable<int>(sequence);
+    if (!nullToAbsent || repMin != null) {
+      map['rep_min'] = Variable<int>(repMin);
+    }
+    if (!nullToAbsent || repMax != null) {
+      map['rep_max'] = Variable<int>(repMax);
+    }
     return map;
   }
 
@@ -5318,6 +5919,12 @@ class PlanExercise extends DataClass implements Insertable<PlanExercise> {
           ? const Value.absent()
           : Value(warmupSets),
       sequence: Value(sequence),
+      repMin: repMin == null && nullToAbsent
+          ? const Value.absent()
+          : Value(repMin),
+      repMax: repMax == null && nullToAbsent
+          ? const Value.absent()
+          : Value(repMax),
     );
   }
 
@@ -5335,6 +5942,8 @@ class PlanExercise extends DataClass implements Insertable<PlanExercise> {
       planId: serializer.fromJson<int>(json['planId']),
       warmupSets: serializer.fromJson<int?>(json['warmupSets']),
       sequence: serializer.fromJson<int>(json['sequence']),
+      repMin: serializer.fromJson<int?>(json['repMin']),
+      repMax: serializer.fromJson<int?>(json['repMax']),
     );
   }
   @override
@@ -5349,6 +5958,8 @@ class PlanExercise extends DataClass implements Insertable<PlanExercise> {
       'planId': serializer.toJson<int>(planId),
       'warmupSets': serializer.toJson<int?>(warmupSets),
       'sequence': serializer.toJson<int>(sequence),
+      'repMin': serializer.toJson<int?>(repMin),
+      'repMax': serializer.toJson<int?>(repMax),
     };
   }
 
@@ -5361,6 +5972,8 @@ class PlanExercise extends DataClass implements Insertable<PlanExercise> {
     int? planId,
     Value<int?> warmupSets = const Value.absent(),
     int? sequence,
+    Value<int?> repMin = const Value.absent(),
+    Value<int?> repMax = const Value.absent(),
   }) => PlanExercise(
     enabled: enabled ?? this.enabled,
     timers: timers ?? this.timers,
@@ -5370,6 +5983,8 @@ class PlanExercise extends DataClass implements Insertable<PlanExercise> {
     planId: planId ?? this.planId,
     warmupSets: warmupSets.present ? warmupSets.value : this.warmupSets,
     sequence: sequence ?? this.sequence,
+    repMin: repMin.present ? repMin.value : this.repMin,
+    repMax: repMax.present ? repMax.value : this.repMax,
   );
   PlanExercise copyWithCompanion(PlanExercisesCompanion data) {
     return PlanExercise(
@@ -5385,6 +6000,8 @@ class PlanExercise extends DataClass implements Insertable<PlanExercise> {
           ? data.warmupSets.value
           : this.warmupSets,
       sequence: data.sequence.present ? data.sequence.value : this.sequence,
+      repMin: data.repMin.present ? data.repMin.value : this.repMin,
+      repMax: data.repMax.present ? data.repMax.value : this.repMax,
     );
   }
 
@@ -5398,7 +6015,9 @@ class PlanExercise extends DataClass implements Insertable<PlanExercise> {
           ..write('maxSets: $maxSets, ')
           ..write('planId: $planId, ')
           ..write('warmupSets: $warmupSets, ')
-          ..write('sequence: $sequence')
+          ..write('sequence: $sequence, ')
+          ..write('repMin: $repMin, ')
+          ..write('repMax: $repMax')
           ..write(')'))
         .toString();
   }
@@ -5413,6 +6032,8 @@ class PlanExercise extends DataClass implements Insertable<PlanExercise> {
     planId,
     warmupSets,
     sequence,
+    repMin,
+    repMax,
   );
   @override
   bool operator ==(Object other) =>
@@ -5425,7 +6046,9 @@ class PlanExercise extends DataClass implements Insertable<PlanExercise> {
           other.maxSets == this.maxSets &&
           other.planId == this.planId &&
           other.warmupSets == this.warmupSets &&
-          other.sequence == this.sequence);
+          other.sequence == this.sequence &&
+          other.repMin == this.repMin &&
+          other.repMax == this.repMax);
 }
 
 class PlanExercisesCompanion extends UpdateCompanion<PlanExercise> {
@@ -5437,6 +6060,8 @@ class PlanExercisesCompanion extends UpdateCompanion<PlanExercise> {
   final Value<int> planId;
   final Value<int?> warmupSets;
   final Value<int> sequence;
+  final Value<int?> repMin;
+  final Value<int?> repMax;
   const PlanExercisesCompanion({
     this.enabled = const Value.absent(),
     this.timers = const Value.absent(),
@@ -5446,6 +6071,8 @@ class PlanExercisesCompanion extends UpdateCompanion<PlanExercise> {
     this.planId = const Value.absent(),
     this.warmupSets = const Value.absent(),
     this.sequence = const Value.absent(),
+    this.repMin = const Value.absent(),
+    this.repMax = const Value.absent(),
   });
   PlanExercisesCompanion.insert({
     required bool enabled,
@@ -5456,6 +6083,8 @@ class PlanExercisesCompanion extends UpdateCompanion<PlanExercise> {
     required int planId,
     this.warmupSets = const Value.absent(),
     this.sequence = const Value.absent(),
+    this.repMin = const Value.absent(),
+    this.repMax = const Value.absent(),
   }) : enabled = Value(enabled),
        exerciseId = Value(exerciseId),
        planId = Value(planId);
@@ -5468,6 +6097,8 @@ class PlanExercisesCompanion extends UpdateCompanion<PlanExercise> {
     Expression<int>? planId,
     Expression<int>? warmupSets,
     Expression<int>? sequence,
+    Expression<int>? repMin,
+    Expression<int>? repMax,
   }) {
     return RawValuesInsertable({
       if (enabled != null) 'enabled': enabled,
@@ -5478,6 +6109,8 @@ class PlanExercisesCompanion extends UpdateCompanion<PlanExercise> {
       if (planId != null) 'plan_id': planId,
       if (warmupSets != null) 'warmup_sets': warmupSets,
       if (sequence != null) 'sequence': sequence,
+      if (repMin != null) 'rep_min': repMin,
+      if (repMax != null) 'rep_max': repMax,
     });
   }
 
@@ -5490,6 +6123,8 @@ class PlanExercisesCompanion extends UpdateCompanion<PlanExercise> {
     Value<int>? planId,
     Value<int?>? warmupSets,
     Value<int>? sequence,
+    Value<int?>? repMin,
+    Value<int?>? repMax,
   }) {
     return PlanExercisesCompanion(
       enabled: enabled ?? this.enabled,
@@ -5500,6 +6135,8 @@ class PlanExercisesCompanion extends UpdateCompanion<PlanExercise> {
       planId: planId ?? this.planId,
       warmupSets: warmupSets ?? this.warmupSets,
       sequence: sequence ?? this.sequence,
+      repMin: repMin ?? this.repMin,
+      repMax: repMax ?? this.repMax,
     );
   }
 
@@ -5530,6 +6167,12 @@ class PlanExercisesCompanion extends UpdateCompanion<PlanExercise> {
     if (sequence.present) {
       map['sequence'] = Variable<int>(sequence.value);
     }
+    if (repMin.present) {
+      map['rep_min'] = Variable<int>(repMin.value);
+    }
+    if (repMax.present) {
+      map['rep_max'] = Variable<int>(repMax.value);
+    }
     return map;
   }
 
@@ -5543,7 +6186,9 @@ class PlanExercisesCompanion extends UpdateCompanion<PlanExercise> {
           ..write('maxSets: $maxSets, ')
           ..write('planId: $planId, ')
           ..write('warmupSets: $warmupSets, ')
-          ..write('sequence: $sequence')
+          ..write('sequence: $sequence, ')
+          ..write('repMin: $repMin, ')
+          ..write('repMax: $repMax')
           ..write(')'))
         .toString();
   }
@@ -6258,6 +6903,9 @@ typedef $$ExercisesTableCreateCompanionBuilder =
       Value<int> graphLimit,
       Value<bool> graphTimeBasedXAxis,
       Value<bool> archived,
+      Value<String?> germanName,
+      Value<String?> aliases,
+      Value<String?> muscle,
     });
 typedef $$ExercisesTableUpdateCompanionBuilder =
     ExercisesCompanion Function({
@@ -6274,6 +6922,9 @@ typedef $$ExercisesTableUpdateCompanionBuilder =
       Value<int> graphLimit,
       Value<bool> graphTimeBasedXAxis,
       Value<bool> archived,
+      Value<String?> germanName,
+      Value<String?> aliases,
+      Value<String?> muscle,
     });
 
 final class $$ExercisesTableReferences
@@ -6400,6 +7051,21 @@ class $$ExercisesTableFilterComposer
 
   ColumnFilters<bool> get archived => $composableBuilder(
     column: $table.archived,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get germanName => $composableBuilder(
+    column: $table.germanName,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get aliases => $composableBuilder(
+    column: $table.aliases,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get muscle => $composableBuilder(
+    column: $table.muscle,
     builder: (column) => ColumnFilters(column),
   );
 
@@ -6546,6 +7212,21 @@ class $$ExercisesTableOrderingComposer
     builder: (column) => ColumnOrderings(column),
   );
 
+  ColumnOrderings<String> get germanName => $composableBuilder(
+    column: $table.germanName,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get aliases => $composableBuilder(
+    column: $table.aliases,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get muscle => $composableBuilder(
+    column: $table.muscle,
+    builder: (column) => ColumnOrderings(column),
+  );
+
   $$CategoriesTableOrderingComposer get categoryId {
     final $$CategoriesTableOrderingComposer composer = $composerBuilder(
       composer: this,
@@ -6626,6 +7307,17 @@ class $$ExercisesTableAnnotationComposer
 
   GeneratedColumn<bool> get archived =>
       $composableBuilder(column: $table.archived, builder: (column) => column);
+
+  GeneratedColumn<String> get germanName => $composableBuilder(
+    column: $table.germanName,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get aliases =>
+      $composableBuilder(column: $table.aliases, builder: (column) => column);
+
+  GeneratedColumn<String> get muscle =>
+      $composableBuilder(column: $table.muscle, builder: (column) => column);
 
   $$CategoriesTableAnnotationComposer get categoryId {
     final $$CategoriesTableAnnotationComposer composer = $composerBuilder(
@@ -6746,6 +7438,9 @@ class $$ExercisesTableTableManager
                 Value<int> graphLimit = const Value.absent(),
                 Value<bool> graphTimeBasedXAxis = const Value.absent(),
                 Value<bool> archived = const Value.absent(),
+                Value<String?> germanName = const Value.absent(),
+                Value<String?> aliases = const Value.absent(),
+                Value<String?> muscle = const Value.absent(),
               }) => ExercisesCompanion(
                 id: id,
                 name: name,
@@ -6760,6 +7455,9 @@ class $$ExercisesTableTableManager
                 graphLimit: graphLimit,
                 graphTimeBasedXAxis: graphTimeBasedXAxis,
                 archived: archived,
+                germanName: germanName,
+                aliases: aliases,
+                muscle: muscle,
               ),
           createCompanionCallback:
               ({
@@ -6776,6 +7474,9 @@ class $$ExercisesTableTableManager
                 Value<int> graphLimit = const Value.absent(),
                 Value<bool> graphTimeBasedXAxis = const Value.absent(),
                 Value<bool> archived = const Value.absent(),
+                Value<String?> germanName = const Value.absent(),
+                Value<String?> aliases = const Value.absent(),
+                Value<String?> muscle = const Value.absent(),
               }) => ExercisesCompanion.insert(
                 id: id,
                 name: name,
@@ -6790,6 +7491,9 @@ class $$ExercisesTableTableManager
                 graphLimit: graphLimit,
                 graphTimeBasedXAxis: graphTimeBasedXAxis,
                 archived: archived,
+                germanName: germanName,
+                aliases: aliases,
+                muscle: muscle,
               ),
           withReferenceMapper: (p0) => p0
               .map(
@@ -6919,6 +7623,7 @@ typedef $$WorkoutsTableCreateCompanionBuilder =
       Value<int?> planId,
       required DateTime startedAt,
       Value<DateTime?> endedAt,
+      Value<String?> exerciseOrder,
     });
 typedef $$WorkoutsTableUpdateCompanionBuilder =
     WorkoutsCompanion Function({
@@ -6926,6 +7631,7 @@ typedef $$WorkoutsTableUpdateCompanionBuilder =
       Value<int?> planId,
       Value<DateTime> startedAt,
       Value<DateTime?> endedAt,
+      Value<String?> exerciseOrder,
     });
 
 final class $$WorkoutsTableReferences
@@ -6989,6 +7695,11 @@ class $$WorkoutsTableFilterComposer
 
   ColumnFilters<DateTime> get endedAt => $composableBuilder(
     column: $table.endedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get exerciseOrder => $composableBuilder(
+    column: $table.exerciseOrder,
     builder: (column) => ColumnFilters(column),
   );
 
@@ -7065,6 +7776,11 @@ class $$WorkoutsTableOrderingComposer
     builder: (column) => ColumnOrderings(column),
   );
 
+  ColumnOrderings<String> get exerciseOrder => $composableBuilder(
+    column: $table.exerciseOrder,
+    builder: (column) => ColumnOrderings(column),
+  );
+
   $$PlansTableOrderingComposer get planId {
     final $$PlansTableOrderingComposer composer = $composerBuilder(
       composer: this,
@@ -7106,6 +7822,11 @@ class $$WorkoutsTableAnnotationComposer
 
   GeneratedColumn<DateTime> get endedAt =>
       $composableBuilder(column: $table.endedAt, builder: (column) => column);
+
+  GeneratedColumn<String> get exerciseOrder => $composableBuilder(
+    column: $table.exerciseOrder,
+    builder: (column) => column,
+  );
 
   $$PlansTableAnnotationComposer get planId {
     final $$PlansTableAnnotationComposer composer = $composerBuilder(
@@ -7188,11 +7909,13 @@ class $$WorkoutsTableTableManager
                 Value<int?> planId = const Value.absent(),
                 Value<DateTime> startedAt = const Value.absent(),
                 Value<DateTime?> endedAt = const Value.absent(),
+                Value<String?> exerciseOrder = const Value.absent(),
               }) => WorkoutsCompanion(
                 id: id,
                 planId: planId,
                 startedAt: startedAt,
                 endedAt: endedAt,
+                exerciseOrder: exerciseOrder,
               ),
           createCompanionCallback:
               ({
@@ -7200,11 +7923,13 @@ class $$WorkoutsTableTableManager
                 Value<int?> planId = const Value.absent(),
                 required DateTime startedAt,
                 Value<DateTime?> endedAt = const Value.absent(),
+                Value<String?> exerciseOrder = const Value.absent(),
               }) => WorkoutsCompanion.insert(
                 id: id,
                 planId: planId,
                 startedAt: startedAt,
                 endedAt: endedAt,
+                exerciseOrder: exerciseOrder,
               ),
           withReferenceMapper: (p0) => p0
               .map(
@@ -8040,6 +8765,13 @@ typedef $$SettingsTableCreateCompanionBuilder =
       Value<bool> keepRinging,
       Value<bool> keepScreenOn,
       Value<String> inputStyle,
+      Value<String?> profileName,
+      Value<double?> heightCm,
+      Value<int?> ageYears,
+      Value<String?> goals,
+      Value<String?> apiKey,
+      Value<String> themeId,
+      Value<double> restVolume,
     });
 typedef $$SettingsTableUpdateCompanionBuilder =
     SettingsCompanion Function({
@@ -8088,6 +8820,13 @@ typedef $$SettingsTableUpdateCompanionBuilder =
       Value<bool> keepRinging,
       Value<bool> keepScreenOn,
       Value<String> inputStyle,
+      Value<String?> profileName,
+      Value<double?> heightCm,
+      Value<int?> ageYears,
+      Value<String?> goals,
+      Value<String?> apiKey,
+      Value<String> themeId,
+      Value<double> restVolume,
     });
 
 class $$SettingsTableFilterComposer
@@ -8321,6 +9060,41 @@ class $$SettingsTableFilterComposer
 
   ColumnFilters<String> get inputStyle => $composableBuilder(
     column: $table.inputStyle,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get profileName => $composableBuilder(
+    column: $table.profileName,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<double> get heightCm => $composableBuilder(
+    column: $table.heightCm,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get ageYears => $composableBuilder(
+    column: $table.ageYears,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get goals => $composableBuilder(
+    column: $table.goals,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get apiKey => $composableBuilder(
+    column: $table.apiKey,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get themeId => $composableBuilder(
+    column: $table.themeId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<double> get restVolume => $composableBuilder(
+    column: $table.restVolume,
     builder: (column) => ColumnFilters(column),
   );
 }
@@ -8559,6 +9333,41 @@ class $$SettingsTableOrderingComposer
     column: $table.inputStyle,
     builder: (column) => ColumnOrderings(column),
   );
+
+  ColumnOrderings<String> get profileName => $composableBuilder(
+    column: $table.profileName,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<double> get heightCm => $composableBuilder(
+    column: $table.heightCm,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get ageYears => $composableBuilder(
+    column: $table.ageYears,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get goals => $composableBuilder(
+    column: $table.goals,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get apiKey => $composableBuilder(
+    column: $table.apiKey,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get themeId => $composableBuilder(
+    column: $table.themeId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<double> get restVolume => $composableBuilder(
+    column: $table.restVolume,
+    builder: (column) => ColumnOrderings(column),
+  );
 }
 
 class $$SettingsTableAnnotationComposer
@@ -8779,6 +9588,31 @@ class $$SettingsTableAnnotationComposer
     column: $table.inputStyle,
     builder: (column) => column,
   );
+
+  GeneratedColumn<String> get profileName => $composableBuilder(
+    column: $table.profileName,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<double> get heightCm =>
+      $composableBuilder(column: $table.heightCm, builder: (column) => column);
+
+  GeneratedColumn<int> get ageYears =>
+      $composableBuilder(column: $table.ageYears, builder: (column) => column);
+
+  GeneratedColumn<String> get goals =>
+      $composableBuilder(column: $table.goals, builder: (column) => column);
+
+  GeneratedColumn<String> get apiKey =>
+      $composableBuilder(column: $table.apiKey, builder: (column) => column);
+
+  GeneratedColumn<String> get themeId =>
+      $composableBuilder(column: $table.themeId, builder: (column) => column);
+
+  GeneratedColumn<double> get restVolume => $composableBuilder(
+    column: $table.restVolume,
+    builder: (column) => column,
+  );
 }
 
 class $$SettingsTableTableManager
@@ -8855,6 +9689,13 @@ class $$SettingsTableTableManager
                 Value<bool> keepRinging = const Value.absent(),
                 Value<bool> keepScreenOn = const Value.absent(),
                 Value<String> inputStyle = const Value.absent(),
+                Value<String?> profileName = const Value.absent(),
+                Value<double?> heightCm = const Value.absent(),
+                Value<int?> ageYears = const Value.absent(),
+                Value<String?> goals = const Value.absent(),
+                Value<String?> apiKey = const Value.absent(),
+                Value<String> themeId = const Value.absent(),
+                Value<double> restVolume = const Value.absent(),
               }) => SettingsCompanion(
                 alarmSound: alarmSound,
                 automaticBackups: automaticBackups,
@@ -8902,6 +9743,13 @@ class $$SettingsTableTableManager
                 keepRinging: keepRinging,
                 keepScreenOn: keepScreenOn,
                 inputStyle: inputStyle,
+                profileName: profileName,
+                heightCm: heightCm,
+                ageYears: ageYears,
+                goals: goals,
+                apiKey: apiKey,
+                themeId: themeId,
+                restVolume: restVolume,
               ),
           createCompanionCallback:
               ({
@@ -8951,6 +9799,13 @@ class $$SettingsTableTableManager
                 Value<bool> keepRinging = const Value.absent(),
                 Value<bool> keepScreenOn = const Value.absent(),
                 Value<String> inputStyle = const Value.absent(),
+                Value<String?> profileName = const Value.absent(),
+                Value<double?> heightCm = const Value.absent(),
+                Value<int?> ageYears = const Value.absent(),
+                Value<String?> goals = const Value.absent(),
+                Value<String?> apiKey = const Value.absent(),
+                Value<String> themeId = const Value.absent(),
+                Value<double> restVolume = const Value.absent(),
               }) => SettingsCompanion.insert(
                 alarmSound: alarmSound,
                 automaticBackups: automaticBackups,
@@ -8998,6 +9853,13 @@ class $$SettingsTableTableManager
                 keepRinging: keepRinging,
                 keepScreenOn: keepScreenOn,
                 inputStyle: inputStyle,
+                profileName: profileName,
+                heightCm: heightCm,
+                ageYears: ageYears,
+                goals: goals,
+                apiKey: apiKey,
+                themeId: themeId,
+                restVolume: restVolume,
               ),
           withReferenceMapper: (p0) => p0
               .map(
@@ -9040,6 +9902,8 @@ typedef $$PlanExercisesTableCreateCompanionBuilder =
       required int planId,
       Value<int?> warmupSets,
       Value<int> sequence,
+      Value<int?> repMin,
+      Value<int?> repMax,
     });
 typedef $$PlanExercisesTableUpdateCompanionBuilder =
     PlanExercisesCompanion Function({
@@ -9051,6 +9915,8 @@ typedef $$PlanExercisesTableUpdateCompanionBuilder =
       Value<int> planId,
       Value<int?> warmupSets,
       Value<int> sequence,
+      Value<int?> repMin,
+      Value<int?> repMax,
     });
 
 final class $$PlanExercisesTableReferences
@@ -9132,6 +9998,16 @@ class $$PlanExercisesTableFilterComposer
 
   ColumnFilters<int> get sequence => $composableBuilder(
     column: $table.sequence,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get repMin => $composableBuilder(
+    column: $table.repMin,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get repMax => $composableBuilder(
+    column: $table.repMax,
     builder: (column) => ColumnFilters(column),
   );
 
@@ -9221,6 +10097,16 @@ class $$PlanExercisesTableOrderingComposer
     builder: (column) => ColumnOrderings(column),
   );
 
+  ColumnOrderings<int> get repMin => $composableBuilder(
+    column: $table.repMin,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get repMax => $composableBuilder(
+    column: $table.repMax,
+    builder: (column) => ColumnOrderings(column),
+  );
+
   $$ExercisesTableOrderingComposer get exerciseId {
     final $$ExercisesTableOrderingComposer composer = $composerBuilder(
       composer: this,
@@ -9296,6 +10182,12 @@ class $$PlanExercisesTableAnnotationComposer
 
   GeneratedColumn<int> get sequence =>
       $composableBuilder(column: $table.sequence, builder: (column) => column);
+
+  GeneratedColumn<int> get repMin =>
+      $composableBuilder(column: $table.repMin, builder: (column) => column);
+
+  GeneratedColumn<int> get repMax =>
+      $composableBuilder(column: $table.repMax, builder: (column) => column);
 
   $$ExercisesTableAnnotationComposer get exerciseId {
     final $$ExercisesTableAnnotationComposer composer = $composerBuilder(
@@ -9380,6 +10272,8 @@ class $$PlanExercisesTableTableManager
                 Value<int> planId = const Value.absent(),
                 Value<int?> warmupSets = const Value.absent(),
                 Value<int> sequence = const Value.absent(),
+                Value<int?> repMin = const Value.absent(),
+                Value<int?> repMax = const Value.absent(),
               }) => PlanExercisesCompanion(
                 enabled: enabled,
                 timers: timers,
@@ -9389,6 +10283,8 @@ class $$PlanExercisesTableTableManager
                 planId: planId,
                 warmupSets: warmupSets,
                 sequence: sequence,
+                repMin: repMin,
+                repMax: repMax,
               ),
           createCompanionCallback:
               ({
@@ -9400,6 +10296,8 @@ class $$PlanExercisesTableTableManager
                 required int planId,
                 Value<int?> warmupSets = const Value.absent(),
                 Value<int> sequence = const Value.absent(),
+                Value<int?> repMin = const Value.absent(),
+                Value<int?> repMax = const Value.absent(),
               }) => PlanExercisesCompanion.insert(
                 enabled: enabled,
                 timers: timers,
@@ -9409,6 +10307,8 @@ class $$PlanExercisesTableTableManager
                 planId: planId,
                 warmupSets: warmupSets,
                 sequence: sequence,
+                repMin: repMin,
+                repMax: repMax,
               ),
           withReferenceMapper: (p0) => p0
               .map(
