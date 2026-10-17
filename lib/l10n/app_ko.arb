@@ -701,5 +701,6 @@
   "customExerciseName": "이름",
   "customExerciseFamily": "계열 ID",
   "createAsCustomExercise": "맞춤 운동으로 만들기",
-  "customExerciseInvalid": "이름, 근육, 기구를 선택하세요."
+  "customExerciseInvalid": "이름, 근육, 기구를 선택하세요.",
+  "movementLabel": "동작"
 }

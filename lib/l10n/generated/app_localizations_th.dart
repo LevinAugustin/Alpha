@@ -2182,6 +2182,9 @@ class AppLocalizationsTh extends AppLocalizations {
   String get positionLabel => 'ท่าทาง';
 
   @override
+  String get movementLabel => 'การเคลื่อนไหว';
+
+  @override
   String get unilateralLabel => 'ข้างเดียว';
 
   @override

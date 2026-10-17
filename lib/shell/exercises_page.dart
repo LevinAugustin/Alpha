@@ -25,6 +25,7 @@ class _ExercisesPageState extends State<ExercisesPage> {
   String _mechanic = '';
   String _grip = '';
   String _position = '';
+  String _motion = '';
 
   @override
   void dispose() {
@@ -75,6 +76,21 @@ class _ExercisesPageState extends State<ExercisesPage> {
                       onSelected: (_) => setState(() => _muscle = ''),
                     ),
                   ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 8),
+                    child: Center(child: Text(context.l10n.movementLabel)),
+                  ),
+                  for (final item in exerciseMotionValues)
+                    Padding(
+                      padding: const EdgeInsets.only(right: 8),
+                      child: FilterChip(
+                        label: Text(item),
+                        selected: _motion == item,
+                        onSelected: (_) => setState(() {
+                          _motion = _motion == item ? '' : item;
+                        }),
+                      ),
+                    ),
                   for (final muscle in exerciseMuscleKeys)
                     Padding(
                       padding: const EdgeInsets.only(right: 8),
@@ -171,12 +187,14 @@ class _ExercisesPageState extends State<ExercisesPage> {
                       secondaryMuscles: exercise.secondaryMuscles,
                       grip: exercise.griff,
                       position: exercise.position,
+                      movement: exercise.bewegung,
                       query: query,
                       group: _muscle,
                       equipmentFilter: _equipment,
                       mechanicFilter: _mechanic,
                       gripFilter: _grip,
                       positionFilter: _position,
+                      motionFilter: _motion,
                     );
                   }).toList()..sort((a, b) {
                     final left = (a.germanName ?? a.name).toLowerCase();

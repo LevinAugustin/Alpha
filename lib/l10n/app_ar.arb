@@ -2245,5 +2245,6 @@
   "customExerciseName": "الاسم",
   "customExerciseFamily": "معرّف العائلة",
   "createAsCustomExercise": "إنشاء كتمرين خاص",
-  "customExerciseInvalid": "اختر اسماً وعضلات وأداة."
+  "customExerciseInvalid": "اختر اسماً وعضلات وأداة.",
+  "movementLabel": "الحركة"
 }

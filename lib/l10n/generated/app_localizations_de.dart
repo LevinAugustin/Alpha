@@ -2229,6 +2229,9 @@ class AppLocalizationsDe extends AppLocalizations {
   String get positionLabel => 'Körperposition';
 
   @override
+  String get movementLabel => 'Bewegung';
+
+  @override
   String get unilateralLabel => 'Einseitig';
 
   @override

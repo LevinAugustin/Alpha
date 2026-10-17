@@ -2245,5 +2245,6 @@
   "customExerciseName": "نام",
   "customExerciseFamily": "خاندان کا شناختی نمبر",
   "createAsCustomExercise": "اپنی ورزش کے طور پر بنائیں",
-  "customExerciseInvalid": "نام، پٹھے اور آلہ منتخب کریں۔"
+  "customExerciseInvalid": "نام، پٹھے اور آلہ منتخب کریں۔",
+  "movementLabel": "حرکت"
 }

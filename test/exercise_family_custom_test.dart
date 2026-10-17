@@ -31,6 +31,7 @@ void main() {
         primaryMuscles: ['schulter_hinten'],
         secondaryMuscles: ['oberer_ruecken'],
         equipment: 'Maschine',
+        movement: 'ziehen',
         family: 'reverse-butterfly',
         unilateral: true,
       ),
@@ -47,6 +48,7 @@ void main() {
         primaryMuscles: ['schulter_hinten'],
         secondaryMuscles: [],
         equipment: 'Kabelzug',
+        movement: 'ziehen',
       ),
     );
     expect(again.catalogId, 'eigen-reverse-butterfly-2');
@@ -164,6 +166,7 @@ void main() {
         primaryMuscles: ['schulter_hinten'],
         secondaryMuscles: ['oberer_ruecken'],
         equipment: 'Maschine',
+        movement: 'ziehen',
         unilateral: true,
       ),
     );
@@ -176,7 +179,11 @@ void main() {
     await tester.enterText(find.byType(TextField), 'Pull');
     await tester.pump(const Duration(milliseconds: 400));
     expect(find.text('Face Pulls'), findsOneWidget);
+    expect(find.text('Bizepscurls mit SZ-Stange'), findsOneWidget);
+    expect(find.text('Hammercurls'), findsOneWidget);
     expect(find.text('Reverse Butterfly'), findsOneWidget);
+    expect(find.text('Bankdrücken'), findsNothing);
+    expect(find.text('Bewegung'), findsOneWidget);
     await _shot(tester, 'pull_search');
 
     await harness.pump(

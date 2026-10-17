@@ -2245,5 +2245,6 @@
   "customExerciseName": "Tên",
   "customExerciseFamily": "Mã nhóm",
   "createAsCustomExercise": "Tạo thành bài tập riêng",
-  "customExerciseInvalid": "Hãy chọn tên, cơ và dụng cụ."
+  "customExerciseInvalid": "Hãy chọn tên, cơ và dụng cụ.",
+  "movementLabel": "Động tác"
 }

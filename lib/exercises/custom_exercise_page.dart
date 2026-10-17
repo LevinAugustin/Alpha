@@ -23,6 +23,7 @@ class _CustomExercisePageState extends State<CustomExercisePage> {
   late final TextEditingController _family;
   String _category = exerciseCategories.first;
   String _equipment = exerciseGearValues.first;
+  String _movement = '';
   String _grip = '';
   String _position = '';
   var _unilateral = false;
@@ -41,6 +42,7 @@ class _CustomExercisePageState extends State<CustomExercisePage> {
     if (exercise != null) {
       _category = exercise.categoryName ?? _category;
       _equipment = exercise.equipment ?? _equipment;
+      _movement = exercise.bewegung ?? '';
       _grip = exercise.griff ?? '';
       _position = exercise.position ?? '';
       _unilateral = exercise.einseitig;
@@ -137,6 +139,17 @@ class _CustomExercisePageState extends State<CustomExercisePage> {
                 setState(() => _equipment = value ?? _equipment),
           ),
           const SizedBox(height: 12),
+          DropdownButtonFormField<String>(
+            key: const Key('custom-exercise-motion'),
+            initialValue: _movement.isEmpty ? null : _movement,
+            decoration: InputDecoration(labelText: l10n.movementLabel),
+            items: [
+              for (final motion in exerciseMotionValues)
+                DropdownMenuItem(value: motion, child: Text(motion)),
+            ],
+            onChanged: (value) => setState(() => _movement = value ?? ''),
+          ),
+          const SizedBox(height: 12),
           TextField(
             controller: _family,
             decoration: InputDecoration(labelText: l10n.customExerciseFamily),
@@ -188,6 +201,7 @@ class _CustomExercisePageState extends State<CustomExercisePage> {
       primaryMuscles: _primary.toList(),
       secondaryMuscles: _secondary.toList(),
       equipment: _equipment,
+      movement: _movement,
       family: _family.text,
       grip: _grip,
       position: _position,

@@ -2245,5 +2245,6 @@
   "customExerciseName": "নাম",
   "customExerciseFamily": "পরিবার আইডি",
   "createAsCustomExercise": "কাস্টম ব্যায়াম হিসেবে তৈরি করুন",
-  "customExerciseInvalid": "নাম, পেশি এবং সরঞ্জাম বেছে নিন।"
+  "customExerciseInvalid": "নাম, পেশি এবং সরঞ্জাম বেছে নিন।",
+  "movementLabel": "গতি"
 }

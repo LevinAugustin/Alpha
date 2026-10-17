@@ -2210,6 +2210,9 @@ class AppLocalizationsId extends AppLocalizations {
   String get positionLabel => 'Posisi';
 
   @override
+  String get movementLabel => 'Gerakan';
+
+  @override
   String get unilateralLabel => 'Satu sisi';
 
   @override

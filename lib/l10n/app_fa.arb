@@ -2245,5 +2245,6 @@
   "customExerciseName": "نام",
   "customExerciseFamily": "شناسه خانواده",
   "createAsCustomExercise": "ساخت به‌عنوان حرکت شخصی",
-  "customExerciseInvalid": "نام، عضله‌ها و وسیله را انتخاب کنید."
+  "customExerciseInvalid": "نام، عضله‌ها و وسیله را انتخاب کنید.",
+  "movementLabel": "حرکت"
 }

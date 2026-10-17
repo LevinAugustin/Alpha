@@ -2195,6 +2195,9 @@ class AppLocalizationsBn extends AppLocalizations {
   String get positionLabel => 'অবস্থান';
 
   @override
+  String get movementLabel => 'গতি';
+
+  @override
   String get unilateralLabel => 'একপাশে';
 
   @override

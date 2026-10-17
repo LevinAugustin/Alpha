@@ -701,5 +701,6 @@
   "customExerciseName": "Nome",
   "customExerciseFamily": "Id da família",
   "createAsCustomExercise": "Criar como exercício próprio",
-  "customExerciseInvalid": "Escolha um nome, músculos e um aparelho."
+  "customExerciseInvalid": "Escolha um nome, músculos e um aparelho.",
+  "movementLabel": "Movimento"
 }

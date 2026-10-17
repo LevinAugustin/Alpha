@@ -51,18 +51,27 @@ const shoulderRiskValues = ['niedrig', 'mittel', 'hoch'];
 const exerciseGripValues = [
   'eng',
   'breit',
+  'obergriff',
   'untergriff',
   'neutral',
-  'obergriff',
 ];
 
 const exercisePositionValues = [
-  'schraeg',
   'flach',
+  'schraeg',
   'negativ',
   'sitzend',
   'stehend',
   'liegend',
+  'vorgebeugt',
+];
+
+const exerciseMotionValues = [
+  'druecken',
+  'ziehen',
+  'beine_huefte',
+  'rumpf',
+  'cardio',
 ];
 
 const exerciseSides = ['links', 'rechts'];

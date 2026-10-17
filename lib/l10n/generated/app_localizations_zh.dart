@@ -2128,6 +2128,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get positionLabel => '体位';
 
   @override
+  String get movementLabel => '动作';
+
+  @override
   String get unilateralLabel => '单侧';
 
   @override
@@ -4288,6 +4291,9 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
   String get positionLabel => '体位';
 
   @override
+  String get movementLabel => '动作';
+
+  @override
   String get unilateralLabel => '单侧';
 
   @override
@@ -6446,6 +6452,9 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get positionLabel => '體位';
+
+  @override
+  String get movementLabel => '動作';
 
   @override
   String get unilateralLabel => '單側';

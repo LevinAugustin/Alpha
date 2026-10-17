@@ -2202,6 +2202,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get positionLabel => 'Position';
 
   @override
+  String get movementLabel => 'Movement';
+
+  @override
   String get unilateralLabel => 'Each side';
 
   @override

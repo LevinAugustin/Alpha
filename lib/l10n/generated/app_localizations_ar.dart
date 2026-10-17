@@ -2185,6 +2185,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get positionLabel => 'وضع';
 
   @override
+  String get movementLabel => 'الحركة';
+
+  @override
   String get unilateralLabel => 'لكل جانب';
 
   @override

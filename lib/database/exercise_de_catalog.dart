@@ -38,6 +38,7 @@ class ExerciseDeEntry {
     required this.shoulderRisk,
     required this.legacyNames,
     required this.family,
+    required this.movement,
     required this.grip,
     required this.position,
     required this.unilateral,
@@ -62,6 +63,7 @@ class ExerciseDeEntry {
   final String shoulderRisk;
   final List<String> legacyNames;
   final String family;
+  final String movement;
   final String grip;
   final String position;
   final bool unilateral;
@@ -87,6 +89,7 @@ class ExerciseDeEntry {
       shoulderRisk: shoulderRisk,
       legacyNames: legacyNames ?? this.legacyNames,
       family: family,
+      movement: movement,
       grip: grip,
       position: position,
       unilateral: unilateral,
@@ -175,6 +178,7 @@ ExerciseCatalogParse parseExerciseCatalog(String raw) {
         shoulderRisk: _string(json['schulter_risiko']),
         legacyNames: _strings(json['legacy_names']),
         family: _string(json['familie']),
+        movement: _string(json['bewegung']),
         grip: _string(json['griff']),
         position: _string(json['position']),
         unilateral: json['einseitig'] == true,
@@ -397,6 +401,9 @@ String? _validate(Map<String, dynamic> json, String id) {
   if (!catalogIdPattern.hasMatch(id)) {
     return 'id "$id" must be a lowercase ascii kebab slug.';
   }
+  if (id.startsWith('eigen-')) {
+    return 'id "$id" is reserved for custom exercises.';
+  }
   if (_string(json['name_de']).isEmpty) return '$id is missing name_de.';
   for (final key in ['synonyme', 'ausfuehrung_de', 'tipps_de']) {
     final reason = _stringList(json, key, id);
@@ -427,6 +434,8 @@ String? _validate(Map<String, dynamic> json, String id) {
   if (shoulderRisk != null) return shoulderRisk;
   final family = _family(json, id);
   if (family != null) return family;
+  final movement = _movement(json, id);
+  if (movement != null) return movement;
   final grip = _optionalToken(json, 'griff', id, exerciseGripValues);
   if (grip != null) return grip;
   final position = _optionalToken(json, 'position', id, exercisePositionValues);
@@ -469,11 +478,17 @@ String? _muscleList(Map<String, dynamic> json, String key, String id) {
 }
 
 String? _family(Map<String, dynamic> json, String id) {
-  if (!json.containsKey('familie') || json['familie'] == null) return null;
   final value = json['familie'];
-  if (value is String && value.trim().isEmpty) return null;
   if (value is! String || !catalogIdPattern.hasMatch(value.trim())) {
     return '$id familie is not a family id.';
+  }
+  return null;
+}
+
+String? _movement(Map<String, dynamic> json, String id) {
+  final value = json['bewegung'];
+  if (value is! String || !exerciseMotionValues.contains(value.trim())) {
+    return '$id bewegung is not allowed.';
   }
   return null;
 }
@@ -494,7 +509,6 @@ String? _optionalToken(
 }
 
 String? _unilateral(Map<String, dynamic> json, String id) {
-  if (!json.containsKey('einseitig') || json['einseitig'] == null) return null;
   if (json['einseitig'] is! bool) {
     return '$id einseitig must be true or false.';
   }
@@ -597,6 +611,7 @@ class _Fields {
         entry.shoulderRisk.isEmpty ? null : entry.shoulderRisk,
       ),
       familie: Value(entry.family.isEmpty ? null : entry.family),
+      bewegung: Value(entry.movement),
       griff: Value(entry.grip.isEmpty ? null : entry.grip),
       position: Value(entry.position.isEmpty ? null : entry.position),
       einseitig: Value(entry.unilateral),
@@ -627,6 +642,7 @@ class _Fields {
         entry.shoulderRisk.isEmpty ? null : entry.shoulderRisk,
       ),
       familie: Value(entry.family.isEmpty ? null : entry.family),
+      bewegung: Value(entry.movement),
       griff: Value(entry.grip.isEmpty ? null : entry.grip),
       position: Value(entry.position.isEmpty ? null : entry.position),
       einseitig: Value(entry.unilateral),
@@ -683,6 +699,7 @@ bool _same(Exercise row, ExerciseDeEntry entry, int? categoryId) {
       row.alternatives == fields.alternatives &&
       (row.schulterRisiko ?? '') == entry.shoulderRisk &&
       (row.familie ?? '') == entry.family &&
+      (row.bewegung ?? '') == entry.movement &&
       (row.griff ?? '') == entry.grip &&
       (row.position ?? '') == entry.position &&
       row.einseitig == entry.unilateral;

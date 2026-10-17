@@ -2214,6 +2214,9 @@ class AppLocalizationsNl extends AppLocalizations {
   String get positionLabel => 'Houding';
 
   @override
+  String get movementLabel => 'Beweging';
+
+  @override
   String get unilateralLabel => 'Eenzijdig';
 
   @override

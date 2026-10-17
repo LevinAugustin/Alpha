@@ -701,5 +701,6 @@
   "customExerciseName": "名前",
   "customExerciseFamily": "ファミリーID",
   "createAsCustomExercise": "カスタム種目として作成",
-  "customExerciseInvalid": "名前、筋肉、器具を選んでください。"
+  "customExerciseInvalid": "名前、筋肉、器具を選んでください。",
+  "movementLabel": "動作"
 }

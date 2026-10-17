@@ -45,7 +45,9 @@
       "dips"
     ],
     "familie": "bankdruecken",
-    "position": "flach"
+    "position": "flach",
+    "bewegung": "druecken",
+    "einseitig": false
   },
   {
     "id": "schraegbankdruecken-multipresse",
@@ -90,7 +92,9 @@
       "kabelzug-crossover"
     ],
     "familie": "bankdruecken",
-    "position": "schraeg"
+    "position": "schraeg",
+    "bewegung": "druecken",
+    "einseitig": false
   },
   {
     "id": "butterfly-maschine",
@@ -131,7 +135,10 @@
     "alternativen": [
       "kabelzug-crossover",
       "bankdruecken-langhantel"
-    ]
+    ],
+    "bewegung": "druecken",
+    "familie": "butterfly-maschine",
+    "einseitig": false
   },
   {
     "id": "kabelzug-crossover",
@@ -172,7 +179,10 @@
     "alternativen": [
       "butterfly-maschine",
       "schraegbankdruecken-multipresse"
-    ]
+    ],
+    "bewegung": "druecken",
+    "familie": "kabelzug-crossover",
+    "einseitig": false
   },
   {
     "id": "klimmzuege",
@@ -216,7 +226,9 @@
       "rudern-kabel-sitzend"
     ],
     "familie": "klimmzuege",
-    "griff": "obergriff"
+    "griff": "obergriff",
+    "bewegung": "ziehen",
+    "einseitig": false
   },
   {
     "id": "latziehen-breit",
@@ -262,7 +274,9 @@
       "rudern-kabel-sitzend"
     ],
     "familie": "latziehen",
-    "griff": "breit"
+    "griff": "breit",
+    "bewegung": "ziehen",
+    "einseitig": false
   },
   {
     "id": "rudern-kabel-sitzend",
@@ -305,7 +319,10 @@
     "alternativen": [
       "langhantelrudern",
       "latziehen-breit"
-    ]
+    ],
+    "bewegung": "ziehen",
+    "familie": "rudern-kabel-sitzend",
+    "einseitig": false
   },
   {
     "id": "langhantelrudern",
@@ -349,7 +366,11 @@
     "schulter_risiko": "niedrig",
     "alternativen": [
       "rudern-kabel-sitzend"
-    ]
+    ],
+    "bewegung": "ziehen",
+    "familie": "langhantelrudern",
+    "position": "vorgebeugt",
+    "einseitig": false
   },
   {
     "id": "kreuzheben-langhantel",
@@ -394,7 +415,10 @@
     "alternativen": [
       "hip-thrust-langhantel",
       "beinbeuger-sitzend"
-    ]
+    ],
+    "bewegung": "beine_huefte",
+    "familie": "kreuzheben-langhantel",
+    "einseitig": false
   },
   {
     "id": "schulterdruecken-multipresse",
@@ -437,7 +461,9 @@
       "schulterdruecken-kurzhantel",
       "seitheben-kurzhantel"
     ],
-    "familie": "schulterdruecken"
+    "familie": "schulterdruecken",
+    "bewegung": "druecken",
+    "einseitig": false
   },
   {
     "id": "seitheben-kurzhantel",
@@ -481,7 +507,10 @@
       "schulterdruecken-kurzhantel",
       "schulterdruecken-multipresse",
       "face-pulls"
-    ]
+    ],
+    "bewegung": "druecken",
+    "familie": "seitheben-kurzhantel",
+    "einseitig": false
   },
   {
     "id": "face-pulls",
@@ -522,7 +551,10 @@
     "alternativen": [
       "seitheben-kurzhantel",
       "rudern-kabel-sitzend"
-    ]
+    ],
+    "bewegung": "ziehen",
+    "familie": "face-pulls",
+    "einseitig": false
   },
   {
     "id": "kniebeuge-langhantel",
@@ -568,7 +600,10 @@
     "alternativen": [
       "beinpresse",
       "beinstrecker"
-    ]
+    ],
+    "bewegung": "beine_huefte",
+    "familie": "kniebeuge-langhantel",
+    "einseitig": false
   },
   {
     "id": "beinpresse",
@@ -610,7 +645,10 @@
     "alternativen": [
       "kniebeuge-langhantel",
       "beinstrecker"
-    ]
+    ],
+    "bewegung": "beine_huefte",
+    "familie": "beinpresse",
+    "einseitig": false
   },
   {
     "id": "beinstrecker",
@@ -647,7 +685,10 @@
     "schulter_risiko": "niedrig",
     "alternativen": [
       "beinpresse"
-    ]
+    ],
+    "bewegung": "beine_huefte",
+    "familie": "beinstrecker",
+    "einseitig": false
   },
   {
     "id": "beinbeuger-sitzend",
@@ -689,7 +730,10 @@
       "kreuzheben-langhantel",
       "hip-thrust-langhantel"
     ],
-    "position": "sitzend"
+    "position": "sitzend",
+    "bewegung": "beine_huefte",
+    "familie": "beinbeuger-sitzend",
+    "einseitig": false
   },
   {
     "id": "wadenheben-stehend",
@@ -726,7 +770,10 @@
     "lizenz": "Unlicense",
     "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Standing_Calf_Raises/0.jpg",
     "schulter_risiko": "niedrig",
-    "position": "stehend"
+    "position": "stehend",
+    "bewegung": "beine_huefte",
+    "familie": "wadenheben-stehend",
+    "einseitig": false
   },
   {
     "id": "hip-thrust-langhantel",
@@ -767,7 +814,10 @@
     "alternativen": [
       "kniebeuge-langhantel",
       "beinpresse"
-    ]
+    ],
+    "bewegung": "beine_huefte",
+    "familie": "hip-thrust-langhantel",
+    "einseitig": false
   },
   {
     "id": "bizepscurls-sz-stange",
@@ -809,7 +859,9 @@
       "bizepscurls-kurzhantel",
       "hammercurls"
     ],
-    "familie": "bizepscurls"
+    "familie": "bizepscurls",
+    "bewegung": "ziehen",
+    "einseitig": false
   },
   {
     "id": "bizepscurls-kurzhantel",
@@ -851,7 +903,9 @@
       "bizepscurls-sz-stange",
       "hammercurls"
     ],
-    "familie": "bizepscurls"
+    "familie": "bizepscurls",
+    "bewegung": "ziehen",
+    "einseitig": false
   },
   {
     "id": "hammercurls",
@@ -890,7 +944,9 @@
       "bizepscurls-kurzhantel"
     ],
     "familie": "bizepscurls",
-    "griff": "neutral"
+    "griff": "neutral",
+    "bewegung": "ziehen",
+    "einseitig": false
   },
   {
     "id": "trizepsdruecken-kabel",
@@ -931,7 +987,10 @@
     "alternativen": [
       "french-press-sz",
       "dips"
-    ]
+    ],
+    "bewegung": "druecken",
+    "familie": "trizepsdruecken-kabel",
+    "einseitig": false
   },
   {
     "id": "dips",
@@ -973,7 +1032,10 @@
     "alternativen": [
       "trizepsdruecken-kabel",
       "french-press-sz"
-    ]
+    ],
+    "bewegung": "druecken",
+    "familie": "dips",
+    "einseitig": false
   },
   {
     "id": "french-press-sz",
@@ -1012,7 +1074,10 @@
     "schulter_risiko": "mittel",
     "alternativen": [
       "trizepsdruecken-kabel"
-    ]
+    ],
+    "bewegung": "druecken",
+    "familie": "french-press-sz",
+    "einseitig": false
   },
   {
     "id": "crunches",
@@ -1049,7 +1114,10 @@
     "alternativen": [
       "plank",
       "beinheben-haengend"
-    ]
+    ],
+    "bewegung": "rumpf",
+    "familie": "crunches",
+    "einseitig": false
   },
   {
     "id": "plank",
@@ -1088,7 +1156,10 @@
     "schulter_risiko": "niedrig",
     "alternativen": [
       "crunches"
-    ]
+    ],
+    "bewegung": "rumpf",
+    "familie": "plank",
+    "einseitig": false
   },
   {
     "id": "beinheben-haengend",
@@ -1129,7 +1200,10 @@
     "alternativen": [
       "crunches",
       "plank"
-    ]
+    ],
+    "bewegung": "rumpf",
+    "familie": "beinheben-haengend",
+    "einseitig": false
   },
   {
     "id": "laufband",
@@ -1172,7 +1246,10 @@
     "alternativen": [
       "crosstrainer",
       "rudergeraet"
-    ]
+    ],
+    "bewegung": "cardio",
+    "familie": "laufband",
+    "einseitig": false
   },
   {
     "id": "rudergeraet",
@@ -1217,7 +1294,10 @@
     "alternativen": [
       "crosstrainer",
       "laufband"
-    ]
+    ],
+    "bewegung": "cardio",
+    "familie": "rudergeraet",
+    "einseitig": false
   },
   {
     "id": "crosstrainer",
@@ -1259,7 +1339,10 @@
     "alternativen": [
       "laufband",
       "rudergeraet"
-    ]
+    ],
+    "bewegung": "cardio",
+    "familie": "crosstrainer",
+    "einseitig": false
   },
   {
     "id": "schraegbankdruecken-kurzhantel",
@@ -1305,7 +1388,9 @@
       "butterfly-maschine"
     ],
     "familie": "bankdruecken",
-    "position": "schraeg"
+    "position": "schraeg",
+    "bewegung": "druecken",
+    "einseitig": false
   },
   {
     "id": "schulterdruecken-kurzhantel",
@@ -1351,6 +1436,8 @@
       "seitheben-kurzhantel"
     ],
     "familie": "schulterdruecken",
-    "position": "sitzend"
+    "position": "sitzend",
+    "bewegung": "druecken",
+    "einseitig": false
   }
 ]

@@ -11,6 +11,7 @@ void main() {
         aliases: 'Bench Press|Flachbank',
         category: 'Brust',
         primaryMuscles: '["brust"]',
+        movement: 'druecken',
         query: 'Push',
       ),
       isTrue,
@@ -48,7 +49,17 @@ void main() {
         name: 'Face Pulls',
         category: 'Schultern',
         primaryMuscles: '["schulter_hinten"]',
+        movement: 'ziehen',
         query: 'Pull',
+      ),
+      isTrue,
+    );
+    expect(
+      exerciseMatchesQuery(
+        name: 'Bizepscurls mit SZ-Stange',
+        category: 'Bizeps',
+        movement: 'ziehen',
+        query: 'Ziehen',
       ),
       isTrue,
     );
@@ -56,9 +67,45 @@ void main() {
       exerciseMatchesQuery(
         name: 'Bankdrücken',
         category: 'Brust',
+        primaryMuscles: '["brust"]',
         query: 'Push',
       ),
       isFalse,
+    );
+    expect(
+      exerciseMatchesQuery(
+        name: 'Bankdrücken',
+        category: 'Brust',
+        movement: 'druecken',
+        query: 'Drücken',
+      ),
+      isTrue,
+    );
+    expect(
+      exerciseMatchesQuery(
+        name: 'Kreuzheben',
+        category: 'Rücken',
+        movement: 'beine_huefte',
+        query: 'Beine',
+      ),
+      isTrue,
+    );
+    expect(
+      exerciseMatchesQuery(
+        name: 'Kniebeuge',
+        category: 'Beine',
+        query: 'Beine',
+      ),
+      isTrue,
+    );
+    expect(
+      matchesExerciseFilters(
+        name: 'Face Pulls',
+        movement: 'ziehen',
+        query: '',
+        motionFilter: 'ziehen',
+      ),
+      isTrue,
     );
     expect(
       matchesExerciseFilters(

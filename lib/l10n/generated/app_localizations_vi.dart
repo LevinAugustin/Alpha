@@ -2205,6 +2205,9 @@ class AppLocalizationsVi extends AppLocalizations {
   String get positionLabel => 'Tư thế';
 
   @override
+  String get movementLabel => 'Động tác';
+
+  @override
   String get unilateralLabel => 'Một bên';
 
   @override

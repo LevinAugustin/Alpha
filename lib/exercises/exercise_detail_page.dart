@@ -197,6 +197,8 @@ class _ExerciseDetailPageState extends State<ExerciseDetailPage> {
         Text('${l10n.equipmentLabel}: ${gear.isEmpty ? '—' : gear}'),
         if (catalogText(exercise.mechanic) case final mechanic?)
           Text('${l10n.mechanicLabel}: $mechanic'),
+        if (catalogText(exercise.bewegung) case final movement?)
+          Text('${l10n.movementLabel}: $movement'),
         if (catalogText(exercise.griff) case final grip?)
           Text('${l10n.gripLabel}: $grip'),
         if (catalogText(exercise.position) case final position?)

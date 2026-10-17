@@ -701,5 +701,6 @@
   "customExerciseName": "名稱",
   "customExerciseFamily": "動作族編號",
   "createAsCustomExercise": "建立為自訂動作",
-  "customExerciseInvalid": "請選擇名稱、肌肉和器材。"
+  "customExerciseInvalid": "請選擇名稱、肌肉和器材。",
+  "movementLabel": "動作"
 }

@@ -2224,6 +2224,9 @@ class AppLocalizationsUk extends AppLocalizations {
   String get positionLabel => 'Положення';
 
   @override
+  String get movementLabel => 'Рух';
+
+  @override
   String get unilateralLabel => 'На кожну сторону';
 
   @override

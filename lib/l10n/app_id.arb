@@ -2245,5 +2245,6 @@
   "customExerciseName": "Nama",
   "customExerciseFamily": "Id keluarga",
   "createAsCustomExercise": "Buat sebagai latihan sendiri",
-  "customExerciseInvalid": "Pilih nama, otot, dan alat."
+  "customExerciseInvalid": "Pilih nama, otot, dan alat.",
+  "movementLabel": "Gerakan"
 }

@@ -4086,6 +4086,12 @@ abstract class AppLocalizations {
   /// **'Position'**
   String get positionLabel;
 
+  /// Label for an exercise movement pattern.
+  ///
+  /// In en, this message translates to:
+  /// **'Movement'**
+  String get movementLabel;
+
   /// Label for a per-side exercise.
   ///
   /// In en, this message translates to:

@@ -2192,6 +2192,9 @@ class AppLocalizationsHi extends AppLocalizations {
   String get positionLabel => 'स्थिति';
 
   @override
+  String get movementLabel => 'गति';
+
+  @override
   String get unilateralLabel => 'एक तरफ';
 
   @override

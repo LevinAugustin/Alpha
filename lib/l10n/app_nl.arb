@@ -701,5 +701,6 @@
   "customExerciseName": "Naam",
   "customExerciseFamily": "Familie-id",
   "createAsCustomExercise": "Als eigen oefening maken",
-  "customExerciseInvalid": "Kies een naam, spieren en materiaal."
+  "customExerciseInvalid": "Kies een naam, spieren en materiaal.",
+  "movementLabel": "Beweging"
 }

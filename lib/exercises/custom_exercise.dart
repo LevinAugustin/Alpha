@@ -46,6 +46,7 @@ class CustomExerciseDraft {
     required this.primaryMuscles,
     required this.secondaryMuscles,
     required this.equipment,
+    required this.movement,
     this.family = '',
     this.grip = '',
     this.position = '',
@@ -57,6 +58,7 @@ class CustomExerciseDraft {
   final List<String> primaryMuscles;
   final List<String> secondaryMuscles;
   final String equipment;
+  final String movement;
   final String family;
   final String grip;
   final String position;
@@ -74,6 +76,7 @@ String? validateCustomExercise(CustomExerciseDraft draft) {
     return 'muscles';
   }
   if (!exerciseGearValues.contains(draft.equipment)) return 'gear';
+  if (!exerciseMotionValues.contains(draft.movement)) return 'movement';
   final family = draft.family.trim();
   if (family.isNotEmpty &&
       !RegExp(r'^[a-z0-9]+(?:-[a-z0-9]+)*$').hasMatch(family)) {
@@ -120,6 +123,7 @@ Future<Exercise> saveCustomExercise(
     primaryMuscles: Value(_jsonList(draft.primaryMuscles)),
     secondaryMuscles: Value(_jsonList(draft.secondaryMuscles)),
     familie: Value(draft.family.trim().isEmpty ? null : draft.family.trim()),
+    bewegung: Value(draft.movement),
     griff: Value(draft.grip.isEmpty ? null : draft.grip),
     position: Value(draft.position.isEmpty ? null : draft.position),
     einseitig: Value(draft.unilateral),

@@ -2139,6 +2139,9 @@ class AppLocalizationsJa extends AppLocalizations {
   String get positionLabel => '姿勢';
 
   @override
+  String get movementLabel => '動作';
+
+  @override
   String get unilateralLabel => '片側';
 
   @override

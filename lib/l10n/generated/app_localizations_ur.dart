@@ -2197,6 +2197,9 @@ class AppLocalizationsUr extends AppLocalizations {
   String get positionLabel => 'حالت';
 
   @override
+  String get movementLabel => 'حرکت';
+
+  @override
   String get unilateralLabel => 'ایک طرف';
 
   @override

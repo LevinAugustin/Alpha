@@ -1,31 +1,12 @@
 import 'dart:convert';
 
-const searchPrimaryHelp = <String, Set<String>>{
-  'push': {
-    'brust',
-    'brust_oben',
-    'schulter_vorne',
-    'schulter_seitlich',
-    'trizeps',
-  },
-  'pull': {
-    'latissimus',
-    'oberer_ruecken',
-    'schulter_hinten',
-    'bizeps',
-    'trapez',
-    'unterarme',
-    'unterer_ruecken',
-  },
-  'beine': {
-    'quadrizeps',
-    'beinbeuger',
-    'gesaess',
-    'adduktoren',
-    'abduktoren',
-    'waden',
-    'hueftbeuger',
-  },
+const movementSearch = <String, String>{
+  'push': 'druecken',
+  'drücken': 'druecken',
+  'druecken': 'druecken',
+  'pull': 'ziehen',
+  'ziehen': 'ziehen',
+  'beine': 'beine_huefte',
 };
 
 String? catalogText(String? value) {
@@ -62,16 +43,20 @@ bool exerciseMatchesQuery({
   String? mechanic,
   String? primaryMuscles,
   String? secondaryMuscles,
+  String? movement,
   required String query,
 }) {
   final needle = query.trim().toLowerCase();
   if (needle.isEmpty) return true;
-  final help = searchPrimaryHelp[needle];
-  if (help != null) {
-    final primary = decodeCatalogList(
-      primaryMuscles,
-    ).map((key) => key.toLowerCase());
-    if (primary.any(help.contains)) return true;
+  final mapped = movementSearch[needle];
+  if (mapped != null) {
+    if ((movement ?? '').trim().toLowerCase() == mapped) return true;
+    if (mapped == 'beine_huefte') {
+      final categoryName = (category ?? '').trim().toLowerCase();
+      final muscleName = (muscle ?? '').trim().toLowerCase();
+      if (categoryName == 'beine' || muscleName == 'beine') return true;
+    }
+    return false;
   }
   final haystack = [
     name,
@@ -99,12 +84,14 @@ bool matchesExerciseFilters({
   String? secondaryMuscles,
   String? grip,
   String? position,
+  String? movement,
   required String query,
   String group = '',
   String equipmentFilter = '',
   String mechanicFilter = '',
   String gripFilter = '',
   String positionFilter = '',
+  String motionFilter = '',
 }) {
   if (group.isNotEmpty) {
     final groups = <String>{
@@ -133,6 +120,10 @@ bool matchesExerciseFilters({
       (position ?? '').trim().toLowerCase() != positionFilter.toLowerCase()) {
     return false;
   }
+  if (motionFilter.isNotEmpty &&
+      (movement ?? '').trim().toLowerCase() != motionFilter.toLowerCase()) {
+    return false;
+  }
   return exerciseMatchesQuery(
     name: name,
     germanName: germanName,
@@ -143,6 +134,7 @@ bool matchesExerciseFilters({
     mechanic: mechanic,
     primaryMuscles: primaryMuscles,
     secondaryMuscles: secondaryMuscles,
+    movement: movement,
     query: query,
   );
 }

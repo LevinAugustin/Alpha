@@ -2245,5 +2245,6 @@
   "customExerciseName": "ชื่อ",
   "customExerciseFamily": "รหัสตระกูล",
   "createAsCustomExercise": "สร้างเป็นท่าของตัวเอง",
-  "customExerciseInvalid": "เลือกชื่อ กล้ามเนื้อ และอุปกรณ์"
+  "customExerciseInvalid": "เลือกชื่อ กล้ามเนื้อ และอุปกรณ์",
+  "movementLabel": "การเคลื่อนไหว"
 }

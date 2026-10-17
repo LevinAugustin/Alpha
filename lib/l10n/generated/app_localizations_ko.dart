@@ -2141,6 +2141,9 @@ class AppLocalizationsKo extends AppLocalizations {
   String get positionLabel => '자세';
 
   @override
+  String get movementLabel => '동작';
+
+  @override
   String get unilateralLabel => '한쪽';
 
   @override

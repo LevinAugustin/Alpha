@@ -2934,6 +2934,10 @@
   "@positionLabel": {
     "description": "Label for body position."
   },
+  "movementLabel": "Movement",
+  "@movementLabel": {
+    "description": "Label for an exercise movement pattern."
+  },
   "unilateralLabel": "Each side",
   "@unilateralLabel": {
     "description": "Label for a per-side exercise."

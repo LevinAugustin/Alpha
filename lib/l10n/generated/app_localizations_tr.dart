@@ -2216,6 +2216,9 @@ class AppLocalizationsTr extends AppLocalizations {
   String get positionLabel => 'Konum';
 
   @override
+  String get movementLabel => 'Hareket';
+
+  @override
   String get unilateralLabel => 'Tek taraf';
 
   @override

@@ -2227,6 +2227,9 @@ class AppLocalizationsRu extends AppLocalizations {
   String get positionLabel => 'Положение';
 
   @override
+  String get movementLabel => 'Движение';
+
+  @override
   String get unilateralLabel => 'На каждую сторону';
 
   @override

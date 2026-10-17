@@ -2224,6 +2224,9 @@ class AppLocalizationsPt extends AppLocalizations {
   String get positionLabel => 'Postura';
 
   @override
+  String get movementLabel => 'Movimento';
+
+  @override
   String get unilateralLabel => 'Unilateral';
 
   @override
@@ -4471,6 +4474,9 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
 
   @override
   String get positionLabel => 'Postura';
+
+  @override
+  String get movementLabel => 'Movimento';
 
   @override
   String get unilateralLabel => 'Unilateral';
@@ -6729,6 +6735,9 @@ class AppLocalizationsPtPt extends AppLocalizationsPt {
 
   @override
   String get positionLabel => 'Postura';
+
+  @override
+  String get movementLabel => 'Movimento';
 
   @override
   String get unilateralLabel => 'Unilateral';

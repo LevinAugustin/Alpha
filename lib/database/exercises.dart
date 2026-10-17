@@ -41,6 +41,7 @@ class Exercises extends Table {
   TextColumn get alternatives => text().nullable()();
   TextColumn get schulterRisiko => text().nullable()();
   TextColumn get familie => text().nullable()();
+  TextColumn get bewegung => text().nullable()();
   TextColumn get griff => text().nullable()();
   TextColumn get position => text().nullable()();
   BoolColumn get einseitig => boolean().withDefault(const Constant(false))();

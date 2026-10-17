@@ -2199,6 +2199,9 @@ class AppLocalizationsFa extends AppLocalizations {
   String get positionLabel => 'وضعیت';
 
   @override
+  String get movementLabel => 'حرکت';
+
+  @override
   String get unilateralLabel => 'یک‌طرفه';
 
   @override

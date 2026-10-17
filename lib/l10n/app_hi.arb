@@ -2245,5 +2245,6 @@
   "customExerciseName": "नाम",
   "customExerciseFamily": "परिवार आईडी",
   "createAsCustomExercise": "कस्टम व्यायाम के रूप में बनाएँ",
-  "customExerciseInvalid": "नाम, मांसपेशियाँ और उपकरण चुनें।"
+  "customExerciseInvalid": "नाम, मांसपेशियाँ और उपकरण चुनें।",
+  "movementLabel": "गति"
 }

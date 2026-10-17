@@ -381,7 +381,10 @@ void main() {
     "tipps_de": [],
     "bild": "bankdruecken-langhantel.webp",
     "quelle": "placeholder",
-    "lizenz": "placeholder"
+    "lizenz": "placeholder",
+    "familie": "bankdruecken",
+    "bewegung": "druecken",
+    "einseitig": false
   }
 ]
 ''';
@@ -449,7 +452,10 @@ void main() {
     "tipps_de": [],
     "bild": "bad-split.webp",
     "quelle": "placeholder",
-    "lizenz": "placeholder"
+    "lizenz": "placeholder",
+    "familie": "bad-split",
+    "bewegung": "druecken",
+    "einseitig": false
   }
 ]
 ''';
@@ -476,6 +482,9 @@ void main() {
   "bild": "bankdruecken-langhantel.webp",
   "quelle": "placeholder",
   "lizenz": "placeholder",
+  "familie": "bankdruecken",
+  "bewegung": "druecken",
+  "einseitig": false,
   "future_field": {"ok": true}
 }''';
     String row(String patch) => '[$valid]'.replaceFirst(
@@ -503,6 +512,33 @@ void main() {
     );
 
     expect(parseExerciseCatalog(row('"id": "Bankdruecken"')).entries, isEmpty);
+    expect(
+      parseExerciseCatalog(
+        '[$valid]'.replaceFirst(
+          '"id": "bankdruecken-langhantel"',
+          '"id": "eigen-bank"',
+        ),
+      ).entries,
+      isEmpty,
+    );
+    expect(
+      parseExerciseCatalog(
+        '[$valid]'.replaceFirst('"bewegung": "druecken"', '"bewegung": "push"'),
+      ).entries,
+      isEmpty,
+    );
+    expect(
+      parseExerciseCatalog(
+        '[$valid]'.replaceFirst('"familie": "bankdruecken",', ''),
+      ).entries,
+      isEmpty,
+    );
+    expect(
+      parseExerciseCatalog(
+        row('"position": "vorgebeugt"'),
+      ).entries.single.position,
+      'vorgebeugt',
+    );
     expect(
       parseExerciseCatalog(
         '[$valid]'.replaceFirst(
@@ -655,10 +691,18 @@ void main() {
         isFalse,
       );
       expect(cardio.kind, 'cardio');
+      expect(bench.bewegung, 'druecken');
+      expect(rows.every((row) => row['familie'] is String), isTrue);
+      expect(rows.every((row) => row['einseitig'] is bool), isTrue);
+      expect(
+        rows.every((row) => !(row['id'] as String).startsWith('eigen-')),
+        isTrue,
+      );
       expect(
         exerciseMatchesQuery(
           name: cardio.name,
           category: cardio.categoryName,
+          movement: cardio.bewegung,
           query: 'Push',
         ),
         isFalse,
@@ -669,6 +713,7 @@ void main() {
           category: bench.categoryName,
           muscle: bench.muscle,
           primaryMuscles: bench.primaryMuscles,
+          movement: bench.bewegung,
           query: 'Push',
         ),
         isTrue,
@@ -677,6 +722,7 @@ void main() {
         exerciseMatchesQuery(
           name: 'Latziehen',
           category: 'Rücken',
+          primaryMuscles: '["latissimus"]',
           query: 'Pull',
         ),
         isFalse,
@@ -686,6 +732,7 @@ void main() {
           name: 'Face Pulls',
           category: 'Schultern',
           primaryMuscles: '["schulter_hinten"]',
+          movement: 'ziehen',
           query: 'Pull',
         ),
         isTrue,

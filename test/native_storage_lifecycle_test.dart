@@ -190,6 +190,7 @@ void main() {
           'alternatives': null,
           'schulter_risiko': null,
           'familie': null,
+          'bewegung': null,
           'griff': null,
           'position': null,
           'einseitig': 0,

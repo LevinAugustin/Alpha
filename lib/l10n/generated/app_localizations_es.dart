@@ -2223,6 +2223,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get positionLabel => 'Postura';
 
   @override
+  String get movementLabel => 'Movimiento';
+
+  @override
   String get unilateralLabel => 'Unilateral';
 
   @override

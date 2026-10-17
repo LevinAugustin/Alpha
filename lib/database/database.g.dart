@@ -832,6 +832,17 @@ class $ExercisesTable extends Exercises
     type: DriftSqlType.string,
     requiredDuringInsert: false,
   );
+  static const VerificationMeta _bewegungMeta = const VerificationMeta(
+    'bewegung',
+  );
+  @override
+  late final GeneratedColumn<String> bewegung = GeneratedColumn<String>(
+    'bewegung',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
   static const VerificationMeta _griffMeta = const VerificationMeta('griff');
   @override
   late final GeneratedColumn<String> griff = GeneratedColumn<String>(
@@ -900,6 +911,7 @@ class $ExercisesTable extends Exercises
     alternatives,
     schulterRisiko,
     familie,
+    bewegung,
     griff,
     position,
     einseitig,
@@ -1147,6 +1159,12 @@ class $ExercisesTable extends Exercises
         familie.isAcceptableOrUnknown(data['familie']!, _familieMeta),
       );
     }
+    if (data.containsKey('bewegung')) {
+      context.handle(
+        _bewegungMeta,
+        bewegung.isAcceptableOrUnknown(data['bewegung']!, _bewegungMeta),
+      );
+    }
     if (data.containsKey('griff')) {
       context.handle(
         _griffMeta,
@@ -1298,6 +1316,10 @@ class $ExercisesTable extends Exercises
         DriftSqlType.string,
         data['${effectivePrefix}familie'],
       ),
+      bewegung: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}bewegung'],
+      ),
       griff: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}griff'],
@@ -1351,6 +1373,7 @@ class Exercise extends DataClass implements Insertable<Exercise> {
   final String? alternatives;
   final String? schulterRisiko;
   final String? familie;
+  final String? bewegung;
   final String? griff;
   final String? position;
   final bool einseitig;
@@ -1386,6 +1409,7 @@ class Exercise extends DataClass implements Insertable<Exercise> {
     this.alternatives,
     this.schulterRisiko,
     this.familie,
+    this.bewegung,
     this.griff,
     this.position,
     required this.einseitig,
@@ -1467,6 +1491,9 @@ class Exercise extends DataClass implements Insertable<Exercise> {
     }
     if (!nullToAbsent || familie != null) {
       map['familie'] = Variable<String>(familie);
+    }
+    if (!nullToAbsent || bewegung != null) {
+      map['bewegung'] = Variable<String>(bewegung);
     }
     if (!nullToAbsent || griff != null) {
       map['griff'] = Variable<String>(griff);
@@ -1553,6 +1580,9 @@ class Exercise extends DataClass implements Insertable<Exercise> {
       familie: familie == null && nullToAbsent
           ? const Value.absent()
           : Value(familie),
+      bewegung: bewegung == null && nullToAbsent
+          ? const Value.absent()
+          : Value(bewegung),
       griff: griff == null && nullToAbsent
           ? const Value.absent()
           : Value(griff),
@@ -1604,6 +1634,7 @@ class Exercise extends DataClass implements Insertable<Exercise> {
       alternatives: serializer.fromJson<String?>(json['alternatives']),
       schulterRisiko: serializer.fromJson<String?>(json['schulterRisiko']),
       familie: serializer.fromJson<String?>(json['familie']),
+      bewegung: serializer.fromJson<String?>(json['bewegung']),
       griff: serializer.fromJson<String?>(json['griff']),
       position: serializer.fromJson<String?>(json['position']),
       einseitig: serializer.fromJson<bool>(json['einseitig']),
@@ -1644,6 +1675,7 @@ class Exercise extends DataClass implements Insertable<Exercise> {
       'alternatives': serializer.toJson<String?>(alternatives),
       'schulterRisiko': serializer.toJson<String?>(schulterRisiko),
       'familie': serializer.toJson<String?>(familie),
+      'bewegung': serializer.toJson<String?>(bewegung),
       'griff': serializer.toJson<String?>(griff),
       'position': serializer.toJson<String?>(position),
       'einseitig': serializer.toJson<bool>(einseitig),
@@ -1682,6 +1714,7 @@ class Exercise extends DataClass implements Insertable<Exercise> {
     Value<String?> alternatives = const Value.absent(),
     Value<String?> schulterRisiko = const Value.absent(),
     Value<String?> familie = const Value.absent(),
+    Value<String?> bewegung = const Value.absent(),
     Value<String?> griff = const Value.absent(),
     Value<String?> position = const Value.absent(),
     bool? einseitig,
@@ -1729,6 +1762,7 @@ class Exercise extends DataClass implements Insertable<Exercise> {
         ? schulterRisiko.value
         : this.schulterRisiko,
     familie: familie.present ? familie.value : this.familie,
+    bewegung: bewegung.present ? bewegung.value : this.bewegung,
     griff: griff.present ? griff.value : this.griff,
     position: position.present ? position.value : this.position,
     einseitig: einseitig ?? this.einseitig,
@@ -1800,6 +1834,7 @@ class Exercise extends DataClass implements Insertable<Exercise> {
           ? data.schulterRisiko.value
           : this.schulterRisiko,
       familie: data.familie.present ? data.familie.value : this.familie,
+      bewegung: data.bewegung.present ? data.bewegung.value : this.bewegung,
       griff: data.griff.present ? data.griff.value : this.griff,
       position: data.position.present ? data.position.value : this.position,
       einseitig: data.einseitig.present ? data.einseitig.value : this.einseitig,
@@ -1840,6 +1875,7 @@ class Exercise extends DataClass implements Insertable<Exercise> {
           ..write('alternatives: $alternatives, ')
           ..write('schulterRisiko: $schulterRisiko, ')
           ..write('familie: $familie, ')
+          ..write('bewegung: $bewegung, ')
           ..write('griff: $griff, ')
           ..write('position: $position, ')
           ..write('einseitig: $einseitig')
@@ -1880,6 +1916,7 @@ class Exercise extends DataClass implements Insertable<Exercise> {
     alternatives,
     schulterRisiko,
     familie,
+    bewegung,
     griff,
     position,
     einseitig,
@@ -1919,6 +1956,7 @@ class Exercise extends DataClass implements Insertable<Exercise> {
           other.alternatives == this.alternatives &&
           other.schulterRisiko == this.schulterRisiko &&
           other.familie == this.familie &&
+          other.bewegung == this.bewegung &&
           other.griff == this.griff &&
           other.position == this.position &&
           other.einseitig == this.einseitig);
@@ -1956,6 +1994,7 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
   final Value<String?> alternatives;
   final Value<String?> schulterRisiko;
   final Value<String?> familie;
+  final Value<String?> bewegung;
   final Value<String?> griff;
   final Value<String?> position;
   final Value<bool> einseitig;
@@ -1991,6 +2030,7 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
     this.alternatives = const Value.absent(),
     this.schulterRisiko = const Value.absent(),
     this.familie = const Value.absent(),
+    this.bewegung = const Value.absent(),
     this.griff = const Value.absent(),
     this.position = const Value.absent(),
     this.einseitig = const Value.absent(),
@@ -2027,6 +2067,7 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
     this.alternatives = const Value.absent(),
     this.schulterRisiko = const Value.absent(),
     this.familie = const Value.absent(),
+    this.bewegung = const Value.absent(),
     this.griff = const Value.absent(),
     this.position = const Value.absent(),
     this.einseitig = const Value.absent(),
@@ -2065,6 +2106,7 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
     Expression<String>? alternatives,
     Expression<String>? schulterRisiko,
     Expression<String>? familie,
+    Expression<String>? bewegung,
     Expression<String>? griff,
     Expression<String>? position,
     Expression<bool>? einseitig,
@@ -2103,6 +2145,7 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
       if (alternatives != null) 'alternatives': alternatives,
       if (schulterRisiko != null) 'schulter_risiko': schulterRisiko,
       if (familie != null) 'familie': familie,
+      if (bewegung != null) 'bewegung': bewegung,
       if (griff != null) 'griff': griff,
       if (position != null) 'position': position,
       if (einseitig != null) 'einseitig': einseitig,
@@ -2141,6 +2184,7 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
     Value<String?>? alternatives,
     Value<String?>? schulterRisiko,
     Value<String?>? familie,
+    Value<String?>? bewegung,
     Value<String?>? griff,
     Value<String?>? position,
     Value<bool>? einseitig,
@@ -2178,6 +2222,7 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
       alternatives: alternatives ?? this.alternatives,
       schulterRisiko: schulterRisiko ?? this.schulterRisiko,
       familie: familie ?? this.familie,
+      bewegung: bewegung ?? this.bewegung,
       griff: griff ?? this.griff,
       position: position ?? this.position,
       einseitig: einseitig ?? this.einseitig,
@@ -2284,6 +2329,9 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
     if (familie.present) {
       map['familie'] = Variable<String>(familie.value);
     }
+    if (bewegung.present) {
+      map['bewegung'] = Variable<String>(bewegung.value);
+    }
     if (griff.present) {
       map['griff'] = Variable<String>(griff.value);
     }
@@ -2330,6 +2378,7 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
           ..write('alternatives: $alternatives, ')
           ..write('schulterRisiko: $schulterRisiko, ')
           ..write('familie: $familie, ')
+          ..write('bewegung: $bewegung, ')
           ..write('griff: $griff, ')
           ..write('position: $position, ')
           ..write('einseitig: $einseitig')
@@ -7896,6 +7945,7 @@ typedef $$ExercisesTableCreateCompanionBuilder =
       Value<String?> alternatives,
       Value<String?> schulterRisiko,
       Value<String?> familie,
+      Value<String?> bewegung,
       Value<String?> griff,
       Value<String?> position,
       Value<bool> einseitig,
@@ -7933,6 +7983,7 @@ typedef $$ExercisesTableUpdateCompanionBuilder =
       Value<String?> alternatives,
       Value<String?> schulterRisiko,
       Value<String?> familie,
+      Value<String?> bewegung,
       Value<String?> griff,
       Value<String?> position,
       Value<bool> einseitig,
@@ -8152,6 +8203,11 @@ class $$ExercisesTableFilterComposer
 
   ColumnFilters<String> get familie => $composableBuilder(
     column: $table.familie,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get bewegung => $composableBuilder(
+    column: $table.bewegung,
     builder: (column) => ColumnFilters(column),
   );
 
@@ -8403,6 +8459,11 @@ class $$ExercisesTableOrderingComposer
     builder: (column) => ColumnOrderings(column),
   );
 
+  ColumnOrderings<String> get bewegung => $composableBuilder(
+    column: $table.bewegung,
+    builder: (column) => ColumnOrderings(column),
+  );
+
   ColumnOrderings<String> get griff => $composableBuilder(
     column: $table.griff,
     builder: (column) => ColumnOrderings(column),
@@ -8573,6 +8634,9 @@ class $$ExercisesTableAnnotationComposer
   GeneratedColumn<String> get familie =>
       $composableBuilder(column: $table.familie, builder: (column) => column);
 
+  GeneratedColumn<String> get bewegung =>
+      $composableBuilder(column: $table.bewegung, builder: (column) => column);
+
   GeneratedColumn<String> get griff =>
       $composableBuilder(column: $table.griff, builder: (column) => column);
 
@@ -8719,6 +8783,7 @@ class $$ExercisesTableTableManager
                 Value<String?> alternatives = const Value.absent(),
                 Value<String?> schulterRisiko = const Value.absent(),
                 Value<String?> familie = const Value.absent(),
+                Value<String?> bewegung = const Value.absent(),
                 Value<String?> griff = const Value.absent(),
                 Value<String?> position = const Value.absent(),
                 Value<bool> einseitig = const Value.absent(),
@@ -8754,6 +8819,7 @@ class $$ExercisesTableTableManager
                 alternatives: alternatives,
                 schulterRisiko: schulterRisiko,
                 familie: familie,
+                bewegung: bewegung,
                 griff: griff,
                 position: position,
                 einseitig: einseitig,
@@ -8791,6 +8857,7 @@ class $$ExercisesTableTableManager
                 Value<String?> alternatives = const Value.absent(),
                 Value<String?> schulterRisiko = const Value.absent(),
                 Value<String?> familie = const Value.absent(),
+                Value<String?> bewegung = const Value.absent(),
                 Value<String?> griff = const Value.absent(),
                 Value<String?> position = const Value.absent(),
                 Value<bool> einseitig = const Value.absent(),
@@ -8826,6 +8893,7 @@ class $$ExercisesTableTableManager
                 alternatives: alternatives,
                 schulterRisiko: schulterRisiko,
                 familie: familie,
+                bewegung: bewegung,
                 griff: griff,
                 position: position,
                 einseitig: einseitig,

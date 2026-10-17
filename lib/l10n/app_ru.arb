@@ -701,5 +701,6 @@
   "customExerciseName": "Название",
   "customExerciseFamily": "Идентификатор семьи",
   "createAsCustomExercise": "Создать как своё упражнение",
-  "customExerciseInvalid": "Выберите название, мышцы и снаряд."
+  "customExerciseInvalid": "Выберите название, мышцы и снаряд.",
+  "movementLabel": "Движение"
 }

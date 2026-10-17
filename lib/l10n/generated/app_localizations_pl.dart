@@ -2226,6 +2226,9 @@ class AppLocalizationsPl extends AppLocalizations {
   String get positionLabel => 'Pozycja';
 
   @override
+  String get movementLabel => 'Ruch';
+
+  @override
   String get unilateralLabel => 'Jednostronne';
 
   @override
