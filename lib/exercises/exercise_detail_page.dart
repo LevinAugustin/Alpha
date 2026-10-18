@@ -5,6 +5,7 @@ import 'package:flexify/exercise_labels.dart';
 import 'package:flexify/exercises/custom_exercise.dart';
 import 'package:flexify/exercises/exercise_image.dart';
 import 'package:flexify/exercises/custom_exercise_page.dart';
+import 'package:flexify/l10n/generated/app_localizations.dart';
 import 'package:flexify/l10n/l10n.dart';
 import 'package:flexify/main.dart';
 import 'package:flexify/platform_page_route.dart';
@@ -195,9 +196,9 @@ class _ExerciseDetailPageState extends State<ExerciseDetailPage> {
           ),
         Text('${l10n.equipmentLabel}: ${gear.isEmpty ? '—' : gear}'),
         if (catalogText(exercise.mechanic) case final mechanic?)
-          Text('${l10n.mechanicLabel}: $mechanic'),
+          Text('${l10n.mechanicLabel}: ${mechanicLabel(l10n, mechanic)}'),
         if (catalogText(exercise.bewegung) case final movement?)
-          Text('${l10n.movementLabel}: $movement'),
+          Text('${l10n.movementLabel}: ${movementLabel(l10n, movement)}'),
         if (catalogText(exercise.griff) case final grip?)
           Text('${l10n.gripLabel}: $grip'),
         if (catalogText(exercise.position) case final position?)
@@ -205,11 +206,7 @@ class _ExerciseDetailPageState extends State<ExerciseDetailPage> {
         if (exercise.einseitig) Text(l10n.unilateralLabel),
         _family(context, exercise),
         _alternatives(context, exercise),
-        if ((exercise.catalogSource ?? '').trim().isNotEmpty ||
-            (exercise.catalogLicense ?? '').trim().isNotEmpty)
-          Text(
-            '${l10n.sourceLabel}: ${exercise.catalogSource ?? ''} · ${l10n.licenseLabel}: ${exercise.catalogLicense ?? ''}',
-          ),
+        if (_catalogCredit(l10n, exercise) case final credit?) Text(credit),
         if ((exercise.imageSource ?? '').trim().isNotEmpty ||
             (exercise.imageLicense ?? '').trim().isNotEmpty)
           Text(
@@ -303,6 +300,20 @@ class _ExerciseDetailPageState extends State<ExerciseDetailPage> {
         ],
       ],
     );
+  }
+
+  String? _catalogCredit(AppLocalizations l10n, Exercise exercise) {
+    final source = (exercise.catalogSource ?? '').trim();
+    final license = (exercise.catalogLicense ?? '').trim();
+    if (source == 'custom') {
+      return '${l10n.sourceLabel}: ${l10n.ownExerciseSource}';
+    }
+    final parts = <String>[
+      if (source.isNotEmpty) '${l10n.sourceLabel}: $source',
+      if (license.isNotEmpty) '${l10n.licenseLabel}: $license',
+    ];
+    if (parts.isEmpty) return null;
+    return parts.join(' · ');
   }
 
   String _variantLabel(BuildContext context, Exercise row) {

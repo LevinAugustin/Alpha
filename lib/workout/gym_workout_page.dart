@@ -600,7 +600,10 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
         if (best && mounted) await _showRecord(kg, reps);
       }
     } finally {
-      if (mounted) setState(() => _busy = false);
+      if (mounted) {
+        setState(() => _busy = false);
+        _publishLive();
+      }
     }
   }
 
@@ -617,7 +620,7 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
           german: block.exercise.germanName,
         ),
         Duration(seconds: block.restSeconds),
-        '',
+        settings.alarmSound,
         settings.vibrate,
         settings.enableSound,
         'plan:${widget.plan.id}',
@@ -640,7 +643,7 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
     await timer.startTimer(
       context.l10n.restTimer,
       remaining,
-      '',
+      settings.alarmSound,
       settings.vibrate,
       settings.enableSound,
       'plan:${widget.plan.id}',
@@ -796,6 +799,7 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
     block.dispose();
     setState(() => _blocks.removeAt(index));
     await _persistOrder();
+    if (mounted) _publishLive();
   }
 
   Future<void> _swap(int index) async {
@@ -818,6 +822,7 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
     );
     setState(() => _blocks[index] = replacement);
     await _persistOrder();
+    if (mounted) _publishLive();
   }
 
   Future<Exercise?> _pickExercise({String? title}) async {
@@ -940,6 +945,7 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
     );
     setState(() => _blocks.add(block));
     await _persistOrder();
+    if (mounted) _publishLive();
   }
 
   Future<void> _editRest(_ExerciseBlock block) async {
@@ -1038,10 +1044,14 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
         ? widget.plan.days
         : widget.plan.title!.trim();
     return PopScope(
-      canPop: false,
+      canPop: true,
       child: Scaffold(
         backgroundColor: palette.background,
         appBar: AppBar(
+          leading: BackButton(
+            key: const Key('leave-workout'),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
           title: Text(title),
           actions: [
             IconButton(
@@ -1231,6 +1241,7 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
                           _blocks.insert(index - 1, item);
                         });
                         unawaited(_persistOrder());
+                        _publishLive();
                       case 'down':
                         if (index >= _blocks.length - 1) return;
                         setState(() {
@@ -1238,6 +1249,7 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
                           _blocks.insert(index + 1, item);
                         });
                         unawaited(_persistOrder());
+                        _publishLive();
                       case 'remove':
                         unawaited(_removeBlock(index));
                       case 'rest':

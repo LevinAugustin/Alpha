@@ -131,9 +131,10 @@ void main() {
 
     expect(find.text('Willkommen bei Alpha'), findsOneWidget);
     expect(find.text('Profil erstellen'), findsWidgets);
-    expect(find.textContaining('Training starten'), findsNothing);
-    expect(find.text('Diese Woche'), findsNothing);
-    expect(find.textContaining('Tage in Folge'), findsNothing);
+    expect(find.textContaining('Training starten'), findsOneWidget);
+    expect(find.text('Diese Woche'), findsOneWidget);
+    expect(find.textContaining('Tage in Folge'), findsWidgets);
+    expect(find.byIcon(Icons.lock_outline), findsOneWidget);
     expect(find.text('ALPHA'), findsNothing);
 
     await tester.tap(find.byKey(const Key('create-profile')));

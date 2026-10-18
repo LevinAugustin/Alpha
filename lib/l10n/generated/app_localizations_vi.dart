@@ -2243,4 +2243,31 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get customExerciseInvalid => 'Hãy chọn tên, cơ và dụng cụ.';
+
+  @override
+  String get motionPress => 'Đẩy';
+
+  @override
+  String get motionPull => 'Kéo';
+
+  @override
+  String get motionLegs => 'Chân/hông';
+
+  @override
+  String get motionCore => 'Lõi';
+
+  @override
+  String get motionCardio => 'Cardio';
+
+  @override
+  String get mechanicCompound => 'Đa khớp';
+
+  @override
+  String get mechanicIsolation => 'Cô lập';
+
+  @override
+  String get ownExerciseSource => 'Bài tập riêng';
+
+  @override
+  String get notSpecified => '–';
 }

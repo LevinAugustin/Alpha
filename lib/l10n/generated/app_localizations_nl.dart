@@ -2252,4 +2252,31 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get customExerciseInvalid => 'Kies een naam, spieren en materiaal.';
+
+  @override
+  String get motionPress => 'Duwen';
+
+  @override
+  String get motionPull => 'Trekken';
+
+  @override
+  String get motionLegs => 'Benen/heup';
+
+  @override
+  String get motionCore => 'Romp';
+
+  @override
+  String get motionCardio => 'Cardio';
+
+  @override
+  String get mechanicCompound => 'Basisoefening';
+
+  @override
+  String get mechanicIsolation => 'Isolatie';
+
+  @override
+  String get ownExerciseSource => 'Eigen oefening';
+
+  @override
+  String get notSpecified => '–';
 }

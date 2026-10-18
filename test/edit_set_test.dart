@@ -36,6 +36,7 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text('Bench press'), findsNothing);
+    await harness.timerState.stopTimer();
   });
 
   testWidgets('selecting new cardio exercise shows cardio fields', (

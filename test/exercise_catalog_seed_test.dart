@@ -813,7 +813,7 @@ void main() {
 
     await harness.pump(tester, ExerciseDetailPage(exercise: bench));
     await tester.pump();
-    expect(find.text('Mechanic: grund'), findsOneWidget);
+    expect(find.text('Mechanic: Compound'), findsOneWidget);
     expect(find.textContaining('null'), findsNothing);
     expect(bench.image, 'assets/exercises/img/bankdruecken-langhantel.webp');
     expect(File(bench.image!).existsSync(), isFalse);
@@ -846,14 +846,18 @@ void main() {
       await tester.scrollUntilVisible(find.text(gear), 200, scrollable: chips);
       expect(find.text(gear), findsOneWidget);
     }
-    await tester.scrollUntilVisible(find.text('grund'), 400, scrollable: chips);
-    expect(find.text('grund'), findsOneWidget);
     await tester.scrollUntilVisible(
-      find.text('isolation'),
+      find.text('Compound'),
       400,
       scrollable: chips,
     );
-    expect(find.text('isolation'), findsOneWidget);
+    expect(find.text('Compound'), findsOneWidget);
+    await tester.scrollUntilVisible(
+      find.text('Isolation'),
+      400,
+      scrollable: chips,
+    );
+    expect(find.text('Isolation'), findsOneWidget);
     expect(find.text('null'), findsNothing);
   });
 

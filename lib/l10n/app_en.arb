@@ -2985,5 +2985,41 @@
   "customExerciseInvalid": "Choose a name, muscles and gear.",
   "@customExerciseInvalid": {
     "description": "Shown when a custom exercise form is incomplete."
+  },
+  "motionPress": "Press",
+  "@motionPress": {
+    "description": "Label for a pressing movement."
+  },
+  "motionPull": "Pull",
+  "@motionPull": {
+    "description": "Label for a pulling movement."
+  },
+  "motionLegs": "Legs/hips",
+  "@motionLegs": {
+    "description": "Label for a legs and hips movement."
+  },
+  "motionCore": "Core",
+  "@motionCore": {
+    "description": "Label for a core movement."
+  },
+  "motionCardio": "Cardio",
+  "@motionCardio": {
+    "description": "Label for a cardio movement."
+  },
+  "mechanicCompound": "Compound",
+  "@mechanicCompound": {
+    "description": "Label for a compound exercise."
+  },
+  "mechanicIsolation": "Isolation",
+  "@mechanicIsolation": {
+    "description": "Label for an isolation exercise."
+  },
+  "ownExerciseSource": "Custom exercise",
+  "@ownExerciseSource": {
+    "description": "Source line for an exercise the user created."
+  },
+  "notSpecified": "–",
+  "@notSpecified": {
+    "description": "Shown when grip or body position is not set."
   }
 }

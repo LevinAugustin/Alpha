@@ -2246,5 +2246,14 @@
   "customExerciseFamily": "परिवार आईडी",
   "createAsCustomExercise": "कस्टम व्यायाम के रूप में बनाएँ",
   "customExerciseInvalid": "नाम, मांसपेशियाँ और उपकरण चुनें।",
-  "movementLabel": "गति"
+  "movementLabel": "गति",
+  "motionPress": "प्रेस",
+  "motionPull": "पुल",
+  "motionLegs": "पैर/कूल्हा",
+  "motionCore": "कोर",
+  "motionCardio": "कार्डियो",
+  "mechanicCompound": "कंपाउंड",
+  "mechanicIsolation": "आइसोलेशन",
+  "ownExerciseSource": "अपनी कसरत",
+  "notSpecified": "–"
 }

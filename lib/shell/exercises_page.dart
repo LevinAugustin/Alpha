@@ -85,7 +85,7 @@ class _ExercisesPageState extends State<ExercisesPage> {
                     Padding(
                       padding: const EdgeInsets.only(right: 8),
                       child: FilterChip(
-                        label: Text(item),
+                        label: Text(movementLabel(context.l10n, item)),
                         selected: _motion == item,
                         onSelected: (_) => setState(() {
                           _motion = _motion == item ? '' : item;
@@ -144,7 +144,7 @@ class _ExercisesPageState extends State<ExercisesPage> {
                     Padding(
                       padding: const EdgeInsets.only(right: 8),
                       child: FilterChip(
-                        label: Text(item),
+                        label: Text(mechanicLabel(context.l10n, item)),
                         selected: _mechanic == item,
                         onSelected: (_) => setState(() {
                           _mechanic = _mechanic == item ? '' : item;
@@ -232,9 +232,10 @@ class _ExercisesPageState extends State<ExercisesPage> {
                     exercise.name,
                     german: exercise.germanName,
                   );
-                  final subtitle = title == exercise.name
-                      ? exercise.muscle
-                      : '${exercise.name}${exercise.muscle == null ? '' : ' · ${exercise.muscle}'}';
+                  final subtitle = exerciseListSubtitle(
+                    category: exercise.categoryName,
+                    equipment: exercise.equipment,
+                  );
                   return ListTile(
                     leading: ExerciseImage(path: exercise.image, height: 48),
                     title: Text(title),

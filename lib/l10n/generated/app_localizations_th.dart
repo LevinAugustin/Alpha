@@ -2220,4 +2220,31 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String get customExerciseInvalid => 'เลือกชื่อ กล้ามเนื้อ และอุปกรณ์';
+
+  @override
+  String get motionPress => 'ดัน';
+
+  @override
+  String get motionPull => 'ดึง';
+
+  @override
+  String get motionLegs => 'ขา/สะโพก';
+
+  @override
+  String get motionCore => 'แกนกลาง';
+
+  @override
+  String get motionCardio => 'คาร์ดิโอ';
+
+  @override
+  String get mechanicCompound => 'หลายข้อต่อ';
+
+  @override
+  String get mechanicIsolation => 'แยกส่วน';
+
+  @override
+  String get ownExerciseSource => 'ท่าของฉัน';
+
+  @override
+  String get notSpecified => '–';
 }

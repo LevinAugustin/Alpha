@@ -2261,4 +2261,31 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get customExerciseInvalid => 'Elige un nombre, músculos y un aparato.';
+
+  @override
+  String get motionPress => 'Empuje';
+
+  @override
+  String get motionPull => 'Tirón';
+
+  @override
+  String get motionLegs => 'Piernas/cadera';
+
+  @override
+  String get motionCore => 'Abdomen';
+
+  @override
+  String get motionCardio => 'Cardio';
+
+  @override
+  String get mechanicCompound => 'Compuesto';
+
+  @override
+  String get mechanicIsolation => 'Aislamiento';
+
+  @override
+  String get ownExerciseSource => 'Ejercicio propio';
+
+  @override
+  String get notSpecified => '–';
 }

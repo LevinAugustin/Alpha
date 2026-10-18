@@ -2248,4 +2248,31 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get customExerciseInvalid => 'Pilih nama, otot, dan alat.';
+
+  @override
+  String get motionPress => 'Dorong';
+
+  @override
+  String get motionPull => 'Tarik';
+
+  @override
+  String get motionLegs => 'Kaki/pinggul';
+
+  @override
+  String get motionCore => 'Inti';
+
+  @override
+  String get motionCardio => 'Kardio';
+
+  @override
+  String get mechanicCompound => 'Gabungan';
+
+  @override
+  String get mechanicIsolation => 'Isolasi';
+
+  @override
+  String get ownExerciseSource => 'Latihan sendiri';
+
+  @override
+  String get notSpecified => '–';
 }

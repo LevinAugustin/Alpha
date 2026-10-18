@@ -2235,4 +2235,31 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get customExerciseInvalid => 'نام، پٹھے اور آلہ منتخب کریں۔';
+
+  @override
+  String get motionPress => 'دباؤ';
+
+  @override
+  String get motionPull => 'کھینچنا';
+
+  @override
+  String get motionLegs => 'ٹانگیں/کولہا';
+
+  @override
+  String get motionCore => 'کور';
+
+  @override
+  String get motionCardio => 'کارڈیو';
+
+  @override
+  String get mechanicCompound => 'مرکب';
+
+  @override
+  String get mechanicIsolation => 'تنہائی';
+
+  @override
+  String get ownExerciseSource => 'اپنی ورزش';
+
+  @override
+  String get notSpecified => '–';
 }

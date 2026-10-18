@@ -2246,5 +2246,14 @@
   "customExerciseFamily": "خاندان کا شناختی نمبر",
   "createAsCustomExercise": "اپنی ورزش کے طور پر بنائیں",
   "customExerciseInvalid": "نام، پٹھے اور آلہ منتخب کریں۔",
-  "movementLabel": "حرکت"
+  "movementLabel": "حرکت",
+  "motionPress": "دباؤ",
+  "motionPull": "کھینچنا",
+  "motionLegs": "ٹانگیں/کولہا",
+  "motionCore": "کور",
+  "motionCardio": "کارڈیو",
+  "mechanicCompound": "مرکب",
+  "mechanicIsolation": "تنہائی",
+  "ownExerciseSource": "اپنی ورزش",
+  "notSpecified": "–"
 }

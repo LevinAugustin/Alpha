@@ -2233,4 +2233,31 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get customExerciseInvalid => 'নাম, পেশি এবং সরঞ্জাম বেছে নিন।';
+
+  @override
+  String get motionPress => 'প্রেস';
+
+  @override
+  String get motionPull => 'পুল';
+
+  @override
+  String get motionLegs => 'পা/নিতম্ব';
+
+  @override
+  String get motionCore => 'কোর';
+
+  @override
+  String get motionCardio => 'কার্ডিও';
+
+  @override
+  String get mechanicCompound => 'যৌগিক';
+
+  @override
+  String get mechanicIsolation => 'আইসোলেশন';
+
+  @override
+  String get ownExerciseSource => 'নিজের ব্যায়াম';
+
+  @override
+  String get notSpecified => '–';
 }

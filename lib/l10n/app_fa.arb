@@ -2246,5 +2246,14 @@
   "customExerciseFamily": "شناسه خانواده",
   "createAsCustomExercise": "ساخت به‌عنوان حرکت شخصی",
   "customExerciseInvalid": "نام، عضله‌ها و وسیله را انتخاب کنید.",
-  "movementLabel": "حرکت"
+  "movementLabel": "حرکت",
+  "motionPress": "پرس",
+  "motionPull": "کشش",
+  "motionLegs": "پا/لگن",
+  "motionCore": "میان‌تنه",
+  "motionCardio": "کاردیو",
+  "mechanicCompound": "ترکیبی",
+  "mechanicIsolation": "ایزوله",
+  "ownExerciseSource": "حرکت شخصی",
+  "notSpecified": "–"
 }

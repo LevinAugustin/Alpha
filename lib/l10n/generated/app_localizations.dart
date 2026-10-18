@@ -4163,6 +4163,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Choose a name, muscles and gear.'**
   String get customExerciseInvalid;
+
+  /// Label for a pressing movement.
+  ///
+  /// In en, this message translates to:
+  /// **'Press'**
+  String get motionPress;
+
+  /// Label for a pulling movement.
+  ///
+  /// In en, this message translates to:
+  /// **'Pull'**
+  String get motionPull;
+
+  /// Label for a legs and hips movement.
+  ///
+  /// In en, this message translates to:
+  /// **'Legs/hips'**
+  String get motionLegs;
+
+  /// Label for a core movement.
+  ///
+  /// In en, this message translates to:
+  /// **'Core'**
+  String get motionCore;
+
+  /// Label for a cardio movement.
+  ///
+  /// In en, this message translates to:
+  /// **'Cardio'**
+  String get motionCardio;
+
+  /// Label for a compound exercise.
+  ///
+  /// In en, this message translates to:
+  /// **'Compound'**
+  String get mechanicCompound;
+
+  /// Label for an isolation exercise.
+  ///
+  /// In en, this message translates to:
+  /// **'Isolation'**
+  String get mechanicIsolation;
+
+  /// Source line for an exercise the user created.
+  ///
+  /// In en, this message translates to:
+  /// **'Custom exercise'**
+  String get ownExerciseSource;
+
+  /// Shown when grip or body position is not set.
+  ///
+  /// In en, this message translates to:
+  /// **'–'**
+  String get notSpecified;
 }
 
 class _AppLocalizationsDelegate

@@ -702,5 +702,14 @@
   "customExerciseFamily": "Идентификатор семьи",
   "createAsCustomExercise": "Создать как своё упражнение",
   "customExerciseInvalid": "Выберите название, мышцы и снаряд.",
-  "movementLabel": "Движение"
+  "movementLabel": "Движение",
+  "motionPress": "Жим",
+  "motionPull": "Тяга",
+  "motionLegs": "Ноги/таз",
+  "motionCore": "Корпус",
+  "motionCardio": "Кардио",
+  "mechanicCompound": "Базовое",
+  "mechanicIsolation": "Изоляция",
+  "ownExerciseSource": "Своё упражнение",
+  "notSpecified": "–"
 }

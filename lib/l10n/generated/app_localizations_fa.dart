@@ -2237,4 +2237,31 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String get customExerciseInvalid => 'نام، عضله‌ها و وسیله را انتخاب کنید.';
+
+  @override
+  String get motionPress => 'پرس';
+
+  @override
+  String get motionPull => 'کشش';
+
+  @override
+  String get motionLegs => 'پا/لگن';
+
+  @override
+  String get motionCore => 'میان‌تنه';
+
+  @override
+  String get motionCardio => 'کاردیو';
+
+  @override
+  String get mechanicCompound => 'ترکیبی';
+
+  @override
+  String get mechanicIsolation => 'ایزوله';
+
+  @override
+  String get ownExerciseSource => 'حرکت شخصی';
+
+  @override
+  String get notSpecified => '–';
 }

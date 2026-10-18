@@ -702,5 +702,14 @@
   "customExerciseFamily": "계열 ID",
   "createAsCustomExercise": "맞춤 운동으로 만들기",
   "customExerciseInvalid": "이름, 근육, 기구를 선택하세요.",
-  "movementLabel": "동작"
+  "movementLabel": "동작",
+  "motionPress": "프레스",
+  "motionPull": "풀",
+  "motionLegs": "하체/고관절",
+  "motionCore": "코어",
+  "motionCardio": "유산소",
+  "mechanicCompound": "복합 운동",
+  "mechanicIsolation": "고립 운동",
+  "ownExerciseSource": "사용자 운동",
+  "notSpecified": "–"
 }

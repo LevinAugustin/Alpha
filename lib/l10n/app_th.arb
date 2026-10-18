@@ -2246,5 +2246,14 @@
   "customExerciseFamily": "รหัสตระกูล",
   "createAsCustomExercise": "สร้างเป็นท่าของตัวเอง",
   "customExerciseInvalid": "เลือกชื่อ กล้ามเนื้อ และอุปกรณ์",
-  "movementLabel": "การเคลื่อนไหว"
+  "movementLabel": "การเคลื่อนไหว",
+  "motionPress": "ดัน",
+  "motionPull": "ดึง",
+  "motionLegs": "ขา/สะโพก",
+  "motionCore": "แกนกลาง",
+  "motionCardio": "คาร์ดิโอ",
+  "mechanicCompound": "หลายข้อต่อ",
+  "mechanicIsolation": "แยกส่วน",
+  "ownExerciseSource": "ท่าของฉัน",
+  "notSpecified": "–"
 }

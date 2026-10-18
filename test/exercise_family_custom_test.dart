@@ -249,6 +249,7 @@ void main() {
       (sum, set) => sum + (set.loadKg ?? 0) * (set.reps ?? 0),
     );
     expect(volume, 352);
+    await harness.timerState.stopTimer();
   });
 
   testWidgets('family variants stay visible across categories', (tester) async {

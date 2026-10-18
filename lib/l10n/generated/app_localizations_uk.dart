@@ -2262,4 +2262,31 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get customExerciseInvalid => 'Оберіть назву, м\'язи та снаряд.';
+
+  @override
+  String get motionPress => 'Жим';
+
+  @override
+  String get motionPull => 'Тяга';
+
+  @override
+  String get motionLegs => 'Ноги/стегна';
+
+  @override
+  String get motionCore => 'Корпус';
+
+  @override
+  String get motionCardio => 'Кардіо';
+
+  @override
+  String get mechanicCompound => 'Базова';
+
+  @override
+  String get mechanicIsolation => 'Ізоляція';
+
+  @override
+  String get ownExerciseSource => 'Власна вправа';
+
+  @override
+  String get notSpecified => '–';
 }

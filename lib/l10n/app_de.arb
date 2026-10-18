@@ -702,5 +702,14 @@
   "customExerciseFamily": "Familien-ID",
   "createAsCustomExercise": "Als eigene Übung anlegen",
   "customExerciseInvalid": "Wähle einen Namen, Muskeln und ein Gerät.",
-  "movementLabel": "Bewegung"
+  "movementLabel": "Bewegung",
+  "motionPress": "Drücken",
+  "motionPull": "Ziehen",
+  "motionLegs": "Beine/Hüfte",
+  "motionCore": "Rumpf",
+  "motionCardio": "Cardio",
+  "mechanicCompound": "Grundübung",
+  "mechanicIsolation": "Isolationsübung",
+  "ownExerciseSource": "Eigene Übung",
+  "notSpecified": "–"
 }

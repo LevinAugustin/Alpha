@@ -2246,5 +2246,14 @@
   "customExerciseFamily": "পরিবার আইডি",
   "createAsCustomExercise": "কাস্টম ব্যায়াম হিসেবে তৈরি করুন",
   "customExerciseInvalid": "নাম, পেশি এবং সরঞ্জাম বেছে নিন।",
-  "movementLabel": "গতি"
+  "movementLabel": "গতি",
+  "motionPress": "প্রেস",
+  "motionPull": "পুল",
+  "motionLegs": "পা/নিতম্ব",
+  "motionCore": "কোর",
+  "motionCardio": "কার্ডিও",
+  "mechanicCompound": "যৌগিক",
+  "mechanicIsolation": "আইসোলেশন",
+  "ownExerciseSource": "নিজের ব্যায়াম",
+  "notSpecified": "–"
 }

@@ -84,6 +84,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _index = 0;
+  final _startActive = ValueNotifier(true);
   late final TimerState _timerState;
 
   @override
@@ -182,6 +183,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void dispose() {
+    _startActive.dispose();
     _timerState.removeListener(_handleTimerNotificationTarget);
     super.dispose();
   }
@@ -220,11 +222,11 @@ class _HomePageState extends State<HomePage> {
           Expanded(
             child: IndexedStack(
               index: _index,
-              children: const [
-                StartPage(),
-                TrainingPage(),
-                ExercisesPage(),
-                ProfilePage(),
+              children: [
+                StartPage(active: _startActive),
+                const TrainingPage(),
+                const ExercisesPage(),
+                const ProfilePage(),
               ],
             ),
           ),
@@ -232,7 +234,10 @@ class _HomePageState extends State<HomePage> {
       ),
       bottomNavigationBar: NavigationBar(
         selectedIndex: _index,
-        onDestinationSelected: (index) => setState(() => _index = index),
+        onDestinationSelected: (index) {
+          setState(() => _index = index);
+          _startActive.value = index == 0;
+        },
         destinations: [
           NavigationDestination(
             key: const Key('tab-start'),

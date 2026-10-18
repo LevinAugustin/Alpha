@@ -702,5 +702,14 @@
   "customExerciseFamily": "ファミリーID",
   "createAsCustomExercise": "カスタム種目として作成",
   "customExerciseInvalid": "名前、筋肉、器具を選んでください。",
-  "movementLabel": "動作"
+  "movementLabel": "動作",
+  "motionPress": "プレス",
+  "motionPull": "プル",
+  "motionLegs": "脚/股関節",
+  "motionCore": "体幹",
+  "motionCardio": "有酸素",
+  "mechanicCompound": "コンパウンド",
+  "mechanicIsolation": "アイソレーション",
+  "ownExerciseSource": "カスタム種目",
+  "notSpecified": "–"
 }

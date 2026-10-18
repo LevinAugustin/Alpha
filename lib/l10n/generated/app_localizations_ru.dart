@@ -2265,4 +2265,31 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get customExerciseInvalid => 'Выберите название, мышцы и снаряд.';
+
+  @override
+  String get motionPress => 'Жим';
+
+  @override
+  String get motionPull => 'Тяга';
+
+  @override
+  String get motionLegs => 'Ноги/таз';
+
+  @override
+  String get motionCore => 'Корпус';
+
+  @override
+  String get motionCardio => 'Кардио';
+
+  @override
+  String get mechanicCompound => 'Базовое';
+
+  @override
+  String get mechanicIsolation => 'Изоляция';
+
+  @override
+  String get ownExerciseSource => 'Своё упражнение';
+
+  @override
+  String get notSpecified => '–';
 }

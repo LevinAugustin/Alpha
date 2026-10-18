@@ -2176,4 +2176,31 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get customExerciseInvalid => '名前、筋肉、器具を選んでください。';
+
+  @override
+  String get motionPress => 'プレス';
+
+  @override
+  String get motionPull => 'プル';
+
+  @override
+  String get motionLegs => '脚/股関節';
+
+  @override
+  String get motionCore => '体幹';
+
+  @override
+  String get motionCardio => '有酸素';
+
+  @override
+  String get mechanicCompound => 'コンパウンド';
+
+  @override
+  String get mechanicIsolation => 'アイソレーション';
+
+  @override
+  String get ownExerciseSource => 'カスタム種目';
+
+  @override
+  String get notSpecified => '–';
 }

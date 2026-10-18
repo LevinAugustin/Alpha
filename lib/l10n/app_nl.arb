@@ -702,5 +702,14 @@
   "customExerciseFamily": "Familie-id",
   "createAsCustomExercise": "Als eigen oefening maken",
   "customExerciseInvalid": "Kies een naam, spieren en materiaal.",
-  "movementLabel": "Beweging"
+  "movementLabel": "Beweging",
+  "motionPress": "Duwen",
+  "motionPull": "Trekken",
+  "motionLegs": "Benen/heup",
+  "motionCore": "Romp",
+  "motionCardio": "Cardio",
+  "mechanicCompound": "Basisoefening",
+  "mechanicIsolation": "Isolatie",
+  "ownExerciseSource": "Eigen oefening",
+  "notSpecified": "–"
 }

@@ -1,5 +1,6 @@
 import 'package:drift/drift.dart' hide Column;
 import 'package:flexify/alpha/alpha_prefs.dart';
+import 'package:flexify/alpha/live_workout.dart';
 import 'package:flexify/database/database.dart';
 import 'package:flexify/settings/alpha_settings_page.dart';
 import 'package:flexify/shell/create_profile_dialog.dart';
@@ -13,11 +14,14 @@ import 'package:flexify/theme/alpha_theme.dart';
 import 'package:flexify/update/app_update.dart';
 import 'package:flexify/workout/gym_workout_page.dart';
 import 'package:flexify/workout/muscle_map.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class StartPage extends StatefulWidget {
-  const StartPage({super.key});
+  const StartPage({super.key, this.active});
+
+  final ValueListenable<bool>? active;
 
   @override
   State<StartPage> createState() => _StartPageState();
@@ -25,11 +29,65 @@ class StartPage extends StatefulWidget {
 
 class _StartPageState extends State<StartPage> {
   late Future<_Dashboard> _future;
+  _Dashboard? _shown;
+  LiveWorkout? _live;
+  String? _knownProfile;
+  var _profileReady = false;
 
   @override
   void initState() {
     super.initState();
+    _live = liveWorkout.value;
     _future = _load();
+    liveWorkout.addListener(_onLive);
+    widget.active?.addListener(_onActive);
+  }
+
+  @override
+  void didUpdateWidget(StartPage oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.active == widget.active) return;
+    oldWidget.active?.removeListener(_onActive);
+    widget.active?.addListener(_onActive);
+  }
+
+  @override
+  void dispose() {
+    liveWorkout.removeListener(_onLive);
+    widget.active?.removeListener(_onActive);
+    super.dispose();
+  }
+
+  void _onLive() {
+    final next = liveWorkout.value;
+    final ended = _live != null && next == null;
+    _live = next;
+    if (ended) _reload();
+  }
+
+  void _onActive() {
+    if (widget.active?.value == true) _reload();
+  }
+
+  void _reload() {
+    if (!mounted) return;
+    final next = _load();
+    setState(() {
+      _future = next;
+    });
+  }
+
+  Future<void> _createProfile() async {
+    final saved = await showCreateProfileDialog(context);
+    if (!saved || !mounted) return;
+    _reload();
+  }
+
+  Future<void> _openPlan(Plan plan) async {
+    await Navigator.of(
+      context,
+    ).push(FlexPageRoute(builder: (context) => GymWorkoutPage(plan: plan)));
+    _reload();
   }
 
   @override
@@ -37,7 +95,8 @@ class _StartPageState extends State<StartPage> {
     return FutureBuilder<_Dashboard>(
       future: _future,
       builder: (context, snapshot) {
-        final data = snapshot.data;
+        if (snapshot.data != null) _shown = snapshot.data;
+        final data = _shown;
         if (data == null)
           return const Center(child: CircularProgressIndicator());
         final l10n = context.l10n;
@@ -45,21 +104,29 @@ class _StartPageState extends State<StartPage> {
         final stored = context.select<Setting, String?>(
           (settings) => settings.profileName,
         );
+        if (!_profileReady) {
+          _knownProfile = stored;
+          _profileReady = true;
+        } else if (stored != _knownProfile) {
+          _knownProfile = stored;
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            if (mounted) _reload();
+          });
+        }
         final storedName = stored?.trim() ?? '';
         final name = storedName.isEmpty ? data.profileName : storedName;
         if (name.isEmpty) {
-          return Padding(
+          return ListView(
             padding: const EdgeInsets.fromLTRB(16, 4, 16, 24),
-            child: _GuestHero(
-              palette: palette,
-              onCreate: () async {
-                final saved = await showCreateProfileDialog(context);
-                if (!saved || !mounted) return;
-                setState(() {
-                  _future = _load();
-                });
-              },
-            ),
+            children: [
+              _GuestHero(palette: palette, onCreate: _createProfile),
+              const SizedBox(height: 12),
+              _LockedHome(
+                data: data,
+                palette: palette,
+                onUnlock: _createProfile,
+              ),
+            ],
           );
         }
         return ListView(
@@ -72,10 +139,11 @@ class _StartPageState extends State<StartPage> {
               onGoal: () async {
                 final saved = await editWeeklyGoal(context);
                 if (!saved || !mounted) return;
-                setState(() {
-                  _future = _load();
-                });
+                _reload();
               },
+              onStart: data.nextPlan == null
+                  ? null
+                  : () => _openPlan(data.nextPlan!),
             ),
             ValueListenableBuilder(
               valueListenable: pendingAppUpdate,
@@ -111,13 +179,17 @@ class _StartPageState extends State<StartPage> {
             const SizedBox(height: 12),
             Row(
               children: [
-                Text(
-                  l10n.thisWeek,
-                  style: Theme.of(context).textTheme.titleMedium,
+                Expanded(
+                  child: Text(
+                    l10n.thisWeek,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
                 ),
-                const Spacer(),
+                const SizedBox(width: 8),
                 Text(
-                  l10n.weekGoalProgress(data.trainedDays.length, data.weekGoal),
+                  l10n.weekGoalProgress(data.doneThisWeek, data.weekGoal),
                   style: TextStyle(color: palette.muted),
                 ),
               ],
@@ -356,133 +428,7 @@ class _GuestHero extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
-    return SizedBox.expand(
-      child: Container(
-        clipBehavior: Clip.antiAlias,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(22),
-          border: Border.all(color: palette.border),
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [
-              Color.alphaBlend(
-                palette.accent.withValues(alpha: 0.28),
-                palette.card,
-              ),
-              palette.card,
-              palette.background,
-            ],
-          ),
-        ),
-        child: Stack(
-          children: [
-            Positioned(
-              right: -20,
-              top: 20,
-              child: Container(
-                width: 220,
-                height: 220,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  gradient: RadialGradient(
-                    colors: [
-                      palette.accent.withValues(alpha: 0.45),
-                      palette.accent.withValues(alpha: 0),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            Positioned(
-              right: -30,
-              bottom: 70,
-              child: Image.asset(
-                palette.figureAsset,
-                height: palette.id == 'pink' ? 360 : 320,
-                fit: BoxFit.contain,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(18, 16, 18, 14),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    l10n.welcomeToAlpha,
-                    style: TextStyle(
-                      fontFamily: 'Bebas Neue',
-                      fontSize: 40,
-                      height: 0.9,
-                      color: palette.accent,
-                    ),
-                  ),
-                  const Spacer(),
-                  SizedBox(
-                    width: double.infinity,
-                    height: 52,
-                    child: DecoratedBox(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(14),
-                        color: palette.buttonGradient == null
-                            ? palette.accent
-                            : null,
-                        gradient: palette.buttonGradient,
-                      ),
-                      child: TextButton(
-                        key: const Key('create-profile'),
-                        onPressed: onCreate,
-                        child: Text(
-                          l10n.createProfileButton,
-                          style: TextStyle(
-                            fontFamily: 'Bebas Neue',
-                            fontSize: 22,
-                            color: palette.onAccent,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class _Hero extends StatelessWidget {
-  const _Hero({
-    required this.data,
-    required this.name,
-    required this.palette,
-    required this.onGoal,
-  });
-
-  final _Dashboard data;
-  final String name;
-  final AlphaPalette palette;
-  final VoidCallback onGoal;
-
-  @override
-  Widget build(BuildContext context) {
-    final l10n = context.l10n;
-    final quote = switch (data.quote) {
-      'pull' => l10n.quotePullDay,
-      'push' => l10n.quotePushDay,
-      'legs' => l10n.quoteLegDay,
-      'progress' => l10n.quoteKeepGoing(data.doneThisWeek, data.weekGoal),
-      'done' => l10n.quoteKeepGoing(data.doneThisWeek, data.weekGoal),
-      _ => l10n.quoteRemaining(data.weekGoal - data.doneThisWeek),
-    };
-    final plan = data.nextPlan;
-    final planName = plan == null
-        ? l10n.tabTraining
-        : ((plan.title ?? '').trim().isEmpty ? plan.days : plan.title!.trim());
     return Container(
-      height: 302,
       clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(22),
@@ -500,103 +446,139 @@ class _Hero extends StatelessWidget {
           ],
         ),
       ),
-      child: Stack(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Positioned(
-            right: -20,
-            top: 20,
-            child: Container(
-              width: 220,
-              height: 220,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                gradient: RadialGradient(
-                  colors: [
-                    palette.accent.withValues(alpha: 0.45),
-                    palette.accent.withValues(alpha: 0),
-                  ],
+          Stack(
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(18, 16, 128, 8),
+                child: Text(
+                  l10n.welcomeToAlpha,
+                  style: TextStyle(
+                    fontFamily: 'Bebas Neue',
+                    fontSize: 40,
+                    height: 0.9,
+                    color: palette.accent,
+                  ),
+                ),
+              ),
+              Positioned(
+                right: 4,
+                top: 8,
+                width: 112,
+                height: 96,
+                child: Image.asset(
+                  palette.figureAsset,
+                  fit: BoxFit.contain,
+                  alignment: Alignment.centerRight,
+                ),
+              ),
+            ],
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(18, 8, 18, 14),
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(minHeight: 52),
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(14),
+                  color: palette.buttonGradient == null ? palette.accent : null,
+                  gradient: palette.buttonGradient,
+                ),
+                child: TextButton(
+                  key: const Key('create-profile'),
+                  onPressed: onCreate,
+                  child: Text(
+                    l10n.createProfileButton,
+                    style: TextStyle(
+                      fontFamily: 'Bebas Neue',
+                      fontSize: 22,
+                      color: palette.onAccent,
+                    ),
+                  ),
                 ),
               ),
             ),
           ),
-          Positioned(
-            right: -30,
-            bottom: 20,
-            child: Image.asset(
-              palette.figureAsset,
-              height: palette.id == 'pink' ? 280 : 250,
-              fit: BoxFit.contain,
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(18, 16, 18, 14),
+        ],
+      ),
+    );
+  }
+}
+
+class _LockedHome extends StatelessWidget {
+  const _LockedHome({
+    required this.data,
+    required this.palette,
+    required this.onUnlock,
+  });
+
+  final _Dashboard data;
+  final AlphaPalette palette;
+  final VoidCallback onUnlock;
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = context.l10n;
+    final plan = data.nextPlan;
+    final planName = plan == null
+        ? l10n.tabTraining
+        : ((plan.title ?? '').trim().isEmpty ? plan.days : plan.title!.trim());
+    return Stack(
+      children: [
+        Opacity(
+          opacity: 0.45,
+          child: IgnorePointer(
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Text(
-                  l10n.helloName(name).split(',').first,
-                  style: const TextStyle(
-                    fontFamily: 'Bebas Neue',
-                    fontSize: 42,
-                    height: 0.9,
-                  ),
-                ),
-                if (name.isNotEmpty)
-                  Text(
-                    name,
-                    style: TextStyle(
-                      fontFamily: 'Bebas Neue',
-                      fontSize: 42,
-                      height: 0.9,
-                      color: palette.accent,
-                    ),
-                  ),
-                const SizedBox(height: 8),
                 Row(
                   children: [
-                    GestureDetector(
-                      onTap: onGoal,
-                      child: _Ring(
-                        done: data.doneThisWeek,
-                        goal: data.weekGoal,
-                        palette: palette,
+                    Expanded(
+                      child: _Mini(
+                        icon: Icons.local_fire_department,
+                        text: l10n.dayStreak(data.dayStreak),
+                      ),
+                    ),
+                    const SizedBox(width: 8),
+                    Expanded(
+                      child: _Mini(
+                        icon: Icons.calendar_view_week,
+                        text: l10n.weekStreak(data.weekStreak),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 12),
+                Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        l10n.thisWeek,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: Theme.of(context).textTheme.titleMedium,
                       ),
                     ),
                     const SizedBox(width: 8),
                     Text(
-                      l10n.weekGoal,
-                      style: const TextStyle(fontWeight: FontWeight.w600),
+                      l10n.weekGoalProgress(data.doneThisWeek, data.weekGoal),
+                      style: TextStyle(color: palette.muted),
                     ),
                   ],
                 ),
                 const SizedBox(height: 8),
-                Text(
-                  quote,
-                  style: const TextStyle(fontWeight: FontWeight.w600),
-                ),
-                const Spacer(),
-                SizedBox(
-                  width: double.infinity,
-                  height: 52,
+                _WeekStrip(days: data.weekDays, trained: data.trainedDays),
+                const SizedBox(height: 12),
+                ConstrainedBox(
+                  constraints: const BoxConstraints(minHeight: 52),
                   child: DecoratedBox(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(14),
-                      color: palette.buttonGradient == null
-                          ? palette.accent
-                          : null,
-                      gradient: palette.buttonGradient,
+                      color: palette.accent,
                     ),
-                    child: TextButton(
-                      onPressed: plan == null
-                          ? null
-                          : () {
-                              Navigator.of(context).push(
-                                FlexPageRoute(
-                                  builder: (context) =>
-                                      GymWorkoutPage(plan: plan),
-                                ),
-                              );
-                            },
+                    child: Center(
                       child: Text(
                         l10n.startWorkoutNamed(planName),
                         style: TextStyle(
@@ -609,6 +591,164 @@ class _Hero extends StatelessWidget {
                   ),
                 ),
               ],
+            ),
+          ),
+        ),
+        Positioned(
+          right: 0,
+          top: 0,
+          child: Icon(Icons.lock_outline, color: palette.accent),
+        ),
+        Positioned.fill(
+          child: Material(
+            type: MaterialType.transparency,
+            child: InkWell(key: const Key('locked-home'), onTap: onUnlock),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class _Hero extends StatelessWidget {
+  const _Hero({
+    required this.data,
+    required this.name,
+    required this.palette,
+    required this.onGoal,
+    required this.onStart,
+  });
+
+  final _Dashboard data;
+  final String name;
+  final AlphaPalette palette;
+  final VoidCallback onGoal;
+  final VoidCallback? onStart;
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = context.l10n;
+    final quote = switch (data.quote) {
+      'pull' => l10n.quotePullDay,
+      'push' => l10n.quotePushDay,
+      'legs' => l10n.quoteLegDay,
+      'progress' => l10n.quoteKeepGoing(data.doneThisWeek, data.weekGoal),
+      'done' => l10n.quoteKeepGoing(data.doneThisWeek, data.weekGoal),
+      _ => l10n.quoteRemaining(data.weekGoal - data.doneThisWeek),
+    };
+    final plan = data.nextPlan;
+    final planName = plan == null
+        ? l10n.tabTraining
+        : ((plan.title ?? '').trim().isEmpty ? plan.days : plan.title!.trim());
+    return Container(
+      clipBehavior: Clip.antiAlias,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(22),
+        border: Border.all(color: palette.border),
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [
+            Color.alphaBlend(
+              palette.accent.withValues(alpha: 0.28),
+              palette.card,
+            ),
+            palette.card,
+            palette.background,
+          ],
+        ),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Stack(
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(18, 16, 128, 8),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      l10n.helloName(name).split(',').first,
+                      style: const TextStyle(
+                        fontFamily: 'Bebas Neue',
+                        fontSize: 42,
+                        height: 0.9,
+                      ),
+                    ),
+                    if (name.isNotEmpty)
+                      Text(
+                        name,
+                        style: TextStyle(
+                          fontFamily: 'Bebas Neue',
+                          fontSize: 42,
+                          height: 0.9,
+                          color: palette.accent,
+                        ),
+                      ),
+                    const SizedBox(height: 8),
+                    Row(
+                      children: [
+                        GestureDetector(
+                          onTap: onGoal,
+                          child: _Ring(
+                            done: data.doneThisWeek,
+                            goal: data.weekGoal,
+                            palette: palette,
+                          ),
+                        ),
+                        const SizedBox(width: 8),
+                        Expanded(
+                          child: Text(
+                            l10n.weekGoal,
+                            style: const TextStyle(fontWeight: FontWeight.w600),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      quote,
+                      style: const TextStyle(fontWeight: FontWeight.w600),
+                    ),
+                  ],
+                ),
+              ),
+              Positioned(
+                right: 4,
+                bottom: 0,
+                width: 112,
+                height: 150,
+                child: Image.asset(
+                  palette.figureAsset,
+                  fit: BoxFit.contain,
+                  alignment: Alignment.bottomRight,
+                ),
+              ),
+            ],
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(18, 8, 18, 14),
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(minHeight: 52),
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(14),
+                  color: palette.buttonGradient == null ? palette.accent : null,
+                  gradient: palette.buttonGradient,
+                ),
+                child: TextButton(
+                  onPressed: onStart,
+                  child: Text(
+                    l10n.startWorkoutNamed(planName),
+                    style: TextStyle(
+                      fontFamily: 'Bebas Neue',
+                      fontSize: 22,
+                      color: palette.onAccent,
+                    ),
+                  ),
+                ),
+              ),
             ),
           ),
         ],
@@ -639,9 +779,11 @@ class _Ring extends StatelessWidget {
             backgroundColor: palette.accent.withValues(alpha: 0.16),
             color: palette.accent,
           ),
-          Text(
-            '$done/$goal',
-            style: const TextStyle(fontFamily: 'Bebas Neue', fontSize: 16),
+          FittedBox(
+            child: Text(
+              '$done/$goal',
+              style: const TextStyle(fontFamily: 'Bebas Neue', fontSize: 16),
+            ),
           ),
         ],
       ),

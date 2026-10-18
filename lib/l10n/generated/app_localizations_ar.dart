@@ -2223,4 +2223,31 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get customExerciseInvalid => 'اختر اسماً وعضلات وأداة.';
+
+  @override
+  String get motionPress => 'ضغط';
+
+  @override
+  String get motionPull => 'سحب';
+
+  @override
+  String get motionLegs => 'ساقان/ورك';
+
+  @override
+  String get motionCore => 'جذع';
+
+  @override
+  String get motionCardio => 'كارديو';
+
+  @override
+  String get mechanicCompound => 'تمرين مركّب';
+
+  @override
+  String get mechanicIsolation => 'تمرين عزل';
+
+  @override
+  String get ownExerciseSource => 'تمرين خاص';
+
+  @override
+  String get notSpecified => '–';
 }

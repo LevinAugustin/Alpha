@@ -2254,4 +2254,31 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get customExerciseInvalid => 'Bir ad, kaslar ve ekipman seç.';
+
+  @override
+  String get motionPress => 'İtme';
+
+  @override
+  String get motionPull => 'Çekme';
+
+  @override
+  String get motionLegs => 'Bacak/kalça';
+
+  @override
+  String get motionCore => 'Gövde';
+
+  @override
+  String get motionCardio => 'Kardiyo';
+
+  @override
+  String get mechanicCompound => 'Bileşik';
+
+  @override
+  String get mechanicIsolation => 'İzolasyon';
+
+  @override
+  String get ownExerciseSource => 'Kendi egzersizi';
+
+  @override
+  String get notSpecified => '–';
 }

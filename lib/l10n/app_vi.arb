@@ -2246,5 +2246,14 @@
   "customExerciseFamily": "Mã nhóm",
   "createAsCustomExercise": "Tạo thành bài tập riêng",
   "customExerciseInvalid": "Hãy chọn tên, cơ và dụng cụ.",
-  "movementLabel": "Động tác"
+  "movementLabel": "Động tác",
+  "motionPress": "Đẩy",
+  "motionPull": "Kéo",
+  "motionLegs": "Chân/hông",
+  "motionCore": "Lõi",
+  "motionCardio": "Cardio",
+  "mechanicCompound": "Đa khớp",
+  "mechanicIsolation": "Cô lập",
+  "ownExerciseSource": "Bài tập riêng",
+  "notSpecified": "–"
 }

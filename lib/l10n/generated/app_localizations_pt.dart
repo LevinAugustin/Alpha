@@ -2263,6 +2263,33 @@ class AppLocalizationsPt extends AppLocalizations {
   @override
   String get customExerciseInvalid =>
       'Escolhe um nome, músculos e um aparelho.';
+
+  @override
+  String get motionPress => 'Empurrar';
+
+  @override
+  String get motionPull => 'Puxar';
+
+  @override
+  String get motionLegs => 'Pernas/anca';
+
+  @override
+  String get motionCore => 'Tronco';
+
+  @override
+  String get motionCardio => 'Cardio';
+
+  @override
+  String get mechanicCompound => 'Composto';
+
+  @override
+  String get mechanicIsolation => 'Isolamento';
+
+  @override
+  String get ownExerciseSource => 'Exercício próprio';
+
+  @override
+  String get notSpecified => '–';
 }
 
 /// The translations for Portuguese, as used in Brazil (`pt_BR`).
@@ -4515,6 +4542,33 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   @override
   String get customExerciseInvalid =>
       'Escolha um nome, músculos e um aparelho.';
+
+  @override
+  String get motionPress => 'Empurrar';
+
+  @override
+  String get motionPull => 'Puxar';
+
+  @override
+  String get motionLegs => 'Pernas/quadril';
+
+  @override
+  String get motionCore => 'Tronco';
+
+  @override
+  String get motionCardio => 'Cardio';
+
+  @override
+  String get mechanicCompound => 'Composto';
+
+  @override
+  String get mechanicIsolation => 'Isolamento';
+
+  @override
+  String get ownExerciseSource => 'Exercício próprio';
+
+  @override
+  String get notSpecified => '–';
 }
 
 /// The translations for Portuguese, as used in Portugal (`pt_PT`).
@@ -6776,4 +6830,31 @@ class AppLocalizationsPtPt extends AppLocalizationsPt {
   @override
   String get customExerciseInvalid =>
       'Escolhe um nome, músculos e um aparelho.';
+
+  @override
+  String get motionPress => 'Empurrar';
+
+  @override
+  String get motionPull => 'Puxar';
+
+  @override
+  String get motionLegs => 'Pernas/anca';
+
+  @override
+  String get motionCore => 'Tronco';
+
+  @override
+  String get motionCardio => 'Cardio';
+
+  @override
+  String get mechanicCompound => 'Composto';
+
+  @override
+  String get mechanicIsolation => 'Isolamento';
+
+  @override
+  String get ownExerciseSource => 'Exercício próprio';
+
+  @override
+  String get notSpecified => '–';
 }

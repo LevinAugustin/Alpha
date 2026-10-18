@@ -2165,6 +2165,33 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get customExerciseInvalid => '请选择名称、肌肉和器械。';
+
+  @override
+  String get motionPress => '推';
+
+  @override
+  String get motionPull => '拉';
+
+  @override
+  String get motionLegs => '腿/髋';
+
+  @override
+  String get motionCore => '核心';
+
+  @override
+  String get motionCardio => '有氧';
+
+  @override
+  String get mechanicCompound => '复合';
+
+  @override
+  String get mechanicIsolation => '孤立';
+
+  @override
+  String get ownExerciseSource => '自定义动作';
+
+  @override
+  String get notSpecified => '–';
 }
 
 /// The translations for Chinese, as used in China (`zh_CN`).
@@ -4328,6 +4355,33 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
 
   @override
   String get customExerciseInvalid => '请选择名称、肌肉和器械。';
+
+  @override
+  String get motionPress => '推';
+
+  @override
+  String get motionPull => '拉';
+
+  @override
+  String get motionLegs => '腿/髋';
+
+  @override
+  String get motionCore => '核心';
+
+  @override
+  String get motionCardio => '有氧';
+
+  @override
+  String get mechanicCompound => '复合';
+
+  @override
+  String get mechanicIsolation => '孤立';
+
+  @override
+  String get ownExerciseSource => '自定义动作';
+
+  @override
+  String get notSpecified => '–';
 }
 
 /// The translations for Chinese, as used in Taiwan (`zh_TW`).
@@ -6491,4 +6545,31 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get customExerciseInvalid => '請選擇名稱、肌肉和器材。';
+
+  @override
+  String get motionPress => '推';
+
+  @override
+  String get motionPull => '拉';
+
+  @override
+  String get motionLegs => '腿/髖';
+
+  @override
+  String get motionCore => '核心';
+
+  @override
+  String get motionCardio => '有氧';
+
+  @override
+  String get mechanicCompound => '複合';
+
+  @override
+  String get mechanicIsolation => '孤立';
+
+  @override
+  String get ownExerciseSource => '自訂動作';
+
+  @override
+  String get notSpecified => '–';
 }

@@ -2255,5 +2255,14 @@
   "customExerciseFamily": "Ідентифікатор сімейства",
   "createAsCustomExercise": "Створити як власну вправу",
   "customExerciseInvalid": "Оберіть назву, м'язи та снаряд.",
-  "movementLabel": "Рух"
+  "movementLabel": "Рух",
+  "motionPress": "Жим",
+  "motionPull": "Тяга",
+  "motionLegs": "Ноги/стегна",
+  "motionCore": "Корпус",
+  "motionCardio": "Кардіо",
+  "mechanicCompound": "Базова",
+  "mechanicIsolation": "Ізоляція",
+  "ownExerciseSource": "Власна вправа",
+  "notSpecified": "–"
 }

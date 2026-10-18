@@ -2230,4 +2230,31 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get customExerciseInvalid => 'नाम, मांसपेशियाँ और उपकरण चुनें।';
+
+  @override
+  String get motionPress => 'प्रेस';
+
+  @override
+  String get motionPull => 'पुल';
+
+  @override
+  String get motionLegs => 'पैर/कूल्हा';
+
+  @override
+  String get motionCore => 'कोर';
+
+  @override
+  String get motionCardio => 'कार्डियो';
+
+  @override
+  String get mechanicCompound => 'कंपाउंड';
+
+  @override
+  String get mechanicIsolation => 'आइसोलेशन';
+
+  @override
+  String get ownExerciseSource => 'अपनी कसरत';
+
+  @override
+  String get notSpecified => '–';
 }

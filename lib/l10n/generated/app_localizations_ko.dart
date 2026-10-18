@@ -2178,4 +2178,31 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get customExerciseInvalid => '이름, 근육, 기구를 선택하세요.';
+
+  @override
+  String get motionPress => '프레스';
+
+  @override
+  String get motionPull => '풀';
+
+  @override
+  String get motionLegs => '하체/고관절';
+
+  @override
+  String get motionCore => '코어';
+
+  @override
+  String get motionCardio => '유산소';
+
+  @override
+  String get mechanicCompound => '복합 운동';
+
+  @override
+  String get mechanicIsolation => '고립 운동';
+
+  @override
+  String get ownExerciseSource => '사용자 운동';
+
+  @override
+  String get notSpecified => '–';
 }

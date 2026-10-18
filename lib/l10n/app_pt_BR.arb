@@ -702,5 +702,14 @@
   "customExerciseFamily": "Id da família",
   "createAsCustomExercise": "Criar como exercício próprio",
   "customExerciseInvalid": "Escolha um nome, músculos e um aparelho.",
-  "movementLabel": "Movimento"
+  "movementLabel": "Movimento",
+  "motionPress": "Empurrar",
+  "motionPull": "Puxar",
+  "motionLegs": "Pernas/quadril",
+  "motionCore": "Tronco",
+  "motionCardio": "Cardio",
+  "mechanicCompound": "Composto",
+  "mechanicIsolation": "Isolamento",
+  "ownExerciseSource": "Exercício próprio",
+  "notSpecified": "–"
 }

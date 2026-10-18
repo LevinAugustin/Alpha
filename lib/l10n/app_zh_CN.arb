@@ -702,5 +702,14 @@
   "customExerciseFamily": "动作族编号",
   "createAsCustomExercise": "创建为自定义动作",
   "customExerciseInvalid": "请选择名称、肌肉和器械。",
-  "movementLabel": "动作"
+  "movementLabel": "动作",
+  "motionPress": "推",
+  "motionPull": "拉",
+  "motionLegs": "腿/髋",
+  "motionCore": "核心",
+  "motionCardio": "有氧",
+  "mechanicCompound": "复合",
+  "mechanicIsolation": "孤立",
+  "ownExerciseSource": "自定义动作",
+  "notSpecified": "–"
 }

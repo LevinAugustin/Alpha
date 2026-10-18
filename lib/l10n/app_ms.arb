@@ -2246,5 +2246,14 @@
   "customExerciseFamily": "Id keluarga",
   "createAsCustomExercise": "Cipta sebagai latihan sendiri",
   "customExerciseInvalid": "Pilih nama, otot dan peralatan.",
-  "movementLabel": "Gerakan"
+  "movementLabel": "Gerakan",
+  "motionPress": "Tolak",
+  "motionPull": "Tarik",
+  "motionLegs": "Kaki/pinggul",
+  "motionCore": "Teras",
+  "motionCardio": "Kardio",
+  "mechanicCompound": "Gabungan",
+  "mechanicIsolation": "Pengasingan",
+  "ownExerciseSource": "Latihan sendiri",
+  "notSpecified": "–"
 }

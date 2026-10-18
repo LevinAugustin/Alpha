@@ -702,5 +702,14 @@
   "customExerciseFamily": "Aile kimliği",
   "createAsCustomExercise": "Özel egzersiz olarak oluştur",
   "customExerciseInvalid": "Bir ad, kaslar ve ekipman seç.",
-  "movementLabel": "Hareket"
+  "movementLabel": "Hareket",
+  "motionPress": "İtme",
+  "motionPull": "Çekme",
+  "motionLegs": "Bacak/kalça",
+  "motionCore": "Gövde",
+  "motionCardio": "Kardiyo",
+  "mechanicCompound": "Bileşik",
+  "mechanicIsolation": "İzolasyon",
+  "ownExerciseSource": "Kendi egzersizi",
+  "notSpecified": "–"
 }

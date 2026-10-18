@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flexify/database/database.dart';
 import 'package:flexify/exercise_keys.dart';
+import 'package:flexify/exercise_labels.dart';
 import 'package:flexify/exercises/custom_exercise.dart';
 import 'package:flexify/l10n/l10n.dart';
 import 'package:flexify/main.dart';
@@ -155,7 +156,10 @@ class _CustomExercisePageState extends State<CustomExercisePage> {
             decoration: InputDecoration(labelText: l10n.movementLabel),
             items: [
               for (final motion in exerciseMotionValues)
-                DropdownMenuItem(value: motion, child: Text(motion)),
+                DropdownMenuItem(
+                  value: motion,
+                  child: Text(movementLabel(l10n, motion)),
+                ),
             ],
             onChanged: (value) => setState(() => _movement = value ?? ''),
           ),
@@ -169,7 +173,7 @@ class _CustomExercisePageState extends State<CustomExercisePage> {
             initialValue: _grip,
             decoration: InputDecoration(labelText: l10n.gripLabel),
             items: [
-              DropdownMenuItem(value: '', child: Text(l10n.allMuscles)),
+              DropdownMenuItem(value: '', child: Text(l10n.notSpecified)),
               for (final grip in exerciseGripValues)
                 DropdownMenuItem(value: grip, child: Text(grip)),
             ],
@@ -180,7 +184,7 @@ class _CustomExercisePageState extends State<CustomExercisePage> {
             initialValue: _position,
             decoration: InputDecoration(labelText: l10n.positionLabel),
             items: [
-              DropdownMenuItem(value: '', child: Text(l10n.allMuscles)),
+              DropdownMenuItem(value: '', child: Text(l10n.notSpecified)),
               for (final position in exercisePositionValues)
                 DropdownMenuItem(value: position, child: Text(position)),
             ],

@@ -702,5 +702,14 @@
   "customExerciseFamily": "Identyfikator rodziny",
   "createAsCustomExercise": "Utwórz jako własne ćwiczenie",
   "customExerciseInvalid": "Wybierz nazwę, mięśnie i sprzęt.",
-  "movementLabel": "Ruch"
+  "movementLabel": "Ruch",
+  "motionPress": "Wyciskanie",
+  "motionPull": "Przyciąganie",
+  "motionLegs": "Nogi/biodra",
+  "motionCore": "Tułów",
+  "motionCardio": "Cardio",
+  "mechanicCompound": "Złożone",
+  "mechanicIsolation": "Izolowane",
+  "ownExerciseSource": "Własne ćwiczenie",
+  "notSpecified": "–"
 }

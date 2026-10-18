@@ -2246,5 +2246,14 @@
   "customExerciseFamily": "معرّف العائلة",
   "createAsCustomExercise": "إنشاء كتمرين خاص",
   "customExerciseInvalid": "اختر اسماً وعضلات وأداة.",
-  "movementLabel": "الحركة"
+  "movementLabel": "الحركة",
+  "motionPress": "ضغط",
+  "motionPull": "سحب",
+  "motionLegs": "ساقان/ورك",
+  "motionCore": "جذع",
+  "motionCardio": "كارديو",
+  "mechanicCompound": "تمرين مركّب",
+  "mechanicIsolation": "تمرين عزل",
+  "ownExerciseSource": "تمرين خاص",
+  "notSpecified": "–"
 }
