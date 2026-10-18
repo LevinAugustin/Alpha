@@ -5,6 +5,11 @@ on:
     branches: [main]
   pull_request:
   workflow_dispatch:
+    inputs:
+      update_test:
+        description: "Build 2.5.0+452 as artifact alpha-update-test. Does not tag or publish a release."
+        type: boolean
+        default: false
 
 concurrency:
   group: android-apk-${{ github.ref }}
@@ -110,3 +115,97 @@ jobs:
           files: alpha.apk
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  build-update-test-apk:
+    if: ${{ (github.event_name == 'workflow_dispatch' && inputs.update_test) || (github.event_name == 'pull_request' && github.head_ref == 'cursor/alpha-2-5-2-9703') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+
+      - name: Setup Java
+        uses: actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961 # v5
+        with:
+          distribution: "zulu"
+          java-version: "21"
+
+      - name: Setup Flutter from submodule
+        run: |
+          git submodule update --init --recursive flutter
+          chmod +x flutter/bin/*
+          echo "$PWD/flutter/bin" >> "$GITHUB_PATH"
+          flutter/bin/flutter --version
+          flutter/bin/flutter config --no-analytics
+
+      - name: Get dependencies
+        run: flutter pub get --enforce-lockfile
+
+      - name: Run build_runner
+        run: dart run build_runner build -d
+
+      - name: Tune Gradle for CI runner memory
+        run: |
+          sed -i \
+            -e 's/^org.gradle.jvmargs=.*/org.gradle.jvmargs=-Xmx3G -XX:MaxMetaspaceSize=512m -XX:ReservedCodeCacheSize=512m -XX:ActiveProcessorCount=2/' \
+            -e 's/^org.gradle.workers.max=.*/org.gradle.workers.max=2/' \
+            android/gradle.properties
+
+      - name: Install pinned Android NDK with recovery
+        run: bash ./scripts/ensure-ci-ndk.sh 28.2.13676358
+
+      - name: Prepare release signing
+        env:
+          ALPHA_KEYSTORE_BASE64: ${{ secrets.ALPHA_KEYSTORE_BASE64 }}
+          ALPHA_STORE_PASSWORD: ${{ secrets.ALPHA_STORE_PASSWORD }}
+          ALPHA_KEY_ALIAS: ${{ secrets.ALPHA_KEY_ALIAS }}
+          ALPHA_KEY_PASSWORD: ${{ secrets.ALPHA_KEY_PASSWORD }}
+        run: |
+          if [ -z "$ALPHA_KEYSTORE_BASE64" ] || [ -z "$ALPHA_STORE_PASSWORD" ] || [ -z "$ALPHA_KEY_ALIAS" ] || [ -z "$ALPHA_KEY_PASSWORD" ]; then
+            echo "Release keystore secrets are missing. Set ALPHA_KEYSTORE_BASE64, ALPHA_STORE_PASSWORD, ALPHA_KEY_ALIAS and ALPHA_KEY_PASSWORD." >&2
+            exit 1
+          fi
+          printf '%s' "$ALPHA_KEYSTORE_BASE64" | base64 -d > android/app/alpha-release.jks
+          umask 077
+          {
+            echo "storePassword=$ALPHA_STORE_PASSWORD"
+            echo "keyPassword=$ALPHA_KEY_PASSWORD"
+            echo "keyAlias=$ALPHA_KEY_ALIAS"
+            echo "storeFile=alpha-release.jks"
+          } > android/key.properties
+          echo "Signing with the fixed release keystore from GitHub secrets."
+
+      - name: Build update-test APK 2.5.0+452
+        run: |
+          pubspec_version=$(awk '/^version:/ {print $2}' pubspec.yaml)
+          if [ "$pubspec_version" != "2.5.2+454" ]; then
+            echo "pubspec version must stay 2.5.2+454" >&2
+            exit 1
+          fi
+          flutter build apk --release --build-name 2.5.0 --build-number 452
+          mv build/app/outputs/flutter-apk/app-release.apk alpha-update-test.apk
+          ./scripts/verify-android-release-signing.sh alpha-update-test.apk
+          sdk="${ANDROID_SDK_ROOT:-${ANDROID_HOME:-}}"
+          aapt_bin=$(find "$sdk" /opt/android-sdk "$HOME/android-sdk" -type f -name aapt -print 2>/dev/null | sort -V | tail -n 1)
+          if [ -z "$aapt_bin" ]; then
+            echo "Could not find aapt" >&2
+            exit 1
+          fi
+          badging=$("$aapt_bin" dump badging alpha-update-test.apk | sed -n 's/^package: //p' | head -n 1)
+          echo "Update-test package: $badging"
+          case "$badging" in
+            *"versionCode='45203'"*) ;;
+            *) echo "Expected versionCode 45203" >&2; exit 1 ;;
+          esac
+          case "$badging" in
+            *"versionName='2.5.0'"*) ;;
+            *) echo "Expected versionName 2.5.0" >&2; exit 1 ;;
+          esac
+
+      - name: Upload update-test APK artifact
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: alpha-update-test
+          path: alpha-update-test.apk
+          if-no-files-found: error
+          retention-days: 90
