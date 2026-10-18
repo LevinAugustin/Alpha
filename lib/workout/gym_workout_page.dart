@@ -8,6 +8,7 @@ import 'package:flexify/alpha/plates.dart';
 import 'package:flexify/alpha/set_notes.dart';
 import 'package:flexify/coach/api_key_store.dart';
 import 'package:flexify/coach/coach_client.dart';
+import 'package:flexify/database/catalog_seed.dart';
 import 'package:flexify/database/database.dart';
 import 'package:flexify/database/exercise_set_repository.dart';
 import 'package:flexify/exercises/exercise_detail_page.dart';
@@ -832,14 +833,45 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
         var query = '';
         return StatefulBuilder(
           builder: (context, setLocal) {
-            final matches = exercises
-                .where((exercise) {
-                  final haystack =
-                      '${exercise.name} ${exercise.germanName ?? ''} ${exercise.aliases ?? ''}'
-                          .toLowerCase();
-                  return haystack.contains(query.trim().toLowerCase());
-                })
-                .take(40);
+            final needle = query.trim();
+            final matches =
+                exercises
+                    .where(
+                      (exercise) => exerciseMatchesQuery(
+                        name: exercise.name,
+                        germanName: exercise.germanName,
+                        aliases: exercise.aliases,
+                        muscle: exercise.muscle,
+                        category: exercise.categoryName,
+                        equipment: exercise.equipment,
+                        mechanic: exercise.mechanic,
+                        primaryMuscles: exercise.primaryMuscles,
+                        secondaryMuscles: exercise.secondaryMuscles,
+                        movement: exercise.bewegung,
+                        query: needle,
+                      ),
+                    )
+                    .toList()
+                  ..sort(
+                    (a, b) => needle.isEmpty
+                        ? foldExerciseSearch(
+                            exerciseDisplayName(a.name, a.germanName),
+                          ).compareTo(
+                            foldExerciseSearch(
+                              exerciseDisplayName(b.name, b.germanName),
+                            ),
+                          )
+                        : compareExerciseSearch(
+                            query: needle,
+                            leftName: a.name,
+                            leftGermanName: a.germanName,
+                            leftAliases: a.aliases,
+                            rightName: b.name,
+                            rightGermanName: b.germanName,
+                            rightAliases: b.aliases,
+                          ),
+                  );
+            final shown = matches.take(40);
             return AlertDialog(
               title: Text(title ?? context.l10n.addExerciseWorkout),
               content: SizedBox(
@@ -857,7 +889,7 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
                     Expanded(
                       child: ListView(
                         children: [
-                          for (final exercise in matches)
+                          for (final exercise in shown)
                             ListTile(
                               title: Text(
                                 localizedExerciseName(

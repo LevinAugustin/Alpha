@@ -1379,50 +1379,111 @@ void main() {
     );
   });
 
-  test('search finds a synonym regardless of case', () async {
+  test('search ranks exact names and synonyms above substrings', () async {
     final raw = File('assets/exercises/exercises_de.json').readAsStringSync();
-    final rows = jsonDecode(raw) as List;
+    final decoded = jsonDecode(raw) as List;
     var synonyms = 0;
-    for (final row in rows) {
+    for (final row in decoded) {
       synonyms += ((row as Map)['synonyme'] as List).length;
     }
     expect(synonyms, 2248);
     final imported = await importExerciseCatalogJson(db, raw);
     expect(imported.skipped, isEmpty);
-    final exercise =
-        await (db.exercises.select()
-              ..where((row) => row.catalogId.equals('ueberzuege-kabel')))
-            .getSingle();
-    expect(exercise.germanName, 'Überzüge am Kabelzug');
-    expect(exercise.aliases, contains('Straight-Arm Lat Pulldown'));
-    for (final query in ['lat pulldown', 'LAT PULLDOWN', 'Lat Pulldown']) {
-      expect(
-        exerciseMatchesQuery(
-          name: exercise.name,
-          germanName: exercise.germanName,
-          aliases: exercise.aliases,
-          query: query,
-        ),
-        isTrue,
-      );
-      expect(
-        matchesExerciseFilters(
-          name: exercise.name,
-          germanName: exercise.germanName,
-          aliases: exercise.aliases,
-          query: query,
-        ),
-        isTrue,
-      );
+    final rows = await db.exercises.select().get();
+
+    List<String> ranked(String query) {
+      final matches =
+          rows
+              .where(
+                (exercise) => exerciseMatchesQuery(
+                  name: exercise.name,
+                  germanName: exercise.germanName,
+                  aliases: exercise.aliases,
+                  movement: exercise.bewegung,
+                  category: exercise.categoryName,
+                  query: query,
+                ),
+              )
+              .toList()
+            ..sort(
+              (a, b) => compareExerciseSearch(
+                query: query,
+                leftName: a.name,
+                leftGermanName: a.germanName,
+                leftAliases: a.aliases,
+                rightName: b.name,
+                rightGermanName: b.germanName,
+                rightAliases: b.aliases,
+              ),
+            );
+      return [
+        for (final exercise in matches)
+          if ((exercise.catalogId ?? '').isNotEmpty) exercise.catalogId!,
+      ];
     }
+
+    for (final query in [
+      'Lat Pulldown',
+      'lat pulldown',
+      'Pulldown',
+      'Latzug',
+      'Latziehen',
+    ]) {
+      expect(ranked(query).first, 'latziehen-breit', reason: query);
+    }
+    expect(ranked('straight arm pulldown').first, 'ueberzuege-kabel');
+
+    expect(ranked('Lat Pulldown').take(5), [
+      'latziehen-breit',
+      'latziehen-eng',
+      'latziehen-einarmig',
+      'ueberzuege-kabel',
+      'latziehen-untergriff',
+    ]);
+    final pulldown = ranked('Pulldown');
+    expect(pulldown.take(5), [
+      'latziehen-breit',
+      'ueberzuege-kabel',
+      'latziehen-eng',
+      'latziehen-einarmig',
+      'latziehen-untergriff',
+    ]);
+    expect(ranked('Latzug').take(5), [
+      'latziehen-breit',
+      'latziehen-eng',
+      'latziehen-untergriff',
+      'latziehen-nacken',
+      'latziehen-maschine',
+    ]);
+    final cable = pulldown.indexOf('ueberzuege-kabel');
+    final latziehen = [
+      for (var index = 0; index < pulldown.length; index++)
+        if (pulldown[index].startsWith('latziehen-')) index,
+    ];
+    expect(cable, greaterThan(pulldown.indexOf('latziehen-breit')));
+    expect(latziehen, contains(cable - 1));
+    expect(pulldown.skip(cable + 1), contains('latziehen-eng'));
+
     expect(
-      exerciseMatchesQuery(
-        name: exercise.name,
-        germanName: exercise.germanName,
+      exerciseSearchRank(
+        name: 'eigen-lat-pulldown',
+        germanName: 'Lat Pulldown',
         query: 'lat pulldown',
       ),
-      isFalse,
+      1,
     );
+    expect(
+      compareExerciseSearch(
+        query: 'lat pulldown',
+        leftName: 'eigen-lat-pulldown',
+        leftGermanName: 'Lat Pulldown',
+        rightName: 'latziehen-breit',
+        rightGermanName: 'Latziehen',
+        rightAliases: 'Lat Pulldown',
+      ),
+      lessThan(0),
+    );
+    expect(exerciseSearchRank(name: 'Überzüge', query: 'uberzuge'), 1);
   });
 
   test('legacy map entries can be extended and bad ones are skipped', () {

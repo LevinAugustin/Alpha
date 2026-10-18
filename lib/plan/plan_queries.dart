@@ -1,4 +1,5 @@
 import 'package:drift/drift.dart';
+import 'package:flexify/database/catalog_seed.dart';
 import 'package:flexify/database/database.dart';
 import 'package:flexify/main.dart';
 import 'package:flexify/plan/workout_sessions.dart';
@@ -61,11 +62,32 @@ List<PlanExerciseDraft> filterPlanExerciseDrafts(
   Iterable<PlanExerciseDraft> exercises,
   String search,
 ) {
-  final normalizedSearch = search.toLowerCase();
-  return [
+  if (search.trim().isEmpty) return exercises.toList();
+  final normalizedSearch = foldExerciseSearch(search);
+  final matches = [
     for (final exercise in exercises)
-      if (exercise.normalizedExerciseName.contains(normalizedSearch)) exercise,
+      if (exercise.normalizedExerciseName.contains(normalizedSearch) ||
+          exerciseSearchRank(
+                name: exercise.exerciseName,
+                germanName: exercise.germanName,
+                aliases: exercise.aliases,
+                query: search,
+              ) !=
+              null)
+        exercise,
   ];
+  matches.sort(
+    (left, right) => compareExerciseSearch(
+      query: search,
+      leftName: left.exerciseName,
+      leftGermanName: left.germanName,
+      leftAliases: left.aliases,
+      rightName: right.exerciseName,
+      rightGermanName: right.germanName,
+      rightAliases: right.aliases,
+    ),
+  );
+  return matches;
 }
 
 class PlanCount {

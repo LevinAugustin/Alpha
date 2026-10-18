@@ -58,19 +58,141 @@ bool exerciseMatchesQuery({
     }
     return false;
   }
-  final haystack = [
-    name,
-    germanName ?? '',
-    aliases ?? '',
-    muscle ?? '',
-    category ?? '',
-    equipment ?? '',
-    catalogText(mechanic) ?? '',
-    decodeCatalogList(primaryMuscles).join(' '),
-    decodeCatalogList(secondaryMuscles).join(' '),
-  ].join(' ').toLowerCase();
-  return _containsTerm(haystack, needle);
+  final haystack = foldExerciseSearch(
+    [
+      name,
+      germanName ?? '',
+      aliases ?? '',
+      muscle ?? '',
+      category ?? '',
+      equipment ?? '',
+      catalogText(mechanic) ?? '',
+      decodeCatalogList(primaryMuscles).join(' '),
+      decodeCatalogList(secondaryMuscles).join(' '),
+    ].join(' '),
+  );
+  return _containsTerm(haystack, foldExerciseSearch(query));
 }
+
+String exerciseDisplayName(String name, String? germanName) {
+  final german = (germanName ?? '').trim();
+  return german.isEmpty ? name : german;
+}
+
+int? exerciseSearchRank({
+  required String name,
+  String? germanName,
+  String? aliases,
+  required String query,
+}) {
+  final needle = foldExerciseSearch(query);
+  if (needle.isEmpty) return null;
+  var best = _rankText(
+    exerciseDisplayName(name, germanName),
+    needle,
+    nameField: true,
+  );
+  for (final synonym in decodeCatalogList(aliases)) {
+    final rank = _rankText(synonym, needle, nameField: false);
+    if (rank == null) continue;
+    if (best == null || rank < best) best = rank;
+  }
+  return best;
+}
+
+int compareExerciseSearch({
+  required String query,
+  required String leftName,
+  String? leftGermanName,
+  String? leftAliases,
+  required String rightName,
+  String? rightGermanName,
+  String? rightAliases,
+}) {
+  final left = _searchOrder(query, leftName, leftGermanName, leftAliases);
+  final right = _searchOrder(query, rightName, rightGermanName, rightAliases);
+  final byRank = left.rank.compareTo(right.rank);
+  if (byRank != 0) return byRank;
+  if (left.matched && right.matched) {
+    final byLength = left.length.compareTo(right.length);
+    if (byLength != 0) return byLength;
+  }
+  return left.alpha.compareTo(right.alpha);
+}
+
+String foldExerciseSearch(String value) {
+  final buffer = StringBuffer();
+  for (final rune in value.trim().toLowerCase().runes) {
+    buffer.write(_foldedLetters[rune] ?? String.fromCharCode(rune));
+  }
+  return buffer.toString();
+}
+
+({int rank, bool matched, int length, String alpha}) _searchOrder(
+  String query,
+  String name,
+  String? germanName,
+  String? aliases,
+) {
+  final label = foldExerciseSearch(exerciseDisplayName(name, germanName));
+  final rank = exerciseSearchRank(
+    name: name,
+    germanName: germanName,
+    aliases: aliases,
+    query: query,
+  );
+  return (
+    rank: rank ?? 7,
+    matched: rank != null,
+    length: label.length,
+    alpha: label,
+  );
+}
+
+int? _rankText(String text, String needle, {required bool nameField}) {
+  final folded = foldExerciseSearch(text);
+  if (folded.isEmpty || needle.isEmpty) return null;
+  if (folded == needle) return nameField ? 1 : 2;
+  if (folded.startsWith(needle)) return nameField ? 3 : 4;
+  if (RegExp('(?<![0-9a-z])${RegExp.escape(needle)}').hasMatch(folded)) {
+    return 5;
+  }
+  if (folded.contains(needle)) return 6;
+  return null;
+}
+
+const _foldedLetters = <int, String>{
+  0xe0: 'a',
+  0xe1: 'a',
+  0xe2: 'a',
+  0xe3: 'a',
+  0xe4: 'a',
+  0xe5: 'a',
+  0xe6: 'ae',
+  0xe7: 'c',
+  0xe8: 'e',
+  0xe9: 'e',
+  0xea: 'e',
+  0xeb: 'e',
+  0xec: 'i',
+  0xed: 'i',
+  0xee: 'i',
+  0xef: 'i',
+  0xf1: 'n',
+  0xf2: 'o',
+  0xf3: 'o',
+  0xf4: 'o',
+  0xf5: 'o',
+  0xf6: 'o',
+  0xf8: 'o',
+  0xf9: 'u',
+  0xfa: 'u',
+  0xfb: 'u',
+  0xfc: 'u',
+  0xfd: 'y',
+  0xff: 'y',
+  0xdf: 'ss',
+};
 
 bool matchesExerciseFilters({
   required String name,

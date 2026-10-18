@@ -202,9 +202,25 @@ class _ExercisesPageState extends State<ExercisesPage> {
                       motionFilter: _motion,
                     );
                   }).toList()..sort((a, b) {
-                    final left = (a.germanName ?? a.name).toLowerCase();
-                    final right = (b.germanName ?? b.name).toLowerCase();
-                    return left.compareTo(right);
+                    final queryText = query.trim();
+                    if (queryText.isEmpty) {
+                      return foldExerciseSearch(
+                        exerciseDisplayName(a.name, a.germanName),
+                      ).compareTo(
+                        foldExerciseSearch(
+                          exerciseDisplayName(b.name, b.germanName),
+                        ),
+                      );
+                    }
+                    return compareExerciseSearch(
+                      query: queryText,
+                      leftName: a.name,
+                      leftGermanName: a.germanName,
+                      leftAliases: a.aliases,
+                      rightName: b.name,
+                      rightGermanName: b.germanName,
+                      rightAliases: b.aliases,
+                    );
                   });
               return ListView.builder(
                 key: const Key('exercise-results'),
