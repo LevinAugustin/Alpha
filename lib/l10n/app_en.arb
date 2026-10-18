@@ -2066,7 +2066,7 @@
   "@calendarTitle": {
     "description": "Title of the training calendar."
   },
-  "dayStreak": "{count} days in a row",
+  "dayStreak": "{count, plural, =1{1 day in a row} other{{count} days in a row}}",
   "@dayStreak": {
     "description": "Current streak of consecutive training days.",
     "placeholders": {
@@ -2075,7 +2075,7 @@
       }
     }
   },
-  "weekStreak": "{count} weeks in a row",
+  "weekStreak": "{count, plural, =1{1 week in a row} other{{count} weeks in a row}}",
   "@weekStreak": {
     "description": "Current streak of consecutive training weeks.",
     "placeholders": {
@@ -2376,5 +2376,658 @@
   "alphaSettingsDescription": "Profiles, theme and rest sound",
   "@alphaSettingsDescription":   {
     "description": "Description of the Alpha settings."
+  },
+  "finishWorkoutAsk": "Finish this workout?",
+  "@finishWorkoutAsk":   {
+    "description": "Finish this workout?"
+  },
+  "finishWorkoutBody": "The session is saved and the template stays unchanged.",
+  "@finishWorkoutBody":   {
+    "description": "The session is saved and the template stays unchanged."
+  },
+  "discardWorkoutAsk": "Discard this workout?",
+  "@discardWorkoutAsk":   {
+    "description": "Discard this workout?"
+  },
+  "discardWorkoutBody": "Logged sets from this session are deleted.",
+  "@discardWorkoutBody":   {
+    "description": "Logged sets from this session are deleted."
+  },
+  "noRest": "No rest",
+  "@noRest":   {
+    "description": "No rest"
+  },
+  "restWheelTitle": "Rest",
+  "@restWheelTitle":   {
+    "description": "Rest"
+  },
+  "deleteTemplateAsk": "Delete this template?",
+  "@deleteTemplateAsk":   {
+    "description": "Delete this template?"
+  },
+  "deleteTemplateBody": "Delete “{name}”? Logged workouts stay.",
+  "@deleteTemplateBody":   {
+    "description": "Delete “{name}”? Logged workouts stay.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "warmupAction": "Warm up",
+  "@warmupAction":   {
+    "description": "Warm up"
+  },
+  "warmupMark": "W",
+  "@warmupMark":   {
+    "description": "W"
+  },
+  "confirmAddExercise": "Add exercise",
+  "@confirmAddExercise":   {
+    "description": "Add exercise"
+  },
+  "tabOverview": "Overview",
+  "@tabOverview":   {
+    "description": "Overview"
+  },
+  "tabHistory": "History",
+  "@tabHistory":   {
+    "description": "History"
+  },
+  "tabHowTo": "How to",
+  "@tabHowTo":   {
+    "description": "How to"
+  },
+  "primaryMuscleLabel": "Primary muscle",
+  "@primaryMuscleLabel":   {
+    "description": "Primary muscle"
+  },
+  "secondaryMuscleLabel": "Secondary muscles",
+  "@secondaryMuscleLabel":   {
+    "description": "Secondary muscles"
+  },
+  "equipmentLabel": "Equipment",
+  "@equipmentLabel":   {
+    "description": "Equipment"
+  },
+  "heaviestWeight": "Heaviest weight",
+  "@heaviestWeight":   {
+    "description": "Heaviest weight"
+  },
+  "estimatedOneRm": "Estimated 1RM",
+  "@estimatedOneRm":   {
+    "description": "Estimated 1RM"
+  },
+  "volumeChart": "Training volume",
+  "@volumeChart":   {
+    "description": "Training volume"
+  },
+  "recordsTitle": "Records",
+  "@recordsTitle":   {
+    "description": "Records"
+  },
+  "weekGoal": "Week goal",
+  "@weekGoal":   {
+    "description": "Week goal"
+  },
+  "weekGoalProgress": "{done} of {goal}",
+  "@weekGoalProgress":   {
+    "description": "{done} of {goal}",
+    "placeholders": {
+      "done": {
+        "type": "int"
+      },
+      "goal": {
+        "type": "int"
+      }
+    }
+  },
+  "startWorkoutNamed": "Start workout · {name}",
+  "@startWorkoutNamed":   {
+    "description": "Start workout · {name}",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "musclesThisWeek": "Muscles this week",
+  "@musclesThisWeek":   {
+    "description": "Muscles this week"
+  },
+  "progressHeading": "Progress",
+  "@progressHeading":   {
+    "description": "Progress"
+  },
+  "lastEightWeeks": "Last eight weeks",
+  "@lastEightWeeks":   {
+    "description": "Last eight weeks"
+  },
+  "chooseProfile": "Choose a profile",
+  "@chooseProfile":   {
+    "description": "Choose a profile"
+  },
+  "createProfileAction": "Create profile",
+  "@createProfileAction":   {
+    "description": "Create profile"
+  },
+  "plateCalculator": "Plate calculator",
+  "@plateCalculator":   {
+    "description": "Plate calculator"
+  },
+  "barbellCalc": "Barbell",
+  "@barbellCalc":   {
+    "description": "Barbell"
+  },
+  "cableCalc": "Cable stack",
+  "@cableCalc":   {
+    "description": "Cable stack"
+  },
+  "extraWeight": "Extra weight",
+  "@extraWeight":   {
+    "description": "Extra weight"
+  },
+  "barWeightLabel": "Bar weight",
+  "@barWeightLabel":   {
+    "description": "Bar weight"
+  },
+  "plateSetLabel": "Plates per side",
+  "@plateSetLabel":   {
+    "description": "Plates per side"
+  },
+  "cableStepLabel": "Stack step",
+  "@cableStepLabel":   {
+    "description": "Stack step"
+  },
+  "chooseGym": "Choose a gym",
+  "@chooseGym":   {
+    "description": "Choose a gym"
+  },
+  "gymsTitle": "Gyms",
+  "@gymsTitle":   {
+    "description": "Gyms"
+  },
+  "newGym": "New gym",
+  "@newGym":   {
+    "description": "New gym"
+  },
+  "progressionHelp": "Progression help",
+  "@progressionHelp":   {
+    "description": "Progression help"
+  },
+  "progressionAsk": "{name}: next time {weight} kg, starting again at {reps} reps?",
+  "@progressionAsk":   {
+    "description": "{name}: next time {weight} kg, starting again at {reps} reps?",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "weight": {
+        "type": "String"
+      },
+      "reps": {
+        "type": "int"
+      }
+    }
+  },
+  "actionAccept": "Accept",
+  "@actionAccept":   {
+    "description": "Accept"
+  },
+  "actionReject": "Reject",
+  "@actionReject":   {
+    "description": "Reject"
+  },
+  "importExportTitle": "Import and export data",
+  "@importExportTitle":   {
+    "description": "Import and export data"
+  },
+  "importWorkouts": "Import workouts",
+  "@importWorkouts":   {
+    "description": "Import workouts"
+  },
+  "importMeasurements": "Import measurements",
+  "@importMeasurements":   {
+    "description": "Import measurements"
+  },
+  "exportAlphaData": "Export Alpha data",
+  "@exportAlphaData":   {
+    "description": "Export Alpha data"
+  },
+  "importPreviewTitle": "Import preview",
+  "@importPreviewTitle":   {
+    "description": "Import preview"
+  },
+  "importSummary": "{workouts} workouts, {exercises} exercises",
+  "@importSummary":   {
+    "description": "{workouts} workouts, {exercises} exercises",
+    "placeholders": {
+      "workouts": {
+        "type": "int"
+      },
+      "exercises": {
+        "type": "int"
+      }
+    }
+  },
+  "templatesDetected": "Detected templates",
+  "@templatesDetected":   {
+    "description": "Detected templates"
+  },
+  "renameLabel": "Rename",
+  "@renameLabel":   {
+    "description": "Rename"
+  },
+  "mapExercise": "Match exercise",
+  "@mapExercise":   {
+    "description": "Match exercise"
+  },
+  "checkForUpdates": "Check for updates",
+  "@checkForUpdates":   {
+    "description": "Check for updates"
+  },
+  "upToDate": "You are up to date",
+  "@upToDate":   {
+    "description": "You are up to date"
+  },
+  "updateCheckFailed": "The update check failed",
+  "@updateCheckFailed":   {
+    "description": "The update check failed"
+  },
+  "licensesTitle": "Licenses",
+  "@licensesTitle":   {
+    "description": "Licenses"
+  },
+  "flexifyMitNotice": "Flexify is published under the MIT license. Copyright Brandon Dick.",
+  "@flexifyMitNotice":   {
+    "description": "Flexify is published under the MIT license. Copyright Brandon Dick."
+  },
+  "exerciseDbNotice": "Each exercise lists its own source and license.",
+  "@exerciseDbNotice":   {
+    "description": "Each exercise lists its own source and license."
+  },
+  "sourceLabel": "Source",
+  "@sourceLabel": {
+    "description": "Source"
+  },
+  "tipsLabel": "Tips",
+  "@tipsLabel": {
+    "description": "Tips"
+  },
+  "imageSourceLabel": "Image source",
+  "@imageSourceLabel": {
+    "description": "Image source"
+  },
+  "imageLicenseLabel": "Image license",
+  "@imageLicenseLabel": {
+    "description": "Image license"
+  },
+  "muscleUpperChest": "Upper chest",
+  "@muscleUpperChest": {
+    "description": "Upper chest"
+  },
+  "muscleFrontShoulder": "Front shoulder",
+  "@muscleFrontShoulder": {
+    "description": "Front shoulder"
+  },
+  "muscleSideShoulder": "Side shoulder",
+  "@muscleSideShoulder": {
+    "description": "Side shoulder"
+  },
+  "muscleRearShoulder": "Rear shoulder",
+  "@muscleRearShoulder": {
+    "description": "Rear shoulder"
+  },
+  "muscleLatissimus": "Lats",
+  "@muscleLatissimus": {
+    "description": "Lats"
+  },
+  "muscleUpperBack": "Upper back",
+  "@muscleUpperBack": {
+    "description": "Upper back"
+  },
+  "muscleTrapez": "Traps and neck",
+  "@muscleTrapez": {
+    "description": "Traps and neck"
+  },
+  "muscleLowerBack": "Lower back",
+  "@muscleLowerBack": {
+    "description": "Lower back"
+  },
+  "muscleForearms": "Forearms",
+  "@muscleForearms": {
+    "description": "Forearms"
+  },
+  "muscleRectus": "Rectus abdominis",
+  "@muscleRectus": {
+    "description": "Rectus abdominis"
+  },
+  "muscleObliques": "Obliques",
+  "@muscleObliques": {
+    "description": "Obliques"
+  },
+  "muscleQuadriceps": "Quadriceps",
+  "@muscleQuadriceps": {
+    "description": "Quadriceps"
+  },
+  "muscleAdductors": "Adductors",
+  "@muscleAdductors": {
+    "description": "Adductors"
+  },
+  "muscleAbductors": "Abductors",
+  "@muscleAbductors": {
+    "description": "Abductors"
+  },
+  "muscleHipFlexors": "Hip flexors",
+  "@muscleHipFlexors": {
+    "description": "Hip flexors"
+  },
+  "alternativesLabel": "Alternatives",
+  "@alternativesLabel": {
+    "description": "Alternatives"
+  },
+  "mechanicLabel": "Mechanic",
+  "@mechanicLabel": {
+    "description": "Mechanic"
+  },
+
+  "aiCoachTitle": "AI coach",
+  "@aiCoachTitle":   {
+    "description": "AI coach"
+  },
+  "aiProviderLabel": "Provider",
+  "@aiProviderLabel":   {
+    "description": "Provider"
+  },
+  "aiOffNotice": "The coach stays off until you save your own key.",
+  "@aiOffNotice":   {
+    "description": "The coach stays off until you save your own key."
+  },
+  "coachHint": "Ask your coach",
+  "@coachHint":   {
+    "description": "Ask your coach"
+  },
+  "voiceInput": "Voice input",
+  "@voiceInput":   {
+    "description": "Voice input"
+  },
+  "voiceUnderstood": "Understood: {text}",
+  "@voiceUnderstood":   {
+    "description": "Understood: {text}",
+    "placeholders": {
+      "text": {
+        "type": "String"
+      }
+    }
+  },
+  "speechFailed": "Speech input failed",
+  "@speechFailed":   {
+    "description": "Speech input failed"
+  },
+  "confirmVoiceSet": "Apply this set?",
+  "@confirmVoiceSet":   {
+    "description": "Apply this set?"
+  },
+  "periodSession": "This workout",
+  "@periodSession":   {
+    "description": "This workout"
+  },
+  "muscleMapTitle": "Muscle map",
+  "@muscleMapTitle":   {
+    "description": "Muscle map"
+  },
+  "frontView": "Front",
+  "@frontView":   {
+    "description": "Front"
+  },
+  "backView": "Back",
+  "@backView":   {
+    "description": "Back"
+  },
+  "quoteKeepGoing": "{done} of {goal} sessions this week. Keep going.",
+  "@quoteKeepGoing":   {
+    "description": "{done} of {goal} sessions this week. Keep going.",
+    "placeholders": {
+      "done": {
+        "type": "int"
+      },
+      "goal": {
+        "type": "int"
+      }
+    }
+  },
+  "quoteRemaining": "{count} sessions left this week.",
+  "@quoteRemaining":   {
+    "description": "{count} sessions left this week.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "quotePullDay": "Pull day. Back and biceps are ready.",
+  "@quotePullDay":   {
+    "description": "Pull day. Back and biceps are ready."
+  },
+  "quotePushDay": "Push day. Chest, shoulders and triceps.",
+  "@quotePushDay":   {
+    "description": "Push day. Chest, shoulders and triceps."
+  },
+  "quoteLegDay": "Leg day. Quads, hamstrings and glutes.",
+  "@quoteLegDay":   {
+    "description": "Leg day. Quads, hamstrings and glutes."
+  },
+  "versionAndLicenses": "Version {version} · Licenses",
+  "@versionAndLicenses":   {
+    "description": "Version {version} · Licenses",
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "liveWorkoutLabel": "Workout in progress",
+  "@liveWorkoutLabel":   {
+    "description": "Workout in progress"
+  },
+  "muscleChest": "Chest",
+  "@muscleChest":   {
+    "description": "Chest"
+  },
+  "muscleShoulders": "Shoulders",
+  "@muscleShoulders":   {
+    "description": "Shoulders"
+  },
+  "muscleBiceps": "Biceps",
+  "@muscleBiceps":   {
+    "description": "Biceps"
+  },
+  "muscleTriceps": "Triceps",
+  "@muscleTriceps":   {
+    "description": "Triceps"
+  },
+  "muscleAbs": "Abs",
+  "@muscleAbs":   {
+    "description": "Abs"
+  },
+  "muscleQuads": "Quads",
+  "@muscleQuads":   {
+    "description": "Quads"
+  },
+  "muscleCalves": "Calves",
+  "@muscleCalves":   {
+    "description": "Calves"
+  },
+  "muscleTraps": "Traps",
+  "@muscleTraps":   {
+    "description": "Traps"
+  },
+  "muscleBack": "Back",
+  "@muscleBack":   {
+    "description": "Back"
+  },
+  "muscleGlutes": "Glutes",
+  "@muscleGlutes":   {
+    "description": "Glutes"
+  },
+  "muscleHams": "Hamstrings",
+  "@muscleHams":   {
+    "description": "Hamstrings"
+  },
+  "weekGoalManual": "Set the week goal yourself",
+  "@weekGoalManual":   {
+    "description": "Set the week goal yourself"
+  },
+  "sessionsPerWeek": "Sessions per week",
+  "@sessionsPerWeek":   {
+    "description": "Sessions per week"
+  },
+  "gymNameHint": "Gym name",
+  "@gymNameHint":   {
+    "description": "Gym name"
+  },
+  "coachProfileNote": "Note from your coach",
+  "@coachProfileNote":   {
+    "description": "Note from your coach"
+  },
+  "openPackageLicenses": "Open package licenses",
+  "@openPackageLicenses":   {
+    "description": "Open package licenses"
+  },
+  "lengthUnitLabel": "Body length",
+  "@lengthUnitLabel":   {
+    "description": "Body length"
+  },
+  "centimetersShort": "Centimetres (cm)",
+  "@centimetersShort":   {
+    "description": "Centimetres (cm)"
+  },
+  "inchesShort": "Inches (in)",
+  "@inchesShort":   {
+    "description": "Inches (in)"
+  },
+  "heightInches": "Height (in)",
+  "@heightInches":   {
+    "description": "Height (in)"
+  },
+  "welcomeToAlpha": "Welcome to Alpha",
+  "@welcomeToAlpha": {
+    "description": "Welcome to Alpha"
+  },
+  "createProfileButton": "Create profile",
+  "@createProfileButton": {
+    "description": "Create profile"
+  },
+  "onboardingWeightHint": "Body weight, optional",
+  "@onboardingWeightHint": {
+    "description": "Body weight, optional"
+  },
+  "familyLabel": "Family",
+  "@familyLabel": {
+    "description": "Label for an exercise family."
+  },
+  "gripLabel": "Grip",
+  "@gripLabel": {
+    "description": "Label for grip."
+  },
+  "positionLabel": "Position",
+  "@positionLabel": {
+    "description": "Label for body position."
+  },
+  "movementLabel": "Movement",
+  "@movementLabel": {
+    "description": "Label for an exercise movement pattern."
+  },
+  "unilateralLabel": "Each side",
+  "@unilateralLabel": {
+    "description": "Label for a per-side exercise."
+  },
+  "otherVariants": "Other variants",
+  "@otherVariants": {
+    "description": "Heading for other exercises in the same family."
+  },
+  "sideLeft": "Left",
+  "@sideLeft": {
+    "description": "Left side of a unilateral set."
+  },
+  "sideRight": "Right",
+  "@sideRight": {
+    "description": "Right side of a unilateral set."
+  },
+  "createCustomExercise": "Create exercise",
+  "@createCustomExercise": {
+    "description": "Action for creating a custom exercise."
+  },
+  "editCustomExercise": "Edit exercise",
+  "@editCustomExercise": {
+    "description": "Action for editing a custom exercise."
+  },
+  "deleteCustomExercise": "Delete exercise",
+  "@deleteCustomExercise": {
+    "description": "Action for deleting a custom exercise."
+  },
+  "deleteCustomExerciseBody": "Delete this exercise? Past workouts stay in the history.",
+  "@deleteCustomExerciseBody": {
+    "description": "Confirmation that deleting a custom exercise keeps history."
+  },
+  "customExerciseName": "Name",
+  "@customExerciseName": {
+    "description": "Name field for a custom exercise."
+  },
+  "customExerciseFamily": "Family id",
+  "@customExerciseFamily": {
+    "description": "Optional family id field."
+  },
+  "createAsCustomExercise": "Create as custom exercise",
+  "@createAsCustomExercise": {
+    "description": "Import action that creates a custom exercise."
+  },
+  "customExerciseInvalid": "Choose a name, muscles and gear.",
+  "@customExerciseInvalid": {
+    "description": "Shown when a custom exercise form is incomplete."
+  },
+  "motionPress": "Press",
+  "@motionPress": {
+    "description": "Label for a pressing movement."
+  },
+  "motionPull": "Pull",
+  "@motionPull": {
+    "description": "Label for a pulling movement."
+  },
+  "motionLegs": "Legs/hips",
+  "@motionLegs": {
+    "description": "Label for a legs and hips movement."
+  },
+  "motionCore": "Core",
+  "@motionCore": {
+    "description": "Label for a core movement."
+  },
+  "motionCardio": "Cardio",
+  "@motionCardio": {
+    "description": "Label for a cardio movement."
+  },
+  "mechanicCompound": "Compound",
+  "@mechanicCompound": {
+    "description": "Label for a compound exercise."
+  },
+  "mechanicIsolation": "Isolation",
+  "@mechanicIsolation": {
+    "description": "Label for an isolation exercise."
+  },
+  "ownExerciseSource": "Custom exercise",
+  "@ownExerciseSource": {
+    "description": "Source line for an exercise the user created."
+  },
+  "notSpecified": "–",
+  "@notSpecified": {
+    "description": "Shown when grip or body position is not set."
+  },
+  "resumeWorkout": "Resume workout",
+  "@resumeWorkout": {
+    "description": "Button that returns to the workout already in progress."
+  },
+  "importBackupZip": "Import backup (.zip)",
+  "@importBackupZip": {
+    "description": "Imports a Flexify or Alpha zip backup."
   }
 }

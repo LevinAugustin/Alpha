@@ -1,0 +1,1674 @@
+{
+  "hinweis": "Alte Seed-Namen ohne Ziel-ID in flexify_mapping.json. status entfernt = bewusst ohne Entsprechung (Dehnübung, Strongman ...), offen = Block noch nicht bearbeitet.",
+  "anzahl_seed": 920,
+  "eintraege": [
+    {
+      "seed_name": "90/90 Hamstring",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "90_90_Hamstring"
+    },
+    {
+      "seed_name": "Adductor",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Adductor"
+    },
+    {
+      "seed_name": "Adductor/Groin",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Adductor_Groin"
+    },
+    {
+      "seed_name": "All Fours Quad Stretch",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "All_Fours_Quad_Stretch"
+    },
+    {
+      "seed_name": "Alternate Leg Diagonal Bound",
+      "status": "entfernt",
+      "grund": "Plyometrie (Sprungkraft)",
+      "src_id": "Alternate_Leg_Diagonal_Bound"
+    },
+    {
+      "seed_name": "Alternating Hang Clean",
+      "status": "entfernt",
+      "grund": "Kettlebell-Sport (olympisch)",
+      "src_id": "Alternating_Hang_Clean"
+    },
+    {
+      "seed_name": "Ankle Circles",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Ankle_Circles"
+    },
+    {
+      "seed_name": "Ankle On The Knee",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Ankle_On_The_Knee"
+    },
+    {
+      "seed_name": "Anterior Tibialis-SMR",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Anterior_Tibialis-SMR"
+    },
+    {
+      "seed_name": "Anti-Gravity Press",
+      "status": "entfernt",
+      "grund": "Exotisch",
+      "src_id": "Anti-Gravity_Press"
+    },
+    {
+      "seed_name": "Arm Circles",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Arm_Circles"
+    },
+    {
+      "seed_name": "Atlas Stone Trainer",
+      "status": "entfernt",
+      "grund": "Strongman",
+      "src_id": "Atlas_Stone_Trainer"
+    },
+    {
+      "seed_name": "Atlas Stones",
+      "status": "entfernt",
+      "grund": "Strongman",
+      "src_id": "Atlas_Stones"
+    },
+    {
+      "seed_name": "Axle Deadlift",
+      "status": "entfernt",
+      "grund": "Strongman",
+      "src_id": "Axle_Deadlift"
+    },
+    {
+      "seed_name": "Backward Medicine Ball Throw",
+      "status": "entfernt",
+      "grund": "Plyometrie mit Medizinball",
+      "src_id": "Backward_Medicine_Ball_Throw"
+    },
+    {
+      "seed_name": "Balance Board",
+      "status": "entfernt",
+      "grund": "Spezialgerät (Balance Board)",
+      "src_id": "Balance_Board"
+    },
+    {
+      "seed_name": "Ball Leg Curl",
+      "status": "entfernt",
+      "grund": "Spezialgerät (Gymnastikball)",
+      "src_id": "Ball_Leg_Curl"
+    },
+    {
+      "seed_name": "Barbell Incline Shoulder Raise",
+      "status": "entfernt",
+      "grund": "Exotisch (Serratus-Übung)",
+      "src_id": "Barbell_Incline_Shoulder_Raise"
+    },
+    {
+      "seed_name": "Behind Head Chest Stretch",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Behind_Head_Chest_Stretch"
+    },
+    {
+      "seed_name": "Bench Jump",
+      "status": "entfernt",
+      "grund": "Plyometrie (Sprungkraft)",
+      "src_id": "Bench_Jump"
+    },
+    {
+      "seed_name": "Bench Sprint",
+      "status": "entfernt",
+      "grund": "Plyometrie (Sprungkraft)",
+      "src_id": "Bench_Sprint"
+    },
+    {
+      "seed_name": "Bodyweight Flyes",
+      "status": "entfernt",
+      "grund": "Exotisch (Fliegende rollend mit Stangen)",
+      "src_id": "Bodyweight_Flyes"
+    },
+    {
+      "seed_name": "Bottoms-Up Clean From The Hang Position",
+      "status": "entfernt",
+      "grund": "Kettlebell-Sport (olympisch)",
+      "src_id": "Bottoms-Up_Clean_From_The_Hang_Position"
+    },
+    {
+      "seed_name": "Box Jump (Multiple Response)",
+      "status": "entfernt",
+      "grund": "Plyometrie (Sprungkraft)",
+      "src_id": "Box_Jump_Multiple_Response"
+    },
+    {
+      "seed_name": "Box Skip",
+      "status": "entfernt",
+      "grund": "Plyometrie (Sprungkraft)",
+      "src_id": "Box_Skip"
+    },
+    {
+      "seed_name": "Box Squat with Bands",
+      "status": "entfernt",
+      "grund": "Powerlifting-Spezialvariante (Bänder)",
+      "src_id": "Box_Squat_with_Bands"
+    },
+    {
+      "seed_name": "Box Squat with Chains",
+      "status": "entfernt",
+      "grund": "Spezialgerät (Ketten)",
+      "src_id": "Box_Squat_with_Chains"
+    },
+    {
+      "seed_name": "Brachialis-SMR",
+      "status": "entfernt",
+      "grund": "Faszienrolle (Mobility)",
+      "src_id": "Brachialis-SMR"
+    },
+    {
+      "seed_name": "Cable Iron Cross",
+      "status": "entfernt",
+      "grund": "Exotisch",
+      "src_id": "Cable_Iron_Cross"
+    },
+    {
+      "seed_name": "Calf Stretch Elbows Against Wall",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Calf_Stretch_Elbows_Against_Wall"
+    },
+    {
+      "seed_name": "Calf Stretch Hands Against Wall",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Calf_Stretch_Hands_Against_Wall"
+    },
+    {
+      "seed_name": "Calves-SMR",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Calves-SMR"
+    },
+    {
+      "seed_name": "Car Deadlift",
+      "status": "entfernt",
+      "grund": "Strongman",
+      "src_id": "Car_Deadlift"
+    },
+    {
+      "seed_name": "Car Drivers",
+      "status": "entfernt",
+      "grund": "Exotisch (Hantelscheibe)",
+      "src_id": "Car_Drivers"
+    },
+    {
+      "seed_name": "Carioca Quick Step",
+      "status": "entfernt",
+      "grund": "Plyometrie (Sprungkraft)",
+      "src_id": "Carioca_Quick_Step"
+    },
+    {
+      "seed_name": "Cat Stretch",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Cat_Stretch"
+    },
+    {
+      "seed_name": "Catch and Overhead Throw",
+      "status": "entfernt",
+      "grund": "Plyometrie mit Medizinball",
+      "src_id": "Catch_and_Overhead_Throw"
+    },
+    {
+      "seed_name": "Chain Press",
+      "status": "entfernt",
+      "grund": "Spezialgerät (Ketten)",
+      "src_id": "Chain_Press"
+    },
+    {
+      "seed_name": "Chair Leg Extended Stretch",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Chair_Leg_Extended_Stretch"
+    },
+    {
+      "seed_name": "Chair Lower Back Stretch",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Chair_Lower_Back_Stretch"
+    },
+    {
+      "seed_name": "Chair Upper Body Stretch",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Chair_Upper_Body_Stretch"
+    },
+    {
+      "seed_name": "Chest And Front Of Shoulder Stretch",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Chest_And_Front_Of_Shoulder_Stretch"
+    },
+    {
+      "seed_name": "Chest Push from 3 point stance",
+      "status": "entfernt",
+      "grund": "Plyometrie mit Medizinball",
+      "src_id": "Chest_Push_from_3_point_stance"
+    },
+    {
+      "seed_name": "Chest Push (multiple response)",
+      "status": "entfernt",
+      "grund": "Plyometrie mit Medizinball",
+      "src_id": "Chest_Push_multiple_response"
+    },
+    {
+      "seed_name": "Chest Push (single response)",
+      "status": "entfernt",
+      "grund": "Plyometrie mit Medizinball",
+      "src_id": "Chest_Push_single_response"
+    },
+    {
+      "seed_name": "Chest Push with Run Release",
+      "status": "entfernt",
+      "grund": "Plyometrie mit Medizinball",
+      "src_id": "Chest_Push_with_Run_Release"
+    },
+    {
+      "seed_name": "Chest Stretch on Stability Ball",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Chest_Stretch_on_Stability_Ball"
+    },
+    {
+      "seed_name": "Child's Pose",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Childs_Pose"
+    },
+    {
+      "seed_name": "Chin To Chest Stretch",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Chin_To_Chest_Stretch"
+    },
+    {
+      "seed_name": "Circus Bell",
+      "status": "entfernt",
+      "grund": "Strongman",
+      "src_id": "Circus_Bell"
+    },
+    {
+      "seed_name": "Clean",
+      "status": "entfernt",
+      "grund": "Olympisches Gewichtheben",
+      "src_id": "Clean"
+    },
+    {
+      "seed_name": "Clean Deadlift",
+      "status": "entfernt",
+      "grund": "Olympisches Gewichtheben",
+      "src_id": "Clean_Deadlift"
+    },
+    {
+      "seed_name": "Clean Pull",
+      "status": "entfernt",
+      "grund": "Olympisches Gewichtheben",
+      "src_id": "Clean_Pull"
+    },
+    {
+      "seed_name": "Clean and Jerk",
+      "status": "entfernt",
+      "grund": "Olympisches Gewichtheben",
+      "src_id": "Clean_and_Jerk"
+    },
+    {
+      "seed_name": "Clean from Blocks",
+      "status": "entfernt",
+      "grund": "Olympisches Gewichtheben",
+      "src_id": "Clean_from_Blocks"
+    },
+    {
+      "seed_name": "Conan's Wheel",
+      "status": "entfernt",
+      "grund": "Strongman",
+      "src_id": "Conans_Wheel"
+    },
+    {
+      "seed_name": "Crossover Reverse Lunge",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Crossover_Reverse_Lunge"
+    },
+    {
+      "seed_name": "Crucifix",
+      "status": "entfernt",
+      "grund": "Strongman",
+      "src_id": "Crucifix"
+    },
+    {
+      "seed_name": "Dancer's Stretch",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Dancers_Stretch"
+    },
+    {
+      "seed_name": "Depth Jump Leap",
+      "status": "entfernt",
+      "grund": "Plyometrie (Sprungkraft)",
+      "src_id": "Depth_Jump_Leap"
+    },
+    {
+      "seed_name": "Double Kettlebell Alternating Hang Clean",
+      "status": "entfernt",
+      "grund": "Kettlebell-Sport (olympisch)",
+      "src_id": "Double_Kettlebell_Alternating_Hang_Clean"
+    },
+    {
+      "seed_name": "Double Kettlebell Jerk",
+      "status": "entfernt",
+      "grund": "Kettlebell-Sport (olympisch)",
+      "src_id": "Double_Kettlebell_Jerk"
+    },
+    {
+      "seed_name": "Double Kettlebell Snatch",
+      "status": "entfernt",
+      "grund": "Kettlebell-Sport (olympisch)",
+      "src_id": "Double_Kettlebell_Snatch"
+    },
+    {
+      "seed_name": "Double Leg Butt Kick",
+      "status": "entfernt",
+      "grund": "Plyometrie (Sprungkraft)",
+      "src_id": "Double_Leg_Butt_Kick"
+    },
+    {
+      "seed_name": "Downward Facing Balance",
+      "status": "entfernt",
+      "grund": "Spezialgerät (Gymnastikball)",
+      "src_id": "Downward_Facing_Balance"
+    },
+    {
+      "seed_name": "Drop Push",
+      "status": "entfernt",
+      "grund": "Plyometrie (Sprungkraft)",
+      "src_id": "Drop_Push"
+    },
+    {
+      "seed_name": "Dumbbell Clean",
+      "status": "entfernt",
+      "grund": "Olympisches Gewichtheben",
+      "src_id": "Dumbbell_Clean"
+    },
+    {
+      "seed_name": "Dumbbell Incline Shoulder Raise",
+      "status": "entfernt",
+      "grund": "Exotisch (Serratus-Übung)",
+      "src_id": "Dumbbell_Incline_Shoulder_Raise"
+    },
+    {
+      "seed_name": "Dumbbell Seated Box Jump",
+      "status": "entfernt",
+      "grund": "Plyometrie (Sprungkraft)",
+      "src_id": "Dumbbell_Seated_Box_Jump"
+    },
+    {
+      "seed_name": "Dynamic Back Stretch",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Dynamic_Back_Stretch"
+    },
+    {
+      "seed_name": "Dynamic Chest Stretch",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Dynamic_Chest_Stretch"
+    },
+    {
+      "seed_name": "Elbow Circles",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Elbow_Circles"
+    },
+    {
+      "seed_name": "Elbows Back",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Elbows_Back"
+    },
+    {
+      "seed_name": "Fast Skipping",
+      "status": "entfernt",
+      "grund": "Plyometrie (Sprungkraft)",
+      "src_id": "Fast_Skipping"
+    },
+    {
+      "seed_name": "Foot-SMR",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Foot-SMR"
+    },
+    {
+      "seed_name": "Forward Drag with Press",
+      "status": "entfernt",
+      "grund": "Strongman",
+      "src_id": "Forward_Drag_with_Press"
+    },
+    {
+      "seed_name": "Frankenstein Squat",
+      "status": "entfernt",
+      "grund": "Olympisches Gewichtheben",
+      "src_id": "Frankenstein_Squat"
+    },
+    {
+      "seed_name": "Frog Hops",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Frog_Hops"
+    },
+    {
+      "seed_name": "Front Cone Hops (or hurdle hops)",
+      "status": "entfernt",
+      "grund": "Plyometrie (Sprungkraft)",
+      "src_id": "Front_Cone_Hops_or_hurdle_hops"
+    },
+    {
+      "seed_name": "Front Leg Raises",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Front_Leg_Raises"
+    },
+    {
+      "seed_name": "Groin and Back Stretch",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Groin_and_Back_Stretch"
+    },
+    {
+      "seed_name": "Groiners",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Groiners"
+    },
+    {
+      "seed_name": "Hamstring-SMR",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Hamstring-SMR"
+    },
+    {
+      "seed_name": "Hamstring Stretch",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Hamstring_Stretch"
+    },
+    {
+      "seed_name": "Hang Clean",
+      "status": "entfernt",
+      "grund": "Olympisches Gewichtheben",
+      "src_id": "Hang_Clean"
+    },
+    {
+      "seed_name": "Hang Clean - Below the Knees",
+      "status": "entfernt",
+      "grund": "Olympisches Gewichtheben",
+      "src_id": "Hang_Clean_-_Below_the_Knees"
+    },
+    {
+      "seed_name": "Hang Snatch",
+      "status": "entfernt",
+      "grund": "Olympisches Gewichtheben",
+      "src_id": "Hang_Snatch"
+    },
+    {
+      "seed_name": "Hang Snatch - Below Knees",
+      "status": "entfernt",
+      "grund": "Olympisches Gewichtheben",
+      "src_id": "Hang_Snatch_-_Below_Knees"
+    },
+    {
+      "seed_name": "Heaving Snatch Balance",
+      "status": "entfernt",
+      "grund": "Olympisches Gewichtheben",
+      "src_id": "Heaving_Snatch_Balance"
+    },
+    {
+      "seed_name": "Heavy Bag Thrust",
+      "status": "entfernt",
+      "grund": "Spezialgerät (Boxsack)",
+      "src_id": "Heavy_Bag_Thrust"
+    },
+    {
+      "seed_name": "Hip Circles (prone)",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Hip_Circles_prone"
+    },
+    {
+      "seed_name": "Hip Lift with Band",
+      "status": "entfernt",
+      "grund": "Powerlifting-Spezialvariante (Bänder)",
+      "src_id": "Hip_Lift_with_Band"
+    },
+    {
+      "seed_name": "Hug A Ball",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Hug_A_Ball"
+    },
+    {
+      "seed_name": "Hug Knees To Chest",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Hug_Knees_To_Chest"
+    },
+    {
+      "seed_name": "Hurdle Hops",
+      "status": "entfernt",
+      "grund": "Plyometrie (Sprungkraft)",
+      "src_id": "Hurdle_Hops"
+    },
+    {
+      "seed_name": "IT Band and Glute Stretch",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "IT_Band_and_Glute_Stretch"
+    },
+    {
+      "seed_name": "Iliotibial Tract-SMR",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Iliotibial_Tract-SMR"
+    },
+    {
+      "seed_name": "Inchworm",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Inchworm"
+    },
+    {
+      "seed_name": "Incline Push-Up Depth Jump",
+      "status": "entfernt",
+      "grund": "Plyometrie (Sprungkraft)",
+      "src_id": "Incline_Push-Up_Depth_Jump"
+    },
+    {
+      "seed_name": "Intermediate Groin Stretch",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Intermediate_Groin_Stretch"
+    },
+    {
+      "seed_name": "Intermediate Hip Flexor and Quad Stretch",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Intermediate_Hip_Flexor_and_Quad_Stretch"
+    },
+    {
+      "seed_name": "Iron Cross",
+      "status": "entfernt",
+      "grund": "Exotisch",
+      "src_id": "Iron_Cross"
+    },
+    {
+      "seed_name": "Iron Crosses (stretch)",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Iron_Crosses_stretch"
+    },
+    {
+      "seed_name": "Isometric Chest Squeezes",
+      "status": "entfernt",
+      "grund": "Exotisch",
+      "src_id": "Isometric_Chest_Squeezes"
+    },
+    {
+      "seed_name": "Isometric Neck Exercise - Front And Back",
+      "status": "entfernt",
+      "grund": "Nische (Nackentraining)",
+      "src_id": "Isometric_Neck_Exercise_-_Front_And_Back"
+    },
+    {
+      "seed_name": "Isometric Neck Exercise - Sides",
+      "status": "entfernt",
+      "grund": "Nische (Nackentraining)",
+      "src_id": "Isometric_Neck_Exercise_-_Sides"
+    },
+    {
+      "seed_name": "Isometric Wipers",
+      "status": "entfernt",
+      "grund": "Exotisch",
+      "src_id": "Isometric_Wipers"
+    },
+    {
+      "seed_name": "Jerk Balance",
+      "status": "entfernt",
+      "grund": "Olympisches Gewichtheben",
+      "src_id": "Jerk_Balance"
+    },
+    {
+      "seed_name": "Jerk Dip Squat",
+      "status": "entfernt",
+      "grund": "Olympisches Gewichtheben",
+      "src_id": "Jerk_Dip_Squat"
+    },
+    {
+      "seed_name": "Keg Load",
+      "status": "entfernt",
+      "grund": "Strongman",
+      "src_id": "Keg_Load"
+    },
+    {
+      "seed_name": "Kettlebell Dead Clean",
+      "status": "entfernt",
+      "grund": "Kettlebell-Sport (olympisch)",
+      "src_id": "Kettlebell_Dead_Clean"
+    },
+    {
+      "seed_name": "Kettlebell Figure 8",
+      "status": "entfernt",
+      "grund": "Exotisch",
+      "src_id": "Kettlebell_Figure_8"
+    },
+    {
+      "seed_name": "Kettlebell Hang Clean",
+      "status": "entfernt",
+      "grund": "Kettlebell-Sport (olympisch)",
+      "src_id": "Kettlebell_Hang_Clean"
+    },
+    {
+      "seed_name": "Kettlebell Pass Between The Legs",
+      "status": "entfernt",
+      "grund": "Exotisch",
+      "src_id": "Kettlebell_Pass_Between_The_Legs"
+    },
+    {
+      "seed_name": "Kettlebell Pirate Ships",
+      "status": "entfernt",
+      "grund": "Exotisch",
+      "src_id": "Kettlebell_Pirate_Ships"
+    },
+    {
+      "seed_name": "Kipping Muscle Up",
+      "status": "entfernt",
+      "grund": "Exotisch (Turnen)",
+      "src_id": "Kipping_Muscle_Up"
+    },
+    {
+      "seed_name": "Knee Across The Body",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Knee_Across_The_Body"
+    },
+    {
+      "seed_name": "Knee Circles",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Knee_Circles"
+    },
+    {
+      "seed_name": "Knee Tuck Jump",
+      "status": "entfernt",
+      "grund": "Plyometrie (Sprungkraft)",
+      "src_id": "Knee_Tuck_Jump"
+    },
+    {
+      "seed_name": "Kneeling Arm Drill",
+      "status": "entfernt",
+      "grund": "Plyometrie (Sprint-Drill)",
+      "src_id": "Kneeling_Arm_Drill"
+    },
+    {
+      "seed_name": "Kneeling Forearm Stretch",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Kneeling_Forearm_Stretch"
+    },
+    {
+      "seed_name": "Kneeling Hip Flexor",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Kneeling_Hip_Flexor"
+    },
+    {
+      "seed_name": "Kneeling Jump Squat",
+      "status": "entfernt",
+      "grund": "Olympisches Gewichtheben",
+      "src_id": "Kneeling_Jump_Squat"
+    },
+    {
+      "seed_name": "Lateral Bound",
+      "status": "entfernt",
+      "grund": "Plyometrie (Sprungkraft)",
+      "src_id": "Lateral_Bound"
+    },
+    {
+      "seed_name": "Lateral Box Jump",
+      "status": "entfernt",
+      "grund": "Plyometrie (Sprungkraft)",
+      "src_id": "Lateral_Box_Jump"
+    },
+    {
+      "seed_name": "Lateral Cone Hops",
+      "status": "entfernt",
+      "grund": "Plyometrie (Sprungkraft)",
+      "src_id": "Lateral_Cone_Hops"
+    },
+    {
+      "seed_name": "Latissimus Dorsi-SMR",
+      "status": "entfernt",
+      "grund": "Faszienrolle (Mobility)",
+      "src_id": "Latissimus_Dorsi-SMR"
+    },
+    {
+      "seed_name": "Leg-Up Hamstring Stretch",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Leg-Up_Hamstring_Stretch"
+    },
+    {
+      "seed_name": "Linear 3-Part Start Technique",
+      "status": "entfernt",
+      "grund": "Plyometrie (Sprungkraft)",
+      "src_id": "Linear_3-Part_Start_Technique"
+    },
+    {
+      "seed_name": "Linear Acceleration Wall Drill",
+      "status": "entfernt",
+      "grund": "Plyometrie (Sprungkraft)",
+      "src_id": "Linear_Acceleration_Wall_Drill"
+    },
+    {
+      "seed_name": "Linear Depth Jump",
+      "status": "entfernt",
+      "grund": "Plyometrie (Sprungkraft)",
+      "src_id": "Linear_Depth_Jump"
+    },
+    {
+      "seed_name": "Log Lift",
+      "status": "entfernt",
+      "grund": "Strongman",
+      "src_id": "Log_Lift"
+    },
+    {
+      "seed_name": "London Bridges",
+      "status": "entfernt",
+      "grund": "Spezialgerät (Seil)",
+      "src_id": "London_Bridges"
+    },
+    {
+      "seed_name": "Looking At Ceiling",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Looking_At_Ceiling"
+    },
+    {
+      "seed_name": "Lower Back-SMR",
+      "status": "entfernt",
+      "grund": "Faszienrolle (Mobility)",
+      "src_id": "Lower_Back-SMR"
+    },
+    {
+      "seed_name": "Lower Back Curl",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Lower_Back_Curl"
+    },
+    {
+      "seed_name": "Lying Bent Leg Groin",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Lying_Bent_Leg_Groin"
+    },
+    {
+      "seed_name": "Lying Crossover",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Lying_Crossover"
+    },
+    {
+      "seed_name": "Lying Face Down Plate Neck Resistance",
+      "status": "entfernt",
+      "grund": "Spezialgerät (Nackentraining mit Scheibe)",
+      "src_id": "Lying_Face_Down_Plate_Neck_Resistance"
+    },
+    {
+      "seed_name": "Lying Face Up Plate Neck Resistance",
+      "status": "entfernt",
+      "grund": "Spezialgerät (Nackentraining mit Scheibe)",
+      "src_id": "Lying_Face_Up_Plate_Neck_Resistance"
+    },
+    {
+      "seed_name": "Lying Glute",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Lying_Glute"
+    },
+    {
+      "seed_name": "Lying Hamstring",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Lying_Hamstring"
+    },
+    {
+      "seed_name": "Lying Prone Quadriceps",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Lying_Prone_Quadriceps"
+    },
+    {
+      "seed_name": "Medicine Ball Chest Pass",
+      "status": "entfernt",
+      "grund": "Plyometrie mit Medizinball",
+      "src_id": "Medicine_Ball_Chest_Pass"
+    },
+    {
+      "seed_name": "Medicine Ball Scoop Throw",
+      "status": "entfernt",
+      "grund": "Plyometrie mit Medizinball",
+      "src_id": "Medicine_Ball_Scoop_Throw"
+    },
+    {
+      "seed_name": "Middle Back Stretch",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Middle_Back_Stretch"
+    },
+    {
+      "seed_name": "Moving Claw Series",
+      "status": "entfernt",
+      "grund": "Plyometrie (Sprungkraft)",
+      "src_id": "Moving_Claw_Series"
+    },
+    {
+      "seed_name": "Muscle Snatch",
+      "status": "entfernt",
+      "grund": "Olympisches Gewichtheben",
+      "src_id": "Muscle_Snatch"
+    },
+    {
+      "seed_name": "Muscle Up",
+      "status": "entfernt",
+      "grund": "Exotisch (Turnen)",
+      "src_id": "Muscle_Up"
+    },
+    {
+      "seed_name": "Neck-SMR",
+      "status": "entfernt",
+      "grund": "Faszienrolle (Mobility)",
+      "src_id": "Neck-SMR"
+    },
+    {
+      "seed_name": "Olympic Squat",
+      "status": "entfernt",
+      "grund": "Olympisches Gewichtheben",
+      "src_id": "Olympic_Squat"
+    },
+    {
+      "seed_name": "On-Your-Back Quad Stretch",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "On-Your-Back_Quad_Stretch"
+    },
+    {
+      "seed_name": "On Your Side Quad Stretch",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "On_Your_Side_Quad_Stretch"
+    },
+    {
+      "seed_name": "One-Arm Kettlebell Clean",
+      "status": "entfernt",
+      "grund": "Kettlebell-Sport (olympisch)",
+      "src_id": "One-Arm_Kettlebell_Clean"
+    },
+    {
+      "seed_name": "One-Arm Kettlebell Clean and Jerk",
+      "status": "entfernt",
+      "grund": "Kettlebell-Sport (olympisch)",
+      "src_id": "One-Arm_Kettlebell_Clean_and_Jerk"
+    },
+    {
+      "seed_name": "One-Arm Kettlebell Jerk",
+      "status": "entfernt",
+      "grund": "Kettlebell-Sport (olympisch)",
+      "src_id": "One-Arm_Kettlebell_Jerk"
+    },
+    {
+      "seed_name": "One-Arm Kettlebell Snatch",
+      "status": "entfernt",
+      "grund": "Kettlebell-Sport (olympisch)",
+      "src_id": "One-Arm_Kettlebell_Snatch"
+    },
+    {
+      "seed_name": "One-Arm Kettlebell Split Jerk",
+      "status": "entfernt",
+      "grund": "Kettlebell-Sport (olympisch)",
+      "src_id": "One-Arm_Kettlebell_Split_Jerk"
+    },
+    {
+      "seed_name": "One-Arm Kettlebell Split Snatch",
+      "status": "entfernt",
+      "grund": "Kettlebell-Sport (olympisch)",
+      "src_id": "One-Arm_Kettlebell_Split_Snatch"
+    },
+    {
+      "seed_name": "One-Arm Medicine Ball Slam",
+      "status": "entfernt",
+      "grund": "Spezialgerät (Medizinball)",
+      "src_id": "One-Arm_Medicine_Ball_Slam"
+    },
+    {
+      "seed_name": "One-Arm Open Palm Kettlebell Clean",
+      "status": "entfernt",
+      "grund": "Kettlebell-Sport (olympisch)",
+      "src_id": "One-Arm_Open_Palm_Kettlebell_Clean"
+    },
+    {
+      "seed_name": "One Arm Against Wall",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "One_Arm_Against_Wall"
+    },
+    {
+      "seed_name": "One Half Locust",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "One_Half_Locust"
+    },
+    {
+      "seed_name": "One Handed Hang",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "One_Handed_Hang"
+    },
+    {
+      "seed_name": "One Knee To Chest",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "One_Knee_To_Chest"
+    },
+    {
+      "seed_name": "Open Palm Kettlebell Clean",
+      "status": "entfernt",
+      "grund": "Kettlebell-Sport (olympisch)",
+      "src_id": "Open_Palm_Kettlebell_Clean"
+    },
+    {
+      "seed_name": "Overhead Lat",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Overhead_Lat"
+    },
+    {
+      "seed_name": "Overhead Slam",
+      "status": "entfernt",
+      "grund": "Plyometrie mit Medizinball",
+      "src_id": "Overhead_Slam"
+    },
+    {
+      "seed_name": "Overhead Squat",
+      "status": "entfernt",
+      "grund": "Olympisches Gewichtheben",
+      "src_id": "Overhead_Squat"
+    },
+    {
+      "seed_name": "Overhead Stretch",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Overhead_Stretch"
+    },
+    {
+      "seed_name": "Overhead Triceps",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Overhead_Triceps"
+    },
+    {
+      "seed_name": "Pelvic Tilt Into Bridge",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Pelvic_Tilt_Into_Bridge"
+    },
+    {
+      "seed_name": "Peroneals-SMR",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Peroneals-SMR"
+    },
+    {
+      "seed_name": "Peroneals Stretch",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Peroneals_Stretch"
+    },
+    {
+      "seed_name": "Physioball Hip Bridge",
+      "status": "entfernt",
+      "grund": "Spezialgerät (Gymnastikball)",
+      "src_id": "Physioball_Hip_Bridge"
+    },
+    {
+      "seed_name": "Piriformis-SMR",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Piriformis-SMR"
+    },
+    {
+      "seed_name": "Posterior Tibialis Stretch",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Posterior_Tibialis_Stretch"
+    },
+    {
+      "seed_name": "Power Clean",
+      "status": "entfernt",
+      "grund": "Olympisches Gewichtheben",
+      "src_id": "Power_Clean"
+    },
+    {
+      "seed_name": "Power Clean from Blocks",
+      "status": "entfernt",
+      "grund": "Olympisches Gewichtheben",
+      "src_id": "Power_Clean_from_Blocks"
+    },
+    {
+      "seed_name": "Power Jerk",
+      "status": "entfernt",
+      "grund": "Olympisches Gewichtheben",
+      "src_id": "Power_Jerk"
+    },
+    {
+      "seed_name": "Power Snatch",
+      "status": "entfernt",
+      "grund": "Olympisches Gewichtheben",
+      "src_id": "Power_Snatch"
+    },
+    {
+      "seed_name": "Power Snatch from Blocks",
+      "status": "entfernt",
+      "grund": "Olympisches Gewichtheben",
+      "src_id": "Power_Snatch_from_Blocks"
+    },
+    {
+      "seed_name": "Power Stairs",
+      "status": "entfernt",
+      "grund": "Strongman",
+      "src_id": "Power_Stairs"
+    },
+    {
+      "seed_name": "Pyramid",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Pyramid"
+    },
+    {
+      "seed_name": "Quad Stretch",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Quad_Stretch"
+    },
+    {
+      "seed_name": "Quadriceps-SMR",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Quadriceps-SMR"
+    },
+    {
+      "seed_name": "Quick Leap",
+      "status": "entfernt",
+      "grund": "Plyometrie (Sprungkraft)",
+      "src_id": "Quick_Leap"
+    },
+    {
+      "seed_name": "Rack Delivery",
+      "status": "entfernt",
+      "grund": "Olympisches Gewichtheben",
+      "src_id": "Rack_Delivery"
+    },
+    {
+      "seed_name": "Rear Leg Raises",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Rear_Leg_Raises"
+    },
+    {
+      "seed_name": "Return Push from Stance",
+      "status": "entfernt",
+      "grund": "Plyometrie mit Medizinball",
+      "src_id": "Return_Push_from_Stance"
+    },
+    {
+      "seed_name": "Reverse Band Box Squat",
+      "status": "entfernt",
+      "grund": "Powerlifting-Spezialvariante (Bänder)",
+      "src_id": "Reverse_Band_Box_Squat"
+    },
+    {
+      "seed_name": "Reverse Band Power Squat",
+      "status": "entfernt",
+      "grund": "Powerlifting-Spezialvariante (Bänder)",
+      "src_id": "Reverse_Band_Power_Squat"
+    },
+    {
+      "seed_name": "Rhomboids-SMR",
+      "status": "entfernt",
+      "grund": "Faszienrolle (Mobility)",
+      "src_id": "Rhomboids-SMR"
+    },
+    {
+      "seed_name": "Rickshaw Deadlift",
+      "status": "entfernt",
+      "grund": "Strongman",
+      "src_id": "Rickshaw_Deadlift"
+    },
+    {
+      "seed_name": "Rocket Jump",
+      "status": "entfernt",
+      "grund": "Plyometrie (Sprungkraft)",
+      "src_id": "Rocket_Jump"
+    },
+    {
+      "seed_name": "Rope Climb",
+      "status": "entfernt",
+      "grund": "Spezialgerät (Kletterseil)",
+      "src_id": "Rope_Climb"
+    },
+    {
+      "seed_name": "Round The World Shoulder Stretch",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Round_The_World_Shoulder_Stretch"
+    },
+    {
+      "seed_name": "Runner's Stretch",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Runners_Stretch"
+    },
+    {
+      "seed_name": "Sandbag Load",
+      "status": "entfernt",
+      "grund": "Strongman",
+      "src_id": "Sandbag_Load"
+    },
+    {
+      "seed_name": "Scissors Jump",
+      "status": "entfernt",
+      "grund": "Plyometrie (Sprungkraft)",
+      "src_id": "Scissors_Jump"
+    },
+    {
+      "seed_name": "Seated Biceps",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Seated_Biceps"
+    },
+    {
+      "seed_name": "Seated Calf Stretch",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Seated_Calf_Stretch"
+    },
+    {
+      "seed_name": "Seated Floor Hamstring Stretch",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Seated_Floor_Hamstring_Stretch"
+    },
+    {
+      "seed_name": "Seated Front Deltoid",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Seated_Front_Deltoid"
+    },
+    {
+      "seed_name": "Seated Glute",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Seated_Glute"
+    },
+    {
+      "seed_name": "Seated Hamstring",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Seated_Hamstring"
+    },
+    {
+      "seed_name": "Seated Hamstring and Calf Stretch",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Seated_Hamstring_and_Calf_Stretch"
+    },
+    {
+      "seed_name": "Seated Head Harness Neck Resistance",
+      "status": "entfernt",
+      "grund": "Spezialgerät (Kopfgeschirr)",
+      "src_id": "Seated_Head_Harness_Neck_Resistance"
+    },
+    {
+      "seed_name": "Seated Overhead Stretch",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Seated_Overhead_Stretch"
+    },
+    {
+      "seed_name": "Shoulder Circles",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Shoulder_Circles"
+    },
+    {
+      "seed_name": "Shoulder Raise",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Shoulder_Raise"
+    },
+    {
+      "seed_name": "Shoulder Stretch",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Shoulder_Stretch"
+    },
+    {
+      "seed_name": "Side-Lying Floor Stretch",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Side-Lying_Floor_Stretch"
+    },
+    {
+      "seed_name": "Side Hop-Sprint",
+      "status": "entfernt",
+      "grund": "Plyometrie (Sprungkraft)",
+      "src_id": "Side_Hop-Sprint"
+    },
+    {
+      "seed_name": "Side Leg Raises",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Side_Leg_Raises"
+    },
+    {
+      "seed_name": "Side Lying Groin Stretch",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Side_Lying_Groin_Stretch"
+    },
+    {
+      "seed_name": "Side Neck Stretch",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Side_Neck_Stretch"
+    },
+    {
+      "seed_name": "Side Standing Long Jump",
+      "status": "entfernt",
+      "grund": "Plyometrie (Sprungkraft)",
+      "src_id": "Side_Standing_Long_Jump"
+    },
+    {
+      "seed_name": "Side Wrist Pull",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Side_Wrist_Pull"
+    },
+    {
+      "seed_name": "Side to Side Box Shuffle",
+      "status": "entfernt",
+      "grund": "Plyometrie (Sprungkraft)",
+      "src_id": "Side_to_Side_Box_Shuffle"
+    },
+    {
+      "seed_name": "Single-Cone Sprint Drill",
+      "status": "entfernt",
+      "grund": "Plyometrie (Sprungkraft)",
+      "src_id": "Single-Cone_Sprint_Drill"
+    },
+    {
+      "seed_name": "Single-Leg Hop Progression",
+      "status": "entfernt",
+      "grund": "Plyometrie (Sprungkraft)",
+      "src_id": "Single-Leg_Hop_Progression"
+    },
+    {
+      "seed_name": "Single-Leg Lateral Hop",
+      "status": "entfernt",
+      "grund": "Plyometrie (Sprungkraft)",
+      "src_id": "Single-Leg_Lateral_Hop"
+    },
+    {
+      "seed_name": "Single-Leg Stride Jump",
+      "status": "entfernt",
+      "grund": "Plyometrie (Sprungkraft)",
+      "src_id": "Single-Leg_Stride_Jump"
+    },
+    {
+      "seed_name": "Single Leg Butt Kick",
+      "status": "entfernt",
+      "grund": "Plyometrie (Sprungkraft)",
+      "src_id": "Single_Leg_Butt_Kick"
+    },
+    {
+      "seed_name": "Single Leg Push-off",
+      "status": "entfernt",
+      "grund": "Plyometrie (Sprungkraft)",
+      "src_id": "Single_Leg_Push-off"
+    },
+    {
+      "seed_name": "Sit Squats",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Sit_Squats"
+    },
+    {
+      "seed_name": "Sledgehammer Swings",
+      "status": "entfernt",
+      "grund": "Spezialgerät (Vorschlaghammer und Reifen)",
+      "src_id": "Sledgehammer_Swings"
+    },
+    {
+      "seed_name": "Smith Incline Shoulder Raise",
+      "status": "entfernt",
+      "grund": "Exotisch (Serratus-Übung)",
+      "src_id": "Smith_Incline_Shoulder_Raise"
+    },
+    {
+      "seed_name": "Smith Machine Hang Power Clean",
+      "status": "entfernt",
+      "grund": "Olympisches Gewichtheben",
+      "src_id": "Smith_Machine_Hang_Power_Clean"
+    },
+    {
+      "seed_name": "Smith Machine Reverse Calf Raises",
+      "status": "entfernt",
+      "grund": "Nische (Schienbeinmuskel)",
+      "src_id": "Smith_Machine_Reverse_Calf_Raises"
+    },
+    {
+      "seed_name": "Snatch",
+      "status": "entfernt",
+      "grund": "Olympisches Gewichtheben",
+      "src_id": "Snatch"
+    },
+    {
+      "seed_name": "Snatch Balance",
+      "status": "entfernt",
+      "grund": "Olympisches Gewichtheben",
+      "src_id": "Snatch_Balance"
+    },
+    {
+      "seed_name": "Snatch Deadlift",
+      "status": "entfernt",
+      "grund": "Olympisches Gewichtheben",
+      "src_id": "Snatch_Deadlift"
+    },
+    {
+      "seed_name": "Snatch Pull",
+      "status": "entfernt",
+      "grund": "Olympisches Gewichtheben",
+      "src_id": "Snatch_Pull"
+    },
+    {
+      "seed_name": "Snatch from Blocks",
+      "status": "entfernt",
+      "grund": "Olympisches Gewichtheben",
+      "src_id": "Snatch_from_Blocks"
+    },
+    {
+      "seed_name": "Spinal Stretch",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Spinal_Stretch"
+    },
+    {
+      "seed_name": "Split Clean",
+      "status": "entfernt",
+      "grund": "Olympisches Gewichtheben",
+      "src_id": "Split_Clean"
+    },
+    {
+      "seed_name": "Split Jerk",
+      "status": "entfernt",
+      "grund": "Olympisches Gewichtheben",
+      "src_id": "Split_Jerk"
+    },
+    {
+      "seed_name": "Split Jump",
+      "status": "entfernt",
+      "grund": "Plyometrie (Sprungkraft)",
+      "src_id": "Split_Jump"
+    },
+    {
+      "seed_name": "Split Snatch",
+      "status": "entfernt",
+      "grund": "Olympisches Gewichtheben",
+      "src_id": "Split_Snatch"
+    },
+    {
+      "seed_name": "Split Squats",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Split_Squats"
+    },
+    {
+      "seed_name": "Squat Jerk",
+      "status": "entfernt",
+      "grund": "Olympisches Gewichtheben",
+      "src_id": "Squat_Jerk"
+    },
+    {
+      "seed_name": "Squat with Bands",
+      "status": "entfernt",
+      "grund": "Powerlifting-Spezialvariante (Bänder)",
+      "src_id": "Squat_with_Bands"
+    },
+    {
+      "seed_name": "Squat with Chains",
+      "status": "entfernt",
+      "grund": "Spezialgerät (Ketten)",
+      "src_id": "Squat_with_Chains"
+    },
+    {
+      "seed_name": "Standing Biceps Stretch",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Standing_Biceps_Stretch"
+    },
+    {
+      "seed_name": "Standing Elevated Quad Stretch",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Standing_Elevated_Quad_Stretch"
+    },
+    {
+      "seed_name": "Standing Gastrocnemius Calf Stretch",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Standing_Gastrocnemius_Calf_Stretch"
+    },
+    {
+      "seed_name": "Standing Hamstring and Calf Stretch",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Standing_Hamstring_and_Calf_Stretch"
+    },
+    {
+      "seed_name": "Standing Hip Circles",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Standing_Hip_Circles"
+    },
+    {
+      "seed_name": "Standing Hip Flexors",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Standing_Hip_Flexors"
+    },
+    {
+      "seed_name": "Standing Lateral Stretch",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Standing_Lateral_Stretch"
+    },
+    {
+      "seed_name": "Standing Long Jump",
+      "status": "entfernt",
+      "grund": "Plyometrie (Sprungkraft)",
+      "src_id": "Standing_Long_Jump"
+    },
+    {
+      "seed_name": "Standing Pelvic Tilt",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Standing_Pelvic_Tilt"
+    },
+    {
+      "seed_name": "Standing Soleus And Achilles Stretch",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Standing_Soleus_And_Achilles_Stretch"
+    },
+    {
+      "seed_name": "Standing Toe Touches",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Standing_Toe_Touches"
+    },
+    {
+      "seed_name": "Standing Two-Arm Overhead Throw",
+      "status": "entfernt",
+      "grund": "Plyometrie mit Medizinball",
+      "src_id": "Standing_Two-Arm_Overhead_Throw"
+    },
+    {
+      "seed_name": "Star Jump",
+      "status": "entfernt",
+      "grund": "Plyometrie (Sprungkraft)",
+      "src_id": "Star_Jump"
+    },
+    {
+      "seed_name": "Stomach Vacuum",
+      "status": "entfernt",
+      "grund": "Nische (Atem-/Haltungsübung)",
+      "src_id": "Stomach_Vacuum"
+    },
+    {
+      "seed_name": "Stride Jump Crossover",
+      "status": "entfernt",
+      "grund": "Plyometrie (Sprungkraft)",
+      "src_id": "Stride_Jump_Crossover"
+    },
+    {
+      "seed_name": "Supine Chest Throw",
+      "status": "entfernt",
+      "grund": "Plyometrie mit Medizinball",
+      "src_id": "Supine_Chest_Throw"
+    },
+    {
+      "seed_name": "Supine One-Arm Overhead Throw",
+      "status": "entfernt",
+      "grund": "Plyometrie mit Medizinball",
+      "src_id": "Supine_One-Arm_Overhead_Throw"
+    },
+    {
+      "seed_name": "Supine Two-Arm Overhead Throw",
+      "status": "entfernt",
+      "grund": "Plyometrie mit Medizinball",
+      "src_id": "Supine_Two-Arm_Overhead_Throw"
+    },
+    {
+      "seed_name": "The Straddle",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "The_Straddle"
+    },
+    {
+      "seed_name": "Tire Flip",
+      "status": "entfernt",
+      "grund": "Strongman",
+      "src_id": "Tire_Flip"
+    },
+    {
+      "seed_name": "Torso Rotation",
+      "status": "entfernt",
+      "grund": "Dehnübung (mit Gymnastikball)",
+      "src_id": "Torso_Rotation"
+    },
+    {
+      "seed_name": "Tricep Side Stretch",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Tricep_Side_Stretch"
+    },
+    {
+      "seed_name": "Triceps Stretch",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Triceps_Stretch"
+    },
+    {
+      "seed_name": "Two-Arm Kettlebell Clean",
+      "status": "entfernt",
+      "grund": "Kettlebell-Sport (olympisch)",
+      "src_id": "Two-Arm_Kettlebell_Clean"
+    },
+    {
+      "seed_name": "Two-Arm Kettlebell Jerk",
+      "status": "entfernt",
+      "grund": "Kettlebell-Sport (olympisch)",
+      "src_id": "Two-Arm_Kettlebell_Jerk"
+    },
+    {
+      "seed_name": "Upper Back-Leg Grab",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Upper_Back-Leg_Grab"
+    },
+    {
+      "seed_name": "Upper Back Stretch",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Upper_Back_Stretch"
+    },
+    {
+      "seed_name": "Upward Stretch",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Upward_Stretch"
+    },
+    {
+      "seed_name": "Windmills",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Windmills"
+    },
+    {
+      "seed_name": "World's Greatest Stretch",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Worlds_Greatest_Stretch"
+    },
+    {
+      "seed_name": "Wrist Circles",
+      "status": "entfernt",
+      "grund": "Dehnübung",
+      "src_id": "Wrist_Circles"
+    },
+    {
+      "seed_name": "Yoke Walk",
+      "status": "entfernt",
+      "grund": "Strongman",
+      "src_id": "Yoke_Walk"
+    },
+    {
+      "seed_name": "Neck curl",
+      "status": "entfernt",
+      "grund": "Nische (Nackentraining)",
+      "src_id": null
+    }
+  ]
+}

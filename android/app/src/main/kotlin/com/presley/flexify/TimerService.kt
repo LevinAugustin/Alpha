@@ -443,8 +443,12 @@ class TimerService : Service() {
             @Suppress("DEPRECATION")
             getSystemService(VIBRATOR_SERVICE) as Vibrator
         }
-        val repeatIndex = -1
-        vibrator!!.vibrate(VibrationEffect.createWaveform(pattern, repeatIndex))
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            vibrator!!.vibrate(VibrationEffect.createWaveform(pattern, -1))
+        } else {
+            @Suppress("DEPRECATION")
+            vibrator!!.vibrate(pattern, -1)
+        }
     }
 
     private fun notifyFinished() {

@@ -41,6 +41,7 @@ void main() {
               graphLimit: 0,
               graphTimeBasedXAxis: true,
               archived: false,
+              einseitig: false,
             ),
           ),
         );

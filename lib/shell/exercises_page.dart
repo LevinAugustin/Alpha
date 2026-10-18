@@ -1,11 +1,15 @@
 import 'package:drift/drift.dart' hide Column;
-import 'package:flexify/database/catalog_seed.dart';
 import 'package:flexify/database/database.dart';
+import 'package:flexify/database/catalog_seed.dart';
+import 'package:flexify/exercise_keys.dart';
 import 'package:flexify/exercise_labels.dart';
+import 'package:flexify/exercises/custom_exercise_page.dart';
+import 'package:flexify/exercises/exercise_image.dart';
+import 'package:flexify/exercises/exercise_detail_page.dart';
 import 'package:flexify/l10n/l10n.dart';
 import 'package:flexify/main.dart';
 import 'package:flexify/platform_page_route.dart';
-import 'package:flexify/shell/training_stats.dart';
+import 'package:flexify/workout/muscle_map.dart';
 import 'package:flutter/material.dart';
 
 class ExercisesPage extends StatefulWidget {
@@ -18,6 +22,11 @@ class ExercisesPage extends StatefulWidget {
 class _ExercisesPageState extends State<ExercisesPage> {
   final _search = TextEditingController();
   String _muscle = '';
+  String _equipment = '';
+  String _mechanic = '';
+  String _grip = '';
+  String _position = '';
+  String _motion = '';
 
   @override
   void dispose() {
@@ -51,14 +60,12 @@ class _ExercisesPageState extends State<ExercisesPage> {
                     .watch(),
             builder: (context, snapshot) {
               final exercises = snapshot.data ?? const <Exercise>[];
-              final muscles =
-                  exercises
-                      .map((exercise) => exercise.muscle ?? '')
-                      .where((muscle) => muscle.isNotEmpty)
-                      .toSet()
-                      .toList()
-                    ..sort();
+              final mechanics = _chipValues(
+                exercises.map((exercise) => catalogText(exercise.mechanic)),
+                const ['grund', 'isolation'],
+              );
               return ListView(
+                key: const Key('exercise-filters'),
                 scrollDirection: Axis.horizontal,
                 padding: const EdgeInsets.symmetric(horizontal: 12),
                 children: [
@@ -70,20 +77,96 @@ class _ExercisesPageState extends State<ExercisesPage> {
                       onSelected: (_) => setState(() => _muscle = ''),
                     ),
                   ),
-                  for (final muscle in muscles)
+                  Padding(
+                    padding: const EdgeInsets.only(right: 8),
+                    child: Center(child: Text(context.l10n.movementLabel)),
+                  ),
+                  for (final item in exerciseMotionValues)
                     Padding(
                       padding: const EdgeInsets.only(right: 8),
                       child: FilterChip(
-                        label: Text(muscle),
+                        label: Text(movementLabel(context.l10n, item)),
+                        selected: _motion == item,
+                        onSelected: (_) => setState(() {
+                          _motion = _motion == item ? '' : item;
+                        }),
+                      ),
+                    ),
+                  for (final muscle in exerciseMuscleKeys)
+                    Padding(
+                      padding: const EdgeInsets.only(right: 8),
+                      child: FilterChip(
+                        label: Text(muscleLabel(context.l10n, muscle)),
                         selected: _muscle == muscle,
                         onSelected: (_) => setState(() {
                           _muscle = _muscle == muscle ? '' : muscle;
                         }),
                       ),
                     ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 8),
+                    child: Center(child: Text(context.l10n.equipmentLabel)),
+                  ),
+                  for (final item in exerciseGearValues)
+                    Padding(
+                      padding: const EdgeInsets.only(right: 8),
+                      child: FilterChip(
+                        label: Text(item),
+                        selected: _equipment == item,
+                        onSelected: (_) => setState(() {
+                          _equipment = _equipment == item ? '' : item;
+                        }),
+                      ),
+                    ),
+                  for (final item in exerciseGripValues)
+                    Padding(
+                      padding: const EdgeInsets.only(right: 8),
+                      child: FilterChip(
+                        label: Text(item),
+                        selected: _grip == item,
+                        onSelected: (_) => setState(() {
+                          _grip = _grip == item ? '' : item;
+                        }),
+                      ),
+                    ),
+                  for (final item in exercisePositionValues)
+                    Padding(
+                      padding: const EdgeInsets.only(right: 8),
+                      child: FilterChip(
+                        label: Text(item),
+                        selected: _position == item,
+                        onSelected: (_) => setState(() {
+                          _position = _position == item ? '' : item;
+                        }),
+                      ),
+                    ),
+                  for (final item in mechanics)
+                    Padding(
+                      padding: const EdgeInsets.only(right: 8),
+                      child: FilterChip(
+                        label: Text(mechanicLabel(context.l10n, item)),
+                        selected: _mechanic == item,
+                        onSelected: (_) => setState(() {
+                          _mechanic = _mechanic == item ? '' : item;
+                        }),
+                      ),
+                    ),
                 ],
               );
             },
+          ),
+        ),
+        Align(
+          alignment: Alignment.centerLeft,
+          child: TextButton.icon(
+            key: const Key('create-custom-exercise'),
+            onPressed: () {
+              Navigator.of(context).push(
+                FlexPageRoute(builder: (context) => const CustomExercisePage()),
+              );
+            },
+            icon: const Icon(Icons.add),
+            label: Text(context.l10n.createCustomExercise),
           ),
         ),
         Expanded(
@@ -95,20 +178,52 @@ class _ExercisesPageState extends State<ExercisesPage> {
                     .watch(),
             builder: (context, snapshot) {
               final query = _search.text;
-              final exercises = (snapshot.data ?? const <Exercise>[]).where((
-                exercise,
-              ) {
-                if (_muscle.isNotEmpty && exercise.muscle != _muscle) {
-                  return false;
-                }
-                return exerciseMatchesQuery(
-                  name: exercise.name,
-                  germanName: exercise.germanName,
-                  aliases: exercise.aliases,
-                  query: query,
-                );
-              }).toList();
+              final exercises =
+                  (snapshot.data ?? const <Exercise>[]).where((exercise) {
+                    return matchesExerciseFilters(
+                      name: exercise.name,
+                      germanName: exercise.germanName,
+                      aliases: exercise.aliases,
+                      muscle: exercise.muscle,
+                      category: exercise.categoryName,
+                      equipment: exercise.equipment,
+                      mechanic: exercise.mechanic,
+                      primaryMuscles: exercise.primaryMuscles,
+                      secondaryMuscles: exercise.secondaryMuscles,
+                      grip: exercise.griff,
+                      position: exercise.position,
+                      movement: exercise.bewegung,
+                      query: query,
+                      group: _muscle,
+                      equipmentFilter: _equipment,
+                      mechanicFilter: _mechanic,
+                      gripFilter: _grip,
+                      positionFilter: _position,
+                      motionFilter: _motion,
+                    );
+                  }).toList()..sort((a, b) {
+                    final queryText = query.trim();
+                    if (queryText.isEmpty) {
+                      return foldExerciseSearch(
+                        exerciseDisplayName(a.name, a.germanName),
+                      ).compareTo(
+                        foldExerciseSearch(
+                          exerciseDisplayName(b.name, b.germanName),
+                        ),
+                      );
+                    }
+                    return compareExerciseSearch(
+                      query: queryText,
+                      leftName: a.name,
+                      leftGermanName: a.germanName,
+                      leftAliases: a.aliases,
+                      rightName: b.name,
+                      rightGermanName: b.germanName,
+                      rightAliases: b.aliases,
+                    );
+                  });
               return ListView.builder(
+                key: const Key('exercise-results'),
                 itemCount: exercises.length,
                 itemBuilder: (context, index) {
                   final exercise = exercises[index];
@@ -117,10 +232,12 @@ class _ExercisesPageState extends State<ExercisesPage> {
                     exercise.name,
                     german: exercise.germanName,
                   );
-                  final subtitle = title == exercise.name
-                      ? exercise.muscle
-                      : '${exercise.name}${exercise.muscle == null ? '' : ' · ${exercise.muscle}'}';
+                  final subtitle = exerciseListSubtitle(
+                    category: exercise.categoryName,
+                    equipment: exercise.equipment,
+                  );
                   return ListTile(
+                    leading: ExerciseImage(path: exercise.image, height: 48),
                     title: Text(title),
                     subtitle: subtitle == null ? null : Text(subtitle),
                     onTap: () {
@@ -142,80 +259,18 @@ class _ExercisesPageState extends State<ExercisesPage> {
   }
 }
 
-class ExerciseDetailPage extends StatelessWidget {
-  const ExerciseDetailPage({super.key, required this.exercise});
-
-  final Exercise exercise;
-
-  @override
-  Widget build(BuildContext context) {
-    final title = localizedExerciseName(
-      context,
-      exercise.name,
-      german: exercise.germanName,
-    );
-    return Scaffold(
-      appBar: AppBar(title: Text(title)),
-      body: StreamBuilder<List<ExerciseSet>>(
-        stream:
-            (db.select(db.exerciseSets)
-                  ..where((row) => row.exerciseId.equals(exercise.id))
-                  ..orderBy([(row) => OrderingTerm.desc(row.timestamp)]))
-                .watch(),
-        builder: (context, snapshot) {
-          final sets = snapshot.data ?? const <ExerciseSet>[];
-          var bestLoad = 0.0;
-          var bestEstimate = 0.0;
-          for (final set in sets) {
-            final load = set.loadKg ?? 0;
-            final reps = set.reps ?? 0;
-            if (load > bestLoad) bestLoad = load;
-            final estimate = estimatedOneRepMax(load, reps);
-            if (estimate > bestEstimate) bestEstimate = estimate;
-          }
-          return ListView(
-            padding: const EdgeInsets.all(16),
-            children: [
-              if (exercise.muscle != null)
-                Text(
-                  exercise.muscle!,
-                  style: Theme.of(context).textTheme.titleSmall,
-                ),
-              if (title != exercise.name) Text(exercise.name),
-              const SizedBox(height: 12),
-              Text(
-                bestEstimate <= 0
-                    ? context.l10n.noHistory
-                    : context.l10n.bestOneRepMax(
-                        bestEstimate.toStringAsFixed(1),
-                      ),
-              ),
-              if (bestLoad > 0)
-                Text(context.l10n.bestLoad(bestLoad.toStringAsFixed(1))),
-              const SizedBox(height: 16),
-              if (sets.isEmpty)
-                Text(context.l10n.noHistory)
-              else
-                for (final set in sets)
-                  ListTile(
-                    contentPadding: EdgeInsets.zero,
-                    title: Text(_setLine(set)),
-                    subtitle: Text(
-                      MaterialLocalizations.of(
-                        context,
-                      ).formatFullDate(set.timestamp),
-                    ),
-                  ),
-            ],
-          );
-        },
-      ),
-    );
-  }
-
-  String _setLine(ExerciseSet set) {
-    final reps = set.reps == null ? '-' : set.reps!.toStringAsFixed(0);
-    final load = set.loadKg == null ? '-' : set.loadKg!.toStringAsFixed(1);
-    return '$load kg × $reps';
-  }
+List<String> _chipValues(
+  Iterable<String?> values, [
+  List<String> order = const [],
+]) {
+  final present = values
+      .map((value) => value?.trim() ?? '')
+      .where((value) => value.isNotEmpty)
+      .toSet();
+  final ordered = [
+    for (final item in order)
+      if (present.remove(item)) item,
+  ];
+  final rest = present.toList()..sort();
+  return [...ordered, ...rest];
 }

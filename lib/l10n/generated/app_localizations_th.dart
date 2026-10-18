@@ -1789,4 +1789,468 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String get alphaSettingsDescription => 'Profile, Design und Pausenton';
+
+  @override
+  String get finishWorkoutAsk => 'จบเวิร์กเอาต์นี้ไหม?';
+
+  @override
+  String get finishWorkoutBody => 'เซสชันถูกบันทึก และเทมเพลตไม่เปลี่ยน';
+
+  @override
+  String get discardWorkoutAsk => 'ทิ้งเวิร์กเอาต์นี้ไหม?';
+
+  @override
+  String get discardWorkoutBody => 'เซ็ตที่จดในเซสชันนี้จะถูกลบ';
+
+  @override
+  String get noRest => 'ไม่พัก';
+
+  @override
+  String get restWheelTitle => 'พัก';
+
+  @override
+  String get deleteTemplateAsk => 'ลบเทมเพลตนี้ไหม?';
+
+  @override
+  String deleteTemplateBody(String name) {
+    return 'ลบ “$name”? เวิร์กเอาต์ที่บันทึกไว้ยังอยู่';
+  }
+
+  @override
+  String get warmupAction => 'วอร์มอัพ';
+
+  @override
+  String get warmupMark => 'W';
+
+  @override
+  String get confirmAddExercise => 'เพิ่มท่า';
+
+  @override
+  String get tabOverview => 'ภาพรวม';
+
+  @override
+  String get tabHistory => 'ประวัติ';
+
+  @override
+  String get tabHowTo => 'วิธีทำ';
+
+  @override
+  String get primaryMuscleLabel => 'กล้ามเนื้อหลัก';
+
+  @override
+  String get secondaryMuscleLabel => 'กล้ามเนื้อช่วย';
+
+  @override
+  String get equipmentLabel => 'อุปกรณ์';
+
+  @override
+  String get heaviestWeight => 'น้ำหนักมากสุด';
+
+  @override
+  String get estimatedOneRm => '1RM โดยประมาณ';
+
+  @override
+  String get volumeChart => 'ปริมาณฝึก';
+
+  @override
+  String get recordsTitle => 'สถิติ';
+
+  @override
+  String get weekGoal => 'เป้าหมายสัปดาห์';
+
+  @override
+  String weekGoalProgress(int done, int goal) {
+    return '$done จาก $goal';
+  }
+
+  @override
+  String startWorkoutNamed(String name) {
+    return 'เริ่มฝึก · $name';
+  }
+
+  @override
+  String get musclesThisWeek => 'กล้ามเนื้อสัปดาห์นี้';
+
+  @override
+  String get progressHeading => 'ความก้าวหน้า';
+
+  @override
+  String get lastEightWeeks => 'แปดสัปดาห์ล่าสุด';
+
+  @override
+  String get chooseProfile => 'เลือกโปรไฟล์';
+
+  @override
+  String get createProfileAction => 'สร้างโปรไฟล์';
+
+  @override
+  String get plateCalculator => 'คำนวณแผ่นน้ำหนัก';
+
+  @override
+  String get barbellCalc => 'บาร์เบล';
+
+  @override
+  String get cableCalc => 'เคเบิล';
+
+  @override
+  String get extraWeight => 'น้ำหนักเพิ่ม';
+
+  @override
+  String get barWeightLabel => 'น้ำหนักบาร์';
+
+  @override
+  String get plateSetLabel => 'แผ่นต่อข้าง';
+
+  @override
+  String get cableStepLabel => 'ขั้นของสแตก';
+
+  @override
+  String get chooseGym => 'เลือกยิม';
+
+  @override
+  String get gymsTitle => 'ยิม';
+
+  @override
+  String get newGym => 'ยิมใหม่';
+
+  @override
+  String get progressionHelp => 'ตัวช่วยเพิ่มน้ำหนัก';
+
+  @override
+  String progressionAsk(String name, String weight, int reps) {
+    return '$name: ครั้งหน้า $weight กก. แล้วเริ่มใหม่ที่ $reps ครั้ง?';
+  }
+
+  @override
+  String get actionAccept => 'ยอมรับ';
+
+  @override
+  String get actionReject => 'ปฏิเสธ';
+
+  @override
+  String get importExportTitle => 'นำเข้าและส่งออกข้อมูล';
+
+  @override
+  String get importWorkouts => 'นำเข้าเวิร์กเอาต์';
+
+  @override
+  String get importMeasurements => 'นำเข้าค่าวัด';
+
+  @override
+  String get exportAlphaData => 'ส่งออกข้อมูล Alpha';
+
+  @override
+  String get importPreviewTitle => 'ดูก่อนนำเข้า';
+
+  @override
+  String importSummary(int workouts, int exercises) {
+    return '$workouts เวิร์กเอาต์, $exercises ท่า';
+  }
+
+  @override
+  String get templatesDetected => 'เทมเพลตที่พบ';
+
+  @override
+  String get renameLabel => 'เปลี่ยนชื่อ';
+
+  @override
+  String get mapExercise => 'จับคู่ท่า';
+
+  @override
+  String get checkForUpdates => 'ตรวจอัปเดต';
+
+  @override
+  String get upToDate => 'คุณใช้รุ่นล่าสุดแล้ว';
+
+  @override
+  String get updateCheckFailed => 'ตรวจอัปเดตไม่สำเร็จ';
+
+  @override
+  String get licensesTitle => 'สัญญาอนุญาต';
+
+  @override
+  String get flexifyMitNotice =>
+      'Flexify เผยแพร่ภายใต้สัญญา MIT Copyright Brandon Dick.';
+
+  @override
+  String get exerciseDbNotice => 'แต่ละท่าบอกแหล่งที่มาและสัญญาอนุญาตของตัวเอง';
+
+  @override
+  String get sourceLabel => 'แหล่งที่มา';
+
+  @override
+  String get tipsLabel => 'เคล็ดลับ';
+
+  @override
+  String get imageSourceLabel => 'แหล่งที่มาของภาพ';
+
+  @override
+  String get imageLicenseLabel => 'สัญญาอนุญาตของภาพ';
+
+  @override
+  String get muscleUpperChest => 'อกบน';
+
+  @override
+  String get muscleFrontShoulder => 'ไหล่หน้า';
+
+  @override
+  String get muscleSideShoulder => 'ไหล่ข้าง';
+
+  @override
+  String get muscleRearShoulder => 'ไหล่หลัง';
+
+  @override
+  String get muscleLatissimus => 'แลต';
+
+  @override
+  String get muscleUpperBack => 'หลังบน';
+
+  @override
+  String get muscleTrapez => 'ทราพีเซียส';
+
+  @override
+  String get muscleLowerBack => 'หลังล่าง';
+
+  @override
+  String get muscleForearms => 'ปลายแขน';
+
+  @override
+  String get muscleRectus => 'หน้าท้องตรง';
+
+  @override
+  String get muscleObliques => 'หน้าท้องเฉียง';
+
+  @override
+  String get muscleQuadriceps => 'ควอดริเซปส์';
+
+  @override
+  String get muscleAdductors => 'กล้ามเนื้อหุบขา';
+
+  @override
+  String get muscleAbductors => 'กล้ามเนื้อกางขา';
+
+  @override
+  String get muscleHipFlexors => 'งอสะโพก';
+
+  @override
+  String get alternativesLabel => 'ทางเลือก';
+
+  @override
+  String get mechanicLabel => 'กลไก';
+
+  @override
+  String get aiCoachTitle => 'โค้ช AI';
+
+  @override
+  String get aiProviderLabel => 'ผู้ให้บริการ';
+
+  @override
+  String get aiOffNotice => 'โค้ชปิดอยู่จนกว่าคุณจะบันทึกคีย์ของตัวเอง';
+
+  @override
+  String get coachHint => 'ถามโค้ช';
+
+  @override
+  String get voiceInput => 'ป้อนด้วยเสียง';
+
+  @override
+  String voiceUnderstood(String text) {
+    return 'ได้ยินว่า: $text';
+  }
+
+  @override
+  String get speechFailed => 'ป้อนด้วยเสียงไม่สำเร็จ';
+
+  @override
+  String get confirmVoiceSet => 'ใช้เซ็ตนี้ไหม?';
+
+  @override
+  String get periodSession => 'เวิร์กเอาต์นี้';
+
+  @override
+  String get muscleMapTitle => 'แผนที่กล้ามเนื้อ';
+
+  @override
+  String get frontView => 'ด้านหน้า';
+
+  @override
+  String get backView => 'ด้านหลัง';
+
+  @override
+  String quoteKeepGoing(int done, int goal) {
+    return 'สัปดาห์นี้ $done จาก $goal ครั้ง ไปต่อ';
+  }
+
+  @override
+  String quoteRemaining(int count) {
+    return 'สัปดาห์นี้เหลืออีก $count ครั้ง';
+  }
+
+  @override
+  String get quotePullDay => 'วันดึง หลังและไบเซ็ปพร้อมแล้ว';
+
+  @override
+  String get quotePushDay => 'วันดัน อก ไหล่ และไทรเซ็ป';
+
+  @override
+  String get quoteLegDay => 'วันขา ต้นขา สะโพก และก้น';
+
+  @override
+  String versionAndLicenses(String version) {
+    return 'รุ่น $version · สัญญาอนุญาต';
+  }
+
+  @override
+  String get liveWorkoutLabel => 'กำลังฝึก';
+
+  @override
+  String get muscleChest => 'อก';
+
+  @override
+  String get muscleShoulders => 'ไหล่';
+
+  @override
+  String get muscleBiceps => 'ไบเซ็ป';
+
+  @override
+  String get muscleTriceps => 'ไทรเซ็ป';
+
+  @override
+  String get muscleAbs => 'หน้าท้อง';
+
+  @override
+  String get muscleQuads => 'ต้นขาหน้า';
+
+  @override
+  String get muscleCalves => 'น่อง';
+
+  @override
+  String get muscleTraps => 'ทราพีเชียส';
+
+  @override
+  String get muscleBack => 'หลัง';
+
+  @override
+  String get muscleGlutes => 'ก้น';
+
+  @override
+  String get muscleHams => 'ต้นขาหลัง';
+
+  @override
+  String get weekGoalManual => 'ตั้งเป้าหมายสัปดาห์เอง';
+
+  @override
+  String get sessionsPerWeek => 'ครั้งต่อสัปดาห์';
+
+  @override
+  String get gymNameHint => 'ชื่อยิม';
+
+  @override
+  String get coachProfileNote => 'โน้ตจากโค้ช';
+
+  @override
+  String get openPackageLicenses => 'เปิดสัญญาอนุญาตแพ็กเกจ';
+
+  @override
+  String get lengthUnitLabel => 'หน่วยส่วนสูง';
+
+  @override
+  String get centimetersShort => 'เซนติเมตร (cm)';
+
+  @override
+  String get inchesShort => 'นิ้ว (in)';
+
+  @override
+  String get heightInches => 'ส่วนสูง (นิ้ว)';
+
+  @override
+  String get welcomeToAlpha => 'ยินดีต้อนรับสู่ Alpha';
+
+  @override
+  String get createProfileButton => 'สร้างโปรไฟล์';
+
+  @override
+  String get onboardingWeightHint => 'น้ำหนักตัว ไม่บังคับ';
+
+  @override
+  String get familyLabel => 'ตระกูล';
+
+  @override
+  String get gripLabel => 'การจับ';
+
+  @override
+  String get positionLabel => 'ท่าทาง';
+
+  @override
+  String get movementLabel => 'การเคลื่อนไหว';
+
+  @override
+  String get unilateralLabel => 'ข้างเดียว';
+
+  @override
+  String get otherVariants => 'รูปแบบอื่น';
+
+  @override
+  String get sideLeft => 'ซ้าย';
+
+  @override
+  String get sideRight => 'ขวา';
+
+  @override
+  String get createCustomExercise => 'สร้างท่า';
+
+  @override
+  String get editCustomExercise => 'แก้ไขท่า';
+
+  @override
+  String get deleteCustomExercise => 'ลบท่า';
+
+  @override
+  String get deleteCustomExerciseBody =>
+      'ลบท่านี้หรือไม่ การฝึกที่ผ่านมายังอยู่ในประวัติ';
+
+  @override
+  String get customExerciseName => 'ชื่อ';
+
+  @override
+  String get customExerciseFamily => 'รหัสตระกูล';
+
+  @override
+  String get createAsCustomExercise => 'สร้างเป็นท่าของตัวเอง';
+
+  @override
+  String get customExerciseInvalid => 'เลือกชื่อ กล้ามเนื้อ และอุปกรณ์';
+
+  @override
+  String get motionPress => 'ดัน';
+
+  @override
+  String get motionPull => 'ดึง';
+
+  @override
+  String get motionLegs => 'ขา/สะโพก';
+
+  @override
+  String get motionCore => 'แกนกลาง';
+
+  @override
+  String get motionCardio => 'คาร์ดิโอ';
+
+  @override
+  String get mechanicCompound => 'หลายข้อต่อ';
+
+  @override
+  String get mechanicIsolation => 'แยกส่วน';
+
+  @override
+  String get ownExerciseSource => 'ท่าของฉัน';
+
+  @override
+  String get notSpecified => '–';
+
+  @override
+  String get resumeWorkout => 'ฝึกต่อ';
+
+  @override
+  String get importBackupZip => 'นำเข้าข้อมูลสำรอง (.zip)';
 }

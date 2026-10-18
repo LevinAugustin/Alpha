@@ -8,6 +8,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import android.speech.RecognizerIntent
 import android.content.ServiceConnection
 import android.content.pm.PackageManager
 import android.net.Uri
@@ -34,6 +35,7 @@ class MainActivity : FlutterActivity() {
     private var timerService: TimerService? = null
     private var pendingPickResult: MethodChannel.Result? = null
     private var pendingNotificationTarget: String? = null
+    private var speechResult: MethodChannel.Result? = null
 
     private val timerConnection = object : ServiceConnection {
         override fun onServiceConnected(className: ComponentName, service: IBinder) {
@@ -175,6 +177,23 @@ class MainActivity : FlutterActivity() {
                     val target = pendingNotificationTarget
                     pendingNotificationTarget = null
                     result.success(target)
+                }
+
+                "listenSpeech" -> {
+                    val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH).apply {
+                        putExtra(
+                            RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                            RecognizerIntent.LANGUAGE_MODEL_FREE_FORM
+                        )
+                        putExtra(RecognizerIntent.EXTRA_LANGUAGE, "de-DE")
+                    }
+                    speechResult = result
+                    try {
+                        startActivityForResult(intent, SPEECH_REQUEST_CODE)
+                    } catch (_: Exception) {
+                        speechResult = null
+                        result.success("")
+                    }
                 }
 
                 "pick" -> {
@@ -368,7 +387,11 @@ class MainActivity : FlutterActivity() {
             localization.forEach { (key, value) -> putExtra(key, value) }
         }
 
-        context.startForegroundService(intent)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            context.startForegroundService(intent)
+        } else {
+            context.startService(intent)
+        }
     }
 
     private fun installApk(path: String, result: io.flutter.plugin.common.MethodChannel.Result) {
@@ -406,6 +429,18 @@ class MainActivity : FlutterActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == SPEECH_REQUEST_CODE) {
+            val pending = speechResult
+            speechResult = null
+            if (pending == null) return
+            if (resultCode != RESULT_OK) {
+                pending.success("")
+                return
+            }
+            val spoken = data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)
+            pending.success(if (spoken.isNullOrEmpty()) "" else spoken.first())
+            return
+        }
         if (requestCode != WRITE_REQUEST_CODE) return
 
         data?.data?.also { uri ->
@@ -473,7 +508,12 @@ class MainActivity : FlutterActivity() {
         if (vibrator.hasVibrator()) {
             try {
                 val pattern = longArrayOf(0, 500, 200, 300)
-                vibrator.vibrate(android.os.VibrationEffect.createWaveform(pattern, -1))
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    vibrator.vibrate(android.os.VibrationEffect.createWaveform(pattern, -1))
+                } else {
+                    @Suppress("DEPRECATION")
+                    vibrator.vibrate(pattern, -1)
+                }
                 Log.d("MainActivity", "Preview vibration triggered successfully")
             } catch (e: Exception) {
                 Log.e("MainActivity", "Failed to trigger preview vibration", e)
@@ -486,6 +526,7 @@ class MainActivity : FlutterActivity() {
     companion object {
         const val FLUTTER_CHANNEL = "com.presley.flexify/android"
         const val WRITE_REQUEST_CODE = 43
+        const val SPEECH_REQUEST_CODE = 45
         const val TIMER_PERMISSION_REQUEST_CODE = 44
         const val TICK_BROADCAST = "tick-event"
         const val PERMISSION_INSTALL_MARKER = "permission-prompt-state-v1"

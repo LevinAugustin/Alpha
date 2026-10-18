@@ -6,9 +6,17 @@ policy_file="$repo_root/android/signing-policy.properties"
 expected_package=$(
   sed -n 's/^productionApplicationId=//p' "$policy_file" | head -n 1 | tr -d '[:space:]'
 )
+expected_sha256=$(
+  sed -n 's/^productionCertificateSha256=//p' "$policy_file" | head -n 1 | tr -d '[:space:]' | tr '[:upper:]' '[:lower:]'
+)
 
 if [[ -z "$expected_package" ]]; then
   echo "Missing productionApplicationId in $policy_file" >&2
+  exit 2
+fi
+
+if [[ -z "$expected_sha256" ]]; then
+  echo "Missing productionCertificateSha256 in $policy_file" >&2
   exit 2
 fi
 
@@ -49,7 +57,22 @@ for apk in "$@"; do
     exit 2
   }
 
-  "$apksigner_bin" verify "$apk"
+  "$apksigner_bin" verify --print-certs "$apk"
+
+  actual_sha256=$(
+    "$apksigner_bin" verify --print-certs "$apk" \
+      | sed -n 's/.*SHA-256 digest: //p' \
+      | head -n 1 \
+      | tr -d '[:space:]' \
+      | tr -d ':' \
+      | tr '[:upper:]' '[:lower:]'
+  )
+  if [[ "$actual_sha256" != "$expected_sha256" ]]; then
+    echo "Wrong signing certificate for $apk" >&2
+    echo "  expected: $expected_sha256" >&2
+    echo "  actual:   ${actual_sha256:-<missing>}" >&2
+    exit 1
+  fi
 
   package=$(
     "$aapt_bin" dump badging "$apk" \

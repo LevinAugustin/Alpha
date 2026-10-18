@@ -17,6 +17,9 @@ void main() {
     (WidgetTester tester) async {
       final harness = await FlexifyTestHarness.create();
       final timerState = harness.timerState;
+      await harness.database.settings.update().write(
+        testSettings(restTimers: false),
+      );
       final settings = await (harness.database.settings.select()..limit(1))
           .getSingle();
       expect(settings.restTimers, false);

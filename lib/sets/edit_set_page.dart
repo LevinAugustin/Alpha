@@ -10,6 +10,7 @@ import 'package:flexify/database/body_weight_repository.dart';
 import 'package:flexify/database/categories.dart';
 import 'package:flexify/database/database.dart';
 import 'package:flexify/database/exercise_catalog.dart';
+import 'package:flexify/exercises/exercise_image.dart';
 import 'package:flexify/database/exercise_set_repository.dart';
 import 'package:flexify/l10n/l10n.dart';
 import 'package:flexify/logging.dart';
@@ -590,16 +591,18 @@ class _EditSetPageState extends State<EditSetPage> {
                               _image = null;
                             });
                           },
-                    child: Image.file(
-                      File(_image!),
-                      cacheWidth: 400,
-                      errorBuilder: (context, error, stackTrace) =>
-                          TextButton.icon(
-                            label: Text(context.l10n.imageError),
-                            icon: const Icon(Icons.error),
-                            onPressed: () => pick(),
-                          ),
-                    ),
+                    child: exerciseImageFileExists(_image)
+                        ? Image.file(
+                            File(_image!),
+                            cacheWidth: 400,
+                            errorBuilder: (context, error, stackTrace) =>
+                                TextButton.icon(
+                                  label: Text(context.l10n.imageError),
+                                  icon: const Icon(Icons.error),
+                                  onPressed: () => pick(),
+                                ),
+                          )
+                        : const ExerciseImage(path: null, height: 120),
                   ),
                 ),
                 if (isDesktopLayout(context))

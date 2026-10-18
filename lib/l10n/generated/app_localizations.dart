@@ -2937,13 +2937,13 @@ abstract class AppLocalizations {
   /// Current streak of consecutive training days.
   ///
   /// In en, this message translates to:
-  /// **'{count} days in a row'**
+  /// **'{count, plural, =1{1 day in a row} other{{count} days in a row}}'**
   String dayStreak(int count);
 
   /// Current streak of consecutive training weeks.
   ///
   /// In en, this message translates to:
-  /// **'{count} weeks in a row'**
+  /// **'{count, plural, =1{1 week in a row} other{{count} weeks in a row}}'**
   String weekStreak(int count);
 
   /// Heading for the current training week.
@@ -3341,6 +3341,894 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Profiles, theme and rest sound'**
   String get alphaSettingsDescription;
+
+  /// Finish this workout?
+  ///
+  /// In en, this message translates to:
+  /// **'Finish this workout?'**
+  String get finishWorkoutAsk;
+
+  /// The session is saved and the template stays unchanged.
+  ///
+  /// In en, this message translates to:
+  /// **'The session is saved and the template stays unchanged.'**
+  String get finishWorkoutBody;
+
+  /// Discard this workout?
+  ///
+  /// In en, this message translates to:
+  /// **'Discard this workout?'**
+  String get discardWorkoutAsk;
+
+  /// Logged sets from this session are deleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Logged sets from this session are deleted.'**
+  String get discardWorkoutBody;
+
+  /// No rest
+  ///
+  /// In en, this message translates to:
+  /// **'No rest'**
+  String get noRest;
+
+  /// Rest
+  ///
+  /// In en, this message translates to:
+  /// **'Rest'**
+  String get restWheelTitle;
+
+  /// Delete this template?
+  ///
+  /// In en, this message translates to:
+  /// **'Delete this template?'**
+  String get deleteTemplateAsk;
+
+  /// Delete “{name}”? Logged workouts stay.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete “{name}”? Logged workouts stay.'**
+  String deleteTemplateBody(String name);
+
+  /// Warm up
+  ///
+  /// In en, this message translates to:
+  /// **'Warm up'**
+  String get warmupAction;
+
+  /// W
+  ///
+  /// In en, this message translates to:
+  /// **'W'**
+  String get warmupMark;
+
+  /// Add exercise
+  ///
+  /// In en, this message translates to:
+  /// **'Add exercise'**
+  String get confirmAddExercise;
+
+  /// Overview
+  ///
+  /// In en, this message translates to:
+  /// **'Overview'**
+  String get tabOverview;
+
+  /// History
+  ///
+  /// In en, this message translates to:
+  /// **'History'**
+  String get tabHistory;
+
+  /// How to
+  ///
+  /// In en, this message translates to:
+  /// **'How to'**
+  String get tabHowTo;
+
+  /// Primary muscle
+  ///
+  /// In en, this message translates to:
+  /// **'Primary muscle'**
+  String get primaryMuscleLabel;
+
+  /// Secondary muscles
+  ///
+  /// In en, this message translates to:
+  /// **'Secondary muscles'**
+  String get secondaryMuscleLabel;
+
+  /// Equipment
+  ///
+  /// In en, this message translates to:
+  /// **'Equipment'**
+  String get equipmentLabel;
+
+  /// Heaviest weight
+  ///
+  /// In en, this message translates to:
+  /// **'Heaviest weight'**
+  String get heaviestWeight;
+
+  /// Estimated 1RM
+  ///
+  /// In en, this message translates to:
+  /// **'Estimated 1RM'**
+  String get estimatedOneRm;
+
+  /// Training volume
+  ///
+  /// In en, this message translates to:
+  /// **'Training volume'**
+  String get volumeChart;
+
+  /// Records
+  ///
+  /// In en, this message translates to:
+  /// **'Records'**
+  String get recordsTitle;
+
+  /// Week goal
+  ///
+  /// In en, this message translates to:
+  /// **'Week goal'**
+  String get weekGoal;
+
+  /// {done} of {goal}
+  ///
+  /// In en, this message translates to:
+  /// **'{done} of {goal}'**
+  String weekGoalProgress(int done, int goal);
+
+  /// Start workout · {name}
+  ///
+  /// In en, this message translates to:
+  /// **'Start workout · {name}'**
+  String startWorkoutNamed(String name);
+
+  /// Muscles this week
+  ///
+  /// In en, this message translates to:
+  /// **'Muscles this week'**
+  String get musclesThisWeek;
+
+  /// Progress
+  ///
+  /// In en, this message translates to:
+  /// **'Progress'**
+  String get progressHeading;
+
+  /// Last eight weeks
+  ///
+  /// In en, this message translates to:
+  /// **'Last eight weeks'**
+  String get lastEightWeeks;
+
+  /// Choose a profile
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a profile'**
+  String get chooseProfile;
+
+  /// Create profile
+  ///
+  /// In en, this message translates to:
+  /// **'Create profile'**
+  String get createProfileAction;
+
+  /// Plate calculator
+  ///
+  /// In en, this message translates to:
+  /// **'Plate calculator'**
+  String get plateCalculator;
+
+  /// Barbell
+  ///
+  /// In en, this message translates to:
+  /// **'Barbell'**
+  String get barbellCalc;
+
+  /// Cable stack
+  ///
+  /// In en, this message translates to:
+  /// **'Cable stack'**
+  String get cableCalc;
+
+  /// Extra weight
+  ///
+  /// In en, this message translates to:
+  /// **'Extra weight'**
+  String get extraWeight;
+
+  /// Bar weight
+  ///
+  /// In en, this message translates to:
+  /// **'Bar weight'**
+  String get barWeightLabel;
+
+  /// Plates per side
+  ///
+  /// In en, this message translates to:
+  /// **'Plates per side'**
+  String get plateSetLabel;
+
+  /// Stack step
+  ///
+  /// In en, this message translates to:
+  /// **'Stack step'**
+  String get cableStepLabel;
+
+  /// Choose a gym
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a gym'**
+  String get chooseGym;
+
+  /// Gyms
+  ///
+  /// In en, this message translates to:
+  /// **'Gyms'**
+  String get gymsTitle;
+
+  /// New gym
+  ///
+  /// In en, this message translates to:
+  /// **'New gym'**
+  String get newGym;
+
+  /// Progression help
+  ///
+  /// In en, this message translates to:
+  /// **'Progression help'**
+  String get progressionHelp;
+
+  /// {name}: next time {weight} kg, starting again at {reps} reps?
+  ///
+  /// In en, this message translates to:
+  /// **'{name}: next time {weight} kg, starting again at {reps} reps?'**
+  String progressionAsk(String name, String weight, int reps);
+
+  /// Accept
+  ///
+  /// In en, this message translates to:
+  /// **'Accept'**
+  String get actionAccept;
+
+  /// Reject
+  ///
+  /// In en, this message translates to:
+  /// **'Reject'**
+  String get actionReject;
+
+  /// Import and export data
+  ///
+  /// In en, this message translates to:
+  /// **'Import and export data'**
+  String get importExportTitle;
+
+  /// Import workouts
+  ///
+  /// In en, this message translates to:
+  /// **'Import workouts'**
+  String get importWorkouts;
+
+  /// Import measurements
+  ///
+  /// In en, this message translates to:
+  /// **'Import measurements'**
+  String get importMeasurements;
+
+  /// Export Alpha data
+  ///
+  /// In en, this message translates to:
+  /// **'Export Alpha data'**
+  String get exportAlphaData;
+
+  /// Import preview
+  ///
+  /// In en, this message translates to:
+  /// **'Import preview'**
+  String get importPreviewTitle;
+
+  /// {workouts} workouts, {exercises} exercises
+  ///
+  /// In en, this message translates to:
+  /// **'{workouts} workouts, {exercises} exercises'**
+  String importSummary(int workouts, int exercises);
+
+  /// Detected templates
+  ///
+  /// In en, this message translates to:
+  /// **'Detected templates'**
+  String get templatesDetected;
+
+  /// Rename
+  ///
+  /// In en, this message translates to:
+  /// **'Rename'**
+  String get renameLabel;
+
+  /// Match exercise
+  ///
+  /// In en, this message translates to:
+  /// **'Match exercise'**
+  String get mapExercise;
+
+  /// Check for updates
+  ///
+  /// In en, this message translates to:
+  /// **'Check for updates'**
+  String get checkForUpdates;
+
+  /// You are up to date
+  ///
+  /// In en, this message translates to:
+  /// **'You are up to date'**
+  String get upToDate;
+
+  /// The update check failed
+  ///
+  /// In en, this message translates to:
+  /// **'The update check failed'**
+  String get updateCheckFailed;
+
+  /// Licenses
+  ///
+  /// In en, this message translates to:
+  /// **'Licenses'**
+  String get licensesTitle;
+
+  /// Flexify is published under the MIT license. Copyright Brandon Dick.
+  ///
+  /// In en, this message translates to:
+  /// **'Flexify is published under the MIT license. Copyright Brandon Dick.'**
+  String get flexifyMitNotice;
+
+  /// Each exercise lists its own source and license.
+  ///
+  /// In en, this message translates to:
+  /// **'Each exercise lists its own source and license.'**
+  String get exerciseDbNotice;
+
+  /// Source
+  ///
+  /// In en, this message translates to:
+  /// **'Source'**
+  String get sourceLabel;
+
+  /// Tips
+  ///
+  /// In en, this message translates to:
+  /// **'Tips'**
+  String get tipsLabel;
+
+  /// Image source
+  ///
+  /// In en, this message translates to:
+  /// **'Image source'**
+  String get imageSourceLabel;
+
+  /// Image license
+  ///
+  /// In en, this message translates to:
+  /// **'Image license'**
+  String get imageLicenseLabel;
+
+  /// Upper chest
+  ///
+  /// In en, this message translates to:
+  /// **'Upper chest'**
+  String get muscleUpperChest;
+
+  /// Front shoulder
+  ///
+  /// In en, this message translates to:
+  /// **'Front shoulder'**
+  String get muscleFrontShoulder;
+
+  /// Side shoulder
+  ///
+  /// In en, this message translates to:
+  /// **'Side shoulder'**
+  String get muscleSideShoulder;
+
+  /// Rear shoulder
+  ///
+  /// In en, this message translates to:
+  /// **'Rear shoulder'**
+  String get muscleRearShoulder;
+
+  /// Lats
+  ///
+  /// In en, this message translates to:
+  /// **'Lats'**
+  String get muscleLatissimus;
+
+  /// Upper back
+  ///
+  /// In en, this message translates to:
+  /// **'Upper back'**
+  String get muscleUpperBack;
+
+  /// Traps and neck
+  ///
+  /// In en, this message translates to:
+  /// **'Traps and neck'**
+  String get muscleTrapez;
+
+  /// Lower back
+  ///
+  /// In en, this message translates to:
+  /// **'Lower back'**
+  String get muscleLowerBack;
+
+  /// Forearms
+  ///
+  /// In en, this message translates to:
+  /// **'Forearms'**
+  String get muscleForearms;
+
+  /// Rectus abdominis
+  ///
+  /// In en, this message translates to:
+  /// **'Rectus abdominis'**
+  String get muscleRectus;
+
+  /// Obliques
+  ///
+  /// In en, this message translates to:
+  /// **'Obliques'**
+  String get muscleObliques;
+
+  /// Quadriceps
+  ///
+  /// In en, this message translates to:
+  /// **'Quadriceps'**
+  String get muscleQuadriceps;
+
+  /// Adductors
+  ///
+  /// In en, this message translates to:
+  /// **'Adductors'**
+  String get muscleAdductors;
+
+  /// Abductors
+  ///
+  /// In en, this message translates to:
+  /// **'Abductors'**
+  String get muscleAbductors;
+
+  /// Hip flexors
+  ///
+  /// In en, this message translates to:
+  /// **'Hip flexors'**
+  String get muscleHipFlexors;
+
+  /// Alternatives
+  ///
+  /// In en, this message translates to:
+  /// **'Alternatives'**
+  String get alternativesLabel;
+
+  /// Mechanic
+  ///
+  /// In en, this message translates to:
+  /// **'Mechanic'**
+  String get mechanicLabel;
+
+  /// AI coach
+  ///
+  /// In en, this message translates to:
+  /// **'AI coach'**
+  String get aiCoachTitle;
+
+  /// Provider
+  ///
+  /// In en, this message translates to:
+  /// **'Provider'**
+  String get aiProviderLabel;
+
+  /// The coach stays off until you save your own key.
+  ///
+  /// In en, this message translates to:
+  /// **'The coach stays off until you save your own key.'**
+  String get aiOffNotice;
+
+  /// Ask your coach
+  ///
+  /// In en, this message translates to:
+  /// **'Ask your coach'**
+  String get coachHint;
+
+  /// Voice input
+  ///
+  /// In en, this message translates to:
+  /// **'Voice input'**
+  String get voiceInput;
+
+  /// Understood: {text}
+  ///
+  /// In en, this message translates to:
+  /// **'Understood: {text}'**
+  String voiceUnderstood(String text);
+
+  /// Speech input failed
+  ///
+  /// In en, this message translates to:
+  /// **'Speech input failed'**
+  String get speechFailed;
+
+  /// Apply this set?
+  ///
+  /// In en, this message translates to:
+  /// **'Apply this set?'**
+  String get confirmVoiceSet;
+
+  /// This workout
+  ///
+  /// In en, this message translates to:
+  /// **'This workout'**
+  String get periodSession;
+
+  /// Muscle map
+  ///
+  /// In en, this message translates to:
+  /// **'Muscle map'**
+  String get muscleMapTitle;
+
+  /// Front
+  ///
+  /// In en, this message translates to:
+  /// **'Front'**
+  String get frontView;
+
+  /// Back
+  ///
+  /// In en, this message translates to:
+  /// **'Back'**
+  String get backView;
+
+  /// {done} of {goal} sessions this week. Keep going.
+  ///
+  /// In en, this message translates to:
+  /// **'{done} of {goal} sessions this week. Keep going.'**
+  String quoteKeepGoing(int done, int goal);
+
+  /// {count} sessions left this week.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} sessions left this week.'**
+  String quoteRemaining(int count);
+
+  /// Pull day. Back and biceps are ready.
+  ///
+  /// In en, this message translates to:
+  /// **'Pull day. Back and biceps are ready.'**
+  String get quotePullDay;
+
+  /// Push day. Chest, shoulders and triceps.
+  ///
+  /// In en, this message translates to:
+  /// **'Push day. Chest, shoulders and triceps.'**
+  String get quotePushDay;
+
+  /// Leg day. Quads, hamstrings and glutes.
+  ///
+  /// In en, this message translates to:
+  /// **'Leg day. Quads, hamstrings and glutes.'**
+  String get quoteLegDay;
+
+  /// Version {version} · Licenses
+  ///
+  /// In en, this message translates to:
+  /// **'Version {version} · Licenses'**
+  String versionAndLicenses(String version);
+
+  /// Workout in progress
+  ///
+  /// In en, this message translates to:
+  /// **'Workout in progress'**
+  String get liveWorkoutLabel;
+
+  /// Chest
+  ///
+  /// In en, this message translates to:
+  /// **'Chest'**
+  String get muscleChest;
+
+  /// Shoulders
+  ///
+  /// In en, this message translates to:
+  /// **'Shoulders'**
+  String get muscleShoulders;
+
+  /// Biceps
+  ///
+  /// In en, this message translates to:
+  /// **'Biceps'**
+  String get muscleBiceps;
+
+  /// Triceps
+  ///
+  /// In en, this message translates to:
+  /// **'Triceps'**
+  String get muscleTriceps;
+
+  /// Abs
+  ///
+  /// In en, this message translates to:
+  /// **'Abs'**
+  String get muscleAbs;
+
+  /// Quads
+  ///
+  /// In en, this message translates to:
+  /// **'Quads'**
+  String get muscleQuads;
+
+  /// Calves
+  ///
+  /// In en, this message translates to:
+  /// **'Calves'**
+  String get muscleCalves;
+
+  /// Traps
+  ///
+  /// In en, this message translates to:
+  /// **'Traps'**
+  String get muscleTraps;
+
+  /// Back
+  ///
+  /// In en, this message translates to:
+  /// **'Back'**
+  String get muscleBack;
+
+  /// Glutes
+  ///
+  /// In en, this message translates to:
+  /// **'Glutes'**
+  String get muscleGlutes;
+
+  /// Hamstrings
+  ///
+  /// In en, this message translates to:
+  /// **'Hamstrings'**
+  String get muscleHams;
+
+  /// Set the week goal yourself
+  ///
+  /// In en, this message translates to:
+  /// **'Set the week goal yourself'**
+  String get weekGoalManual;
+
+  /// Sessions per week
+  ///
+  /// In en, this message translates to:
+  /// **'Sessions per week'**
+  String get sessionsPerWeek;
+
+  /// Gym name
+  ///
+  /// In en, this message translates to:
+  /// **'Gym name'**
+  String get gymNameHint;
+
+  /// Note from your coach
+  ///
+  /// In en, this message translates to:
+  /// **'Note from your coach'**
+  String get coachProfileNote;
+
+  /// Open package licenses
+  ///
+  /// In en, this message translates to:
+  /// **'Open package licenses'**
+  String get openPackageLicenses;
+
+  /// Body length
+  ///
+  /// In en, this message translates to:
+  /// **'Body length'**
+  String get lengthUnitLabel;
+
+  /// Centimetres (cm)
+  ///
+  /// In en, this message translates to:
+  /// **'Centimetres (cm)'**
+  String get centimetersShort;
+
+  /// Inches (in)
+  ///
+  /// In en, this message translates to:
+  /// **'Inches (in)'**
+  String get inchesShort;
+
+  /// Height (in)
+  ///
+  /// In en, this message translates to:
+  /// **'Height (in)'**
+  String get heightInches;
+
+  /// Welcome to Alpha
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome to Alpha'**
+  String get welcomeToAlpha;
+
+  /// Create profile
+  ///
+  /// In en, this message translates to:
+  /// **'Create profile'**
+  String get createProfileButton;
+
+  /// Body weight, optional
+  ///
+  /// In en, this message translates to:
+  /// **'Body weight, optional'**
+  String get onboardingWeightHint;
+
+  /// Label for an exercise family.
+  ///
+  /// In en, this message translates to:
+  /// **'Family'**
+  String get familyLabel;
+
+  /// Label for grip.
+  ///
+  /// In en, this message translates to:
+  /// **'Grip'**
+  String get gripLabel;
+
+  /// Label for body position.
+  ///
+  /// In en, this message translates to:
+  /// **'Position'**
+  String get positionLabel;
+
+  /// Label for an exercise movement pattern.
+  ///
+  /// In en, this message translates to:
+  /// **'Movement'**
+  String get movementLabel;
+
+  /// Label for a per-side exercise.
+  ///
+  /// In en, this message translates to:
+  /// **'Each side'**
+  String get unilateralLabel;
+
+  /// Heading for other exercises in the same family.
+  ///
+  /// In en, this message translates to:
+  /// **'Other variants'**
+  String get otherVariants;
+
+  /// Left side of a unilateral set.
+  ///
+  /// In en, this message translates to:
+  /// **'Left'**
+  String get sideLeft;
+
+  /// Right side of a unilateral set.
+  ///
+  /// In en, this message translates to:
+  /// **'Right'**
+  String get sideRight;
+
+  /// Action for creating a custom exercise.
+  ///
+  /// In en, this message translates to:
+  /// **'Create exercise'**
+  String get createCustomExercise;
+
+  /// Action for editing a custom exercise.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit exercise'**
+  String get editCustomExercise;
+
+  /// Action for deleting a custom exercise.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete exercise'**
+  String get deleteCustomExercise;
+
+  /// Confirmation that deleting a custom exercise keeps history.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete this exercise? Past workouts stay in the history.'**
+  String get deleteCustomExerciseBody;
+
+  /// Name field for a custom exercise.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get customExerciseName;
+
+  /// Optional family id field.
+  ///
+  /// In en, this message translates to:
+  /// **'Family id'**
+  String get customExerciseFamily;
+
+  /// Import action that creates a custom exercise.
+  ///
+  /// In en, this message translates to:
+  /// **'Create as custom exercise'**
+  String get createAsCustomExercise;
+
+  /// Shown when a custom exercise form is incomplete.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a name, muscles and gear.'**
+  String get customExerciseInvalid;
+
+  /// Label for a pressing movement.
+  ///
+  /// In en, this message translates to:
+  /// **'Press'**
+  String get motionPress;
+
+  /// Label for a pulling movement.
+  ///
+  /// In en, this message translates to:
+  /// **'Pull'**
+  String get motionPull;
+
+  /// Label for a legs and hips movement.
+  ///
+  /// In en, this message translates to:
+  /// **'Legs/hips'**
+  String get motionLegs;
+
+  /// Label for a core movement.
+  ///
+  /// In en, this message translates to:
+  /// **'Core'**
+  String get motionCore;
+
+  /// Label for a cardio movement.
+  ///
+  /// In en, this message translates to:
+  /// **'Cardio'**
+  String get motionCardio;
+
+  /// Label for a compound exercise.
+  ///
+  /// In en, this message translates to:
+  /// **'Compound'**
+  String get mechanicCompound;
+
+  /// Label for an isolation exercise.
+  ///
+  /// In en, this message translates to:
+  /// **'Isolation'**
+  String get mechanicIsolation;
+
+  /// Source line for an exercise the user created.
+  ///
+  /// In en, this message translates to:
+  /// **'Custom exercise'**
+  String get ownExerciseSource;
+
+  /// Shown when grip or body position is not set.
+  ///
+  /// In en, this message translates to:
+  /// **'–'**
+  String get notSpecified;
+
+  /// Button that returns to the workout already in progress.
+  ///
+  /// In en, this message translates to:
+  /// **'Resume workout'**
+  String get resumeWorkout;
+
+  /// Imports a Flexify or Alpha zip backup.
+  ///
+  /// In en, this message translates to:
+  /// **'Import backup (.zip)'**
+  String get importBackupZip;
 }
 
 class _AppLocalizationsDelegate

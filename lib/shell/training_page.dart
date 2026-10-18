@@ -127,6 +127,11 @@ class _TemplateCard extends StatelessWidget {
                     ),
                   ),
                   IconButton(
+                    tooltip: context.l10n.actionDelete,
+                    onPressed: () => _delete(context, plan),
+                    icon: const Icon(Icons.delete_outline),
+                  ),
+                  IconButton(
                     tooltip: context.l10n.actionEdit,
                     onPressed: () {
                       Navigator.of(context).push(
@@ -159,6 +164,32 @@ class _TemplateCard extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future<void> _delete(BuildContext context, Plan plan) async {
+    final title = (plan.title ?? '').trim().isEmpty
+        ? plan.days
+        : plan.title!.trim();
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(context.l10n.deleteTemplateAsk),
+        content: Text(context.l10n.deleteTemplateBody(title)),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context, false),
+            child: Text(context.l10n.actionCancel),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.pop(context, true),
+            child: Text(context.l10n.actionDelete),
+          ),
+        ],
+      ),
+    );
+    if (confirmed != true) return;
+    await db.planExercises.deleteWhere((row) => row.planId.equals(plan.id));
+    await db.plans.deleteWhere((row) => row.id.equals(plan.id));
   }
 
   String _line(BuildContext context, TypedResult row) {

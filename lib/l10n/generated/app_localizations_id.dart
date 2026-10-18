@@ -1815,4 +1815,470 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get alphaSettingsDescription => 'Profile, Design und Pausenton';
+
+  @override
+  String get finishWorkoutAsk => 'Selesaikan latihan ini?';
+
+  @override
+  String get finishWorkoutBody => 'Sesi disimpan dan templat tidak berubah.';
+
+  @override
+  String get discardWorkoutAsk => 'Buang latihan ini?';
+
+  @override
+  String get discardWorkoutBody => 'Set yang tercatat pada sesi ini dihapus.';
+
+  @override
+  String get noRest => 'Tanpa istirahat';
+
+  @override
+  String get restWheelTitle => 'Istirahat';
+
+  @override
+  String get deleteTemplateAsk => 'Hapus templat ini?';
+
+  @override
+  String deleteTemplateBody(String name) {
+    return 'Hapus “$name”? Latihan tersimpan tetap ada.';
+  }
+
+  @override
+  String get warmupAction => 'Pemanasan';
+
+  @override
+  String get warmupMark => 'W';
+
+  @override
+  String get confirmAddExercise => 'Tambah gerakan';
+
+  @override
+  String get tabOverview => 'Ringkasan';
+
+  @override
+  String get tabHistory => 'Riwayat';
+
+  @override
+  String get tabHowTo => 'Cara';
+
+  @override
+  String get primaryMuscleLabel => 'Otot utama';
+
+  @override
+  String get secondaryMuscleLabel => 'Otot pendukung';
+
+  @override
+  String get equipmentLabel => 'Peralatan';
+
+  @override
+  String get heaviestWeight => 'Beban terberat';
+
+  @override
+  String get estimatedOneRm => '1RM perkiraan';
+
+  @override
+  String get volumeChart => 'Volume latihan';
+
+  @override
+  String get recordsTitle => 'Rekor';
+
+  @override
+  String get weekGoal => 'Target minggu';
+
+  @override
+  String weekGoalProgress(int done, int goal) {
+    return '$done dari $goal';
+  }
+
+  @override
+  String startWorkoutNamed(String name) {
+    return 'Mulai latihan · $name';
+  }
+
+  @override
+  String get musclesThisWeek => 'Otot minggu ini';
+
+  @override
+  String get progressHeading => 'Kemajuan';
+
+  @override
+  String get lastEightWeeks => 'Delapan minggu terakhir';
+
+  @override
+  String get chooseProfile => 'Pilih profil';
+
+  @override
+  String get createProfileAction => 'Buat profil';
+
+  @override
+  String get plateCalculator => 'Kalkulator piringan';
+
+  @override
+  String get barbellCalc => 'Barbel';
+
+  @override
+  String get cableCalc => 'Menara kabel';
+
+  @override
+  String get extraWeight => 'Beban tambahan';
+
+  @override
+  String get barWeightLabel => 'Berat batang';
+
+  @override
+  String get plateSetLabel => 'Piringan per sisi';
+
+  @override
+  String get cableStepLabel => 'Langkah tumpukan';
+
+  @override
+  String get chooseGym => 'Pilih gym';
+
+  @override
+  String get gymsTitle => 'Daftar gym';
+
+  @override
+  String get newGym => 'Gym baru';
+
+  @override
+  String get progressionHelp => 'Bantuan progresi';
+
+  @override
+  String progressionAsk(String name, String weight, int reps) {
+    return '$name: lain kali $weight kg dan mulai lagi dari $reps repetisi?';
+  }
+
+  @override
+  String get actionAccept => 'Terima';
+
+  @override
+  String get actionReject => 'Tolak';
+
+  @override
+  String get importExportTitle => 'Impor dan ekspor data';
+
+  @override
+  String get importWorkouts => 'Impor latihan';
+
+  @override
+  String get importMeasurements => 'Impor pengukuran';
+
+  @override
+  String get exportAlphaData => 'Ekspor data Alpha';
+
+  @override
+  String get importPreviewTitle => 'Pratinjau impor';
+
+  @override
+  String importSummary(int workouts, int exercises) {
+    return '$workouts latihan, $exercises gerakan';
+  }
+
+  @override
+  String get templatesDetected => 'Templat yang terdeteksi';
+
+  @override
+  String get renameLabel => 'Ganti nama';
+
+  @override
+  String get mapExercise => 'Cocokkan gerakan';
+
+  @override
+  String get checkForUpdates => 'Periksa pembaruan';
+
+  @override
+  String get upToDate => 'Kamu sudah yang terbaru';
+
+  @override
+  String get updateCheckFailed => 'Pemeriksaan pembaruan gagal';
+
+  @override
+  String get licensesTitle => 'Lisensi';
+
+  @override
+  String get flexifyMitNotice =>
+      'Flexify diterbitkan di bawah lisensi MIT. Copyright Brandon Dick.';
+
+  @override
+  String get exerciseDbNotice =>
+      'Setiap latihan mencantumkan sumber dan lisensinya.';
+
+  @override
+  String get sourceLabel => 'Sumber';
+
+  @override
+  String get tipsLabel => 'Saran';
+
+  @override
+  String get imageSourceLabel => 'Sumber gambar';
+
+  @override
+  String get imageLicenseLabel => 'Lisensi gambar';
+
+  @override
+  String get muscleUpperChest => 'Dada atas';
+
+  @override
+  String get muscleFrontShoulder => 'Bahu depan';
+
+  @override
+  String get muscleSideShoulder => 'Bahu samping';
+
+  @override
+  String get muscleRearShoulder => 'Bahu belakang';
+
+  @override
+  String get muscleLatissimus => 'Latissimus';
+
+  @override
+  String get muscleUpperBack => 'Punggung atas';
+
+  @override
+  String get muscleTrapez => 'Trapesius';
+
+  @override
+  String get muscleLowerBack => 'Punggung bawah';
+
+  @override
+  String get muscleForearms => 'Lengan bawah';
+
+  @override
+  String get muscleRectus => 'Otot perut lurus';
+
+  @override
+  String get muscleObliques => 'Otot perut miring';
+
+  @override
+  String get muscleQuadriceps => 'Paha depan';
+
+  @override
+  String get muscleAdductors => 'Adduktor';
+
+  @override
+  String get muscleAbductors => 'Abduktor';
+
+  @override
+  String get muscleHipFlexors => 'Fleksor pinggul';
+
+  @override
+  String get alternativesLabel => 'Alternatif';
+
+  @override
+  String get mechanicLabel => 'Mekanika';
+
+  @override
+  String get aiCoachTitle => 'Pelatih AI';
+
+  @override
+  String get aiProviderLabel => 'Penyedia';
+
+  @override
+  String get aiOffNotice =>
+      'Pelatih tetap mati sampai kamu menyimpan kunci sendiri.';
+
+  @override
+  String get coachHint => 'Tanya pelatih';
+
+  @override
+  String get voiceInput => 'Masukan suara';
+
+  @override
+  String voiceUnderstood(String text) {
+    return 'Tertangkap: $text';
+  }
+
+  @override
+  String get speechFailed => 'Masukan suara gagal';
+
+  @override
+  String get confirmVoiceSet => 'Terapkan set ini?';
+
+  @override
+  String get periodSession => 'Latihan ini';
+
+  @override
+  String get muscleMapTitle => 'Peta otot';
+
+  @override
+  String get frontView => 'Depan';
+
+  @override
+  String get backView => 'Belakang';
+
+  @override
+  String quoteKeepGoing(int done, int goal) {
+    return '$done dari $goal sesi minggu ini. Lanjutkan.';
+  }
+
+  @override
+  String quoteRemaining(int count) {
+    return 'Sisa $count sesi minggu ini.';
+  }
+
+  @override
+  String get quotePullDay => 'Hari tarik. Punggung dan bisep siap.';
+
+  @override
+  String get quotePushDay => 'Hari dorong. Dada, bahu, dan trisep.';
+
+  @override
+  String get quoteLegDay => 'Hari kaki. Paha, hamstring, dan bokong.';
+
+  @override
+  String versionAndLicenses(String version) {
+    return 'Versi $version · Lisensi';
+  }
+
+  @override
+  String get liveWorkoutLabel => 'Latihan berlangsung';
+
+  @override
+  String get muscleChest => 'Dada';
+
+  @override
+  String get muscleShoulders => 'Bahu';
+
+  @override
+  String get muscleBiceps => 'Bisep';
+
+  @override
+  String get muscleTriceps => 'Trisep';
+
+  @override
+  String get muscleAbs => 'Perut';
+
+  @override
+  String get muscleQuads => 'Paha depan';
+
+  @override
+  String get muscleCalves => 'Betis';
+
+  @override
+  String get muscleTraps => 'Trapesius';
+
+  @override
+  String get muscleBack => 'Punggung';
+
+  @override
+  String get muscleGlutes => 'Bokong';
+
+  @override
+  String get muscleHams => 'Paha belakang';
+
+  @override
+  String get weekGoalManual => 'Atur target minggu sendiri';
+
+  @override
+  String get sessionsPerWeek => 'Sesi per minggu';
+
+  @override
+  String get gymNameHint => 'Nama gym';
+
+  @override
+  String get coachProfileNote => 'Catatan pelatih';
+
+  @override
+  String get openPackageLicenses => 'Buka lisensi paket';
+
+  @override
+  String get lengthUnitLabel => 'Panjang tubuh';
+
+  @override
+  String get centimetersShort => 'Sentimeter (cm)';
+
+  @override
+  String get inchesShort => 'Inci (in)';
+
+  @override
+  String get heightInches => 'Tinggi (inci)';
+
+  @override
+  String get welcomeToAlpha => 'Selamat datang di Alpha';
+
+  @override
+  String get createProfileButton => 'Buat profil';
+
+  @override
+  String get onboardingWeightHint => 'Berat badan, opsional';
+
+  @override
+  String get familyLabel => 'Keluarga';
+
+  @override
+  String get gripLabel => 'Genggaman';
+
+  @override
+  String get positionLabel => 'Posisi';
+
+  @override
+  String get movementLabel => 'Gerakan';
+
+  @override
+  String get unilateralLabel => 'Satu sisi';
+
+  @override
+  String get otherVariants => 'Varian lain';
+
+  @override
+  String get sideLeft => 'Kiri';
+
+  @override
+  String get sideRight => 'Kanan';
+
+  @override
+  String get createCustomExercise => 'Buat latihan';
+
+  @override
+  String get editCustomExercise => 'Ubah latihan';
+
+  @override
+  String get deleteCustomExercise => 'Hapus latihan';
+
+  @override
+  String get deleteCustomExerciseBody =>
+      'Hapus latihan ini? Latihan lama tetap ada di riwayat.';
+
+  @override
+  String get customExerciseName => 'Nama';
+
+  @override
+  String get customExerciseFamily => 'Id keluarga';
+
+  @override
+  String get createAsCustomExercise => 'Buat sebagai latihan sendiri';
+
+  @override
+  String get customExerciseInvalid => 'Pilih nama, otot, dan alat.';
+
+  @override
+  String get motionPress => 'Dorong';
+
+  @override
+  String get motionPull => 'Tarik';
+
+  @override
+  String get motionLegs => 'Kaki/pinggul';
+
+  @override
+  String get motionCore => 'Inti';
+
+  @override
+  String get motionCardio => 'Kardio';
+
+  @override
+  String get mechanicCompound => 'Gabungan';
+
+  @override
+  String get mechanicIsolation => 'Isolasi';
+
+  @override
+  String get ownExerciseSource => 'Latihan sendiri';
+
+  @override
+  String get notSpecified => '–';
+
+  @override
+  String get resumeWorkout => 'Lanjutkan latihan';
+
+  @override
+  String get importBackupZip => 'Impor cadangan (.zip)';
 }

@@ -1,117 +1,267 @@
-import 'package:drift/drift.dart';
-import 'package:flexify/database/database.dart';
-import 'package:flexify/database/exercise_seed.dart';
+import 'dart:convert';
 
-final _exerciseKeyPattern = RegExp(r'[^a-z0-9äöüß+ ]');
-final _spacePattern = RegExp(r'\s+');
+const movementSearch = <String, String>{
+  'push': 'druecken',
+  'drücken': 'druecken',
+  'druecken': 'druecken',
+  'pull': 'ziehen',
+  'ziehen': 'ziehen',
+  'beine': 'beine_huefte',
+};
 
-String normalizeExerciseKey(String value) {
-  return value
-      .toLowerCase()
-      .replaceAll('-', ' ')
-      .replaceAll(_exerciseKeyPattern, ' ')
-      .replaceAll(_spacePattern, ' ')
-      .trim();
+String? catalogText(String? value) {
+  final text = value?.trim() ?? '';
+  if (text.isEmpty || text.toLowerCase() == 'null') return null;
+  return text;
+}
+
+List<String> decodeCatalogList(String? raw) {
+  final value = raw?.trim() ?? '';
+  if (value.isEmpty) return const [];
+  try {
+    final decoded = jsonDecode(value);
+    if (decoded is List) {
+      return [
+        for (final item in decoded)
+          if (item is String && item.trim().isNotEmpty) item.trim(),
+      ];
+    }
+  } catch (_) {}
+  return [
+    for (final part in value.split('|'))
+      if (part.trim().isNotEmpty) part.trim(),
+  ];
 }
 
 bool exerciseMatchesQuery({
   required String name,
   String? germanName,
   String? aliases,
+  String? muscle,
+  String? category,
+  String? equipment,
+  String? mechanic,
+  String? primaryMuscles,
+  String? secondaryMuscles,
+  String? movement,
   required String query,
 }) {
   final needle = query.trim().toLowerCase();
   if (needle.isEmpty) return true;
-  return '$name ${germanName ?? ''} ${aliases ?? ''}'.toLowerCase().contains(
+  final mapped = movementSearch[needle];
+  if (mapped != null) {
+    if ((movement ?? '').trim().toLowerCase() == mapped) return true;
+    if (mapped == 'beine_huefte') {
+      final categoryName = (category ?? '').trim().toLowerCase();
+      final muscleName = (muscle ?? '').trim().toLowerCase();
+      if (categoryName == 'beine' || muscleName == 'beine') return true;
+    }
+    return false;
+  }
+  final haystack = foldExerciseSearch(
+    [
+      name,
+      germanName ?? '',
+      aliases ?? '',
+      muscle ?? '',
+      category ?? '',
+      equipment ?? '',
+      catalogText(mechanic) ?? '',
+      decodeCatalogList(primaryMuscles).join(' '),
+      decodeCatalogList(secondaryMuscles).join(' '),
+    ].join(' '),
+  );
+  return _containsTerm(haystack, foldExerciseSearch(query));
+}
+
+String exerciseDisplayName(String name, String? germanName) {
+  final german = (germanName ?? '').trim();
+  return german.isEmpty ? name : german;
+}
+
+int? exerciseSearchRank({
+  required String name,
+  String? germanName,
+  String? aliases,
+  required String query,
+}) {
+  final needle = foldExerciseSearch(query);
+  if (needle.isEmpty) return null;
+  var best = _rankText(
+    exerciseDisplayName(name, germanName),
     needle,
+    nameField: true,
+  );
+  for (final synonym in decodeCatalogList(aliases)) {
+    final rank = _rankText(synonym, needle, nameField: false);
+    if (rank == null) continue;
+    if (best == null || rank < best) best = rank;
+  }
+  return best;
+}
+
+int compareExerciseSearch({
+  required String query,
+  required String leftName,
+  String? leftGermanName,
+  String? leftAliases,
+  required String rightName,
+  String? rightGermanName,
+  String? rightAliases,
+}) {
+  final left = _searchOrder(query, leftName, leftGermanName, leftAliases);
+  final right = _searchOrder(query, rightName, rightGermanName, rightAliases);
+  final byRank = left.rank.compareTo(right.rank);
+  if (byRank != 0) return byRank;
+  if (left.matched && right.matched) {
+    final byLength = left.length.compareTo(right.length);
+    if (byLength != 0) return byLength;
+  }
+  return left.alpha.compareTo(right.alpha);
+}
+
+String foldExerciseSearch(String value) {
+  final buffer = StringBuffer();
+  for (final rune in value.trim().toLowerCase().runes) {
+    buffer.write(_foldedLetters[rune] ?? String.fromCharCode(rune));
+  }
+  return buffer.toString();
+}
+
+({int rank, bool matched, int length, String alpha}) _searchOrder(
+  String query,
+  String name,
+  String? germanName,
+  String? aliases,
+) {
+  final label = foldExerciseSearch(exerciseDisplayName(name, germanName));
+  final rank = exerciseSearchRank(
+    name: name,
+    germanName: germanName,
+    aliases: aliases,
+    query: query,
+  );
+  return (
+    rank: rank ?? 7,
+    matched: rank != null,
+    length: label.length,
+    alpha: label,
   );
 }
 
-Future<void> seedExerciseCatalog(AppDatabase database) async {
-  final existing = await database.select(database.exercises).get();
-  final byKey = <String, Exercise>{
-    for (final exercise in existing)
-      normalizeExerciseKey(exercise.name): exercise,
-  };
-
-  final missing = <ExerciseSeed>[];
-  var needsLabels = false;
-  var staleGerman = false;
-  for (final seed in exerciseCatalog) {
-    final current = byKey[normalizeExerciseKey(seed.name)];
-    if (current == null) {
-      missing.add(seed);
-      continue;
-    }
-    if ((current.germanName ?? '').isEmpty || (current.muscle ?? '').isEmpty) {
-      needsLabels = true;
-    } else if (current.germanName != seed.germanName) {
-      staleGerman = true;
-    }
+int? _rankText(String text, String needle, {required bool nameField}) {
+  final folded = foldExerciseSearch(text);
+  if (folded.isEmpty || needle.isEmpty) return null;
+  if (folded == needle) return nameField ? 1 : 2;
+  if (folded.startsWith(needle)) return nameField ? 3 : 4;
+  if (RegExp('(?<![0-9a-z])${RegExp.escape(needle)}').hasMatch(folded)) {
+    return 5;
   }
-  if (missing.isEmpty && !needsLabels && !staleGerman) return;
+  if (folded.contains(needle)) return 6;
+  return null;
+}
 
-  final categoryIds = {
-    for (final category in await database.select(database.categories).get())
-      category.name: category.id,
-  };
+const _foldedLetters = <int, String>{
+  0xe0: 'a',
+  0xe1: 'a',
+  0xe2: 'a',
+  0xe3: 'a',
+  0xe4: 'a',
+  0xe5: 'a',
+  0xe6: 'ae',
+  0xe7: 'c',
+  0xe8: 'e',
+  0xe9: 'e',
+  0xea: 'e',
+  0xeb: 'e',
+  0xec: 'i',
+  0xed: 'i',
+  0xee: 'i',
+  0xef: 'i',
+  0xf1: 'n',
+  0xf2: 'o',
+  0xf3: 'o',
+  0xf4: 'o',
+  0xf5: 'o',
+  0xf6: 'o',
+  0xf8: 'o',
+  0xf9: 'u',
+  0xfa: 'u',
+  0xfb: 'u',
+  0xfc: 'u',
+  0xfd: 'y',
+  0xff: 'y',
+  0xdf: 'ss',
+};
 
-  Future<int> categoryIdFor(String name) async {
-    final known = categoryIds[name];
-    if (known != null) return known;
-    await database
-        .into(database.categories)
-        .insert(
-          CategoriesCompanion.insert(name: name),
-          mode: InsertMode.insertOrIgnore,
-        );
-    final id = (await (database.select(
-      database.categories,
-    )..where((row) => row.name.equals(name))).getSingle()).id;
-    categoryIds[name] = id;
-    return id;
+bool matchesExerciseFilters({
+  required String name,
+  String? germanName,
+  String? aliases,
+  String? muscle,
+  String? category,
+  String? equipment,
+  String? mechanic,
+  String? primaryMuscles,
+  String? secondaryMuscles,
+  String? grip,
+  String? position,
+  String? movement,
+  required String query,
+  String group = '',
+  String equipmentFilter = '',
+  String mechanicFilter = '',
+  String gripFilter = '',
+  String positionFilter = '',
+  String motionFilter = '',
+}) {
+  if (group.isNotEmpty) {
+    final groups = <String>{
+      if ((muscle ?? '').trim().isNotEmpty) muscle!.trim().toLowerCase(),
+      if ((category ?? '').trim().isNotEmpty) category!.trim().toLowerCase(),
+      for (final item in decodeCatalogList(primaryMuscles)) item.toLowerCase(),
+      for (final item in decodeCatalogList(secondaryMuscles))
+        item.toLowerCase(),
+    };
+    if (!groups.contains(group.toLowerCase())) return false;
   }
+  if (equipmentFilter.isNotEmpty &&
+      (equipment ?? '').trim().toLowerCase() != equipmentFilter.toLowerCase()) {
+    return false;
+  }
+  if (mechanicFilter.isNotEmpty &&
+      (catalogText(mechanic) ?? '').toLowerCase() !=
+          mechanicFilter.toLowerCase()) {
+    return false;
+  }
+  if (gripFilter.isNotEmpty &&
+      (grip ?? '').trim().toLowerCase() != gripFilter.toLowerCase()) {
+    return false;
+  }
+  if (positionFilter.isNotEmpty &&
+      (position ?? '').trim().toLowerCase() != positionFilter.toLowerCase()) {
+    return false;
+  }
+  if (motionFilter.isNotEmpty &&
+      (movement ?? '').trim().toLowerCase() != motionFilter.toLowerCase()) {
+    return false;
+  }
+  return exerciseMatchesQuery(
+    name: name,
+    germanName: germanName,
+    aliases: aliases,
+    muscle: muscle,
+    category: category,
+    equipment: equipment,
+    mechanic: mechanic,
+    primaryMuscles: primaryMuscles,
+    secondaryMuscles: secondaryMuscles,
+    movement: movement,
+    query: query,
+  );
+}
 
-  await database.transaction(() async {
-    for (final seed in exerciseCatalog) {
-      final current = byKey[normalizeExerciseKey(seed.name)];
-      if (current == null) continue;
-      final germanEmpty = (current.germanName ?? '').isEmpty;
-      final muscleEmpty = (current.muscle ?? '').isEmpty;
-      final germanStale = current.germanName != seed.germanName;
-      if (!germanEmpty && !muscleEmpty && !germanStale) continue;
-      await (database.update(
-        database.exercises,
-      )..where((row) => row.id.equals(current.id))).write(
-        ExercisesCompanion(
-          germanName: Value(seed.germanName),
-          aliases: muscleEmpty ? Value(seed.aliases) : const Value.absent(),
-          muscle: muscleEmpty ? Value(seed.muscle) : const Value.absent(),
-        ),
-      );
-    }
-
-    final rows = <ExercisesCompanion>[];
-    for (final seed in missing) {
-      rows.add(
-        ExercisesCompanion.insert(
-          name: seed.name,
-          kind: seed.cardio ? 'cardio' : 'strength',
-          displayUnit: seed.cardio ? 'km' : 'kg',
-          categoryId: Value(await categoryIdFor(seed.category)),
-          germanName: Value(seed.germanName),
-          aliases: Value(seed.aliases),
-          muscle: Value(seed.muscle),
-        ),
-      );
-    }
-    if (rows.isEmpty) return;
-    await database.batch((batch) {
-      batch.insertAll(
-        database.exercises,
-        rows,
-        mode: InsertMode.insertOrIgnore,
-      );
-    });
-  });
+bool _containsTerm(String haystack, String word) {
+  if (word.length >= 5) return haystack.contains(word);
+  return RegExp('\\b${RegExp.escape(word)}\\b').hasMatch(haystack);
 }

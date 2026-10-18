@@ -41,6 +41,108 @@ String _localizedImportError(Object error, AppLocalizations l10n) {
   return l10n.unexpectedError;
 }
 
+Future<void> importFlexifyBackupFile(
+  File selectedFile,
+  AppLocalizations l10n,
+) async {
+  if (!await selectedFile.exists()) {
+    throw _ImportValidationException(l10n.selectedFileDoesNotExist);
+  }
+
+  final liveDatabase = await getDatabaseFile();
+  final storageDirectory = liveDatabase.parent;
+  final tempDirectory = await getTemporaryDirectory();
+  final workingDirectory = await tempDirectory.createTemp('flexify-import-');
+  try {
+    final sourceFile = p.extension(selectedFile.path).toLowerCase() == '.zip'
+        ? await extractBackupArchive(
+            archiveFile: selectedFile,
+            workingDirectory: workingDirectory,
+            storageDirectory: storageDirectory,
+          )
+        : selectedFile;
+
+    final candidateDatabase = File(
+      p.join(workingDirectory.path, 'candidate-$backupDatabaseName'),
+    );
+    await sourceFile.copy(candidateDatabase.path);
+
+    final candidateDb = AppDatabase.forPath(candidateDatabase.path);
+    try {
+      await candidateDb.customSelect('SELECT 1').get();
+      final foreignKeyViolations = await candidateDb
+          .customSelect('PRAGMA foreign_key_check')
+          .get();
+      if (foreignKeyViolations.isNotEmpty) {
+        throw StateError('Foreign key violations in imported database');
+      }
+    } finally {
+      await candidateDb.close();
+    }
+
+    final rollbackDatabase = File(
+      p.join(workingDirectory.path, 'rollback-$backupDatabaseName'),
+    );
+
+    await db.close();
+    if (await liveDatabase.exists()) {
+      await liveDatabase.copy(rollbackDatabase.path);
+    }
+
+    try {
+      await candidateDatabase.copy(liveDatabase.path);
+      db = AppDatabase.persistent();
+      await db.customSelect('SELECT 1').get();
+    } catch (_) {
+      try {
+        await db.close();
+      } catch (_) {}
+      if (await rollbackDatabase.exists()) {
+        await rollbackDatabase.copy(liveDatabase.path);
+      } else if (await liveDatabase.exists()) {
+        await liveDatabase.delete();
+      }
+      db = AppDatabase.persistent();
+      await db.customSelect('SELECT 1').get();
+      rethrow;
+    }
+
+    dbVersion.value++;
+    talker.info('Imported Flexify data and image backup');
+  } finally {
+    await workingDirectory.delete(recursive: true);
+  }
+
+  await (db.settings.update()).write(
+    const SettingsCompanion(
+      alarmSound: Value(''),
+      explainedPermissions: Value(false),
+      notificationPermissionRequested: Value(false),
+    ),
+  );
+}
+
+Future<void> finishFlexifyBackupImport(
+  BuildContext context,
+  File selectedFile,
+) async {
+  final l10n = context.l10n;
+  await importFlexifyBackupFile(selectedFile, l10n);
+  if (!context.mounted) return;
+  final importedSettings = await (db.settings.select()..limit(1)).getSingle();
+  if (!context.mounted) return;
+  await showAppPermissionsDialog(
+    context,
+    required: true,
+    settings: importedSettings,
+  );
+  if (!context.mounted) return;
+  Navigator.of(
+    context,
+    rootNavigator: true,
+  ).pushNamedAndRemoveUntil('/', (_) => false);
+}
+
 class ImportData extends StatelessWidget {
   final BuildContext ctx;
 
@@ -126,102 +228,12 @@ class ImportData extends StatelessWidget {
     final result = await FilePicker.pickFiles();
     if (result.isEmpty) return;
 
-    final selectedFile = File(result.single.path!);
-    if (!await selectedFile.exists()) {
-      throw _ImportValidationException(l10n.selectedFileDoesNotExist);
+    final path = result.single.path;
+    if (path == null) {
+      throw _ImportValidationException(l10n.couldNotReadFileData);
     }
-
-    final liveDatabase = await getDatabaseFile();
-    final storageDirectory = liveDatabase.parent;
-    final tempDirectory = await getTemporaryDirectory();
-    final workingDirectory = await tempDirectory.createTemp('flexify-import-');
-    try {
-      final sourceFile = p.extension(selectedFile.path).toLowerCase() == '.zip'
-          ? await extractBackupArchive(
-              archiveFile: selectedFile,
-              workingDirectory: workingDirectory,
-              storageDirectory: storageDirectory,
-            )
-          : selectedFile;
-
-      final candidateDatabase = File(
-        p.join(workingDirectory.path, 'candidate-$backupDatabaseName'),
-      );
-      await sourceFile.copy(candidateDatabase.path);
-
-      final candidateDb = AppDatabase.forPath(candidateDatabase.path);
-      try {
-        // Opening the candidate performs every required migration and the
-        // migration strategy's foreign-key validation before the live
-        // database is touched.
-        await candidateDb.customSelect('SELECT 1').get();
-        final foreignKeyViolations = await candidateDb
-            .customSelect('PRAGMA foreign_key_check')
-            .get();
-        if (foreignKeyViolations.isNotEmpty) {
-          throw StateError('Foreign key violations in imported database');
-        }
-      } finally {
-        await candidateDb.close();
-      }
-
-      final rollbackDatabase = File(
-        p.join(workingDirectory.path, 'rollback-$backupDatabaseName'),
-      );
-
-      await db.close();
-      if (await liveDatabase.exists()) {
-        await liveDatabase.copy(rollbackDatabase.path);
-      }
-
-      try {
-        await candidateDatabase.copy(liveDatabase.path);
-        db = AppDatabase.persistent();
-        await db.customSelect('SELECT 1').get();
-      } catch (_) {
-        try {
-          await db.close();
-        } catch (_) {}
-        if (await rollbackDatabase.exists()) {
-          await rollbackDatabase.copy(liveDatabase.path);
-        } else if (await liveDatabase.exists()) {
-          await liveDatabase.delete();
-        }
-        db = AppDatabase.persistent();
-        await db.customSelect('SELECT 1').get();
-        rethrow;
-      }
-
-      dbVersion.value++;
-      talker.info('Imported Flexify data and image backup');
-    } finally {
-      await workingDirectory.delete(recursive: true);
-    }
-
-    // Permission state belongs to this Android install, not to the imported
-    // database. Force a fresh, single checklist for the imported settings.
-    await (db.settings.update()).write(
-      const SettingsCompanion(
-        alarmSound: Value(''),
-        explainedPermissions: Value(false),
-        notificationPermissionRequested: Value(false),
-      ),
-    );
-
-    final importedSettings = await (db.settings.select()..limit(1)).getSingle();
-
     if (!ctx.mounted) return;
-    await showAppPermissionsDialog(
-      ctx,
-      required: true,
-      settings: importedSettings,
-    );
-
-    if (!ctx.mounted) return;
-    Navigator.of(
-      ctx,
-      rootNavigator: true,
-    ).pushNamedAndRemoveUntil('/', (_) => false);
+    await finishFlexifyBackupImport(ctx, File(path));
   }
 
   Future<void> _importDatabaseWeb(AppLocalizations l10n) async {

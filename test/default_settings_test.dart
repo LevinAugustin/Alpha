@@ -4,7 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'support/test_app.dart';
 
 void main() {
-  test('new installs keep optional features off by default', () async {
+  test('new installs keep optional features off and rest timers on', () async {
     final harness = await FlexifyTestHarness.create();
     final settings = await harness.database.settings.select().getSingle();
 
@@ -20,7 +20,8 @@ void main() {
     expect(settings.keepRinging, isFalse);
     expect(settings.keepScreenOn, isFalse);
     expect(settings.showNotes, isFalse);
-    expect(settings.restTimers, isFalse);
+    expect(settings.restTimers, isTrue);
+    expect(settings.enableSound, isTrue);
     expect(settings.warmupSets, 0);
   });
 }

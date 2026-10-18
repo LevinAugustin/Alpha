@@ -1811,4 +1811,469 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get alphaSettingsDescription => 'Profile, Design und Pausenton';
+
+  @override
+  String get finishWorkoutAsk => 'Kết thúc buổi tập này?';
+
+  @override
+  String get finishWorkoutBody => 'Buổi tập được lưu và mẫu giữ nguyên.';
+
+  @override
+  String get discardWorkoutAsk => 'Bỏ buổi tập này?';
+
+  @override
+  String get discardWorkoutBody => 'Các hiệp đã ghi của buổi này bị xóa.';
+
+  @override
+  String get noRest => 'Không nghỉ';
+
+  @override
+  String get restWheelTitle => 'Nghỉ';
+
+  @override
+  String get deleteTemplateAsk => 'Xóa mẫu này?';
+
+  @override
+  String deleteTemplateBody(String name) {
+    return 'Xóa “$name”? Các buổi đã lưu vẫn còn.';
+  }
+
+  @override
+  String get warmupAction => 'Khởi động';
+
+  @override
+  String get warmupMark => 'W';
+
+  @override
+  String get confirmAddExercise => 'Thêm bài tập';
+
+  @override
+  String get tabOverview => 'Tổng quan';
+
+  @override
+  String get tabHistory => 'Lịch sử';
+
+  @override
+  String get tabHowTo => 'Cách tập';
+
+  @override
+  String get primaryMuscleLabel => 'Cơ chính';
+
+  @override
+  String get secondaryMuscleLabel => 'Cơ phụ';
+
+  @override
+  String get equipmentLabel => 'Dụng cụ';
+
+  @override
+  String get heaviestWeight => 'Mức tạ nặng nhất';
+
+  @override
+  String get estimatedOneRm => '1RM ước tính';
+
+  @override
+  String get volumeChart => 'Khối lượng tập';
+
+  @override
+  String get recordsTitle => 'Kỷ lục';
+
+  @override
+  String get weekGoal => 'Mục tiêu tuần';
+
+  @override
+  String weekGoalProgress(int done, int goal) {
+    return '$done / $goal';
+  }
+
+  @override
+  String startWorkoutNamed(String name) {
+    return 'Bắt đầu tập · $name';
+  }
+
+  @override
+  String get musclesThisWeek => 'Cơ trong tuần này';
+
+  @override
+  String get progressHeading => 'Tiến bộ';
+
+  @override
+  String get lastEightWeeks => 'Tám tuần gần đây';
+
+  @override
+  String get chooseProfile => 'Chọn hồ sơ';
+
+  @override
+  String get createProfileAction => 'Tạo hồ sơ';
+
+  @override
+  String get plateCalculator => 'Tính bánh tạ';
+
+  @override
+  String get barbellCalc => 'Thanh đòn';
+
+  @override
+  String get cableCalc => 'Máy cáp';
+
+  @override
+  String get extraWeight => 'Tạ thêm';
+
+  @override
+  String get barWeightLabel => 'Nặng của thanh';
+
+  @override
+  String get plateSetLabel => 'Bánh mỗi bên';
+
+  @override
+  String get cableStepLabel => 'Bước chồng tạ';
+
+  @override
+  String get chooseGym => 'Chọn phòng tập';
+
+  @override
+  String get gymsTitle => 'Phòng tập';
+
+  @override
+  String get newGym => 'Phòng tập mới';
+
+  @override
+  String get progressionHelp => 'Gợi ý tăng tải';
+
+  @override
+  String progressionAsk(String name, String weight, int reps) {
+    return '$name: lần sau $weight kg và bắt đầu lại ở $reps lần?';
+  }
+
+  @override
+  String get actionAccept => 'Nhận';
+
+  @override
+  String get actionReject => 'Từ chối';
+
+  @override
+  String get importExportTitle => 'Nhập và xuất dữ liệu';
+
+  @override
+  String get importWorkouts => 'Nhập buổi tập';
+
+  @override
+  String get importMeasurements => 'Nhập số đo';
+
+  @override
+  String get exportAlphaData => 'Xuất dữ liệu Alpha';
+
+  @override
+  String get importPreviewTitle => 'Xem trước khi nhập';
+
+  @override
+  String importSummary(int workouts, int exercises) {
+    return '$workouts buổi tập, $exercises bài';
+  }
+
+  @override
+  String get templatesDetected => 'Mẫu được nhận ra';
+
+  @override
+  String get renameLabel => 'Đổi tên';
+
+  @override
+  String get mapExercise => 'Ghép bài tập';
+
+  @override
+  String get checkForUpdates => 'Kiểm tra bản cập nhật';
+
+  @override
+  String get upToDate => 'Bạn đang dùng bản mới';
+
+  @override
+  String get updateCheckFailed => 'Không kiểm tra được bản cập nhật';
+
+  @override
+  String get licensesTitle => 'Giấy phép';
+
+  @override
+  String get flexifyMitNotice =>
+      'Flexify được phát hành theo giấy phép MIT. Copyright Brandon Dick.';
+
+  @override
+  String get exerciseDbNotice => 'Mỗi bài tập ghi nguồn và giấy phép của nó.';
+
+  @override
+  String get sourceLabel => 'Nguồn';
+
+  @override
+  String get tipsLabel => 'Mẹo';
+
+  @override
+  String get imageSourceLabel => 'Nguồn ảnh';
+
+  @override
+  String get imageLicenseLabel => 'Giấy phép ảnh';
+
+  @override
+  String get muscleUpperChest => 'Ngực trên';
+
+  @override
+  String get muscleFrontShoulder => 'Vai trước';
+
+  @override
+  String get muscleSideShoulder => 'Vai bên';
+
+  @override
+  String get muscleRearShoulder => 'Vai sau';
+
+  @override
+  String get muscleLatissimus => 'Cơ lưng lớn';
+
+  @override
+  String get muscleUpperBack => 'Lưng trên';
+
+  @override
+  String get muscleTrapez => 'Cơ thang';
+
+  @override
+  String get muscleLowerBack => 'Lưng dưới';
+
+  @override
+  String get muscleForearms => 'Cẳng tay';
+
+  @override
+  String get muscleRectus => 'Cơ bụng thẳng';
+
+  @override
+  String get muscleObliques => 'Cơ bụng chéo';
+
+  @override
+  String get muscleQuadriceps => 'Cơ tứ đầu';
+
+  @override
+  String get muscleAdductors => 'Cơ khép';
+
+  @override
+  String get muscleAbductors => 'Cơ dạng';
+
+  @override
+  String get muscleHipFlexors => 'Cơ gập hông';
+
+  @override
+  String get alternativesLabel => 'Bài thay thế';
+
+  @override
+  String get mechanicLabel => 'Cơ chế';
+
+  @override
+  String get aiCoachTitle => 'Huấn luyện viên AI';
+
+  @override
+  String get aiProviderLabel => 'Nhà cung cấp';
+
+  @override
+  String get aiOffNotice =>
+      'Huấn luyện viên tắt cho đến khi bạn lưu khóa của mình.';
+
+  @override
+  String get coachHint => 'Hỏi huấn luyện viên';
+
+  @override
+  String get voiceInput => 'Nhập giọng nói';
+
+  @override
+  String voiceUnderstood(String text) {
+    return 'Đã nghe: $text';
+  }
+
+  @override
+  String get speechFailed => 'Nhập giọng nói thất bại';
+
+  @override
+  String get confirmVoiceSet => 'Áp dụng hiệp này?';
+
+  @override
+  String get periodSession => 'Buổi tập này';
+
+  @override
+  String get muscleMapTitle => 'Bản đồ cơ';
+
+  @override
+  String get frontView => 'Mặt trước';
+
+  @override
+  String get backView => 'Mặt sau';
+
+  @override
+  String quoteKeepGoing(int done, int goal) {
+    return '$done/$goal buổi tuần này. Tiếp tục.';
+  }
+
+  @override
+  String quoteRemaining(int count) {
+    return 'Còn $count buổi trong tuần này.';
+  }
+
+  @override
+  String get quotePullDay => 'Ngày kéo. Lưng và tay trước sẵn sàng.';
+
+  @override
+  String get quotePushDay => 'Ngày đẩy. Ngực, vai và tay sau.';
+
+  @override
+  String get quoteLegDay => 'Ngày chân. Đùi trước, đùi sau và mông.';
+
+  @override
+  String versionAndLicenses(String version) {
+    return 'Phiên bản $version · Giấy phép';
+  }
+
+  @override
+  String get liveWorkoutLabel => 'Đang tập';
+
+  @override
+  String get muscleChest => 'Ngực';
+
+  @override
+  String get muscleShoulders => 'Vai';
+
+  @override
+  String get muscleBiceps => 'Tay trước';
+
+  @override
+  String get muscleTriceps => 'Tay sau';
+
+  @override
+  String get muscleAbs => 'Bụng';
+
+  @override
+  String get muscleQuads => 'Đùi trước';
+
+  @override
+  String get muscleCalves => 'Bắp chân';
+
+  @override
+  String get muscleTraps => 'Cơ thang';
+
+  @override
+  String get muscleBack => 'Lưng';
+
+  @override
+  String get muscleGlutes => 'Mông';
+
+  @override
+  String get muscleHams => 'Đùi sau';
+
+  @override
+  String get weekGoalManual => 'Tự đặt mục tiêu tuần';
+
+  @override
+  String get sessionsPerWeek => 'Số buổi mỗi tuần';
+
+  @override
+  String get gymNameHint => 'Tên phòng tập';
+
+  @override
+  String get coachProfileNote => 'Ghi chú của huấn luyện viên';
+
+  @override
+  String get openPackageLicenses => 'Mở giấy phép gói';
+
+  @override
+  String get lengthUnitLabel => 'Đơn vị chiều cao';
+
+  @override
+  String get centimetersShort => 'Xentimét (cm)';
+
+  @override
+  String get inchesShort => 'Inch (in)';
+
+  @override
+  String get heightInches => 'Chiều cao (inch)';
+
+  @override
+  String get welcomeToAlpha => 'Chào mừng đến với Alpha';
+
+  @override
+  String get createProfileButton => 'Tạo hồ sơ';
+
+  @override
+  String get onboardingWeightHint => 'Cân nặng, không bắt buộc';
+
+  @override
+  String get familyLabel => 'Nhóm';
+
+  @override
+  String get gripLabel => 'Cách nắm';
+
+  @override
+  String get positionLabel => 'Tư thế';
+
+  @override
+  String get movementLabel => 'Động tác';
+
+  @override
+  String get unilateralLabel => 'Một bên';
+
+  @override
+  String get otherVariants => 'Biến thể khác';
+
+  @override
+  String get sideLeft => 'Trái';
+
+  @override
+  String get sideRight => 'Phải';
+
+  @override
+  String get createCustomExercise => 'Tạo bài tập';
+
+  @override
+  String get editCustomExercise => 'Sửa bài tập';
+
+  @override
+  String get deleteCustomExercise => 'Xóa bài tập';
+
+  @override
+  String get deleteCustomExerciseBody =>
+      'Xóa bài tập này? Các buổi tập cũ vẫn ở trong lịch sử.';
+
+  @override
+  String get customExerciseName => 'Tên';
+
+  @override
+  String get customExerciseFamily => 'Mã nhóm';
+
+  @override
+  String get createAsCustomExercise => 'Tạo thành bài tập riêng';
+
+  @override
+  String get customExerciseInvalid => 'Hãy chọn tên, cơ và dụng cụ.';
+
+  @override
+  String get motionPress => 'Đẩy';
+
+  @override
+  String get motionPull => 'Kéo';
+
+  @override
+  String get motionLegs => 'Chân/hông';
+
+  @override
+  String get motionCore => 'Lõi';
+
+  @override
+  String get motionCardio => 'Cardio';
+
+  @override
+  String get mechanicCompound => 'Đa khớp';
+
+  @override
+  String get mechanicIsolation => 'Cô lập';
+
+  @override
+  String get ownExerciseSource => 'Bài tập riêng';
+
+  @override
+  String get notSpecified => '–';
+
+  @override
+  String get resumeWorkout => 'Tiếp tục buổi tập';
+
+  @override
+  String get importBackupZip => 'Nhập bản sao lưu (.zip)';
 }

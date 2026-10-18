@@ -1,0 +1,122 @@
+{
+  "bankdruecken-langhantel": [
+    "Barbell Bench Press - Medium Grip",
+    "Barbell bench press"
+  ],
+  "schraegbankdruecken-multipresse": [
+    "Smith Machine Incline Bench Press"
+  ],
+  "butterfly-maschine": [
+    "Butterfly",
+    "Chest fly"
+  ],
+  "kabelzug-crossover": [
+    "Cable Crossover",
+    "Cable fly"
+  ],
+  "klimmzuege": [
+    "Pullups",
+    "Pull-up",
+    "Wide-grip pull-up"
+  ],
+  "latziehen-breit": [
+    "Wide-Grip Lat Pulldown",
+    "Lat pull-down"
+  ],
+  "rudern-kabel-sitzend": [
+    "Seated Cable Rows"
+  ],
+  "langhantelrudern": [
+    "Bent Over Barbell Row",
+    "Barbell bent-over row"
+  ],
+  "kreuzheben-langhantel": [
+    "Barbell Deadlift",
+    "Deadlift"
+  ],
+  "schulterdruecken-multipresse": [
+    "Smith Machine Overhead Shoulder Press"
+  ],
+  "seitheben-kurzhantel": [
+    "Side Lateral Raise",
+    "Dumbbell lateral raise"
+  ],
+  "face-pulls": [
+    "Face Pull"
+  ],
+  "kniebeuge-langhantel": [
+    "Barbell Squat",
+    "Squat"
+  ],
+  "beinpresse": [
+    "Leg press"
+  ],
+  "beinstrecker": [
+    "Leg Extensions",
+    "Leg extension"
+  ],
+  "beinbeuger-sitzend": [
+    "Seated Leg Curl",
+    "Leg curl"
+  ],
+  "wadenheben-stehend": [
+    "Standing Calf Raises",
+    "Standing calf raise"
+  ],
+  "hip-thrust-langhantel": [
+    "Barbell Hip Thrust"
+  ],
+  "bizepscurls-sz-stange": [
+    "EZ-Bar Curl",
+    "Barbell biceps curl"
+  ],
+  "bizepscurls-kurzhantel": [
+    "Dumbbell Bicep Curl",
+    "Dumbbell biceps curl",
+    "Dumbbell Alternate Bicep Curl"
+  ],
+  "hammercurls": [
+    "Hammer Curls",
+    "Alternate Hammer Curl"
+  ],
+  "trizepsdruecken-kabel": [
+    "Triceps pushdown",
+    "Triceps Pushdown - Rope Attachment",
+    "Triceps Pushdown - V-Bar Attachment"
+  ],
+  "dips": [
+    "Dips - Triceps Version",
+    "Triceps dip"
+  ],
+  "french-press-sz": [
+    "EZ-Bar Skullcrusher"
+  ],
+  "crunches": [
+    "Crunches",
+    "Crunch"
+  ],
+  "plank": [
+    "Plank"
+  ],
+  "beinheben-haengend": [
+    "Hanging leg raise",
+    "Leg raise"
+  ],
+  "laufband": [
+    "Running, Treadmill",
+    "Jogging, Treadmill",
+    "Walking, Treadmill"
+  ],
+  "rudergeraet": [
+    "Rowing, Stationary"
+  ],
+  "crosstrainer": [
+    "Elliptical Trainer"
+  ],
+  "schraegbankdruecken-kurzhantel": [
+    "Incline Dumbbell Press"
+  ],
+  "schulterdruecken-kurzhantel": [
+    "Dumbbell shoulder press"
+  ]
+}

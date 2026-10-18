@@ -1736,6 +1736,468 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get alphaSettingsDescription => 'Profile, Design und Pausenton';
+
+  @override
+  String get finishWorkoutAsk => '结束这次训练？';
+
+  @override
+  String get finishWorkoutBody => '本次训练会保存，模板保持不变。';
+
+  @override
+  String get discardWorkoutAsk => '放弃这次训练？';
+
+  @override
+  String get discardWorkoutBody => '本次记下的组会被删除。';
+
+  @override
+  String get noRest => '不休息';
+
+  @override
+  String get restWheelTitle => '休息';
+
+  @override
+  String get deleteTemplateAsk => '删除这个模板？';
+
+  @override
+  String deleteTemplateBody(String name) {
+    return '删除「$name」？已保存的训练会留下。';
+  }
+
+  @override
+  String get warmupAction => '热身';
+
+  @override
+  String get warmupMark => 'W';
+
+  @override
+  String get confirmAddExercise => '添加动作';
+
+  @override
+  String get tabOverview => '概览';
+
+  @override
+  String get tabHistory => '记录';
+
+  @override
+  String get tabHowTo => '做法';
+
+  @override
+  String get primaryMuscleLabel => '主要肌群';
+
+  @override
+  String get secondaryMuscleLabel => '辅助肌群';
+
+  @override
+  String get equipmentLabel => '器械';
+
+  @override
+  String get heaviestWeight => '最重重量';
+
+  @override
+  String get estimatedOneRm => '估计 1RM';
+
+  @override
+  String get volumeChart => '训练容量';
+
+  @override
+  String get recordsTitle => '纪录';
+
+  @override
+  String get weekGoal => '本周目标';
+
+  @override
+  String weekGoalProgress(int done, int goal) {
+    return '$done / $goal';
+  }
+
+  @override
+  String startWorkoutNamed(String name) {
+    return '开始训练 · $name';
+  }
+
+  @override
+  String get musclesThisWeek => '本周肌群';
+
+  @override
+  String get progressHeading => '进步';
+
+  @override
+  String get lastEightWeeks => '最近八周';
+
+  @override
+  String get chooseProfile => '选择档案';
+
+  @override
+  String get createProfileAction => '新建档案';
+
+  @override
+  String get plateCalculator => '杠铃片计算';
+
+  @override
+  String get barbellCalc => '杠铃';
+
+  @override
+  String get cableCalc => '绳索塔';
+
+  @override
+  String get extraWeight => '附加重量';
+
+  @override
+  String get barWeightLabel => '杠铃杆重量';
+
+  @override
+  String get plateSetLabel => '每侧杠铃片';
+
+  @override
+  String get cableStepLabel => '配重步进';
+
+  @override
+  String get chooseGym => '选择健身房';
+
+  @override
+  String get gymsTitle => '健身房';
+
+  @override
+  String get newGym => '新健身房';
+
+  @override
+  String get progressionHelp => '进阶提示';
+
+  @override
+  String progressionAsk(String name, String weight, int reps) {
+    return '$name：下次 $weight 公斤，并从 $reps 次重新开始？';
+  }
+
+  @override
+  String get actionAccept => '接受';
+
+  @override
+  String get actionReject => '拒绝';
+
+  @override
+  String get importExportTitle => '导入和导出数据';
+
+  @override
+  String get importWorkouts => '导入训练';
+
+  @override
+  String get importMeasurements => '导入测量';
+
+  @override
+  String get exportAlphaData => '导出 Alpha 数据';
+
+  @override
+  String get importPreviewTitle => '导入预览';
+
+  @override
+  String importSummary(int workouts, int exercises) {
+    return '$workouts 次训练，$exercises 个动作';
+  }
+
+  @override
+  String get templatesDetected => '识别出的模板';
+
+  @override
+  String get renameLabel => '重命名';
+
+  @override
+  String get mapExercise => '匹配动作';
+
+  @override
+  String get checkForUpdates => '检查更新';
+
+  @override
+  String get upToDate => '已是最新版本';
+
+  @override
+  String get updateCheckFailed => '检查更新失败';
+
+  @override
+  String get licensesTitle => '许可';
+
+  @override
+  String get flexifyMitNotice => 'Flexify 以 MIT 许可证发布。Copyright Brandon Dick。';
+
+  @override
+  String get exerciseDbNotice => '每个动作都会列出自己的来源和许可。';
+
+  @override
+  String get sourceLabel => '来源';
+
+  @override
+  String get tipsLabel => '提示';
+
+  @override
+  String get imageSourceLabel => '图片来源';
+
+  @override
+  String get imageLicenseLabel => '图片许可';
+
+  @override
+  String get muscleUpperChest => '上胸';
+
+  @override
+  String get muscleFrontShoulder => '前束';
+
+  @override
+  String get muscleSideShoulder => '中束';
+
+  @override
+  String get muscleRearShoulder => '后束';
+
+  @override
+  String get muscleLatissimus => '背阔肌';
+
+  @override
+  String get muscleUpperBack => '上背';
+
+  @override
+  String get muscleTrapez => '斜方肌';
+
+  @override
+  String get muscleLowerBack => '下背';
+
+  @override
+  String get muscleForearms => '前臂';
+
+  @override
+  String get muscleRectus => '腹直肌';
+
+  @override
+  String get muscleObliques => '腹斜肌';
+
+  @override
+  String get muscleQuadriceps => '股四头肌';
+
+  @override
+  String get muscleAdductors => '内收肌';
+
+  @override
+  String get muscleAbductors => '外展肌';
+
+  @override
+  String get muscleHipFlexors => '髋屈肌';
+
+  @override
+  String get alternativesLabel => '替代动作';
+
+  @override
+  String get mechanicLabel => '动作类型';
+
+  @override
+  String get aiCoachTitle => '智能教练';
+
+  @override
+  String get aiProviderLabel => '提供方';
+
+  @override
+  String get aiOffNotice => '在你保存自己的密钥之前，教练保持关闭。';
+
+  @override
+  String get coachHint => '问教练';
+
+  @override
+  String get voiceInput => '语音输入';
+
+  @override
+  String voiceUnderstood(String text) {
+    return '听懂了：$text';
+  }
+
+  @override
+  String get speechFailed => '语音输入失败';
+
+  @override
+  String get confirmVoiceSet => '采用这一组？';
+
+  @override
+  String get periodSession => '这次训练';
+
+  @override
+  String get muscleMapTitle => '肌肉图';
+
+  @override
+  String get frontView => '正面';
+
+  @override
+  String get backView => '背面';
+
+  @override
+  String quoteKeepGoing(int done, int goal) {
+    return '本周 $done/$goal 次。继续。';
+  }
+
+  @override
+  String quoteRemaining(int count) {
+    return '本周还剩 $count 次。';
+  }
+
+  @override
+  String get quotePullDay => '拉的日子。背部和肱二头肌准备好了。';
+
+  @override
+  String get quotePushDay => '推的日子。胸、肩和肱三头肌。';
+
+  @override
+  String get quoteLegDay => '腿的日子。股四头、腘绳和臀。';
+
+  @override
+  String versionAndLicenses(String version) {
+    return '版本 $version · 许可';
+  }
+
+  @override
+  String get liveWorkoutLabel => '训练进行中';
+
+  @override
+  String get muscleChest => '胸部';
+
+  @override
+  String get muscleShoulders => '肩部';
+
+  @override
+  String get muscleBiceps => '肱二头肌';
+
+  @override
+  String get muscleTriceps => '肱三头肌';
+
+  @override
+  String get muscleAbs => '腹部';
+
+  @override
+  String get muscleQuads => '股四头肌';
+
+  @override
+  String get muscleCalves => '小腿';
+
+  @override
+  String get muscleTraps => '斜方肌';
+
+  @override
+  String get muscleBack => '背部';
+
+  @override
+  String get muscleGlutes => '臀部';
+
+  @override
+  String get muscleHams => '腘绳肌';
+
+  @override
+  String get weekGoalManual => '自己设定每周目标';
+
+  @override
+  String get sessionsPerWeek => '每周次数';
+
+  @override
+  String get gymNameHint => '健身房名称';
+
+  @override
+  String get coachProfileNote => '教练备注';
+
+  @override
+  String get openPackageLicenses => '打开软件包许可';
+
+  @override
+  String get lengthUnitLabel => '身高单位';
+
+  @override
+  String get centimetersShort => '厘米 (cm)';
+
+  @override
+  String get inchesShort => '英寸 (in)';
+
+  @override
+  String get heightInches => '身高（英寸）';
+
+  @override
+  String get welcomeToAlpha => '欢迎使用 Alpha';
+
+  @override
+  String get createProfileButton => '创建档案';
+
+  @override
+  String get onboardingWeightHint => '体重，可选';
+
+  @override
+  String get familyLabel => '动作族';
+
+  @override
+  String get gripLabel => '握法';
+
+  @override
+  String get positionLabel => '体位';
+
+  @override
+  String get movementLabel => '动作';
+
+  @override
+  String get unilateralLabel => '单侧';
+
+  @override
+  String get otherVariants => '其他变式';
+
+  @override
+  String get sideLeft => '左侧';
+
+  @override
+  String get sideRight => '右侧';
+
+  @override
+  String get createCustomExercise => '新建动作';
+
+  @override
+  String get editCustomExercise => '编辑动作';
+
+  @override
+  String get deleteCustomExercise => '删除动作';
+
+  @override
+  String get deleteCustomExerciseBody => '删除这个动作？以往的训练仍留在历史中。';
+
+  @override
+  String get customExerciseName => '名称';
+
+  @override
+  String get customExerciseFamily => '动作族编号';
+
+  @override
+  String get createAsCustomExercise => '创建为自定义动作';
+
+  @override
+  String get customExerciseInvalid => '请选择名称、肌肉和器械。';
+
+  @override
+  String get motionPress => '推';
+
+  @override
+  String get motionPull => '拉';
+
+  @override
+  String get motionLegs => '腿/髋';
+
+  @override
+  String get motionCore => '核心';
+
+  @override
+  String get motionCardio => '有氧';
+
+  @override
+  String get mechanicCompound => '复合';
+
+  @override
+  String get mechanicIsolation => '孤立';
+
+  @override
+  String get ownExerciseSource => '自定义动作';
+
+  @override
+  String get notSpecified => '–';
+
+  @override
+  String get resumeWorkout => '继续训练';
+
+  @override
+  String get importBackupZip => '导入备份 (.zip)';
 }
 
 /// The translations for Chinese, as used in China (`zh_CN`).
@@ -3470,6 +3932,468 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
 
   @override
   String get alphaSettingsDescription => 'Profile, Design und Pausenton';
+
+  @override
+  String get finishWorkoutAsk => '结束这次训练？';
+
+  @override
+  String get finishWorkoutBody => '本次训练会保存，模板保持不变。';
+
+  @override
+  String get discardWorkoutAsk => '放弃这次训练？';
+
+  @override
+  String get discardWorkoutBody => '本次记下的组会被删除。';
+
+  @override
+  String get noRest => '不休息';
+
+  @override
+  String get restWheelTitle => '休息';
+
+  @override
+  String get deleteTemplateAsk => '删除这个模板？';
+
+  @override
+  String deleteTemplateBody(String name) {
+    return '删除「$name」？已保存的训练会留下。';
+  }
+
+  @override
+  String get warmupAction => '热身';
+
+  @override
+  String get warmupMark => 'W';
+
+  @override
+  String get confirmAddExercise => '添加动作';
+
+  @override
+  String get tabOverview => '概览';
+
+  @override
+  String get tabHistory => '记录';
+
+  @override
+  String get tabHowTo => '做法';
+
+  @override
+  String get primaryMuscleLabel => '主要肌群';
+
+  @override
+  String get secondaryMuscleLabel => '辅助肌群';
+
+  @override
+  String get equipmentLabel => '器械';
+
+  @override
+  String get heaviestWeight => '最重重量';
+
+  @override
+  String get estimatedOneRm => '估计 1RM';
+
+  @override
+  String get volumeChart => '训练容量';
+
+  @override
+  String get recordsTitle => '纪录';
+
+  @override
+  String get weekGoal => '本周目标';
+
+  @override
+  String weekGoalProgress(int done, int goal) {
+    return '$done / $goal';
+  }
+
+  @override
+  String startWorkoutNamed(String name) {
+    return '开始训练 · $name';
+  }
+
+  @override
+  String get musclesThisWeek => '本周肌群';
+
+  @override
+  String get progressHeading => '进步';
+
+  @override
+  String get lastEightWeeks => '最近八周';
+
+  @override
+  String get chooseProfile => '选择档案';
+
+  @override
+  String get createProfileAction => '新建档案';
+
+  @override
+  String get plateCalculator => '杠铃片计算';
+
+  @override
+  String get barbellCalc => '杠铃';
+
+  @override
+  String get cableCalc => '绳索塔';
+
+  @override
+  String get extraWeight => '附加重量';
+
+  @override
+  String get barWeightLabel => '杠铃杆重量';
+
+  @override
+  String get plateSetLabel => '每侧杠铃片';
+
+  @override
+  String get cableStepLabel => '配重步进';
+
+  @override
+  String get chooseGym => '选择健身房';
+
+  @override
+  String get gymsTitle => '健身房';
+
+  @override
+  String get newGym => '新健身房';
+
+  @override
+  String get progressionHelp => '进阶提示';
+
+  @override
+  String progressionAsk(String name, String weight, int reps) {
+    return '$name：下次 $weight 公斤，并从 $reps 次重新开始？';
+  }
+
+  @override
+  String get actionAccept => '接受';
+
+  @override
+  String get actionReject => '拒绝';
+
+  @override
+  String get importExportTitle => '导入和导出数据';
+
+  @override
+  String get importWorkouts => '导入训练';
+
+  @override
+  String get importMeasurements => '导入测量';
+
+  @override
+  String get exportAlphaData => '导出 Alpha 数据';
+
+  @override
+  String get importPreviewTitle => '导入预览';
+
+  @override
+  String importSummary(int workouts, int exercises) {
+    return '$workouts 次训练，$exercises 个动作';
+  }
+
+  @override
+  String get templatesDetected => '识别出的模板';
+
+  @override
+  String get renameLabel => '重命名';
+
+  @override
+  String get mapExercise => '匹配动作';
+
+  @override
+  String get checkForUpdates => '检查更新';
+
+  @override
+  String get upToDate => '已是最新版本';
+
+  @override
+  String get updateCheckFailed => '检查更新失败';
+
+  @override
+  String get licensesTitle => '许可';
+
+  @override
+  String get flexifyMitNotice => 'Flexify 以 MIT 许可证发布。Copyright Brandon Dick。';
+
+  @override
+  String get exerciseDbNotice => '每个动作都会列出自己的来源和许可。';
+
+  @override
+  String get sourceLabel => '来源';
+
+  @override
+  String get tipsLabel => '提示';
+
+  @override
+  String get imageSourceLabel => '图片来源';
+
+  @override
+  String get imageLicenseLabel => '图片许可';
+
+  @override
+  String get muscleUpperChest => '上胸';
+
+  @override
+  String get muscleFrontShoulder => '前束';
+
+  @override
+  String get muscleSideShoulder => '中束';
+
+  @override
+  String get muscleRearShoulder => '后束';
+
+  @override
+  String get muscleLatissimus => '背阔肌';
+
+  @override
+  String get muscleUpperBack => '上背';
+
+  @override
+  String get muscleTrapez => '斜方肌';
+
+  @override
+  String get muscleLowerBack => '下背';
+
+  @override
+  String get muscleForearms => '前臂';
+
+  @override
+  String get muscleRectus => '腹直肌';
+
+  @override
+  String get muscleObliques => '腹斜肌';
+
+  @override
+  String get muscleQuadriceps => '股四头肌';
+
+  @override
+  String get muscleAdductors => '内收肌';
+
+  @override
+  String get muscleAbductors => '外展肌';
+
+  @override
+  String get muscleHipFlexors => '髋屈肌';
+
+  @override
+  String get alternativesLabel => '替代动作';
+
+  @override
+  String get mechanicLabel => '动作类型';
+
+  @override
+  String get aiCoachTitle => '智能教练';
+
+  @override
+  String get aiProviderLabel => '提供方';
+
+  @override
+  String get aiOffNotice => '在你保存自己的密钥之前，教练保持关闭。';
+
+  @override
+  String get coachHint => '问教练';
+
+  @override
+  String get voiceInput => '语音输入';
+
+  @override
+  String voiceUnderstood(String text) {
+    return '听懂了：$text';
+  }
+
+  @override
+  String get speechFailed => '语音输入失败';
+
+  @override
+  String get confirmVoiceSet => '采用这一组？';
+
+  @override
+  String get periodSession => '这次训练';
+
+  @override
+  String get muscleMapTitle => '肌肉图';
+
+  @override
+  String get frontView => '正面';
+
+  @override
+  String get backView => '背面';
+
+  @override
+  String quoteKeepGoing(int done, int goal) {
+    return '本周 $done/$goal 次。继续。';
+  }
+
+  @override
+  String quoteRemaining(int count) {
+    return '本周还剩 $count 次。';
+  }
+
+  @override
+  String get quotePullDay => '拉的日子。背部和肱二头肌准备好了。';
+
+  @override
+  String get quotePushDay => '推的日子。胸、肩和肱三头肌。';
+
+  @override
+  String get quoteLegDay => '腿的日子。股四头、腘绳和臀。';
+
+  @override
+  String versionAndLicenses(String version) {
+    return '版本 $version · 许可';
+  }
+
+  @override
+  String get liveWorkoutLabel => '训练进行中';
+
+  @override
+  String get muscleChest => '胸部';
+
+  @override
+  String get muscleShoulders => '肩部';
+
+  @override
+  String get muscleBiceps => '肱二头肌';
+
+  @override
+  String get muscleTriceps => '肱三头肌';
+
+  @override
+  String get muscleAbs => '腹部';
+
+  @override
+  String get muscleQuads => '股四头肌';
+
+  @override
+  String get muscleCalves => '小腿';
+
+  @override
+  String get muscleTraps => '斜方肌';
+
+  @override
+  String get muscleBack => '背部';
+
+  @override
+  String get muscleGlutes => '臀部';
+
+  @override
+  String get muscleHams => '腘绳肌';
+
+  @override
+  String get weekGoalManual => '自己设定每周目标';
+
+  @override
+  String get sessionsPerWeek => '每周次数';
+
+  @override
+  String get gymNameHint => '健身房名称';
+
+  @override
+  String get coachProfileNote => '教练备注';
+
+  @override
+  String get openPackageLicenses => '打开软件包许可';
+
+  @override
+  String get lengthUnitLabel => '身高单位';
+
+  @override
+  String get centimetersShort => '厘米 (cm)';
+
+  @override
+  String get inchesShort => '英寸 (in)';
+
+  @override
+  String get heightInches => '身高（英寸）';
+
+  @override
+  String get welcomeToAlpha => '欢迎使用 Alpha';
+
+  @override
+  String get createProfileButton => '创建档案';
+
+  @override
+  String get onboardingWeightHint => '体重，可选';
+
+  @override
+  String get familyLabel => '动作族';
+
+  @override
+  String get gripLabel => '握法';
+
+  @override
+  String get positionLabel => '体位';
+
+  @override
+  String get movementLabel => '动作';
+
+  @override
+  String get unilateralLabel => '单侧';
+
+  @override
+  String get otherVariants => '其他变式';
+
+  @override
+  String get sideLeft => '左侧';
+
+  @override
+  String get sideRight => '右侧';
+
+  @override
+  String get createCustomExercise => '新建动作';
+
+  @override
+  String get editCustomExercise => '编辑动作';
+
+  @override
+  String get deleteCustomExercise => '删除动作';
+
+  @override
+  String get deleteCustomExerciseBody => '删除这个动作？以往的训练仍留在历史中。';
+
+  @override
+  String get customExerciseName => '名称';
+
+  @override
+  String get customExerciseFamily => '动作族编号';
+
+  @override
+  String get createAsCustomExercise => '创建为自定义动作';
+
+  @override
+  String get customExerciseInvalid => '请选择名称、肌肉和器械。';
+
+  @override
+  String get motionPress => '推';
+
+  @override
+  String get motionPull => '拉';
+
+  @override
+  String get motionLegs => '腿/髋';
+
+  @override
+  String get motionCore => '核心';
+
+  @override
+  String get motionCardio => '有氧';
+
+  @override
+  String get mechanicCompound => '复合';
+
+  @override
+  String get mechanicIsolation => '孤立';
+
+  @override
+  String get ownExerciseSource => '自定义动作';
+
+  @override
+  String get notSpecified => '–';
+
+  @override
+  String get resumeWorkout => '继续训练';
+
+  @override
+  String get importBackupZip => '导入备份 (.zip)';
 }
 
 /// The translations for Chinese, as used in Taiwan (`zh_TW`).
@@ -5204,4 +6128,466 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get alphaSettingsDescription => 'Profile, Design und Pausenton';
+
+  @override
+  String get finishWorkoutAsk => '結束這次訓練？';
+
+  @override
+  String get finishWorkoutBody => '這次訓練會儲存，範本保持不變。';
+
+  @override
+  String get discardWorkoutAsk => '捨棄這次訓練？';
+
+  @override
+  String get discardWorkoutBody => '這次記下的組數會被刪除。';
+
+  @override
+  String get noRest => '不休息';
+
+  @override
+  String get restWheelTitle => '休息';
+
+  @override
+  String get deleteTemplateAsk => '刪除這個範本？';
+
+  @override
+  String deleteTemplateBody(String name) {
+    return '刪除「$name」？已儲存的訓練會留下。';
+  }
+
+  @override
+  String get warmupAction => '熱身';
+
+  @override
+  String get warmupMark => 'W';
+
+  @override
+  String get confirmAddExercise => '加入動作';
+
+  @override
+  String get tabOverview => '總覽';
+
+  @override
+  String get tabHistory => '紀錄';
+
+  @override
+  String get tabHowTo => '做法';
+
+  @override
+  String get primaryMuscleLabel => '主要肌群';
+
+  @override
+  String get secondaryMuscleLabel => '輔助肌群';
+
+  @override
+  String get equipmentLabel => '器材';
+
+  @override
+  String get heaviestWeight => '最重重量';
+
+  @override
+  String get estimatedOneRm => '估計 1RM';
+
+  @override
+  String get volumeChart => '訓練容量';
+
+  @override
+  String get recordsTitle => '紀錄';
+
+  @override
+  String get weekGoal => '本週目標';
+
+  @override
+  String weekGoalProgress(int done, int goal) {
+    return '$done / $goal';
+  }
+
+  @override
+  String startWorkoutNamed(String name) {
+    return '開始訓練 · $name';
+  }
+
+  @override
+  String get musclesThisWeek => '本週肌群';
+
+  @override
+  String get progressHeading => '進步';
+
+  @override
+  String get lastEightWeeks => '最近八週';
+
+  @override
+  String get chooseProfile => '選擇檔案';
+
+  @override
+  String get createProfileAction => '建立檔案';
+
+  @override
+  String get plateCalculator => '槓片計算';
+
+  @override
+  String get barbellCalc => '槓鈴';
+
+  @override
+  String get cableCalc => '鋼索塔';
+
+  @override
+  String get extraWeight => '附加重量';
+
+  @override
+  String get barWeightLabel => '槓桿重量';
+
+  @override
+  String get plateSetLabel => '每側槓片';
+
+  @override
+  String get cableStepLabel => '配重間距';
+
+  @override
+  String get chooseGym => '選擇健身房';
+
+  @override
+  String get gymsTitle => '健身房';
+
+  @override
+  String get newGym => '新健身房';
+
+  @override
+  String get progressionHelp => '進階提示';
+
+  @override
+  String progressionAsk(String name, String weight, int reps) {
+    return '$name：下次 $weight 公斤，並從 $reps 次重新開始？';
+  }
+
+  @override
+  String get actionAccept => '接受';
+
+  @override
+  String get actionReject => '拒絕';
+
+  @override
+  String get importExportTitle => '匯入與匯出資料';
+
+  @override
+  String get importWorkouts => '匯入訓練';
+
+  @override
+  String get importMeasurements => '匯入測量';
+
+  @override
+  String get exportAlphaData => '匯出 Alpha 資料';
+
+  @override
+  String get importPreviewTitle => '匯入預覽';
+
+  @override
+  String importSummary(int workouts, int exercises) {
+    return '$workouts 次訓練，$exercises 個動作';
+  }
+
+  @override
+  String get templatesDetected => '辨識出的範本';
+
+  @override
+  String get renameLabel => '重新命名';
+
+  @override
+  String get mapExercise => '對應動作';
+
+  @override
+  String get checkForUpdates => '檢查更新';
+
+  @override
+  String get upToDate => '已是最新版本';
+
+  @override
+  String get updateCheckFailed => '檢查更新失敗';
+
+  @override
+  String get licensesTitle => '授權';
+
+  @override
+  String get flexifyMitNotice => 'Flexify 以 MIT 授權發布。Copyright Brandon Dick。';
+
+  @override
+  String get exerciseDbNotice => '每個動作都會列出自己的來源和授權。';
+
+  @override
+  String get sourceLabel => '來源';
+
+  @override
+  String get tipsLabel => '提示';
+
+  @override
+  String get imageSourceLabel => '圖片來源';
+
+  @override
+  String get imageLicenseLabel => '圖片授權';
+
+  @override
+  String get muscleUpperChest => '上胸';
+
+  @override
+  String get muscleFrontShoulder => '前束';
+
+  @override
+  String get muscleSideShoulder => '中束';
+
+  @override
+  String get muscleRearShoulder => '後束';
+
+  @override
+  String get muscleLatissimus => '闊背肌';
+
+  @override
+  String get muscleUpperBack => '上背';
+
+  @override
+  String get muscleTrapez => '斜方肌';
+
+  @override
+  String get muscleLowerBack => '下背';
+
+  @override
+  String get muscleForearms => '前臂';
+
+  @override
+  String get muscleRectus => '腹直肌';
+
+  @override
+  String get muscleObliques => '腹斜肌';
+
+  @override
+  String get muscleQuadriceps => '股四頭肌';
+
+  @override
+  String get muscleAdductors => '內收肌';
+
+  @override
+  String get muscleAbductors => '外展肌';
+
+  @override
+  String get muscleHipFlexors => '髖屈肌';
+
+  @override
+  String get alternativesLabel => '替代動作';
+
+  @override
+  String get mechanicLabel => '動作類型';
+
+  @override
+  String get aiCoachTitle => '智慧教練';
+
+  @override
+  String get aiProviderLabel => '提供者';
+
+  @override
+  String get aiOffNotice => '在你儲存自己的金鑰之前，教練保持關閉。';
+
+  @override
+  String get coachHint => '問教練';
+
+  @override
+  String get voiceInput => '語音輸入';
+
+  @override
+  String voiceUnderstood(String text) {
+    return '聽懂了：$text';
+  }
+
+  @override
+  String get speechFailed => '語音輸入失敗';
+
+  @override
+  String get confirmVoiceSet => '採用這一組？';
+
+  @override
+  String get periodSession => '這次訓練';
+
+  @override
+  String get muscleMapTitle => '肌肉圖';
+
+  @override
+  String get frontView => '正面';
+
+  @override
+  String get backView => '背面';
+
+  @override
+  String quoteKeepGoing(int done, int goal) {
+    return '本週 $done/$goal 次。繼續。';
+  }
+
+  @override
+  String quoteRemaining(int count) {
+    return '本週還剩 $count 次。';
+  }
+
+  @override
+  String get quotePullDay => '拉的日子。背部和肱二頭肌準備好了。';
+
+  @override
+  String get quotePushDay => '推的日子。胸、肩和肱三頭肌。';
+
+  @override
+  String get quoteLegDay => '腿的日子。股四頭、腿後肌和臀。';
+
+  @override
+  String versionAndLicenses(String version) {
+    return '版本 $version · 授權';
+  }
+
+  @override
+  String get liveWorkoutLabel => '訓練進行中';
+
+  @override
+  String get muscleChest => '胸部';
+
+  @override
+  String get muscleShoulders => '肩部';
+
+  @override
+  String get muscleBiceps => '肱二頭肌';
+
+  @override
+  String get muscleTriceps => '肱三頭肌';
+
+  @override
+  String get muscleAbs => '腹部';
+
+  @override
+  String get muscleQuads => '股四頭肌';
+
+  @override
+  String get muscleCalves => '小腿';
+
+  @override
+  String get muscleTraps => '斜方肌';
+
+  @override
+  String get muscleBack => '背部';
+
+  @override
+  String get muscleGlutes => '臀部';
+
+  @override
+  String get muscleHams => '腿後肌';
+
+  @override
+  String get weekGoalManual => '自己設定每週目標';
+
+  @override
+  String get sessionsPerWeek => '每週次數';
+
+  @override
+  String get gymNameHint => '健身房名稱';
+
+  @override
+  String get coachProfileNote => '教練備註';
+
+  @override
+  String get openPackageLicenses => '開啟套件授權';
+
+  @override
+  String get lengthUnitLabel => '身高單位';
+
+  @override
+  String get centimetersShort => '公分 (cm)';
+
+  @override
+  String get inchesShort => '英吋 (in)';
+
+  @override
+  String get heightInches => '身高（英吋）';
+
+  @override
+  String get welcomeToAlpha => '歡迎使用 Alpha';
+
+  @override
+  String get createProfileButton => '建立檔案';
+
+  @override
+  String get onboardingWeightHint => '體重，選填';
+
+  @override
+  String get familyLabel => '動作族';
+
+  @override
+  String get gripLabel => '握法';
+
+  @override
+  String get positionLabel => '體位';
+
+  @override
+  String get movementLabel => '動作';
+
+  @override
+  String get unilateralLabel => '單側';
+
+  @override
+  String get otherVariants => '其他變式';
+
+  @override
+  String get sideLeft => '左側';
+
+  @override
+  String get sideRight => '右側';
+
+  @override
+  String get createCustomExercise => '新建動作';
+
+  @override
+  String get editCustomExercise => '編輯動作';
+
+  @override
+  String get deleteCustomExercise => '刪除動作';
+
+  @override
+  String get deleteCustomExerciseBody => '刪除這個動作？過去的訓練仍留在歷史中。';
+
+  @override
+  String get customExerciseName => '名稱';
+
+  @override
+  String get customExerciseFamily => '動作族編號';
+
+  @override
+  String get createAsCustomExercise => '建立為自訂動作';
+
+  @override
+  String get customExerciseInvalid => '請選擇名稱、肌肉和器材。';
+
+  @override
+  String get motionPress => '推';
+
+  @override
+  String get motionPull => '拉';
+
+  @override
+  String get motionLegs => '腿/髖';
+
+  @override
+  String get motionCore => '核心';
+
+  @override
+  String get motionCardio => '有氧';
+
+  @override
+  String get mechanicCompound => '複合';
+
+  @override
+  String get mechanicIsolation => '孤立';
+
+  @override
+  String get ownExerciseSource => '自訂動作';
+
+  @override
+  String get notSpecified => '–';
+
+  @override
+  String get resumeWorkout => '繼續訓練';
+
+  @override
+  String get importBackupZip => '匯入備份 (.zip)';
 }

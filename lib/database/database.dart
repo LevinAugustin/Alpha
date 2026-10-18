@@ -1101,6 +1101,59 @@ class AppDatabase extends _$AppDatabase {
               await m.addColumn(schema.settings, schema.settings.restVolume);
               await m.addColumn(schema.workouts, schema.workouts.exerciseOrder);
             },
+            from72To73: (Migrator m, Schema73 schema) async {
+              await m.alterTable(
+                TableMigration(
+                  schema.exercises,
+                  newColumns: [
+                    schema.exercises.catalogId,
+                    schema.exercises.categoryName,
+                    schema.exercises.equipment,
+                    schema.exercises.primaryMuscles,
+                    schema.exercises.secondaryMuscles,
+                    schema.exercises.split,
+                    schema.exercises.mechanic,
+                    schema.exercises.steps,
+                    schema.exercises.tips,
+                    schema.exercises.catalogSource,
+                    schema.exercises.catalogLicense,
+                  ],
+                ),
+              );
+            },
+            from73To74: (Migrator m, Schema74 schema) async {
+              await m.addColumn(schema.exercises, schema.exercises.imageSource);
+              await m.addColumn(
+                schema.exercises,
+                schema.exercises.imageLicense,
+              );
+              await m.addColumn(
+                schema.exercises,
+                schema.exercises.alternatives,
+              );
+            },
+            from74To75: (Migrator m, Schema75 schema) async {
+              await m.addColumn(
+                schema.exercises,
+                schema.exercises.schulterRisiko,
+              );
+            },
+            from75To76: (Migrator m, Schema76 schema) async {
+              await m.dropColumn(schema.exercises, 'split');
+            },
+            from76To77: (Migrator m, Schema77 schema) async {
+              await m.addColumn(schema.exercises, schema.exercises.familie);
+              await m.addColumn(schema.exercises, schema.exercises.griff);
+              await m.addColumn(schema.exercises, schema.exercises.position);
+              await m.addColumn(schema.exercises, schema.exercises.einseitig);
+              await m.addColumn(schema.exerciseSets, schema.exerciseSets.side);
+            },
+            from77To78: (Migrator m, Schema78 schema) async {
+              await m.addColumn(schema.exercises, schema.exercises.bewegung);
+            },
+            from78To79: (Migrator m, Schema79 schema) async {
+              await m.dropColumn(schema.exercises, 'schulter_risiko');
+            },
           );
           await transaction(() async {
             await upgrade(m, from, to);
@@ -1122,5 +1175,5 @@ class AppDatabase extends _$AppDatabase {
   }
 
   @override
-  int get schemaVersion => 72;
+  int get schemaVersion => 79;
 }

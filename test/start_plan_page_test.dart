@@ -147,6 +147,7 @@ void main() {
     tester.binding.handleAppLifecycleStateChanged(AppLifecycleState.resumed);
     await tester.pumpAndSettle();
     expect(tester.widget<EditableText>(reps).controller.text, '37');
+    await harness.timerState.stopTimer();
   });
 
   for (final enabled in [false, true]) {
@@ -195,6 +196,7 @@ void main() {
         tester.widget<EditableText>(seconds).controller.text,
         enabled ? '0' : '45',
       );
+      await harness.timerState.stopTimer();
     });
   }
 
@@ -346,6 +348,7 @@ void main() {
       expect(saved.reps, 5, reason: locale.toLanguageTag());
       expect(saved.weight, 50, reason: locale.toLanguageTag());
       expect(tester.takeException(), isNull, reason: locale.toLanguageTag());
+      await harness.timerState.stopTimer();
     }
   });
 
@@ -471,6 +474,7 @@ void main() {
     expect(saved.notes, note);
     expect(saved.weight, 50.5);
     expect(tester.takeException(), isNull);
+    await harness.timerState.stopTimer();
   });
 
   testWidgets(
@@ -642,7 +646,9 @@ void main() {
       planId: id,
       exercise: 'Bench press',
     );
-    await database.settings.update().write(testSettings(showNotes: true));
+    await database.settings.update().write(
+      testSettings(showNotes: true, explainedPermissions: true),
+    );
     final plan =
         await (database.plans.select()..where((plan) => plan.id.equals(id)))
             .getSingle();
@@ -675,6 +681,7 @@ void main() {
       await getExerciseSets(database, search: 'Bench press'),
       hasLength(1),
     );
+    await harness.timerState.stopTimer();
   });
 
   testWidgets('StartPlanPage cardio submit follows visible fields then saves', (
@@ -692,6 +699,9 @@ void main() {
       unit: 'kg',
     );
 
+    await database.settings.update().write(
+      testSettings(explainedPermissions: true),
+    );
     final plan =
         await (database.plans.select()..where((plan) => plan.id.equals(id)))
             .getSingle();
@@ -723,6 +733,7 @@ void main() {
 
     final saved = await getExerciseSets(database, search: 'Sled push');
     expect(saved, hasLength(1));
+    await harness.timerState.stopTimer();
   });
 
   testWidgets('StartPlanPage compact desktop exercise list does not overflow', (
@@ -827,6 +838,7 @@ void main() {
             ))
             .getSingle();
     expect(workout.planId, plan.id);
+    await harness.timerState.stopTimer();
   });
 
   testWidgets(
@@ -909,6 +921,7 @@ void main() {
 
     expect(find.text('Set 1'), findsOne);
     expect(find.text('5 × 50 kg'), findsOne);
+    await harness.timerState.stopTimer();
   });
 
   testWidgets('rest timer return keeps current workout and set progress', (
@@ -1025,5 +1038,6 @@ void main() {
       1,
     );
     expect(await database.workouts.select().get(), hasLength(1));
+    await harness.timerState.stopTimer();
   });
 }

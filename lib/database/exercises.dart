@@ -26,4 +26,22 @@ class Exercises extends Table {
   TextColumn get germanName => text().nullable()();
   TextColumn get aliases => text().nullable()();
   TextColumn get muscle => text().nullable()();
+  TextColumn get catalogId => text().nullable().unique()();
+  TextColumn get categoryName => text().nullable()();
+  TextColumn get equipment => text().nullable()();
+  TextColumn get primaryMuscles => text().nullable()();
+  TextColumn get secondaryMuscles => text().nullable()();
+  TextColumn get mechanic => text().nullable()();
+  TextColumn get steps => text().nullable()();
+  TextColumn get tips => text().nullable()();
+  TextColumn get catalogSource => text().nullable()();
+  TextColumn get catalogLicense => text().nullable()();
+  TextColumn get imageSource => text().nullable()();
+  TextColumn get imageLicense => text().nullable()();
+  TextColumn get alternatives => text().nullable()();
+  TextColumn get familie => text().nullable()();
+  TextColumn get bewegung => text().nullable()();
+  TextColumn get griff => text().nullable()();
+  TextColumn get position => text().nullable()();
+  BoolColumn get einseitig => boolean().withDefault(const Constant(false))();
 }

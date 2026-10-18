@@ -6,6 +6,7 @@ import 'package:flexify/app_fab.dart';
 import 'package:flexify/constants.dart';
 import 'package:flexify/database/exercise_analytics.dart';
 import 'package:flexify/database/exercise_catalog.dart';
+import 'package:flexify/exercises/exercise_image.dart';
 import 'package:flexify/database/categories.dart';
 import 'package:flexify/l10n/l10n.dart';
 import 'package:flexify/database/database.dart';
@@ -245,16 +246,19 @@ class _EditGraphPageState extends State<EditGraphPage> {
                           ),
                           if (image != null) ...[
                             const SizedBox(height: 8),
-                            Image.file(
-                              File(image!),
-                              cacheWidth: 400,
-                              errorBuilder: (context, error, stackTrace) =>
-                                  TextButton.icon(
-                                    label: Text(context.l10n.imageError),
-                                    icon: const Icon(Icons.error),
-                                    onPressed: () => pick(),
-                                  ),
-                            ),
+                            if (exerciseImageFileExists(image))
+                              Image.file(
+                                File(image!),
+                                cacheWidth: 400,
+                                errorBuilder: (context, error, stackTrace) =>
+                                    TextButton.icon(
+                                      label: Text(context.l10n.imageError),
+                                      icon: const Icon(Icons.error),
+                                      onPressed: () => pick(),
+                                    ),
+                              )
+                            else
+                              const ExerciseImage(path: null, height: 120),
                           ],
                         ],
                       ),

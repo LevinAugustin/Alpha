@@ -1748,4 +1748,467 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get alphaSettingsDescription => 'Profile, Design und Pausenton';
+
+  @override
+  String get finishWorkoutAsk => '이 운동을 끝낼까요?';
+
+  @override
+  String get finishWorkoutBody => '세션은 저장되고 템플릿은 그대로 둡니다.';
+
+  @override
+  String get discardWorkoutAsk => '이 운동을 버릴까요?';
+
+  @override
+  String get discardWorkoutBody => '이번 세션에 기록한 세트는 삭제됩니다.';
+
+  @override
+  String get noRest => '휴식 없음';
+
+  @override
+  String get restWheelTitle => '휴식';
+
+  @override
+  String get deleteTemplateAsk => '이 템플릿을 삭제할까요?';
+
+  @override
+  String deleteTemplateBody(String name) {
+    return '“$name”을 삭제할까요? 저장된 운동은 남습니다.';
+  }
+
+  @override
+  String get warmupAction => '워밍업';
+
+  @override
+  String get warmupMark => 'W';
+
+  @override
+  String get confirmAddExercise => '운동 추가';
+
+  @override
+  String get tabOverview => '개요';
+
+  @override
+  String get tabHistory => '기록';
+
+  @override
+  String get tabHowTo => '수행';
+
+  @override
+  String get primaryMuscleLabel => '주동근';
+
+  @override
+  String get secondaryMuscleLabel => '보조근';
+
+  @override
+  String get equipmentLabel => '기구';
+
+  @override
+  String get heaviestWeight => '최고 중량';
+
+  @override
+  String get estimatedOneRm => '추정 1RM';
+
+  @override
+  String get volumeChart => '운동량';
+
+  @override
+  String get recordsTitle => '기록들';
+
+  @override
+  String get weekGoal => '주간 목표';
+
+  @override
+  String weekGoalProgress(int done, int goal) {
+    return '$done / $goal';
+  }
+
+  @override
+  String startWorkoutNamed(String name) {
+    return '운동 시작 · $name';
+  }
+
+  @override
+  String get musclesThisWeek => '이번 주 근육';
+
+  @override
+  String get progressHeading => '진전';
+
+  @override
+  String get lastEightWeeks => '최근 여덟 주';
+
+  @override
+  String get chooseProfile => '프로필 선택';
+
+  @override
+  String get createProfileAction => '프로필 만들기';
+
+  @override
+  String get plateCalculator => '원판 계산';
+
+  @override
+  String get barbellCalc => '바벨';
+
+  @override
+  String get cableCalc => '케이블';
+
+  @override
+  String get extraWeight => '추가 중량';
+
+  @override
+  String get barWeightLabel => '바 무게';
+
+  @override
+  String get plateSetLabel => '한쪽 원판';
+
+  @override
+  String get cableStepLabel => '스택 간격';
+
+  @override
+  String get chooseGym => '체육관 선택';
+
+  @override
+  String get gymsTitle => '체육관';
+
+  @override
+  String get newGym => '새 체육관';
+
+  @override
+  String get progressionHelp => '점진 도움';
+
+  @override
+  String progressionAsk(String name, String weight, int reps) {
+    return '$name: 다음에는 $weight kg, $reps회부터 다시 시작할까요?';
+  }
+
+  @override
+  String get actionAccept => '수락';
+
+  @override
+  String get actionReject => '거절';
+
+  @override
+  String get importExportTitle => '데이터 가져오기와 내보내기';
+
+  @override
+  String get importWorkouts => '운동 가져오기';
+
+  @override
+  String get importMeasurements => '측정 가져오기';
+
+  @override
+  String get exportAlphaData => 'Alpha 데이터 내보내기';
+
+  @override
+  String get importPreviewTitle => '가져오기 미리보기';
+
+  @override
+  String importSummary(int workouts, int exercises) {
+    return '운동 $workouts회, 동작 $exercises개';
+  }
+
+  @override
+  String get templatesDetected => '찾은 템플릿';
+
+  @override
+  String get renameLabel => '이름 바꾸기';
+
+  @override
+  String get mapExercise => '동작 연결';
+
+  @override
+  String get checkForUpdates => '업데이트 확인';
+
+  @override
+  String get upToDate => '최신 버전입니다';
+
+  @override
+  String get updateCheckFailed => '업데이트 확인에 실패했습니다';
+
+  @override
+  String get licensesTitle => '라이선스';
+
+  @override
+  String get flexifyMitNotice =>
+      'Flexify는 MIT 라이선스로 공개됩니다. Copyright Brandon Dick.';
+
+  @override
+  String get exerciseDbNotice => '각 운동은 출처와 라이선스를 표시합니다.';
+
+  @override
+  String get sourceLabel => '출처';
+
+  @override
+  String get tipsLabel => '팁';
+
+  @override
+  String get imageSourceLabel => '이미지 출처';
+
+  @override
+  String get imageLicenseLabel => '이미지 라이선스';
+
+  @override
+  String get muscleUpperChest => '상부 가슴';
+
+  @override
+  String get muscleFrontShoulder => '전면 어깨';
+
+  @override
+  String get muscleSideShoulder => '측면 어깨';
+
+  @override
+  String get muscleRearShoulder => '후면 어깨';
+
+  @override
+  String get muscleLatissimus => '광배근';
+
+  @override
+  String get muscleUpperBack => '상부 등';
+
+  @override
+  String get muscleTrapez => '승모근';
+
+  @override
+  String get muscleLowerBack => '하부 등';
+
+  @override
+  String get muscleForearms => '전완';
+
+  @override
+  String get muscleRectus => '복직근';
+
+  @override
+  String get muscleObliques => '복사근';
+
+  @override
+  String get muscleQuadriceps => '대퇴사두근';
+
+  @override
+  String get muscleAdductors => '내전근';
+
+  @override
+  String get muscleAbductors => '외전근';
+
+  @override
+  String get muscleHipFlexors => '고관절 굴곡근';
+
+  @override
+  String get alternativesLabel => '대체 운동';
+
+  @override
+  String get mechanicLabel => '역학';
+
+  @override
+  String get aiCoachTitle => 'AI 코치';
+
+  @override
+  String get aiProviderLabel => '제공자';
+
+  @override
+  String get aiOffNotice => '자신의 키를 저장하기 전에는 코치가 꺼져 있습니다.';
+
+  @override
+  String get coachHint => '코치에게 묻기';
+
+  @override
+  String get voiceInput => '음성 입력';
+
+  @override
+  String voiceUnderstood(String text) {
+    return '알아들음: $text';
+  }
+
+  @override
+  String get speechFailed => '음성 입력에 실패했습니다';
+
+  @override
+  String get confirmVoiceSet => '이 세트를 적용할까요?';
+
+  @override
+  String get periodSession => '이번 운동';
+
+  @override
+  String get muscleMapTitle => '근육 지도';
+
+  @override
+  String get frontView => '앞면';
+
+  @override
+  String get backView => '뒷면';
+
+  @override
+  String quoteKeepGoing(int done, int goal) {
+    return '이번 주 $done/$goal회. 계속하세요.';
+  }
+
+  @override
+  String quoteRemaining(int count) {
+    return '이번 주 $count회 남았습니다.';
+  }
+
+  @override
+  String get quotePullDay => '당기는 날. 등과 이두가 기다립니다.';
+
+  @override
+  String get quotePushDay => '미는 날. 가슴, 어깨, 삼두.';
+
+  @override
+  String get quoteLegDay => '다리 날. 대퇴, 햄스트링, 둔근.';
+
+  @override
+  String versionAndLicenses(String version) {
+    return '버전 $version · 라이선스';
+  }
+
+  @override
+  String get liveWorkoutLabel => '운동 중';
+
+  @override
+  String get muscleChest => '가슴';
+
+  @override
+  String get muscleShoulders => '어깨';
+
+  @override
+  String get muscleBiceps => '이두근';
+
+  @override
+  String get muscleTriceps => '삼두근';
+
+  @override
+  String get muscleAbs => '복근';
+
+  @override
+  String get muscleQuads => '대퇴사두';
+
+  @override
+  String get muscleCalves => '종아리';
+
+  @override
+  String get muscleTraps => '승모근';
+
+  @override
+  String get muscleBack => '등';
+
+  @override
+  String get muscleGlutes => '둔근';
+
+  @override
+  String get muscleHams => '햄스트링';
+
+  @override
+  String get weekGoalManual => '주간 목표를 직접 정하기';
+
+  @override
+  String get sessionsPerWeek => '주당 횟수';
+
+  @override
+  String get gymNameHint => '체육관 이름';
+
+  @override
+  String get coachProfileNote => '코치 메모';
+
+  @override
+  String get openPackageLicenses => '패키지 라이선스 열기';
+
+  @override
+  String get lengthUnitLabel => '키 단위';
+
+  @override
+  String get centimetersShort => '센티미터 (cm)';
+
+  @override
+  String get inchesShort => '인치 (in)';
+
+  @override
+  String get heightInches => '키 (인치)';
+
+  @override
+  String get welcomeToAlpha => 'Alpha에 오신 것을 환영합니다';
+
+  @override
+  String get createProfileButton => '프로필 만들기';
+
+  @override
+  String get onboardingWeightHint => '체중, 선택 사항';
+
+  @override
+  String get familyLabel => '운동 계열';
+
+  @override
+  String get gripLabel => '그립';
+
+  @override
+  String get positionLabel => '자세';
+
+  @override
+  String get movementLabel => '동작';
+
+  @override
+  String get unilateralLabel => '한쪽';
+
+  @override
+  String get otherVariants => '다른 변형';
+
+  @override
+  String get sideLeft => '왼쪽';
+
+  @override
+  String get sideRight => '오른쪽';
+
+  @override
+  String get createCustomExercise => '운동 만들기';
+
+  @override
+  String get editCustomExercise => '운동 편집';
+
+  @override
+  String get deleteCustomExercise => '운동 삭제';
+
+  @override
+  String get deleteCustomExerciseBody => '이 운동을 삭제할까요? 지난 운동 기록은 히스토리에 남습니다.';
+
+  @override
+  String get customExerciseName => '이름';
+
+  @override
+  String get customExerciseFamily => '계열 ID';
+
+  @override
+  String get createAsCustomExercise => '맞춤 운동으로 만들기';
+
+  @override
+  String get customExerciseInvalid => '이름, 근육, 기구를 선택하세요.';
+
+  @override
+  String get motionPress => '프레스';
+
+  @override
+  String get motionPull => '풀';
+
+  @override
+  String get motionLegs => '하체/고관절';
+
+  @override
+  String get motionCore => '코어';
+
+  @override
+  String get motionCardio => '유산소';
+
+  @override
+  String get mechanicCompound => '복합 운동';
+
+  @override
+  String get mechanicIsolation => '고립 운동';
+
+  @override
+  String get ownExerciseSource => '사용자 운동';
+
+  @override
+  String get notSpecified => '–';
+
+  @override
+  String get resumeWorkout => '운동 이어하기';
+
+  @override
+  String get importBackupZip => '백업 가져오기 (.zip)';
 }

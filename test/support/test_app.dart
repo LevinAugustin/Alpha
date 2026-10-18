@@ -1,5 +1,6 @@
 import 'package:drift/drift.dart';
 import 'package:flexify/database/database.dart';
+import 'package:flexify/profile/local_profiles.dart';
 import 'package:flexify/l10n/generated/app_localizations.dart';
 import 'package:flexify/main.dart';
 import 'package:flexify/timer/timer_state.dart';
@@ -39,6 +40,7 @@ class FlexifyTestHarness {
       addTearDown(() => tester.binding.setSurfaceSize(null));
     }
 
+    await ensureWidgetTestProfile();
     final setting = await (database.settings.select()..limit(1)).getSingle();
     final effectiveTimerState = timerState ?? this.timerState;
 

@@ -61,19 +61,19 @@ jobs:
           ALPHA_KEY_ALIAS: ${{ secrets.ALPHA_KEY_ALIAS }}
           ALPHA_KEY_PASSWORD: ${{ secrets.ALPHA_KEY_PASSWORD }}
         run: |
-          if [ -n "$ALPHA_KEYSTORE_BASE64" ] && [ -n "$ALPHA_STORE_PASSWORD" ] && [ -n "$ALPHA_KEY_ALIAS" ] && [ -n "$ALPHA_KEY_PASSWORD" ]; then
-            printf '%s' "$ALPHA_KEYSTORE_BASE64" | base64 -d > android/app/alpha-release.jks
-            umask 077
-            {
-              echo "storePassword=$ALPHA_STORE_PASSWORD"
-              echo "keyPassword=$ALPHA_KEY_PASSWORD"
-              echo "keyAlias=$ALPHA_KEY_ALIAS"
-              echo "storeFile=alpha-release.jks"
-            } > android/key.properties
-            echo "Signing with the fixed release keystore from GitHub secrets."
-          else
-            echo "Release keystore secrets are not set. The APK is signed with the debug key."
+          if [ -z "$ALPHA_KEYSTORE_BASE64" ] || [ -z "$ALPHA_STORE_PASSWORD" ] || [ -z "$ALPHA_KEY_ALIAS" ] || [ -z "$ALPHA_KEY_PASSWORD" ]; then
+            echo "Release keystore secrets are missing. Set ALPHA_KEYSTORE_BASE64, ALPHA_STORE_PASSWORD, ALPHA_KEY_ALIAS and ALPHA_KEY_PASSWORD." >&2
+            exit 1
           fi
+          printf '%s' "$ALPHA_KEYSTORE_BASE64" | base64 -d > android/app/alpha-release.jks
+          umask 077
+          {
+            echo "storePassword=$ALPHA_STORE_PASSWORD"
+            echo "keyPassword=$ALPHA_KEY_PASSWORD"
+            echo "keyAlias=$ALPHA_KEY_ALIAS"
+            echo "storeFile=alpha-release.jks"
+          } > android/key.properties
+          echo "Signing with the fixed release keystore from GitHub secrets."
 
       - name: Read app version
         id: version
@@ -104,7 +104,7 @@ jobs:
           body: |
             Sideload-APK für Alpha (`com.levinaugustin.alpha`), Version ${{ steps.version.outputs.version }}.
 
-            Signiert mit dem festen Release-Keystore, wenn die Secrets ALPHA_KEYSTORE_BASE64, ALPHA_STORE_PASSWORD, ALPHA_KEY_ALIAS und ALPHA_KEY_PASSWORD gesetzt sind. Sonst mit dem Debug-Key.
+            Signiert mit dem festen Release-Keystore. Die Secrets ALPHA_KEYSTORE_BASE64, ALPHA_STORE_PASSWORD, ALPHA_KEY_ALIAS und ALPHA_KEY_PASSWORD sind dafür erforderlich.
 
             Installation auf dem Telefon: APK herunterladen, öffnen und die Installation aus dieser Quelle erlauben. Ein Update über dieselbe Signatur behält die App-Daten. Der einmalige Wechsel vom Debug-Key von 2.3.0 auf den Release-Key braucht eine Neuinstallation.
           files: alpha.apk

@@ -1746,4 +1746,467 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get alphaSettingsDescription => 'Profile, Design und Pausenton';
+
+  @override
+  String get finishWorkoutAsk => 'このトレーニングを終える？';
+
+  @override
+  String get finishWorkoutBody => 'セッションは保存され、テンプレートはそのままです。';
+
+  @override
+  String get discardWorkoutAsk => 'このトレーニングを破棄する？';
+
+  @override
+  String get discardWorkoutBody => 'このセッションで記録したセットは削除されます。';
+
+  @override
+  String get noRest => '休憩なし';
+
+  @override
+  String get restWheelTitle => '休憩';
+
+  @override
+  String get deleteTemplateAsk => 'このテンプレートを削除する？';
+
+  @override
+  String deleteTemplateBody(String name) {
+    return '「$name」を削除する？記録済みのトレーニングは残ります。';
+  }
+
+  @override
+  String get warmupAction => 'ウォームアップ';
+
+  @override
+  String get warmupMark => 'W';
+
+  @override
+  String get confirmAddExercise => '種目を追加';
+
+  @override
+  String get tabOverview => '概要';
+
+  @override
+  String get tabHistory => '履歴';
+
+  @override
+  String get tabHowTo => 'やり方';
+
+  @override
+  String get primaryMuscleLabel => '主働筋';
+
+  @override
+  String get secondaryMuscleLabel => '補助筋';
+
+  @override
+  String get equipmentLabel => '器具';
+
+  @override
+  String get heaviestWeight => '最大重量';
+
+  @override
+  String get estimatedOneRm => '推定1RM';
+
+  @override
+  String get volumeChart => 'トレーニング量';
+
+  @override
+  String get recordsTitle => '自己記録';
+
+  @override
+  String get weekGoal => '週の目標';
+
+  @override
+  String weekGoalProgress(int done, int goal) {
+    return '$done / $goal';
+  }
+
+  @override
+  String startWorkoutNamed(String name) {
+    return 'トレーニング開始 · $name';
+  }
+
+  @override
+  String get musclesThisWeek => '今週の筋肉';
+
+  @override
+  String get progressHeading => '進捗';
+
+  @override
+  String get lastEightWeeks => '直近8週間';
+
+  @override
+  String get chooseProfile => 'プロフィールを選ぶ';
+
+  @override
+  String get createProfileAction => 'プロフィールを作成';
+
+  @override
+  String get plateCalculator => 'プレート計算';
+
+  @override
+  String get barbellCalc => 'バーベル';
+
+  @override
+  String get cableCalc => 'ケーブル';
+
+  @override
+  String get extraWeight => '追加重量';
+
+  @override
+  String get barWeightLabel => 'バーの重さ';
+
+  @override
+  String get plateSetLabel => '片側のプレート';
+
+  @override
+  String get cableStepLabel => 'スタック間隔';
+
+  @override
+  String get chooseGym => 'ジムを選ぶ';
+
+  @override
+  String get gymsTitle => 'ジム';
+
+  @override
+  String get newGym => '新しいジム';
+
+  @override
+  String get progressionHelp => '漸進の手助け';
+
+  @override
+  String progressionAsk(String name, String weight, int reps) {
+    return '$name: 次回は $weight kg で、$reps 回から再開しますか？';
+  }
+
+  @override
+  String get actionAccept => '採用';
+
+  @override
+  String get actionReject => '却下';
+
+  @override
+  String get importExportTitle => 'データの読み込みと書き出し';
+
+  @override
+  String get importWorkouts => 'ワークアウトを読み込む';
+
+  @override
+  String get importMeasurements => '測定値を読み込む';
+
+  @override
+  String get exportAlphaData => 'Alphaデータを書き出す';
+
+  @override
+  String get importPreviewTitle => '読み込みの確認';
+
+  @override
+  String importSummary(int workouts, int exercises) {
+    return 'ワークアウト $workouts 件、種目 $exercises 件';
+  }
+
+  @override
+  String get templatesDetected => '見つかったテンプレート';
+
+  @override
+  String get renameLabel => '名前を変更';
+
+  @override
+  String get mapExercise => '種目を対応づける';
+
+  @override
+  String get checkForUpdates => '更新を確認';
+
+  @override
+  String get upToDate => '最新です';
+
+  @override
+  String get updateCheckFailed => '更新の確認に失敗しました';
+
+  @override
+  String get licensesTitle => 'ライセンス';
+
+  @override
+  String get flexifyMitNotice =>
+      'Flexify は MIT ライセンスで公開されています。Copyright Brandon Dick。';
+
+  @override
+  String get exerciseDbNotice => '各種目は出典とライセンスを示します。';
+
+  @override
+  String get sourceLabel => '出典';
+
+  @override
+  String get tipsLabel => 'コツ';
+
+  @override
+  String get imageSourceLabel => '画像の出典';
+
+  @override
+  String get imageLicenseLabel => '画像のライセンス';
+
+  @override
+  String get muscleUpperChest => '大胸筋上部';
+
+  @override
+  String get muscleFrontShoulder => '三角筋前部';
+
+  @override
+  String get muscleSideShoulder => '三角筋中部';
+
+  @override
+  String get muscleRearShoulder => '三角筋後部';
+
+  @override
+  String get muscleLatissimus => '広背筋';
+
+  @override
+  String get muscleUpperBack => '背中上部';
+
+  @override
+  String get muscleTrapez => '僧帽筋';
+
+  @override
+  String get muscleLowerBack => '背中下部';
+
+  @override
+  String get muscleForearms => '前腕';
+
+  @override
+  String get muscleRectus => '腹直筋';
+
+  @override
+  String get muscleObliques => '腹斜筋';
+
+  @override
+  String get muscleQuadriceps => '大腿四頭筋';
+
+  @override
+  String get muscleAdductors => '内転筋';
+
+  @override
+  String get muscleAbductors => '外転筋';
+
+  @override
+  String get muscleHipFlexors => '腸腰筋';
+
+  @override
+  String get alternativesLabel => '代替種目';
+
+  @override
+  String get mechanicLabel => '動作タイプ';
+
+  @override
+  String get aiCoachTitle => 'AIコーチ';
+
+  @override
+  String get aiProviderLabel => '提供元';
+
+  @override
+  String get aiOffNotice => '自分の鍵を保存するまでコーチはオフです。';
+
+  @override
+  String get coachHint => 'コーチに聞く';
+
+  @override
+  String get voiceInput => '音声入力';
+
+  @override
+  String voiceUnderstood(String text) {
+    return '聞き取り: $text';
+  }
+
+  @override
+  String get speechFailed => '音声入力に失敗しました';
+
+  @override
+  String get confirmVoiceSet => 'このセットを反映する？';
+
+  @override
+  String get periodSession => 'このトレーニング';
+
+  @override
+  String get muscleMapTitle => '筋肉マップ';
+
+  @override
+  String get frontView => '前面';
+
+  @override
+  String get backView => '背面';
+
+  @override
+  String quoteKeepGoing(int done, int goal) {
+    return '今週は $done/$goal 回。この調子。';
+  }
+
+  @override
+  String quoteRemaining(int count) {
+    return '今週はあと $count 回。';
+  }
+
+  @override
+  String get quotePullDay => '引く日。背中と上腕二頭筋の番です。';
+
+  @override
+  String get quotePushDay => '押す日。胸、肩、上腕三頭筋。';
+
+  @override
+  String get quoteLegDay => '脚の日。大腿四頭筋、ハム、臀筋。';
+
+  @override
+  String versionAndLicenses(String version) {
+    return 'バージョン $version · ライセンス';
+  }
+
+  @override
+  String get liveWorkoutLabel => 'トレーニング中';
+
+  @override
+  String get muscleChest => '胸';
+
+  @override
+  String get muscleShoulders => '肩';
+
+  @override
+  String get muscleBiceps => '上腕二頭筋';
+
+  @override
+  String get muscleTriceps => '上腕三頭筋';
+
+  @override
+  String get muscleAbs => '腹';
+
+  @override
+  String get muscleQuads => '大腿四頭筋';
+
+  @override
+  String get muscleCalves => 'ふくらはぎ';
+
+  @override
+  String get muscleTraps => '僧帽筋';
+
+  @override
+  String get muscleBack => '背中';
+
+  @override
+  String get muscleGlutes => '臀筋';
+
+  @override
+  String get muscleHams => 'ハムストリング';
+
+  @override
+  String get weekGoalManual => '週の目標を自分で決める';
+
+  @override
+  String get sessionsPerWeek => '週あたりの回数';
+
+  @override
+  String get gymNameHint => 'ジムの名前';
+
+  @override
+  String get coachProfileNote => 'コーチからのメモ';
+
+  @override
+  String get openPackageLicenses => 'パッケージのライセンスを開く';
+
+  @override
+  String get lengthUnitLabel => '身長の単位';
+
+  @override
+  String get centimetersShort => 'センチメートル (cm)';
+
+  @override
+  String get inchesShort => 'インチ (in)';
+
+  @override
+  String get heightInches => '身長（インチ）';
+
+  @override
+  String get welcomeToAlpha => 'Alphaへようこそ';
+
+  @override
+  String get createProfileButton => 'プロフィールを作成';
+
+  @override
+  String get onboardingWeightHint => '体重（任意）';
+
+  @override
+  String get familyLabel => '種目ファミリー';
+
+  @override
+  String get gripLabel => 'グリップ';
+
+  @override
+  String get positionLabel => '姿勢';
+
+  @override
+  String get movementLabel => '動作';
+
+  @override
+  String get unilateralLabel => '片側';
+
+  @override
+  String get otherVariants => 'ほかのバリエーション';
+
+  @override
+  String get sideLeft => '左';
+
+  @override
+  String get sideRight => '右';
+
+  @override
+  String get createCustomExercise => '種目を作成';
+
+  @override
+  String get editCustomExercise => '種目を編集';
+
+  @override
+  String get deleteCustomExercise => '種目を削除';
+
+  @override
+  String get deleteCustomExerciseBody => 'この種目を削除しますか？過去のワークアウトは履歴に残ります。';
+
+  @override
+  String get customExerciseName => '名前';
+
+  @override
+  String get customExerciseFamily => 'ファミリーID';
+
+  @override
+  String get createAsCustomExercise => 'カスタム種目として作成';
+
+  @override
+  String get customExerciseInvalid => '名前、筋肉、器具を選んでください。';
+
+  @override
+  String get motionPress => 'プレス';
+
+  @override
+  String get motionPull => 'プル';
+
+  @override
+  String get motionLegs => '脚/股関節';
+
+  @override
+  String get motionCore => '体幹';
+
+  @override
+  String get motionCardio => '有酸素';
+
+  @override
+  String get mechanicCompound => 'コンパウンド';
+
+  @override
+  String get mechanicIsolation => 'アイソレーション';
+
+  @override
+  String get ownExerciseSource => 'カスタム種目';
+
+  @override
+  String get notSpecified => '–';
+
+  @override
+  String get resumeWorkout => 'ワークアウトを再開';
+
+  @override
+  String get importBackupZip => 'バックアップを読み込む (.zip)';
 }

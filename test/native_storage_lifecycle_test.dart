@@ -170,7 +170,34 @@ void main() {
     ],
     'exercises': [
       for (final exercise in before['exercises'] ?? const [])
-        {...exercise, 'german_name': null, 'aliases': null, 'muscle': null},
+        {
+          ...exercise,
+          'german_name': null,
+          'aliases': null,
+          'muscle': null,
+          'catalog_id': null,
+          'category_name': null,
+          'equipment': null,
+          'primary_muscles': null,
+          'secondary_muscles': null,
+          'mechanic': null,
+          'steps': null,
+          'tips': null,
+          'catalog_source': null,
+          'catalog_license': null,
+          'image_source': null,
+          'image_license': null,
+          'alternatives': null,
+          'familie': null,
+          'bewegung': null,
+          'griff': null,
+          'position': null,
+          'einseitig': 0,
+        },
+    ],
+    'exercise_sets': [
+      for (final row in before['exercise_sets'] ?? const [])
+        {...row, 'side': null},
     ],
     'plan_exercises': [
       for (final row in before['plan_exercises'] ?? const [])

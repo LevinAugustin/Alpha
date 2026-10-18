@@ -5,6 +5,7 @@ import 'package:flexify/bottom_nav.dart';
 import 'package:flexify/constants.dart';
 import 'package:flexify/database/database.dart';
 import 'package:flexify/database/exercise_set_repository.dart';
+import 'package:flexify/exercises/exercise_image.dart';
 import 'package:flexify/l10n/l10n.dart';
 import 'package:flexify/main.dart';
 import 'package:flexify/responsive.dart';
@@ -243,7 +244,7 @@ class _GroupHistoryState extends State<GroupHistory> {
 
     Widget? leading;
 
-    if (showImages && exerciseSet.image != null) {
+    if (showImages && exerciseImageFileExists(exerciseSet.image)) {
       leading = GestureDetector(
         onTap: () => widget.onSelect(exerciseSet.id),
         child: Image.file(

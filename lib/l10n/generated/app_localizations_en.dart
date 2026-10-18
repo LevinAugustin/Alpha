@@ -1579,12 +1579,24 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String dayStreak(int count) {
-    return '$count days in a row';
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count days in a row',
+      one: '1 day in a row',
+    );
+    return '$_temp0';
   }
 
   @override
   String weekStreak(int count) {
-    return '$count weeks in a row';
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count weeks in a row',
+      one: '1 week in a row',
+    );
+    return '$_temp0';
   }
 
   @override
@@ -1795,4 +1807,470 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get alphaSettingsDescription => 'Profiles, theme and rest sound';
+
+  @override
+  String get finishWorkoutAsk => 'Finish this workout?';
+
+  @override
+  String get finishWorkoutBody =>
+      'The session is saved and the template stays unchanged.';
+
+  @override
+  String get discardWorkoutAsk => 'Discard this workout?';
+
+  @override
+  String get discardWorkoutBody => 'Logged sets from this session are deleted.';
+
+  @override
+  String get noRest => 'No rest';
+
+  @override
+  String get restWheelTitle => 'Rest';
+
+  @override
+  String get deleteTemplateAsk => 'Delete this template?';
+
+  @override
+  String deleteTemplateBody(String name) {
+    return 'Delete “$name”? Logged workouts stay.';
+  }
+
+  @override
+  String get warmupAction => 'Warm up';
+
+  @override
+  String get warmupMark => 'W';
+
+  @override
+  String get confirmAddExercise => 'Add exercise';
+
+  @override
+  String get tabOverview => 'Overview';
+
+  @override
+  String get tabHistory => 'History';
+
+  @override
+  String get tabHowTo => 'How to';
+
+  @override
+  String get primaryMuscleLabel => 'Primary muscle';
+
+  @override
+  String get secondaryMuscleLabel => 'Secondary muscles';
+
+  @override
+  String get equipmentLabel => 'Equipment';
+
+  @override
+  String get heaviestWeight => 'Heaviest weight';
+
+  @override
+  String get estimatedOneRm => 'Estimated 1RM';
+
+  @override
+  String get volumeChart => 'Training volume';
+
+  @override
+  String get recordsTitle => 'Records';
+
+  @override
+  String get weekGoal => 'Week goal';
+
+  @override
+  String weekGoalProgress(int done, int goal) {
+    return '$done of $goal';
+  }
+
+  @override
+  String startWorkoutNamed(String name) {
+    return 'Start workout · $name';
+  }
+
+  @override
+  String get musclesThisWeek => 'Muscles this week';
+
+  @override
+  String get progressHeading => 'Progress';
+
+  @override
+  String get lastEightWeeks => 'Last eight weeks';
+
+  @override
+  String get chooseProfile => 'Choose a profile';
+
+  @override
+  String get createProfileAction => 'Create profile';
+
+  @override
+  String get plateCalculator => 'Plate calculator';
+
+  @override
+  String get barbellCalc => 'Barbell';
+
+  @override
+  String get cableCalc => 'Cable stack';
+
+  @override
+  String get extraWeight => 'Extra weight';
+
+  @override
+  String get barWeightLabel => 'Bar weight';
+
+  @override
+  String get plateSetLabel => 'Plates per side';
+
+  @override
+  String get cableStepLabel => 'Stack step';
+
+  @override
+  String get chooseGym => 'Choose a gym';
+
+  @override
+  String get gymsTitle => 'Gyms';
+
+  @override
+  String get newGym => 'New gym';
+
+  @override
+  String get progressionHelp => 'Progression help';
+
+  @override
+  String progressionAsk(String name, String weight, int reps) {
+    return '$name: next time $weight kg, starting again at $reps reps?';
+  }
+
+  @override
+  String get actionAccept => 'Accept';
+
+  @override
+  String get actionReject => 'Reject';
+
+  @override
+  String get importExportTitle => 'Import and export data';
+
+  @override
+  String get importWorkouts => 'Import workouts';
+
+  @override
+  String get importMeasurements => 'Import measurements';
+
+  @override
+  String get exportAlphaData => 'Export Alpha data';
+
+  @override
+  String get importPreviewTitle => 'Import preview';
+
+  @override
+  String importSummary(int workouts, int exercises) {
+    return '$workouts workouts, $exercises exercises';
+  }
+
+  @override
+  String get templatesDetected => 'Detected templates';
+
+  @override
+  String get renameLabel => 'Rename';
+
+  @override
+  String get mapExercise => 'Match exercise';
+
+  @override
+  String get checkForUpdates => 'Check for updates';
+
+  @override
+  String get upToDate => 'You are up to date';
+
+  @override
+  String get updateCheckFailed => 'The update check failed';
+
+  @override
+  String get licensesTitle => 'Licenses';
+
+  @override
+  String get flexifyMitNotice =>
+      'Flexify is published under the MIT license. Copyright Brandon Dick.';
+
+  @override
+  String get exerciseDbNotice =>
+      'Each exercise lists its own source and license.';
+
+  @override
+  String get sourceLabel => 'Source';
+
+  @override
+  String get tipsLabel => 'Tips';
+
+  @override
+  String get imageSourceLabel => 'Image source';
+
+  @override
+  String get imageLicenseLabel => 'Image license';
+
+  @override
+  String get muscleUpperChest => 'Upper chest';
+
+  @override
+  String get muscleFrontShoulder => 'Front shoulder';
+
+  @override
+  String get muscleSideShoulder => 'Side shoulder';
+
+  @override
+  String get muscleRearShoulder => 'Rear shoulder';
+
+  @override
+  String get muscleLatissimus => 'Lats';
+
+  @override
+  String get muscleUpperBack => 'Upper back';
+
+  @override
+  String get muscleTrapez => 'Traps and neck';
+
+  @override
+  String get muscleLowerBack => 'Lower back';
+
+  @override
+  String get muscleForearms => 'Forearms';
+
+  @override
+  String get muscleRectus => 'Rectus abdominis';
+
+  @override
+  String get muscleObliques => 'Obliques';
+
+  @override
+  String get muscleQuadriceps => 'Quadriceps';
+
+  @override
+  String get muscleAdductors => 'Adductors';
+
+  @override
+  String get muscleAbductors => 'Abductors';
+
+  @override
+  String get muscleHipFlexors => 'Hip flexors';
+
+  @override
+  String get alternativesLabel => 'Alternatives';
+
+  @override
+  String get mechanicLabel => 'Mechanic';
+
+  @override
+  String get aiCoachTitle => 'AI coach';
+
+  @override
+  String get aiProviderLabel => 'Provider';
+
+  @override
+  String get aiOffNotice => 'The coach stays off until you save your own key.';
+
+  @override
+  String get coachHint => 'Ask your coach';
+
+  @override
+  String get voiceInput => 'Voice input';
+
+  @override
+  String voiceUnderstood(String text) {
+    return 'Understood: $text';
+  }
+
+  @override
+  String get speechFailed => 'Speech input failed';
+
+  @override
+  String get confirmVoiceSet => 'Apply this set?';
+
+  @override
+  String get periodSession => 'This workout';
+
+  @override
+  String get muscleMapTitle => 'Muscle map';
+
+  @override
+  String get frontView => 'Front';
+
+  @override
+  String get backView => 'Back';
+
+  @override
+  String quoteKeepGoing(int done, int goal) {
+    return '$done of $goal sessions this week. Keep going.';
+  }
+
+  @override
+  String quoteRemaining(int count) {
+    return '$count sessions left this week.';
+  }
+
+  @override
+  String get quotePullDay => 'Pull day. Back and biceps are ready.';
+
+  @override
+  String get quotePushDay => 'Push day. Chest, shoulders and triceps.';
+
+  @override
+  String get quoteLegDay => 'Leg day. Quads, hamstrings and glutes.';
+
+  @override
+  String versionAndLicenses(String version) {
+    return 'Version $version · Licenses';
+  }
+
+  @override
+  String get liveWorkoutLabel => 'Workout in progress';
+
+  @override
+  String get muscleChest => 'Chest';
+
+  @override
+  String get muscleShoulders => 'Shoulders';
+
+  @override
+  String get muscleBiceps => 'Biceps';
+
+  @override
+  String get muscleTriceps => 'Triceps';
+
+  @override
+  String get muscleAbs => 'Abs';
+
+  @override
+  String get muscleQuads => 'Quads';
+
+  @override
+  String get muscleCalves => 'Calves';
+
+  @override
+  String get muscleTraps => 'Traps';
+
+  @override
+  String get muscleBack => 'Back';
+
+  @override
+  String get muscleGlutes => 'Glutes';
+
+  @override
+  String get muscleHams => 'Hamstrings';
+
+  @override
+  String get weekGoalManual => 'Set the week goal yourself';
+
+  @override
+  String get sessionsPerWeek => 'Sessions per week';
+
+  @override
+  String get gymNameHint => 'Gym name';
+
+  @override
+  String get coachProfileNote => 'Note from your coach';
+
+  @override
+  String get openPackageLicenses => 'Open package licenses';
+
+  @override
+  String get lengthUnitLabel => 'Body length';
+
+  @override
+  String get centimetersShort => 'Centimetres (cm)';
+
+  @override
+  String get inchesShort => 'Inches (in)';
+
+  @override
+  String get heightInches => 'Height (in)';
+
+  @override
+  String get welcomeToAlpha => 'Welcome to Alpha';
+
+  @override
+  String get createProfileButton => 'Create profile';
+
+  @override
+  String get onboardingWeightHint => 'Body weight, optional';
+
+  @override
+  String get familyLabel => 'Family';
+
+  @override
+  String get gripLabel => 'Grip';
+
+  @override
+  String get positionLabel => 'Position';
+
+  @override
+  String get movementLabel => 'Movement';
+
+  @override
+  String get unilateralLabel => 'Each side';
+
+  @override
+  String get otherVariants => 'Other variants';
+
+  @override
+  String get sideLeft => 'Left';
+
+  @override
+  String get sideRight => 'Right';
+
+  @override
+  String get createCustomExercise => 'Create exercise';
+
+  @override
+  String get editCustomExercise => 'Edit exercise';
+
+  @override
+  String get deleteCustomExercise => 'Delete exercise';
+
+  @override
+  String get deleteCustomExerciseBody =>
+      'Delete this exercise? Past workouts stay in the history.';
+
+  @override
+  String get customExerciseName => 'Name';
+
+  @override
+  String get customExerciseFamily => 'Family id';
+
+  @override
+  String get createAsCustomExercise => 'Create as custom exercise';
+
+  @override
+  String get customExerciseInvalid => 'Choose a name, muscles and gear.';
+
+  @override
+  String get motionPress => 'Press';
+
+  @override
+  String get motionPull => 'Pull';
+
+  @override
+  String get motionLegs => 'Legs/hips';
+
+  @override
+  String get motionCore => 'Core';
+
+  @override
+  String get motionCardio => 'Cardio';
+
+  @override
+  String get mechanicCompound => 'Compound';
+
+  @override
+  String get mechanicIsolation => 'Isolation';
+
+  @override
+  String get ownExerciseSource => 'Custom exercise';
+
+  @override
+  String get notSpecified => '–';
+
+  @override
+  String get resumeWorkout => 'Resume workout';
+
+  @override
+  String get importBackupZip => 'Import backup (.zip)';
 }
