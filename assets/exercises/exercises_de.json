@@ -9,7 +9,11 @@
       "Bankdruecken",
       "Barbell Bench Press - Medium Grip",
       "Bench Press",
-      "Barbell Bench Press"
+      "Barbell Bench Press",
+      "Bankdrücken (Langhantel)",
+      "Bench Press (Barbell)",
+      "Flat Bench Press",
+      "Bankdrücken Langhantel"
     ],
     "kategorie": "Brust",
     "familie": "bankdruecken",
@@ -56,7 +60,10 @@
       "Schrägbank an der Smith Machine",
       "Schrägbankdrücken",
       "Smith Machine Incline Bench Press",
-      "Incline Bench Press"
+      "Incline Bench Press",
+      "Schrägbankdrücken (Multipresse)",
+      "Incline Bench Press (Smith Machine)",
+      "Smith Incline Press"
     ],
     "kategorie": "Brust",
     "familie": "schraegbankdruecken",
@@ -104,7 +111,10 @@
       "Pec Deck",
       "Pec Deck Fly",
       "Machine Fly",
-      "Butterfly"
+      "Butterfly (Maschine)",
+      "Chest Fly (Machine)",
+      "Pec Fly",
+      "Peck Deck"
     ],
     "kategorie": "Brust",
     "familie": "butterfly",
@@ -151,7 +161,11 @@
       "Fliegende am Kabelzug",
       "Kabelturm Crossover",
       "Cable Fly",
-      "Cable Crossover"
+      "Crossover",
+      "Kabelcrossover",
+      "Kabel-Crossover",
+      "Fliegende (Kabelzug)",
+      "Cable Crossover Fly"
     ],
     "kategorie": "Brust",
     "familie": "cable-crossover",
@@ -196,7 +210,11 @@
       "Klimmzüge im Obergriff",
       "Pull-ups",
       "Pull-up",
-      "Pullups"
+      "Pullups",
+      "Pull Up",
+      "Klimmzüge breit",
+      "Wide Grip Pull Up",
+      "Klimmzug Obergriff"
     ],
     "kategorie": "Rücken",
     "familie": "klimmzuege",
@@ -244,7 +262,14 @@
       "Latzug zur Brust",
       "Lat-Ziehen",
       "Wide-Grip Lat Pulldown",
-      "Lat Pulldown"
+      "Lat Pulldown",
+      "Latziehen (Kabelzug)",
+      "Lat Pulldown (Cable)",
+      "Lat Pulldown (Wide Grip)",
+      "Lat Pull Down",
+      "Lat-Pulldown",
+      "Pulldown",
+      "Latzug breit"
     ],
     "kategorie": "Rücken",
     "familie": "latziehen",
@@ -293,7 +318,14 @@
       "Rudern eng",
       "Seated Row",
       "Seated Cable Rows",
-      "Cable Row"
+      "Cable Row",
+      "Rudern am Kabelzug",
+      "Rudern (Kabelzug)",
+      "Sitzendes Rudern",
+      "Kabelrudern sitzend",
+      "Seated Cable Row",
+      "Seated Row (Cable)",
+      "Low Row"
     ],
     "kategorie": "Rücken",
     "familie": "rudern-kabel",
@@ -341,7 +373,12 @@
       "Langhantel-Rudern",
       "Bent Over Barbell Row",
       "Barbell Row",
-      "Bent Over Row"
+      "Bent Over Row",
+      "Rudern (Langhantel)",
+      "Bent Over Row (Barbell)",
+      "Barbell Bent Over Row",
+      "Rudern vorgebeugt",
+      "BB Row"
     ],
     "kategorie": "Rücken",
     "familie": "rudern-vorgebeugt",
@@ -389,7 +426,11 @@
       "Kreuzheben mit Langhantel",
       "Kreuzheben konventionell",
       "Deadlift",
-      "Barbell Deadlift"
+      "Barbell Deadlift",
+      "Kreuzheben (Langhantel)",
+      "Deadlift (Barbell)",
+      "Conventional Deadlift",
+      "Kreuzheben klassisch"
     ],
     "kategorie": "Rücken",
     "familie": "kreuzheben",
@@ -440,7 +481,10 @@
       "Military Press Multipresse",
       "Smith Machine Overhead Shoulder Press",
       "Smith Machine Shoulder Press",
-      "Shoulder Press"
+      "Shoulder Press",
+      "Schulterdrücken (Multipresse)",
+      "Shoulder Press (Smith Machine)",
+      "Smith Shoulder Press"
     ],
     "kategorie": "Schultern",
     "familie": "schulterdruecken",
@@ -486,7 +530,12 @@
       "Seitheben stehend",
       "Side Lateral Raise",
       "Lateral Raise",
-      "Dumbbell Lateral Raise"
+      "Dumbbell Lateral Raise",
+      "Seitheben (Kurzhantel)",
+      "Lateral Raise (Dumbbell)",
+      "Side Raise",
+      "Side Lateral Raises",
+      "Seitenheben"
     ],
     "kategorie": "Schultern",
     "familie": "seitheben",
@@ -528,7 +577,10 @@
       "Face Pull",
       "Facepulls",
       "Seilzug zum Gesicht",
-      "Face Pulls am Kabelzug"
+      "Face Pulls am Kabelzug",
+      "Face Pull (Kabelzug)",
+      "Face Pull (Cable)",
+      "Rope Face Pull"
     ],
     "kategorie": "Schultern",
     "familie": "face-pulls",
@@ -573,7 +625,13 @@
       "Squats",
       "Barbell Squat",
       "Back Squat",
-      "Squat"
+      "Squat",
+      "Kniebeuge (Langhantel)",
+      "Squat (Barbell)",
+      "Barbell Back Squat",
+      "Back Squats",
+      "Nackenkniebeuge",
+      "Langhantelkniebeuge"
     ],
     "kategorie": "Beine",
     "familie": "kniebeugen",
@@ -619,7 +677,12 @@
       "Beinpresse 45°",
       "Schrägbeinpresse",
       "Leg Press",
-      "Leg Press Machine"
+      "Leg Press Machine",
+      "Beinpresse (Maschine)",
+      "Leg Press (Machine)",
+      "45° Leg Press",
+      "Beinpresse 45 Grad",
+      "Schräge Beinpresse"
     ],
     "kategorie": "Beine",
     "familie": "beinpresse",
@@ -664,7 +727,11 @@
       "Beinstrecken",
       "Beinstrecker-Maschine",
       "Leg Extension",
-      "Leg Extensions"
+      "Leg Extensions",
+      "Beinstrecker (Maschine)",
+      "Leg Extension (Machine)",
+      "Quadrizeps-Maschine",
+      "Kniestrecker"
     ],
     "kategorie": "Beine",
     "familie": "beinstrecker",
@@ -704,7 +771,12 @@
       "Beincurls sitzend",
       "Beinbeugen an der Maschine",
       "Leg Curl",
-      "Seated Leg Curl"
+      "Seated Leg Curl",
+      "Beinbeuger (Maschine)",
+      "Seated Leg Curl (Machine)",
+      "Leg Curl sitzend",
+      "Hamstring Curl",
+      "Beincurl"
     ],
     "kategorie": "Beine",
     "familie": "beinbeuger",
@@ -747,7 +819,10 @@
       "Wadenmaschine stehend",
       "Calf Raises",
       "Standing Calf Raises",
-      "Standing Calf Raise"
+      "Standing Calf Raise",
+      "Wadenheben (Maschine)",
+      "Standing Calf Raise (Machine)",
+      "Calf Raise"
     ],
     "kategorie": "Beine",
     "familie": "wadenheben",
@@ -786,7 +861,10 @@
       "Hip Thrust mit Langhantel",
       "Hüftstoßen",
       "Hip Thrusts",
-      "Barbell Hip Thrust"
+      "Barbell Hip Thrust",
+      "Hip Thrust (Langhantel)",
+      "Hip Thrust (Barbell)",
+      "Glute Thrust"
     ],
     "kategorie": "Beine",
     "familie": "hip-thrust",
@@ -829,7 +907,10 @@
       "Curls mit SZ-Stange",
       "Bizepscurls",
       "EZ-Bar Curl",
-      "EZ Bar Curl"
+      "EZ Bar Curl",
+      "Bizepscurls (SZ-Stange)",
+      "EZ Bar Biceps Curl",
+      "SZ-Curl"
     ],
     "kategorie": "Bizeps",
     "familie": "bizepscurls",
@@ -874,7 +955,11 @@
       "Bizepscurls",
       "Dumbbell Curl",
       "Dumbbell Bicep Curl",
-      "Biceps Curl"
+      "Biceps Curl",
+      "Bizepscurls (Kurzhantel)",
+      "Bicep Curl (Dumbbell)",
+      "Dumbbell Curls",
+      "Bicep Curl"
     ],
     "kategorie": "Bizeps",
     "familie": "bizepscurls",
@@ -917,7 +1002,10 @@
       "Hammer-Curls",
       "Hammercurls mit Kurzhanteln",
       "Hammer Curls",
-      "Hammer Curl"
+      "Hammer Curl",
+      "Hammercurls (Kurzhantel)",
+      "Hammer Curl (Dumbbell)",
+      "Hammercurl"
     ],
     "kategorie": "Bizeps",
     "familie": "hammercurls",
@@ -961,7 +1049,13 @@
       "Trizeps-Pushdown",
       "Kabelturm Trizeps",
       "Triceps Pushdown",
-      "Cable Pushdown"
+      "Cable Pushdown",
+      "Trizepsdrücken (Kabelzug)",
+      "Triceps Pushdown (Cable)",
+      "Tricep Pushdown",
+      "Trizeps Pushdown",
+      "Pushdown",
+      "Kabeldrücken Trizeps"
     ],
     "kategorie": "Trizeps",
     "familie": "trizepsdruecken",
@@ -1003,7 +1097,11 @@
       "Dips am Barren",
       "Trizeps-Dips",
       "Dips - Triceps Version",
-      "Parallel Bar Dips"
+      "Parallel Bar Dips",
+      "Dips (Körpergewicht)",
+      "Triceps Dip",
+      "Dip",
+      "Barren-Dips"
     ],
     "kategorie": "Trizeps",
     "familie": "dips",
@@ -1050,7 +1148,13 @@
       "Skullcrusher",
       "Trizepsdrücken liegend",
       "EZ-Bar Skullcrusher",
-      "Lying Triceps Extension"
+      "Lying Triceps Extension",
+      "French Press (SZ-Stange)",
+      "Skull Crusher",
+      "Skullcrushers",
+      "Skull Crushers",
+      "Skull Crusher (EZ Bar)",
+      "Lying Triceps Extension (EZ Bar)"
     ],
     "kategorie": "Trizeps",
     "familie": "french-press",
@@ -1091,7 +1195,9 @@
       "Crunch",
       "Bauchpresse",
       "Bauchcrunch",
-      "Crunches"
+      "Bauchcrunches",
+      "Ab Crunch",
+      "Crunch am Boden"
     ],
     "kategorie": "Bauch",
     "familie": "crunches",
@@ -1130,7 +1236,9 @@
       "Unterarmstütz",
       "Brett",
       "Planke",
-      "Plank"
+      "Front Plank",
+      "Forearm Plank",
+      "Planks"
     ],
     "kategorie": "Bauch",
     "familie": "plank",
@@ -1173,7 +1281,9 @@
       "Beinheben an der Klimmzugstange",
       "Beinheben",
       "Hanging Leg Raise",
-      "Hanging Leg Raises"
+      "Hanging Leg Raises",
+      "Beinheben an der Stange",
+      "Leg Raise hängend"
     ],
     "kategorie": "Bauch",
     "familie": "beinheben",
@@ -1215,7 +1325,12 @@
       "Joggen Laufband",
       "Treadmill",
       "Running, Treadmill",
-      "Treadmill Running"
+      "Treadmill Running",
+      "Laufen",
+      "Joggen",
+      "Running",
+      "Laufband gehen",
+      "Treadmill Walk"
     ],
     "kategorie": "Cardio",
     "familie": "laufband",
@@ -1261,7 +1376,11 @@
       "Ruderergometer",
       "Rower",
       "Rowing, Stationary",
-      "Rowing Machine"
+      "Rowing Machine",
+      "Rudern (Rudergerät)",
+      "Indoor Rowing",
+      "Rowing (Machine)",
+      "Concept2"
     ],
     "kategorie": "Cardio",
     "familie": "rudergeraet",
@@ -1308,7 +1427,9 @@
       "Ellipsentrainer",
       "Elliptical Trainer",
       "Elliptical",
-      "Cross Trainer"
+      "Cross Trainer",
+      "Cross-Trainer",
+      "Elliptical Machine"
     ],
     "kategorie": "Cardio",
     "familie": "crosstrainer",
@@ -1356,7 +1477,11 @@
       "Schrägbank mit Kurzhanteln",
       "Schrägbankdrücken",
       "Incline Dumbbell Press",
-      "Incline Dumbbell Bench Press"
+      "Incline Dumbbell Bench Press",
+      "Schrägbankdrücken (Kurzhantel)",
+      "Incline Bench Press (Dumbbell)",
+      "Incline DB Press",
+      "Schrägbankdrücken Kurzhanteln"
     ],
     "kategorie": "Brust",
     "familie": "schraegbankdruecken",
@@ -1405,7 +1530,12 @@
       "Schulterdrücken",
       "Dumbbell Shoulder Press",
       "Shoulder Press",
-      "Overhead Press"
+      "Overhead Press",
+      "Schulterdrücken (Kurzhantel)",
+      "Shoulder Press (Dumbbell)",
+      "Seated Dumbbell Shoulder Press",
+      "Seated Dumbbell Press",
+      "Kurzhanteldrücken sitzend"
     ],
     "kategorie": "Schultern",
     "familie": "schulterdruecken",
@@ -1449,7 +1579,9 @@
       "Bankdrücken mit breitem Griff",
       "Breites Bankdrücken",
       "Wide-Grip Barbell Bench Press",
-      "Wide Grip Bench Press"
+      "Wide Grip Bench Press",
+      "Bankdrücken breit (Langhantel)",
+      "Wide Grip Bench Press (Barbell)"
     ],
     "kategorie": "Brust",
     "familie": "bankdruecken",
@@ -1495,7 +1627,10 @@
       "Kurzhantel-Bankdrücken",
       "Kurzhanteldrücken",
       "Flachbankdrücken mit Kurzhanteln",
-      "Dumbbell Bench Press"
+      "Dumbbell Bench Press",
+      "Bankdrücken (Kurzhantel)",
+      "Bench Press (Dumbbell)",
+      "DB Bench Press"
     ],
     "kategorie": "Brust",
     "familie": "bankdruecken",
@@ -1541,7 +1676,9 @@
       "Kurzhantel-Bankdrücken neutraler Griff",
       "Bankdrücken Hammergriff",
       "Dumbbell Bench Press with Neutral Grip",
-      "Neutral Grip Dumbbell Press"
+      "Neutral Grip Dumbbell Press",
+      "Bankdrücken neutraler Griff",
+      "Neutral Grip Bench Press (Dumbbell)"
     ],
     "kategorie": "Brust",
     "familie": "bankdruecken",
@@ -1585,7 +1722,9 @@
     "synonyme": [
       "Einarmiges Kurzhantel-Bankdrücken",
       "One Arm Dumbbell Bench Press",
-      "Single-Arm Dumbbell Bench Press"
+      "Single-Arm Dumbbell Bench Press",
+      "Bankdrücken einarmig (Kurzhantel)",
+      "Single Arm Bench Press"
     ],
     "kategorie": "Brust",
     "familie": "bankdruecken",
@@ -1631,7 +1770,10 @@
       "Bankdrücken Multipresse",
       "Multipresse Bankdrücken",
       "Bankdrücken an der Smith Machine",
-      "Smith Machine Bench Press"
+      "Smith Machine Bench Press",
+      "Bankdrücken (Multipresse)",
+      "Bench Press (Smith Machine)",
+      "Smith Bench Press"
     ],
     "kategorie": "Brust",
     "familie": "bankdruecken",
@@ -1680,7 +1822,11 @@
       "Machine Chest Press",
       "Machine Bench Press",
       "Leverage Chest Press",
-      "Hammer Strength Brustpresse"
+      "Hammer Strength Brustpresse",
+      "Brustpresse (Maschine)",
+      "Chest Press (Machine)",
+      "Brustdrücken an der Maschine",
+      "Seated Chest Press"
     ],
     "kategorie": "Brust",
     "familie": "brustpresse",
@@ -1726,7 +1872,9 @@
       "Kabeldrücken stehend",
       "Brustdrücken am Kabelzug",
       "Standing Cable Chest Press",
-      "Cable Chest Press"
+      "Cable Chest Press",
+      "Brustpresse (Kabelzug)",
+      "Chest Press (Cable)"
     ],
     "kategorie": "Brust",
     "familie": "brustpresse",
@@ -1774,7 +1922,10 @@
       "Schrägbank",
       "Barbell Incline Bench Press - Medium Grip",
       "Incline Bench Press",
-      "Incline Barbell Bench Press"
+      "Incline Barbell Bench Press",
+      "Schrägbankdrücken (Langhantel)",
+      "Incline Bench Press (Barbell)",
+      "Schrägbankdrücken Langhantel"
     ],
     "kategorie": "Brust",
     "familie": "schraegbankdruecken",
@@ -1821,7 +1972,8 @@
       "Kurzhantel-Schrägbankdrücken neutraler Griff",
       "Hammer Grip Incline DB Bench Press",
       "Incline Dumbbell Bench With Palms Facing In",
-      "Neutral Grip Incline Dumbbell Press"
+      "Neutral Grip Incline Dumbbell Press",
+      "Schrägbankdrücken neutraler Griff"
     ],
     "kategorie": "Brust",
     "familie": "schraegbankdruecken",
@@ -1866,7 +2018,10 @@
       "Schrägbank-Brustpresse",
       "Incline Chest Press Machine",
       "Leverage Incline Chest Press",
-      "Incline Cable Chest Press"
+      "Incline Cable Chest Press",
+      "Schrägbankdrücken (Maschine)",
+      "Incline Chest Press (Machine)",
+      "Incline Machine Press"
     ],
     "kategorie": "Brust",
     "familie": "schraegbankdruecken",
@@ -1911,7 +2066,9 @@
       "Negativbank",
       "Decline Barbell Bench Press",
       "Decline Bench Press",
-      "Wide-Grip Decline Barbell Bench Press"
+      "Wide-Grip Decline Barbell Bench Press",
+      "Negativbankdrücken (Langhantel)",
+      "Decline Bench Press (Barbell)"
     ],
     "kategorie": "Brust",
     "familie": "negativbankdruecken",
@@ -1956,7 +2113,10 @@
     "synonyme": [
       "Kurzhantel-Negativbankdrücken",
       "Negativbank mit Kurzhanteln",
-      "Decline Dumbbell Bench Press"
+      "Decline Dumbbell Bench Press",
+      "Negativbankdrücken (Kurzhantel)",
+      "Decline Bench Press (Dumbbell)",
+      "Decline Dumbbell Press"
     ],
     "kategorie": "Brust",
     "familie": "negativbankdruecken",
@@ -2000,7 +2160,9 @@
       "Negativbankdrücken Multipresse",
       "Negativbank an der Smith Machine",
       "Smith Machine Decline Press",
-      "Decline Smith Press"
+      "Decline Smith Press",
+      "Negativbankdrücken (Multipresse)",
+      "Decline Bench Press (Smith Machine)"
     ],
     "kategorie": "Brust",
     "familie": "negativbankdruecken",
@@ -2043,7 +2205,9 @@
     "synonyme": [
       "Negativ-Brustpresse",
       "Decline Chest Press Machine",
-      "Leverage Decline Chest Press"
+      "Leverage Decline Chest Press",
+      "Negativbankdrücken (Maschine)",
+      "Decline Chest Press (Machine)"
     ],
     "kategorie": "Brust",
     "familie": "negativbankdruecken",
@@ -2087,7 +2251,9 @@
       "Kurzhantel-Bodendrücken",
       "Bankdrücken am Boden",
       "Dumbbell Floor Press",
-      "Floor Press"
+      "Floor Press",
+      "Bodendrücken (Kurzhantel)",
+      "Floor Press (Dumbbell)"
     ],
     "kategorie": "Brust",
     "familie": "bodendruecken",
@@ -2131,7 +2297,9 @@
     "synonyme": [
       "Langhantel-Bodendrücken",
       "Barbell Floor Press",
-      "Floor Press"
+      "Floor Press",
+      "Bodendrücken (Langhantel)",
+      "Floor Press (Barbell)"
     ],
     "kategorie": "Brust",
     "familie": "bodendruecken",
@@ -2174,7 +2342,9 @@
     "synonyme": [
       "Kettlebell-Bodendrücken",
       "Kettlebell Floor Press",
-      "One-Arm Kettlebell Floor Press"
+      "One-Arm Kettlebell Floor Press",
+      "Bodendrücken (Kettlebell)",
+      "Floor Press (Kettlebell)"
     ],
     "kategorie": "Brust",
     "familie": "bodendruecken",
@@ -2219,7 +2389,11 @@
       "Flys",
       "Flachbank-Fliegende",
       "Dumbbell Flyes",
-      "Dumbbell Fly"
+      "Dumbbell Fly",
+      "Fliegende (Kurzhantel)",
+      "Chest Fly (Dumbbell)",
+      "Dumbbell Chest Fly",
+      "Kurzhantelfliegende"
     ],
     "kategorie": "Brust",
     "familie": "fliegende",
@@ -2264,7 +2438,10 @@
       "Schräge Fliegende",
       "Kurzhantel-Flys schräg",
       "Incline Dumbbell Flyes",
-      "Incline Dumbbell Fly"
+      "Incline Dumbbell Fly",
+      "Schrägbank-Fliegende (Kurzhantel)",
+      "Incline Chest Fly (Dumbbell)",
+      "Schrägbankfliegende"
     ],
     "kategorie": "Brust",
     "familie": "fliegende",
@@ -2307,7 +2484,9 @@
     "synonyme": [
       "Fliegende auf der Negativbank",
       "Decline Dumbbell Flyes",
-      "Decline Dumbbell Fly"
+      "Decline Dumbbell Fly",
+      "Negativ-Fliegende (Kurzhantel)",
+      "Decline Chest Fly (Dumbbell)"
     ],
     "kategorie": "Brust",
     "familie": "fliegende",
@@ -2349,7 +2528,8 @@
     "synonyme": [
       "Einarmige Kurzhantel-Flys",
       "One-Arm Flat Bench Dumbbell Flye",
-      "Single-Arm Dumbbell Fly"
+      "Single-Arm Dumbbell Fly",
+      "Fliegende einarmig (Kurzhantel)"
     ],
     "kategorie": "Brust",
     "familie": "fliegende",
@@ -2393,7 +2573,9 @@
       "Kabel-Fliegende liegend",
       "Kabelfliegende Flachbank",
       "Flat Bench Cable Flyes",
-      "Cable Fly on Bench"
+      "Cable Fly on Bench",
+      "Fliegende liegend (Kabelzug)",
+      "Lying Cable Fly"
     ],
     "kategorie": "Brust",
     "familie": "fliegende",
@@ -2435,7 +2617,9 @@
     "synonyme": [
       "Kabel-Fliegende schräg",
       "Incline Cable Flye",
-      "Incline Cable Fly"
+      "Incline Cable Fly",
+      "Schrägbank-Fliegende (Kabelzug)",
+      "Kabelfliegende schräg"
     ],
     "kategorie": "Brust",
     "familie": "fliegende",
@@ -2478,7 +2662,10 @@
       "Band-Fliegende",
       "Crossover mit Band",
       "Cross Over - With Bands",
-      "Band Chest Fly"
+      "Band Chest Fly",
+      "Fliegende (Widerstandsband)",
+      "Chest Fly (Band)",
+      "Band Fly"
     ],
     "kategorie": "Brust",
     "familie": "fliegende",
@@ -2521,7 +2708,10 @@
       "Kabelzug-Crossover von unten",
       "Crossover von unten nach oben",
       "Low Cable Crossover",
-      "Low-to-High Cable Fly"
+      "Low-to-High Cable Fly",
+      "Low Cable Fly",
+      "Low to High Cable Fly",
+      "Kabelcrossover von unten"
     ],
     "kategorie": "Brust",
     "familie": "cable-crossover",
@@ -2564,7 +2754,9 @@
     "synonyme": [
       "Einarmiges Kabelzug-Crossover",
       "Crossover einarmig",
-      "Single-Arm Cable Crossover"
+      "Single-Arm Cable Crossover",
+      "Single Arm Cable Fly",
+      "Crossover einarmig (Kabelzug)"
     ],
     "kategorie": "Brust",
     "familie": "cable-crossover",
@@ -2609,7 +2801,10 @@
       "Kurzhantel-Pullover",
       "Straight-Arm Dumbbell Pullover",
       "Dumbbell Pullover",
-      "Bent-Arm Dumbbell Pullover"
+      "Bent-Arm Dumbbell Pullover",
+      "Überzüge",
+      "Pullover (Kurzhantel)",
+      "Pullover (Dumbbell)"
     ],
     "kategorie": "Brust",
     "familie": "ueberzuege",
@@ -2653,7 +2848,8 @@
     "synonyme": [
       "Around the World mit Kurzhanteln",
       "Kurzhantelkreisen liegend",
-      "Around The Worlds"
+      "Around The Worlds",
+      "Around the World (Kurzhantel)"
     ],
     "kategorie": "Brust",
     "familie": "around-the-world",
@@ -2697,7 +2893,9 @@
       "Dips vorgebeugt",
       "Barrendips Brust",
       "Dips - Chest Version",
-      "Chest Dips"
+      "Chest Dips",
+      "Dips Brust",
+      "Chest Dip"
     ],
     "kategorie": "Brust",
     "familie": "dips",
@@ -2743,7 +2941,10 @@
       "Push-ups",
       "Pushups",
       "Push-up",
-      "Push Up"
+      "Push Up",
+      "Push Ups",
+      "Pushup",
+      "Liegestützen"
     ],
     "kategorie": "Brust",
     "familie": "liegestuetze",
@@ -2791,7 +2992,9 @@
       "Liegestütz breit",
       "Push-Up Wide",
       "Wide Push-Up",
-      "Wide Grip Push-Up"
+      "Wide Grip Push-Up",
+      "Wide Push Ups",
+      "Liegestützen breit"
     ],
     "kategorie": "Brust",
     "familie": "liegestuetze",
@@ -2835,7 +3038,9 @@
       "Liegestütze an der Bank",
       "Schräge Liegestütze",
       "Incline Push-Up",
-      "Incline Push-Up Medium"
+      "Incline Push-Up Medium",
+      "Incline Push Ups",
+      "Liegestütze erhöht"
     ],
     "kategorie": "Brust",
     "familie": "liegestuetze",
@@ -2879,7 +3084,9 @@
       "Negativ-Liegestütze",
       "Decline Push-Up",
       "Push-Ups With Feet Elevated",
-      "Feet Elevated Push-Up"
+      "Feet Elevated Push-Up",
+      "Decline Push Ups",
+      "Liegestütze Füße erhöht"
     ],
     "kategorie": "Brust",
     "familie": "liegestuetze",
@@ -2923,7 +3130,9 @@
       "Knieliegestütze",
       "Liegestütz auf Knien",
       "Knee Push-Up",
-      "Kneeling Push-Up"
+      "Kneeling Push-Up",
+      "Knee Push Ups",
+      "Kniende Liegestütze"
     ],
     "kategorie": "Brust",
     "familie": "liegestuetze",
@@ -2968,7 +3177,10 @@
       "Latzug eng",
       "Enges Latziehen",
       "V-Bar Pulldown",
-      "Close-Grip Lat Pulldown"
+      "Close-Grip Lat Pulldown",
+      "Latziehen V-Griff",
+      "Lat Pulldown (Close Grip)",
+      "Close Grip Pulldown"
     ],
     "kategorie": "Rücken",
     "familie": "latziehen",
@@ -3014,7 +3226,11 @@
       "Latzug Untergriff",
       "Latziehen Untergriff",
       "Reverse Grip Lat Pulldown",
-      "Underhand Cable Pulldowns"
+      "Underhand Cable Pulldowns",
+      "Latziehen Untergriff (Kabelzug)",
+      "Lat Pulldown (Underhand)",
+      "Underhand Lat Pulldown",
+      "Supinated Lat Pulldown"
     ],
     "kategorie": "Rücken",
     "familie": "latziehen",
@@ -3058,7 +3274,9 @@
       "Nackenziehen",
       "Latzug hinter den Nacken",
       "Wide-Grip Pulldown Behind The Neck",
-      "Behind the Neck Pulldown"
+      "Behind the Neck Pulldown",
+      "Lat Pulldown Behind Neck",
+      "Nackenlatziehen"
     ],
     "kategorie": "Rücken",
     "familie": "latziehen",
@@ -3103,7 +3321,9 @@
       "Latziehen einarmig",
       "Einarmiger Latzug",
       "One Arm Lat Pulldown",
-      "Single-Arm Lat Pulldown"
+      "Single-Arm Lat Pulldown",
+      "Lat Pulldown einarmig",
+      "Single Arm Lat Pulldown"
     ],
     "kategorie": "Rücken",
     "familie": "latziehen",
@@ -3147,7 +3367,10 @@
       "Latzugmaschine",
       "Lat-Maschine",
       "Lat Pulldown Machine",
-      "Plate-Loaded Lat Pulldown"
+      "Plate-Loaded Lat Pulldown",
+      "Latziehen (Maschine)",
+      "Lat Pulldown (Machine)",
+      "Latzug Maschine"
     ],
     "kategorie": "Rücken",
     "familie": "latziehen",
@@ -3192,7 +3415,12 @@
       "Pullover am Kabelzug",
       "Latziehen mit gestreckten Armen",
       "Straight-Arm Pulldown",
-      "Rope Straight-Arm Pulldown"
+      "Rope Straight-Arm Pulldown",
+      "Lat Pulldown mit gestreckten Armen",
+      "Straight-Arm Lat Pulldown",
+      "Pulldown mit gestreckten Armen",
+      "Stehendes Latziehen",
+      "Latziehen stehend"
     ],
     "kategorie": "Rücken",
     "familie": "ueberzuege",
@@ -3236,7 +3464,9 @@
       "Langhantel-Überzüge",
       "Langhantel-Pullover",
       "Bent-Arm Barbell Pullover",
-      "Barbell Pullover"
+      "Barbell Pullover",
+      "Pullover (Langhantel)",
+      "Pullover (Barbell)"
     ],
     "kategorie": "Rücken",
     "familie": "ueberzuege",
@@ -3281,7 +3511,10 @@
       "Klimmzug Untergriff",
       "Chin-ups",
       "Chin-Up",
-      "Chinups"
+      "Chinups",
+      "Chin Up",
+      "Chin Ups",
+      "Klimmzüge Untergriff"
     ],
     "kategorie": "Rücken",
     "familie": "klimmzuege",
@@ -3328,7 +3561,9 @@
       "Klimmzüge mit V-Griff",
       "Klimmzüge Hammergriff",
       "V-Bar Pullup",
-      "Close-Grip Pull-Up"
+      "Close-Grip Pull-Up",
+      "Close Grip Pull Up",
+      "Neutral Grip Pull Up"
     ],
     "kategorie": "Rücken",
     "familie": "klimmzuege",
@@ -3372,7 +3607,9 @@
       "Gewichtete Klimmzüge",
       "Klimmzüge mit Gewichtsgürtel",
       "Weighted Pull Ups",
-      "Weighted Pull-Up"
+      "Weighted Pull-Up",
+      "Weighted Pull Up",
+      "Klimmzüge mit Gewicht"
     ],
     "kategorie": "Rücken",
     "familie": "klimmzuege",
@@ -3415,7 +3652,10 @@
     "synonyme": [
       "Klimmzüge mit Widerstandsband",
       "Unterstützte Klimmzüge mit Band",
-      "Band Assisted Pull-Up"
+      "Band Assisted Pull-Up",
+      "Assisted Pull Up (Band)",
+      "Band Assisted Pull Up",
+      "Klimmzüge Band"
     ],
     "kategorie": "Rücken",
     "familie": "klimmzuege",
@@ -3460,7 +3700,10 @@
       "Klimmzugmaschine",
       "Gravitron",
       "Assisted Pull-Up Machine",
-      "Assisted Pull-Up"
+      "Assisted Pull-Up",
+      "Klimmzüge (Maschine)",
+      "Assisted Pull Up (Machine)",
+      "Klimmzughilfe"
     ],
     "kategorie": "Rücken",
     "familie": "klimmzuege",
@@ -3503,7 +3746,9 @@
     "synonyme": [
       "Scapula Pull-ups",
       "Schulterblattziehen im Hang",
-      "Scapular Pull-Up"
+      "Scapular Pull-Up",
+      "Scap Pull Ups",
+      "Scapula Pull Up"
     ],
     "kategorie": "Rücken",
     "familie": "schulterblatt-klimmzuege",
@@ -3546,7 +3791,9 @@
       "Einarmiges Kabelrudern",
       "Rudern einarmig am Kabelzug",
       "Seated One-arm Cable Pulley Rows",
-      "Single-Arm Cable Row"
+      "Single-Arm Cable Row",
+      "Einarmiges Rudern (Kabelzug)",
+      "Single Arm Cable Row"
     ],
     "kategorie": "Rücken",
     "familie": "rudern-kabel",
@@ -3591,7 +3838,8 @@
       "Kabelrudern breit",
       "Rudern breit zur Brust",
       "Wide-Grip Seated Cable Row",
-      "Wide Grip Cable Row"
+      "Wide Grip Cable Row",
+      "Wide Grip Seated Row"
     ],
     "kategorie": "Rücken",
     "familie": "rudern-kabel",
@@ -3639,7 +3887,10 @@
       "Sitzendes Rudern an der Maschine",
       "Seated Row Machine",
       "Leverage Iso Row",
-      "Iso-Lateral Row"
+      "Iso-Lateral Row",
+      "Rudern (Maschine)",
+      "Seated Row (Machine)",
+      "Machine Row"
     ],
     "kategorie": "Rücken",
     "familie": "rudern-maschine",
@@ -3684,7 +3935,9 @@
       "High Row an der Maschine",
       "Rudern von oben an der Maschine",
       "Leverage High Row",
-      "High Row Machine"
+      "High Row Machine",
+      "High Row",
+      "Hohes Rudern"
     ],
     "kategorie": "Rücken",
     "familie": "rudern-maschine",
@@ -3729,7 +3982,10 @@
       "Vorgebeugtes Rudern im Untergriff",
       "Yates-Rudern",
       "Reverse Grip Bent-Over Rows",
-      "Underhand Barbell Row"
+      "Underhand Barbell Row",
+      "Rudern Untergriff (Langhantel)",
+      "Yates Row",
+      "Underhand Bent Over Row"
     ],
     "kategorie": "Rücken",
     "familie": "rudern-vorgebeugt",
@@ -3773,7 +4029,9 @@
     "synonyme": [
       "Langhantelrudern an der Multipresse",
       "Vorgebeugtes Rudern Multipresse",
-      "Smith Machine Bent Over Row"
+      "Smith Machine Bent Over Row",
+      "Rudern (Multipresse)",
+      "Bent Over Row (Smith Machine)"
     ],
     "kategorie": "Rücken",
     "familie": "rudern-vorgebeugt",
@@ -3819,7 +4077,9 @@
       "Rudern vorgebeugt mit Kurzhanteln",
       "Bent Over Two-Dumbbell Row",
       "Bent Over Two-Dumbbell Row With Palms In",
-      "Dumbbell Bent-Over Row"
+      "Dumbbell Bent-Over Row",
+      "Rudern vorgebeugt (Kurzhantel)",
+      "Bent Over Row (Dumbbell)"
     ],
     "kategorie": "Rücken",
     "familie": "rudern-vorgebeugt",
@@ -3867,7 +4127,11 @@
       "Einarmiges Rudern",
       "Rudern einarmig an der Bank",
       "One-Arm Dumbbell Row",
-      "Dumbbell Row"
+      "Dumbbell Row",
+      "Einarmiges Rudern (Kurzhantel)",
+      "Single Arm Dumbbell Row",
+      "Kurzhantelrudern einarmig",
+      "One Arm Row"
     ],
     "kategorie": "Rücken",
     "familie": "kurzhantelrudern",
@@ -3915,7 +4179,9 @@
       "Schrägbankrudern",
       "Kurzhantelrudern auf der Schrägbank",
       "Dumbbell Incline Row",
-      "Chest-Supported Dumbbell Row"
+      "Chest-Supported Dumbbell Row",
+      "Chest Supported Row",
+      "Incline Dumbbell Row"
     ],
     "kategorie": "Rücken",
     "familie": "rudern-schraegbank",
@@ -3961,7 +4227,9 @@
       "Landmine-Rudern",
       "T-Bar Row",
       "T-Bar Row with Handle",
-      "Bent Over Two-Arm Long Bar Row"
+      "Bent Over Two-Arm Long Bar Row",
+      "T-Bar Rudern",
+      "T Bar Row"
     ],
     "kategorie": "Rücken",
     "familie": "t-bar-rudern",
@@ -4007,7 +4275,9 @@
       "T-Bar-Rudern liegend",
       "Brustgestütztes T-Bar-Rudern",
       "Lying T-Bar Row",
-      "Chest-Supported T-Bar Row"
+      "Chest-Supported T-Bar Row",
+      "T-Bar Row (Machine)",
+      "T-Bar Rudern Maschine"
     ],
     "kategorie": "Rücken",
     "familie": "t-bar-rudern",
@@ -4052,7 +4322,9 @@
       "Meadows-Rudern",
       "Einarmiges Landmine-Rudern",
       "One-Arm Long Bar Row",
-      "Meadows Row"
+      "Meadows Row",
+      "Einarmiges Landmine Row",
+      "Single Arm Landmine Row"
     ],
     "kategorie": "Rücken",
     "familie": "t-bar-rudern",
@@ -4097,7 +4369,10 @@
       "Rudern im Hang",
       "Australian Pull-ups",
       "Inverted Row",
-      "Bodyweight Row"
+      "Bodyweight Row",
+      "Inverted Rows",
+      "Australian Pull-up",
+      "Körpergewichtsrudern"
     ],
     "kategorie": "Rücken",
     "familie": "umgekehrtes-rudern",
@@ -4142,7 +4417,9 @@
     "synonyme": [
       "Kettlebell-Rudern",
       "One-Arm Kettlebell Row",
-      "Two-Arm Kettlebell Row"
+      "Two-Arm Kettlebell Row",
+      "Rudern (Kettlebell)",
+      "Kettlebell Row"
     ],
     "kategorie": "Rücken",
     "familie": "kurzhantelrudern",
@@ -4184,7 +4461,8 @@
     "synonyme": [
       "Renegade Row",
       "Renegade Rows",
-      "Alternating Renegade Row"
+      "Alternating Renegade Row",
+      "Renegade Rudern"
     ],
     "kategorie": "Rücken",
     "familie": "rudern-im-liegestuetz",
@@ -4230,7 +4508,9 @@
     "synonyme": [
       "Kreuzheben Sumo",
       "Sumo Deadlift",
-      "Sumo-Deadlift"
+      "Sumo-Deadlift",
+      "Sumo Kreuzheben",
+      "Sumo Deadlift (Barbell)"
     ],
     "kategorie": "Rücken",
     "familie": "kreuzheben",
@@ -4280,7 +4560,10 @@
       "Hexbar-Kreuzheben",
       "Kreuzheben Hexbar",
       "Trap Bar Deadlift",
-      "Hex Bar Deadlift"
+      "Hex Bar Deadlift",
+      "Kreuzheben (Trap Bar)",
+      "Trap Bar Kreuzheben",
+      "Hexbar Deadlift"
     ],
     "kategorie": "Rücken",
     "familie": "kreuzheben",
@@ -4327,7 +4610,9 @@
     "synonyme": [
       "Kreuzheben vom Podest",
       "Kreuzheben mit Defizit",
-      "Deficit Deadlift"
+      "Deficit Deadlift",
+      "Defizitkreuzheben",
+      "Deficit Deadlifts"
     ],
     "kategorie": "Rücken",
     "familie": "kreuzheben",
@@ -4372,7 +4657,8 @@
     "synonyme": [
       "Rack Pulls",
       "Teilkreuzheben",
-      "Rack Pull"
+      "Rack Pull",
+      "Rack Deadlift"
     ],
     "kategorie": "Rücken",
     "familie": "kreuzheben",
@@ -4417,7 +4703,9 @@
     "name_de": "Kreuzheben mit Kurzhanteln",
     "synonyme": [
       "Kurzhantel-Kreuzheben",
-      "Dumbbell Deadlift"
+      "Dumbbell Deadlift",
+      "Kreuzheben (Kurzhantel)",
+      "Deadlift (Dumbbell)"
     ],
     "kategorie": "Rücken",
     "familie": "kreuzheben",
@@ -4467,6 +4755,8 @@
       "Back Extensions",
       "Hyperextension",
       "Back extension",
+      "Rückenstrecker",
+      "45° Hyperextension",
       "Hyperextensions (Back Extensions)"
     ],
     "kategorie": "Rücken",
@@ -4512,7 +4802,9 @@
       "Rückenstreckermaschine",
       "Rückenstrecken an der Maschine",
       "Back Extension Machine",
-      "Lower Back Machine"
+      "Lower Back Machine",
+      "Rückenstrecker (Maschine)",
+      "Back Extension (Machine)"
     ],
     "kategorie": "Rücken",
     "familie": "rueckenstrecker",
@@ -4554,7 +4846,8 @@
     "synonyme": [
       "Umgekehrte Hyperextensions",
       "Reverse Hyper",
-      "Reverse Hyperextension"
+      "Reverse Hyperextension",
+      "Reverse Hyper Machine"
     ],
     "kategorie": "Rücken",
     "familie": "rueckenstrecker",
@@ -4598,7 +4891,7 @@
       "Superman-Übung",
       "Rückenheben liegend",
       "Superman Exercise",
-      "Superman"
+      "Supermans"
     ],
     "kategorie": "Rücken",
     "familie": "superman",
@@ -4641,7 +4934,9 @@
     "synonyme": [
       "Good Morning",
       "Good Mornings mit Langhantel",
-      "Stiff Leg Barbell Good Morning"
+      "Stiff Leg Barbell Good Morning",
+      "Good Morning (Langhantel)",
+      "Good Morning (Barbell)"
     ],
     "kategorie": "Rücken",
     "familie": "good-mornings",
@@ -4686,7 +4981,10 @@
       "Schulterheben mit Langhantel",
       "Nackenheben",
       "Barbell Shrug",
-      "Shrugs"
+      "Shrugs",
+      "Shrugs (Langhantel)",
+      "Shrug (Barbell)",
+      "Barbell Shrugs"
     ],
     "kategorie": "Rücken",
     "familie": "shrugs",
@@ -4731,7 +5029,9 @@
       "Kurzhantel-Shrugs",
       "Schulterheben mit Kurzhanteln",
       "Dumbbell Shrug",
-      "Dumbbell Shrugs"
+      "Dumbbell Shrugs",
+      "Shrugs (Kurzhantel)",
+      "Shrug (Dumbbell)"
     ],
     "kategorie": "Rücken",
     "familie": "shrugs",
@@ -4774,7 +5074,9 @@
       "Multipresse-Shrugs",
       "Schulterheben an der Multipresse",
       "Smith Machine Shrug",
-      "Smith Machine Behind the Back Shrug"
+      "Smith Machine Behind the Back Shrug",
+      "Shrugs (Multipresse)",
+      "Shrug (Smith Machine)"
     ],
     "kategorie": "Rücken",
     "familie": "shrugs",
@@ -4818,7 +5120,9 @@
       "Schulterheben an der Maschine",
       "Leverage Shrug",
       "Machine Shrug",
-      "Calf-Machine Shoulder Shrug"
+      "Calf-Machine Shoulder Shrug",
+      "Shrugs (Maschine)",
+      "Shrug (Machine)"
     ],
     "kategorie": "Rücken",
     "familie": "shrugs",
@@ -4861,7 +5165,9 @@
       "Kabel-Shrugs",
       "Schulterheben am Kabelzug",
       "Cable Shrugs",
-      "Cable Shrug"
+      "Cable Shrug",
+      "Shrugs (Kabelzug)",
+      "Shrug (Cable)"
     ],
     "kategorie": "Rücken",
     "familie": "shrugs",
@@ -4906,7 +5212,12 @@
       "OHP",
       "Frontdrücken stehend",
       "Standing Military Press",
-      "Barbell Overhead Press"
+      "Barbell Overhead Press",
+      "Schulterdrücken (Langhantel)",
+      "Overhead Press (Barbell)",
+      "Langhantel-Schulterdrücken",
+      "Frontdrücken",
+      "Strict Press"
     ],
     "kategorie": "Schultern",
     "familie": "schulterdruecken",
@@ -4955,7 +5266,9 @@
       "Military Press sitzend",
       "Sitzendes Schulterdrücken mit Langhantel",
       "Barbell Shoulder Press",
-      "Seated Barbell Military Press"
+      "Seated Barbell Military Press",
+      "Schulterdrücken sitzend (Langhantel)",
+      "Seated Overhead Press (Barbell)"
     ],
     "kategorie": "Schultern",
     "familie": "schulterdruecken",
@@ -5001,7 +5314,9 @@
       "Schulterdrücken hinter dem Nacken",
       "Nackendrücken mit Langhantel",
       "Standing Barbell Press Behind Neck",
-      "Behind the Neck Press"
+      "Behind the Neck Press",
+      "Nackendrücken (Langhantel)",
+      "Behind The Neck Press (Barbell)"
     ],
     "kategorie": "Schultern",
     "familie": "schulterdruecken",
@@ -5047,7 +5362,8 @@
       "Kurzhantel-Schulterdrücken stehend",
       "Stehendes Kurzhanteldrücken",
       "Standing Dumbbell Press",
-      "Standing Dumbbell Shoulder Press"
+      "Standing Dumbbell Shoulder Press",
+      "Schulterdrücken stehend (Kurzhantel)"
     ],
     "kategorie": "Schultern",
     "familie": "schulterdruecken",
@@ -5093,7 +5409,9 @@
       "Schulterdrücken Hammergriff",
       "Kurzhanteldrücken neutraler Griff",
       "Standing Palms-In Dumbbell Press",
-      "Neutral Grip Dumbbell Shoulder Press"
+      "Neutral Grip Dumbbell Shoulder Press",
+      "Schulterdrücken neutraler Griff",
+      "Neutral Grip Shoulder Press"
     ],
     "kategorie": "Schultern",
     "familie": "schulterdruecken",
@@ -5137,7 +5455,9 @@
       "Einarmiges Kurzhanteldrücken",
       "Schulterdrücken einarmig",
       "Dumbbell One-Arm Shoulder Press",
-      "Single-Arm Dumbbell Shoulder Press"
+      "Single-Arm Dumbbell Shoulder Press",
+      "Schulterdrücken einarmig (Kurzhantel)",
+      "Single Arm Shoulder Press"
     ],
     "kategorie": "Schultern",
     "familie": "schulterdruecken",
@@ -5184,7 +5504,10 @@
       "Shoulder Press Machine",
       "Machine Shoulder Press",
       "Machine Shoulder (Military) Press",
-      "Leverage Shoulder Press"
+      "Leverage Shoulder Press",
+      "Schulterdrücken (Maschine)",
+      "Shoulder Press (Machine)",
+      "Schulterpresse Maschine"
     ],
     "kategorie": "Schultern",
     "familie": "schulterdruecken",
@@ -5227,7 +5550,9 @@
     "synonyme": [
       "Kabel-Schulterdrücken",
       "Schulterdrücken stehend am Kabel",
-      "Cable Shoulder Press"
+      "Cable Shoulder Press",
+      "Schulterdrücken (Kabelzug)",
+      "Shoulder Press (Cable)"
     ],
     "kategorie": "Schultern",
     "familie": "schulterdruecken",
@@ -5271,7 +5596,10 @@
     "synonyme": [
       "Arnold-Drücken",
       "Arnold Dumbbell Press",
-      "Arnold Shoulder Press"
+      "Arnold Shoulder Press",
+      "Arnold Press (Kurzhantel)",
+      "Arnold Press (Dumbbell)",
+      "Arnold Presse"
     ],
     "kategorie": "Schultern",
     "familie": "schulterdruecken",
@@ -5314,7 +5642,10 @@
     "synonyme": [
       "Kettlebell-Schulterdrücken",
       "Kettlebell Press",
-      "Two-Arm Kettlebell Military Press"
+      "Two-Arm Kettlebell Military Press",
+      "Schulterdrücken (Kettlebell)",
+      "Kettlebell Shoulder Press",
+      "Overhead Press (Kettlebell)"
     ],
     "kategorie": "Schultern",
     "familie": "schulterdruecken",
@@ -5358,7 +5689,7 @@
       "Stoßdrücken",
       "Schulterdrücken mit Schwung",
       "Push Press mit Langhantel",
-      "Push Press"
+      "Push Press (Barbell)"
     ],
     "kategorie": "Schultern",
     "familie": "push-press",
@@ -5405,7 +5736,8 @@
       "Landmine-Drücken",
       "Einarmiges Schrägdrücken an der Landmine",
       "Single-Arm Linear Jammer",
-      "Single-Arm Landmine Press"
+      "Single-Arm Landmine Press",
+      "Landmine Shoulder Press"
     ],
     "kategorie": "Schultern",
     "familie": "landmine-druecken",
@@ -5450,7 +5782,9 @@
       "Handstand-Drücken",
       "Handstand Push-Ups",
       "Handstand Push-Up",
-      "HSPU"
+      "HSPU",
+      "Handstand Push Ups",
+      "Handstanddrücken"
     ],
     "kategorie": "Schultern",
     "familie": "handstand-liegestuetze",
@@ -5493,7 +5827,9 @@
     "synonyme": [
       "Seitheben mit Kurzhanteln sitzend",
       "Sitzendes Seitheben",
-      "Seated Side Lateral Raise"
+      "Seated Side Lateral Raise",
+      "Seitheben sitzend (Kurzhantel)",
+      "Seated Lateral Raise"
     ],
     "kategorie": "Schultern",
     "familie": "seitheben",
@@ -5537,7 +5873,8 @@
       "Einarmiges Seitheben",
       "Seitheben einarmig",
       "One-Arm Side Laterals",
-      "Single-Arm Lateral Raise"
+      "Single-Arm Lateral Raise",
+      "Seitheben einarmig (Kurzhantel)"
     ],
     "kategorie": "Schultern",
     "familie": "seitheben",
@@ -5581,7 +5918,9 @@
       "Kabel-Seitheben einarmig",
       "Seitheben am Kabelzug einarmig",
       "Standing Low-Pulley Deltoid Raise",
-      "Single-Arm Cable Lateral Raise"
+      "Single-Arm Cable Lateral Raise",
+      "Seitheben einarmig (Kabelzug)",
+      "Single Arm Cable Lateral Raise"
     ],
     "kategorie": "Schultern",
     "familie": "seitheben",
@@ -5625,7 +5964,9 @@
       "Kabel-Seitheben beidarmig",
       "Seitheben am Kabel",
       "Cable Seated Lateral Raise",
-      "Cable Lateral Raise"
+      "Cable Lateral Raise",
+      "Seitheben (Kabelzug)",
+      "Lateral Raise (Cable)"
     ],
     "kategorie": "Schultern",
     "familie": "seitheben",
@@ -5669,7 +6010,9 @@
       "Seithebemaschine",
       "Seitheben Maschine",
       "Lateral Raise Machine",
-      "Machine Lateral Raise"
+      "Machine Lateral Raise",
+      "Seitheben (Maschine)",
+      "Lateral Raise (Machine)"
     ],
     "kategorie": "Schultern",
     "familie": "seitheben",
@@ -5713,7 +6056,9 @@
       "Band-Seitheben",
       "Seitheben mit Band",
       "Lateral Raise - With Bands",
-      "Band Lateral Raise"
+      "Band Lateral Raise",
+      "Seitheben (Widerstandsband)",
+      "Lateral Raise (Band)"
     ],
     "kategorie": "Schultern",
     "familie": "seitheben",
@@ -5758,7 +6103,10 @@
       "Vorheben",
       "Front Two-Dumbbell Raise",
       "Front Dumbbell Raise",
-      "Front Raise"
+      "Front Raise",
+      "Frontheben (Kurzhantel)",
+      "Front Raise (Dumbbell)",
+      "Dumbbell Front Raise"
     ],
     "kategorie": "Schultern",
     "familie": "frontheben",
@@ -5804,7 +6152,9 @@
       "Langhantel-Frontheben",
       "Vorheben mit Langhantel",
       "Standing Front Barbell Raise Over Head",
-      "Barbell Front Raise"
+      "Barbell Front Raise",
+      "Frontheben (Langhantel)",
+      "Front Raise (Barbell)"
     ],
     "kategorie": "Schultern",
     "familie": "frontheben",
@@ -5848,7 +6198,9 @@
       "Kabel-Frontheben",
       "Vorheben am Kabel",
       "Front Cable Raise",
-      "Cable Front Raise"
+      "Cable Front Raise",
+      "Frontheben (Kabelzug)",
+      "Front Raise (Cable)"
     ],
     "kategorie": "Schultern",
     "familie": "frontheben",
@@ -5891,7 +6243,9 @@
       "Scheiben-Frontheben",
       "Vorheben mit Hantelscheibe",
       "Front Plate Raise",
-      "Plate Front Raise"
+      "Plate Front Raise",
+      "Frontheben (Hantelscheibe)",
+      "Front Raise (Plate)"
     ],
     "kategorie": "Schultern",
     "familie": "frontheben",
@@ -5936,7 +6290,10 @@
       "Reverse Flys an der Maschine",
       "Rear Delt Machine",
       "Reverse Machine Flyes",
-      "Reverse Pec Deck"
+      "Reverse Pec Deck",
+      "Reverse Butterfly (Maschine)",
+      "Rear Delt Fly (Machine)",
+      "Reverse Fly (Machine)"
     ],
     "kategorie": "Schultern",
     "familie": "reverse-flys",
@@ -5981,7 +6338,10 @@
       "Kabel-Reverse-Flys",
       "Reverse Flys am Kabel",
       "Rear Delt Fly am Kabel",
-      "Cable Rear Delt Fly"
+      "Cable Rear Delt Fly",
+      "Reverse Flys (Kabelzug)",
+      "Rear Delt Fly (Cable)",
+      "Reverse Cable Fly"
     ],
     "kategorie": "Schultern",
     "familie": "reverse-flys",
@@ -6027,6 +6387,11 @@
       "Kurzhantel-Reverse-Flys",
       "Bent Over Dumbbell Rear Delt Raise",
       "Bent-Over Reverse Fly",
+      "Reverse Flys (Kurzhantel)",
+      "Rear Delt Fly (Dumbbell)",
+      "Rear Delt Fly",
+      "Rear Delt Raise",
+      "Reverse Fly",
       "Bent Over Dumbbell Rear Delt Raise With Head On Bench"
     ],
     "kategorie": "Schultern",
@@ -6071,7 +6436,9 @@
     "synonyme": [
       "Vorgebeugtes Seitheben sitzend",
       "Sitzende Reverse Flys",
-      "Seated Bent-Over Rear Delt Raise"
+      "Seated Bent-Over Rear Delt Raise",
+      "Reverse Flys sitzend (Kurzhantel)",
+      "Seated Reverse Fly"
     ],
     "kategorie": "Schultern",
     "familie": "reverse-flys",
@@ -6115,7 +6482,9 @@
       "Reverse Flys liegend",
       "Brustgestützte Reverse Flys",
       "Reverse Flyes",
-      "Incline Reverse Fly"
+      "Incline Reverse Fly",
+      "Reverse Flys Schrägbank",
+      "Chest Supported Reverse Fly"
     ],
     "kategorie": "Schultern",
     "familie": "reverse-flys",
@@ -6159,7 +6528,9 @@
       "Pull-Aparts mit Band",
       "Band auseinanderziehen",
       "Band Pull Apart",
-      "Band Pull-Apart"
+      "Band Pull-Apart",
+      "Pull Aparts",
+      "Band Pull Aparts"
     ],
     "kategorie": "Schultern",
     "familie": "reverse-flys",
@@ -6203,7 +6574,9 @@
       "Aufrechtes Rudern mit Langhantel",
       "Kinnziehen",
       "Upright Barbell Row",
-      "Upright Row"
+      "Upright Row",
+      "Aufrechtes Rudern (Langhantel)",
+      "Upright Row (Barbell)"
     ],
     "kategorie": "Schultern",
     "familie": "aufrechtes-rudern",
@@ -6249,7 +6622,9 @@
       "Kurzhantel-Kinnziehen",
       "Aufrechtes Rudern Kurzhantel",
       "Standing Dumbbell Upright Row",
-      "Dumbbell Upright Row"
+      "Dumbbell Upright Row",
+      "Aufrechtes Rudern (Kurzhantel)",
+      "Upright Row (Dumbbell)"
     ],
     "kategorie": "Schultern",
     "familie": "aufrechtes-rudern",
@@ -6294,7 +6669,9 @@
       "Kabel-Kinnziehen",
       "Aufrechtes Rudern am Kabel",
       "Upright Cable Row",
-      "Cable Upright Row"
+      "Cable Upright Row",
+      "Aufrechtes Rudern (Kabelzug)",
+      "Upright Row (Cable)"
     ],
     "kategorie": "Schultern",
     "familie": "aufrechtes-rudern",
@@ -6338,7 +6715,9 @@
     "synonyme": [
       "Kinnziehen an der Multipresse",
       "Aufrechtes Rudern Multipresse",
-      "Smith Machine Upright Row"
+      "Smith Machine Upright Row",
+      "Aufrechtes Rudern (Multipresse)",
+      "Upright Row (Smith Machine)"
     ],
     "kategorie": "Schultern",
     "familie": "aufrechtes-rudern",
@@ -6383,7 +6762,10 @@
       "Außenrotation",
       "Rotatorenmanschette Außenrotation",
       "External Rotation",
-      "Dumbbell External Rotation"
+      "Dumbbell External Rotation",
+      "Außenrotation (Kurzhantel)",
+      "External Rotation (Dumbbell)",
+      "Außenrotation liegend"
     ],
     "kategorie": "Schultern",
     "familie": "aussenrotation",
@@ -6424,7 +6806,9 @@
     "synonyme": [
       "Kabel-Außenrotation",
       "External Rotation with Cable",
-      "Cable External Rotation"
+      "Cable External Rotation",
+      "Außenrotation (Kabelzug)",
+      "External Rotation (Cable)"
     ],
     "kategorie": "Schultern",
     "familie": "aussenrotation",
@@ -6464,7 +6848,10 @@
     "synonyme": [
       "Band-Außenrotation",
       "Außenrotation mit Band",
-      "External Rotation with Band"
+      "External Rotation with Band",
+      "Außenrotation (Widerstandsband)",
+      "External Rotation (Band)",
+      "Band External Rotation"
     ],
     "kategorie": "Schultern",
     "familie": "aussenrotation",
@@ -6504,7 +6891,9 @@
       "Kabel-Innenrotation",
       "Innenrotation",
       "Cable Internal Rotation",
-      "Internal Rotation with Band"
+      "Internal Rotation with Band",
+      "Innenrotation (Kabelzug)",
+      "Internal Rotation (Cable)"
     ],
     "kategorie": "Schultern",
     "familie": "innenrotation",
@@ -6544,8 +6933,7 @@
     "name_de": "Cuban Press",
     "synonyme": [
       "Kubanisches Drücken",
-      "Cuban Press mit Kurzhanteln",
-      "Cuban Press"
+      "Cuban Press mit Kurzhanteln"
     ],
     "kategorie": "Schultern",
     "familie": "cuban-press",
@@ -6589,7 +6977,8 @@
     "synonyme": [
       "Halo mit Kettlebell",
       "Kettlebell Halo",
-      "Halo"
+      "Halo",
+      "Halo (Kettlebell)"
     ],
     "kategorie": "Schultern",
     "familie": "kettlebell-halo",
@@ -6635,6 +7024,9 @@
       "Get-up mit Kettlebell",
       "Kettlebell Turkish Get-Up",
       "TGU",
+      "Turkish Getup",
+      "Turkish Get Up",
+      "Get-up",
       "Kettlebell Turkish Get-Up (Squat style)"
     ],
     "kategorie": "Schultern",
@@ -6682,7 +7074,8 @@
       "Thruster mit Kettlebells",
       "Kniebeuge mit Schulterdrücken",
       "Kettlebell Thruster",
-      "Thruster"
+      "Thruster",
+      "Thruster (Kettlebell)"
     ],
     "kategorie": "Schultern",
     "familie": "thruster",
@@ -6729,7 +7122,9 @@
       "Frontkniebeuge",
       "Kniebeugen vorne",
       "Front Barbell Squat",
-      "Front Squat"
+      "Front Squat",
+      "Frontkniebeuge (Langhantel)",
+      "Front Squat (Barbell)"
     ],
     "kategorie": "Beine",
     "familie": "kniebeugen",
@@ -6775,7 +7170,10 @@
     "synonyme": [
       "Multipresse-Kniebeugen",
       "Smith Machine Squat",
-      "Kniebeuge Multipresse"
+      "Kniebeuge Multipresse",
+      "Kniebeuge (Multipresse)",
+      "Squat (Smith Machine)",
+      "Smith Squat"
     ],
     "kategorie": "Beine",
     "familie": "kniebeugen",
@@ -6821,7 +7219,10 @@
     "synonyme": [
       "Goblet-Kniebeugen",
       "Kniebeugen mit Kettlebell vor der Brust",
-      "Goblet Squat"
+      "Goblet Squat",
+      "Goblet Squat (Kettlebell)",
+      "Goblet-Squat",
+      "Goblet Kniebeuge"
     ],
     "kategorie": "Beine",
     "familie": "kniebeugen",
@@ -6867,7 +7268,9 @@
     "synonyme": [
       "Kurzhantel-Kniebeugen",
       "Dumbbell Squat",
-      "Kniebeuge mit Kurzhanteln"
+      "Kniebeuge mit Kurzhanteln",
+      "Kniebeuge (Kurzhantel)",
+      "Squat (Dumbbell)"
     ],
     "kategorie": "Beine",
     "familie": "kniebeugen",
@@ -6913,7 +7316,9 @@
       "Plié-Kniebeugen",
       "Sumo-Kniebeuge",
       "Plie Dumbbell Squat",
-      "Sumo Squat"
+      "Sumo Squat",
+      "Sumo Kniebeuge",
+      "Sumo Squat (Dumbbell)"
     ],
     "kategorie": "Beine",
     "familie": "kniebeugen",
@@ -6958,7 +7363,8 @@
       "Box Squats",
       "Kniebeugen auf die Box",
       "Kniebeugen auf die Bank",
-      "Box Squat"
+      "Box Squat",
+      "Box Squat (Barbell)"
     ],
     "kategorie": "Beine",
     "familie": "kniebeugen",
@@ -7005,7 +7411,10 @@
       "Air Squats",
       "Kniebeugen mit Körpergewicht",
       "Bodyweight Squat",
-      "Freie Kniebeugen"
+      "Freie Kniebeugen",
+      "Air Squat",
+      "Squat (Bodyweight)",
+      "Kniebeuge ohne Gewicht"
     ],
     "kategorie": "Beine",
     "familie": "kniebeugen",
@@ -7050,7 +7459,10 @@
       "Hack Squat",
       "Hack-Squat-Maschine",
       "Hackenschmidt-Maschine",
-      "Hackmaschine"
+      "Hackmaschine",
+      "Hack Squat (Machine)",
+      "Hack Squats",
+      "Hackenschmidt Kniebeuge"
     ],
     "kategorie": "Beine",
     "familie": "kniebeugen",
@@ -7094,7 +7506,8 @@
     "synonyme": [
       "Sissy-Kniebeugen",
       "Weighted Sissy Squat",
-      "Sissy Squat"
+      "Sissy Squat",
+      "Sissy-Squat"
     ],
     "kategorie": "Beine",
     "familie": "sissy-squat",
@@ -7135,7 +7548,8 @@
       "Einbeinige Kniebeugen",
       "Pistol Squat",
       "Kettlebell Pistol Squat",
-      "Pistols"
+      "Pistols",
+      "Einbeinige Kniebeuge"
     ],
     "kategorie": "Beine",
     "familie": "kniebeugen",
@@ -7179,7 +7593,9 @@
     "synonyme": [
       "Beinpresse eng",
       "Enge Beinpresse",
-      "Narrow Stance Leg Press"
+      "Narrow Stance Leg Press",
+      "Leg Press eng",
+      "Close Stance Leg Press"
     ],
     "kategorie": "Beine",
     "familie": "beinpresse",
@@ -7222,7 +7638,9 @@
     "synonyme": [
       "Beinpresse einbeinig",
       "Single-Leg Leg Press",
-      "One-Leg Leg Press"
+      "One-Leg Leg Press",
+      "Single Leg Press",
+      "Beinpresse einbeinig (Maschine)"
     ],
     "kategorie": "Beine",
     "familie": "beinpresse",
@@ -7267,7 +7685,9 @@
       "Horizontale Beinpresse",
       "Beinpresse sitzend",
       "Seated Leg Press",
-      "Horizontal Leg Press"
+      "Horizontal Leg Press",
+      "Horizontal Leg Press (Machine)",
+      "Leg Press sitzend"
     ],
     "kategorie": "Beine",
     "familie": "beinpresse",
@@ -7312,7 +7732,11 @@
       "Kurzhantel-Ausfallschritte",
       "Lunges",
       "Dumbbell Lunges",
-      "Lunge"
+      "Lunge",
+      "Ausfallschritte (Kurzhantel)",
+      "Lunge (Dumbbell)",
+      "Dumbbell Lunge",
+      "Ausfallschritt"
     ],
     "kategorie": "Beine",
     "familie": "ausfallschritte",
@@ -7357,7 +7781,9 @@
     "synonyme": [
       "Langhantel-Ausfallschritte",
       "Barbell Lunge",
-      "Barbell Lunges"
+      "Barbell Lunges",
+      "Ausfallschritte (Langhantel)",
+      "Lunge (Barbell)"
     ],
     "kategorie": "Beine",
     "familie": "ausfallschritte",
@@ -7402,7 +7828,9 @@
       "Split Squats an der Multipresse",
       "Multipresse-Ausfallschritte",
       "Smith Machine Split Squat",
-      "Smith Machine Lunge"
+      "Smith Machine Lunge",
+      "Ausfallschritte (Multipresse)",
+      "Lunge (Smith Machine)"
     ],
     "kategorie": "Beine",
     "familie": "ausfallschritte",
@@ -7447,7 +7875,9 @@
       "Walking Lunges",
       "Gehende Ausfallschritte",
       "Bodyweight Walking Lunge",
-      "Barbell Walking Lunge"
+      "Barbell Walking Lunge",
+      "Walking Lunge",
+      "Ausfallschritte im Gehen"
     ],
     "kategorie": "Beine",
     "familie": "ausfallschritte",
@@ -7491,7 +7921,9 @@
       "Rückwärtige Ausfallschritte",
       "Reverse Lunges",
       "Dumbbell Rear Lunge",
-      "Reverse Lunge"
+      "Reverse Lunge",
+      "Reverse Lunge (Dumbbell)",
+      "Ausfallschritte nach hinten"
     ],
     "kategorie": "Beine",
     "familie": "ausfallschritte",
@@ -7535,7 +7967,10 @@
       "Seitausfallschritte",
       "Side Lunges",
       "Barbell Side Split Squat",
-      "Lateral Lunge"
+      "Lateral Lunge",
+      "Lateral Lunges",
+      "Side Lunge",
+      "Ausfallschritte zur Seite"
     ],
     "kategorie": "Beine",
     "familie": "ausfallschritte",
@@ -7581,7 +8016,11 @@
       "Bulgarische Kniebeugen",
       "Bulgarische Split Squats",
       "Split Squat with Dumbbells",
-      "Rear-Foot Elevated Split Squat"
+      "Rear-Foot Elevated Split Squat",
+      "BSS",
+      "Bulgarian Split Squat",
+      "Bulgarian Split Squat (Dumbbell)",
+      "Bulgarische Split-Squats"
     ],
     "kategorie": "Beine",
     "familie": "bulgarian-split-squats",
@@ -7627,7 +8066,8 @@
       "Bulgarische Kniebeugen mit Langhantel",
       "Langhantel-Split-Squats",
       "One Leg Barbell Squat",
-      "Barbell Bulgarian Split Squat"
+      "Barbell Bulgarian Split Squat",
+      "Bulgarian Split Squat (Barbell)"
     ],
     "kategorie": "Beine",
     "familie": "bulgarian-split-squats",
@@ -7671,7 +8111,8 @@
     "synonyme": [
       "Bulgarische Kniebeugen an der Multipresse",
       "Smith Single-Leg Split Squat",
-      "Smith Machine Bulgarian Split Squat"
+      "Smith Machine Bulgarian Split Squat",
+      "Bulgarian Split Squat (Smith Machine)"
     ],
     "kategorie": "Beine",
     "familie": "bulgarian-split-squats",
@@ -7717,7 +8158,10 @@
       "Aufsteigen auf die Bank",
       "Kurzhantel-Step-ups",
       "Dumbbell Step Ups",
-      "Step-Up"
+      "Step-Up",
+      "Step Up (Dumbbell)",
+      "Step Ups",
+      "Aufsteiger"
     ],
     "kategorie": "Beine",
     "familie": "step-ups",
@@ -7759,7 +8203,8 @@
     "name_de": "Step-ups mit Langhantel",
     "synonyme": [
       "Langhantel-Step-ups",
-      "Barbell Step Ups"
+      "Barbell Step Ups",
+      "Step Up (Barbell)"
     ],
     "kategorie": "Beine",
     "familie": "step-ups",
@@ -7801,7 +8246,9 @@
     "synonyme": [
       "Beinstrecker einbeinig",
       "Single-Leg Leg Extension",
-      "One-Leg Leg Extension"
+      "One-Leg Leg Extension",
+      "Single Leg Extension",
+      "Leg Extension einbeinig"
     ],
     "kategorie": "Beine",
     "familie": "beinstrecker",
@@ -7841,7 +8288,11 @@
       "Liegender Beinbeuger",
       "Beincurls liegend",
       "Lying Leg Curls",
-      "Lying Leg Curl"
+      "Lying Leg Curl",
+      "Beinbeuger liegend (Maschine)",
+      "Lying Leg Curl (Machine)",
+      "Leg Curl liegend",
+      "Prone Leg Curl"
     ],
     "kategorie": "Beine",
     "familie": "beinbeuger",
@@ -7883,7 +8334,9 @@
     "synonyme": [
       "Stehender Beinbeuger",
       "Beincurls stehend",
-      "Standing Leg Curl"
+      "Standing Leg Curl",
+      "Standing Leg Curl (Machine)",
+      "Leg Curl stehend"
     ],
     "kategorie": "Beine",
     "familie": "beinbeuger",
@@ -7925,7 +8378,7 @@
     "synonyme": [
       "GHR",
       "Glute-Ham-Raise an der Bank",
-      "Glute Ham Raise"
+      "Glute-Ham Raise"
     ],
     "kategorie": "Beine",
     "familie": "nordic-curls",
@@ -7969,7 +8422,10 @@
       "Nordic Hamstring Curls",
       "Nordische Beinbeuger",
       "Floor Glute-Ham Raise",
-      "Nordic Curl"
+      "Nordic Curl",
+      "Nordic Hamstring Curl",
+      "Nordic Ham Curl",
+      "Nordics"
     ],
     "kategorie": "Beine",
     "familie": "nordic-curls",
@@ -8013,7 +8469,9 @@
       "Rumänisches Kreuzheben mit Langhantel",
       "RDL",
       "Romanian Deadlift",
-      "Romanian deadlift"
+      "Rumänisches Kreuzheben (Langhantel)",
+      "Romanian Deadlift (Barbell)",
+      "RDLs"
     ],
     "kategorie": "Beine",
     "familie": "rumaenisches-kreuzheben",
@@ -8060,7 +8518,10 @@
       "Kurzhantel-RDL",
       "Kreuzheben mit gestreckten Beinen und Kurzhanteln",
       "Stiff-Legged Dumbbell Deadlift",
-      "Dumbbell Romanian Deadlift"
+      "Dumbbell Romanian Deadlift",
+      "Rumänisches Kreuzheben (Kurzhantel)",
+      "Romanian Deadlift (Dumbbell)",
+      "DB RDL"
     ],
     "kategorie": "Beine",
     "familie": "rumaenisches-kreuzheben",
@@ -8105,7 +8566,9 @@
       "RDL an der Multipresse",
       "Kreuzheben mit gestreckten Beinen an der Multipresse",
       "Smith Machine Stiff-Legged Deadlift",
-      "Smith Machine Romanian Deadlift"
+      "Smith Machine Romanian Deadlift",
+      "Rumänisches Kreuzheben (Multipresse)",
+      "Romanian Deadlift (Smith Machine)"
     ],
     "kategorie": "Beine",
     "familie": "rumaenisches-kreuzheben",
@@ -8148,7 +8611,10 @@
       "Einbeiniges Kreuzheben",
       "Single-Leg RDL",
       "Kettlebell One-Legged Deadlift",
-      "Single-Leg Romanian Deadlift"
+      "Single-Leg Romanian Deadlift",
+      "Einbeiniges Kreuzheben (Kettlebell)",
+      "Single Leg Deadlift",
+      "Einbeiniges RDL"
     ],
     "kategorie": "Beine",
     "familie": "rumaenisches-kreuzheben",
@@ -8193,7 +8659,10 @@
       "Gestrecktes Kreuzheben",
       "Steifbeiniges Kreuzheben",
       "Stiff-Legged Deadlift",
-      "Stiff-Legged Barbell Deadlift"
+      "Stiff-Legged Barbell Deadlift",
+      "Stiff Leg Deadlift",
+      "SLDL",
+      "Kreuzheben gestreckte Beine"
     ],
     "kategorie": "Beine",
     "familie": "rumaenisches-kreuzheben",
@@ -8237,7 +8706,8 @@
       "Pull-Through",
       "Kabel-Pull-Through",
       "Cable Pull Through",
-      "Pull Through"
+      "Pull Through",
+      "Pull Through (Cable)"
     ],
     "kategorie": "Beine",
     "familie": "rumaenisches-kreuzheben",
@@ -8281,7 +8751,10 @@
       "Kettlebell Swing",
       "Kettlebell-Schwingen",
       "One-Arm Kettlebell Swings",
-      "Russian Swing"
+      "Russian Swing",
+      "Swings",
+      "KB Swing",
+      "Russian Kettlebell Swing"
     ],
     "kategorie": "Beine",
     "familie": "kettlebell-swing",
@@ -8328,7 +8801,9 @@
       "Hip-Thrust-Maschine",
       "Glute-Maschine",
       "Machine Hip Thrust",
-      "Glute Drive"
+      "Glute Drive",
+      "Hip Thrust (Maschine)",
+      "Hip Thrust (Machine)"
     ],
     "kategorie": "Beine",
     "familie": "hip-thrust",
@@ -8369,7 +8844,9 @@
     "name_de": "Hip Thrust an der Multipresse",
     "synonyme": [
       "Multipresse-Hip-Thrust",
-      "Smith Machine Hip Thrust"
+      "Smith Machine Hip Thrust",
+      "Hip Thrust (Multipresse)",
+      "Hip Thrust (Smith Machine)"
     ],
     "kategorie": "Beine",
     "familie": "hip-thrust",
@@ -8411,7 +8888,9 @@
     "synonyme": [
       "Beckenheben mit Langhantel",
       "Langhantel-Glute-Bridge",
-      "Barbell Glute Bridge"
+      "Barbell Glute Bridge",
+      "Glute Bridge (Langhantel)",
+      "Glute Bridge (Barbell)"
     ],
     "kategorie": "Beine",
     "familie": "hip-thrust",
@@ -8455,6 +8934,8 @@
       "Brücke",
       "Butt Lift Bridge",
       "Hip Bridge",
+      "Glute Bridges",
+      "Bridge",
       "Butt Lift (Bridge)"
     ],
     "kategorie": "Beine",
@@ -8497,7 +8978,8 @@
     "synonyme": [
       "Einbeiniges Beckenheben",
       "Single Leg Glute Bridge",
-      "Single-Leg Hip Bridge"
+      "Single-Leg Hip Bridge",
+      "Glute Bridge einbeinig"
     ],
     "kategorie": "Beine",
     "familie": "hip-thrust",
@@ -8540,7 +9022,10 @@
       "Kabel-Kickbacks",
       "Gesäßkickbacks am Kabel",
       "One-Legged Cable Kickback",
-      "Cable Glute Kickback"
+      "Cable Glute Kickback",
+      "Glute Kickback (Kabelzug)",
+      "Glute Kickback (Cable)",
+      "Gesäß-Kickback am Kabel"
     ],
     "kategorie": "Beine",
     "familie": "glute-kickback",
@@ -8584,7 +9069,9 @@
       "Kickback-Maschine",
       "Glute-Kickback-Maschine",
       "Machine Glute Kickback",
-      "Glute Machine"
+      "Glute Machine",
+      "Glute Kickback (Maschine)",
+      "Glute Kickback (Machine)"
     ],
     "kategorie": "Beine",
     "familie": "glute-kickback",
@@ -8626,7 +9113,9 @@
       "Glute Kickbacks am Boden",
       "Donkey Kicks",
       "Glute Kickback",
-      "Beinheben im Vierfüßlerstand"
+      "Beinheben im Vierfüßlerstand",
+      "Donkey Kick",
+      "Quadruped Kickback"
     ],
     "kategorie": "Beine",
     "familie": "glute-kickback",
@@ -8669,7 +9158,12 @@
       "Abduktion an der Maschine",
       "Beine auseinander",
       "Hip Abductor Machine",
-      "Thigh Abductor"
+      "Thigh Abductor",
+      "Hip Abductor",
+      "Hip Abduction (Machine)",
+      "Abduktion (Maschine)",
+      "Abductor Machine",
+      "Abduktoren Maschine"
     ],
     "kategorie": "Beine",
     "familie": "abduktion",
@@ -8713,7 +9207,12 @@
       "Adduktion an der Maschine",
       "Beine zusammen",
       "Hip Adductor Machine",
-      "Thigh Adductor"
+      "Thigh Adductor",
+      "Hip Adductor",
+      "Hip Adduction (Machine)",
+      "Adduktion (Maschine)",
+      "Adductor Machine",
+      "Adduktoren Maschine"
     ],
     "kategorie": "Beine",
     "familie": "adduktion",
@@ -8754,7 +9253,9 @@
       "Kabel-Adduktion",
       "Beinzug nach innen am Kabel",
       "Cable Hip Adduction",
-      "Band Hip Adductions"
+      "Band Hip Adductions",
+      "Adduktion (Kabelzug)",
+      "Hip Adduction (Cable)"
     ],
     "kategorie": "Beine",
     "familie": "adduktion",
@@ -8793,7 +9294,9 @@
     "synonyme": [
       "Kabel-Abduktion",
       "Beinzug nach außen am Kabel",
-      "Cable Hip Abduction"
+      "Cable Hip Abduction",
+      "Abduktion (Kabelzug)",
+      "Hip Abduction (Cable)"
     ],
     "kategorie": "Beine",
     "familie": "abduktion",
@@ -8837,7 +9340,9 @@
       "Seitliches Gehen mit Band",
       "Band Walks",
       "Lateral Band Walk",
-      "Monster Walk"
+      "Band Walk",
+      "Lateral Band Walks",
+      "Seitwärtsgehen mit Band"
     ],
     "kategorie": "Beine",
     "familie": "abduktion",
@@ -8879,7 +9384,8 @@
       "Sitzendes Wadenheben",
       "Wadenmaschine sitzend",
       "Seated Calf Raise",
-      "Seated calf raise"
+      "Wadenheben sitzend (Maschine)",
+      "Seated Calf Raise (Machine)"
     ],
     "kategorie": "Beine",
     "familie": "wadenheben",
@@ -8920,7 +9426,9 @@
       "Wadendrücken an der Beinpresse",
       "Beinpresse Waden",
       "Calf Press On The Leg Press Machine",
-      "Calf Press"
+      "Calf Press",
+      "Calf Press (Leg Press)",
+      "Wadenpresse"
     ],
     "kategorie": "Beine",
     "familie": "wadenheben",
@@ -8959,7 +9467,9 @@
     "name_de": "Wadenheben an der Multipresse",
     "synonyme": [
       "Multipresse-Wadenheben",
-      "Smith Machine Calf Raise"
+      "Smith Machine Calf Raise",
+      "Wadenheben (Multipresse)",
+      "Calf Raise (Smith Machine)"
     ],
     "kategorie": "Beine",
     "familie": "wadenheben",
@@ -8998,7 +9508,9 @@
     "name_de": "Wadenheben mit Langhantel",
     "synonyme": [
       "Stehendes Wadenheben mit Langhantel",
-      "Standing Barbell Calf Raise"
+      "Standing Barbell Calf Raise",
+      "Wadenheben (Langhantel)",
+      "Calf Raise (Barbell)"
     ],
     "kategorie": "Beine",
     "familie": "wadenheben",
@@ -9038,7 +9550,9 @@
     "synonyme": [
       "Kurzhantel-Wadenheben",
       "Standing Dumbbell Calf Raise",
-      "Einbeiniges Wadenheben mit Kurzhantel"
+      "Einbeiniges Wadenheben mit Kurzhantel",
+      "Wadenheben (Kurzhantel)",
+      "Calf Raise (Dumbbell)"
     ],
     "kategorie": "Beine",
     "familie": "wadenheben",
@@ -9078,7 +9592,8 @@
     "synonyme": [
       "Donkey Calf Raises",
       "Eselwadenheben",
-      "Wadenheben vorgebeugt"
+      "Wadenheben vorgebeugt",
+      "Donkey Calf Raise"
     ],
     "kategorie": "Beine",
     "familie": "wadenheben",
@@ -9119,7 +9634,8 @@
       "Kastensprünge",
       "Sprünge auf die Box",
       "Front Box Jump",
-      "Box Jump"
+      "Box Jump",
+      "Boxsprünge"
     ],
     "kategorie": "Beine",
     "familie": "spruenge",
@@ -9165,7 +9681,10 @@
       "Jump Squats",
       "Kniebeugen mit Sprung",
       "Freehand Jump Squat",
-      "Squat Jumps"
+      "Squat Jumps",
+      "Jump Squat",
+      "Squat Jump",
+      "Hockstrecksprünge"
     ],
     "kategorie": "Beine",
     "familie": "spruenge",
@@ -9211,7 +9730,10 @@
       "Langhantel-Curls",
       "Bizepscurls stehend",
       "Barbell Curl",
-      "Barbell Curls"
+      "Barbell Curls",
+      "Bizepscurls (Langhantel)",
+      "Bicep Curl (Barbell)",
+      "Barbell Biceps Curl"
     ],
     "kategorie": "Bizeps",
     "familie": "bizepscurls",
@@ -9255,7 +9777,8 @@
     "synonyme": [
       "Drag-Curls mit Langhantel",
       "Schleifcurls",
-      "Drag Curl"
+      "Drag Curl",
+      "Drag Curl (Barbell)"
     ],
     "kategorie": "Bizeps",
     "familie": "bizepscurls",
@@ -9300,7 +9823,10 @@
       "Wechselcurls",
       "Alternierende Bizepscurls",
       "Dumbbell Alternate Bicep Curl",
-      "Alternating Dumbbell Curl"
+      "Alternating Dumbbell Curl",
+      "Alternating Bicep Curl (Dumbbell)",
+      "Bizepscurls abwechselnd",
+      "Alternierende Curls"
     ],
     "kategorie": "Bizeps",
     "familie": "bizepscurls",
@@ -9342,7 +9868,9 @@
     "synonyme": [
       "Sitzende Kurzhantelcurls",
       "Kurzhantelcurls sitzend",
-      "Seated Dumbbell Curl"
+      "Seated Dumbbell Curl",
+      "Seated Bicep Curl (Dumbbell)",
+      "Bizepscurls sitzend"
     ],
     "kategorie": "Bizeps",
     "familie": "bizepscurls",
@@ -9385,7 +9913,9 @@
       "Kurzhantelcurls auf der Schrägbank",
       "Schrägbankcurls",
       "Incline Dumbbell Curl",
-      "Incline Curl"
+      "Incline Curl",
+      "Incline Curl (Dumbbell)",
+      "Incline Bicep Curl"
     ],
     "kategorie": "Bizeps",
     "familie": "bizepscurls",
@@ -9427,7 +9957,9 @@
     "synonyme": [
       "Konzentrations-Curls",
       "Concentration Curls",
-      "Concentration Curl"
+      "Concentration Curl",
+      "Concentration Curl (Dumbbell)",
+      "Konzentrationscurl"
     ],
     "kategorie": "Bizeps",
     "familie": "bizepscurls",
@@ -9470,7 +10002,9 @@
       "Cross-Body Hammer Curls",
       "Hammercurls diagonal",
       "Cross Body Hammer Curl",
-      "Pinwheel Curls"
+      "Pinwheel Curls",
+      "Crossbody Hammer Curl",
+      "Pinwheel Curl"
     ],
     "kategorie": "Bizeps",
     "familie": "hammercurls",
@@ -9510,7 +10044,8 @@
     "name_de": "Zottman Curls",
     "synonyme": [
       "Zottman-Curls",
-      "Zottman Curl"
+      "Zottman Curl",
+      "Zottman Curl (Dumbbell)"
     ],
     "kategorie": "Bizeps",
     "familie": "bizepscurls",
@@ -9553,7 +10088,10 @@
       "Preacher Curls",
       "Curls an der Scottbank",
       "Preacher Curl",
-      "Preacher curl"
+      "Scottcurls (SZ-Stange)",
+      "Preacher Curl (EZ Bar)",
+      "Scott Curls",
+      "Scottcurl"
     ],
     "kategorie": "Bizeps",
     "familie": "scottcurls",
@@ -9597,7 +10135,9 @@
       "Kurzhantel-Scottcurls",
       "Scottcurls einarmig",
       "One Arm Dumbbell Preacher Curl",
-      "Dumbbell Preacher Curl"
+      "Dumbbell Preacher Curl",
+      "Scottcurls (Kurzhantel)",
+      "Preacher Curl (Dumbbell)"
     ],
     "kategorie": "Bizeps",
     "familie": "scottcurls",
@@ -9640,7 +10180,9 @@
       "Scottmaschine",
       "Preacher-Curl-Maschine",
       "Machine Preacher Curls",
-      "Machine Preacher Curl"
+      "Machine Preacher Curl",
+      "Scottcurls (Maschine)",
+      "Preacher Curl (Machine)"
     ],
     "kategorie": "Bizeps",
     "familie": "scottcurls",
@@ -9683,7 +10225,10 @@
       "Bizepscurls an der Maschine",
       "Curlmaschine",
       "Machine Bicep Curl",
-      "Biceps Curl Machine"
+      "Biceps Curl Machine",
+      "Bizepscurls (Maschine)",
+      "Bicep Curl (Machine)",
+      "Bizeps Maschine"
     ],
     "kategorie": "Bizeps",
     "familie": "bizepscurls",
@@ -9725,7 +10270,8 @@
     "synonyme": [
       "Spider Curls",
       "Spidercurls",
-      "Spider Curl"
+      "Spider Curl",
+      "Spider Curl (EZ Bar)"
     ],
     "kategorie": "Bizeps",
     "familie": "scottcurls",
@@ -9767,7 +10313,8 @@
     "synonyme": [
       "Kurzhantel-Spider-Curls",
       "Curls bäuchlings auf der Schrägbank",
-      "Dumbbell Prone Incline Curl"
+      "Dumbbell Prone Incline Curl",
+      "Spider Curl (Dumbbell)"
     ],
     "kategorie": "Bizeps",
     "familie": "scottcurls",
@@ -9811,7 +10358,10 @@
       "Bizepscurls am Kabel",
       "Kabelcurls mit Stange",
       "Standing Biceps Cable Curl",
-      "Cable Curl"
+      "Cable Curl",
+      "Bizepscurls (Kabelzug)",
+      "Bicep Curl (Cable)",
+      "Cable Bicep Curl"
     ],
     "kategorie": "Bizeps",
     "familie": "bizepscurls",
@@ -9855,7 +10405,9 @@
       "Einarmige Kabelcurls",
       "Kabelcurls einarmig",
       "Standing One-Arm Cable Curl",
-      "Single-Arm Cable Curl"
+      "Single-Arm Cable Curl",
+      "Bizepscurls einarmig (Kabelzug)",
+      "Single Arm Cable Curl"
     ],
     "kategorie": "Bizeps",
     "familie": "bizepscurls",
@@ -9899,7 +10451,9 @@
       "Kabelcurls hinter dem Körper",
       "Bizepscurls am Kabel hinter dem Körper",
       "Bayesian Cable Curl",
-      "Behind-the-Body Cable Curl"
+      "Behind-the-Body Cable Curl",
+      "Bayesian Curl",
+      "Bayesian Curl (Cable)"
     ],
     "kategorie": "Bizeps",
     "familie": "bizepscurls",
@@ -9942,7 +10496,9 @@
       "Kabelcurls über Kopf",
       "Überkopf-Kabelcurls",
       "High Cable Curls",
-      "Overhead Cable Curl"
+      "Overhead Cable Curl",
+      "Bizepscurls über Kopf (Kabelzug)",
+      "High Cable Curl"
     ],
     "kategorie": "Bizeps",
     "familie": "bizepscurls",
@@ -9983,7 +10539,10 @@
       "Kabel-Hammercurls",
       "Hammercurls am Kabelzug",
       "Cable Hammer Curls - Rope Attachment",
-      "Rope Hammer Curl"
+      "Rope Hammer Curl",
+      "Hammercurls (Kabelzug)",
+      "Hammer Curl (Cable)",
+      "Rope Hammer Curls"
     ],
     "kategorie": "Bizeps",
     "familie": "hammercurls",
@@ -10026,7 +10585,10 @@
       "Reverse Curls mit Langhantel",
       "Umgekehrte Curls",
       "Reverse Barbell Curl",
-      "Reverse Curl"
+      "Reverse Curl",
+      "Reverse Curls (Langhantel)",
+      "Reverse Curl (Barbell)",
+      "Curls Obergriff"
     ],
     "kategorie": "Bizeps",
     "familie": "reverse-curls",
@@ -10070,7 +10632,10 @@
       "Handgelenkbeugen",
       "Unterarm-Curls",
       "Wrist Curls",
-      "Seated Palm-Up Barbell Wrist Curl"
+      "Seated Palm-Up Barbell Wrist Curl",
+      "Unterarmcurls (Langhantel)",
+      "Wrist Curl (Barbell)",
+      "Wrist Curl"
     ],
     "kategorie": "Bizeps",
     "familie": "unterarmcurls",
@@ -10110,7 +10675,9 @@
       "Handgelenkcurls mit Kurzhanteln",
       "Kurzhantel-Handgelenkcurls",
       "Seated Dumbbell Palms-Up Wrist Curl",
-      "Dumbbell Wrist Curl"
+      "Dumbbell Wrist Curl",
+      "Unterarmcurls (Kurzhantel)",
+      "Wrist Curl (Dumbbell)"
     ],
     "kategorie": "Bizeps",
     "familie": "unterarmcurls",
@@ -10150,7 +10717,9 @@
       "Handgelenkstrecken",
       "Handgelenkcurls im Obergriff",
       "Reverse Wrist Curls",
-      "Seated Palms-Down Barbell Wrist Curl"
+      "Seated Palms-Down Barbell Wrist Curl",
+      "Reverse Wrist Curl",
+      "Reverse Wrist Curl (Barbell)"
     ],
     "kategorie": "Bizeps",
     "familie": "unterarmcurls",
@@ -10193,7 +10762,9 @@
       "Bauerngang",
       "Tragen mit Kurzhanteln",
       "Farmer's Carry",
-      "Farmer's Walk"
+      "Farmers Carry",
+      "Farmer Walk",
+      "Farmer's Walk (Dumbbell)"
     ],
     "kategorie": "Bizeps",
     "familie": "tragen",
@@ -10240,7 +10811,11 @@
       "Seil-Pushdowns",
       "Rope Pushdown",
       "Triceps Pushdown - Rope Attachment",
-      "Kabeldrücken Seil"
+      "Kabeldrücken Seil",
+      "Trizepsdrücken (Seil)",
+      "Triceps Pushdown (Rope)",
+      "Rope Tricep Pushdown",
+      "Tricep Rope Pushdown"
     ],
     "kategorie": "Trizeps",
     "familie": "trizepsdruecken",
@@ -10281,7 +10856,9 @@
       "Trizepsdrücken Untergriff",
       "Reverse Pushdown",
       "Reverse Grip Triceps Pushdown",
-      "Reverse grip pushdown"
+      "Reverse grip pushdown",
+      "Trizepsdrücken Untergriff (Kabelzug)",
+      "Triceps Pushdown (Reverse Grip)"
     ],
     "kategorie": "Trizeps",
     "familie": "trizepsdruecken",
@@ -10324,7 +10901,9 @@
       "Trizepsdrücken einarmig",
       "Einarmige Pushdowns",
       "Cable One Arm Tricep Extension",
-      "Single-Arm Cable Pushdown"
+      "Single-Arm Cable Pushdown",
+      "Trizepsdrücken einarmig (Kabelzug)",
+      "Single Arm Triceps Pushdown"
     ],
     "kategorie": "Trizeps",
     "familie": "trizepsdruecken",
@@ -10366,7 +10945,10 @@
       "Overhead-Trizepsdrücken mit Seil",
       "Triceps Overhead Extension with Rope",
       "Cable Overhead Triceps Extension",
-      "Triceps extension"
+      "Triceps extension",
+      "Trizepsstrecken über Kopf (Kabelzug)",
+      "Overhead Triceps Extension (Cable)",
+      "Overhead Rope Extension"
     ],
     "kategorie": "Trizeps",
     "familie": "trizepsstrecken-ueberkopf",
@@ -10406,7 +10988,8 @@
     "synonyme": [
       "Einarmiges Trizepsstrecken am Kabel",
       "Standing Low-Pulley One-Arm Triceps Extension",
-      "Single-Arm Cable Overhead Extension"
+      "Single-Arm Cable Overhead Extension",
+      "Single Arm Overhead Triceps Extension (Cable)"
     ],
     "kategorie": "Trizeps",
     "familie": "trizepsstrecken-ueberkopf",
@@ -10449,7 +11032,9 @@
       "Nackendrücken mit Kurzhantel",
       "Seated Triceps Press",
       "Overhead Dumbbell Triceps Extension",
-      "Overhead triceps extension"
+      "Overhead triceps extension",
+      "Trizepsstrecken über Kopf (Kurzhantel)",
+      "Overhead Triceps Extension (Dumbbell)"
     ],
     "kategorie": "Trizeps",
     "familie": "trizepsstrecken-ueberkopf",
@@ -10491,7 +11076,8 @@
       "Einarmiges Trizepsstrecken über Kopf",
       "Einarmiges Nackendrücken",
       "Standing One-Arm Dumbbell Triceps Extension",
-      "Dumbbell One-Arm Triceps Extension"
+      "Dumbbell One-Arm Triceps Extension",
+      "Single Arm Overhead Triceps Extension (Dumbbell)"
     ],
     "kategorie": "Trizeps",
     "familie": "trizepsstrecken-ueberkopf",
@@ -10532,7 +11118,9 @@
       "SZ-Trizepsdrücken über Kopf",
       "French Press stehend",
       "Standing Overhead Barbell Triceps Extension",
-      "EZ-Bar Overhead Extension"
+      "EZ-Bar Overhead Extension",
+      "Trizepsstrecken über Kopf (SZ-Stange)",
+      "Overhead Triceps Extension (EZ Bar)"
     ],
     "kategorie": "Trizeps",
     "familie": "trizepsstrecken-ueberkopf",
@@ -10573,7 +11161,9 @@
       "Skull Crushers mit Langhantel",
       "Stirndrücken mit Langhantel",
       "Lying Close-Grip Barbell Triceps Extension Behind The Head",
-      "Barbell Skull Crusher"
+      "Barbell Skull Crusher",
+      "French Press (Langhantel)",
+      "Skull Crusher (Barbell)"
     ],
     "kategorie": "Trizeps",
     "familie": "french-press",
@@ -10615,7 +11205,9 @@
       "Kurzhantel-French-Press",
       "Liegendes Trizepsstrecken mit Kurzhanteln",
       "Lying Dumbbell Tricep Extension",
-      "Dumbbell Skull Crusher"
+      "Dumbbell Skull Crusher",
+      "French Press (Kurzhantel)",
+      "Skull Crusher (Dumbbell)"
     ],
     "kategorie": "Trizeps",
     "familie": "french-press",
@@ -10654,8 +11246,7 @@
     "name_de": "JM Press",
     "synonyme": [
       "JM-Press",
-      "JM-Drücken",
-      "JM Press"
+      "JM-Drücken"
     ],
     "kategorie": "Trizeps",
     "familie": "enges-bankdruecken",
@@ -10699,7 +11290,10 @@
       "Bankdrücken eng",
       "Enges Bankdrücken mit Langhantel",
       "Close-Grip Bench Press",
-      "Close-Grip Barbell Bench Press"
+      "Close-Grip Barbell Bench Press",
+      "Enges Bankdrücken (Langhantel)",
+      "Close Grip Bench Press",
+      "CGBP"
     ],
     "kategorie": "Trizeps",
     "familie": "enges-bankdruecken",
@@ -10742,7 +11336,9 @@
     "name_de": "Enges Bankdrücken an der Multipresse",
     "synonyme": [
       "Multipresse enges Bankdrücken",
-      "Smith Machine Close-Grip Bench Press"
+      "Smith Machine Close-Grip Bench Press",
+      "Enges Bankdrücken (Multipresse)",
+      "Close Grip Bench Press (Smith Machine)"
     ],
     "kategorie": "Trizeps",
     "familie": "enges-bankdruecken",
@@ -10786,7 +11382,10 @@
       "Kurzhantel-Kickbacks",
       "Trizepskickbacks",
       "Tricep Dumbbell Kickback",
-      "Dumbbell Kickback"
+      "Dumbbell Kickback",
+      "Triceps Kickback (Dumbbell)",
+      "Tricep Kickback",
+      "Trizeps Kickbacks"
     ],
     "kategorie": "Trizeps",
     "familie": "kickbacks",
@@ -10827,7 +11426,9 @@
       "Kabel-Kickbacks Trizeps",
       "Kickbacks am Kabelzug",
       "Cable Triceps Kickback",
-      "Cable Kickback"
+      "Cable Kickback",
+      "Trizeps-Kickbacks (Kabelzug)",
+      "Triceps Kickback (Cable)"
     ],
     "kategorie": "Trizeps",
     "familie": "kickbacks",
@@ -10869,7 +11470,8 @@
       "Trizepsdips an der Bank",
       "Bench Dips",
       "Bench Dip",
-      "Weighted Bench Dip"
+      "Weighted Bench Dip",
+      "Bank-Dips"
     ],
     "kategorie": "Trizeps",
     "familie": "dips",
@@ -10914,7 +11516,9 @@
       "Dips an der Maschine",
       "Trizeps-Dipmaschine",
       "Dip Machine",
-      "Seated Dip Machine"
+      "Seated Dip Machine",
+      "Dips (Maschine)",
+      "Triceps Dip (Machine)"
     ],
     "kategorie": "Trizeps",
     "familie": "dips",
@@ -10959,7 +11563,9 @@
       "Trizepsstrecken an der Maschine",
       "Trizepsstreckmaschine",
       "Machine Triceps Extension",
-      "Triceps Extension Machine"
+      "Triceps Extension Machine",
+      "Trizepsstrecken (Maschine)",
+      "Triceps Extension (Machine)"
     ],
     "kategorie": "Trizeps",
     "familie": "trizepsdruecken",
@@ -11001,7 +11607,9 @@
       "Trizeps-Liegestütze",
       "Close-Grip Push-Ups",
       "Push-Ups - Close Triceps Position",
-      "Narrow-grip push-up"
+      "Narrow-grip push-up",
+      "Close Grip Push Up",
+      "Trizepsliegestütze"
     ],
     "kategorie": "Trizeps",
     "familie": "liegestuetze",
@@ -11045,7 +11653,7 @@
       "Diamant-Liegestütze",
       "Diamond-Liegestütze",
       "Diamond Push-Up",
-      "Diamond push-up"
+      "Diamond Push Ups"
     ],
     "kategorie": "Trizeps",
     "familie": "liegestuetze",
@@ -11089,7 +11697,10 @@
       "Kniende Kabelcrunches",
       "Bauchcrunch am Kabel",
       "Cable Crunch",
-      "Rope Crunch"
+      "Rope Crunch",
+      "Crunch (Kabelzug)",
+      "Kneeling Cable Crunch",
+      "Kabelcrunch"
     ],
     "kategorie": "Bauch",
     "familie": "crunches",
@@ -11133,7 +11744,10 @@
       "Bauchcrunch an der Maschine",
       "Crunches an der Maschine",
       "Ab Crunch Machine",
-      "Ab Machine"
+      "Ab Machine",
+      "Crunch (Maschine)",
+      "Crunch Machine",
+      "Ab Crunch (Machine)"
     ],
     "kategorie": "Bauch",
     "familie": "crunches",
@@ -11175,7 +11789,8 @@
     "synonyme": [
       "Umgekehrte Crunches",
       "Beckenheben liegend",
-      "Reverse Crunch"
+      "Reverse Crunch",
+      "Umgekehrter Crunch"
     ],
     "kategorie": "Bauch",
     "familie": "reverse-crunches",
@@ -11218,7 +11833,8 @@
       "Seitliche Crunches",
       "Crunches schräg",
       "Oblique Crunches",
-      "Oblique Crunch"
+      "Oblique Crunch",
+      "Schrägcrunches"
     ],
     "kategorie": "Bauch",
     "familie": "crunches",
@@ -11260,7 +11876,8 @@
     "synonyme": [
       "Negativbank-Crunches",
       "Decline Crunches",
-      "Decline Crunch"
+      "Decline Crunch",
+      "Negativbank Crunch"
     ],
     "kategorie": "Bauch",
     "familie": "crunches",
@@ -11303,7 +11920,8 @@
       "Fahrrad-Crunches",
       "Radfahren liegend",
       "Air Bike",
-      "Bicycle Crunch"
+      "Bicycle Crunch",
+      "Fahrradcrunches"
     ],
     "kategorie": "Bauch",
     "familie": "crunches",
@@ -11346,7 +11964,9 @@
     "synonyme": [
       "Heel Touches",
       "Seitliches Fersentippen",
-      "Alternate Heel Touchers"
+      "Alternate Heel Touchers",
+      "Heel Taps",
+      "Heel Touch"
     ],
     "kategorie": "Bauch",
     "familie": "crunches",
@@ -11388,7 +12008,8 @@
       "Situps",
       "Rumpfaufrichten",
       "Sit-Up",
-      "Sit Up"
+      "Sit Up",
+      "Situp"
     ],
     "kategorie": "Bauch",
     "familie": "sit-ups",
@@ -11431,7 +12052,8 @@
     "synonyme": [
       "Negativbank-Sit-ups",
       "Decline Sit-ups",
-      "Decline Sit-Up"
+      "Decline Sit-Up",
+      "Decline Situps"
     ],
     "kategorie": "Bauch",
     "familie": "sit-ups",
@@ -11475,7 +12097,9 @@
       "V-Ups",
       "Jackknife Sit-ups",
       "Jackknife Sit-Up",
-      "Taschenmesser"
+      "Taschenmesser",
+      "V-Up",
+      "Jackknife"
     ],
     "kategorie": "Bauch",
     "familie": "sit-ups",
@@ -11518,7 +12142,9 @@
       "Side Plank",
       "Seitlicher Unterarmstütz",
       "Seitliche Planke",
-      "Side Bridge"
+      "Side Bridge",
+      "Side Planks",
+      "Seitliche Plank"
     ],
     "kategorie": "Bauch",
     "familie": "plank",
@@ -11560,8 +12186,7 @@
     "name_de": "Dead Bug",
     "synonyme": [
       "Toter Käfer",
-      "Dead Bugs",
-      "Dead Bug"
+      "Dead Bugs"
     ],
     "kategorie": "Bauch",
     "familie": "dead-bug",
@@ -11603,8 +12228,7 @@
     "name_de": "Mountain Climbers",
     "synonyme": [
       "Bergsteiger",
-      "Mountain Climber",
-      "Mountain Climbers"
+      "Mountain Climber"
     ],
     "kategorie": "Bauch",
     "familie": "plank",
@@ -11649,7 +12273,8 @@
       "Hängendes Knieheben",
       "Knieheben an der Klimmzugstange",
       "Hanging Knee Raise",
-      "Hanging Knee Raises"
+      "Hanging Knee Raises",
+      "Knieheben an der Stange"
     ],
     "kategorie": "Bauch",
     "familie": "beinheben",
@@ -11696,7 +12321,10 @@
       "Captain's Chair",
       "Roman Chair Leg Raise",
       "Knee/Hip Raise On Parallel Bars",
-      "Vertical Knee Raise"
+      "Vertical Knee Raise",
+      "Captains Chair Knee Raise",
+      "Knee Raise (Captain's Chair)",
+      "Power Tower Knee Raise"
     ],
     "kategorie": "Bauch",
     "familie": "beinheben",
@@ -11739,7 +12367,9 @@
     "synonyme": [
       "Füße zur Stange",
       "Hanging Pike",
-      "Toes-to-Bar"
+      "Toes-to-Bar",
+      "Toes 2 Bar",
+      "T2B"
     ],
     "kategorie": "Bauch",
     "familie": "beinheben",
@@ -11785,7 +12415,8 @@
       "Liegendes Beinheben",
       "Beinheben auf der Bank",
       "Lying Leg Raise",
-      "Flat Bench Lying Leg Raise"
+      "Flat Bench Lying Leg Raise",
+      "Lying Leg Raises"
     ],
     "kategorie": "Bauch",
     "familie": "beinheben",
@@ -11826,7 +12457,9 @@
     "synonyme": [
       "Sitzendes Knieanziehen",
       "Seated Leg Tucks",
-      "Seated Knee Tucks"
+      "Seated Knee Tucks",
+      "Seated Knee Raise",
+      "Knee Tucks"
     ],
     "kategorie": "Bauch",
     "familie": "beinheben",
@@ -11868,7 +12501,9 @@
       "Scissor Kicks",
       "Beinschere",
       "Scissor Kick",
-      "Flutter Kicks liegend"
+      "Flutter Kicks liegend",
+      "Flutter Kicks",
+      "Beinscheren"
     ],
     "kategorie": "Bauch",
     "familie": "beinheben",
@@ -11952,7 +12587,8 @@
       "Russian Twists mit Kurzhantel",
       "Plate Twist",
       "Weighted Russian Twist",
-      "Weighted Russian twist"
+      "Russian Twist (Hantelscheibe)",
+      "Russian Twist mit Gewicht"
     ],
     "kategorie": "Bauch",
     "familie": "russian-twists",
@@ -11997,7 +12633,11 @@
       "Holzhacker von oben",
       "Kabel-Holzhacker",
       "Standing Cable Wood Chop",
-      "Cable Woodchop"
+      "Cable Woodchop",
+      "Holzhacker",
+      "Wood Chop",
+      "Cable Wood Chop",
+      "Woodchopper (Kabelzug)"
     ],
     "kategorie": "Bauch",
     "familie": "holzhacker",
@@ -12042,7 +12682,9 @@
       "Kabel-Lift",
       "Reverse Woodchopper",
       "Standing Cable Lift",
-      "Low-to-High Cable Chop"
+      "Low-to-High Cable Chop",
+      "Holzhacker unten",
+      "Low to High Wood Chop"
     ],
     "kategorie": "Bauch",
     "familie": "holzhacker",
@@ -12086,7 +12728,8 @@
       "Pallof-Press",
       "Anti-Rotationsdrücken",
       "Pallof Press am Kabel",
-      "Pallof Press"
+      "Pallof Press (Kabelzug)",
+      "Pallof Press (Cable)"
     ],
     "kategorie": "Bauch",
     "familie": "pallof-press",
@@ -12128,6 +12771,8 @@
     "synonyme": [
       "Landmine-Rotation",
       "Landmine Twist",
+      "Landmine Rotation",
+      "Landmine 180",
       "Landmine 180's"
     ],
     "kategorie": "Bauch",
@@ -12173,7 +12818,8 @@
       "Bauchrad",
       "Ab Roller",
       "Ab-Rollout",
-      "Rollouts"
+      "Rollouts",
+      "Ab Wheel Rollout"
     ],
     "kategorie": "Bauch",
     "familie": "bauchroller",
@@ -12219,7 +12865,9 @@
       "Seitbeugen",
       "Seitneigen mit Kurzhantel",
       "Dumbbell Side Bend",
-      "Side Bends"
+      "Side Bends",
+      "Seitbeugen (Kurzhantel)",
+      "Side Bend (Dumbbell)"
     ],
     "kategorie": "Bauch",
     "familie": "seitbeugen",
@@ -12302,7 +12950,7 @@
     "synonyme": [
       "Windmühle mit Kettlebell",
       "Kettlebell-Windmühle",
-      "Kettlebell Windmill"
+      "Windmill"
     ],
     "kategorie": "Bauch",
     "familie": "kettlebell-windmill",
@@ -12349,7 +12997,10 @@
       "Radfahren am Ergometer",
       "Stationary Bike",
       "Bicycling, Stationary",
-      "Exercise Bike"
+      "Exercise Bike",
+      "Radfahren",
+      "Cycling (Stationary)",
+      "Ergometer-Fahrrad"
     ],
     "kategorie": "Cardio",
     "familie": "fahrrad",
@@ -12396,7 +13047,9 @@
       "Indoor Cycling",
       "Indoor-Bike",
       "Spin Bike",
-      "Indoor Cycling Bike"
+      "Indoor Cycling Bike",
+      "Spinbike",
+      "Spinning Bike"
     ],
     "kategorie": "Cardio",
     "familie": "fahrrad",
@@ -12442,7 +13095,9 @@
       "Sitzergometer",
       "Liegerad",
       "Recumbent Bike",
-      "Recumbent-Ergometer"
+      "Recumbent-Ergometer",
+      "Recumbent Cycling",
+      "Liegefahrrad"
     ],
     "kategorie": "Cardio",
     "familie": "fahrrad",
@@ -12487,7 +13142,8 @@
       "Airbike",
       "Luftwiderstandsrad",
       "Fan Bike",
-      "Echo Bike"
+      "Echo Bike",
+      "Assault Air Bike"
     ],
     "kategorie": "Cardio",
     "familie": "fahrrad",
@@ -12581,7 +13237,9 @@
       "Stepmill",
       "Endlostreppe",
       "Treppenlaufband",
-      "Stair Climber"
+      "Stair Climber",
+      "Treppensteigen",
+      "Stair Climbing"
     ],
     "kategorie": "Cardio",
     "familie": "treppensteigen",
@@ -12627,7 +13285,9 @@
       "Rope Skipping",
       "Rope Jumping",
       "Jump Rope",
-      "Seilhüpfen"
+      "Seilhüpfen",
+      "Seil springen",
+      "Skipping"
     ],
     "kategorie": "Cardio",
     "familie": "seilspringen",
@@ -12763,7 +13423,7 @@
       "Scheibendrücken",
       "Hantelscheiben-Drücken vor der Brust",
       "Plate Squeeze Press",
-      "Svend Press"
+      "Plate Press"
     ],
     "kategorie": "Brust",
     "familie": "svend-press",
@@ -12809,7 +13469,8 @@
       "Kampfseile",
       "Seilschwingen",
       "Battling Ropes",
-      "Battle Rope Waves"
+      "Battle Rope Waves",
+      "Battle-Ropes"
     ],
     "kategorie": "Cardio",
     "familie": "battle-ropes",
@@ -12858,7 +13519,9 @@
       "Sled Push",
       "Prowler schieben",
       "Prowler Push",
-      "Prowler Sprint"
+      "Prowler Sprint",
+      "Prowler",
+      "Schlitten drücken"
     ],
     "kategorie": "Beine",
     "familie": "schlitten",
@@ -12906,7 +13569,8 @@
       "Sled Drag",
       "Sled Pull",
       "Sled Drag - Harness",
-      "Schlitten rückwärts ziehen"
+      "Schlitten rückwärts ziehen",
+      "Schlittenzug"
     ],
     "kategorie": "Beine",
     "familie": "schlitten",
@@ -12952,7 +13616,9 @@
       "Plate Pinch",
       "Scheiben halten",
       "Pinch Grip",
-      "Griffkraft mit Hantelscheiben"
+      "Griffkraft mit Hantelscheiben",
+      "Plate Pinch Hold",
+      "Scheiben-Pinch"
     ],
     "kategorie": "Bizeps",
     "familie": "griffkraft",

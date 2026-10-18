@@ -1379,6 +1379,52 @@ void main() {
     );
   });
 
+  test('search finds a synonym regardless of case', () async {
+    final raw = File('assets/exercises/exercises_de.json').readAsStringSync();
+    final rows = jsonDecode(raw) as List;
+    var synonyms = 0;
+    for (final row in rows) {
+      synonyms += ((row as Map)['synonyme'] as List).length;
+    }
+    expect(synonyms, 1892);
+    final imported = await importExerciseCatalogJson(db, raw);
+    expect(imported.skipped, isEmpty);
+    final exercise =
+        await (db.exercises.select()
+              ..where((row) => row.catalogId.equals('ueberzuege-kabel')))
+            .getSingle();
+    expect(exercise.germanName, 'Überzüge am Kabelzug');
+    expect(exercise.aliases, contains('Straight-Arm Lat Pulldown'));
+    for (final query in ['lat pulldown', 'LAT PULLDOWN', 'Lat Pulldown']) {
+      expect(
+        exerciseMatchesQuery(
+          name: exercise.name,
+          germanName: exercise.germanName,
+          aliases: exercise.aliases,
+          query: query,
+        ),
+        isTrue,
+      );
+      expect(
+        matchesExerciseFilters(
+          name: exercise.name,
+          germanName: exercise.germanName,
+          aliases: exercise.aliases,
+          query: query,
+        ),
+        isTrue,
+      );
+    }
+    expect(
+      exerciseMatchesQuery(
+        name: exercise.name,
+        germanName: exercise.germanName,
+        query: 'lat pulldown',
+      ),
+      isFalse,
+    );
+  });
+
   test('legacy map entries can be extended and bad ones are skipped', () {
     expect(parseLegacyNameMap('{'), isEmpty);
     expect(parseLegacyNameMap('[]'), isEmpty);
