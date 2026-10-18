@@ -186,12 +186,15 @@ void main() {
       'Hammercurls',
       'Reverse Butterfly',
     ]) {
+      final position = tester.state<ScrollableState>(results).position;
+      position.jumpTo(0);
+      await tester.pump(const Duration(milliseconds: 50));
       final target = find.text(name);
-      for (var i = 0; i < 30 && target.evaluate().isEmpty; i++) {
+      for (var i = 0; i < 40 && target.evaluate().isEmpty; i++) {
         await tester.drag(results, const Offset(0, -500));
         await tester.pump(const Duration(milliseconds: 50));
       }
-      expect(target, findsWidgets);
+      expect(target, findsWidgets, reason: name);
     }
     expect(find.text('Bankdrücken'), findsNothing);
     expect(find.text('Bewegung'), findsOneWidget);

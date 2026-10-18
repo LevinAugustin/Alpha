@@ -126,6 +126,8 @@ Future<void> main() async {
         await repairLegacyCustomExercises(db);
         await alphaPrefs.load();
       } catch (error, stack) {
+        debugPrint('Exercise catalog seed failed: $error');
+        debugPrint('$stack');
         talker.error('Exercise catalog seed failed', error, stack);
       }
       unawaited(checkForAppUpdate());

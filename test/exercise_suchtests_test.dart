@@ -1,0 +1,140 @@
+import 'dart:convert';
+import 'dart:io';
+
+import 'package:flexify/database/catalog_seed.dart';
+import 'package:flutter_test/flutter_test.dart';
+
+void main() {
+  final catalog =
+      jsonDecode(File('assets/exercises/exercises_de.json').readAsStringSync())
+          as List;
+  final cases =
+      (jsonDecode(File('test/fixtures/suchtests.json').readAsStringSync())
+              as Map)['tests']
+          as List;
+
+  List<Map<String, dynamic>> rows() => [
+    for (final row in catalog) Map<String, dynamic>.from(row as Map),
+  ];
+
+  String aliasesOf(Map<String, dynamic> exercise) =>
+      (exercise['synonyme'] as List).join('|');
+
+  bool matches(Map<String, dynamic> exercise, String query) {
+    return exerciseMatchesQuery(
+      name: exercise['id'] as String,
+      germanName: exercise['name_de'] as String?,
+      aliases: aliasesOf(exercise),
+      category: exercise['kategorie'] as String?,
+      equipment: exercise['geraet'] as String?,
+      primaryMuscles: jsonEncode(exercise['primaermuskeln']),
+      secondaryMuscles: jsonEncode(exercise['sekundaermuskeln']),
+      familie: exercise['familie'] as String?,
+      grip: exercise['griff'] as String?,
+      position: exercise['position'] as String?,
+      movement: exercise['bewegung'] as String?,
+      query: query,
+    );
+  }
+
+  List<String> search(String query) {
+    final hits = [
+      for (final exercise in rows())
+        if (matches(exercise, query)) exercise,
+    ];
+    hits.sort(
+      (left, right) => compareExerciseSearch(
+        query: query,
+        leftName: left['id'] as String,
+        leftGermanName: left['name_de'] as String?,
+        leftAliases: aliasesOf(left),
+        rightName: right['id'] as String,
+        rightGermanName: right['name_de'] as String?,
+        rightAliases: aliasesOf(right),
+      ),
+    );
+    return [for (final hit in hits) hit['id'] as String];
+  }
+
+  List<String> exact(String query) {
+    final hits = [
+      for (final exercise in rows())
+        if (exerciseExactNameOrAlias(
+          name: exercise['id'] as String,
+          germanName: exercise['name_de'] as String?,
+          aliases: aliasesOf(exercise),
+          query: query,
+        ))
+          exercise,
+    ];
+    hits.sort(
+      (left, right) => compareExerciseSearch(
+        query: query,
+        leftName: left['id'] as String,
+        leftGermanName: left['name_de'] as String?,
+        leftAliases: aliasesOf(left),
+        rightName: right['id'] as String,
+        rightGermanName: right['name_de'] as String?,
+        rightAliases: aliasesOf(right),
+      ),
+    );
+    return [for (final hit in hits) hit['id'] as String];
+  }
+
+  test('suchtests.json matches the 2.5.1 search spec', () {
+    expect(cases, hasLength(47));
+    for (final raw in cases) {
+      final item = Map<String, dynamic>.from(raw as Map);
+      final query = item['suchbegriff'] as String;
+      final hits = search(query);
+      final must = [
+        for (final id in item['muss_enthalten'] as List) id as String,
+      ];
+      final banned = [
+        for (final id in (item['darf_nicht_enthalten'] as List?) ?? const [])
+          id as String,
+      ];
+      expect(hits, containsAll(must), reason: query);
+      for (final id in banned) {
+        expect(hits.contains(id), isFalse, reason: '$query / $id');
+      }
+      if (item['darf_nicht_leer'] != false) {
+        expect(hits, isNotEmpty, reason: query);
+      }
+      final minimum = item['min_treffer'];
+      if (minimum is int) {
+        expect(hits.length, greaterThanOrEqualTo(minimum), reason: query);
+      }
+      final first = item['erster'];
+      if (first is String) expect(hits.first, first, reason: query);
+    }
+  });
+
+  test('hevy matching is a normalized exact name or synonym', () {
+    expect(exact('Lat Pulldown'), ['latziehen-breit']);
+    expect(exact('Lat Pulldown extra'), isEmpty);
+    expect(exact('Hüftabduktion'), ['abduktorenmaschine', 'abduktion-kabel']);
+    expect(exact('Trizepsdrücken (Maschine)'), [
+      'dipmaschine',
+      'trizepsmaschine',
+    ]);
+    expect(
+      exerciseExactNameOrAlias(
+        name: 'latziehen-breit',
+        germanName: 'Latziehen',
+        aliases: 'Lat Pulldown|Latzug',
+        query: 'breit',
+      ),
+      isFalse,
+    );
+    expect(
+      exerciseMatchesQuery(
+        name: 'latziehen-breit',
+        germanName: 'Latziehen',
+        aliases: 'Lat Pulldown|Latzug',
+        query: 'breit',
+      ),
+      isTrue,
+    );
+  });
+}

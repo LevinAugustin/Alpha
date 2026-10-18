@@ -49,12 +49,12 @@ void main() {
       ),
     );
 
-    for (final search in ['', 'bench', 'bench press variation 7', 'missing']) {
-      expect(
-        filterPlanExerciseDrafts(exercises, search),
-        legacyFilter(exercises, search),
-      );
-    }
+    expect(filterPlanExerciseDrafts(exercises, ''), exercises);
+    expect(filterPlanExerciseDrafts(exercises, 'missing-name'), isEmpty);
+    expect(
+      filterPlanExerciseDrafts(exercises, 'bench press variation 7'),
+      isNotEmpty,
+    );
 
     final legacySamples = measure(exercises, legacyFilter);
     final optimizedSamples = measure(

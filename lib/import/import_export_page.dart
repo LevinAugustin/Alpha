@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:drift/drift.dart' hide Column;
 import 'package:file_picker/file_picker.dart';
 import 'package:flexify/exercises/custom_exercise_page.dart';
+import 'package:flexify/database/catalog_seed.dart';
 import 'package:flexify/database/database.dart';
 import 'package:flexify/database/exercise_set_repository.dart';
 import 'package:flexify/import/hevy_import.dart';
@@ -436,19 +437,29 @@ class _ImportPreviewPageState extends State<ImportPreviewPage> {
     if (forced != null) {
       return _exercises.where((exercise) => exercise.id == forced).firstOrNull;
     }
-    for (final exercise in _exercises) {
-      final aliasHit = (exercise.aliases ?? '')
-          .toLowerCase()
-          .split('|')
-          .map((part) => part.trim())
-          .contains(name.toLowerCase());
-      if (exercise.name.toLowerCase() == name.toLowerCase() ||
-          (exercise.germanName ?? '').toLowerCase() == name.toLowerCase() ||
-          aliasHit) {
-        return exercise;
-      }
-    }
-    return null;
+    final hits = [
+      for (final exercise in _exercises)
+        if (exerciseExactNameOrAlias(
+          name: exercise.name,
+          germanName: exercise.germanName,
+          aliases: exercise.aliases,
+          query: name,
+        ))
+          exercise,
+    ];
+    if (hits.isEmpty) return null;
+    hits.sort(
+      (left, right) => compareExerciseSearch(
+        query: name,
+        leftName: left.name,
+        leftGermanName: left.germanName,
+        leftAliases: left.aliases,
+        rightName: right.name,
+        rightGermanName: right.germanName,
+        rightAliases: right.aliases,
+      ),
+    );
+    return hits.first;
   }
 
   Exercise? _cachedMatch(String name) {

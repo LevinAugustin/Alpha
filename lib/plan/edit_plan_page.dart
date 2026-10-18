@@ -48,6 +48,17 @@ class _EditPlanPageState extends State<EditPlanPage> {
       _exercises.add(
         PlanExerciseDraft(
           exerciseName: exercise.name,
+          germanName: exercise.germanName ?? '',
+          aliases: exercise.aliases ?? '',
+          muscle: exercise.muscle ?? '',
+          category: exercise.categoryName ?? '',
+          equipment: exercise.equipment ?? '',
+          primaryMuscles: exercise.primaryMuscles ?? '',
+          secondaryMuscles: exercise.secondaryMuscles ?? '',
+          familie: exercise.familie ?? '',
+          grip: exercise.griff ?? '',
+          position: exercise.position ?? '',
+          movement: exercise.bewegung ?? '',
           planExercise: PlanExercisesCompanion(
             exerciseId: Value(exercise.id),
             enabled: const Value(true),

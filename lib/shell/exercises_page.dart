@@ -192,6 +192,7 @@ class _ExercisesPageState extends State<ExercisesPage> {
                       secondaryMuscles: exercise.secondaryMuscles,
                       grip: exercise.griff,
                       position: exercise.position,
+                      familie: exercise.familie,
                       movement: exercise.bewegung,
                       query: query,
                       group: _muscle,

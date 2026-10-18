@@ -1,0 +1,668 @@
+{
+  "_meta": {
+    "beschreibung": "Suchtests 2.5.1 für die Übungssuche. muss_enthalten aus den Datenfeldern berechnet (gen_suchtests.py); erster = erwarteter erster Treffer nach Ranking-Vorschlag; darf_nicht_enthalten = darf nicht in der Trefferliste stehen.",
+    "db": "exercises_de_2.5.1.json",
+    "anzahl": 47,
+    "referenz": "suchtest.py"
+  },
+  "tests": [
+    {
+      "suchbegriff": "bizeps kabel",
+      "muss_enthalten": [
+        "bizepscurls-kabel",
+        "bizepscurls-kabel-einarmig",
+        "bayesian-curls",
+        "bizepscurls-kabel-oben",
+        "hammercurls-seil",
+        "reverse-curls-kabel"
+      ],
+      "darf_nicht_leer": true,
+      "kriterium": "kategorie Bizeps UND geraet Kabelzug",
+      "min_treffer": 6,
+      "darf_nicht_enthalten": [
+        "trizepsdruecken-kabel",
+        "bizepscurls-langhantel"
+      ]
+    },
+    {
+      "suchbegriff": "Bizeps Kabel",
+      "muss_enthalten": [
+        "bizepscurls-kabel",
+        "bizepscurls-kabel-einarmig",
+        "bayesian-curls",
+        "bizepscurls-kabel-oben",
+        "hammercurls-seil",
+        "reverse-curls-kabel"
+      ],
+      "darf_nicht_leer": true,
+      "kriterium": "kategorie Bizeps UND geraet Kabelzug",
+      "min_treffer": 6,
+      "darf_nicht_enthalten": [
+        "trizepsdruecken-kabel",
+        "bizepscurls-langhantel"
+      ]
+    },
+    {
+      "suchbegriff": "kabel bizeps",
+      "muss_enthalten": [
+        "bizepscurls-kabel",
+        "bizepscurls-kabel-einarmig",
+        "bayesian-curls",
+        "bizepscurls-kabel-oben",
+        "hammercurls-seil",
+        "reverse-curls-kabel"
+      ],
+      "darf_nicht_leer": true,
+      "kriterium": "kategorie Bizeps UND geraet Kabelzug",
+      "min_treffer": 6,
+      "darf_nicht_enthalten": [
+        "trizepsdruecken-kabel",
+        "bizepscurls-langhantel"
+      ]
+    },
+    {
+      "suchbegriff": "lat pulldown",
+      "muss_enthalten": [
+        "latziehen-breit"
+      ],
+      "darf_nicht_leer": true,
+      "kriterium": "Synonym „Lat Pulldown“ (nur bei latziehen-breit, build_db-Regel)",
+      "erster": "latziehen-breit",
+      "darf_nicht_enthalten": [
+        "seitheben-kurzhantel"
+      ]
+    },
+    {
+      "suchbegriff": "Lat Pulldown",
+      "muss_enthalten": [
+        "latziehen-breit"
+      ],
+      "darf_nicht_leer": true,
+      "kriterium": "Synonym „Lat Pulldown“ (nur bei latziehen-breit, build_db-Regel)",
+      "erster": "latziehen-breit",
+      "darf_nicht_enthalten": [
+        "seitheben-kurzhantel"
+      ]
+    },
+    {
+      "suchbegriff": "latziehen",
+      "muss_enthalten": [
+        "latziehen-breit",
+        "latziehen-eng",
+        "latziehen-untergriff",
+        "latziehen-nacken",
+        "latziehen-einarmig",
+        "latziehen-maschine"
+      ],
+      "darf_nicht_leer": true,
+      "kriterium": "name_de enthält „Latziehen“",
+      "erster": "latziehen-breit"
+    },
+    {
+      "suchbegriff": "rudern v-griff",
+      "muss_enthalten": [
+        "rudern-kabel-sitzend"
+      ],
+      "darf_nicht_leer": true,
+      "kriterium": "Rudern am Kabel mit V-Griff (griff neutral, kabel_aufbau kabel_vgriff)",
+      "erster": "rudern-kabel-sitzend"
+    },
+    {
+      "suchbegriff": "Sitzendes Rudern V-Griff",
+      "muss_enthalten": [
+        "rudern-kabel-sitzend"
+      ],
+      "darf_nicht_leer": true,
+      "kriterium": "Rudern am Kabel mit V-Griff (griff neutral, kabel_aufbau kabel_vgriff)",
+      "erster": "rudern-kabel-sitzend"
+    },
+    {
+      "suchbegriff": "Rudern sitzend V-Griff",
+      "muss_enthalten": [
+        "rudern-kabel-sitzend"
+      ],
+      "darf_nicht_leer": true,
+      "kriterium": "Rudern am Kabel mit V-Griff (griff neutral, kabel_aufbau kabel_vgriff)",
+      "erster": "rudern-kabel-sitzend"
+    },
+    {
+      "suchbegriff": "Seated Cable Row - V Grip (Cable)",
+      "muss_enthalten": [
+        "rudern-kabel-sitzend"
+      ],
+      "darf_nicht_leer": true,
+      "kriterium": "Rudern am Kabel mit V-Griff (griff neutral, kabel_aufbau kabel_vgriff)",
+      "erster": "rudern-kabel-sitzend"
+    },
+    {
+      "suchbegriff": "brust maschine",
+      "muss_enthalten": [
+        "butterfly-maschine",
+        "brustpresse-maschine",
+        "schraegbankdruecken-maschine",
+        "negativbankdruecken-maschine"
+      ],
+      "darf_nicht_leer": true,
+      "kriterium": "kategorie Brust UND geraet Maschine"
+    },
+    {
+      "suchbegriff": "trizeps seil",
+      "muss_enthalten": [
+        "trizepsdruecken-seil",
+        "trizepsstrecken-kabel-ueberkopf"
+      ],
+      "darf_nicht_leer": true,
+      "kriterium": "kategorie Trizeps UND kabel_aufbau griff kabel_seil (kickbacks-kabel/Einhand-Seil erst mit der offenen Ausführungsänderung)"
+    },
+    {
+      "suchbegriff": "schulter kurzhantel",
+      "muss_enthalten": [
+        "seitheben-kurzhantel",
+        "schulterdruecken-kurzhantel",
+        "schulterdruecken-kurzhantel-stehend",
+        "schulterdruecken-kurzhantel-neutral",
+        "schulterdruecken-kurzhantel-einarmig",
+        "arnold-press",
+        "seitheben-sitzend",
+        "seitheben-einarmig",
+        "frontheben-kurzhantel",
+        "reverse-flys-kurzhantel-vorgebeugt",
+        "reverse-flys-kurzhantel-sitzend",
+        "reverse-flys-schraegbank",
+        "aufrechtes-rudern-kurzhantel",
+        "aussenrotation-kurzhantel",
+        "cuban-press"
+      ],
+      "darf_nicht_leer": true,
+      "kriterium": "kategorie Schultern UND geraet Kurzhantel"
+    },
+    {
+      "suchbegriff": "beinpresse",
+      "muss_enthalten": [
+        "beinpresse",
+        "beinpresse-eng",
+        "beinpresse-einbeinig",
+        "beinpresse-horizontal",
+        "wadenheben-beinpresse"
+      ],
+      "darf_nicht_leer": true,
+      "kriterium": "name_de enthält „Beinpresse“",
+      "erster": "beinpresse"
+    },
+    {
+      "suchbegriff": "kniebeuge",
+      "muss_enthalten": [
+        "kniebeuge-langhantel",
+        "frontkniebeuge",
+        "kniebeuge-multipresse",
+        "kniebeuge-kurzhantel",
+        "sumo-kniebeuge-kurzhantel",
+        "box-kniebeuge",
+        "kniebeuge-koerpergewicht",
+        "hackenschmidt",
+        "sprungkniebeugen"
+      ],
+      "darf_nicht_leer": true,
+      "kriterium": "name_de enthält „Kniebeuge“",
+      "erster": "kniebeuge-langhantel"
+    },
+    {
+      "suchbegriff": "squat",
+      "muss_enthalten": [
+        "kniebeuge-langhantel",
+        "turkish-get-up",
+        "frontkniebeuge",
+        "kniebeuge-multipresse",
+        "goblet-squat",
+        "kniebeuge-kurzhantel",
+        "sumo-kniebeuge-kurzhantel",
+        "box-kniebeuge",
+        "kniebeuge-koerpergewicht",
+        "hackenschmidt",
+        "sissy-squat",
+        "pistol-squat",
+        "ausfallschritte-multipresse",
+        "ausfallschritte-seitlich",
+        "bulgarische-split-squats-kurzhantel",
+        "bulgarische-split-squats-langhantel",
+        "bulgarische-split-squats-multipresse",
+        "sprungkniebeugen"
+      ],
+      "darf_nicht_leer": true,
+      "kriterium": "name_de/Synonym enthält „squat“"
+    },
+    {
+      "suchbegriff": "bankdruecken",
+      "muss_enthalten": [
+        "bankdruecken-langhantel",
+        "schraegbankdruecken-multipresse",
+        "schraegbankdruecken-kurzhantel",
+        "bankdruecken-breit",
+        "bankdruecken-kurzhantel",
+        "bankdruecken-kurzhantel-neutral",
+        "bankdruecken-kurzhantel-einarmig",
+        "bankdruecken-multipresse",
+        "schraegbankdruecken-langhantel",
+        "schraegbankdruecken-kurzhantel-neutral",
+        "schraegbankdruecken-maschine",
+        "negativbankdruecken-langhantel",
+        "negativbankdruecken-kurzhantel",
+        "negativbankdruecken-multipresse",
+        "negativbankdruecken-maschine",
+        "enges-bankdruecken",
+        "enges-bankdruecken-multipresse"
+      ],
+      "darf_nicht_leer": true,
+      "kriterium": "name_de enthält „Bankdrücken“ (ü = ue)",
+      "erster": "bankdruecken-langhantel"
+    },
+    {
+      "suchbegriff": "bankdrücken",
+      "muss_enthalten": [
+        "bankdruecken-langhantel",
+        "schraegbankdruecken-multipresse",
+        "schraegbankdruecken-kurzhantel",
+        "bankdruecken-breit",
+        "bankdruecken-kurzhantel",
+        "bankdruecken-kurzhantel-neutral",
+        "bankdruecken-kurzhantel-einarmig",
+        "bankdruecken-multipresse",
+        "schraegbankdruecken-langhantel",
+        "schraegbankdruecken-kurzhantel-neutral",
+        "schraegbankdruecken-maschine",
+        "negativbankdruecken-langhantel",
+        "negativbankdruecken-kurzhantel",
+        "negativbankdruecken-multipresse",
+        "negativbankdruecken-maschine",
+        "enges-bankdruecken",
+        "enges-bankdruecken-multipresse"
+      ],
+      "darf_nicht_leer": true,
+      "kriterium": "name_de enthält „Bankdrücken“ (ü = ue)",
+      "erster": "bankdruecken-langhantel"
+    },
+    {
+      "suchbegriff": "multipresse",
+      "muss_enthalten": [
+        "schraegbankdruecken-multipresse",
+        "schulterdruecken-multipresse",
+        "bankdruecken-multipresse",
+        "negativbankdruecken-multipresse",
+        "rudern-multipresse",
+        "shrugs-multipresse",
+        "aufrechtes-rudern-multipresse",
+        "kniebeuge-multipresse",
+        "ausfallschritte-multipresse",
+        "bulgarische-split-squats-multipresse",
+        "rumaenisches-kreuzheben-multipresse",
+        "hip-thrust-multipresse",
+        "wadenheben-multipresse",
+        "enges-bankdruecken-multipresse"
+      ],
+      "darf_nicht_leer": true,
+      "kriterium": "geraet Multipresse",
+      "min_treffer": 14
+    },
+    {
+      "suchbegriff": "smith machine",
+      "muss_enthalten": [
+        "schraegbankdruecken-multipresse",
+        "schulterdruecken-multipresse",
+        "bankdruecken-multipresse",
+        "negativbankdruecken-multipresse",
+        "rudern-multipresse",
+        "shrugs-multipresse",
+        "aufrechtes-rudern-multipresse",
+        "kniebeuge-multipresse",
+        "ausfallschritte-multipresse",
+        "bulgarische-split-squats-multipresse",
+        "rumaenisches-kreuzheben-multipresse",
+        "hip-thrust-multipresse",
+        "wadenheben-multipresse",
+        "enges-bankdruecken-multipresse"
+      ],
+      "darf_nicht_leer": true,
+      "kriterium": "geraet Multipresse (alle 14 haben ein Smith-Synonym)",
+      "min_treffer": 14
+    },
+    {
+      "suchbegriff": "kabelzug",
+      "muss_enthalten": [
+        "kabelzug-crossover",
+        "latziehen-breit",
+        "rudern-kabel-sitzend",
+        "face-pulls",
+        "trizepsdruecken-kabel",
+        "brustpresse-kabel-stehend",
+        "fliegende-kabel-flachbank",
+        "fliegende-kabel-schraeg",
+        "cable-crossover-unten",
+        "cable-crossover-einarmig",
+        "latziehen-eng",
+        "latziehen-untergriff",
+        "latziehen-nacken",
+        "latziehen-einarmig",
+        "ueberzuege-kabel",
+        "rudern-kabel-einarmig",
+        "rudern-kabel-breit",
+        "shrugs-kabel",
+        "schulterdruecken-kabel",
+        "seitheben-kabel-einarmig",
+        "seitheben-kabel",
+        "frontheben-kabel",
+        "reverse-flys-kabel",
+        "aufrechtes-rudern-kabel",
+        "aussenrotation-kabel",
+        "innenrotation-kabel",
+        "kabel-pull-through",
+        "glute-kickback-kabel",
+        "adduktion-kabel",
+        "abduktion-kabel",
+        "bizepscurls-kabel",
+        "bizepscurls-kabel-einarmig",
+        "bayesian-curls",
+        "bizepscurls-kabel-oben",
+        "hammercurls-seil",
+        "reverse-curls-kabel",
+        "trizepsdruecken-seil",
+        "trizepsdruecken-untergriff",
+        "trizepsdruecken-einarmig",
+        "trizepsstrecken-kabel-ueberkopf",
+        "trizepsstrecken-kabel-einarmig",
+        "kickbacks-kabel",
+        "crunches-kabel",
+        "holzhacker-kabel",
+        "holzhacker-kabel-unten",
+        "pallof-press"
+      ],
+      "darf_nicht_leer": true,
+      "kriterium": "geraet Kabelzug",
+      "min_treffer": 46
+    },
+    {
+      "suchbegriff": "kabel",
+      "muss_enthalten": [
+        "kabelzug-crossover",
+        "latziehen-breit",
+        "rudern-kabel-sitzend",
+        "face-pulls",
+        "trizepsdruecken-kabel",
+        "brustpresse-kabel-stehend",
+        "fliegende-kabel-flachbank",
+        "fliegende-kabel-schraeg",
+        "cable-crossover-unten",
+        "cable-crossover-einarmig",
+        "latziehen-eng",
+        "latziehen-untergriff",
+        "latziehen-nacken",
+        "latziehen-einarmig",
+        "ueberzuege-kabel",
+        "rudern-kabel-einarmig",
+        "rudern-kabel-breit",
+        "shrugs-kabel",
+        "schulterdruecken-kabel",
+        "seitheben-kabel-einarmig",
+        "seitheben-kabel",
+        "frontheben-kabel",
+        "reverse-flys-kabel",
+        "aufrechtes-rudern-kabel",
+        "aussenrotation-kabel",
+        "innenrotation-kabel",
+        "kabel-pull-through",
+        "glute-kickback-kabel",
+        "adduktion-kabel",
+        "abduktion-kabel",
+        "bizepscurls-kabel",
+        "bizepscurls-kabel-einarmig",
+        "bayesian-curls",
+        "bizepscurls-kabel-oben",
+        "hammercurls-seil",
+        "reverse-curls-kabel",
+        "trizepsdruecken-seil",
+        "trizepsdruecken-untergriff",
+        "trizepsdruecken-einarmig",
+        "trizepsstrecken-kabel-ueberkopf",
+        "trizepsstrecken-kabel-einarmig",
+        "kickbacks-kabel",
+        "crunches-kabel",
+        "holzhacker-kabel",
+        "holzhacker-kabel-unten",
+        "pallof-press"
+      ],
+      "darf_nicht_leer": true,
+      "kriterium": "geraet Kabelzug („Kabel“ als Wortteil von „Kabelzug“)",
+      "min_treffer": 46
+    },
+    {
+      "suchbegriff": "reverse curl kabel",
+      "muss_enthalten": [
+        "reverse-curls-kabel"
+      ],
+      "darf_nicht_leer": true,
+      "kriterium": "neue Übung 2.5.1",
+      "erster": "reverse-curls-kabel",
+      "darf_nicht_enthalten": [
+        "reverse-curls"
+      ]
+    },
+    {
+      "suchbegriff": "reverse curl",
+      "muss_enthalten": [
+        "reverse-curls",
+        "reverse-curls-kabel"
+      ],
+      "darf_nicht_leer": true,
+      "kriterium": "familie reverse-curls (Langhantel + Kabel)"
+    },
+    {
+      "suchbegriff": "curls obergriff kabel",
+      "muss_enthalten": [
+        "reverse-curls-kabel"
+      ],
+      "darf_nicht_leer": true,
+      "kriterium": "neue Übung 2.5.1 (Obergriff + Kabelzug)"
+    },
+    {
+      "suchbegriff": "Reverse Curl (Cable)",
+      "muss_enthalten": [
+        "reverse-curls-kabel"
+      ],
+      "darf_nicht_leer": true,
+      "kriterium": "Hevy-Name, neue Übung 2.5.1",
+      "erster": "reverse-curls-kabel"
+    },
+    {
+      "suchbegriff": "Umgekehrter Curl (Kabel)",
+      "muss_enthalten": [
+        "reverse-curls-kabel"
+      ],
+      "darf_nicht_leer": true,
+      "kriterium": "Hevy-Name (exakt als Synonym)",
+      "quelle": "Hevy-Export Levin"
+    },
+    {
+      "suchbegriff": "Bizepscurl im Obergriff (Kabelzug)",
+      "muss_enthalten": [
+        "reverse-curls-kabel"
+      ],
+      "darf_nicht_leer": true,
+      "kriterium": "Hevy-Name (exakt als Synonym)",
+      "quelle": "Hevy-Export Levin"
+    },
+    {
+      "suchbegriff": "Sitzendes Rudern am Kabelzug - V-Griff (Kabel)",
+      "muss_enthalten": [
+        "rudern-kabel-sitzend"
+      ],
+      "darf_nicht_leer": true,
+      "kriterium": "Hevy-Name (exakt als Synonym)",
+      "quelle": "Hevy-Export Levin"
+    },
+    {
+      "suchbegriff": "Latzug (Kabel)",
+      "muss_enthalten": [
+        "latziehen-breit"
+      ],
+      "darf_nicht_leer": true,
+      "kriterium": "Hevy-Name (exakt als Synonym), zufällig gezogen (Seed 251)",
+      "quelle": "Hevy-Export Levin"
+    },
+    {
+      "suchbegriff": "Trizeps-Pushdown (Kabelzug)",
+      "muss_enthalten": [
+        "trizepsdruecken-kabel",
+        "trizepsdruecken-seil"
+      ],
+      "darf_nicht_leer": true,
+      "kriterium": "Hevy-Name (exakt als Synonym), zufällig gezogen (Seed 251)",
+      "quelle": "Hevy-Export Levin"
+    },
+    {
+      "suchbegriff": "Hüftadduktion",
+      "muss_enthalten": [
+        "adduktorenmaschine",
+        "adduktion-kabel"
+      ],
+      "darf_nicht_leer": true,
+      "kriterium": "Hevy-Name (exakt als Synonym), zufällig gezogen (Seed 251)",
+      "quelle": "Hevy-Export Levin"
+    },
+    {
+      "suchbegriff": "Trizepsdrücken mit dem Seil",
+      "muss_enthalten": [
+        "trizepsdruecken-seil"
+      ],
+      "darf_nicht_leer": true,
+      "kriterium": "Hevy-Name (exakt als Synonym), zufällig gezogen (Seed 251)",
+      "quelle": "Hevy-Export Levin"
+    },
+    {
+      "suchbegriff": "Schrägbankdrücken (Smith Machine)",
+      "muss_enthalten": [
+        "schraegbankdruecken-multipresse"
+      ],
+      "darf_nicht_leer": true,
+      "kriterium": "Hevy-Name (exakt als Synonym), zufällig gezogen (Seed 251)",
+      "quelle": "Hevy-Export Levin"
+    },
+    {
+      "suchbegriff": "Seitheben (Maschine)",
+      "muss_enthalten": [
+        "seitheben-maschine"
+      ],
+      "darf_nicht_leer": true,
+      "kriterium": "Hevy-Name (exakt als Synonym), zufällig gezogen (Seed 251)",
+      "quelle": "Hevy-Export Levin"
+    },
+    {
+      "suchbegriff": "Latzug (Kabelzug)",
+      "muss_enthalten": [
+        "latziehen-breit"
+      ],
+      "darf_nicht_leer": true,
+      "kriterium": "Hevy-Name (exakt als Synonym), zufällig gezogen (Seed 251)",
+      "quelle": "Hevy-Export Levin"
+    },
+    {
+      "suchbegriff": "Fliegende (Maschine)",
+      "muss_enthalten": [
+        "butterfly-maschine"
+      ],
+      "darf_nicht_leer": true,
+      "kriterium": "Hevy-Name (exakt als Synonym), zufällig gezogen (Seed 251)",
+      "quelle": "Hevy-Export Levin"
+    },
+    {
+      "suchbegriff": "Iso-Laterales Rudern",
+      "muss_enthalten": [
+        "rudern-maschine"
+      ],
+      "darf_nicht_leer": true,
+      "kriterium": "Hevy-Name (exakt als Synonym), zufällig gezogen (Seed 251)",
+      "quelle": "Hevy-Export Levin"
+    },
+    {
+      "suchbegriff": "Liegendes Beinbeugen (Maschine)",
+      "muss_enthalten": [
+        "beinbeuger-liegend"
+      ],
+      "darf_nicht_leer": true,
+      "kriterium": "Hevy-Name (exakt als Synonym), zufällig gezogen (Seed 251)",
+      "quelle": "Hevy-Export Levin"
+    },
+    {
+      "suchbegriff": "Bizepscurl (Kabel)",
+      "muss_enthalten": [
+        "bizepscurls-kabel"
+      ],
+      "darf_nicht_leer": true,
+      "kriterium": "Hevy-Name (exakt als Synonym), zufällig gezogen (Seed 251)",
+      "quelle": "Hevy-Export Levin"
+    },
+    {
+      "suchbegriff": "Gerader Lat-Pulldown (Kabel)",
+      "muss_enthalten": [
+        "ueberzuege-kabel"
+      ],
+      "darf_nicht_leer": true,
+      "kriterium": "Hevy-Name (exakt als Synonym), zufällig gezogen (Seed 251)",
+      "quelle": "Hevy-Export Levin"
+    },
+    {
+      "suchbegriff": "Cable Crossovers",
+      "muss_enthalten": [
+        "kabelzug-crossover"
+      ],
+      "darf_nicht_leer": true,
+      "kriterium": "Hevy-Name (exakt als Synonym), zufällig gezogen (Seed 251)",
+      "quelle": "Hevy-Export Levin"
+    },
+    {
+      "suchbegriff": "Trizepsdrücken im sitzen",
+      "muss_enthalten": [
+        "dipmaschine",
+        "trizepsmaschine"
+      ],
+      "darf_nicht_leer": true,
+      "kriterium": "Hevy-Name (exakt als Synonym), zufällig gezogen (Seed 251)",
+      "quelle": "Hevy-Export Levin"
+    },
+    {
+      "suchbegriff": "Hüftadduktion (Maschine)",
+      "muss_enthalten": [
+        "adduktorenmaschine"
+      ],
+      "darf_nicht_leer": true,
+      "kriterium": "Hevy-Name (exakt als Synonym), zufällig gezogen (Seed 251)",
+      "quelle": "Hevy-Export Levin"
+    },
+    {
+      "suchbegriff": "Trizepsdrücken (Maschine)",
+      "muss_enthalten": [
+        "dipmaschine",
+        "trizepsmaschine"
+      ],
+      "darf_nicht_leer": true,
+      "kriterium": "Hevy-Name (exakt als Synonym), zufällig gezogen (Seed 251)",
+      "quelle": "Hevy-Export Levin"
+    },
+    {
+      "suchbegriff": "Pulldown mit gestreckten Armen (Kabelzug)",
+      "muss_enthalten": [
+        "ueberzuege-kabel"
+      ],
+      "darf_nicht_leer": true,
+      "kriterium": "Hevy-Name (exakt als Synonym), zufällig gezogen (Seed 251)",
+      "quelle": "Hevy-Export Levin"
+    },
+    {
+      "suchbegriff": "Brustgestütztes T-Bar Rudern",
+      "muss_enthalten": [
+        "t-bar-rudern-maschine"
+      ],
+      "darf_nicht_leer": true,
+      "kriterium": "Hevy-Name (exakt als Synonym), zufällig gezogen (Seed 251)",
+      "quelle": "Hevy-Export Levin"
+    }
+  ]
+}

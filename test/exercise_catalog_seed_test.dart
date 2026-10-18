@@ -34,7 +34,7 @@ void main() {
     ).readAsStringSync();
     final parsed = parseExerciseCatalog(raw);
     expect(parsed.skipped, isEmpty);
-    expect(parsed.entries, hasLength(294));
+    expect(parsed.entries, hasLength(295));
     expect(parsed.entries.first.imageSource, isEmpty);
     expect(parsed.entries.first.imageLicense, isEmpty);
     expect(parsed.entries.last.id, 'scheiben-pinch');
@@ -147,7 +147,7 @@ void main() {
       legacyMapRaw: legacyMap,
     );
     expect(first.skipped, isEmpty);
-    expect(first.inserted, 274);
+    expect(first.inserted, 275);
     expect(first.updated, 20);
     expect(first.merged, 3);
 
@@ -334,7 +334,7 @@ void main() {
     expect(second.inserted, 0);
     expect(second.updated, 0);
     expect(second.merged, 0);
-    expect(second.unchanged, 294);
+    expect(second.unchanged, 295);
 
     final changed = raw.replaceFirst('Bankdrücken', 'Bankdrücken geändert');
     final third = await importExerciseCatalogJson(
@@ -659,7 +659,7 @@ void main() {
     'null mechanik from the probe is stored and stays out of search',
     () async {
       final rows = _probeRows();
-      expect(rows, hasLength(294));
+      expect(rows, hasLength(295));
       expect(rows.every((row) => !row.containsKey('schulter_risiko')), isTrue);
       expect(rows.any((row) => row.containsKey('alternativen')), isTrue);
       expect(
@@ -871,7 +871,13 @@ void main() {
       final catalogIds = _probeRows().map((row) => row['id']).toSet();
       final rawMap = jsonDecode(mapping) as Map;
       expect(rawMap.length, 294);
-      expect(catalogIds, rawMap.keys.toSet());
+      expect(catalogIds.length, 295);
+      expect(
+        catalogIds.whereType<String>().toSet().difference(
+          rawMap.keys.cast<String>().toSet(),
+        ),
+        {'reverse-curls-kabel'},
+      );
       expect(map.length, 275);
       final suggestions = parseFlexifySuggestions(mapping);
       expect(suggestions, hasLength(100));
@@ -1390,7 +1396,7 @@ void main() {
     for (final row in decoded) {
       synonyms += ((row as Map)['synonyme'] as List).length;
     }
-    expect(synonyms, 2248);
+    expect(synonyms, 2327);
     final imported = await importExerciseCatalogJson(db, raw);
     expect(imported.skipped, isEmpty);
     final rows = await db.exercises.select().get();
@@ -1405,6 +1411,13 @@ void main() {
                   aliases: exercise.aliases,
                   movement: exercise.bewegung,
                   category: exercise.categoryName,
+                  equipment: exercise.equipment,
+                  muscle: exercise.muscle,
+                  primaryMuscles: exercise.primaryMuscles,
+                  secondaryMuscles: exercise.secondaryMuscles,
+                  familie: exercise.familie,
+                  grip: exercise.griff,
+                  position: exercise.position,
                   query: query,
                 ),
               )
@@ -1487,7 +1500,60 @@ void main() {
       ),
       lessThan(0),
     );
-    expect(exerciseSearchRank(name: 'Überzüge', query: 'uberzuge'), 1);
+    expect(exerciseSearchRank(name: 'Überzüge', query: 'ueberzuege'), 1);
+  });
+
+  test('import fills aliases and keeps attached sets', () async {
+    final raw = File('assets/exercises/exercises_de.json').readAsStringSync();
+    final frozen =
+        jsonDecode(
+              File('test/fixtures/eingefroren_2.5.1.json').readAsStringSync(),
+            )
+            as Map;
+    final frozenIds = [for (final id in frozen['ids'] as List) id as String];
+    final parsed = parseExerciseCatalog(raw);
+    expect(parsed.skipped, isEmpty);
+    expect(parsed.entries.map((entry) => entry.id), containsAll(frozenIds));
+    expect(
+      parsed.entries.map((entry) => entry.id),
+      contains('reverse-curls-kabel'),
+    );
+    final imported = await importExerciseCatalogJson(db, raw);
+    expect(imported.skipped, isEmpty);
+    expect(imported.inserted + imported.updated + imported.unchanged, 295);
+    final lat =
+        await (db.exercises.select()
+              ..where((row) => row.catalogId.equals('latziehen-breit')))
+            .getSingle();
+    expect(lat.aliases, contains('Lat Pulldown'));
+    final added =
+        await (db.exercises.select()
+              ..where((row) => row.catalogId.equals('reverse-curls-kabel')))
+            .getSingle();
+    expect(added.germanName, 'Reverse Curls am Kabelzug');
+    final historyId = await db.exerciseSets.insertOne(
+      ExerciseSetsCompanion.insert(
+        exerciseId: lat.id,
+        timestamp: DateTime(2026, 10, 18),
+        reps: const Value(8),
+        loadKg: const Value(40),
+      ),
+    );
+    final again = await importExerciseCatalogJson(db, raw);
+    expect(again.inserted, 0);
+    expect(
+      (await (db.exerciseSets.select()
+                ..where((row) => row.id.equals(historyId)))
+              .getSingle())
+          .exerciseId,
+      lat.id,
+    );
+    expect(
+      (await (db.exercises.select()..where((row) => row.id.equals(lat.id)))
+              .getSingle())
+          .catalogId,
+      'latziehen-breit',
+    );
   });
 
   test('legacy map entries can be extended and bad ones are skipped', () {

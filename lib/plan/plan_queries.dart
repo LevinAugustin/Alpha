@@ -40,14 +40,30 @@ class PlanExerciseDraft {
     required this.exerciseName,
     this.germanName = '',
     this.aliases = '',
-  }) : normalizedExerciseName = '$exerciseName $germanName $aliases'
-           .toLowerCase();
+    this.muscle = '',
+    this.category = '',
+    this.equipment = '',
+    this.primaryMuscles = '',
+    this.secondaryMuscles = '',
+    this.familie = '',
+    this.grip = '',
+    this.position = '',
+    this.movement = '',
+  });
 
   final PlanExercisesCompanion planExercise;
   final String exerciseName;
   final String germanName;
   final String aliases;
-  final String normalizedExerciseName;
+  final String muscle;
+  final String category;
+  final String equipment;
+  final String primaryMuscles;
+  final String secondaryMuscles;
+  final String familie;
+  final String grip;
+  final String position;
+  final String movement;
 
   PlanExerciseDraft copyWithPlanExercise(PlanExercisesCompanion value) =>
       PlanExerciseDraft(
@@ -55,6 +71,15 @@ class PlanExerciseDraft {
         exerciseName: exerciseName,
         germanName: germanName,
         aliases: aliases,
+        muscle: muscle,
+        category: category,
+        equipment: equipment,
+        primaryMuscles: primaryMuscles,
+        secondaryMuscles: secondaryMuscles,
+        familie: familie,
+        grip: grip,
+        position: position,
+        movement: movement,
       );
 }
 
@@ -63,17 +88,23 @@ List<PlanExerciseDraft> filterPlanExerciseDrafts(
   String search,
 ) {
   if (search.trim().isEmpty) return exercises.toList();
-  final normalizedSearch = foldExerciseSearch(search);
   final matches = [
     for (final exercise in exercises)
-      if (exercise.normalizedExerciseName.contains(normalizedSearch) ||
-          exerciseSearchRank(
-                name: exercise.exerciseName,
-                germanName: exercise.germanName,
-                aliases: exercise.aliases,
-                query: search,
-              ) !=
-              null)
+      if (exerciseMatchesQuery(
+        name: exercise.exerciseName,
+        germanName: exercise.germanName,
+        aliases: exercise.aliases,
+        muscle: exercise.muscle,
+        category: exercise.category,
+        equipment: exercise.equipment,
+        primaryMuscles: exercise.primaryMuscles,
+        secondaryMuscles: exercise.secondaryMuscles,
+        familie: exercise.familie,
+        grip: exercise.grip,
+        position: exercise.position,
+        movement: exercise.movement,
+        query: search,
+      ))
         exercise,
   ];
   matches.sort(
@@ -239,6 +270,15 @@ Future<List<PlanExerciseDraft>> loadPlanExerciseDrafts(
       db.exercises.name,
       db.exercises.germanName,
       db.exercises.aliases,
+      db.exercises.muscle,
+      db.exercises.categoryName,
+      db.exercises.equipment,
+      db.exercises.primaryMuscles,
+      db.exercises.secondaryMuscles,
+      db.exercises.familie,
+      db.exercises.griff,
+      db.exercises.position,
+      db.exercises.bewegung,
     ])
     ..where(db.exercises.archived.equals(false))
     ..join([
@@ -284,6 +324,15 @@ Future<List<PlanExerciseDraft>> loadPlanExerciseDrafts(
       exerciseName: row.read(db.exercises.name)!,
       germanName: row.read(db.exercises.germanName) ?? '',
       aliases: row.read(db.exercises.aliases) ?? '',
+      muscle: row.read(db.exercises.muscle) ?? '',
+      category: row.read(db.exercises.categoryName) ?? '',
+      equipment: row.read(db.exercises.equipment) ?? '',
+      primaryMuscles: row.read(db.exercises.primaryMuscles) ?? '',
+      secondaryMuscles: row.read(db.exercises.secondaryMuscles) ?? '',
+      familie: row.read(db.exercises.familie) ?? '',
+      grip: row.read(db.exercises.griff) ?? '',
+      position: row.read(db.exercises.position) ?? '',
+      movement: row.read(db.exercises.bewegung) ?? '',
     );
     drafts.add(draft);
   }
