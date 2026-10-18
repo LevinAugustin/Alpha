@@ -1923,6 +1923,38 @@ class AppLocalizationsJa extends AppLocalizations {
   String get updateCheckFailed => '更新の確認に失敗しました';
 
   @override
+  String updateVersionAvailable(String version) {
+    return 'バージョン $version があります';
+  }
+
+  @override
+  String get downloadInBrowser => 'ブラウザでダウンロード';
+
+  @override
+  String get installPermissionTitle => 'インストールを許可';
+
+  @override
+  String get installPermissionBody =>
+      'Alpha の更新をインストールするには Android の許可が必要です。戻るとダウンロードが続きます。';
+
+  @override
+  String get openInstallSettings => '設定を開く';
+
+  @override
+  String get tapToInstall => 'タップしてインストール';
+
+  @override
+  String get downloadingUpdate => '更新をダウンロード中';
+
+  @override
+  String updateDownloadProgress(String received, String total) {
+    return '$received MB / 全 $total MB';
+  }
+
+  @override
+  String get updateInstallFailed => '更新をインストールできませんでした';
+
+  @override
   String get licensesTitle => 'ライセンス';
 
   @override

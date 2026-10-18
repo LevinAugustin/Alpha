@@ -1992,6 +1992,38 @@ class AppLocalizationsId extends AppLocalizations {
   String get updateCheckFailed => 'Pemeriksaan pembaruan gagal';
 
   @override
+  String updateVersionAvailable(String version) {
+    return 'Versi $version tersedia';
+  }
+
+  @override
+  String get downloadInBrowser => 'Unduh di browser';
+
+  @override
+  String get installPermissionTitle => 'Izinkan pemasangan';
+
+  @override
+  String get installPermissionBody =>
+      'Android perlu izin untuk memasang pembaruan Alpha. Unduhan berlanjut setelah kamu kembali.';
+
+  @override
+  String get openInstallSettings => 'Buka pengaturan';
+
+  @override
+  String get tapToInstall => 'Ketuk untuk memasang';
+
+  @override
+  String get downloadingUpdate => 'Mengunduh pembaruan';
+
+  @override
+  String updateDownloadProgress(String received, String total) {
+    return '$received dari $total MB';
+  }
+
+  @override
+  String get updateInstallFailed => 'Pembaruan tidak dapat dipasang';
+
+  @override
   String get licensesTitle => 'Lisensi';
 
   @override

@@ -2011,6 +2011,38 @@ class AppLocalizationsFr extends AppLocalizations {
   String get updateCheckFailed => 'La recherche de mise à jour a échoué';
 
   @override
+  String updateVersionAvailable(String version) {
+    return 'Version $version disponible';
+  }
+
+  @override
+  String get downloadInBrowser => 'Télécharger dans le navigateur';
+
+  @override
+  String get installPermissionTitle => 'Autoriser l\'installation';
+
+  @override
+  String get installPermissionBody =>
+      'Android a besoin de l\'autorisation d\'installer les mises à jour d\'Alpha. Le téléchargement reprend à ton retour.';
+
+  @override
+  String get openInstallSettings => 'Ouvrir le réglage';
+
+  @override
+  String get tapToInstall => 'Appuyer pour installer';
+
+  @override
+  String get downloadingUpdate => 'Téléchargement de la mise à jour';
+
+  @override
+  String updateDownloadProgress(String received, String total) {
+    return '$received sur $total Mo';
+  }
+
+  @override
+  String get updateInstallFailed => 'La mise à jour n\'a pas pu être installée';
+
+  @override
   String get licensesTitle => 'Licences';
 
   @override

@@ -1996,6 +1996,38 @@ class AppLocalizationsNl extends AppLocalizations {
   String get updateCheckFailed => 'De updatecontrole is mislukt';
 
   @override
+  String updateVersionAvailable(String version) {
+    return 'Versie $version beschikbaar';
+  }
+
+  @override
+  String get downloadInBrowser => 'Downloaden in de browser';
+
+  @override
+  String get installPermissionTitle => 'Installatie toestaan';
+
+  @override
+  String get installPermissionBody =>
+      'Android heeft toestemming nodig om updates van Alpha te installeren. De download gaat verder zodra je terug bent.';
+
+  @override
+  String get openInstallSettings => 'Instelling openen';
+
+  @override
+  String get tapToInstall => 'Tik om te installeren';
+
+  @override
+  String get downloadingUpdate => 'Update downloaden';
+
+  @override
+  String updateDownloadProgress(String received, String total) {
+    return '$received van $total MB';
+  }
+
+  @override
+  String get updateInstallFailed => 'De update kon niet worden geïnstalleerd';
+
+  @override
   String get licensesTitle => 'Licenties';
 
   @override

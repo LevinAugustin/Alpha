@@ -1997,6 +1997,39 @@ class AppLocalizationsIt extends AppLocalizations {
       'Il controllo degli aggiornamenti non è riuscito';
 
   @override
+  String updateVersionAvailable(String version) {
+    return 'Versione $version disponibile';
+  }
+
+  @override
+  String get downloadInBrowser => 'Scarica nel browser';
+
+  @override
+  String get installPermissionTitle => 'Consenti l\'installazione';
+
+  @override
+  String get installPermissionBody =>
+      'Android ha bisogno del permesso per installare gli aggiornamenti di Alpha. Il download riprende quando torni.';
+
+  @override
+  String get openInstallSettings => 'Apri l\'impostazione';
+
+  @override
+  String get tapToInstall => 'Tocca per installare';
+
+  @override
+  String get downloadingUpdate => 'Download dell\'aggiornamento';
+
+  @override
+  String updateDownloadProgress(String received, String total) {
+    return '$received di $total MB';
+  }
+
+  @override
+  String get updateInstallFailed =>
+      'Non è stato possibile installare l\'aggiornamento';
+
+  @override
   String get licensesTitle => 'Licenze';
 
   @override

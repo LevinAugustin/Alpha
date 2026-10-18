@@ -1985,6 +1985,38 @@ class AppLocalizationsEn extends AppLocalizations {
   String get updateCheckFailed => 'The update check failed';
 
   @override
+  String updateVersionAvailable(String version) {
+    return 'Version $version available';
+  }
+
+  @override
+  String get downloadInBrowser => 'Download in browser';
+
+  @override
+  String get installPermissionTitle => 'Allow installation';
+
+  @override
+  String get installPermissionBody =>
+      'Android needs permission to install updates from Alpha. The download continues when you come back.';
+
+  @override
+  String get openInstallSettings => 'Open setting';
+
+  @override
+  String get tapToInstall => 'Tap to install';
+
+  @override
+  String get downloadingUpdate => 'Downloading update';
+
+  @override
+  String updateDownloadProgress(String received, String total) {
+    return '$received / $total MB';
+  }
+
+  @override
+  String get updateInstallFailed => 'The update could not be installed';
+
+  @override
   String get licensesTitle => 'Licenses';
 
   @override

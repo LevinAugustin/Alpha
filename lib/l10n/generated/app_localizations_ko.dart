@@ -1925,6 +1925,38 @@ class AppLocalizationsKo extends AppLocalizations {
   String get updateCheckFailed => '업데이트 확인에 실패했습니다';
 
   @override
+  String updateVersionAvailable(String version) {
+    return '버전 $version 사용 가능';
+  }
+
+  @override
+  String get downloadInBrowser => '브라우저에서 다운로드';
+
+  @override
+  String get installPermissionTitle => '설치 허용';
+
+  @override
+  String get installPermissionBody =>
+      'Alpha 업데이트를 설치하려면 Android 권한이 필요합니다. 돌아오면 다운로드가 이어집니다.';
+
+  @override
+  String get openInstallSettings => '설정 열기';
+
+  @override
+  String get tapToInstall => '탭하여 설치';
+
+  @override
+  String get downloadingUpdate => '업데이트 다운로드 중';
+
+  @override
+  String updateDownloadProgress(String received, String total) {
+    return '$received / 전체 $total MB';
+  }
+
+  @override
+  String get updateInstallFailed => '업데이트를 설치할 수 없습니다';
+
+  @override
   String get licensesTitle => '라이선스';
 
   @override

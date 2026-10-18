@@ -1998,6 +1998,38 @@ class AppLocalizationsTr extends AppLocalizations {
   String get updateCheckFailed => 'Güncelleme denetimi başarısız oldu';
 
   @override
+  String updateVersionAvailable(String version) {
+    return 'Sürüm $version hazır';
+  }
+
+  @override
+  String get downloadInBrowser => 'Tarayıcıda indir';
+
+  @override
+  String get installPermissionTitle => 'Yüklemeye izin ver';
+
+  @override
+  String get installPermissionBody =>
+      'Android\'in Alpha güncellemelerini yüklemek için izne ihtiyacı var. İndirme geri döndüğünde sürer.';
+
+  @override
+  String get openInstallSettings => 'Ayarı aç';
+
+  @override
+  String get tapToInstall => 'Yüklemek için dokun';
+
+  @override
+  String get downloadingUpdate => 'Güncelleme indiriliyor';
+
+  @override
+  String updateDownloadProgress(String received, String total) {
+    return '$received MB, toplam $total MB';
+  }
+
+  @override
+  String get updateInstallFailed => 'Güncelleme yüklenemedi';
+
+  @override
   String get licensesTitle => 'Lisanslar';
 
   @override

@@ -1981,6 +1981,38 @@ class AppLocalizationsUr extends AppLocalizations {
   String get updateCheckFailed => 'اپ ڈیٹ کی جانچ ناکام رہی';
 
   @override
+  String updateVersionAvailable(String version) {
+    return 'ورژن $version دستیاب ہے';
+  }
+
+  @override
+  String get downloadInBrowser => 'براؤزر میں ڈاؤن لوڈ';
+
+  @override
+  String get installPermissionTitle => 'انسٹال کی اجازت دیں';
+
+  @override
+  String get installPermissionBody =>
+      'Alpha کی اپ ڈیٹس انسٹال کرنے کے لیے Android کو اجازت چاہیے۔ واپس آنے پر ڈاؤن لوڈ جاری رہے گا۔';
+
+  @override
+  String get openInstallSettings => 'سیٹنگ کھولیں';
+
+  @override
+  String get tapToInstall => 'انسٹال کے لیے ٹیپ کریں';
+
+  @override
+  String get downloadingUpdate => 'اپ ڈیٹ ڈاؤن لوڈ ہو رہی ہے';
+
+  @override
+  String updateDownloadProgress(String received, String total) {
+    return '$received میں سے $total MB';
+  }
+
+  @override
+  String get updateInstallFailed => 'اپ ڈیٹ انسٹال نہیں ہو سکی';
+
+  @override
   String get licensesTitle => 'لائسنس';
 
   @override

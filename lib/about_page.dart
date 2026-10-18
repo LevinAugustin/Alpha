@@ -54,7 +54,7 @@ class AboutPage extends StatelessWidget {
                   Text(snapshot.data?.version ?? "1.0.0"),
             ),
             onTap: () async {
-              const url = 'https://github.com/brandonp2412/Flexify/releases';
+              const url = 'https://github.com/LevinAugustin/Alpha/releases';
               await launchUrlString(url);
             },
           ),

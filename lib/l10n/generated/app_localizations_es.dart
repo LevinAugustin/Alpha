@@ -2005,6 +2005,38 @@ class AppLocalizationsEs extends AppLocalizations {
   String get updateCheckFailed => 'No se pudo buscar actualizaciones';
 
   @override
+  String updateVersionAvailable(String version) {
+    return 'Versión $version disponible';
+  }
+
+  @override
+  String get downloadInBrowser => 'Descargar en el navegador';
+
+  @override
+  String get installPermissionTitle => 'Permitir la instalación';
+
+  @override
+  String get installPermissionBody =>
+      'Android necesita permiso para instalar actualizaciones de Alpha. La descarga continúa cuando vuelvas.';
+
+  @override
+  String get openInstallSettings => 'Abrir el ajuste';
+
+  @override
+  String get tapToInstall => 'Toca para instalar';
+
+  @override
+  String get downloadingUpdate => 'Descargando la actualización';
+
+  @override
+  String updateDownloadProgress(String received, String total) {
+    return '$received de $total MB';
+  }
+
+  @override
+  String get updateInstallFailed => 'No se pudo instalar la actualización';
+
+  @override
   String get licensesTitle => 'Licencias';
 
   @override
