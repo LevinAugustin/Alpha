@@ -1396,7 +1396,7 @@ void main() {
     for (final row in decoded) {
       synonyms += ((row as Map)['synonyme'] as List).length;
     }
-    expect(synonyms, 2327);
+    expect(synonyms, 2337);
     final imported = await importExerciseCatalogJson(db, raw);
     expect(imported.skipped, isEmpty);
     final rows = await db.exercises.select().get();

@@ -212,17 +212,21 @@ int? exerciseSearchRank({
   ].where((synonym) => synonym.isNotEmpty);
   if (label == needle) return 1;
   if (label.startsWith(needle)) return 2;
-  if (synonyms.contains(needle)) return 3;
-  if (synonyms.any((synonym) => synonym.startsWith(needle))) return 4;
+  final words = label.split(' ');
+  if (tokens.every((token) => words.any((word) => word.startsWith(token)))) {
+    return 3;
+  }
+  if (synonyms.contains(needle)) return 4;
+  if (synonyms.any((synonym) => synonym.startsWith(needle))) return 5;
   if (label.isNotEmpty && tokens.every((token) => label.contains(token))) {
-    return 5;
+    return 6;
   }
   if (synonyms.any(
     (synonym) => tokens.every((token) => synonym.contains(token)),
   )) {
-    return 6;
+    return 7;
   }
-  return 7;
+  return 8;
 }
 
 int compareExerciseSearch({
@@ -276,7 +280,7 @@ String foldExerciseSearch(String value) {
     query: query,
   );
   return (
-    rank: rank ?? 7,
+    rank: rank ?? 8,
     matched: rank != null,
     length: label.length,
     alpha: label,

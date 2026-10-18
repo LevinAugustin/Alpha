@@ -1,8 +1,8 @@
 {
   "_meta": {
-    "beschreibung": "Suchtests 2.5.1 für die Übungssuche. muss_enthalten aus den Datenfeldern berechnet (gen_suchtests.py); erster = erwarteter erster Treffer nach Ranking-Vorschlag; darf_nicht_enthalten = darf nicht in der Trefferliste stehen.",
+    "beschreibung": "Suchtests 2.5.1 für die Übungssuche. muss_enthalten aus den Datenfeldern berechnet (gen_suchtests.py); erster = erwarteter erster Treffer nach Ranking-Vorschlag; darf_nicht_enthalten = darf nicht in der Trefferliste stehen; vor_allen = jede ID aus vorne steht in der Trefferliste vor jeder ID aus hinten (soweit getroffen).",
     "db": "exercises_de_2.5.1.json",
-    "anzahl": 47,
+    "anzahl": 50,
     "referenz": "suchtest.py"
   },
   "tests": [
@@ -97,6 +97,67 @@
       "darf_nicht_leer": true,
       "kriterium": "name_de enthält „Latziehen“",
       "erster": "latziehen-breit"
+    },
+    {
+      "suchbegriff": "latzug",
+      "muss_enthalten": [
+        "latziehen-breit",
+        "latziehen-eng",
+        "latziehen-untergriff",
+        "latziehen-nacken",
+        "latziehen-einarmig",
+        "latziehen-maschine"
+      ],
+      "darf_nicht_leer": true,
+      "kriterium": "Latziehen-Übungen (Synonym „Latzug“), Latziehen breit ganz oben (Stabschef 18.10.)",
+      "erster": "latziehen-breit"
+    },
+    {
+      "suchbegriff": "Latzug",
+      "muss_enthalten": [
+        "latziehen-breit",
+        "latziehen-eng",
+        "latziehen-untergriff",
+        "latziehen-nacken",
+        "latziehen-einarmig",
+        "latziehen-maschine"
+      ],
+      "darf_nicht_leer": true,
+      "kriterium": "wie „latzug“, Großschreibung egal",
+      "erster": "latziehen-breit"
+    },
+    {
+      "suchbegriff": "lat",
+      "muss_enthalten": [
+        "latziehen-breit",
+        "latziehen-eng",
+        "latziehen-untergriff",
+        "latziehen-nacken",
+        "latziehen-einarmig",
+        "latziehen-maschine"
+      ],
+      "darf_nicht_leer": true,
+      "kriterium": "Entscheid Stabschef/Levin 18.10.: Seitheben darf erscheinen, aber jede Latziehen-Übung steht vor jedem Seitheben (ersetzt Dart-Test „lat findet kein Seitheben“)",
+      "erster": "latziehen-breit",
+      "vor_allen": {
+        "vorne": [
+          "latziehen-breit",
+          "latziehen-eng",
+          "latziehen-untergriff",
+          "latziehen-nacken",
+          "latziehen-einarmig",
+          "latziehen-maschine"
+        ],
+        "hinten": [
+          "seitheben-kurzhantel",
+          "seitheben-sitzend",
+          "seitheben-einarmig",
+          "seitheben-kabel-einarmig",
+          "seitheben-kabel",
+          "seitheben-maschine",
+          "seitheben-band"
+        ]
+      }
     },
     {
       "suchbegriff": "rudern v-griff",

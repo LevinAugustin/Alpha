@@ -111,22 +111,43 @@ void main() {
     );
   });
 
-  test(
-    'lat findet kein Seitheben',
-    () {
+  test('lat stellt jedes Latziehen vor Seitheben', () {
+    const lateral = (
+      name: 'seitheben-kurzhantel',
+      germanName: 'Seitheben',
+      aliases: 'Lateral Raise',
+    );
+    expect(
+      exerciseMatchesQuery(
+        name: lateral.name,
+        germanName: lateral.germanName,
+        aliases: lateral.aliases,
+        query: 'lat',
+      ),
+      isTrue,
+    );
+    for (final row in const [
+      (name: 'latziehen-breit', germanName: 'Latziehen'),
+      (name: 'latziehen-eng', germanName: 'Latziehen eng'),
+      (name: 'latziehen-untergriff', germanName: 'Latziehen im Untergriff'),
+      (name: 'latziehen-nacken', germanName: 'Latziehen im Nacken'),
+      (name: 'latziehen-einarmig', germanName: 'Einarmiges Latziehen'),
+      (name: 'latziehen-maschine', germanName: 'Latziehen an der Maschine'),
+    ]) {
       expect(
-        exerciseMatchesQuery(
-          name: 'Lateral Raise',
-          germanName: 'Seitheben',
-          aliases: 'schulter',
+        compareExerciseSearch(
           query: 'lat',
+          leftName: row.name,
+          leftGermanName: row.germanName,
+          rightName: lateral.name,
+          rightGermanName: lateral.germanName,
+          rightAliases: lateral.aliases,
         ),
-        isFalse,
+        lessThan(0),
+        reason: row.germanName,
       );
-    },
-    skip:
-        'Offen beim Stabschef: die Suche 2.5.1 sagt, Wortteile reichen, dieser Test verlangt das Gegenteil.',
-  );
+    }
+  });
 
   test('every word must match, in any order', () {
     const cableCurl = (

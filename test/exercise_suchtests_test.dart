@@ -82,7 +82,7 @@ void main() {
   }
 
   test('suchtests.json matches the 2.5.1 search spec', () {
-    expect(cases, hasLength(47));
+    expect(cases, hasLength(50));
     for (final raw in cases) {
       final item = Map<String, dynamic>.from(raw as Map);
       final query = item['suchbegriff'] as String;
@@ -107,6 +107,24 @@ void main() {
       }
       final first = item['erster'];
       if (first is String) expect(hits.first, first, reason: query);
+      final order = item['vor_allen'];
+      if (order is Map) {
+        final front = [
+          for (final id in order['vorne'] as List)
+            if (hits.contains(id)) hits.indexOf(id as String),
+        ];
+        final back = [
+          for (final id in order['hinten'] as List)
+            if (hits.contains(id)) hits.indexOf(id as String),
+        ];
+        if (front.isNotEmpty && back.isNotEmpty) {
+          expect(
+            front.reduce((left, right) => left > right ? left : right),
+            lessThan(back.reduce((left, right) => left < right ? left : right)),
+            reason: query,
+          );
+        }
+      }
     }
   });
 
