@@ -1913,6 +1913,37 @@ class AppLocalizationsZh extends AppLocalizations {
   String get updateCheckFailed => '检查更新失败';
 
   @override
+  String updateVersionAvailable(String version) {
+    return '版本 $version 可用';
+  }
+
+  @override
+  String get downloadInBrowser => '在浏览器中下载';
+
+  @override
+  String get installPermissionTitle => '允许安装';
+
+  @override
+  String get installPermissionBody => 'Android 需要权限才能安装 Alpha 的更新。返回后下载会继续。';
+
+  @override
+  String get openInstallSettings => '打开设置';
+
+  @override
+  String get tapToInstall => '点按即可安装';
+
+  @override
+  String get downloadingUpdate => '正在下载更新';
+
+  @override
+  String updateDownloadProgress(String received, String total) {
+    return '已下载 $received / 共 $total MB';
+  }
+
+  @override
+  String get updateInstallFailed => '无法安装更新';
+
+  @override
   String get licensesTitle => '许可';
 
   @override
@@ -4180,6 +4211,37 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
   String get updateCheckFailed => '检查更新失败';
 
   @override
+  String updateVersionAvailable(String version) {
+    return '版本 $version 可用';
+  }
+
+  @override
+  String get downloadInBrowser => '在浏览器中下载';
+
+  @override
+  String get installPermissionTitle => '允许安装';
+
+  @override
+  String get installPermissionBody => 'Android 需要权限才能安装 Alpha 的更新。返回后下载会继续。';
+
+  @override
+  String get openInstallSettings => '打开设置';
+
+  @override
+  String get tapToInstall => '点按即可安装';
+
+  @override
+  String get downloadingUpdate => '正在下载更新';
+
+  @override
+  String updateDownloadProgress(String received, String total) {
+    return '已下载 $received / 共 $total MB';
+  }
+
+  @override
+  String get updateInstallFailed => '无法安装更新';
+
+  @override
   String get licensesTitle => '许可';
 
   @override
@@ -6445,6 +6507,37 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get updateCheckFailed => '檢查更新失敗';
+
+  @override
+  String updateVersionAvailable(String version) {
+    return '版本 $version 可用';
+  }
+
+  @override
+  String get downloadInBrowser => '在瀏覽器中下載';
+
+  @override
+  String get installPermissionTitle => '允許安裝';
+
+  @override
+  String get installPermissionBody => 'Android 需要權限才能安裝 Alpha 的更新。返回後下載會繼續。';
+
+  @override
+  String get openInstallSettings => '開啟設定';
+
+  @override
+  String get tapToInstall => '點一下即可安裝';
+
+  @override
+  String get downloadingUpdate => '正在下載更新';
+
+  @override
+  String updateDownloadProgress(String received, String total) {
+    return '已下載 $received / 共 $total MB';
+  }
+
+  @override
+  String get updateInstallFailed => '無法安裝更新';
 
   @override
   String get licensesTitle => '授權';

@@ -1969,6 +1969,38 @@ class AppLocalizationsAr extends AppLocalizations {
   String get updateCheckFailed => 'فشل البحث عن التحديثات';
 
   @override
+  String updateVersionAvailable(String version) {
+    return 'الإصدار $version متاح';
+  }
+
+  @override
+  String get downloadInBrowser => 'التنزيل في المتصفح';
+
+  @override
+  String get installPermissionTitle => 'السماح بالتثبيت';
+
+  @override
+  String get installPermissionBody =>
+      'يحتاج Android إلى إذن لتثبيت تحديثات Alpha. يستمر التنزيل عند عودتك.';
+
+  @override
+  String get openInstallSettings => 'فتح الإعداد';
+
+  @override
+  String get tapToInstall => 'انقر للتثبيت';
+
+  @override
+  String get downloadingUpdate => 'جارٍ تنزيل التحديث';
+
+  @override
+  String updateDownloadProgress(String received, String total) {
+    return '$received من $total م.ب';
+  }
+
+  @override
+  String get updateInstallFailed => 'تعذر تثبيت التحديث';
+
+  @override
   String get licensesTitle => 'التراخيص';
 
   @override

@@ -1966,6 +1966,38 @@ class AppLocalizationsTh extends AppLocalizations {
   String get updateCheckFailed => 'ตรวจอัปเดตไม่สำเร็จ';
 
   @override
+  String updateVersionAvailable(String version) {
+    return 'มีเวอร์ชัน $version';
+  }
+
+  @override
+  String get downloadInBrowser => 'ดาวน์โหลดในเบราว์เซอร์';
+
+  @override
+  String get installPermissionTitle => 'อนุญาตให้ติดตั้ง';
+
+  @override
+  String get installPermissionBody =>
+      'Android ต้องได้รับอนุญาตเพื่อติดตั้งอัปเดตของ Alpha การดาวน์โหลดจะไปต่อเมื่อคุณกลับมา';
+
+  @override
+  String get openInstallSettings => 'เปิดการตั้งค่า';
+
+  @override
+  String get tapToInstall => 'แตะเพื่อติดตั้ง';
+
+  @override
+  String get downloadingUpdate => 'กำลังดาวน์โหลดอัปเดต';
+
+  @override
+  String updateDownloadProgress(String received, String total) {
+    return '$received จาก $total MB';
+  }
+
+  @override
+  String get updateInstallFailed => 'ติดตั้งอัปเดตไม่ได้';
+
+  @override
   String get licensesTitle => 'สัญญาอนุญาต';
 
   @override

@@ -1,7 +1,7 @@
 name: flexify
 description: Alpha, an offline-first gym tracker based on Flexify
 publish_to: none
-version: 2.5.1+453
+version: 2.5.2+454
 environment:
   sdk: ">=3.12.0 <4.0.0"
   flutter: ">=3.44.8"

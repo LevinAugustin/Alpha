@@ -1976,6 +1976,38 @@ class AppLocalizationsHi extends AppLocalizations {
   String get updateCheckFailed => 'अपडेट जाँच असफल रही';
 
   @override
+  String updateVersionAvailable(String version) {
+    return 'संस्करण $version उपलब्ध है';
+  }
+
+  @override
+  String get downloadInBrowser => 'ब्राउज़र में डाउनलोड करें';
+
+  @override
+  String get installPermissionTitle => 'इंस्टॉल की अनुमति दें';
+
+  @override
+  String get installPermissionBody =>
+      'Alpha के अपडेट इंस्टॉल करने के लिए Android को अनुमति चाहिए। वापस आने पर डाउनलोड जारी रहेगा।';
+
+  @override
+  String get openInstallSettings => 'सेटिंग खोलें';
+
+  @override
+  String get tapToInstall => 'इंस्टॉल करने के लिए टैप करें';
+
+  @override
+  String get downloadingUpdate => 'अपडेट डाउनलोड हो रहा है';
+
+  @override
+  String updateDownloadProgress(String received, String total) {
+    return '$received में से $total MB';
+  }
+
+  @override
+  String get updateInstallFailed => 'अपडेट इंस्टॉल नहीं हो सका';
+
+  @override
   String get licensesTitle => 'लाइसेंस';
 
   @override

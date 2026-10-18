@@ -2,6 +2,9 @@ package com.presley.flexify
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
 import android.content.BroadcastReceiver
 import android.content.ComponentName
 import android.content.ContentValues
@@ -12,6 +15,7 @@ import android.speech.RecognizerIntent
 import android.content.ServiceConnection
 import android.content.pm.PackageManager
 import android.net.Uri
+import androidx.core.app.NotificationCompat
 import androidx.core.content.FileProvider
 import android.database.sqlite.SQLiteDatabase
 import android.os.Build
@@ -36,6 +40,7 @@ class MainActivity : FlutterActivity() {
     private var pendingPickResult: MethodChannel.Result? = null
     private var pendingNotificationTarget: String? = null
     private var speechResult: MethodChannel.Result? = null
+    private var activityResumed = false
 
     private val timerConnection = object : ServiceConnection {
         override fun onServiceConnected(className: ComponentName, service: IBinder) {
@@ -171,6 +176,19 @@ class MainActivity : FlutterActivity() {
                     } else {
                         installApk(path, result)
                     }
+                }
+
+                "canInstallPackages" -> result.success(canInstallPackages())
+
+                "openInstallPermission" -> {
+                    openInstallPermission()
+                    result.success(null)
+                }
+
+                "showInstallNotification" -> {
+                    val title = call.argument<String>("title")
+                    if (!title.isNullOrEmpty()) showInstallNotification(title)
+                    result.success(null)
                 }
 
                 "getNotificationTarget" -> {
@@ -394,32 +412,87 @@ class MainActivity : FlutterActivity() {
         }
     }
 
+    private fun canInstallPackages(): Boolean {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) return true
+        return packageManager.canRequestPackageInstalls()
+    }
+
+    private fun openInstallPermission() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) return
+        val settings = Intent(
+            android.provider.Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES,
+            Uri.parse("package:$packageName")
+        )
+        settings.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(settings)
+    }
+
     private fun installApk(path: String, result: io.flutter.plugin.common.MethodChannel.Result) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O &&
-            !packageManager.canRequestPackageInstalls()
-        ) {
-            val settings = Intent(
-                android.provider.Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES,
-                Uri.parse("package:$packageName")
-            )
-            settings.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            startActivity(settings)
-            result.success(false)
+        if (!canInstallPackages()) {
+            result.success("needs_permission")
             return
         }
-        val file = java.io.File(path)
-        val uri = FileProvider.getUriForFile(
-            this,
-            "$packageName.fileprovider",
-            file
-        )
-        val intent = Intent(Intent.ACTION_VIEW).apply {
-            setDataAndType(uri, "application/vnd.android.package-archive")
-            addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        if (!activityResumed) {
+            result.success("background")
+            return
         }
-        startActivity(intent)
-        result.success(true)
+        try {
+            val file = java.io.File(path)
+            val uri = FileProvider.getUriForFile(
+                this,
+                "$packageName.fileprovider",
+                file
+            )
+            val intent = Intent(Intent.ACTION_VIEW).apply {
+                setDataAndType(uri, "application/vnd.android.package-archive")
+                addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            }
+            startActivity(intent)
+            result.success("started")
+        } catch (error: Exception) {
+            result.error("install_failed", error.message, null)
+        }
+    }
+
+    private fun showInstallNotification(title: String) {
+        try {
+            val manager = getSystemService(NotificationManager::class.java) ?: return
+            val channelId = "alpha_update"
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                val channel = NotificationChannel(
+                    channelId,
+                    title,
+                    NotificationManager.IMPORTANCE_HIGH
+                )
+                manager.createNotificationChannel(channel)
+            }
+            if (Build.VERSION.SDK_INT >= 33 &&
+                checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS) !=
+                PackageManager.PERMISSION_GRANTED
+            ) {
+                return
+            }
+            val open = Intent(this, MainActivity::class.java).apply {
+                flags = Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_CLEAR_TOP
+            }
+            val pending = PendingIntent.getActivity(
+                this,
+                77,
+                open,
+                PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+            )
+            val notification = NotificationCompat.Builder(this, channelId)
+                .setSmallIcon(R.drawable.baseline_arrow_downward_24)
+                .setContentTitle(title)
+                .setContentText(title)
+                .setAutoCancel(true)
+                .setContentIntent(pending)
+                .build()
+            manager.notify(77, notification)
+        } catch (error: Exception) {
+            Log.w("MainActivity", "Update notification was not shown", error)
+        }
     }
 
     private fun pick(path: String) {
@@ -460,8 +533,14 @@ class MainActivity : FlutterActivity() {
         pendingPickResult = null
     }
 
+    override fun onPause() {
+        activityResumed = false
+        super.onPause()
+    }
+
     override fun onResume() {
         super.onResume()
+        activityResumed = true
         if (timerService?.flexifyTimer?.isRunning() != true) {
             val intent = Intent(TimerService.STOP_BROADCAST)
             intent.setPackage(applicationContext.packageName)

@@ -2005,6 +2005,38 @@ class AppLocalizationsPt extends AppLocalizations {
   String get updateCheckFailed => 'A procura de atualizações falhou';
 
   @override
+  String updateVersionAvailable(String version) {
+    return 'Versão $version disponível';
+  }
+
+  @override
+  String get downloadInBrowser => 'Descarregar no navegador';
+
+  @override
+  String get installPermissionTitle => 'Permitir a instalação';
+
+  @override
+  String get installPermissionBody =>
+      'O Android precisa de permissão para instalar atualizações do Alpha. A transferência continua quando voltares.';
+
+  @override
+  String get openInstallSettings => 'Abrir a definição';
+
+  @override
+  String get tapToInstall => 'Tocar para instalar';
+
+  @override
+  String get downloadingUpdate => 'A transferir a atualização';
+
+  @override
+  String updateDownloadProgress(String received, String total) {
+    return '$received de $total MB';
+  }
+
+  @override
+  String get updateInstallFailed => 'Não foi possível instalar a atualização';
+
+  @override
   String get licensesTitle => 'Licenças';
 
   @override
@@ -4361,6 +4393,38 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
 
   @override
   String get updateCheckFailed => 'A busca por atualizações falhou';
+
+  @override
+  String updateVersionAvailable(String version) {
+    return 'Versão $version disponível';
+  }
+
+  @override
+  String get downloadInBrowser => 'Baixar no navegador';
+
+  @override
+  String get installPermissionTitle => 'Permitir a instalação';
+
+  @override
+  String get installPermissionBody =>
+      'O Android precisa de permissão para instalar atualizações do Alpha. O download continua quando você voltar.';
+
+  @override
+  String get openInstallSettings => 'Abrir a configuração';
+
+  @override
+  String get tapToInstall => 'Toque para instalar';
+
+  @override
+  String get downloadingUpdate => 'Baixando a atualização';
+
+  @override
+  String updateDownloadProgress(String received, String total) {
+    return '$received de $total MB';
+  }
+
+  @override
+  String get updateInstallFailed => 'Não foi possível instalar a atualização';
 
   @override
   String get licensesTitle => 'Licenças';
@@ -6726,6 +6790,38 @@ class AppLocalizationsPtPt extends AppLocalizationsPt {
 
   @override
   String get updateCheckFailed => 'A procura de atualizações falhou';
+
+  @override
+  String updateVersionAvailable(String version) {
+    return 'Versão $version disponível';
+  }
+
+  @override
+  String get downloadInBrowser => 'Descarregar no navegador';
+
+  @override
+  String get installPermissionTitle => 'Permitir a instalação';
+
+  @override
+  String get installPermissionBody =>
+      'O Android precisa de permissão para instalar atualizações do Alpha. A transferência continua quando voltares.';
+
+  @override
+  String get openInstallSettings => 'Abrir a definição';
+
+  @override
+  String get tapToInstall => 'Tocar para instalar';
+
+  @override
+  String get downloadingUpdate => 'A transferir a atualização';
+
+  @override
+  String updateDownloadProgress(String received, String total) {
+    return '$received de $total MB';
+  }
+
+  @override
+  String get updateInstallFailed => 'Não foi possível instalar a atualização';
 
   @override
   String get licensesTitle => 'Licenças';

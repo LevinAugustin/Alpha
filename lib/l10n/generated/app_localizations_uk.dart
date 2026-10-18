@@ -2006,6 +2006,38 @@ class AppLocalizationsUk extends AppLocalizations {
   String get updateCheckFailed => 'Перевірка оновлень не вдалася';
 
   @override
+  String updateVersionAvailable(String version) {
+    return 'Версія $version доступна';
+  }
+
+  @override
+  String get downloadInBrowser => 'Завантажити в браузері';
+
+  @override
+  String get installPermissionTitle => 'Дозволити встановлення';
+
+  @override
+  String get installPermissionBody =>
+      'Android потребує дозволу, щоб встановлювати оновлення Alpha. Завантаження продовжиться, коли ви повернетеся.';
+
+  @override
+  String get openInstallSettings => 'Відкрити налаштування';
+
+  @override
+  String get tapToInstall => 'Торкніться, щоб встановити';
+
+  @override
+  String get downloadingUpdate => 'Завантаження оновлення';
+
+  @override
+  String updateDownloadProgress(String received, String total) {
+    return '$received з $total МБ';
+  }
+
+  @override
+  String get updateInstallFailed => 'Не вдалося встановити оновлення';
+
+  @override
   String get licensesTitle => 'Ліцензії';
 
   @override

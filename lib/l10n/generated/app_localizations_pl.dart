@@ -2008,6 +2008,38 @@ class AppLocalizationsPl extends AppLocalizations {
   String get updateCheckFailed => 'Sprawdzenie aktualizacji nie powiodło się';
 
   @override
+  String updateVersionAvailable(String version) {
+    return 'Wersja $version dostępna';
+  }
+
+  @override
+  String get downloadInBrowser => 'Pobierz w przeglądarce';
+
+  @override
+  String get installPermissionTitle => 'Zezwól na instalację';
+
+  @override
+  String get installPermissionBody =>
+      'Android potrzebuje zgody, aby instalować aktualizacje Alpha. Pobieranie ruszy dalej, gdy wrócisz.';
+
+  @override
+  String get openInstallSettings => 'Otwórz ustawienie';
+
+  @override
+  String get tapToInstall => 'Dotknij, aby zainstalować';
+
+  @override
+  String get downloadingUpdate => 'Pobieranie aktualizacji';
+
+  @override
+  String updateDownloadProgress(String received, String total) {
+    return '$received z $total MB';
+  }
+
+  @override
+  String get updateInstallFailed => 'Nie udało się zainstalować aktualizacji';
+
+  @override
   String get licensesTitle => 'Licencje';
 
   @override

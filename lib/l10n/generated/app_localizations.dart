@@ -3672,6 +3672,60 @@ abstract class AppLocalizations {
   /// **'The update check failed'**
   String get updateCheckFailed;
 
+  /// Subtitle when a newer app version can be installed.
+  ///
+  /// In en, this message translates to:
+  /// **'Version {version} available'**
+  String updateVersionAvailable(String version);
+
+  /// Opens the update file in the browser.
+  ///
+  /// In en, this message translates to:
+  /// **'Download in browser'**
+  String get downloadInBrowser;
+
+  /// Title of the dialog that asks for permission to install updates.
+  ///
+  /// In en, this message translates to:
+  /// **'Allow installation'**
+  String get installPermissionTitle;
+
+  /// Explains why the install-from-this-source setting must be opened before the download.
+  ///
+  /// In en, this message translates to:
+  /// **'Android needs permission to install updates from Alpha. The download continues when you come back.'**
+  String get installPermissionBody;
+
+  /// Button that opens the Android setting for installing unknown apps.
+  ///
+  /// In en, this message translates to:
+  /// **'Open setting'**
+  String get openInstallSettings;
+
+  /// Button and notification shown when the installer must be started in the foreground.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap to install'**
+  String get tapToInstall;
+
+  /// Title of the update download progress dialog.
+  ///
+  /// In en, this message translates to:
+  /// **'Downloading update'**
+  String get downloadingUpdate;
+
+  /// Progress label with received and total megabytes.
+  ///
+  /// In en, this message translates to:
+  /// **'{received} / {total} MB'**
+  String updateDownloadProgress(String received, String total);
+
+  /// Title of the dialog shown when an update download or install fails.
+  ///
+  /// In en, this message translates to:
+  /// **'The update could not be installed'**
+  String get updateInstallFailed;
+
   /// Licenses
   ///
   /// In en, this message translates to:

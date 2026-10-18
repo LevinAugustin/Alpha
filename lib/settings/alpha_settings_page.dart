@@ -370,22 +370,64 @@ class _AlphaSettingsPageState extends State<AlphaSettingsPage> {
                   subtitle: Text('${alphaPrefs.weeklyGoal}'),
                   onTap: () => editWeeklyGoal(context),
                 ),
-              if (_hit('${l10n.checkForUpdates} ${l10n.upToDate}')) ...[
+              if (_hit(
+                '${l10n.checkForUpdates} ${l10n.upToDate} ${l10n.updateCheckFailed}',
+              )) ...[
                 const SizedBox(height: 8),
-                ListTile(
-                  contentPadding: EdgeInsets.zero,
-                  leading: const Icon(Icons.system_update_alt),
-                  title: Text(l10n.checkForUpdates),
-                  subtitle: Text(l10n.upToDate),
-                  onTap: _checkUpdates,
-                ),
-                ValueListenableBuilder(
-                  valueListenable: pendingAppUpdate,
-                  builder: (context, release, _) {
-                    if (release == null) return const SizedBox.shrink();
-                    return FilledButton(
-                      onPressed: () => downloadAndInstallUpdate(release),
-                      child: Text(l10n.installUpdate),
+                ListenableBuilder(
+                  listenable: Listenable.merge([
+                    pendingAppUpdate,
+                    updateCheckFailed,
+                    updateCheckCompleted,
+                    pendingInstallPath,
+                  ]),
+                  builder: (context, _) {
+                    final release = pendingAppUpdate.value;
+                    final waiting = pendingInstallPath.value != null;
+                    final subtitle = updateStatusLabel(
+                      failed: updateCheckFailed.value,
+                      completed: updateCheckCompleted.value,
+                      release: release,
+                      failedLabel: l10n.updateCheckFailed,
+                      availableLabel: l10n.updateVersionAvailable(
+                        release?.version ?? '',
+                      ),
+                      currentLabel: l10n.upToDate,
+                      idleLabel: l10n.checkForUpdates,
+                    );
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        ListTile(
+                          contentPadding: EdgeInsets.zero,
+                          leading: const Icon(Icons.system_update_alt),
+                          title: Text(l10n.checkForUpdates),
+                          subtitle: Text(subtitle),
+                          onTap: _checkUpdates,
+                        ),
+                        if (release != null || waiting)
+                          FilledButton(
+                            onPressed: () async {
+                              try {
+                                if (waiting) {
+                                  await installDownloadedUpdate(context);
+                                } else if (release != null) {
+                                  await installAppUpdate(context, release);
+                                }
+                              } catch (error) {
+                                if (!context.mounted) return;
+                                await showUpdateFailure(
+                                  context,
+                                  error,
+                                  release?.apkUrl ?? '',
+                                );
+                              }
+                            },
+                            child: Text(
+                              waiting ? l10n.tapToInstall : l10n.installUpdate,
+                            ),
+                          ),
+                      ],
                     );
                   },
                 ),
@@ -405,7 +447,7 @@ class _AlphaSettingsPageState extends State<AlphaSettingsPage> {
                           );
                         },
                         child: Text(
-                          l10n.versionAndLicenses(snapshot.data ?? '2.5.0'),
+                          l10n.versionAndLicenses(snapshot.data ?? '2.5.2'),
                         ),
                       ),
                     );
@@ -422,7 +464,7 @@ class _AlphaSettingsPageState extends State<AlphaSettingsPage> {
     try {
       return (await PackageInfo.fromPlatform()).version;
     } catch (_) {
-      return '2.5.0';
+      return '2.5.2';
     }
   }
 

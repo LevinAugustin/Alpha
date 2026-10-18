@@ -2634,6 +2634,55 @@
   "@updateCheckFailed":   {
     "description": "The update check failed"
   },
+  "updateVersionAvailable": "Version {version} available",
+  "@updateVersionAvailable": {
+    "description": "Subtitle when a newer app version can be installed.",
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "downloadInBrowser": "Download in browser",
+  "@downloadInBrowser": {
+    "description": "Opens the update file in the browser."
+  },
+  "installPermissionTitle": "Allow installation",
+  "@installPermissionTitle": {
+    "description": "Title of the dialog that asks for permission to install updates."
+  },
+  "installPermissionBody": "Android needs permission to install updates from Alpha. The download continues when you come back.",
+  "@installPermissionBody": {
+    "description": "Explains why the install-from-this-source setting must be opened before the download."
+  },
+  "openInstallSettings": "Open setting",
+  "@openInstallSettings": {
+    "description": "Button that opens the Android setting for installing unknown apps."
+  },
+  "tapToInstall": "Tap to install",
+  "@tapToInstall": {
+    "description": "Button and notification shown when the installer must be started in the foreground."
+  },
+  "downloadingUpdate": "Downloading update",
+  "@downloadingUpdate": {
+    "description": "Title of the update download progress dialog."
+  },
+  "updateDownloadProgress": "{received} / {total} MB",
+  "@updateDownloadProgress": {
+    "description": "Progress label with received and total megabytes.",
+    "placeholders": {
+      "received": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "updateInstallFailed": "The update could not be installed",
+  "@updateInstallFailed": {
+    "description": "Title of the dialog shown when an update download or install fails."
+  },
   "licensesTitle": "Licenses",
   "@licensesTitle":   {
     "description": "Licenses"

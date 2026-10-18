@@ -165,15 +165,40 @@ class _StartPageState extends State<StartPage> {
                   ? null
                   : () => _startOrResume(data.nextPlan),
             ),
-            ValueListenableBuilder(
-              valueListenable: pendingAppUpdate,
-              builder: (context, release, _) {
-                if (release == null) return const SizedBox.shrink();
+            ListenableBuilder(
+              listenable: Listenable.merge([
+                pendingAppUpdate,
+                pendingInstallPath,
+              ]),
+              builder: (context, _) {
+                final release = pendingAppUpdate.value;
+                final waiting = pendingInstallPath.value;
+                if (release == null && waiting == null) {
+                  return const SizedBox.shrink();
+                }
+                final installWaiting = waiting != null;
                 return Align(
                   alignment: Alignment.centerLeft,
                   child: TextButton(
-                    onPressed: () => downloadAndInstallUpdate(release),
-                    child: Text(l10n.installUpdate),
+                    onPressed: () async {
+                      try {
+                        if (installWaiting) {
+                          await installDownloadedUpdate(context);
+                        } else if (release != null) {
+                          await installAppUpdate(context, release);
+                        }
+                      } catch (error) {
+                        if (!context.mounted) return;
+                        await showUpdateFailure(
+                          context,
+                          error,
+                          release?.apkUrl ?? '',
+                        );
+                      }
+                    },
+                    child: Text(
+                      installWaiting ? l10n.tapToInstall : l10n.installUpdate,
+                    ),
                   ),
                 );
               },

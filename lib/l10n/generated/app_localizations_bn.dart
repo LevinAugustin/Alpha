@@ -1978,6 +1978,38 @@ class AppLocalizationsBn extends AppLocalizations {
   String get updateCheckFailed => 'আপডেট খোঁজা ব্যর্থ হয়েছে';
 
   @override
+  String updateVersionAvailable(String version) {
+    return 'সংস্করণ $version উপলব্ধ';
+  }
+
+  @override
+  String get downloadInBrowser => 'ব্রাউজারে ডাউনলোড';
+
+  @override
+  String get installPermissionTitle => 'ইনস্টলের অনুমতি দিন';
+
+  @override
+  String get installPermissionBody =>
+      'Alpha-এর আপডেট ইনস্টল করতে Android-এর অনুমতি লাগে। ফিরে এলে ডাউনলোড চলবে।';
+
+  @override
+  String get openInstallSettings => 'সেটিং খুলুন';
+
+  @override
+  String get tapToInstall => 'ইনস্টল করতে ট্যাপ করুন';
+
+  @override
+  String get downloadingUpdate => 'আপডেট ডাউনলোড হচ্ছে';
+
+  @override
+  String updateDownloadProgress(String received, String total) {
+    return '$received এর মধ্যে $total MB';
+  }
+
+  @override
+  String get updateInstallFailed => 'আপডেট ইনস্টল করা যায়নি';
+
+  @override
   String get licensesTitle => 'লাইসেন্স';
 
   @override

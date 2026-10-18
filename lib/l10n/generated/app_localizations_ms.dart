@@ -1991,6 +1991,38 @@ class AppLocalizationsMs extends AppLocalizations {
   String get updateCheckFailed => 'Semakan kemas kini gagal';
 
   @override
+  String updateVersionAvailable(String version) {
+    return 'Versi $version tersedia';
+  }
+
+  @override
+  String get downloadInBrowser => 'Muat turun dalam pelayar';
+
+  @override
+  String get installPermissionTitle => 'Benarkan pemasangan';
+
+  @override
+  String get installPermissionBody =>
+      'Android perlukan kebenaran untuk memasang kemas kini Alpha. Muat turun diteruskan apabila anda kembali.';
+
+  @override
+  String get openInstallSettings => 'Buka tetapan';
+
+  @override
+  String get tapToInstall => 'Ketik untuk memasang';
+
+  @override
+  String get downloadingUpdate => 'Memuat turun kemas kini';
+
+  @override
+  String updateDownloadProgress(String received, String total) {
+    return '$received daripada $total MB';
+  }
+
+  @override
+  String get updateInstallFailed => 'Kemas kini tidak dapat dipasang';
+
+  @override
   String get licensesTitle => 'Lesen';
 
   @override

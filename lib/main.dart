@@ -103,6 +103,7 @@ Future<void> main() async {
   runZonedGuarded(
     () async {
       WidgetsFlutterBinding.ensureInitialized();
+      ensureUpdateInstaller();
       talker.info('Starting Flexify');
       await CrashLogger.install();
 

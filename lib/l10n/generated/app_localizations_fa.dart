@@ -1982,6 +1982,38 @@ class AppLocalizationsFa extends AppLocalizations {
   String get updateCheckFailed => 'جستجوی به‌روزرسانی ناموفق بود';
 
   @override
+  String updateVersionAvailable(String version) {
+    return 'نسخه $version موجود است';
+  }
+
+  @override
+  String get downloadInBrowser => 'دانلود در مرورگر';
+
+  @override
+  String get installPermissionTitle => 'اجازه نصب';
+
+  @override
+  String get installPermissionBody =>
+      'اندروید برای نصب به‌روزرسانی‌های Alpha به اجازه نیاز دارد. دانلود پس از بازگشت ادامه پیدا می‌کند.';
+
+  @override
+  String get openInstallSettings => 'باز کردن تنظیم';
+
+  @override
+  String get tapToInstall => 'برای نصب ضربه بزنید';
+
+  @override
+  String get downloadingUpdate => 'در حال دانلود به‌روزرسانی';
+
+  @override
+  String updateDownloadProgress(String received, String total) {
+    return '$received از $total مگابایت';
+  }
+
+  @override
+  String get updateInstallFailed => 'به‌روزرسانی نصب نشد';
+
+  @override
   String get licensesTitle => 'مجوزها';
 
   @override

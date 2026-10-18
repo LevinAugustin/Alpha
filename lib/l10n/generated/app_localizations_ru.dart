@@ -2010,6 +2010,38 @@ class AppLocalizationsRu extends AppLocalizations {
   String get updateCheckFailed => 'Проверка обновлений не удалась';
 
   @override
+  String updateVersionAvailable(String version) {
+    return 'Версия $version доступна';
+  }
+
+  @override
+  String get downloadInBrowser => 'Скачать в браузере';
+
+  @override
+  String get installPermissionTitle => 'Разрешить установку';
+
+  @override
+  String get installPermissionBody =>
+      'Android нужно разрешение, чтобы устанавливать обновления Alpha. Загрузка продолжится, когда вы вернётесь.';
+
+  @override
+  String get openInstallSettings => 'Открыть настройку';
+
+  @override
+  String get tapToInstall => 'Нажмите, чтобы установить';
+
+  @override
+  String get downloadingUpdate => 'Загрузка обновления';
+
+  @override
+  String updateDownloadProgress(String received, String total) {
+    return '$received из $total МБ';
+  }
+
+  @override
+  String get updateInstallFailed => 'Не удалось установить обновление';
+
+  @override
   String get licensesTitle => 'Лицензии';
 
   @override

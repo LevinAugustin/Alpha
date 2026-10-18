@@ -2008,7 +2008,40 @@ class AppLocalizationsDe extends AppLocalizations {
   String get upToDate => 'Du bist aktuell';
 
   @override
-  String get updateCheckFailed => 'Die Updatesuche ist fehlgeschlagen';
+  String get updateCheckFailed => 'Updatesuche fehlgeschlagen';
+
+  @override
+  String updateVersionAvailable(String version) {
+    return 'Version $version verfügbar';
+  }
+
+  @override
+  String get downloadInBrowser => 'Im Browser herunterladen';
+
+  @override
+  String get installPermissionTitle => 'Installation erlauben';
+
+  @override
+  String get installPermissionBody =>
+      'Android braucht die Erlaubnis, Updates von Alpha zu installieren. Der Download geht weiter, sobald du zurück bist.';
+
+  @override
+  String get openInstallSettings => 'Einstellung öffnen';
+
+  @override
+  String get tapToInstall => 'Tippen zum Installieren';
+
+  @override
+  String get downloadingUpdate => 'Update wird geladen';
+
+  @override
+  String updateDownloadProgress(String received, String total) {
+    return '$received von $total MB';
+  }
+
+  @override
+  String get updateInstallFailed =>
+      'Das Update konnte nicht installiert werden';
 
   @override
   String get licensesTitle => 'Lizenzen';

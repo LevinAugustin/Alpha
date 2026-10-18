@@ -1988,6 +1988,38 @@ class AppLocalizationsVi extends AppLocalizations {
   String get updateCheckFailed => 'Không kiểm tra được bản cập nhật';
 
   @override
+  String updateVersionAvailable(String version) {
+    return 'Đã có phiên bản $version';
+  }
+
+  @override
+  String get downloadInBrowser => 'Tải trong trình duyệt';
+
+  @override
+  String get installPermissionTitle => 'Cho phép cài đặt';
+
+  @override
+  String get installPermissionBody =>
+      'Android cần quyền để cài bản cập nhật của Alpha. Tải xuống tiếp tục khi bạn quay lại.';
+
+  @override
+  String get openInstallSettings => 'Mở cài đặt';
+
+  @override
+  String get tapToInstall => 'Chạm để cài đặt';
+
+  @override
+  String get downloadingUpdate => 'Đang tải bản cập nhật';
+
+  @override
+  String updateDownloadProgress(String received, String total) {
+    return '$received trên $total MB';
+  }
+
+  @override
+  String get updateInstallFailed => 'Không cài được bản cập nhật';
+
+  @override
   String get licensesTitle => 'Giấy phép';
 
   @override
