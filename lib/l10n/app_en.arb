@@ -3030,7 +3030,7 @@
   "@importBackupZip": {
     "description": "Imports a Flexify or Alpha zip backup."
   },
-  "importSetSummary": "{workouts} workouts, {sets} sets",
+  "importSetSummary": "{workouts, plural, =1{1 workout, {sets, plural, =1{1 set} other{{sets} sets}}} other{{workouts} workouts, {sets, plural, =1{1 set} other{{sets} sets}}}}",
   "@importSetSummary": {
     "description": "Preview line for imported workouts and sets.",
     "placeholders": {
@@ -3087,7 +3087,7 @@
   "@renameGym": {"description": "Renames a studio."},
   "cleanupImports": "Clean up import entries",
   "@cleanupImports": {"description": "Removes workouts created by a broken import."},
-  "cleanupImportsPreview": "{workouts} imported workouts and {templates} templates will be removed. Workouts you entered by hand stay.",
+  "cleanupImportsPreview": "{workouts, plural, =1{1 imported workout} other{{workouts} imported workouts}} and {templates, plural, =1{1 template} other{{templates} templates}} will be removed. Workouts you entered by hand stay.",
   "@cleanupImportsPreview": {
     "description": "Preview before import cleanup.",
     "placeholders": {

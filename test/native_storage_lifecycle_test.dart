@@ -205,7 +205,7 @@ void main() {
     ],
     'workouts': [
       for (final row in before['workouts'] ?? const [])
-        {...row, 'exercise_order': null},
+        {...row, 'exercise_order': null, 'import_batch': null},
     ],
   };
 

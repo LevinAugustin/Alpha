@@ -174,9 +174,17 @@ Exercise? _catalogMatch(List<Exercise> rows, Exercise exercise) {
               leftName: row.name,
               leftGermanName: row.germanName,
               leftAliases: row.aliases,
+              leftCatalog: isCatalogExercise(
+                catalogId: row.catalogId,
+                catalogSource: row.catalogSource,
+              ),
               rightName: best.name,
               rightGermanName: best.germanName,
               rightAliases: best.aliases,
+              rightCatalog: isCatalogExercise(
+                catalogId: best.catalogId,
+                catalogSource: best.catalogSource,
+              ),
             ) <
             0) {
       best = row;

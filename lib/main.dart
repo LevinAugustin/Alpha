@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:drift/drift.dart' hide Column;
 import 'package:flexify/alpha/alpha_prefs.dart';
+import 'package:flexify/alpha/live_workout.dart';
 import 'package:flexify/crash_logger.dart';
 import 'package:flexify/database/database.dart';
 import 'package:flexify/exercises/custom_exercise.dart';
@@ -124,6 +125,7 @@ Future<void> main() async {
         await importExerciseCatalog(db);
         await renameEnglishPlanTitles(db);
         await repairLegacyCustomExercises(db);
+        await restoreLiveWorkout(db);
         await alphaPrefs.load();
       } catch (error, stack) {
         debugPrint('Exercise catalog seed failed: $error');

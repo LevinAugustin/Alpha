@@ -454,9 +454,17 @@ class _ImportPreviewPageState extends State<ImportPreviewPage> {
         leftName: left.name,
         leftGermanName: left.germanName,
         leftAliases: left.aliases,
+        leftCatalog: isCatalogExercise(
+          catalogId: left.catalogId,
+          catalogSource: left.catalogSource,
+        ),
         rightName: right.name,
         rightGermanName: right.germanName,
         rightAliases: right.aliases,
+        rightCatalog: isCatalogExercise(
+          catalogId: right.catalogId,
+          catalogSource: right.catalogSource,
+        ),
       ),
     );
     return hits.first;

@@ -714,7 +714,7 @@
   "notSpecified": "–",
   "resumeWorkout": "Training fortsetzen",
   "importBackupZip": "Sicherung importieren (.zip)",
-  "importSetSummary": "{workouts} Trainings, {sets} Sätze",
+  "importSetSummary": "{workouts, plural, =1{1 Training, {sets, plural, =1{1 Satz} other{{sets} Sätze}}} other{{workouts} Trainings, {sets, plural, =1{1 Satz} other{{sets} Sätze}}}}",
   "importDateErrorCount": "{count} Zeilen haben ein Datum, das nicht gelesen werden konnte.",
   "importUnmatchedNames": "Ohne Zuordnung: {names}",
   "importTemplatesSkipped": "Nicht angelegt, Vorlagenlimit erreicht: {names}",
@@ -728,7 +728,7 @@
   "deleteGymBody": "Trainings, die mit diesem Studio verknüpft sind, bleiben. Nur das Studio wird entfernt.",
   "renameGym": "Studio umbenennen",
   "cleanupImports": "Import-Einträge aufräumen",
-  "cleanupImportsPreview": "{workouts} importierte Trainings und {templates} Vorlagen werden entfernt. Selbst eingetragene Trainings bleiben.",
+  "cleanupImportsPreview": "{workouts, plural, =1{1 importiertes Training} other{{workouts} importierte Trainings}} und {templates, plural, =1{1 Vorlage} other{{templates} Vorlagen}} werden entfernt. Selbst eingetragene Trainings bleiben.",
   "cleanupImportsEmpty": "Nichts zum Aufräumen.",
   "cleanupImportsDone": "Import-Einträge entfernt.",
   "measurementsImported": "{count} Messungen importiert."

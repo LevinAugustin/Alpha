@@ -29,8 +29,11 @@ class LiveWorkoutBar extends StatelessWidget {
               key: const Key('live-workout-bar'),
               onTap: () => _open(session),
               child: Container(
-                height: 58,
-                padding: const EdgeInsets.symmetric(horizontal: 12),
+                constraints: const BoxConstraints(minHeight: 58),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 8,
+                ),
                 decoration: BoxDecoration(
                   border: Border(top: BorderSide(color: palette.accent)),
                 ),

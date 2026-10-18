@@ -2394,6 +2394,17 @@ class $WorkoutsTable extends Workouts with TableInfo<$WorkoutsTable, Workout> {
     type: DriftSqlType.string,
     requiredDuringInsert: false,
   );
+  static const VerificationMeta _importBatchMeta = const VerificationMeta(
+    'importBatch',
+  );
+  @override
+  late final GeneratedColumn<String> importBatch = GeneratedColumn<String>(
+    'import_batch',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
   @override
   List<GeneratedColumn> get $columns => [
     id,
@@ -2401,6 +2412,7 @@ class $WorkoutsTable extends Workouts with TableInfo<$WorkoutsTable, Workout> {
     startedAt,
     endedAt,
     exerciseOrder,
+    importBatch,
   ];
   @override
   String get aliasedName => _alias ?? actualTableName;
@@ -2446,6 +2458,15 @@ class $WorkoutsTable extends Workouts with TableInfo<$WorkoutsTable, Workout> {
         ),
       );
     }
+    if (data.containsKey('import_batch')) {
+      context.handle(
+        _importBatchMeta,
+        importBatch.isAcceptableOrUnknown(
+          data['import_batch']!,
+          _importBatchMeta,
+        ),
+      );
+    }
     return context;
   }
 
@@ -2475,6 +2496,10 @@ class $WorkoutsTable extends Workouts with TableInfo<$WorkoutsTable, Workout> {
         DriftSqlType.string,
         data['${effectivePrefix}exercise_order'],
       ),
+      importBatch: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}import_batch'],
+      ),
     );
   }
 
@@ -2493,12 +2518,16 @@ class Workout extends DataClass implements Insertable<Workout> {
   /// Exercise ids for this session, in the order they were performed.
   /// Null until the session is opened. The plan template is never rewritten.
   final String? exerciseOrder;
+
+  /// Set on imports written by 2.5.1 and later. Cleanup never deletes these.
+  final String? importBatch;
   const Workout({
     required this.id,
     this.planId,
     required this.startedAt,
     this.endedAt,
     this.exerciseOrder,
+    this.importBatch,
   });
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
@@ -2513,6 +2542,9 @@ class Workout extends DataClass implements Insertable<Workout> {
     }
     if (!nullToAbsent || exerciseOrder != null) {
       map['exercise_order'] = Variable<String>(exerciseOrder);
+    }
+    if (!nullToAbsent || importBatch != null) {
+      map['import_batch'] = Variable<String>(importBatch);
     }
     return map;
   }
@@ -2530,6 +2562,9 @@ class Workout extends DataClass implements Insertable<Workout> {
       exerciseOrder: exerciseOrder == null && nullToAbsent
           ? const Value.absent()
           : Value(exerciseOrder),
+      importBatch: importBatch == null && nullToAbsent
+          ? const Value.absent()
+          : Value(importBatch),
     );
   }
 
@@ -2544,6 +2579,7 @@ class Workout extends DataClass implements Insertable<Workout> {
       startedAt: serializer.fromJson<DateTime>(json['startedAt']),
       endedAt: serializer.fromJson<DateTime?>(json['endedAt']),
       exerciseOrder: serializer.fromJson<String?>(json['exerciseOrder']),
+      importBatch: serializer.fromJson<String?>(json['importBatch']),
     );
   }
   @override
@@ -2555,6 +2591,7 @@ class Workout extends DataClass implements Insertable<Workout> {
       'startedAt': serializer.toJson<DateTime>(startedAt),
       'endedAt': serializer.toJson<DateTime?>(endedAt),
       'exerciseOrder': serializer.toJson<String?>(exerciseOrder),
+      'importBatch': serializer.toJson<String?>(importBatch),
     };
   }
 
@@ -2564,6 +2601,7 @@ class Workout extends DataClass implements Insertable<Workout> {
     DateTime? startedAt,
     Value<DateTime?> endedAt = const Value.absent(),
     Value<String?> exerciseOrder = const Value.absent(),
+    Value<String?> importBatch = const Value.absent(),
   }) => Workout(
     id: id ?? this.id,
     planId: planId.present ? planId.value : this.planId,
@@ -2572,6 +2610,7 @@ class Workout extends DataClass implements Insertable<Workout> {
     exerciseOrder: exerciseOrder.present
         ? exerciseOrder.value
         : this.exerciseOrder,
+    importBatch: importBatch.present ? importBatch.value : this.importBatch,
   );
   Workout copyWithCompanion(WorkoutsCompanion data) {
     return Workout(
@@ -2582,6 +2621,9 @@ class Workout extends DataClass implements Insertable<Workout> {
       exerciseOrder: data.exerciseOrder.present
           ? data.exerciseOrder.value
           : this.exerciseOrder,
+      importBatch: data.importBatch.present
+          ? data.importBatch.value
+          : this.importBatch,
     );
   }
 
@@ -2592,14 +2634,15 @@ class Workout extends DataClass implements Insertable<Workout> {
           ..write('planId: $planId, ')
           ..write('startedAt: $startedAt, ')
           ..write('endedAt: $endedAt, ')
-          ..write('exerciseOrder: $exerciseOrder')
+          ..write('exerciseOrder: $exerciseOrder, ')
+          ..write('importBatch: $importBatch')
           ..write(')'))
         .toString();
   }
 
   @override
   int get hashCode =>
-      Object.hash(id, planId, startedAt, endedAt, exerciseOrder);
+      Object.hash(id, planId, startedAt, endedAt, exerciseOrder, importBatch);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -2608,7 +2651,8 @@ class Workout extends DataClass implements Insertable<Workout> {
           other.planId == this.planId &&
           other.startedAt == this.startedAt &&
           other.endedAt == this.endedAt &&
-          other.exerciseOrder == this.exerciseOrder);
+          other.exerciseOrder == this.exerciseOrder &&
+          other.importBatch == this.importBatch);
 }
 
 class WorkoutsCompanion extends UpdateCompanion<Workout> {
@@ -2617,12 +2661,14 @@ class WorkoutsCompanion extends UpdateCompanion<Workout> {
   final Value<DateTime> startedAt;
   final Value<DateTime?> endedAt;
   final Value<String?> exerciseOrder;
+  final Value<String?> importBatch;
   const WorkoutsCompanion({
     this.id = const Value.absent(),
     this.planId = const Value.absent(),
     this.startedAt = const Value.absent(),
     this.endedAt = const Value.absent(),
     this.exerciseOrder = const Value.absent(),
+    this.importBatch = const Value.absent(),
   });
   WorkoutsCompanion.insert({
     this.id = const Value.absent(),
@@ -2630,6 +2676,7 @@ class WorkoutsCompanion extends UpdateCompanion<Workout> {
     required DateTime startedAt,
     this.endedAt = const Value.absent(),
     this.exerciseOrder = const Value.absent(),
+    this.importBatch = const Value.absent(),
   }) : startedAt = Value(startedAt);
   static Insertable<Workout> custom({
     Expression<int>? id,
@@ -2637,6 +2684,7 @@ class WorkoutsCompanion extends UpdateCompanion<Workout> {
     Expression<DateTime>? startedAt,
     Expression<DateTime>? endedAt,
     Expression<String>? exerciseOrder,
+    Expression<String>? importBatch,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
@@ -2644,6 +2692,7 @@ class WorkoutsCompanion extends UpdateCompanion<Workout> {
       if (startedAt != null) 'started_at': startedAt,
       if (endedAt != null) 'ended_at': endedAt,
       if (exerciseOrder != null) 'exercise_order': exerciseOrder,
+      if (importBatch != null) 'import_batch': importBatch,
     });
   }
 
@@ -2653,6 +2702,7 @@ class WorkoutsCompanion extends UpdateCompanion<Workout> {
     Value<DateTime>? startedAt,
     Value<DateTime?>? endedAt,
     Value<String?>? exerciseOrder,
+    Value<String?>? importBatch,
   }) {
     return WorkoutsCompanion(
       id: id ?? this.id,
@@ -2660,6 +2710,7 @@ class WorkoutsCompanion extends UpdateCompanion<Workout> {
       startedAt: startedAt ?? this.startedAt,
       endedAt: endedAt ?? this.endedAt,
       exerciseOrder: exerciseOrder ?? this.exerciseOrder,
+      importBatch: importBatch ?? this.importBatch,
     );
   }
 
@@ -2681,6 +2732,9 @@ class WorkoutsCompanion extends UpdateCompanion<Workout> {
     if (exerciseOrder.present) {
       map['exercise_order'] = Variable<String>(exerciseOrder.value);
     }
+    if (importBatch.present) {
+      map['import_batch'] = Variable<String>(importBatch.value);
+    }
     return map;
   }
 
@@ -2691,7 +2745,8 @@ class WorkoutsCompanion extends UpdateCompanion<Workout> {
           ..write('planId: $planId, ')
           ..write('startedAt: $startedAt, ')
           ..write('endedAt: $endedAt, ')
-          ..write('exerciseOrder: $exerciseOrder')
+          ..write('exerciseOrder: $exerciseOrder, ')
+          ..write('importBatch: $importBatch')
           ..write(')'))
         .toString();
   }
@@ -8997,6 +9052,7 @@ typedef $$WorkoutsTableCreateCompanionBuilder =
       required DateTime startedAt,
       Value<DateTime?> endedAt,
       Value<String?> exerciseOrder,
+      Value<String?> importBatch,
     });
 typedef $$WorkoutsTableUpdateCompanionBuilder =
     WorkoutsCompanion Function({
@@ -9005,6 +9061,7 @@ typedef $$WorkoutsTableUpdateCompanionBuilder =
       Value<DateTime> startedAt,
       Value<DateTime?> endedAt,
       Value<String?> exerciseOrder,
+      Value<String?> importBatch,
     });
 
 final class $$WorkoutsTableReferences
@@ -9073,6 +9130,11 @@ class $$WorkoutsTableFilterComposer
 
   ColumnFilters<String> get exerciseOrder => $composableBuilder(
     column: $table.exerciseOrder,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get importBatch => $composableBuilder(
+    column: $table.importBatch,
     builder: (column) => ColumnFilters(column),
   );
 
@@ -9154,6 +9216,11 @@ class $$WorkoutsTableOrderingComposer
     builder: (column) => ColumnOrderings(column),
   );
 
+  ColumnOrderings<String> get importBatch => $composableBuilder(
+    column: $table.importBatch,
+    builder: (column) => ColumnOrderings(column),
+  );
+
   $$PlansTableOrderingComposer get planId {
     final $$PlansTableOrderingComposer composer = $composerBuilder(
       composer: this,
@@ -9198,6 +9265,11 @@ class $$WorkoutsTableAnnotationComposer
 
   GeneratedColumn<String> get exerciseOrder => $composableBuilder(
     column: $table.exerciseOrder,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get importBatch => $composableBuilder(
+    column: $table.importBatch,
     builder: (column) => column,
   );
 
@@ -9283,12 +9355,14 @@ class $$WorkoutsTableTableManager
                 Value<DateTime> startedAt = const Value.absent(),
                 Value<DateTime?> endedAt = const Value.absent(),
                 Value<String?> exerciseOrder = const Value.absent(),
+                Value<String?> importBatch = const Value.absent(),
               }) => WorkoutsCompanion(
                 id: id,
                 planId: planId,
                 startedAt: startedAt,
                 endedAt: endedAt,
                 exerciseOrder: exerciseOrder,
+                importBatch: importBatch,
               ),
           createCompanionCallback:
               ({
@@ -9297,12 +9371,14 @@ class $$WorkoutsTableTableManager
                 required DateTime startedAt,
                 Value<DateTime?> endedAt = const Value.absent(),
                 Value<String?> exerciseOrder = const Value.absent(),
+                Value<String?> importBatch = const Value.absent(),
               }) => WorkoutsCompanion.insert(
                 id: id,
                 planId: planId,
                 startedAt: startedAt,
                 endedAt: endedAt,
                 exerciseOrder: exerciseOrder,
+                importBatch: importBatch,
               ),
           withReferenceMapper: (p0) => p0
               .map(

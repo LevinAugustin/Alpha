@@ -4233,7 +4233,7 @@ abstract class AppLocalizations {
   /// Preview line for imported workouts and sets.
   ///
   /// In en, this message translates to:
-  /// **'{workouts} workouts, {sets} sets'**
+  /// **'{workouts, plural, =1{1 workout, {sets, plural, =1{1 set} other{{sets} sets}}} other{{workouts} workouts, {sets, plural, =1{1 set} other{{sets} sets}}}}'**
   String importSetSummary(int workouts, int sets);
 
   /// Rows skipped because the date could not be parsed.
@@ -4317,7 +4317,7 @@ abstract class AppLocalizations {
   /// Preview before import cleanup.
   ///
   /// In en, this message translates to:
-  /// **'{workouts} imported workouts and {templates} templates will be removed. Workouts you entered by hand stay.'**
+  /// **'{workouts, plural, =1{1 imported workout} other{{workouts} imported workouts}} and {templates, plural, =1{1 template} other{{templates} templates}} will be removed. Workouts you entered by hand stay.'**
   String cleanupImportsPreview(int workouts, int templates);
 
   /// Shown when no broken import rows exist.

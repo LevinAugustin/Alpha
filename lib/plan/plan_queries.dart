@@ -40,6 +40,8 @@ class PlanExerciseDraft {
     this.grip = '',
     this.position = '',
     this.movement = '',
+    this.catalogId = '',
+    this.catalogSource = '',
   });
 
   final PlanExercisesCompanion planExercise;
@@ -55,6 +57,8 @@ class PlanExerciseDraft {
   final String grip;
   final String position;
   final String movement;
+  final String catalogId;
+  final String catalogSource;
 
   PlanExerciseDraft copyWithPlanExercise(PlanExercisesCompanion value) =>
       PlanExerciseDraft(
@@ -71,6 +75,8 @@ class PlanExerciseDraft {
         grip: grip,
         position: position,
         movement: movement,
+        catalogId: catalogId,
+        catalogSource: catalogSource,
       );
 }
 
@@ -104,9 +110,17 @@ List<PlanExerciseDraft> filterPlanExerciseDrafts(
       leftName: left.exerciseName,
       leftGermanName: left.germanName,
       leftAliases: left.aliases,
+      leftCatalog: isCatalogExercise(
+        catalogId: left.catalogId,
+        catalogSource: left.catalogSource,
+      ),
       rightName: right.exerciseName,
       rightGermanName: right.germanName,
       rightAliases: right.aliases,
+      rightCatalog: isCatalogExercise(
+        catalogId: right.catalogId,
+        catalogSource: right.catalogSource,
+      ),
     ),
   );
   return matches;
@@ -270,6 +284,8 @@ Future<List<PlanExerciseDraft>> loadPlanExerciseDrafts(
       db.exercises.griff,
       db.exercises.position,
       db.exercises.bewegung,
+      db.exercises.catalogId,
+      db.exercises.catalogSource,
     ])
     ..where(db.exercises.archived.equals(false))
     ..join([
@@ -324,6 +340,8 @@ Future<List<PlanExerciseDraft>> loadPlanExerciseDrafts(
       grip: row.read(db.exercises.griff) ?? '',
       position: row.read(db.exercises.position) ?? '',
       movement: row.read(db.exercises.bewegung) ?? '',
+      catalogId: row.read(db.exercises.catalogId) ?? '',
+      catalogSource: row.read(db.exercises.catalogSource) ?? '',
     );
     drafts.add(draft);
   }

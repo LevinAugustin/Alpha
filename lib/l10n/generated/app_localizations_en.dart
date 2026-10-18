@@ -2276,7 +2276,25 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String importSetSummary(int workouts, int sets) {
-    return '$workouts workouts, $sets sets';
+    String _temp0 = intl.Intl.pluralLogic(
+      sets,
+      locale: localeName,
+      other: '$sets sets',
+      one: '1 set',
+    );
+    String _temp1 = intl.Intl.pluralLogic(
+      sets,
+      locale: localeName,
+      other: '$sets sets',
+      one: '1 set',
+    );
+    String _temp2 = intl.Intl.pluralLogic(
+      workouts,
+      locale: localeName,
+      other: '$workouts workouts, $_temp0',
+      one: '1 workout, $_temp1',
+    );
+    return '$_temp2';
   }
 
   @override
@@ -2329,7 +2347,19 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String cleanupImportsPreview(int workouts, int templates) {
-    return '$workouts imported workouts and $templates templates will be removed. Workouts you entered by hand stay.';
+    String _temp0 = intl.Intl.pluralLogic(
+      workouts,
+      locale: localeName,
+      other: '$workouts imported workouts',
+      one: '1 imported workout',
+    );
+    String _temp1 = intl.Intl.pluralLogic(
+      templates,
+      locale: localeName,
+      other: '$templates templates',
+      one: '1 template',
+    );
+    return '$_temp0 and $_temp1 will be removed. Workouts you entered by hand stay.';
   }
 
   @override

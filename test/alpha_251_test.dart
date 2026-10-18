@@ -355,7 +355,8 @@ Training,"17 Okt. 2026, 13:20","$name",20,10
     );
     await tester.pumpAndSettle();
 
-    expect(find.text('1 Trainings, 1 Sätze'), findsOneWidget);
+    expect(find.text('1 Training, 1 Satz'), findsOneWidget);
+    expect(find.text('1 Trainings, 1 Sätze'), findsNothing);
     final label = find.text(name);
     expect(label, findsOneWidget);
     expect(tester.getSize(label).height, lessThan(40));

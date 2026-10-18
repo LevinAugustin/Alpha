@@ -9,7 +9,6 @@ import 'package:flexify/l10n/l10n.dart';
 import 'package:flexify/logging.dart';
 import 'package:flexify/main.dart';
 import 'package:flexify/plan/exercise_tile.dart';
-import 'package:flexify/plan/plan_names.dart';
 import 'package:flexify/plan/plan_queries.dart';
 import 'package:flexify/platform_page_route.dart';
 import 'package:flexify/responsive.dart';
@@ -57,6 +56,8 @@ class _EditPlanPageState extends State<EditPlanPage> {
           grip: exercise.griff ?? '',
           position: exercise.position ?? '',
           movement: exercise.bewegung ?? '',
+          catalogId: exercise.catalogId ?? '',
+          catalogSource: exercise.catalogSource ?? '',
           planExercise: PlanExercisesCompanion(
             exerciseId: Value(exercise.id),
             enabled: const Value(true),
@@ -79,17 +80,8 @@ class _EditPlanPageState extends State<EditPlanPage> {
 
   @override
   Widget build(BuildContext context) {
-    final entered = _titleCtrl.text.trim();
-    final title = entered.isNotEmpty
-        ? entered
-        : widget.plan.id.present
-        ? planDisplayName(
-            title: widget.plan.title.value,
-            sequence: widget.plan.sequence.present
-                ? widget.plan.sequence.value
-                : null,
-            id: widget.plan.id.value,
-          )
+    final title = widget.plan.id.present
+        ? context.l10n.editPlan
         : context.l10n.addPlan;
 
     final matched = _search.isEmpty

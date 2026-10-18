@@ -21,6 +21,7 @@ import 'generated/schema_v62.dart' as v62;
 import 'generated/schema_v64.dart' as v64;
 import 'generated/schema_v69.dart' as v69;
 import 'generated/schema_v79.dart' as v79;
+import 'generated/schema_v80.dart' as v80;
 
 void main() {
   driftRuntimeOptions.dontWarnAboutMultipleDatabases = true;
@@ -1473,6 +1474,33 @@ void main() {
         expect(
           columns.map((item) => item.read<String>('name')),
           contains('rest_ms'),
+        );
+      },
+    );
+  });
+
+  test('v80 workout keeps its row and the import marker stays empty', () async {
+    await verifier.testWithDataIntegrity(
+      oldVersion: 80,
+      newVersion: 81,
+      createOld: v80.DatabaseAtV80.new,
+      createNew: AppDatabase.new,
+      openTestedDatabase: AppDatabase.new,
+      createItems: (batch, oldDb) {
+        batch.insert(
+          oldDb.workouts,
+          v80.WorkoutsCompanion.insert(startedAt: 1700000000),
+        );
+      },
+      validateItems: (newDb) async {
+        final row = await newDb.select(newDb.workouts).getSingle();
+        expect(row.importBatch, null);
+        final columns = await newDb
+            .customSelect('PRAGMA table_info(workouts)')
+            .get();
+        expect(
+          columns.map((item) => item.read<String>('name')),
+          contains('import_batch'),
         );
       },
     );

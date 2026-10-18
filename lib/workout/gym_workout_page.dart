@@ -153,11 +153,16 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
     } catch (error, stack) {
       debugPrint('Gym prefs unavailable: $error\n$stack');
     }
-    if (mounted && alphaPrefs.gyms.length > 1) {
+    final existing =
+        await (db.select(db.workouts)..where(
+              (row) => row.planId.equals(widget.plan.id) & row.endedAt.isNull(),
+            ))
+            .getSingleOrNull();
+    if (mounted && existing == null && alphaPrefs.gyms.length > 1) {
       await _chooseGym();
     }
     final settings = await (db.settings.select()..limit(1)).getSingle();
-    final workout = await _activeWorkout();
+    final workout = await _activeWorkout(existing);
     final planRows =
         await (db.select(db.planExercises).join([
               innerJoin(
@@ -289,12 +294,7 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
     );
   }
 
-  Future<Workout> _activeWorkout() async {
-    final existing =
-        await (db.select(db.workouts)..where(
-              (row) => row.planId.equals(widget.plan.id) & row.endedAt.isNull(),
-            ))
-            .getSingleOrNull();
+  Future<Workout> _activeWorkout(Workout? existing) async {
     if (existing != null) return existing;
     final id = await db.workouts.insertOne(
       WorkoutsCompanion.insert(
@@ -750,6 +750,7 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
     await _commitPendingExercise();
     await (db.update(db.workouts)..where((row) => row.id.equals(workout.id)))
         .write(WorkoutsCompanion(endedAt: Value(DateTime.now())));
+    if (mounted) await context.read<TimerState>().stopTimer();
     await _offerProgression();
     if (liveWorkout.value?.workoutId == workout.id) liveWorkout.value = null;
     if (!mounted) return;
@@ -979,9 +980,17 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
                             leftName: a.name,
                             leftGermanName: a.germanName,
                             leftAliases: a.aliases,
+                            leftCatalog: isCatalogExercise(
+                              catalogId: a.catalogId,
+                              catalogSource: a.catalogSource,
+                            ),
                             rightName: b.name,
                             rightGermanName: b.germanName,
                             rightAliases: b.aliases,
+                            rightCatalog: isCatalogExercise(
+                              catalogId: b.catalogId,
+                              catalogSource: b.catalogSource,
+                            ),
                           ),
                   );
             final shown = matches.take(40);

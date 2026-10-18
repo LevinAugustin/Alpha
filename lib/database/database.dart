@@ -1160,6 +1160,9 @@ class AppDatabase extends _$AppDatabase {
                 schema.planExercises.restMs,
               );
             },
+            from80To81: (Migrator m, Schema81 schema) async {
+              await m.addColumn(schema.workouts, schema.workouts.importBatch);
+            },
           );
           await transaction(() async {
             await upgrade(m, from, to);
@@ -1181,5 +1184,5 @@ class AppDatabase extends _$AppDatabase {
   }
 
   @override
-  int get schemaVersion => 80;
+  int get schemaVersion => 81;
 }

@@ -24,6 +24,7 @@ Future<void> applyWorkoutImport({
     return matched.putIfAbsent(name, () => match(name));
   }
 
+  final importBatch = '2.5.1-${DateTime.now().microsecondsSinceEpoch}';
   await database.transaction(() async {
     final byWorkout = <String, int>{};
     final planIds = <String, int?>{};
@@ -51,6 +52,7 @@ Future<void> applyWorkoutImport({
             planId: Value(planIds[template.originalTitle]),
             startedAt: set.started,
             endedAt: Value(set.ended ?? set.started),
+            importBatch: Value(importBatch),
           ),
         );
         byWorkout[key] = workoutId;

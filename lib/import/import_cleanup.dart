@@ -31,6 +31,20 @@ bool importedStub(DateTime started, DateTime? ended) {
       started.second == ended.second;
 }
 
+bool markedImport(String? batch) => (batch ?? '').trim().isNotEmpty;
+
+bool legacyBrokenImport({
+  required String? importBatch,
+  required DateTime started,
+  required DateTime? ended,
+  required int setCount,
+  required int unmarkedSameSecond,
+}) {
+  if (markedImport(importBatch)) return false;
+  if (!importedStub(started, ended)) return false;
+  return setCount == 1 || unmarkedSameSecond > 1;
+}
+
 DateTime importSecond(DateTime value) => DateTime(
   value.year,
   value.month,
@@ -42,9 +56,32 @@ DateTime importSecond(DateTime value) => DateTime(
 
 Future<ImportCleanupPreview> previewImportCleanup(AppDatabase database) async {
   final workouts = await database.select(database.workouts).get();
-  final stubs = workouts
-      .where((row) => importedStub(row.startedAt, row.endedAt))
-      .toList();
+  final sets = await database.select(database.exerciseSets).get();
+  final setCounts = <int, int>{};
+  for (final set in sets) {
+    final workoutId = set.workoutId;
+    if (workoutId == null) continue;
+    setCounts[workoutId] = (setCounts[workoutId] ?? 0) + 1;
+  }
+  final unmarkedSameSecond = <DateTime, int>{};
+  for (final row in workouts) {
+    if (markedImport(row.importBatch)) continue;
+    if (!importedStub(row.startedAt, row.endedAt)) continue;
+    final second = importSecond(row.startedAt);
+    unmarkedSameSecond[second] = (unmarkedSameSecond[second] ?? 0) + 1;
+  }
+  final stubs = [
+    for (final row in workouts)
+      if (legacyBrokenImport(
+        importBatch: row.importBatch,
+        started: row.startedAt,
+        ended: row.endedAt,
+        setCount: setCounts[row.id] ?? 0,
+        unmarkedSameSecond:
+            unmarkedSameSecond[importSecond(row.startedAt)] ?? 0,
+      ))
+        row,
+  ];
   final stubIds = stubs.map((row) => row.id).toSet();
   final byPlan = <int, List<Workout>>{};
   for (final workout in workouts) {

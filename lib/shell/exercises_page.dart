@@ -218,9 +218,17 @@ class _ExercisesPageState extends State<ExercisesPage> {
                       leftName: a.name,
                       leftGermanName: a.germanName,
                       leftAliases: a.aliases,
+                      leftCatalog: isCatalogExercise(
+                        catalogId: a.catalogId,
+                        catalogSource: a.catalogSource,
+                      ),
                       rightName: b.name,
                       rightGermanName: b.germanName,
                       rightAliases: b.aliases,
+                      rightCatalog: isCatalogExercise(
+                        catalogId: b.catalogId,
+                        catalogSource: b.catalogSource,
+                      ),
                     );
                   });
               return ListView.builder(

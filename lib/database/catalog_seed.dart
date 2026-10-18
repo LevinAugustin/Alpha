@@ -212,11 +212,11 @@ int? exerciseSearchRank({
   ].where((synonym) => synonym.isNotEmpty);
   if (label == needle) return 1;
   if (label.startsWith(needle)) return 2;
+  if (synonyms.contains(needle)) return 3;
   final words = label.split(' ');
   if (tokens.every((token) => words.any((word) => word.startsWith(token)))) {
-    return 3;
+    return 4;
   }
-  if (synonyms.contains(needle)) return 4;
   if (synonyms.any((synonym) => synonym.startsWith(needle))) return 5;
   if (label.isNotEmpty && tokens.every((token) => label.contains(token))) {
     return 6;
@@ -229,6 +229,13 @@ int? exerciseSearchRank({
   return 8;
 }
 
+bool isCatalogExercise({String? catalogId, String? catalogSource}) {
+  final id = (catalogId ?? '').trim();
+  if (id.isEmpty || id.startsWith('eigen-')) return false;
+  if ((catalogSource ?? '').trim().toLowerCase() == 'custom') return false;
+  return true;
+}
+
 int compareExerciseSearch({
   required String query,
   required String leftName,
@@ -237,11 +244,14 @@ int compareExerciseSearch({
   required String rightName,
   String? rightGermanName,
   String? rightAliases,
+  bool leftCatalog = true,
+  bool rightCatalog = true,
 }) {
   final left = _searchOrder(query, leftName, leftGermanName, leftAliases);
   final right = _searchOrder(query, rightName, rightGermanName, rightAliases);
   final byRank = left.rank.compareTo(right.rank);
   if (byRank != 0) return byRank;
+  if (leftCatalog != rightCatalog) return leftCatalog ? -1 : 1;
   final byLength = left.length.compareTo(right.length);
   if (byLength != 0) return byLength;
   return left.alpha.compareTo(right.alpha);
