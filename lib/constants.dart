@@ -2,34 +2,12 @@ import 'package:drift/drift.dart';
 import 'package:flexify/database/database.dart';
 import 'package:flexify/l10n/generated/app_localizations.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 /// Consistent padding for input fields (dropdowns, text fields) in settings screens.
 const kSettingsInputPadding = EdgeInsets.symmetric(
   horizontal: 16.0,
   vertical: 8.0,
 );
-
-const weekdays = [
-  'Monday',
-  'Tuesday',
-  'Wednesday',
-  'Thursday',
-  'Friday',
-  'Saturday',
-  'Sunday',
-];
-
-String localizedWeekday(
-  AppLocalizations l10n,
-  String storedWeekday, {
-  bool abbreviated = false,
-}) {
-  final index = weekdays.indexOf(storedWeekday);
-  if (index < 0) return storedWeekday;
-  final date = DateTime.utc(2024, 1, index + 1);
-  return DateFormat(abbreviated ? 'EEE' : 'EEEE', l10n.localeName).format(date);
-}
 
 enum CardioMetric {
   pace,

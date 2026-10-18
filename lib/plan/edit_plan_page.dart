@@ -2,15 +2,14 @@ import 'dart:async';
 
 import 'package:drift/drift.dart' hide Column;
 import 'package:flexify/app_fab.dart';
-import 'package:flexify/constants.dart';
 import 'package:flexify/database/database.dart';
-import 'package:flexify/day_selector.dart';
 import 'package:flexify/empty_state.dart';
 import 'package:flexify/graph/add_exercise_page.dart';
 import 'package:flexify/l10n/l10n.dart';
 import 'package:flexify/logging.dart';
 import 'package:flexify/main.dart';
 import 'package:flexify/plan/exercise_tile.dart';
+import 'package:flexify/plan/plan_names.dart';
 import 'package:flexify/plan/plan_queries.dart';
 import 'package:flexify/platform_page_route.dart';
 import 'package:flexify/responsive.dart';
@@ -27,7 +26,6 @@ class EditPlanPage extends StatefulWidget {
 }
 
 class _EditPlanPageState extends State<EditPlanPage> {
-  List<bool> _days = [];
   List<PlanExerciseDraft> _exercises = [];
   bool _loadingExercises = true;
   bool _hasUnsavedChanges = false;
@@ -81,14 +79,18 @@ class _EditPlanPageState extends State<EditPlanPage> {
 
   @override
   Widget build(BuildContext context) {
-    final storedDays = widget.plan.days.value
-        .split(',')
-        .where((day) => day.isNotEmpty);
-    final title = storedDays.isEmpty
-        ? context.l10n.addPlan
-        : storedDays
-              .map((day) => localizedWeekday(context.l10n, day))
-              .join(', ');
+    final entered = _titleCtrl.text.trim();
+    final title = entered.isNotEmpty
+        ? entered
+        : widget.plan.id.present
+        ? planDisplayName(
+            title: widget.plan.title.value,
+            sequence: widget.plan.sequence.present
+                ? widget.plan.sequence.value
+                : null,
+            id: widget.plan.id.value,
+          )
+        : context.l10n.addPlan;
 
     final matched = _search.isEmpty
         ? _exercises.where(
@@ -155,8 +157,6 @@ class _EditPlanPageState extends State<EditPlanPage> {
                       textCapitalization: TextCapitalization.sentences,
                       onChanged: (_) => _markDirty(),
                     ),
-                    const SizedBox(height: 16),
-                    DaySelector(daySwitches: _days, onChanged: _markDirty),
                   ],
                 ),
               ),
@@ -273,8 +273,6 @@ class _EditPlanPageState extends State<EditPlanPage> {
     super.initState();
 
     _titleCtrl.text = widget.plan.title.value ?? '';
-    final list = widget.plan.days.value.split(',');
-    _days = weekdays.map((day) => list.contains(day)).toList();
     _loadExercises();
   }
 
@@ -336,18 +334,13 @@ class _EditPlanPageState extends State<EditPlanPage> {
   }
 
   Future<void> save() async {
-    final selected = [];
-    for (int i = 0; i < _days.length; i++)
-      if (_days[i]) selected.add(weekdays[i]);
-
-    if (selected.isEmpty && _titleCtrl.text.isEmpty)
-      return toast(context.l10n.selectDays);
-
-    if (_exercises.where((draft) => draft.planExercise.enabled.value).isEmpty)
+    if (_exercises.where((draft) => draft.planExercise.enabled.value).isEmpty) {
       return toast(context.l10n.selectExercises);
+    }
 
+    final days = widget.plan.days.present ? widget.plan.days.value : '';
     var newPlan = PlansCompanion.insert(
-      days: selected.join(','),
+      days: days,
       title: Value(_titleCtrl.text),
     );
 
@@ -357,10 +350,7 @@ class _EditPlanPageState extends State<EditPlanPage> {
         await (db.update(
           db.plans,
         )..where((plan) => plan.id.equals(planId))).write(
-          PlansCompanion(
-            days: Value(selected.join(',')),
-            title: Value(_titleCtrl.text),
-          ),
+          PlansCompanion(days: Value(days), title: Value(_titleCtrl.text)),
         );
 
         for (final exercise in _orderedExercises(planId)) {

@@ -297,12 +297,19 @@ Future<_Dashboard> _load() async {
   final dailyBest = <int, Map<DateTime, double>>{};
   final heat = <String, double>{};
   final weekStart = mondayOf(now);
+  final workouts = await db.select(db.workouts).get();
+  final startedByWorkout = {
+    for (final workout in workouts) workout.id: workout.startedAt,
+  };
 
   for (final row in sets) {
     final set = row.readTable(db.exerciseSets);
     final exercise = row.readTable(db.exercises);
     if ((set.notes ?? '').contains('warmup')) continue;
-    final day = dateOnly(set.timestamp);
+    final started = set.workoutId == null
+        ? null
+        : startedByWorkout[set.workoutId!];
+    final day = workoutDay(started ?? set.timestamp);
     trained.add(day);
     final reps = set.reps ?? 0;
     final load = set.loadKg ?? 0;
@@ -345,16 +352,7 @@ Future<_Dashboard> _load() async {
     (index) => weekStart.add(Duration(days: index)),
   );
   final doneThisWeek = weekDays.where(trained.contains).length;
-  final plans = await (db.select(
-    db.plans,
-  )..orderBy([(row) => OrderingTerm.asc(row.sequence)])).get();
-  final finishedThisWeek = await finishedWorkoutsThisWeek(now);
-  final next = plans.isEmpty
-      ? null
-      : plans[nextPlanIndex(
-          finishedThisWeek: finishedThisWeek,
-          planCount: plans.length,
-        )];
+  final next = await suggestedNextPlan(now);
   final registryName = await _profileName();
   final goal = alphaPrefs.weeklyGoalManual
       ? alphaPrefs.weeklyGoal
@@ -390,13 +388,30 @@ Future<int> finishedWorkoutsThisWeek(DateTime now) async {
 }
 
 Future<Plan?> suggestedNextPlan(DateTime now) async {
-  final plans = await (db.select(
-    db.plans,
-  )..orderBy([(row) => OrderingTerm.asc(row.sequence)])).get();
+  final plans =
+      await (db.select(db.plans)..orderBy([
+            (row) => OrderingTerm.asc(row.sequence),
+            (row) => OrderingTerm.asc(row.id),
+          ]))
+          .get();
   if (plans.isEmpty) return null;
-  final finished = await finishedWorkoutsThisWeek(now);
+  final completed =
+      await (db.select(db.workouts)
+            ..where((row) => row.endedAt.isNotNull())
+            ..orderBy([
+              (row) => OrderingTerm.asc(row.startedAt),
+              (row) => OrderingTerm.asc(row.id),
+            ]))
+          .get();
+  final done = completed
+      .where((row) => !row.startedAt.toLocal().isAfter(now.toLocal()))
+      .toList();
+  final lastIndex = done.isEmpty
+      ? null
+      : plans.indexWhere((plan) => plan.id == done.last.planId);
   return plans[nextPlanIndex(
-    finishedThisWeek: finished,
+    lastPlanIndex: lastIndex != null && lastIndex >= 0 ? lastIndex : null,
+    completedCount: done.length,
     planCount: plans.length,
   )];
 }
@@ -422,7 +437,7 @@ int _automaticGoal(Set<DateTime> trained, DateTime now) {
 }
 
 String _quote(Plan? plan, int done, int goal) {
-  final title = '${plan?.title ?? ''} ${plan?.days ?? ''}'.toLowerCase();
+  final title = (plan?.title ?? '').toLowerCase();
   if (title.contains('pull') || title.contains('rücken')) return 'pull';
   if (title.contains('bein') || title.contains('leg')) return 'legs';
   if (title.contains('push') || title.contains('brust')) return 'push';
@@ -576,7 +591,11 @@ class _LockedHome extends StatelessWidget {
     final plan = data.nextPlan;
     final planName = plan == null
         ? l10n.tabTraining
-        : ((plan.title ?? '').trim().isEmpty ? plan.days : plan.title!.trim());
+        : planDisplayName(
+            title: plan.title,
+            sequence: plan.sequence,
+            id: plan.id,
+          );
     return Stack(
       children: [
         Opacity(
@@ -692,7 +711,11 @@ class _Hero extends StatelessWidget {
     final plan = data.nextPlan;
     final planName = plan == null
         ? l10n.tabTraining
-        : ((plan.title ?? '').trim().isEmpty ? plan.days : plan.title!.trim());
+        : planDisplayName(
+            title: plan.title,
+            sequence: plan.sequence,
+            id: plan.id,
+          );
     return Container(
       clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(

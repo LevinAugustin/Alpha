@@ -64,6 +64,73 @@ void main() {
       );
     }
   });
+
+  testWidgets('workouts mark the day they started', (tester) async {
+    final harness = await FlexifyTestHarness.create();
+    addTearDown(harness.database.close);
+    final exercise = await (harness.database.exercises.select()..limit(1))
+        .getSingle();
+    final month = dateOnly(DateTime.now());
+    final days = [
+      DateTime(month.year, month.month, 1),
+      DateTime(month.year, month.month, 3),
+      DateTime(month.year, month.month, 6),
+    ];
+    final plans = await (harness.database.select(
+      harness.database.plans,
+    )..orderBy([(row) => OrderingTerm.asc(row.id)])).get();
+    final spill = DateTime(month.year, month.month, 2, 0, 10);
+    final overnight = await harness.database.workouts.insertOne(
+      WorkoutsCompanion.insert(
+        planId: Value(plans[0].id),
+        startedAt: DateTime(days[0].year, days[0].month, days[0].day, 23, 50),
+        endedAt: Value(DateTime(spill.year, spill.month, spill.day, 0, 30)),
+      ),
+    );
+    await harness.database.exerciseSets.insertOne(
+      ExerciseSetsCompanion.insert(
+        exerciseId: exercise.id,
+        workoutId: Value(overnight),
+        timestamp: spill,
+        reps: const Value(8),
+        loadKg: const Value(40),
+      ),
+    );
+    for (final day in days.skip(1)) {
+      final workoutId = await harness.database.workouts.insertOne(
+        WorkoutsCompanion.insert(
+          planId: Value(plans[days.indexOf(day)].id),
+          startedAt: DateTime(day.year, day.month, day.day, 18),
+          endedAt: Value(DateTime(day.year, day.month, day.day, 19)),
+        ),
+      );
+      await harness.database.exerciseSets.insertOne(
+        ExerciseSetsCompanion.insert(
+          exerciseId: exercise.id,
+          workoutId: Value(workoutId),
+          timestamp: DateTime(day.year, day.month, day.day, 18, 30),
+          reps: const Value(8),
+          loadKg: const Value(40),
+        ),
+      );
+    }
+
+    await harness.pump(
+      tester,
+      Theme(
+        data: alphaThemeData(AlphaPalette.tiefschwarz),
+        child: const CalendarPage(),
+      ),
+      surfaceSize: const Size(400, 900),
+    );
+    await tester.pumpAndSettle();
+
+    for (final day in days) {
+      _expectFill(tester, day, AlphaPalette.tiefschwarz.accent);
+    }
+    _expectFill(tester, dateOnly(spill), Colors.transparent);
+    expect(days.map((day) => day.weekday).toSet(), hasLength(3));
+  });
 }
 
 void _expectWorkoutDay(
@@ -87,4 +154,10 @@ void _expectWorkoutDay(
     find.descendant(of: cell, matching: find.byType(Text)),
   );
   expect(calendarContrast(text.style!.color!, fill), greaterThanOrEqualTo(4.5));
+}
+
+void _expectFill(WidgetTester tester, DateTime day, Color fill) {
+  final box = tester.widget<Container>(find.byKey(Key(calendarDayKey(day))));
+  final decoration = box.decoration! as BoxDecoration;
+  expect(decoration.color, fill);
 }

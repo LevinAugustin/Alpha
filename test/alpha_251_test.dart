@@ -12,6 +12,7 @@ import 'package:flexify/import/import_cleanup.dart';
 import 'package:flexify/import/import_export_page.dart';
 import 'package:flexify/main.dart';
 import 'package:flexify/shell/start_page.dart';
+import 'package:flexify/shell/training_stats.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -71,6 +72,75 @@ void main() {
     await finish(12);
     expect((await suggestedNextPlan(now))!.title, 'Freitag');
     expect(await finishedWorkoutsThisWeek(now), 2);
+  });
+
+  test('the next plan follows the last workout, not the weekday', () async {
+    db = testDb();
+    addTearDown(db.close);
+    final stored = await (db.select(
+      db.plans,
+    )..orderBy([(row) => OrderingTerm.asc(row.id)])).get();
+    const weekdays = ['Monday', 'Wednesday', 'Saturday'];
+    for (var index = 0; index < stored.length; index++) {
+      await (db.update(
+        db.plans,
+      )..where((row) => row.id.equals(stored[index].id))).write(
+        PlansCompanion(days: Value(weekdays[index]), sequence: Value(index)),
+      );
+    }
+    final plans = await (db.select(
+      db.plans,
+    )..orderBy([(row) => OrderingTerm.asc(row.sequence)])).get();
+    final monday = DateTime(2026, 10, 12, 18);
+    final wednesday = DateTime(2026, 10, 14, 18);
+    final saturday = DateTime(2026, 10, 17, 11);
+    expect(monday.weekday, DateTime.monday);
+    expect(wednesday.weekday, DateTime.wednesday);
+    expect(saturday.weekday, DateTime.saturday);
+    expect((await suggestedNextPlan(saturday))!.id, plans.first.id);
+
+    Future<int> finish(Plan plan, DateTime started, DateTime ended) {
+      return db.workouts.insertOne(
+        WorkoutsCompanion.insert(
+          planId: Value(plan.id),
+          startedAt: started,
+          endedAt: Value(ended),
+        ),
+      );
+    }
+
+    await finish(plans[0], monday, monday.add(const Duration(hours: 1)));
+    expect((await suggestedNextPlan(monday))!.id, plans[1].id);
+    expect((await suggestedNextPlan(saturday))!.id, plans[1].id);
+
+    await finish(plans[1], wednesday, wednesday.add(const Duration(hours: 1)));
+    expect((await suggestedNextPlan(wednesday))!.id, plans[2].id);
+
+    final sameDayEarly = DateTime(2026, 10, 17, 9);
+    final sameDayLate = DateTime(2026, 10, 17, 18);
+    await db.workouts.deleteAll();
+    await finish(
+      plans[0],
+      sameDayEarly,
+      sameDayEarly.add(const Duration(hours: 1)),
+    );
+    await finish(
+      plans[1],
+      sameDayLate,
+      sameDayLate.add(const Duration(hours: 1)),
+    );
+    expect((await suggestedNextPlan(sameDayLate))!.id, plans[2].id);
+
+    final started = DateTime(2026, 10, 18, 23, 50);
+    final ended = DateTime(2026, 10, 19, 0, 30);
+    await db.workouts.deleteAll();
+    await finish(plans[0], started, ended);
+    expect(workoutDay(started), DateTime(2026, 10, 18));
+    expect(workoutDay(ended), DateTime(2026, 10, 19));
+    expect((await suggestedNextPlan(ended))!.id, plans[1].id);
+    expect(plans[0].days, 'Monday');
+    expect(plans[1].days, 'Wednesday');
+    expect(plans[2].days, 'Saturday');
   });
 
   test('legacy custom exercises get muscles and stay editable', () async {

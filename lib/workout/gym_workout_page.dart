@@ -18,6 +18,7 @@ import 'package:flexify/l10n/generated/app_localizations.dart';
 import 'package:flexify/l10n/l10n.dart';
 import 'package:flexify/logging.dart';
 import 'package:flexify/main.dart';
+import 'package:flexify/plan/plan_names.dart';
 import 'package:flexify/platform_page_route.dart';
 import 'package:flexify/theme/alpha_theme.dart';
 import 'package:flexify/timer/timer_state.dart';
@@ -240,9 +241,11 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
 
   void _publishLive() {
     if (_workout == null) return;
-    final title = (widget.plan.title ?? '').trim().isEmpty
-        ? widget.plan.days
-        : widget.plan.title!.trim();
+    final title = planDisplayName(
+      title: widget.plan.title,
+      sequence: widget.plan.sequence,
+      id: widget.plan.id,
+    );
     final current = _blocks.cast<_ExerciseBlock?>().firstWhere(
       (block) => block!.sets.any((set) => !set.done),
       orElse: () => _blocks.isEmpty ? null : _blocks.first,
@@ -1170,9 +1173,11 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
   Widget build(BuildContext context) {
     final palette = AlphaTheme.of(context);
     final l10n = context.l10n;
-    final title = (widget.plan.title ?? '').trim().isEmpty
-        ? widget.plan.days
-        : widget.plan.title!.trim();
+    final title = planDisplayName(
+      title: widget.plan.title,
+      sequence: widget.plan.sequence,
+      id: widget.plan.id,
+    );
     return PopScope(
       canPop: true,
       child: Scaffold(

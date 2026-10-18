@@ -1,7 +1,7 @@
 import 'package:drift/drift.dart' as drift;
 import 'package:flexify/app_fab.dart';
 import 'package:flexify/app_search.dart';
-import 'package:flexify/constants.dart';
+import 'package:flexify/plan/plan_names.dart';
 import 'package:flexify/database/database.dart';
 import 'package:flexify/l10n/l10n.dart';
 import 'package:flexify/main.dart';
@@ -133,13 +133,7 @@ class _PlansPageWidgetState extends State<_PlansPageWidget> {
   }
 
   List<Plan> _filterPlans(List<Plan> plans, List<PlanExerciseEntry> exercises) {
-    final l10n = context.l10n;
-    return filterPlans(
-      plans,
-      exercises,
-      _search,
-      (day) => localizedWeekday(l10n, day),
-    );
+    return filterPlans(plans, exercises, _search);
   }
 
   Future<void> _addPlan() async {
@@ -208,24 +202,23 @@ class _PlansPageWidgetState extends State<_PlansPageWidget> {
                         hintText: context.l10n.searchPlans,
                         controller: _selection,
                         onShare: () async {
-                          final l10n = context.l10n;
                           final selectedPlans = plans
                               .where((plan) => _selection.contains(plan.id))
                               .toList();
 
                           final summaries = await Future.wait(
                             selectedPlans.map((plan) async {
-                              final days = plan.days
-                                  .split(',')
-                                  .where((day) => day.isNotEmpty)
-                                  .map((day) => localizedWeekday(l10n, day))
-                                  .join(', ');
+                              final name = planDisplayName(
+                                title: plan.title,
+                                sequence: plan.sequence,
+                                id: plan.id,
+                              );
                               final planExercises =
                                   await getPlanExerciseEntries(db, plan.id);
                               final exerciseSummary = planExercises
                                   .map((entry) => '- ${entry.exercise.name}')
                                   .join('\n');
-                              return '$days:\n$exerciseSummary';
+                              return '$name:\n$exerciseSummary';
                             }),
                           );
 

@@ -39,14 +39,10 @@ void main() {
 
     await harness.pump(tester, EditPlanPage(plan: plan));
 
-    expect(find.text('Test title'), findsOne);
-    expect(find.text('Mon'), findsOne);
-    expect(find.text('Tue'), findsOne);
-    expect(find.text('Wed'), findsOne);
+    expect(find.text('Test title'), findsWidgets);
+    expect(find.text('Mon'), findsNothing);
     expect(find.text('Save'), findsOne);
 
-    await tester.tap(find.text('Mon'));
-    await tester.tap(find.text('Thu'));
     await scrollTo(tester, find.text('Arnold press'));
     await tester.tap(find.text('Arnold press'));
     await tester.enterText(find.byType(SearchBar), 'Barbell biceps curl');
@@ -56,6 +52,11 @@ void main() {
     await tester.tap(find.text('Save'));
     await tester.pumpAndSettle();
     expect(find.textContaining('Title'), findsNothing);
+    final saved =
+        await (database.plans.select()..where((row) => row.id.equals(1)))
+            .getSingle();
+    expect(saved.days, 'Monday,Tuesday,Wednesday');
+    expect(saved.title, 'Test title');
   });
 
   testWidgets('EditPlanPage preserves active workout progress', (
@@ -184,7 +185,7 @@ void main() {
 
     await tester.enterText(find.byType(TextField).first, 'Changed title');
     await tester.pump();
-    expect(find.text('Changed title'), findsOneWidget);
+    expect(find.text('Changed title'), findsWidgets);
     await Navigator.of(tester.element(find.byType(EditPlanPage))).maybePop();
     await tester.pumpAndSettle();
 
@@ -193,7 +194,7 @@ void main() {
 
     await tester.tap(find.text('Cancel'));
     await tester.pumpAndSettle();
-    expect(find.text('Changed title'), findsOneWidget);
+    expect(find.text('Changed title'), findsWidgets);
 
     await Navigator.of(tester.element(find.byType(EditPlanPage))).maybePop();
     await tester.pumpAndSettle();

@@ -4,6 +4,7 @@ import 'dart:math';
 import 'package:drift/drift.dart' hide Column;
 import 'package:flexify/app_fab.dart';
 import 'package:flexify/bottom_nav.dart';
+import 'package:flexify/plan/plan_names.dart';
 import 'package:flexify/constants.dart';
 import 'package:flexify/database/body_weight_repository.dart';
 import 'package:flexify/database/database.dart';
@@ -89,7 +90,7 @@ class _StartPlanPageState extends State<StartPlanPage>
         if (snapshot.data == null) {
           return Scaffold(
             appBar: AppBar(
-              title: Text(_displayTitle(context)),
+              title: Text(_displayTitle()),
               leading: IconButton(
                 icon: const Icon(Icons.arrow_back),
                 onPressed: () => Navigator.pop(context),
@@ -144,7 +145,7 @@ class _StartPlanPageState extends State<StartPlanPage>
                   FloatingActionButtonAnimator.noAnimation,
               resizeToAvoidBottomInset: true,
               appBar: AppBar(
-                title: Text(_displayTitle(context)),
+                title: Text(_displayTitle()),
                 leading: IconButton(
                   icon: const Icon(Icons.arrow_back),
                   onPressed: () => Navigator.pop(context),
@@ -646,13 +647,12 @@ class _StartPlanPageState extends State<StartPlanPage>
     });
   }
 
-  String _displayTitle(BuildContext context) {
-    if (_plan.title?.isNotEmpty == true) return _plan.title!;
-    return _plan.days
-        .split(',')
-        .where((day) => day.trim().isNotEmpty)
-        .map((day) => localizedWeekday(context.l10n, day.trim()))
-        .join(', ');
+  String _displayTitle() {
+    return planDisplayName(
+      title: _plan.title,
+      sequence: _plan.sequence,
+      id: _plan.id,
+    );
   }
 
   Future<void> _loadExercises() async {

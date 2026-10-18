@@ -745,8 +745,6 @@ void main() {
       _textFieldWithLabel('Title (optional)'),
       'Linux E2E weighted plan',
     );
-    await tester.tap(find.text('Mon'));
-    await tester.tap(find.text('Wed'));
     await tester.pumpAndSettle();
     await tester.enterText(find.byType(SearchBar), 'Linux E2E weighted hang');
     await tester.pumpAndSettle();
@@ -774,7 +772,7 @@ void main() {
         await (app.db.plans.select()
               ..where((tbl) => tbl.title.equals('Linux E2E weighted plan')))
             .getSingle();
-    expect(plan.days.split(',').toSet(), {'Monday', 'Wednesday'});
+    expect(plan.days, '');
     final planExercise = (await _planExerciseForName(
       plan.id,
       'Linux E2E weighted hang',
@@ -842,7 +840,6 @@ void main() {
         _textFieldWithLabel('Title (optional)'),
         'Linux E2E custom plan',
       );
-      await tester.tap(find.text('Mon'));
       await tester.pumpAndSettle();
       await tester.enterText(find.byType(SearchBar), 'Linux E2E plan exercise');
       await tester.pumpAndSettle();
@@ -857,7 +854,7 @@ void main() {
           await (app.db.plans.select()
                 ..where((tbl) => tbl.title.equals('Linux E2E custom plan')))
               .getSingle();
-      expect(plan.days, 'Monday');
+      expect(plan.days, '');
       final createdPlanExercise = await _planExerciseForName(
         plan.id,
         'Linux E2E plan exercise',
@@ -875,7 +872,7 @@ void main() {
       expect(customPlanTile, findsOneWidget);
       await tester.enterText(planSearch, 'Monday');
       await tester.pumpAndSettle();
-      expect(customPlanTile, findsOneWidget);
+      expect(customPlanTile, findsNothing);
       await tester.enterText(planSearch, 'Linux E2E custom plan');
       await tester.pumpAndSettle();
 
@@ -888,8 +885,6 @@ void main() {
         _textFieldWithLabel('Title (optional)'),
         'Linux E2E edited plan',
       );
-      await tester.tap(find.text('Tue'));
-      await tester.pumpAndSettle();
       await tester.tap(find.text('Save plan'));
       await tester.pumpAndSettle();
 
@@ -897,7 +892,7 @@ void main() {
           await (app.db.plans.select()..where((tbl) => tbl.id.equals(plan.id)))
               .getSingle();
       expect(plan.title, 'Linux E2E edited plan');
-      expect(plan.days.split(',').toSet(), {'Monday', 'Tuesday'});
+      expect(plan.days, '');
 
       final clearSelection = find.byTooltip('Clear selection');
       if (clearSelection.evaluate().isNotEmpty) {

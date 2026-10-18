@@ -62,19 +62,27 @@ class _CalendarPageState extends State<CalendarPage> {
             db.exercises,
             db.exercises.id.equalsExp(db.exerciseSets.exerciseId),
           ),
+          leftOuterJoin(
+            db.workouts,
+            db.workouts.id.equalsExp(db.exerciseSets.workoutId),
+          ),
         ])).watch(),
         builder: (context, snapshot) {
           final rows = snapshot.data ?? const <TypedResult>[];
           final trained = <DateTime>{};
           for (final row in rows) {
-            trained.add(dateOnly(row.readTable(db.exerciseSets).timestamp));
+            final set = row.readTable(db.exerciseSets);
+            final workout = row.readTableOrNull(db.workouts);
+            trained.add(workoutDay(workout?.startedAt ?? set.timestamp));
           }
           final today = DateTime.now();
           final selected = _selected;
           final dayRows = selected == null
               ? const <TypedResult>[]
               : rows.where((row) {
-                  return dateOnly(row.readTable(db.exerciseSets).timestamp) ==
+                  final set = row.readTable(db.exerciseSets);
+                  final workout = row.readTableOrNull(db.workouts);
+                  return workoutDay(workout?.startedAt ?? set.timestamp) ==
                       selected;
                 }).toList();
           return ListView(

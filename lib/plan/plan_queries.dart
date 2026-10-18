@@ -8,7 +8,6 @@ List<Plan> filterPlans(
   List<Plan> plans,
   List<PlanExerciseEntry> exercises,
   String search,
-  String Function(String) localizeDay,
 ) {
   if (search.isEmpty) return plans;
 
@@ -21,15 +20,7 @@ List<Plan> filterPlans(
       .toSet();
 
   return plans.where((plan) {
-    final localizedDays = plan.days
-        .split(',')
-        .where((day) => day.isNotEmpty)
-        .map(localizeDay)
-        .join(' ')
-        .toLowerCase();
     return plan.title?.toLowerCase().contains(normalizedSearch) == true ||
-        plan.days.toLowerCase().contains(normalizedSearch) ||
-        localizedDays.contains(normalizedSearch) ||
         matchingPlanIds.contains(plan.id);
   }).toList();
 }
