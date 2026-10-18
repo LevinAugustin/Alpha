@@ -1,10 +1,37 @@
+import 'dart:math' as math;
+
 import 'package:drift/drift.dart' hide Column;
 import 'package:flexify/database/database.dart';
 import 'package:flexify/exercise_labels.dart';
 import 'package:flexify/l10n/l10n.dart';
 import 'package:flexify/main.dart';
 import 'package:flexify/shell/training_stats.dart';
+import 'package:flexify/theme/alpha_theme.dart';
 import 'package:flutter/material.dart';
+
+const calendarLightLabel = Color(0xFFFFFFFF);
+const calendarDarkLabel = Color(0xFF0D0D0D);
+
+double calendarContrast(Color foreground, Color background) {
+  final lighter = math.max(
+    foreground.computeLuminance(),
+    background.computeLuminance(),
+  );
+  final darker = math.min(
+    foreground.computeLuminance(),
+    background.computeLuminance(),
+  );
+  return (lighter + 0.05) / (darker + 0.05);
+}
+
+Color calendarDayLabelColor(Color background) {
+  final light = calendarContrast(calendarLightLabel, background);
+  final dark = calendarContrast(calendarDarkLabel, background);
+  return light >= dark ? calendarLightLabel : calendarDarkLabel;
+}
+
+String calendarDayKey(DateTime day) =>
+    'calendar-day-${day.year}-${day.month}-${day.day}';
 
 class CalendarPage extends StatefulWidget {
   const CalendarPage({super.key});
@@ -35,19 +62,27 @@ class _CalendarPageState extends State<CalendarPage> {
             db.exercises,
             db.exercises.id.equalsExp(db.exerciseSets.exerciseId),
           ),
+          leftOuterJoin(
+            db.workouts,
+            db.workouts.id.equalsExp(db.exerciseSets.workoutId),
+          ),
         ])).watch(),
         builder: (context, snapshot) {
           final rows = snapshot.data ?? const <TypedResult>[];
           final trained = <DateTime>{};
           for (final row in rows) {
-            trained.add(dateOnly(row.readTable(db.exerciseSets).timestamp));
+            final set = row.readTable(db.exerciseSets);
+            final workout = row.readTableOrNull(db.workouts);
+            trained.add(workoutDay(workout?.startedAt ?? set.timestamp));
           }
           final today = DateTime.now();
           final selected = _selected;
           final dayRows = selected == null
               ? const <TypedResult>[]
               : rows.where((row) {
-                  return dateOnly(row.readTable(db.exerciseSets).timestamp) ==
+                  final set = row.readTable(db.exerciseSets);
+                  final workout = row.readTableOrNull(db.workouts);
+                  return workoutDay(workout?.startedAt ?? set.timestamp) ==
                       selected;
                 }).toList();
           return ListView(
@@ -147,6 +182,8 @@ class _MonthGrid extends StatelessWidget {
     final daysInMonth = DateTime(month.year, month.month + 1, 0).day;
     final leading = first.weekday - 1;
     final cells = leading + daysInMonth;
+    final palette = AlphaTheme.of(context);
+    final today = dateOnly(DateTime.now());
     return GridView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
@@ -158,18 +195,29 @@ class _MonthGrid extends StatelessWidget {
         if (index < leading) return const SizedBox.shrink();
         final day = DateTime(month.year, month.month, index - leading + 1);
         final isTrained = trained.contains(day);
+        final isToday = day == today;
         final isSelected = selected == day;
+        final fill = isTrained ? palette.accent : Colors.transparent;
+        final label = isTrained ? calendarDayLabelColor(fill) : palette.text;
+        final ring = isToday
+            ? (isTrained ? label : palette.accent)
+            : (isSelected ? palette.border : null);
         return InkWell(
           onTap: () => onSelect(day),
-          child: Center(
-            child: CircleAvatar(
-              radius: 16,
-              backgroundColor: isSelected
-                  ? Theme.of(context).colorScheme.primary
-                  : isTrained
-                  ? Theme.of(context).colorScheme.primaryContainer
-                  : Colors.transparent,
-              child: Text('${day.day}'),
+          child: Container(
+            key: Key(calendarDayKey(day)),
+            margin: const EdgeInsets.all(2),
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: fill,
+              borderRadius: BorderRadius.circular(8),
+              border: ring == null
+                  ? null
+                  : Border.all(color: ring, width: isToday ? 2 : 1),
+            ),
+            child: Text(
+              '${day.day}',
+              style: TextStyle(color: label, fontWeight: FontWeight.w700),
             ),
           ),
         );

@@ -2394,6 +2394,17 @@ class $WorkoutsTable extends Workouts with TableInfo<$WorkoutsTable, Workout> {
     type: DriftSqlType.string,
     requiredDuringInsert: false,
   );
+  static const VerificationMeta _importBatchMeta = const VerificationMeta(
+    'importBatch',
+  );
+  @override
+  late final GeneratedColumn<String> importBatch = GeneratedColumn<String>(
+    'import_batch',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
   @override
   List<GeneratedColumn> get $columns => [
     id,
@@ -2401,6 +2412,7 @@ class $WorkoutsTable extends Workouts with TableInfo<$WorkoutsTable, Workout> {
     startedAt,
     endedAt,
     exerciseOrder,
+    importBatch,
   ];
   @override
   String get aliasedName => _alias ?? actualTableName;
@@ -2446,6 +2458,15 @@ class $WorkoutsTable extends Workouts with TableInfo<$WorkoutsTable, Workout> {
         ),
       );
     }
+    if (data.containsKey('import_batch')) {
+      context.handle(
+        _importBatchMeta,
+        importBatch.isAcceptableOrUnknown(
+          data['import_batch']!,
+          _importBatchMeta,
+        ),
+      );
+    }
     return context;
   }
 
@@ -2475,6 +2496,10 @@ class $WorkoutsTable extends Workouts with TableInfo<$WorkoutsTable, Workout> {
         DriftSqlType.string,
         data['${effectivePrefix}exercise_order'],
       ),
+      importBatch: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}import_batch'],
+      ),
     );
   }
 
@@ -2493,12 +2518,16 @@ class Workout extends DataClass implements Insertable<Workout> {
   /// Exercise ids for this session, in the order they were performed.
   /// Null until the session is opened. The plan template is never rewritten.
   final String? exerciseOrder;
+
+  /// Set on imports written by 2.5.1 and later. Cleanup never deletes these.
+  final String? importBatch;
   const Workout({
     required this.id,
     this.planId,
     required this.startedAt,
     this.endedAt,
     this.exerciseOrder,
+    this.importBatch,
   });
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
@@ -2513,6 +2542,9 @@ class Workout extends DataClass implements Insertable<Workout> {
     }
     if (!nullToAbsent || exerciseOrder != null) {
       map['exercise_order'] = Variable<String>(exerciseOrder);
+    }
+    if (!nullToAbsent || importBatch != null) {
+      map['import_batch'] = Variable<String>(importBatch);
     }
     return map;
   }
@@ -2530,6 +2562,9 @@ class Workout extends DataClass implements Insertable<Workout> {
       exerciseOrder: exerciseOrder == null && nullToAbsent
           ? const Value.absent()
           : Value(exerciseOrder),
+      importBatch: importBatch == null && nullToAbsent
+          ? const Value.absent()
+          : Value(importBatch),
     );
   }
 
@@ -2544,6 +2579,7 @@ class Workout extends DataClass implements Insertable<Workout> {
       startedAt: serializer.fromJson<DateTime>(json['startedAt']),
       endedAt: serializer.fromJson<DateTime?>(json['endedAt']),
       exerciseOrder: serializer.fromJson<String?>(json['exerciseOrder']),
+      importBatch: serializer.fromJson<String?>(json['importBatch']),
     );
   }
   @override
@@ -2555,6 +2591,7 @@ class Workout extends DataClass implements Insertable<Workout> {
       'startedAt': serializer.toJson<DateTime>(startedAt),
       'endedAt': serializer.toJson<DateTime?>(endedAt),
       'exerciseOrder': serializer.toJson<String?>(exerciseOrder),
+      'importBatch': serializer.toJson<String?>(importBatch),
     };
   }
 
@@ -2564,6 +2601,7 @@ class Workout extends DataClass implements Insertable<Workout> {
     DateTime? startedAt,
     Value<DateTime?> endedAt = const Value.absent(),
     Value<String?> exerciseOrder = const Value.absent(),
+    Value<String?> importBatch = const Value.absent(),
   }) => Workout(
     id: id ?? this.id,
     planId: planId.present ? planId.value : this.planId,
@@ -2572,6 +2610,7 @@ class Workout extends DataClass implements Insertable<Workout> {
     exerciseOrder: exerciseOrder.present
         ? exerciseOrder.value
         : this.exerciseOrder,
+    importBatch: importBatch.present ? importBatch.value : this.importBatch,
   );
   Workout copyWithCompanion(WorkoutsCompanion data) {
     return Workout(
@@ -2582,6 +2621,9 @@ class Workout extends DataClass implements Insertable<Workout> {
       exerciseOrder: data.exerciseOrder.present
           ? data.exerciseOrder.value
           : this.exerciseOrder,
+      importBatch: data.importBatch.present
+          ? data.importBatch.value
+          : this.importBatch,
     );
   }
 
@@ -2592,14 +2634,15 @@ class Workout extends DataClass implements Insertable<Workout> {
           ..write('planId: $planId, ')
           ..write('startedAt: $startedAt, ')
           ..write('endedAt: $endedAt, ')
-          ..write('exerciseOrder: $exerciseOrder')
+          ..write('exerciseOrder: $exerciseOrder, ')
+          ..write('importBatch: $importBatch')
           ..write(')'))
         .toString();
   }
 
   @override
   int get hashCode =>
-      Object.hash(id, planId, startedAt, endedAt, exerciseOrder);
+      Object.hash(id, planId, startedAt, endedAt, exerciseOrder, importBatch);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -2608,7 +2651,8 @@ class Workout extends DataClass implements Insertable<Workout> {
           other.planId == this.planId &&
           other.startedAt == this.startedAt &&
           other.endedAt == this.endedAt &&
-          other.exerciseOrder == this.exerciseOrder);
+          other.exerciseOrder == this.exerciseOrder &&
+          other.importBatch == this.importBatch);
 }
 
 class WorkoutsCompanion extends UpdateCompanion<Workout> {
@@ -2617,12 +2661,14 @@ class WorkoutsCompanion extends UpdateCompanion<Workout> {
   final Value<DateTime> startedAt;
   final Value<DateTime?> endedAt;
   final Value<String?> exerciseOrder;
+  final Value<String?> importBatch;
   const WorkoutsCompanion({
     this.id = const Value.absent(),
     this.planId = const Value.absent(),
     this.startedAt = const Value.absent(),
     this.endedAt = const Value.absent(),
     this.exerciseOrder = const Value.absent(),
+    this.importBatch = const Value.absent(),
   });
   WorkoutsCompanion.insert({
     this.id = const Value.absent(),
@@ -2630,6 +2676,7 @@ class WorkoutsCompanion extends UpdateCompanion<Workout> {
     required DateTime startedAt,
     this.endedAt = const Value.absent(),
     this.exerciseOrder = const Value.absent(),
+    this.importBatch = const Value.absent(),
   }) : startedAt = Value(startedAt);
   static Insertable<Workout> custom({
     Expression<int>? id,
@@ -2637,6 +2684,7 @@ class WorkoutsCompanion extends UpdateCompanion<Workout> {
     Expression<DateTime>? startedAt,
     Expression<DateTime>? endedAt,
     Expression<String>? exerciseOrder,
+    Expression<String>? importBatch,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
@@ -2644,6 +2692,7 @@ class WorkoutsCompanion extends UpdateCompanion<Workout> {
       if (startedAt != null) 'started_at': startedAt,
       if (endedAt != null) 'ended_at': endedAt,
       if (exerciseOrder != null) 'exercise_order': exerciseOrder,
+      if (importBatch != null) 'import_batch': importBatch,
     });
   }
 
@@ -2653,6 +2702,7 @@ class WorkoutsCompanion extends UpdateCompanion<Workout> {
     Value<DateTime>? startedAt,
     Value<DateTime?>? endedAt,
     Value<String?>? exerciseOrder,
+    Value<String?>? importBatch,
   }) {
     return WorkoutsCompanion(
       id: id ?? this.id,
@@ -2660,6 +2710,7 @@ class WorkoutsCompanion extends UpdateCompanion<Workout> {
       startedAt: startedAt ?? this.startedAt,
       endedAt: endedAt ?? this.endedAt,
       exerciseOrder: exerciseOrder ?? this.exerciseOrder,
+      importBatch: importBatch ?? this.importBatch,
     );
   }
 
@@ -2681,6 +2732,9 @@ class WorkoutsCompanion extends UpdateCompanion<Workout> {
     if (exerciseOrder.present) {
       map['exercise_order'] = Variable<String>(exerciseOrder.value);
     }
+    if (importBatch.present) {
+      map['import_batch'] = Variable<String>(importBatch.value);
+    }
     return map;
   }
 
@@ -2691,7 +2745,8 @@ class WorkoutsCompanion extends UpdateCompanion<Workout> {
           ..write('planId: $planId, ')
           ..write('startedAt: $startedAt, ')
           ..write('endedAt: $endedAt, ')
-          ..write('exerciseOrder: $exerciseOrder')
+          ..write('exerciseOrder: $exerciseOrder, ')
+          ..write('importBatch: $importBatch')
           ..write(')'))
         .toString();
   }
@@ -4376,6 +4431,17 @@ class $SettingsTable extends Settings with TableInfo<$SettingsTable, Setting> {
     requiredDuringInsert: false,
     defaultValue: const Constant(0.35),
   );
+  static const VerificationMeta _legacyRepairVersionMeta =
+      const VerificationMeta('legacyRepairVersion');
+  @override
+  late final GeneratedColumn<int> legacyRepairVersion = GeneratedColumn<int>(
+    'legacy_repair_version',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
   @override
   List<GeneratedColumn> get $columns => [
     alarmSound,
@@ -4430,6 +4496,7 @@ class $SettingsTable extends Settings with TableInfo<$SettingsTable, Setting> {
     apiKey,
     themeId,
     restVolume,
+    legacyRepairVersion,
   ];
   @override
   String get aliasedName => _alias ?? actualTableName;
@@ -4874,6 +4941,15 @@ class $SettingsTable extends Settings with TableInfo<$SettingsTable, Setting> {
         restVolume.isAcceptableOrUnknown(data['rest_volume']!, _restVolumeMeta),
       );
     }
+    if (data.containsKey('legacy_repair_version')) {
+      context.handle(
+        _legacyRepairVersionMeta,
+        legacyRepairVersion.isAcceptableOrUnknown(
+          data['legacy_repair_version']!,
+          _legacyRepairVersionMeta,
+        ),
+      );
+    }
     return context;
   }
 
@@ -5091,6 +5167,10 @@ class $SettingsTable extends Settings with TableInfo<$SettingsTable, Setting> {
         DriftSqlType.double,
         data['${effectivePrefix}rest_volume'],
       )!,
+      legacyRepairVersion: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}legacy_repair_version'],
+      )!,
     );
   }
 
@@ -5153,6 +5233,7 @@ class Setting extends DataClass implements Insertable<Setting> {
   final String? apiKey;
   final String themeId;
   final double restVolume;
+  final int legacyRepairVersion;
   const Setting({
     required this.alarmSound,
     required this.automaticBackups,
@@ -5206,6 +5287,7 @@ class Setting extends DataClass implements Insertable<Setting> {
     this.apiKey,
     required this.themeId,
     required this.restVolume,
+    required this.legacyRepairVersion,
   });
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
@@ -5286,6 +5368,7 @@ class Setting extends DataClass implements Insertable<Setting> {
     }
     map['theme_id'] = Variable<String>(themeId);
     map['rest_volume'] = Variable<double>(restVolume);
+    map['legacy_repair_version'] = Variable<int>(legacyRepairVersion);
     return map;
   }
 
@@ -5363,6 +5446,7 @@ class Setting extends DataClass implements Insertable<Setting> {
           : Value(apiKey),
       themeId: Value(themeId),
       restVolume: Value(restVolume),
+      legacyRepairVersion: Value(legacyRepairVersion),
     );
   }
 
@@ -5434,6 +5518,9 @@ class Setting extends DataClass implements Insertable<Setting> {
       apiKey: serializer.fromJson<String?>(json['apiKey']),
       themeId: serializer.fromJson<String>(json['themeId']),
       restVolume: serializer.fromJson<double>(json['restVolume']),
+      legacyRepairVersion: serializer.fromJson<int>(
+        json['legacyRepairVersion'],
+      ),
     );
   }
   @override
@@ -5496,6 +5583,7 @@ class Setting extends DataClass implements Insertable<Setting> {
       'apiKey': serializer.toJson<String?>(apiKey),
       'themeId': serializer.toJson<String>(themeId),
       'restVolume': serializer.toJson<double>(restVolume),
+      'legacyRepairVersion': serializer.toJson<int>(legacyRepairVersion),
     };
   }
 
@@ -5552,6 +5640,7 @@ class Setting extends DataClass implements Insertable<Setting> {
     Value<String?> apiKey = const Value.absent(),
     String? themeId,
     double? restVolume,
+    int? legacyRepairVersion,
   }) => Setting(
     alarmSound: alarmSound ?? this.alarmSound,
     automaticBackups: automaticBackups ?? this.automaticBackups,
@@ -5611,6 +5700,7 @@ class Setting extends DataClass implements Insertable<Setting> {
     apiKey: apiKey.present ? apiKey.value : this.apiKey,
     themeId: themeId ?? this.themeId,
     restVolume: restVolume ?? this.restVolume,
+    legacyRepairVersion: legacyRepairVersion ?? this.legacyRepairVersion,
   );
   Setting copyWithCompanion(SettingsCompanion data) {
     return Setting(
@@ -5745,6 +5835,9 @@ class Setting extends DataClass implements Insertable<Setting> {
       restVolume: data.restVolume.present
           ? data.restVolume.value
           : this.restVolume,
+      legacyRepairVersion: data.legacyRepairVersion.present
+          ? data.legacyRepairVersion.value
+          : this.legacyRepairVersion,
     );
   }
 
@@ -5804,7 +5897,8 @@ class Setting extends DataClass implements Insertable<Setting> {
           ..write('goals: $goals, ')
           ..write('apiKey: $apiKey, ')
           ..write('themeId: $themeId, ')
-          ..write('restVolume: $restVolume')
+          ..write('restVolume: $restVolume, ')
+          ..write('legacyRepairVersion: $legacyRepairVersion')
           ..write(')'))
         .toString();
   }
@@ -5863,6 +5957,7 @@ class Setting extends DataClass implements Insertable<Setting> {
     apiKey,
     themeId,
     restVolume,
+    legacyRepairVersion,
   ]);
   @override
   bool operator ==(Object other) =>
@@ -5920,7 +6015,8 @@ class Setting extends DataClass implements Insertable<Setting> {
           other.goals == this.goals &&
           other.apiKey == this.apiKey &&
           other.themeId == this.themeId &&
-          other.restVolume == this.restVolume);
+          other.restVolume == this.restVolume &&
+          other.legacyRepairVersion == this.legacyRepairVersion);
 }
 
 class SettingsCompanion extends UpdateCompanion<Setting> {
@@ -5976,6 +6072,7 @@ class SettingsCompanion extends UpdateCompanion<Setting> {
   final Value<String?> apiKey;
   final Value<String> themeId;
   final Value<double> restVolume;
+  final Value<int> legacyRepairVersion;
   const SettingsCompanion({
     this.alarmSound = const Value.absent(),
     this.automaticBackups = const Value.absent(),
@@ -6029,6 +6126,7 @@ class SettingsCompanion extends UpdateCompanion<Setting> {
     this.apiKey = const Value.absent(),
     this.themeId = const Value.absent(),
     this.restVolume = const Value.absent(),
+    this.legacyRepairVersion = const Value.absent(),
   });
   SettingsCompanion.insert({
     required String alarmSound,
@@ -6083,6 +6181,7 @@ class SettingsCompanion extends UpdateCompanion<Setting> {
     this.apiKey = const Value.absent(),
     this.themeId = const Value.absent(),
     this.restVolume = const Value.absent(),
+    this.legacyRepairVersion = const Value.absent(),
   }) : alarmSound = Value(alarmSound),
        cardioUnit = Value(cardioUnit),
        curveLines = Value(curveLines),
@@ -6152,6 +6251,7 @@ class SettingsCompanion extends UpdateCompanion<Setting> {
     Expression<String>? apiKey,
     Expression<String>? themeId,
     Expression<double>? restVolume,
+    Expression<int>? legacyRepairVersion,
   }) {
     return RawValuesInsertable({
       if (alarmSound != null) 'alarm_sound': alarmSound,
@@ -6212,6 +6312,8 @@ class SettingsCompanion extends UpdateCompanion<Setting> {
       if (apiKey != null) 'api_key': apiKey,
       if (themeId != null) 'theme_id': themeId,
       if (restVolume != null) 'rest_volume': restVolume,
+      if (legacyRepairVersion != null)
+        'legacy_repair_version': legacyRepairVersion,
     });
   }
 
@@ -6268,6 +6370,7 @@ class SettingsCompanion extends UpdateCompanion<Setting> {
     Value<String?>? apiKey,
     Value<String>? themeId,
     Value<double>? restVolume,
+    Value<int>? legacyRepairVersion,
   }) {
     return SettingsCompanion(
       alarmSound: alarmSound ?? this.alarmSound,
@@ -6325,6 +6428,7 @@ class SettingsCompanion extends UpdateCompanion<Setting> {
       apiKey: apiKey ?? this.apiKey,
       themeId: themeId ?? this.themeId,
       restVolume: restVolume ?? this.restVolume,
+      legacyRepairVersion: legacyRepairVersion ?? this.legacyRepairVersion,
     );
   }
 
@@ -6491,6 +6595,9 @@ class SettingsCompanion extends UpdateCompanion<Setting> {
     if (restVolume.present) {
       map['rest_volume'] = Variable<double>(restVolume.value);
     }
+    if (legacyRepairVersion.present) {
+      map['legacy_repair_version'] = Variable<int>(legacyRepairVersion.value);
+    }
     return map;
   }
 
@@ -6550,7 +6657,8 @@ class SettingsCompanion extends UpdateCompanion<Setting> {
           ..write('goals: $goals, ')
           ..write('apiKey: $apiKey, ')
           ..write('themeId: $themeId, ')
-          ..write('restVolume: $restVolume')
+          ..write('restVolume: $restVolume, ')
+          ..write('legacyRepairVersion: $legacyRepairVersion')
           ..write(')'))
         .toString();
   }
@@ -6680,6 +6788,15 @@ class $PlanExercisesTable extends PlanExercises
     type: DriftSqlType.int,
     requiredDuringInsert: false,
   );
+  static const VerificationMeta _restMsMeta = const VerificationMeta('restMs');
+  @override
+  late final GeneratedColumn<int> restMs = GeneratedColumn<int>(
+    'rest_ms',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
   @override
   List<GeneratedColumn> get $columns => [
     enabled,
@@ -6692,6 +6809,7 @@ class $PlanExercisesTable extends PlanExercises
     sequence,
     repMin,
     repMax,
+    restMs,
   ];
   @override
   String get aliasedName => _alias ?? actualTableName;
@@ -6768,6 +6886,12 @@ class $PlanExercisesTable extends PlanExercises
         repMax.isAcceptableOrUnknown(data['rep_max']!, _repMaxMeta),
       );
     }
+    if (data.containsKey('rest_ms')) {
+      context.handle(
+        _restMsMeta,
+        restMs.isAcceptableOrUnknown(data['rest_ms']!, _restMsMeta),
+      );
+    }
     return context;
   }
 
@@ -6817,6 +6941,10 @@ class $PlanExercisesTable extends PlanExercises
         DriftSqlType.int,
         data['${effectivePrefix}rep_max'],
       ),
+      restMs: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}rest_ms'],
+      ),
     );
   }
 
@@ -6837,6 +6965,7 @@ class PlanExercise extends DataClass implements Insertable<PlanExercise> {
   final int sequence;
   final int? repMin;
   final int? repMax;
+  final int? restMs;
   const PlanExercise({
     required this.enabled,
     required this.timers,
@@ -6848,6 +6977,7 @@ class PlanExercise extends DataClass implements Insertable<PlanExercise> {
     required this.sequence,
     this.repMin,
     this.repMax,
+    this.restMs,
   });
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
@@ -6869,6 +6999,9 @@ class PlanExercise extends DataClass implements Insertable<PlanExercise> {
     }
     if (!nullToAbsent || repMax != null) {
       map['rep_max'] = Variable<int>(repMax);
+    }
+    if (!nullToAbsent || restMs != null) {
+      map['rest_ms'] = Variable<int>(restMs);
     }
     return map;
   }
@@ -6893,6 +7026,9 @@ class PlanExercise extends DataClass implements Insertable<PlanExercise> {
       repMax: repMax == null && nullToAbsent
           ? const Value.absent()
           : Value(repMax),
+      restMs: restMs == null && nullToAbsent
+          ? const Value.absent()
+          : Value(restMs),
     );
   }
 
@@ -6912,6 +7048,7 @@ class PlanExercise extends DataClass implements Insertable<PlanExercise> {
       sequence: serializer.fromJson<int>(json['sequence']),
       repMin: serializer.fromJson<int?>(json['repMin']),
       repMax: serializer.fromJson<int?>(json['repMax']),
+      restMs: serializer.fromJson<int?>(json['restMs']),
     );
   }
   @override
@@ -6928,6 +7065,7 @@ class PlanExercise extends DataClass implements Insertable<PlanExercise> {
       'sequence': serializer.toJson<int>(sequence),
       'repMin': serializer.toJson<int?>(repMin),
       'repMax': serializer.toJson<int?>(repMax),
+      'restMs': serializer.toJson<int?>(restMs),
     };
   }
 
@@ -6942,6 +7080,7 @@ class PlanExercise extends DataClass implements Insertable<PlanExercise> {
     int? sequence,
     Value<int?> repMin = const Value.absent(),
     Value<int?> repMax = const Value.absent(),
+    Value<int?> restMs = const Value.absent(),
   }) => PlanExercise(
     enabled: enabled ?? this.enabled,
     timers: timers ?? this.timers,
@@ -6953,6 +7092,7 @@ class PlanExercise extends DataClass implements Insertable<PlanExercise> {
     sequence: sequence ?? this.sequence,
     repMin: repMin.present ? repMin.value : this.repMin,
     repMax: repMax.present ? repMax.value : this.repMax,
+    restMs: restMs.present ? restMs.value : this.restMs,
   );
   PlanExercise copyWithCompanion(PlanExercisesCompanion data) {
     return PlanExercise(
@@ -6970,6 +7110,7 @@ class PlanExercise extends DataClass implements Insertable<PlanExercise> {
       sequence: data.sequence.present ? data.sequence.value : this.sequence,
       repMin: data.repMin.present ? data.repMin.value : this.repMin,
       repMax: data.repMax.present ? data.repMax.value : this.repMax,
+      restMs: data.restMs.present ? data.restMs.value : this.restMs,
     );
   }
 
@@ -6985,7 +7126,8 @@ class PlanExercise extends DataClass implements Insertable<PlanExercise> {
           ..write('warmupSets: $warmupSets, ')
           ..write('sequence: $sequence, ')
           ..write('repMin: $repMin, ')
-          ..write('repMax: $repMax')
+          ..write('repMax: $repMax, ')
+          ..write('restMs: $restMs')
           ..write(')'))
         .toString();
   }
@@ -7002,6 +7144,7 @@ class PlanExercise extends DataClass implements Insertable<PlanExercise> {
     sequence,
     repMin,
     repMax,
+    restMs,
   );
   @override
   bool operator ==(Object other) =>
@@ -7016,7 +7159,8 @@ class PlanExercise extends DataClass implements Insertable<PlanExercise> {
           other.warmupSets == this.warmupSets &&
           other.sequence == this.sequence &&
           other.repMin == this.repMin &&
-          other.repMax == this.repMax);
+          other.repMax == this.repMax &&
+          other.restMs == this.restMs);
 }
 
 class PlanExercisesCompanion extends UpdateCompanion<PlanExercise> {
@@ -7030,6 +7174,7 @@ class PlanExercisesCompanion extends UpdateCompanion<PlanExercise> {
   final Value<int> sequence;
   final Value<int?> repMin;
   final Value<int?> repMax;
+  final Value<int?> restMs;
   const PlanExercisesCompanion({
     this.enabled = const Value.absent(),
     this.timers = const Value.absent(),
@@ -7041,6 +7186,7 @@ class PlanExercisesCompanion extends UpdateCompanion<PlanExercise> {
     this.sequence = const Value.absent(),
     this.repMin = const Value.absent(),
     this.repMax = const Value.absent(),
+    this.restMs = const Value.absent(),
   });
   PlanExercisesCompanion.insert({
     required bool enabled,
@@ -7053,6 +7199,7 @@ class PlanExercisesCompanion extends UpdateCompanion<PlanExercise> {
     this.sequence = const Value.absent(),
     this.repMin = const Value.absent(),
     this.repMax = const Value.absent(),
+    this.restMs = const Value.absent(),
   }) : enabled = Value(enabled),
        exerciseId = Value(exerciseId),
        planId = Value(planId);
@@ -7067,6 +7214,7 @@ class PlanExercisesCompanion extends UpdateCompanion<PlanExercise> {
     Expression<int>? sequence,
     Expression<int>? repMin,
     Expression<int>? repMax,
+    Expression<int>? restMs,
   }) {
     return RawValuesInsertable({
       if (enabled != null) 'enabled': enabled,
@@ -7079,6 +7227,7 @@ class PlanExercisesCompanion extends UpdateCompanion<PlanExercise> {
       if (sequence != null) 'sequence': sequence,
       if (repMin != null) 'rep_min': repMin,
       if (repMax != null) 'rep_max': repMax,
+      if (restMs != null) 'rest_ms': restMs,
     });
   }
 
@@ -7093,6 +7242,7 @@ class PlanExercisesCompanion extends UpdateCompanion<PlanExercise> {
     Value<int>? sequence,
     Value<int?>? repMin,
     Value<int?>? repMax,
+    Value<int?>? restMs,
   }) {
     return PlanExercisesCompanion(
       enabled: enabled ?? this.enabled,
@@ -7105,6 +7255,7 @@ class PlanExercisesCompanion extends UpdateCompanion<PlanExercise> {
       sequence: sequence ?? this.sequence,
       repMin: repMin ?? this.repMin,
       repMax: repMax ?? this.repMax,
+      restMs: restMs ?? this.restMs,
     );
   }
 
@@ -7141,6 +7292,9 @@ class PlanExercisesCompanion extends UpdateCompanion<PlanExercise> {
     if (repMax.present) {
       map['rep_max'] = Variable<int>(repMax.value);
     }
+    if (restMs.present) {
+      map['rest_ms'] = Variable<int>(restMs.value);
+    }
     return map;
   }
 
@@ -7156,7 +7310,8 @@ class PlanExercisesCompanion extends UpdateCompanion<PlanExercise> {
           ..write('warmupSets: $warmupSets, ')
           ..write('sequence: $sequence, ')
           ..write('repMin: $repMin, ')
-          ..write('repMax: $repMax')
+          ..write('repMax: $repMax, ')
+          ..write('restMs: $restMs')
           ..write(')'))
         .toString();
   }
@@ -8950,6 +9105,7 @@ typedef $$WorkoutsTableCreateCompanionBuilder =
       required DateTime startedAt,
       Value<DateTime?> endedAt,
       Value<String?> exerciseOrder,
+      Value<String?> importBatch,
     });
 typedef $$WorkoutsTableUpdateCompanionBuilder =
     WorkoutsCompanion Function({
@@ -8958,6 +9114,7 @@ typedef $$WorkoutsTableUpdateCompanionBuilder =
       Value<DateTime> startedAt,
       Value<DateTime?> endedAt,
       Value<String?> exerciseOrder,
+      Value<String?> importBatch,
     });
 
 final class $$WorkoutsTableReferences
@@ -9026,6 +9183,11 @@ class $$WorkoutsTableFilterComposer
 
   ColumnFilters<String> get exerciseOrder => $composableBuilder(
     column: $table.exerciseOrder,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get importBatch => $composableBuilder(
+    column: $table.importBatch,
     builder: (column) => ColumnFilters(column),
   );
 
@@ -9107,6 +9269,11 @@ class $$WorkoutsTableOrderingComposer
     builder: (column) => ColumnOrderings(column),
   );
 
+  ColumnOrderings<String> get importBatch => $composableBuilder(
+    column: $table.importBatch,
+    builder: (column) => ColumnOrderings(column),
+  );
+
   $$PlansTableOrderingComposer get planId {
     final $$PlansTableOrderingComposer composer = $composerBuilder(
       composer: this,
@@ -9151,6 +9318,11 @@ class $$WorkoutsTableAnnotationComposer
 
   GeneratedColumn<String> get exerciseOrder => $composableBuilder(
     column: $table.exerciseOrder,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get importBatch => $composableBuilder(
+    column: $table.importBatch,
     builder: (column) => column,
   );
 
@@ -9236,12 +9408,14 @@ class $$WorkoutsTableTableManager
                 Value<DateTime> startedAt = const Value.absent(),
                 Value<DateTime?> endedAt = const Value.absent(),
                 Value<String?> exerciseOrder = const Value.absent(),
+                Value<String?> importBatch = const Value.absent(),
               }) => WorkoutsCompanion(
                 id: id,
                 planId: planId,
                 startedAt: startedAt,
                 endedAt: endedAt,
                 exerciseOrder: exerciseOrder,
+                importBatch: importBatch,
               ),
           createCompanionCallback:
               ({
@@ -9250,12 +9424,14 @@ class $$WorkoutsTableTableManager
                 required DateTime startedAt,
                 Value<DateTime?> endedAt = const Value.absent(),
                 Value<String?> exerciseOrder = const Value.absent(),
+                Value<String?> importBatch = const Value.absent(),
               }) => WorkoutsCompanion.insert(
                 id: id,
                 planId: planId,
                 startedAt: startedAt,
                 endedAt: endedAt,
                 exerciseOrder: exerciseOrder,
+                importBatch: importBatch,
               ),
           withReferenceMapper: (p0) => p0
               .map(
@@ -10117,6 +10293,7 @@ typedef $$SettingsTableCreateCompanionBuilder =
       Value<String?> apiKey,
       Value<String> themeId,
       Value<double> restVolume,
+      Value<int> legacyRepairVersion,
     });
 typedef $$SettingsTableUpdateCompanionBuilder =
     SettingsCompanion Function({
@@ -10172,6 +10349,7 @@ typedef $$SettingsTableUpdateCompanionBuilder =
       Value<String?> apiKey,
       Value<String> themeId,
       Value<double> restVolume,
+      Value<int> legacyRepairVersion,
     });
 
 class $$SettingsTableFilterComposer
@@ -10440,6 +10618,11 @@ class $$SettingsTableFilterComposer
 
   ColumnFilters<double> get restVolume => $composableBuilder(
     column: $table.restVolume,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get legacyRepairVersion => $composableBuilder(
+    column: $table.legacyRepairVersion,
     builder: (column) => ColumnFilters(column),
   );
 }
@@ -10713,6 +10896,11 @@ class $$SettingsTableOrderingComposer
     column: $table.restVolume,
     builder: (column) => ColumnOrderings(column),
   );
+
+  ColumnOrderings<int> get legacyRepairVersion => $composableBuilder(
+    column: $table.legacyRepairVersion,
+    builder: (column) => ColumnOrderings(column),
+  );
 }
 
 class $$SettingsTableAnnotationComposer
@@ -10958,6 +11146,11 @@ class $$SettingsTableAnnotationComposer
     column: $table.restVolume,
     builder: (column) => column,
   );
+
+  GeneratedColumn<int> get legacyRepairVersion => $composableBuilder(
+    column: $table.legacyRepairVersion,
+    builder: (column) => column,
+  );
 }
 
 class $$SettingsTableTableManager
@@ -11041,6 +11234,7 @@ class $$SettingsTableTableManager
                 Value<String?> apiKey = const Value.absent(),
                 Value<String> themeId = const Value.absent(),
                 Value<double> restVolume = const Value.absent(),
+                Value<int> legacyRepairVersion = const Value.absent(),
               }) => SettingsCompanion(
                 alarmSound: alarmSound,
                 automaticBackups: automaticBackups,
@@ -11095,6 +11289,7 @@ class $$SettingsTableTableManager
                 apiKey: apiKey,
                 themeId: themeId,
                 restVolume: restVolume,
+                legacyRepairVersion: legacyRepairVersion,
               ),
           createCompanionCallback:
               ({
@@ -11151,6 +11346,7 @@ class $$SettingsTableTableManager
                 Value<String?> apiKey = const Value.absent(),
                 Value<String> themeId = const Value.absent(),
                 Value<double> restVolume = const Value.absent(),
+                Value<int> legacyRepairVersion = const Value.absent(),
               }) => SettingsCompanion.insert(
                 alarmSound: alarmSound,
                 automaticBackups: automaticBackups,
@@ -11205,6 +11401,7 @@ class $$SettingsTableTableManager
                 apiKey: apiKey,
                 themeId: themeId,
                 restVolume: restVolume,
+                legacyRepairVersion: legacyRepairVersion,
               ),
           withReferenceMapper: (p0) => p0
               .map(
@@ -11249,6 +11446,7 @@ typedef $$PlanExercisesTableCreateCompanionBuilder =
       Value<int> sequence,
       Value<int?> repMin,
       Value<int?> repMax,
+      Value<int?> restMs,
     });
 typedef $$PlanExercisesTableUpdateCompanionBuilder =
     PlanExercisesCompanion Function({
@@ -11262,6 +11460,7 @@ typedef $$PlanExercisesTableUpdateCompanionBuilder =
       Value<int> sequence,
       Value<int?> repMin,
       Value<int?> repMax,
+      Value<int?> restMs,
     });
 
 final class $$PlanExercisesTableReferences
@@ -11353,6 +11552,11 @@ class $$PlanExercisesTableFilterComposer
 
   ColumnFilters<int> get repMax => $composableBuilder(
     column: $table.repMax,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get restMs => $composableBuilder(
+    column: $table.restMs,
     builder: (column) => ColumnFilters(column),
   );
 
@@ -11452,6 +11656,11 @@ class $$PlanExercisesTableOrderingComposer
     builder: (column) => ColumnOrderings(column),
   );
 
+  ColumnOrderings<int> get restMs => $composableBuilder(
+    column: $table.restMs,
+    builder: (column) => ColumnOrderings(column),
+  );
+
   $$ExercisesTableOrderingComposer get exerciseId {
     final $$ExercisesTableOrderingComposer composer = $composerBuilder(
       composer: this,
@@ -11533,6 +11742,9 @@ class $$PlanExercisesTableAnnotationComposer
 
   GeneratedColumn<int> get repMax =>
       $composableBuilder(column: $table.repMax, builder: (column) => column);
+
+  GeneratedColumn<int> get restMs =>
+      $composableBuilder(column: $table.restMs, builder: (column) => column);
 
   $$ExercisesTableAnnotationComposer get exerciseId {
     final $$ExercisesTableAnnotationComposer composer = $composerBuilder(
@@ -11619,6 +11831,7 @@ class $$PlanExercisesTableTableManager
                 Value<int> sequence = const Value.absent(),
                 Value<int?> repMin = const Value.absent(),
                 Value<int?> repMax = const Value.absent(),
+                Value<int?> restMs = const Value.absent(),
               }) => PlanExercisesCompanion(
                 enabled: enabled,
                 timers: timers,
@@ -11630,6 +11843,7 @@ class $$PlanExercisesTableTableManager
                 sequence: sequence,
                 repMin: repMin,
                 repMax: repMax,
+                restMs: restMs,
               ),
           createCompanionCallback:
               ({
@@ -11643,6 +11857,7 @@ class $$PlanExercisesTableTableManager
                 Value<int> sequence = const Value.absent(),
                 Value<int?> repMin = const Value.absent(),
                 Value<int?> repMax = const Value.absent(),
+                Value<int?> restMs = const Value.absent(),
               }) => PlanExercisesCompanion.insert(
                 enabled: enabled,
                 timers: timers,
@@ -11654,6 +11869,7 @@ class $$PlanExercisesTableTableManager
                 sequence: sequence,
                 repMin: repMin,
                 repMax: repMax,
+                restMs: restMs,
               ),
           withReferenceMapper: (p0) => p0
               .map(

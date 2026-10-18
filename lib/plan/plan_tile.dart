@@ -1,6 +1,7 @@
 import 'package:flexify/constants.dart';
 import 'package:flexify/database/database.dart';
 import 'package:flexify/l10n/l10n.dart';
+import 'package:flexify/plan/plan_names.dart';
 import 'package:flexify/plan/plan_queries.dart';
 import 'package:flexify/plan/start_plan_page.dart';
 import 'package:flexify/plan/workout_sessions.dart';
@@ -14,7 +15,6 @@ import 'package:provider/provider.dart';
 class PlanTile extends StatefulWidget {
   final Plan plan;
   final List<PlanExerciseEntry>? exercises;
-  final String weekday;
   final int index;
   final GlobalKey<NavigatorState> navigatorKey;
   final Function(int) onSelect;
@@ -25,7 +25,6 @@ class PlanTile extends StatefulWidget {
     super.key,
     required this.plan,
     required this.exercises,
-    required this.weekday,
     required this.index,
     required this.navigatorKey,
     required this.onSelect,
@@ -40,18 +39,12 @@ class PlanTile extends StatefulWidget {
 class _PlanTileState extends State<PlanTile> {
   @override
   Widget build(BuildContext context) {
-    Widget title = Text(context.l10n.daily);
-    if (widget.plan.title?.isNotEmpty == true) {
-      final today = widget.plan.days.split(',').contains(widget.weekday);
-      title = Text(
-        widget.plan.title!,
-        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-          fontWeight: today ? FontWeight.bold : null,
-          decoration: today ? TextDecoration.underline : null,
-        ),
-      );
-    } else if (widget.plan.days.split(',').length < 7)
-      title = RichText(text: TextSpan(children: _getChildren(context)));
+    final name = planDisplayName(
+      title: widget.plan.title,
+      sequence: widget.plan.sequence,
+      id: widget.plan.id,
+    );
+    final title = Text(name, style: Theme.of(context).textTheme.bodyLarge);
 
     final showImages = context.select<Setting, bool>(
       (settings) => settings.showImages,
@@ -73,7 +66,7 @@ class _PlanTileState extends State<PlanTile> {
             child: Text(
               widget.plan.title?.isNotEmpty == true
                   ? widget.plan.title![0]
-                  : widget.plan.days[0].toUpperCase(),
+                  : name[0].toUpperCase(),
               style: const TextStyle(
                 color: Colors.white,
                 fontSize: 16,
@@ -87,7 +80,6 @@ class _PlanTileState extends State<PlanTile> {
 
     final desktop = isDesktopLayout(context);
     final colors = Theme.of(context).colorScheme;
-    final today = widget.plan.days.split(',').contains(widget.weekday);
 
     final tile = Material(
       color: widget.selected.contains(widget.plan.id)
@@ -101,28 +93,7 @@ class _PlanTileState extends State<PlanTile> {
         contentPadding: desktop
             ? const EdgeInsets.symmetric(horizontal: 20, vertical: 10)
             : null,
-        title: Row(
-          children: [
-            Flexible(child: title),
-            if (desktop && today) ...[
-              const SizedBox(width: 10),
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-                decoration: BoxDecoration(
-                  color: colors.primaryContainer,
-                  borderRadius: BorderRadius.circular(999),
-                ),
-                child: Text(
-                  context.l10n.todayLabel,
-                  style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                    color: colors.onPrimaryContainer,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-              ),
-            ],
-          ],
-        ),
+        title: Row(children: [Flexible(child: title)]),
         subtitle: Padding(
           padding: const EdgeInsets.only(top: 4),
           child: widget.exercises == null
@@ -220,30 +191,5 @@ class _PlanTileState extends State<PlanTile> {
         child: tile,
       ),
     );
-  }
-
-  List<InlineSpan> _getChildren(BuildContext context) {
-    List<InlineSpan> result = [];
-
-    final split = widget.plan.days.split(',');
-    for (int index = 0; index < split.length; index++) {
-      final day = split[index];
-      result.add(
-        TextSpan(
-          text: localizedWeekday(context.l10n, day.trim()),
-          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-            fontWeight: widget.weekday == day.trim() ? FontWeight.bold : null,
-            decoration: widget.weekday == day.trim()
-                ? TextDecoration.underline
-                : null,
-          ),
-        ),
-      );
-      if (index < split.length - 1)
-        result.add(
-          TextSpan(text: ", ", style: Theme.of(context).textTheme.bodyLarge),
-        );
-    }
-    return result;
   }
 }

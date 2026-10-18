@@ -2231,6 +2231,9 @@ class AppLocalizationsId extends AppLocalizations {
   String get editCustomExercise => 'Ubah latihan';
 
   @override
+  String get unassignedExercise => 'Belum ditetapkan';
+
+  @override
   String get deleteCustomExercise => 'Hapus latihan';
 
   @override
@@ -2281,4 +2284,73 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get importBackupZip => 'Impor cadangan (.zip)';
+
+  @override
+  String importSetSummary(int workouts, int sets) {
+    return '$workouts latihan, $sets set';
+  }
+
+  @override
+  String importDateErrorCount(int count) {
+    return '$count baris punya tanggal yang tidak terbaca.';
+  }
+
+  @override
+  String importUnmatchedNames(String names) {
+    return 'Tidak cocok: $names';
+  }
+
+  @override
+  String importTemplatesSkipped(String names) {
+    return 'Tidak dibuat, batas templat tercapai: $names';
+  }
+
+  @override
+  String importApplying(int done, int total) {
+    return '$done dari $total';
+  }
+
+  @override
+  String get customExerciseMovementRequired => 'Pilih gerakan.';
+
+  @override
+  String get setRemoved => 'Set dihapus';
+
+  @override
+  String get exerciseRemovedUndo => 'Latihan dihapus';
+
+  @override
+  String get exerciseSwappedUndo => 'Latihan ditukar';
+
+  @override
+  String get saveRestInTemplate => 'Simpan juga di templat';
+
+  @override
+  String get deleteGymTitle => 'Hapus studio?';
+
+  @override
+  String get deleteGymBody =>
+      'Latihan yang terhubung ke studio ini tetap ada. Hanya studionya yang dihapus.';
+
+  @override
+  String get renameGym => 'Ubah nama studio';
+
+  @override
+  String get cleanupImports => 'Bersihkan entri impor';
+
+  @override
+  String cleanupImportsPreview(int workouts, int templates) {
+    return '$workouts latihan impor dan $templates templat akan dihapus. Latihan yang diketik tangan tetap ada.';
+  }
+
+  @override
+  String get cleanupImportsEmpty => 'Tidak ada yang perlu dibersihkan.';
+
+  @override
+  String get cleanupImportsDone => 'Entri impor dihapus.';
+
+  @override
+  String measurementsImported(int count) {
+    return '$count pengukuran diimpor.';
+  }
 }

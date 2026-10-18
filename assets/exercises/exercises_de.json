@@ -65,7 +65,8 @@
       "Schrägbankdrücken (Multipresse)",
       "Incline Bench Press (Smith Machine)",
       "Smith Incline Press",
-      "Incline Press"
+      "Incline Press",
+      "Schrägbankdrücken (Smith Machine)"
     ],
     "kategorie": "Brust",
     "familie": "schraegbankdruecken",
@@ -116,7 +117,8 @@
       "Butterfly (Maschine)",
       "Chest Fly (Machine)",
       "Pec Fly",
-      "Peck Deck"
+      "Peck Deck",
+      "Fliegende (Maschine)"
     ],
     "kategorie": "Brust",
     "familie": "butterfly",
@@ -169,7 +171,8 @@
       "Fliegende (Kabelzug)",
       "Cable Crossover Fly",
       "Standing Cable Fly",
-      "High-to-Low Cable Fly"
+      "High-to-Low Cable Fly",
+      "Cable Crossovers"
     ],
     "kategorie": "Brust",
     "familie": "cable-crossover",
@@ -273,7 +276,9 @@
       "Lat Pull Down",
       "Lat-Pulldown",
       "Pulldown",
-      "Latzug breit"
+      "Latzug breit",
+      "Latzug (Kabel)",
+      "Latzug (Kabelzug)"
     ],
     "kategorie": "Rücken",
     "familie": "latziehen",
@@ -329,7 +334,19 @@
       "Kabelrudern sitzend",
       "Seated Cable Row",
       "Seated Row (Cable)",
-      "Low Row"
+      "Low Row",
+      "Rudern V-Griff",
+      "Sitzendes Rudern V-Griff",
+      "Rudern sitzend V-Griff",
+      "Kabelrudern V-Griff",
+      "Rudern am Kabel mit V-Griff",
+      "Rudern mit V-Griff",
+      "Seated Cable Row V Grip",
+      "Seated Cable Row - V Grip (Cable)",
+      "Seated Row V-Grip",
+      "V-Bar Seated Row",
+      "Sitzendes Rudern - V-Griff (Kabelzug)",
+      "Sitzendes Rudern am Kabelzug - V-Griff (Kabel)"
     ],
     "kategorie": "Rücken",
     "familie": "rudern-kabel",
@@ -384,7 +401,8 @@
       "Rudern vorgebeugt",
       "BB Row",
       "Barbell Bent-Over Row",
-      "Bent-Over Row"
+      "Bent-Over Row",
+      "Vorgebeugtes Rudern (Langhantel)"
     ],
     "kategorie": "Rücken",
     "familie": "rudern-vorgebeugt",
@@ -738,7 +756,8 @@
       "Leg Extension (Machine)",
       "Quadrizeps-Maschine",
       "Kniestrecker",
-      "Leg Extension Machine"
+      "Leg Extension Machine",
+      "Beinstrecken (Maschine)"
     ],
     "kategorie": "Beine",
     "familie": "beinstrecker",
@@ -783,7 +802,8 @@
       "Seated Leg Curl (Machine)",
       "Leg Curl sitzend",
       "Hamstring Curl",
-      "Beincurl"
+      "Beincurl",
+      "Beinbeugen sitzend"
     ],
     "kategorie": "Beine",
     "familie": "beinbeuger",
@@ -829,7 +849,8 @@
       "Standing Calf Raise",
       "Wadenheben (Maschine)",
       "Standing Calf Raise (Machine)",
-      "Calf Raise"
+      "Calf Raise",
+      "Wadenheben stehend (Maschine)"
     ],
     "kategorie": "Beine",
     "familie": "wadenheben",
@@ -969,7 +990,8 @@
       "Bicep Curl (Dumbbell)",
       "Dumbbell Curls",
       "Bicep Curl",
-      "Dumbbell Biceps Curl"
+      "Dumbbell Biceps Curl",
+      "Bizepscurl (Kurzhantel)"
     ],
     "kategorie": "Bizeps",
     "familie": "bizepscurls",
@@ -1016,7 +1038,8 @@
       "Hammercurls (Kurzhantel)",
       "Hammer Curl (Dumbbell)",
       "Hammercurl",
-      "Dumbbell Hammer Curl"
+      "Dumbbell Hammer Curl",
+      "Hammer Curl (Kurzhantel)"
     ],
     "kategorie": "Bizeps",
     "familie": "hammercurls",
@@ -1067,7 +1090,13 @@
       "Trizeps Pushdown",
       "Pushdown",
       "Kabeldrücken Trizeps",
-      "Straight Bar Pushdown"
+      "Straight Bar Pushdown",
+      "Trizepsdrücken mit V-Griff",
+      "Trizepsdrücken V-Griff",
+      "Pushdowns mit V-Griff",
+      "V-Bar Pushdown",
+      "Triceps Pushdown V-Bar",
+      "Trizeps-Pushdown (Kabelzug)"
     ],
     "kategorie": "Trizeps",
     "familie": "trizepsdruecken",
@@ -2953,7 +2982,8 @@
       "Chest Dips",
       "Dips Brust",
       "Chest Dip",
-      "Dips"
+      "Dips",
+      "Brust Dips (Unterstützt)"
     ],
     "kategorie": "Brust",
     "familie": "dips",
@@ -3435,7 +3465,8 @@
       "Latziehen (Maschine)",
       "Lat Pulldown (Machine)",
       "Latzug Maschine",
-      "Machine Lat Pulldown"
+      "Machine Lat Pulldown",
+      "Latzug (Maschine)"
     ],
     "kategorie": "Rücken",
     "familie": "latziehen",
@@ -3488,7 +3519,9 @@
       "Latziehen stehend",
       "Straight Arm Pulldown",
       "Cable Pullover",
-      "Pullover"
+      "Pullover",
+      "Gerader Lat-Pulldown (Kabel)",
+      "Pulldown mit gestreckten Armen (Kabelzug)"
     ],
     "kategorie": "Rücken",
     "familie": "ueberzuege",
@@ -3970,7 +4003,9 @@
       "Rudern (Maschine)",
       "Seated Row (Machine)",
       "Machine Row",
-      "Seated Machine Row"
+      "Seated Machine Row",
+      "Iso-Laterales Rudern",
+      "Iso-Laterales Rudern (Maschine)"
     ],
     "kategorie": "Rücken",
     "familie": "rudern-maschine",
@@ -4371,7 +4406,8 @@
       "Chest-Supported T-Bar Row",
       "T-Bar Row (Machine)",
       "T-Bar Rudern Maschine",
-      "T-Bar Row"
+      "T-Bar Row",
+      "Brustgestütztes T-Bar Rudern"
     ],
     "kategorie": "Rücken",
     "familie": "t-bar-rudern",
@@ -4861,7 +4897,8 @@
       "Back extension",
       "Rückenstrecker",
       "45° Hyperextension",
-      "Hyperextensions (Back Extensions)"
+      "Hyperextensions (Back Extensions)",
+      "Hyperextension (Gewichtet)"
     ],
     "kategorie": "Rücken",
     "familie": "rueckenstrecker",
@@ -5384,7 +5421,8 @@
       "Seated Overhead Press (Barbell)",
       "Seated Barbell Shoulder Press",
       "Seated Military Press",
-      "Shoulder Press"
+      "Shoulder Press",
+      "Überkopfdrücken mit Langhantel im Sitzen"
     ],
     "kategorie": "Schultern",
     "familie": "schulterdruecken",
@@ -6056,7 +6094,8 @@
       "Single-Arm Cable Lateral Raise",
       "Seitheben einarmig (Kabelzug)",
       "Single Arm Cable Lateral Raise",
-      "Lateral Raise"
+      "Lateral Raise",
+      "Einarmiges Seitheben (Kabelzug)"
     ],
     "kategorie": "Schultern",
     "familie": "seitheben",
@@ -6439,7 +6478,8 @@
       "Rear Delt Fly (Machine)",
       "Reverse Fly (Machine)",
       "Reverse Machine Fly",
-      "Reverse Fly"
+      "Reverse Fly",
+      "Reverse Fliegende (Maschine)"
     ],
     "kategorie": "Schultern",
     "familie": "reverse-flys",
@@ -7640,7 +7680,8 @@
       "Hack Squats",
       "Hackenschmidt Kniebeuge",
       "Hack Squat Machine",
-      "Squat"
+      "Squat",
+      "Hackenschmidt Squat (Maschine)"
     ],
     "kategorie": "Beine",
     "familie": "kniebeugen",
@@ -8490,7 +8531,8 @@
       "Lying Leg Curl (Machine)",
       "Leg Curl liegend",
       "Prone Leg Curl",
-      "Leg Curl"
+      "Leg Curl",
+      "Liegendes Beinbeugen (Maschine)"
     ],
     "kategorie": "Beine",
     "familie": "beinbeuger",
@@ -9382,7 +9424,9 @@
       "Abductor Machine",
       "Abduktoren Maschine",
       "Hip Abduction Machine",
-      "Hip Abduction"
+      "Hip Abduction",
+      "Hüftabduktion",
+      "Hüftabduktion (Maschine)"
     ],
     "kategorie": "Beine",
     "familie": "abduktion",
@@ -9433,7 +9477,9 @@
       "Adductor Machine",
       "Adduktoren Maschine",
       "Hip Adduction Machine",
-      "Hip Adduction"
+      "Hip Adduction",
+      "Hüftadduktion",
+      "Hüftadduktion (Maschine)"
     ],
     "kategorie": "Beine",
     "familie": "adduktion",
@@ -9477,7 +9523,8 @@
       "Band Hip Adductions",
       "Adduktion (Kabelzug)",
       "Hip Adduction (Cable)",
-      "Hip Adduction"
+      "Hip Adduction",
+      "Hüftadduktion"
     ],
     "kategorie": "Beine",
     "familie": "adduktion",
@@ -9519,7 +9566,8 @@
       "Cable Hip Abduction",
       "Abduktion (Kabelzug)",
       "Hip Abduction (Cable)",
-      "Hip Abduction"
+      "Hip Abduction",
+      "Hüftabduktion"
     ],
     "kategorie": "Beine",
     "familie": "abduktion",
@@ -10620,7 +10668,19 @@
       "Bicep Curl (Cable)",
       "Cable Bicep Curl",
       "Cable Biceps Curl",
-      "Biceps Curl"
+      "Biceps Curl",
+      "Kabelcurls gerade Stange",
+      "Kabelcurls mit SZ-Stange",
+      "Bizepscurls am Kabel mit SZ-Aufsatz",
+      "Straight Bar Cable Curl",
+      "Cable EZ-Bar Curl",
+      "Seil-Bizepscurls im Untergriff",
+      "Bizepscurls mit Seil im Untergriff",
+      "Kabelcurls mit Seil",
+      "Rope Cable Curl",
+      "Cable Rope Curl Underhand",
+      "Bizepscurl (Kabel)",
+      "Bizepscurl (Kabelzug)"
     ],
     "kategorie": "Bizeps",
     "familie": "bizepscurls",
@@ -10808,7 +10868,9 @@
       "Rope Hammer Curls",
       "Cable Rope Hammer Curl",
       "Cable Hammer Curl",
-      "Hammer Curl"
+      "Hammer Curl",
+      "Hammer Curl (Kabel)",
+      "Hammer Curl (Kabelzug)"
     ],
     "kategorie": "Bizeps",
     "familie": "hammercurls",
@@ -10822,15 +10884,16 @@
     "mechanik": "isolation",
     "griff": "neutral",
     "position": "stehend",
-    "einseitig": false,
+    "einseitig": true,
     "ausfuehrung_de": [
-      "Seil an der unteren Rolle einhängen und mit beiden Händen im Hammergriff fassen.",
-      "Aufrecht vor den Kabelturm stellen, Ellbogen am Körper.",
-      "Seil nach oben curlen, die Handflächen zeigen zueinander.",
-      "Langsam zurück."
+      "Einhand-Seilgriff an der unteren Rolle einhängen und mit der rechten Hand im Hammergriff fassen, der Daumen zeigt nach oben.",
+      "Mit dem Rücken zum Kabelturm stellen, das Kabel läuft rechts neben dem Körper vorbei; der Oberarm hängt am Start leicht hinter dem Körper.",
+      "Seil nach oben curlen, der Ellbogen bleibt fixiert und der Daumen oben.",
+      "Langsam zurück; danach Seite wechseln."
     ],
     "tipps_de": [
-      "Konstante Spannung über den ganzen Weg."
+      "Durch den Zug von hinten ist der Bizeps auch unten gedehnt.",
+      "Ellbogen nicht nach vorn wandern lassen."
     ],
     "bild": "hammercurls-seil.webp",
     "bild_quelle": null,
@@ -10888,7 +10951,63 @@
     "quelle_bild_original": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Reverse_Barbell_Curl/0.jpg",
     "alternativen": [
       "zottman-curls",
-      "hammercurls"
+      "hammercurls",
+      "reverse-curls-kabel"
+    ]
+  },
+  {
+    "id": "reverse-curls-kabel",
+    "name_de": "Reverse Curls am Kabelzug",
+    "synonyme": [
+      "Curls im Obergriff am Kabel",
+      "Bizepscurls Obergriff Kabel",
+      "Bizepscurls am Kabelturm im Obergriff",
+      "Reverse Curls am Kabel",
+      "Kabel-Reverse-Curls",
+      "Umgekehrte Curls am Kabel",
+      "Curls im Obergriff am Kabelzug",
+      "Reverse Curls (Kabelzug)",
+      "Reverse Cable Curl",
+      "Reverse Curl (Cable)",
+      "Cable Reverse Curl",
+      "Reverse Grip Cable Curl",
+      "Reverse Curl",
+      "Bizepscurl im Obergriff (Kabelzug)",
+      "Umgekehrter Curl (Kabel)"
+    ],
+    "kategorie": "Bizeps",
+    "familie": "reverse-curls",
+    "primaermuskeln": [
+      "unterarme",
+      "bizeps"
+    ],
+    "sekundaermuskeln": [],
+    "geraet": "Kabelzug",
+    "bewegung": "ziehen",
+    "mechanik": "isolation",
+    "griff": "obergriff",
+    "position": "stehend",
+    "einseitig": false,
+    "ausfuehrung_de": [
+      "Gerade Kabelstange an der unteren Rolle einhängen und schulterbreit im Obergriff fassen, die Handrücken zeigen nach vorn.",
+      "Aufrecht vor den Kabelturm stellen, Ellbogen seitlich am Körper.",
+      "Stange nach oben curlen, bis die Unterarme fast senkrecht stehen; die Handgelenke bleiben gerade.",
+      "Langsam absenken, bis die Arme fast gestreckt sind."
+    ],
+    "tipps_de": [
+      "Deutlich weniger Gewicht als bei normalen Kabelcurls wählen.",
+      "Ellbogen bleiben am Körper und wandern nicht nach vorn; der Kabelzug hält die Spannung auch unten."
+    ],
+    "bild": "reverse-curls-kabel.webp",
+    "bild_quelle": null,
+    "bild_lizenz": null,
+    "quelle": "eigen",
+    "lizenz": "eigen",
+    "quelle_bild_original": null,
+    "alternativen": [
+      "reverse-curls",
+      "bizepscurls-kabel",
+      "hammercurls-seil"
     ]
   },
   {
@@ -10903,7 +11022,8 @@
       "Unterarmcurls (Langhantel)",
       "Wrist Curl (Barbell)",
       "Wrist Curl",
-      "Barbell Wrist Curl"
+      "Barbell Wrist Curl",
+      "Unterarm-Curls hinter dem Rücken (Langhantel)"
     ],
     "kategorie": "Bizeps",
     "familie": "unterarmcurls",
@@ -11088,7 +11208,9 @@
       "Rope Tricep Pushdown",
       "Tricep Rope Pushdown",
       "Rope Triceps Pushdown",
-      "Triceps Pushdown"
+      "Triceps Pushdown",
+      "Trizeps-Pushdown (Kabelzug)",
+      "Trizepsdrücken mit dem Seil"
     ],
     "kategorie": "Trizeps",
     "familie": "trizepsdruecken",
@@ -11228,7 +11350,8 @@
       "Overhead Triceps Extension (Cable)",
       "Overhead Rope Extension",
       "Overhead Cable Triceps Extension",
-      "Overhead Triceps Extension"
+      "Overhead Triceps Extension",
+      "Überkopf-Trizepsstrecken (Kabelzug)"
     ],
     "kategorie": "Trizeps",
     "familie": "trizepsstrecken-ueberkopf",
@@ -11683,7 +11806,8 @@
       "Tricep Kickback",
       "Trizeps Kickbacks",
       "Dumbbell Triceps Kickback",
-      "Triceps Kickback"
+      "Triceps Kickback",
+      "Trizeps Kickback"
     ],
     "kategorie": "Trizeps",
     "familie": "kickbacks",
@@ -11727,7 +11851,10 @@
       "Cable Kickback",
       "Trizeps-Kickbacks (Kabelzug)",
       "Triceps Kickback (Cable)",
-      "Triceps Kickback"
+      "Triceps Kickback",
+      "Trizeps Kickback",
+      "Trizeps-Kickback (Kabel)",
+      "Trizeps-Kickback (Kabelzug)"
     ],
     "kategorie": "Trizeps",
     "familie": "kickbacks",
@@ -11742,13 +11869,14 @@
     "position": "vorgebeugt",
     "einseitig": true,
     "ausfuehrung_de": [
-      "Einzelgriff (oder Kabel ohne Griff) an der unteren Rolle einhängen und mit einer Hand fassen.",
-      "Mit geradem Rücken nach vorn beugen, Oberarm parallel zum Oberkörper.",
+      "Einhand-Trizepsseil an der Rolle auf Hüfthöhe einhängen und mit einer Hand fassen.",
+      "Mit Blick zum Kabelturm und geradem Rücken nach vorn beugen, Oberarm parallel zum Oberkörper.",
       "Unterarm nach hinten strecken, bis der Arm gerade ist.",
       "Langsam zurück; danach Seite wechseln."
     ],
     "tipps_de": [
-      "Das Kabel hält die Spannung über den ganzen Weg."
+      "Das Kabel hält die Spannung über den ganzen Weg.",
+      "Der Oberarm bleibt ruhig, nur der Unterarm bewegt sich."
     ],
     "bild": "kickbacks-kabel.webp",
     "bild_quelle": null,
@@ -11819,7 +11947,9 @@
       "Seated Dip Machine",
       "Dips (Maschine)",
       "Triceps Dip (Machine)",
-      "Dips"
+      "Dips",
+      "Trizepsdrücken (Maschine)",
+      "Trizepsdrücken im sitzen"
     ],
     "kategorie": "Trizeps",
     "familie": "dips",
@@ -11867,7 +11997,9 @@
       "Triceps Extension Machine",
       "Trizepsstrecken (Maschine)",
       "Triceps Extension (Machine)",
-      "Triceps Pushdown"
+      "Triceps Pushdown",
+      "Trizepsdrücken (Maschine)",
+      "Trizepsdrücken im sitzen"
     ],
     "kategorie": "Trizeps",
     "familie": "trizepsdruecken",

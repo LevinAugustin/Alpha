@@ -21,6 +21,8 @@ class ExercisesPage extends StatefulWidget {
 
 class _ExercisesPageState extends State<ExercisesPage> {
   final _search = TextEditingController();
+  final _results = ScrollController();
+  var _lastQuery = '';
   String _muscle = '';
   String _equipment = '';
   String _mechanic = '';
@@ -31,6 +33,7 @@ class _ExercisesPageState extends State<ExercisesPage> {
   @override
   void dispose() {
     _search.dispose();
+    _results.dispose();
     super.dispose();
   }
 
@@ -47,7 +50,13 @@ class _ExercisesPageState extends State<ExercisesPage> {
               hintText: context.l10n.searchExercises,
               border: const OutlineInputBorder(),
             ),
-            onChanged: (_) => setState(() {}),
+            onChanged: (value) {
+              if (value != _lastQuery && _results.hasClients) {
+                _results.jumpTo(0);
+              }
+              _lastQuery = value;
+              setState(() {});
+            },
           ),
         ),
         SizedBox(
@@ -192,6 +201,7 @@ class _ExercisesPageState extends State<ExercisesPage> {
                       secondaryMuscles: exercise.secondaryMuscles,
                       grip: exercise.griff,
                       position: exercise.position,
+                      familie: exercise.familie,
                       movement: exercise.bewegung,
                       query: query,
                       group: _muscle,
@@ -217,13 +227,22 @@ class _ExercisesPageState extends State<ExercisesPage> {
                       leftName: a.name,
                       leftGermanName: a.germanName,
                       leftAliases: a.aliases,
+                      leftCatalog: isCatalogExercise(
+                        catalogId: a.catalogId,
+                        catalogSource: a.catalogSource,
+                      ),
                       rightName: b.name,
                       rightGermanName: b.germanName,
                       rightAliases: b.aliases,
+                      rightCatalog: isCatalogExercise(
+                        catalogId: b.catalogId,
+                        catalogSource: b.catalogSource,
+                      ),
                     );
                   });
               return ListView.builder(
                 key: const Key('exercise-results'),
+                controller: _results,
                 itemCount: exercises.length,
                 itemBuilder: (context, index) {
                   final exercise = exercises[index];
@@ -235,6 +254,7 @@ class _ExercisesPageState extends State<ExercisesPage> {
                   final subtitle = exerciseListSubtitle(
                     category: exercise.categoryName,
                     equipment: exercise.equipment,
+                    unassigned: context.l10n.unassignedExercise,
                   );
                   return ListTile(
                     leading: ExerciseImage(path: exercise.image, height: 48),

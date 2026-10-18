@@ -20,4 +20,5 @@ class PlanExercises extends Table {
   IntColumn get sequence => integer().withDefault(const Constant(0))();
   IntColumn get repMin => integer().nullable()();
   IntColumn get repMax => integer().nullable()();
+  IntColumn get restMs => integer().nullable()();
 }

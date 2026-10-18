@@ -29,6 +29,7 @@ class _ExerciseTileState extends State<ExerciseTile> {
   late final TextEditingController _warmup;
   late final TextEditingController _repMin;
   late final TextEditingController _repMax;
+  late final TextEditingController _rest;
 
   @override
   void initState() {
@@ -54,6 +55,12 @@ class _ExerciseTileState extends State<ExerciseTile> {
           ? (widget.planExercise.repMax.value?.toString() ?? '')
           : '',
     );
+    final restMs = widget.planExercise.restMs.present
+        ? widget.planExercise.restMs.value
+        : null;
+    _rest = TextEditingController(
+      text: restMs == null ? '' : '${(restMs / 1000).round()}',
+    );
   }
 
   @override
@@ -62,6 +69,7 @@ class _ExerciseTileState extends State<ExerciseTile> {
     _warmup.dispose();
     _repMin.dispose();
     _repMax.dispose();
+    _rest.dispose();
     super.dispose();
   }
 
@@ -149,6 +157,30 @@ class _ExerciseTileState extends State<ExerciseTile> {
                         onChanged: (_) => _writeReps(),
                         decoration: InputDecoration(
                           labelText: context.l10n.repMinLabel,
+                          border: const OutlineInputBorder(),
+                        ),
+                      ),
+                      const SizedBox(height: 16),
+                      TextField(
+                        key: const Key('plan-exercise-rest'),
+                        controller: _rest,
+                        keyboardType: const TextInputType.numberWithOptions(
+                          decimal: false,
+                        ),
+                        onTap: () => selectAll(_rest),
+                        onChanged: (_) {
+                          final seconds = int.tryParse(_rest.text.trim());
+                          widget.onChange(
+                            widget.planExercise.copyWith(
+                              enabled: const Value(true),
+                              restMs: Value(
+                                seconds == null ? null : seconds * 1000,
+                              ),
+                            ),
+                          );
+                        },
+                        decoration: InputDecoration(
+                          labelText: context.l10n.restSecondsLabel,
                           border: const OutlineInputBorder(),
                         ),
                       ),

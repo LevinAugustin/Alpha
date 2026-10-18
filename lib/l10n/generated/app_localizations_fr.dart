@@ -2250,6 +2250,9 @@ class AppLocalizationsFr extends AppLocalizations {
   String get editCustomExercise => 'Modifier l\'exercice';
 
   @override
+  String get unassignedExercise => 'Non attribué';
+
+  @override
   String get deleteCustomExercise => 'Supprimer l\'exercice';
 
   @override
@@ -2301,4 +2304,73 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get importBackupZip => 'Importer une sauvegarde (.zip)';
+
+  @override
+  String importSetSummary(int workouts, int sets) {
+    return '$workouts séances, $sets séries';
+  }
+
+  @override
+  String importDateErrorCount(int count) {
+    return '$count lignes ont une date illisible.';
+  }
+
+  @override
+  String importUnmatchedNames(String names) {
+    return 'Sans correspondance : $names';
+  }
+
+  @override
+  String importTemplatesSkipped(String names) {
+    return 'Non créés, limite de modèles atteinte : $names';
+  }
+
+  @override
+  String importApplying(int done, int total) {
+    return '$done sur $total';
+  }
+
+  @override
+  String get customExerciseMovementRequired => 'Choisis un mouvement.';
+
+  @override
+  String get setRemoved => 'Série retirée';
+
+  @override
+  String get exerciseRemovedUndo => 'Exercice retiré';
+
+  @override
+  String get exerciseSwappedUndo => 'Exercice échangé';
+
+  @override
+  String get saveRestInTemplate => 'Enregistrer aussi dans le modèle';
+
+  @override
+  String get deleteGymTitle => 'Supprimer la salle ?';
+
+  @override
+  String get deleteGymBody =>
+      'Les séances liées à cette salle restent. Seule la salle est retirée.';
+
+  @override
+  String get renameGym => 'Renommer la salle';
+
+  @override
+  String get cleanupImports => 'Nettoyer les entrées importées';
+
+  @override
+  String cleanupImportsPreview(int workouts, int templates) {
+    return '$workouts séances importées et $templates modèles seront retirés. Les séances saisies à la main restent.';
+  }
+
+  @override
+  String get cleanupImportsEmpty => 'Rien à nettoyer.';
+
+  @override
+  String get cleanupImportsDone => 'Entrées importées retirées.';
+
+  @override
+  String measurementsImported(int count) {
+    return '$count mesures importées.';
+  }
 }

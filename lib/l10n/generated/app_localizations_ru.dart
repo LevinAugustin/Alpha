@@ -2248,6 +2248,9 @@ class AppLocalizationsRu extends AppLocalizations {
   String get editCustomExercise => 'Изменить упражнение';
 
   @override
+  String get unassignedExercise => 'Не назначено';
+
+  @override
   String get deleteCustomExercise => 'Удалить упражнение';
 
   @override
@@ -2298,4 +2301,73 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get importBackupZip => 'Импорт резервной копии (.zip)';
+
+  @override
+  String importSetSummary(int workouts, int sets) {
+    return '$workouts тренировок, $sets подходов';
+  }
+
+  @override
+  String importDateErrorCount(int count) {
+    return '$count строк с датой, которую не удалось прочитать.';
+  }
+
+  @override
+  String importUnmatchedNames(String names) {
+    return 'Нет совпадения: $names';
+  }
+
+  @override
+  String importTemplatesSkipped(String names) {
+    return 'Не созданы, достигнут лимит шаблонов: $names';
+  }
+
+  @override
+  String importApplying(int done, int total) {
+    return '$done из $total';
+  }
+
+  @override
+  String get customExerciseMovementRequired => 'Выберите движение.';
+
+  @override
+  String get setRemoved => 'Подход удалён';
+
+  @override
+  String get exerciseRemovedUndo => 'Упражнение удалено';
+
+  @override
+  String get exerciseSwappedUndo => 'Упражнение заменено';
+
+  @override
+  String get saveRestInTemplate => 'Также сохранить в шаблоне';
+
+  @override
+  String get deleteGymTitle => 'Удалить зал?';
+
+  @override
+  String get deleteGymBody =>
+      'Тренировки, связанные с этим залом, остаются. Удаляется только зал.';
+
+  @override
+  String get renameGym => 'Переименовать зал';
+
+  @override
+  String get cleanupImports => 'Очистить импортированные записи';
+
+  @override
+  String cleanupImportsPreview(int workouts, int templates) {
+    return 'Будут удалены $workouts импортированных тренировок и $templates шаблонов. Тренировки, введённые вручную, остаются.';
+  }
+
+  @override
+  String get cleanupImportsEmpty => 'Нечего очищать.';
+
+  @override
+  String get cleanupImportsDone => 'Импортированные записи удалены.';
+
+  @override
+  String measurementsImported(int count) {
+    return '$count измерений импортировано.';
+  }
 }

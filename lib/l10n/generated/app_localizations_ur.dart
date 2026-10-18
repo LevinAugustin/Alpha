@@ -2218,6 +2218,9 @@ class AppLocalizationsUr extends AppLocalizations {
   String get editCustomExercise => 'ورزش میں ترمیم';
 
   @override
+  String get unassignedExercise => 'تفویض نہیں';
+
+  @override
   String get deleteCustomExercise => 'ورزش حذف کریں';
 
   @override
@@ -2268,4 +2271,73 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get importBackupZip => 'بیک اپ درآمد کریں (.zip)';
+
+  @override
+  String importSetSummary(int workouts, int sets) {
+    return '$workouts ورزشیں، $sets سیٹ';
+  }
+
+  @override
+  String importDateErrorCount(int count) {
+    return '$count قطاروں کی تاریخ پڑھی نہیں جا سکی۔';
+  }
+
+  @override
+  String importUnmatchedNames(String names) {
+    return 'کوئی میل نہیں: $names';
+  }
+
+  @override
+  String importTemplatesSkipped(String names) {
+    return 'نہیں بنے، سانچوں کی حد پوری ہو گئی: $names';
+  }
+
+  @override
+  String importApplying(int done, int total) {
+    return '$done میں سے $total';
+  }
+
+  @override
+  String get customExerciseMovementRequired => 'ایک حرکت منتخب کریں۔';
+
+  @override
+  String get setRemoved => 'سیٹ ہٹا دیا گیا';
+
+  @override
+  String get exerciseRemovedUndo => 'ورزش ہٹا دی گئی';
+
+  @override
+  String get exerciseSwappedUndo => 'ورزش بدل دی گئی';
+
+  @override
+  String get saveRestInTemplate => 'سانچے میں بھی محفوظ کریں';
+
+  @override
+  String get deleteGymTitle => 'اسٹوڈیو حذف کریں؟';
+
+  @override
+  String get deleteGymBody =>
+      'اس اسٹوڈیو سے جڑی ورزشیں رہیں گی۔ صرف اسٹوڈیو حذف ہوگا۔';
+
+  @override
+  String get renameGym => 'اسٹوڈیو کا نام بدلیں';
+
+  @override
+  String get cleanupImports => 'درآمد شدہ اندراجات صاف کریں';
+
+  @override
+  String cleanupImportsPreview(int workouts, int templates) {
+    return '$workouts درآمد شدہ ورزشیں اور $templates سانچے حذف ہوں گے۔ ہاتھ سے لکھی ورزشیں رہیں گی۔';
+  }
+
+  @override
+  String get cleanupImportsEmpty => 'صاف کرنے کے لیے کچھ نہیں۔';
+
+  @override
+  String get cleanupImportsDone => 'درآمد شدہ اندراجات حذف ہو گئے۔';
+
+  @override
+  String measurementsImported(int count) {
+    return '$count پیمائشیں درآمد ہوئیں۔';
+  }
 }

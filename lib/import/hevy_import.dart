@@ -22,6 +22,13 @@ class ImportedSet {
   final String equipment;
 }
 
+class ImportRowError {
+  const ImportRowError({required this.line, required this.value});
+
+  final int line;
+  final String value;
+}
+
 String? hevyEquipmentGear(String raw) {
   final key = raw
       .trim()
@@ -96,14 +103,18 @@ class WorkoutImport {
     required this.sets,
     required this.templates,
     required this.unknown,
+    this.errors = const [],
   });
 
   final List<ImportedSet> sets;
   final List<ImportedTemplate> templates;
   final List<String> unknown;
+  final List<ImportRowError> errors;
 
-  int get workoutCount =>
-      sets.map((set) => '${set.workoutTitle}|${set.started}').toSet().length;
+  int get workoutCount => sets
+      .map((set) => '${set.workoutTitle}|${set.started.toIso8601String()}')
+      .toSet()
+      .length;
 
   int get exerciseCount =>
       sets.map((set) => set.exercise.toLowerCase()).toSet().length;
@@ -116,6 +127,8 @@ class WorkoutImport {
       ? null
       : sets.map((set) => set.started).reduce((a, b) => a.isAfter(b) ? a : b);
 }
+
+const hevyTemplateLimit = 7;
 
 WorkoutImport? parseWorkoutCsv(String raw) {
   final rows = csv.decode(raw.replaceAll('\r\n', '\n'));
@@ -153,17 +166,25 @@ WorkoutImport? parseWorkoutCsv(String raw) {
   if (title == null || exercise == null) return null;
 
   final sets = <ImportedSet>[];
+  final errors = <ImportRowError>[];
+  var line = 1;
   for (final row in rows.skip(1)) {
+    line++;
     if (row.length <= exercise || row.length <= title) continue;
     final exerciseName = _cell(row, exercise);
     final workout = _cell(row, title);
     if (exerciseName.isEmpty || workout.isEmpty) continue;
-    final started = _date(_cell(row, start)) ?? DateTime.now();
+    final startRaw = _cell(row, start);
+    final started = parseImportDate(startRaw);
+    if (started == null) {
+      errors.add(ImportRowError(line: line, value: startRaw));
+      continue;
+    }
     sets.add(
       ImportedSet(
         workoutTitle: workout,
         started: started,
-        ended: _date(_cell(row, end)),
+        ended: parseImportDate(_cell(row, end)),
         exercise: exerciseName,
         kg: double.tryParse(_cell(row, weight).replaceAll(',', '.')) ?? 0,
         reps: double.tryParse(_cell(row, reps).replaceAll(',', '.')) ?? 0,
@@ -172,7 +193,7 @@ WorkoutImport? parseWorkoutCsv(String raw) {
       ),
     );
   }
-  if (sets.isEmpty) return null;
+  if (sets.isEmpty && errors.isEmpty) return null;
 
   final grouped = <String, List<ImportedSet>>{};
   for (final set in sets) {
@@ -180,10 +201,14 @@ WorkoutImport? parseWorkoutCsv(String raw) {
   }
   final templates = <ImportedTemplate>[];
   for (final entry in grouped.entries) {
+    final newest = entry.value
+        .map((set) => set.started)
+        .reduce((a, b) => a.isAfter(b) ? a : b);
+    final session = entry.value.where((set) => set.started == newest).toList();
     final order = <String>[];
     final counts = <String, int>{};
     final weights = <String, double>{};
-    for (final set in entry.value) {
+    for (final set in session) {
       if (!order.contains(set.exercise)) order.add(set.exercise);
       counts[set.exercise] = (counts[set.exercise] ?? 0) + 1;
       if (set.kg > 0 && !set.warmup) weights[set.exercise] = set.kg;
@@ -197,7 +222,12 @@ WorkoutImport? parseWorkoutCsv(String raw) {
       ),
     );
   }
-  return WorkoutImport(sets: sets, templates: templates, unknown: const []);
+  return WorkoutImport(
+    sets: sets,
+    templates: templates,
+    unknown: const [],
+    errors: errors,
+  );
 }
 
 List<({DateTime at, double kg})> parseMeasurementCsv(String raw) {
@@ -218,9 +248,9 @@ List<({DateTime at, double kg})> parseMeasurementCsv(String raw) {
   if (weightIndex < 0) weightIndex = header.length > 1 ? 1 : 0;
   final points = <({DateTime at, double kg})>[];
   for (final row in rows.skip(hasHeader ? 1 : 0)) {
-    final at = _date(_cell(row, dateIndex));
+    final at = parseImportDate(_cell(row, dateIndex));
     final kg = double.tryParse(_cell(row, weightIndex).replaceAll(',', '.'));
-    if (at == null || kg == null) continue;
+    if (at == null || kg == null || kg <= 0) continue;
     points.add((at: at, kg: kg));
   }
   return points;
@@ -231,17 +261,99 @@ String _cell(List<dynamic> row, int? index) {
   return '${row[index] ?? ''}'.trim();
 }
 
-DateTime? _date(String raw) {
-  if (raw.isEmpty) return null;
-  final parsed = DateTime.tryParse(raw.replaceAll(' ', 'T'));
-  if (parsed != null) return parsed;
-  final match = RegExp(r'(\d{1,2})[./](\d{1,2})[./](\d{2,4})').firstMatch(raw);
-  if (match == null) return null;
-  final year = int.parse(match.group(3)!);
+const _monthNumbers = <String, int>{
+  'januar': 1,
+  'january': 1,
+  'jan': 1,
+  'februar': 2,
+  'february': 2,
+  'feb': 2,
+  'marz': 3,
+  'märz': 3,
+  'mrz': 3,
+  'march': 3,
+  'mar': 3,
+  'april': 4,
+  'apr': 4,
+  'mai': 5,
+  'may': 5,
+  'juni': 6,
+  'june': 6,
+  'jun': 6,
+  'juli': 7,
+  'july': 7,
+  'jul': 7,
+  'august': 8,
+  'aug': 8,
+  'september': 9,
+  'sept': 9,
+  'sep': 9,
+  'oktober': 10,
+  'october': 10,
+  'okt': 10,
+  'oct': 10,
+  'november': 11,
+  'nov': 11,
+  'dezember': 12,
+  'december': 12,
+  'dez': 12,
+  'dec': 12,
+};
+
+DateTime? parseImportDate(String raw) {
+  final text = raw.trim();
+  if (text.isEmpty) return null;
+  final iso = DateTime.tryParse(text.replaceFirst(' ', 'T'));
+  if (iso != null) return iso.isUtc ? iso.toLocal() : iso;
+
+  final numeric = RegExp(
+    r'^(\d{1,2})[./](\d{1,2})[./](\d{2,4})(?:[,\s]+(\d{1,2}):(\d{2}))?$',
+  ).firstMatch(text);
+  if (numeric != null) {
+    return _localDate(
+      _year(numeric.group(3)!),
+      int.parse(numeric.group(2)!),
+      int.parse(numeric.group(1)!),
+      numeric.group(4),
+      numeric.group(5),
+    );
+  }
+
+  final named = RegExp(
+    r'^(\d{1,2})\.?\s+([A-Za-zÄÖÜäöü.]+)\s+(\d{4})(?:[,\s]+(\d{1,2}):(\d{2}))?$',
+  ).firstMatch(text);
+  if (named == null) return null;
+  final month =
+      _monthNumbers[named.group(2)!.replaceAll('.', '').toLowerCase()];
+  if (month == null) return null;
+  return _localDate(
+    int.parse(named.group(3)!),
+    month,
+    int.parse(named.group(1)!),
+    named.group(4),
+    named.group(5),
+  );
+}
+
+int _year(String raw) {
+  final year = int.parse(raw);
+  return year < 100 ? 2000 + year : year;
+}
+
+DateTime? _localDate(
+  int year,
+  int month,
+  int day,
+  String? hour,
+  String? minute,
+) {
+  if (month < 1 || month > 12 || day < 1 || day > 31) return null;
   return DateTime(
-    year < 100 ? 2000 + year : year,
-    int.parse(match.group(2)!),
-    int.parse(match.group(1)!),
+    year,
+    month,
+    day,
+    hour == null ? 0 : int.parse(hour),
+    minute == null ? 0 : int.parse(minute),
   );
 }
 

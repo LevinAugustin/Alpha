@@ -20,6 +20,9 @@ import 'generated/schema_v60.dart' as v60;
 import 'generated/schema_v62.dart' as v62;
 import 'generated/schema_v64.dart' as v64;
 import 'generated/schema_v69.dart' as v69;
+import 'generated/schema_v79.dart' as v79;
+import 'generated/schema_v80.dart' as v80;
+import 'generated/schema_v81.dart' as v81;
 
 void main() {
   driftRuntimeOptions.dontWarnAboutMultipleDatabases = true;
@@ -1429,4 +1432,126 @@ void main() {
       },
     );
   }
+
+  test('v79 plan exercise keeps its row and rest stays empty', () async {
+    await verifier.testWithDataIntegrity(
+      oldVersion: 79,
+      newVersion: 80,
+      createOld: v79.DatabaseAtV79.new,
+      createNew: AppDatabase.new,
+      openTestedDatabase: AppDatabase.new,
+      createItems: (batch, oldDb) {
+        batch.insert(
+          oldDb.plans,
+          v79.PlansCompanion.insert(days: 'Monday', title: const Value('Push')),
+        );
+        batch.insert(
+          oldDb.exercises,
+          v79.ExercisesCompanion.insert(
+            name: 'Curl',
+            kind: 'strength',
+            displayUnit: 'kg',
+          ),
+        );
+        batch.insert(
+          oldDb.planExercises,
+          v79.PlanExercisesCompanion.insert(
+            enabled: 1,
+            exerciseId: 1,
+            planId: 1,
+            maxSets: const Value(3),
+          ),
+        );
+      },
+      validateItems: (newDb) async {
+        final row = await newDb.select(newDb.planExercises).getSingle();
+        expect(row.exerciseId, 1);
+        expect(row.planId, 1);
+        expect(row.maxSets, 3);
+        expect(row.restMs, null);
+        final columns = await newDb
+            .customSelect('PRAGMA table_info(plan_exercises)')
+            .get();
+        expect(
+          columns.map((item) => item.read<String>('name')),
+          contains('rest_ms'),
+        );
+      },
+    );
+  });
+
+  test('v80 workout keeps its row and the import marker stays empty', () async {
+    await verifier.testWithDataIntegrity(
+      oldVersion: 80,
+      newVersion: 81,
+      createOld: v80.DatabaseAtV80.new,
+      createNew: AppDatabase.new,
+      openTestedDatabase: AppDatabase.new,
+      createItems: (batch, oldDb) {
+        batch.insert(
+          oldDb.workouts,
+          v80.WorkoutsCompanion.insert(startedAt: 1700000000),
+        );
+      },
+      validateItems: (newDb) async {
+        final row = await newDb.select(newDb.workouts).getSingle();
+        expect(row.importBatch, null);
+        final columns = await newDb
+            .customSelect('PRAGMA table_info(workouts)')
+            .get();
+        expect(
+          columns.map((item) => item.read<String>('name')),
+          contains('import_batch'),
+        );
+      },
+    );
+  });
+
+  test(
+    'v81 settings keep their row and the repair flag starts at zero',
+    () async {
+      await verifier.testWithDataIntegrity(
+        oldVersion: 81,
+        newVersion: 82,
+        createOld: v81.DatabaseAtV81.new,
+        createNew: AppDatabase.new,
+        openTestedDatabase: AppDatabase.new,
+        createItems: (batch, oldDb) {
+          batch.insert(
+            oldDb.settings,
+            v81.SettingsCompanion.insert(
+              alarmSound: '',
+              cardioUnit: 'km',
+              curveLines: 0,
+              explainedPermissions: 1,
+              groupHistory: 0,
+              longDateFormat: 'dd/MM/yyyy',
+              maxSets: 3,
+              planTrailing: 'PlanTrailing.reorder',
+              restTimers: 0,
+              shortDateFormat: 'dd/MM',
+              showUnits: 1,
+              strengthUnit: 'kg',
+              systemColors: 0,
+              themeMode: 'ThemeMode.dark',
+              timerDuration: 90000,
+              vibrate: 0,
+            ),
+          );
+        },
+        validateItems: (newDb) async {
+          final row = await newDb.select(newDb.settings).getSingle();
+          expect(row.legacyRepairVersion, 0);
+          expect(row.strengthUnit, 'kg');
+          final columns = await newDb
+              .customSelect('PRAGMA table_info(settings)')
+              .get();
+          expect(
+            columns.map((item) => item.read<String>('name')),
+            contains('legacy_repair_version'),
+          );
+        },
+      );
+    },
+  );
 }

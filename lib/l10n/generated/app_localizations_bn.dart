@@ -2216,6 +2216,9 @@ class AppLocalizationsBn extends AppLocalizations {
   String get editCustomExercise => 'ব্যায়াম সম্পাদনা';
 
   @override
+  String get unassignedExercise => 'নির্ধারিত নয়';
+
+  @override
   String get deleteCustomExercise => 'ব্যায়াম মুছুন';
 
   @override
@@ -2266,4 +2269,73 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get importBackupZip => 'ব্যাকআপ আমদানি (.zip)';
+
+  @override
+  String importSetSummary(int workouts, int sets) {
+    return '$workouts ওয়ার্কআউট, $sets সেট';
+  }
+
+  @override
+  String importDateErrorCount(int count) {
+    return '$count সারির তারিখ পড়া যায়নি।';
+  }
+
+  @override
+  String importUnmatchedNames(String names) {
+    return 'কোনো মিল নেই: $names';
+  }
+
+  @override
+  String importTemplatesSkipped(String names) {
+    return 'তৈরি হয়নি, টেমপ্লেটের সীমা পূর্ণ: $names';
+  }
+
+  @override
+  String importApplying(int done, int total) {
+    return '$done এর মধ্যে $total';
+  }
+
+  @override
+  String get customExerciseMovementRequired => 'একটি মুভমেন্ট বেছে নিন।';
+
+  @override
+  String get setRemoved => 'সেট সরানো হয়েছে';
+
+  @override
+  String get exerciseRemovedUndo => 'ব্যায়াম সরানো হয়েছে';
+
+  @override
+  String get exerciseSwappedUndo => 'ব্যায়াম বদলানো হয়েছে';
+
+  @override
+  String get saveRestInTemplate => 'টেমপ্লেটেও সংরক্ষণ করুন';
+
+  @override
+  String get deleteGymTitle => 'স্টুডিও মুছবেন?';
+
+  @override
+  String get deleteGymBody =>
+      'এই স্টুডিওর সাথে যুক্ত ওয়ার্কআউট থাকবে। শুধু স্টুডিও মুছবে।';
+
+  @override
+  String get renameGym => 'স্টুডিওর নাম বদলান';
+
+  @override
+  String get cleanupImports => 'আমদানি করা এন্ট্রি পরিষ্কার করুন';
+
+  @override
+  String cleanupImportsPreview(int workouts, int templates) {
+    return '$workoutsটি আমদানি করা ওয়ার্কআউট এবং $templatesটি টেমপ্লেট মুছবে। হাতে লেখা ওয়ার্কআউট থাকবে।';
+  }
+
+  @override
+  String get cleanupImportsEmpty => 'পরিষ্কার করার কিছু নেই।';
+
+  @override
+  String get cleanupImportsDone => 'আমদানি করা এন্ট্রি মুছেছে।';
+
+  @override
+  String measurementsImported(int count) {
+    return '$countটি পরিমাপ আমদানি হয়েছে।';
+  }
 }

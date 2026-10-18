@@ -1,6 +1,8 @@
 DateTime dateOnly(DateTime value) =>
     DateTime(value.year, value.month, value.day);
 
+DateTime workoutDay(DateTime startedAt) => dateOnly(startedAt.toLocal());
+
 DateTime mondayOf(DateTime value) {
   final day = dateOnly(value);
   return day.subtract(Duration(days: day.weekday - 1));

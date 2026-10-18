@@ -304,6 +304,11 @@ class TimerState extends ChangeNotifier {
     talker.info('Stopping rest timer');
     _target = 'timer';
     updateTimer(NativeTimerWrapper.emptyTimer());
+    try {
+      await _notifications?.cancel(id: 1);
+    } catch (error, stack) {
+      CrashLogger.instance?.record(error, stack, context: 'notify.cancel');
+    }
     if (kIsWeb || !Platform.isAndroid) {
       player.stop();
       next?.cancel();

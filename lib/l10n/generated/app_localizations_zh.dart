@@ -2149,6 +2149,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get editCustomExercise => '编辑动作';
 
   @override
+  String get unassignedExercise => '未指定';
+
+  @override
   String get deleteCustomExercise => '删除动作';
 
   @override
@@ -2198,6 +2201,74 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get importBackupZip => '导入备份 (.zip)';
+
+  @override
+  String importSetSummary(int workouts, int sets) {
+    return '$workouts 次训练，$sets 组';
+  }
+
+  @override
+  String importDateErrorCount(int count) {
+    return '$count 行的日期无法读取。';
+  }
+
+  @override
+  String importUnmatchedNames(String names) {
+    return '没有匹配：$names';
+  }
+
+  @override
+  String importTemplatesSkipped(String names) {
+    return '未创建，已达到模板上限：$names';
+  }
+
+  @override
+  String importApplying(int done, int total) {
+    return '$done / $total';
+  }
+
+  @override
+  String get customExerciseMovementRequired => '请选择一个动作。';
+
+  @override
+  String get setRemoved => '已删除一组';
+
+  @override
+  String get exerciseRemovedUndo => '已删除动作';
+
+  @override
+  String get exerciseSwappedUndo => '已更换动作';
+
+  @override
+  String get saveRestInTemplate => '同时保存到模板';
+
+  @override
+  String get deleteGymTitle => '删除训练馆？';
+
+  @override
+  String get deleteGymBody => '与这个训练馆关联的训练会保留。只删除训练馆。';
+
+  @override
+  String get renameGym => '重命名训练馆';
+
+  @override
+  String get cleanupImports => '清理导入记录';
+
+  @override
+  String cleanupImportsPreview(int workouts, int templates) {
+    return '将删除 $workouts 条导入的训练和 $templates 个模板。亲手记录的训练会保留。';
+  }
+
+  @override
+  String get cleanupImportsEmpty => '没有需要清理的内容。';
+
+  @override
+  String get cleanupImportsDone => '已删除导入记录。';
+
+  @override
+  String measurementsImported(int count) {
+    return '已导入 $count 条测量。';
+  }
 }
 
 /// The translations for Chinese, as used in China (`zh_CN`).
@@ -4345,6 +4416,9 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
   String get editCustomExercise => '编辑动作';
 
   @override
+  String get unassignedExercise => '未指定';
+
+  @override
   String get deleteCustomExercise => '删除动作';
 
   @override
@@ -4394,6 +4468,74 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
 
   @override
   String get importBackupZip => '导入备份 (.zip)';
+
+  @override
+  String importSetSummary(int workouts, int sets) {
+    return '$workouts 次训练，$sets 组';
+  }
+
+  @override
+  String importDateErrorCount(int count) {
+    return '$count 行的日期无法读取。';
+  }
+
+  @override
+  String importUnmatchedNames(String names) {
+    return '没有匹配：$names';
+  }
+
+  @override
+  String importTemplatesSkipped(String names) {
+    return '未创建，已达到模板上限：$names';
+  }
+
+  @override
+  String importApplying(int done, int total) {
+    return '$done / $total';
+  }
+
+  @override
+  String get customExerciseMovementRequired => '请选择一个动作。';
+
+  @override
+  String get setRemoved => '已删除一组';
+
+  @override
+  String get exerciseRemovedUndo => '已删除动作';
+
+  @override
+  String get exerciseSwappedUndo => '已更换动作';
+
+  @override
+  String get saveRestInTemplate => '同时保存到模板';
+
+  @override
+  String get deleteGymTitle => '删除训练馆？';
+
+  @override
+  String get deleteGymBody => '与这个训练馆关联的训练会保留。只删除训练馆。';
+
+  @override
+  String get renameGym => '重命名训练馆';
+
+  @override
+  String get cleanupImports => '清理导入记录';
+
+  @override
+  String cleanupImportsPreview(int workouts, int templates) {
+    return '将删除 $workouts 条导入的训练和 $templates 个模板。亲手记录的训练会保留。';
+  }
+
+  @override
+  String get cleanupImportsEmpty => '没有需要清理的内容。';
+
+  @override
+  String get cleanupImportsDone => '已删除导入记录。';
+
+  @override
+  String measurementsImported(int count) {
+    return '已导入 $count 条测量。';
+  }
 }
 
 /// The translations for Chinese, as used in Taiwan (`zh_TW`).
@@ -6541,6 +6683,9 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get editCustomExercise => '編輯動作';
 
   @override
+  String get unassignedExercise => '未指定';
+
+  @override
   String get deleteCustomExercise => '刪除動作';
 
   @override
@@ -6590,4 +6735,72 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get importBackupZip => '匯入備份 (.zip)';
+
+  @override
+  String importSetSummary(int workouts, int sets) {
+    return '$workouts 次訓練，$sets 組';
+  }
+
+  @override
+  String importDateErrorCount(int count) {
+    return '$count 列的日期無法讀取。';
+  }
+
+  @override
+  String importUnmatchedNames(String names) {
+    return '沒有相符：$names';
+  }
+
+  @override
+  String importTemplatesSkipped(String names) {
+    return '未建立，已達到範本上限：$names';
+  }
+
+  @override
+  String importApplying(int done, int total) {
+    return '$done / $total';
+  }
+
+  @override
+  String get customExerciseMovementRequired => '請選擇一個動作。';
+
+  @override
+  String get setRemoved => '已刪除一組';
+
+  @override
+  String get exerciseRemovedUndo => '已刪除動作';
+
+  @override
+  String get exerciseSwappedUndo => '已更換動作';
+
+  @override
+  String get saveRestInTemplate => '同時儲存到範本';
+
+  @override
+  String get deleteGymTitle => '刪除訓練館？';
+
+  @override
+  String get deleteGymBody => '與此訓練館關聯的訓練會保留。只刪除訓練館。';
+
+  @override
+  String get renameGym => '重新命名訓練館';
+
+  @override
+  String get cleanupImports => '清理匯入紀錄';
+
+  @override
+  String cleanupImportsPreview(int workouts, int templates) {
+    return '將刪除 $workouts 筆匯入的訓練和 $templates 個範本。親手記錄的訓練會保留。';
+  }
+
+  @override
+  String get cleanupImportsEmpty => '沒有需要清理的內容。';
+
+  @override
+  String get cleanupImportsDone => '已刪除匯入紀錄。';
+
+  @override
+  String measurementsImported(int count) {
+    return '已匯入 $count 筆測量。';
+  }
 }

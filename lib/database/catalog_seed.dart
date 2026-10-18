@@ -43,35 +43,152 @@ bool exerciseMatchesQuery({
   String? mechanic,
   String? primaryMuscles,
   String? secondaryMuscles,
+  String? familie,
+  String? grip,
+  String? position,
   String? movement,
   required String query,
 }) {
-  final needle = query.trim().toLowerCase();
-  if (needle.isEmpty) return true;
-  final mapped = movementSearch[needle];
-  if (mapped != null) {
-    if ((movement ?? '').trim().toLowerCase() == mapped) return true;
-    if (mapped == 'beine_huefte') {
-      final categoryName = (category ?? '').trim().toLowerCase();
-      final muscleName = (muscle ?? '').trim().toLowerCase();
-      if (categoryName == 'beine' || muscleName == 'beine') return true;
+  final normalized = foldExerciseSearch(query);
+  if (normalized.isEmpty) return true;
+  final tokens = normalized.split(' ');
+  if (tokens.length == 1) {
+    final mapped = movementSearch[tokens.single];
+    if (mapped != null) {
+      if ((movement ?? '').trim().toLowerCase() == mapped) return true;
+      if (mapped == 'beine_huefte') {
+        final categoryName = (category ?? '').trim().toLowerCase();
+        final muscleName = (muscle ?? '').trim().toLowerCase();
+        if (categoryName == 'beine' || muscleName == 'beine') return true;
+      }
+      return false;
     }
-    return false;
   }
-  final haystack = foldExerciseSearch(
-    [
-      name,
-      germanName ?? '',
-      aliases ?? '',
-      muscle ?? '',
-      category ?? '',
-      equipment ?? '',
-      catalogText(mechanic) ?? '',
-      decodeCatalogList(primaryMuscles).join(' '),
-      decodeCatalogList(secondaryMuscles).join(' '),
-    ].join(' '),
+  final haystack = exerciseSearchText(
+    name: name,
+    germanName: germanName,
+    aliases: aliases,
+    muscle: muscle,
+    category: category,
+    equipment: equipment,
+    primaryMuscles: primaryMuscles,
+    secondaryMuscles: secondaryMuscles,
+    familie: familie,
+    grip: grip,
+    position: position,
   );
-  return _containsTerm(haystack, foldExerciseSearch(query));
+  return tokens.every((token) => exerciseSearchTokenMatches(haystack, token));
+}
+
+bool exerciseExactNameOrAlias({
+  required String name,
+  String? germanName,
+  String? aliases,
+  required String query,
+}) {
+  final needle = foldExerciseSearch(query);
+  if (needle.isEmpty) return false;
+  if (foldExerciseSearch(name) == needle) return true;
+  if (foldExerciseSearch(germanName ?? '') == needle) return true;
+  for (final alias in decodeCatalogList(aliases)) {
+    if (foldExerciseSearch(alias) == needle) return true;
+  }
+  return false;
+}
+
+String exerciseSearchText({
+  required String name,
+  String? germanName,
+  String? aliases,
+  String? muscle,
+  String? category,
+  String? equipment,
+  String? primaryMuscles,
+  String? secondaryMuscles,
+  String? familie,
+  String? grip,
+  String? position,
+}) {
+  final primary = decodeCatalogList(primaryMuscles);
+  final secondary = decodeCatalogList(secondaryMuscles);
+  final parts = <String>[
+    name,
+    germanName ?? '',
+    for (final alias in decodeCatalogList(aliases)) alias,
+    muscle ?? '',
+    category ?? '',
+    equipment ?? '',
+    familie ?? '',
+    for (final key in [...primary, ...secondary]) ...[
+      key,
+      germanMuscleSearchLabel(key),
+    ],
+    grip ?? '',
+    if ((grip ?? '').isNotEmpty) germanGripSearchLabel(grip!),
+    position ?? '',
+    if ((position ?? '').isNotEmpty) germanPositionSearchLabel(position!),
+  ];
+  final text = [
+    for (final part in parts)
+      if (foldExerciseSearch(part).isNotEmpty) foldExerciseSearch(part),
+  ].join(' ');
+  return ' $text ';
+}
+
+bool exerciseSearchTokenMatches(String haystack, String token) {
+  if (token.length <= 2) return haystack.contains(' $token');
+  return haystack.contains(token);
+}
+
+String germanMuscleSearchLabel(String key) {
+  return const {
+        'brust': 'Brust',
+        'brust_oben': 'obere Brust',
+        'schulter_vorne': 'vordere Schulter',
+        'schulter_seitlich': 'seitliche Schulter',
+        'schulter_hinten': 'hintere Schulter',
+        'latissimus': 'Latissimus',
+        'oberer_ruecken': 'oberer Rücken',
+        'trapez': 'Trapez/Nacken',
+        'unterer_ruecken': 'unterer Rücken',
+        'bizeps': 'Bizeps',
+        'unterarme': 'Unterarme',
+        'trizeps': 'Trizeps',
+        'bauch_gerade': 'gerade Bauchmuskeln',
+        'bauch_schraeg': 'schräge Bauchmuskeln',
+        'quadrizeps': 'Quadrizeps',
+        'beinbeuger': 'Beinbeuger',
+        'gesaess': 'Gesäß',
+        'adduktoren': 'Adduktoren',
+        'abduktoren': 'Abduktoren',
+        'waden': 'Waden',
+        'hueftbeuger': 'Hüftbeuger',
+      }[key] ??
+      key;
+}
+
+String germanGripSearchLabel(String key) {
+  return const {
+        'eng': 'enger Griff',
+        'breit': 'breiter Griff',
+        'obergriff': 'Obergriff',
+        'untergriff': 'Untergriff',
+        'neutral': 'neutraler Griff',
+      }[key] ??
+      key;
+}
+
+String germanPositionSearchLabel(String key) {
+  return const {
+        'flach': 'flach',
+        'schraeg': 'schräg',
+        'negativ': 'negativ',
+        'sitzend': 'sitzend',
+        'stehend': 'stehend',
+        'liegend': 'liegend',
+        'vorgebeugt': 'vorgebeugt',
+      }[key] ??
+      key;
 }
 
 String exerciseDisplayName(String name, String? germanName) {
@@ -87,17 +204,36 @@ int? exerciseSearchRank({
 }) {
   final needle = foldExerciseSearch(query);
   if (needle.isEmpty) return null;
-  var best = _rankText(
-    exerciseDisplayName(name, germanName),
-    needle,
-    nameField: true,
-  );
-  for (final synonym in decodeCatalogList(aliases)) {
-    final rank = _rankText(synonym, needle, nameField: false);
-    if (rank == null) continue;
-    if (best == null || rank < best) best = rank;
+  final tokens = needle.split(' ');
+  final label = foldExerciseSearch(exerciseDisplayName(name, germanName));
+  final synonyms = [
+    for (final synonym in decodeCatalogList(aliases))
+      foldExerciseSearch(synonym),
+  ].where((synonym) => synonym.isNotEmpty);
+  if (label == needle) return 1;
+  if (label.startsWith(needle)) return 2;
+  if (synonyms.contains(needle)) return 3;
+  final words = label.split(' ');
+  if (tokens.every((token) => words.any((word) => word.startsWith(token)))) {
+    return 4;
   }
-  return best;
+  if (synonyms.any((synonym) => synonym.startsWith(needle))) return 5;
+  if (label.isNotEmpty && tokens.every((token) => label.contains(token))) {
+    return 6;
+  }
+  if (synonyms.any(
+    (synonym) => tokens.every((token) => synonym.contains(token)),
+  )) {
+    return 7;
+  }
+  return 8;
+}
+
+bool isCatalogExercise({String? catalogId, String? catalogSource}) {
+  final id = (catalogId ?? '').trim();
+  if (id.isEmpty || id.startsWith('eigen-')) return false;
+  if ((catalogSource ?? '').trim().toLowerCase() == 'custom') return false;
+  return true;
 }
 
 int compareExerciseSearch({
@@ -108,24 +244,36 @@ int compareExerciseSearch({
   required String rightName,
   String? rightGermanName,
   String? rightAliases,
+  bool leftCatalog = true,
+  bool rightCatalog = true,
 }) {
   final left = _searchOrder(query, leftName, leftGermanName, leftAliases);
   final right = _searchOrder(query, rightName, rightGermanName, rightAliases);
   final byRank = left.rank.compareTo(right.rank);
   if (byRank != 0) return byRank;
-  if (left.matched && right.matched) {
-    final byLength = left.length.compareTo(right.length);
-    if (byLength != 0) return byLength;
-  }
+  if (leftCatalog != rightCatalog) return leftCatalog ? -1 : 1;
+  final byLength = left.length.compareTo(right.length);
+  if (byLength != 0) return byLength;
   return left.alpha.compareTo(right.alpha);
 }
 
 String foldExerciseSearch(String value) {
   final buffer = StringBuffer();
-  for (final rune in value.trim().toLowerCase().runes) {
-    buffer.write(_foldedLetters[rune] ?? String.fromCharCode(rune));
+  for (final rune in value.toLowerCase().runes) {
+    final chunk = switch (rune) {
+      0xe4 => 'ae',
+      0xf6 => 'oe',
+      0xfc => 'ue',
+      0xdf => 'ss',
+      _ => _foldedLetters[rune] ?? String.fromCharCode(rune),
+    };
+    for (final code in chunk.runes) {
+      final isDigit = code >= 0x30 && code <= 0x39;
+      final isLetter = code >= 0x61 && code <= 0x7a;
+      buffer.writeCharCode(isDigit || isLetter ? code : 0x20);
+    }
   }
-  return buffer.toString();
+  return buffer.toString().replaceAll(RegExp(r' +'), ' ').trim();
 }
 
 ({int rank, bool matched, int length, String alpha}) _searchOrder(
@@ -142,23 +290,11 @@ String foldExerciseSearch(String value) {
     query: query,
   );
   return (
-    rank: rank ?? 7,
+    rank: rank ?? 8,
     matched: rank != null,
     length: label.length,
     alpha: label,
   );
-}
-
-int? _rankText(String text, String needle, {required bool nameField}) {
-  final folded = foldExerciseSearch(text);
-  if (folded.isEmpty || needle.isEmpty) return null;
-  if (folded == needle) return nameField ? 1 : 2;
-  if (folded.startsWith(needle)) return nameField ? 3 : 4;
-  if (RegExp('(?<![0-9a-z])${RegExp.escape(needle)}').hasMatch(folded)) {
-    return 5;
-  }
-  if (folded.contains(needle)) return 6;
-  return null;
 }
 
 const _foldedLetters = <int, String>{
@@ -166,7 +302,6 @@ const _foldedLetters = <int, String>{
   0xe1: 'a',
   0xe2: 'a',
   0xe3: 'a',
-  0xe4: 'a',
   0xe5: 'a',
   0xe6: 'ae',
   0xe7: 'c',
@@ -183,15 +318,12 @@ const _foldedLetters = <int, String>{
   0xf3: 'o',
   0xf4: 'o',
   0xf5: 'o',
-  0xf6: 'o',
   0xf8: 'o',
   0xf9: 'u',
   0xfa: 'u',
   0xfb: 'u',
-  0xfc: 'u',
   0xfd: 'y',
   0xff: 'y',
-  0xdf: 'ss',
 };
 
 bool matchesExerciseFilters({
@@ -206,6 +338,7 @@ bool matchesExerciseFilters({
   String? secondaryMuscles,
   String? grip,
   String? position,
+  String? familie,
   String? movement,
   required String query,
   String group = '',
@@ -256,12 +389,10 @@ bool matchesExerciseFilters({
     mechanic: mechanic,
     primaryMuscles: primaryMuscles,
     secondaryMuscles: secondaryMuscles,
+    familie: familie,
+    grip: grip,
+    position: position,
     movement: movement,
     query: query,
   );
-}
-
-bool _containsTerm(String haystack, String word) {
-  if (word.length >= 5) return haystack.contains(word);
-  return RegExp('\\b${RegExp.escape(word)}\\b').hasMatch(haystack);
 }

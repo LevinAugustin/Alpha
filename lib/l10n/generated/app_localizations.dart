@@ -4128,6 +4128,12 @@ abstract class AppLocalizations {
   /// **'Edit exercise'**
   String get editCustomExercise;
 
+  /// Shown when a custom exercise has no muscle or equipment yet.
+  ///
+  /// In en, this message translates to:
+  /// **'Not assigned'**
+  String get unassignedExercise;
+
   /// Action for deleting a custom exercise.
   ///
   /// In en, this message translates to:
@@ -4229,6 +4235,114 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Import backup (.zip)'**
   String get importBackupZip;
+
+  /// Preview line for imported workouts and sets.
+  ///
+  /// In en, this message translates to:
+  /// **'{workouts, plural, =1{1 workout, {sets, plural, =1{1 set} other{{sets} sets}}} other{{workouts} workouts, {sets, plural, =1{1 set} other{{sets} sets}}}}'**
+  String importSetSummary(int workouts, int sets);
+
+  /// Rows skipped because the date could not be parsed.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} rows have a date that could not be read.'**
+  String importDateErrorCount(int count);
+
+  /// Exercise names that were not matched.
+  ///
+  /// In en, this message translates to:
+  /// **'No match: {names}'**
+  String importUnmatchedNames(String names);
+
+  /// Templates that exceed the plan limit.
+  ///
+  /// In en, this message translates to:
+  /// **'Not created, the template limit was reached: {names}'**
+  String importTemplatesSkipped(String names);
+
+  /// Progress while the import is saved.
+  ///
+  /// In en, this message translates to:
+  /// **'{done} of {total}'**
+  String importApplying(int done, int total);
+
+  /// Shown when a custom exercise has no movement.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a movement.'**
+  String get customExerciseMovementRequired;
+
+  /// Snackbar after a set is removed.
+  ///
+  /// In en, this message translates to:
+  /// **'Set removed'**
+  String get setRemoved;
+
+  /// Snackbar after an exercise is removed.
+  ///
+  /// In en, this message translates to:
+  /// **'Exercise removed'**
+  String get exerciseRemovedUndo;
+
+  /// Snackbar after an exercise is swapped.
+  ///
+  /// In en, this message translates to:
+  /// **'Exercise swapped'**
+  String get exerciseSwappedUndo;
+
+  /// Saves the rest time on the plan exercise.
+  ///
+  /// In en, this message translates to:
+  /// **'Also save in the template'**
+  String get saveRestInTemplate;
+
+  /// Title of the studio delete confirmation.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete studio?'**
+  String get deleteGymTitle;
+
+  /// Explains that deleting a studio keeps workouts.
+  ///
+  /// In en, this message translates to:
+  /// **'Workouts linked to this studio stay. Only the studio is removed.'**
+  String get deleteGymBody;
+
+  /// Renames a studio.
+  ///
+  /// In en, this message translates to:
+  /// **'Rename studio'**
+  String get renameGym;
+
+  /// Removes workouts created by a broken import.
+  ///
+  /// In en, this message translates to:
+  /// **'Clean up import entries'**
+  String get cleanupImports;
+
+  /// Preview before import cleanup.
+  ///
+  /// In en, this message translates to:
+  /// **'{workouts, plural, =1{1 imported workout} other{{workouts} imported workouts}} and {templates, plural, =1{1 template} other{{templates} templates}} will be removed. Workouts you entered by hand stay.'**
+  String cleanupImportsPreview(int workouts, int templates);
+
+  /// Shown when no broken import rows exist.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing to clean up.'**
+  String get cleanupImportsEmpty;
+
+  /// Shown after import cleanup.
+  ///
+  /// In en, this message translates to:
+  /// **'Import entries removed.'**
+  String get cleanupImportsDone;
+
+  /// Count of imported body-weight rows.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} measurements imported.'**
+  String measurementsImported(int count);
 }
 
 class _AppLocalizationsDelegate

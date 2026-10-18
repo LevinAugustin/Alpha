@@ -2223,6 +2223,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get editCustomExercise => 'Edit exercise';
 
   @override
+  String get unassignedExercise => 'Not assigned';
+
+  @override
   String get deleteCustomExercise => 'Delete exercise';
 
   @override
@@ -2273,4 +2276,103 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get importBackupZip => 'Import backup (.zip)';
+
+  @override
+  String importSetSummary(int workouts, int sets) {
+    String _temp0 = intl.Intl.pluralLogic(
+      sets,
+      locale: localeName,
+      other: '$sets sets',
+      one: '1 set',
+    );
+    String _temp1 = intl.Intl.pluralLogic(
+      sets,
+      locale: localeName,
+      other: '$sets sets',
+      one: '1 set',
+    );
+    String _temp2 = intl.Intl.pluralLogic(
+      workouts,
+      locale: localeName,
+      other: '$workouts workouts, $_temp0',
+      one: '1 workout, $_temp1',
+    );
+    return '$_temp2';
+  }
+
+  @override
+  String importDateErrorCount(int count) {
+    return '$count rows have a date that could not be read.';
+  }
+
+  @override
+  String importUnmatchedNames(String names) {
+    return 'No match: $names';
+  }
+
+  @override
+  String importTemplatesSkipped(String names) {
+    return 'Not created, the template limit was reached: $names';
+  }
+
+  @override
+  String importApplying(int done, int total) {
+    return '$done of $total';
+  }
+
+  @override
+  String get customExerciseMovementRequired => 'Choose a movement.';
+
+  @override
+  String get setRemoved => 'Set removed';
+
+  @override
+  String get exerciseRemovedUndo => 'Exercise removed';
+
+  @override
+  String get exerciseSwappedUndo => 'Exercise swapped';
+
+  @override
+  String get saveRestInTemplate => 'Also save in the template';
+
+  @override
+  String get deleteGymTitle => 'Delete studio?';
+
+  @override
+  String get deleteGymBody =>
+      'Workouts linked to this studio stay. Only the studio is removed.';
+
+  @override
+  String get renameGym => 'Rename studio';
+
+  @override
+  String get cleanupImports => 'Clean up import entries';
+
+  @override
+  String cleanupImportsPreview(int workouts, int templates) {
+    String _temp0 = intl.Intl.pluralLogic(
+      workouts,
+      locale: localeName,
+      other: '$workouts imported workouts',
+      one: '1 imported workout',
+    );
+    String _temp1 = intl.Intl.pluralLogic(
+      templates,
+      locale: localeName,
+      other: '$templates templates',
+      one: '1 template',
+    );
+    return '$_temp0 and $_temp1 will be removed. Workouts you entered by hand stay.';
+  }
+
+  @override
+  String get cleanupImportsEmpty => 'Nothing to clean up.';
+
+  @override
+  String get cleanupImportsDone => 'Import entries removed.';
+
+  @override
+  String measurementsImported(int count) {
+    return '$count measurements imported.';
+  }
 }

@@ -2,6 +2,7 @@ import 'package:drift/drift.dart' hide Column;
 import 'package:flexify/database/database.dart';
 import 'package:flexify/exercise_labels.dart';
 import 'package:flexify/l10n/l10n.dart';
+import 'package:flexify/plan/plan_names.dart';
 import 'package:flexify/main.dart';
 import 'package:flexify/plan/edit_plan_page.dart';
 import 'package:flexify/platform_page_route.dart';
@@ -102,9 +103,11 @@ class _TemplateCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final title = (plan.title ?? '').trim().isEmpty
-        ? (plan.days.trim().isEmpty ? context.l10n.newTemplate : plan.days)
-        : plan.title!.trim();
+    final title = planDisplayName(
+      title: plan.title,
+      sequence: plan.sequence,
+      id: plan.id,
+    );
     return Card(
       margin: const EdgeInsets.only(bottom: 12),
       child: InkWell(
@@ -167,9 +170,11 @@ class _TemplateCard extends StatelessWidget {
   }
 
   Future<void> _delete(BuildContext context, Plan plan) async {
-    final title = (plan.title ?? '').trim().isEmpty
-        ? plan.days
-        : plan.title!.trim();
+    final title = planDisplayName(
+      title: plan.title,
+      sequence: plan.sequence,
+      id: plan.id,
+    );
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(

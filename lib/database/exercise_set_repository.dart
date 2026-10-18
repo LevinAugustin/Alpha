@@ -358,11 +358,15 @@ Future<ExerciseSetView> insertExerciseSet(
   required int exerciseId,
   int? workoutId,
   double? bodyWeightKg,
+  bool lookupBodyWeight = true,
+  bool readBack = true,
 }) async {
-  final resolvedBodyWeightKg =
-      bodyWeightKg ??
-      _canonicalBodyWeight(exerciseSet.unit, exerciseSet.bodyWeight) ??
-      (await getLatestBodyWeight(database))?.weightKg;
+  final resolvedBodyWeightKg = lookupBodyWeight
+      ? bodyWeightKg ??
+            _canonicalBodyWeight(exerciseSet.unit, exerciseSet.bodyWeight) ??
+            (await getLatestBodyWeight(database))?.weightKg
+      : bodyWeightKg ??
+            _canonicalBodyWeight(exerciseSet.unit, exerciseSet.bodyWeight);
 
   final id = await database.exerciseSets.insertOne(
     ExerciseSetsCompanion.insert(
@@ -383,6 +387,7 @@ Future<ExerciseSetView> insertExerciseSet(
       side: Value(exerciseSet.side),
     ),
   );
+  if (!readBack) return exerciseSet.copyWith(id: id);
   return (await getExerciseSetById(database, id))!;
 }
 

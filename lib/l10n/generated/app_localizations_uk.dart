@@ -2245,6 +2245,9 @@ class AppLocalizationsUk extends AppLocalizations {
   String get editCustomExercise => 'Змінити вправу';
 
   @override
+  String get unassignedExercise => 'Не призначено';
+
+  @override
   String get deleteCustomExercise => 'Видалити вправу';
 
   @override
@@ -2295,4 +2298,73 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get importBackupZip => 'Імпорт резервної копії (.zip)';
+
+  @override
+  String importSetSummary(int workouts, int sets) {
+    return '$workouts тренувань, $sets підходів';
+  }
+
+  @override
+  String importDateErrorCount(int count) {
+    return '$count рядків мають дату, яку не вдалося прочитати.';
+  }
+
+  @override
+  String importUnmatchedNames(String names) {
+    return 'Немає збігу: $names';
+  }
+
+  @override
+  String importTemplatesSkipped(String names) {
+    return 'Не створено, досягнуто ліміт шаблонів: $names';
+  }
+
+  @override
+  String importApplying(int done, int total) {
+    return '$done з $total';
+  }
+
+  @override
+  String get customExerciseMovementRequired => 'Оберіть рух.';
+
+  @override
+  String get setRemoved => 'Підхід видалено';
+
+  @override
+  String get exerciseRemovedUndo => 'Вправу видалено';
+
+  @override
+  String get exerciseSwappedUndo => 'Вправу замінено';
+
+  @override
+  String get saveRestInTemplate => 'Також зберегти в шаблоні';
+
+  @override
+  String get deleteGymTitle => 'Видалити зал?';
+
+  @override
+  String get deleteGymBody =>
+      'Тренування, пов’язані з цим залом, залишаються. Видаляється лише зал.';
+
+  @override
+  String get renameGym => 'Перейменувати зал';
+
+  @override
+  String get cleanupImports => 'Прибрати імпортовані записи';
+
+  @override
+  String cleanupImportsPreview(int workouts, int templates) {
+    return 'Буде видалено $workouts імпортованих тренувань і $templates шаблонів. Тренування, введені вручну, залишаються.';
+  }
+
+  @override
+  String get cleanupImportsEmpty => 'Нічого прибирати.';
+
+  @override
+  String get cleanupImportsDone => 'Імпортовані записи видалено.';
+
+  @override
+  String measurementsImported(int count) {
+    return '$count вимірювань імпортовано.';
+  }
 }

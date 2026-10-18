@@ -8,7 +8,6 @@ List<Plan> filterPlans(
   List<Plan> plans,
   List<PlanExerciseEntry> exercises,
   String search,
-  String Function(String) localizeDay,
 ) {
   if (search.isEmpty) return plans;
 
@@ -21,15 +20,7 @@ List<Plan> filterPlans(
       .toSet();
 
   return plans.where((plan) {
-    final localizedDays = plan.days
-        .split(',')
-        .where((day) => day.isNotEmpty)
-        .map(localizeDay)
-        .join(' ')
-        .toLowerCase();
     return plan.title?.toLowerCase().contains(normalizedSearch) == true ||
-        plan.days.toLowerCase().contains(normalizedSearch) ||
-        localizedDays.contains(normalizedSearch) ||
         matchingPlanIds.contains(plan.id);
   }).toList();
 }
@@ -40,14 +31,34 @@ class PlanExerciseDraft {
     required this.exerciseName,
     this.germanName = '',
     this.aliases = '',
-  }) : normalizedExerciseName = '$exerciseName $germanName $aliases'
-           .toLowerCase();
+    this.muscle = '',
+    this.category = '',
+    this.equipment = '',
+    this.primaryMuscles = '',
+    this.secondaryMuscles = '',
+    this.familie = '',
+    this.grip = '',
+    this.position = '',
+    this.movement = '',
+    this.catalogId = '',
+    this.catalogSource = '',
+  });
 
   final PlanExercisesCompanion planExercise;
   final String exerciseName;
   final String germanName;
   final String aliases;
-  final String normalizedExerciseName;
+  final String muscle;
+  final String category;
+  final String equipment;
+  final String primaryMuscles;
+  final String secondaryMuscles;
+  final String familie;
+  final String grip;
+  final String position;
+  final String movement;
+  final String catalogId;
+  final String catalogSource;
 
   PlanExerciseDraft copyWithPlanExercise(PlanExercisesCompanion value) =>
       PlanExerciseDraft(
@@ -55,6 +66,17 @@ class PlanExerciseDraft {
         exerciseName: exerciseName,
         germanName: germanName,
         aliases: aliases,
+        muscle: muscle,
+        category: category,
+        equipment: equipment,
+        primaryMuscles: primaryMuscles,
+        secondaryMuscles: secondaryMuscles,
+        familie: familie,
+        grip: grip,
+        position: position,
+        movement: movement,
+        catalogId: catalogId,
+        catalogSource: catalogSource,
       );
 }
 
@@ -63,17 +85,23 @@ List<PlanExerciseDraft> filterPlanExerciseDrafts(
   String search,
 ) {
   if (search.trim().isEmpty) return exercises.toList();
-  final normalizedSearch = foldExerciseSearch(search);
   final matches = [
     for (final exercise in exercises)
-      if (exercise.normalizedExerciseName.contains(normalizedSearch) ||
-          exerciseSearchRank(
-                name: exercise.exerciseName,
-                germanName: exercise.germanName,
-                aliases: exercise.aliases,
-                query: search,
-              ) !=
-              null)
+      if (exerciseMatchesQuery(
+        name: exercise.exerciseName,
+        germanName: exercise.germanName,
+        aliases: exercise.aliases,
+        muscle: exercise.muscle,
+        category: exercise.category,
+        equipment: exercise.equipment,
+        primaryMuscles: exercise.primaryMuscles,
+        secondaryMuscles: exercise.secondaryMuscles,
+        familie: exercise.familie,
+        grip: exercise.grip,
+        position: exercise.position,
+        movement: exercise.movement,
+        query: search,
+      ))
         exercise,
   ];
   matches.sort(
@@ -82,9 +110,17 @@ List<PlanExerciseDraft> filterPlanExerciseDrafts(
       leftName: left.exerciseName,
       leftGermanName: left.germanName,
       leftAliases: left.aliases,
+      leftCatalog: isCatalogExercise(
+        catalogId: left.catalogId,
+        catalogSource: left.catalogSource,
+      ),
       rightName: right.exerciseName,
       rightGermanName: right.germanName,
       rightAliases: right.aliases,
+      rightCatalog: isCatalogExercise(
+        catalogId: right.catalogId,
+        catalogSource: right.catalogSource,
+      ),
     ),
   );
   return matches;
@@ -184,7 +220,10 @@ Stream<List<GymCount>> watchGymCounts(int planId, int workoutId) {
             exercises.name AS name,
             COUNT(exercise_sets.id) AS session_count,
             plan_exercises.max_sets AS max_sets,
-            exercises.default_rest_duration_ms AS rest_ms,
+            COALESCE(
+              plan_exercises.rest_ms,
+              exercises.default_rest_duration_ms
+            ) AS rest_ms,
             plan_exercises.warmup_sets AS warmup_sets,
             plan_exercises.timers AS timers
           FROM plan_exercises
@@ -236,6 +275,17 @@ Future<List<PlanExerciseDraft>> loadPlanExerciseDrafts(
       db.exercises.name,
       db.exercises.germanName,
       db.exercises.aliases,
+      db.exercises.muscle,
+      db.exercises.categoryName,
+      db.exercises.equipment,
+      db.exercises.primaryMuscles,
+      db.exercises.secondaryMuscles,
+      db.exercises.familie,
+      db.exercises.griff,
+      db.exercises.position,
+      db.exercises.bewegung,
+      db.exercises.catalogId,
+      db.exercises.catalogSource,
     ])
     ..where(db.exercises.archived.equals(false))
     ..join([
@@ -274,12 +324,24 @@ Future<List<PlanExerciseDraft>> loadPlanExerciseDrafts(
       sequence: Value(row.read(db.planExercises.sequence) ?? 0),
       repMin: Value(row.read(db.planExercises.repMin)),
       repMax: Value(row.read(db.planExercises.repMax)),
+      restMs: Value(row.read(db.planExercises.restMs)),
     );
     final draft = PlanExerciseDraft(
       planExercise: planExercise,
       exerciseName: row.read(db.exercises.name)!,
       germanName: row.read(db.exercises.germanName) ?? '',
       aliases: row.read(db.exercises.aliases) ?? '',
+      muscle: row.read(db.exercises.muscle) ?? '',
+      category: row.read(db.exercises.categoryName) ?? '',
+      equipment: row.read(db.exercises.equipment) ?? '',
+      primaryMuscles: row.read(db.exercises.primaryMuscles) ?? '',
+      secondaryMuscles: row.read(db.exercises.secondaryMuscles) ?? '',
+      familie: row.read(db.exercises.familie) ?? '',
+      grip: row.read(db.exercises.griff) ?? '',
+      position: row.read(db.exercises.position) ?? '',
+      movement: row.read(db.exercises.bewegung) ?? '',
+      catalogId: row.read(db.exercises.catalogId) ?? '',
+      catalogSource: row.read(db.exercises.catalogSource) ?? '',
     );
     drafts.add(draft);
   }

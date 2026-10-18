@@ -23,4 +23,7 @@ class Workouts extends Table {
   /// Exercise ids for this session, in the order they were performed.
   /// Null until the session is opened. The plan template is never rewritten.
   TextColumn get exerciseOrder => text().nullable()();
+
+  /// Set on imports written by 2.5.1 and later. Cleanup never deletes these.
+  TextColumn get importBatch => text().nullable()();
 }

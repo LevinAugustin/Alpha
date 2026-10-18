@@ -4,7 +4,7 @@ import 'package:flexify/plan/workout_sessions.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  test('plans search matches titles, days, and exercise names', () {
+  test('plans search matches titles and exercise names', () {
     const dayNames = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
     final plans = List.generate(
       3,
@@ -48,18 +48,16 @@ void main() {
       }
     }
 
-    String localizeDay(String day) => 'Localized $day';
-
     for (final (search, expectedIds) in [
       ('', [0, 1, 2]),
       ('STRENGTH PLAN 1', [1]),
-      ('monday', [0]),
-      ('localized monday', [0]),
+      ('monday', <int>[]),
+      ('localized monday', <int>[]),
       ('BENCH PRESS VARIATION 2', [2]),
       ('missing', <int>[]),
     ]) {
       expect(
-        filterPlans(plans, entries, search, localizeDay).map((plan) => plan.id),
+        filterPlans(plans, entries, search).map((plan) => plan.id),
         expectedIds,
       );
     }
@@ -73,10 +71,9 @@ void main() {
     );
     const plain = Plan(id: 2, title: 'Strength', days: 'Monday', sequence: 1);
     final plans = [special, plain];
-    String localizeDay(String day) => day;
 
-    expect(filterPlans(plans, [], '%', localizeDay), [special]);
-    expect(filterPlans(plans, [], '_', localizeDay), [special]);
-    expect(filterPlans(plans, [], '100%_', localizeDay), [special]);
+    expect(filterPlans(plans, [], '%'), [special]);
+    expect(filterPlans(plans, [], '_'), [special]);
+    expect(filterPlans(plans, [], '100%_'), [special]);
   });
 }

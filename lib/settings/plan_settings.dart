@@ -3,6 +3,7 @@ import 'package:flexify/constants.dart';
 import 'package:flexify/database/database.dart';
 import 'package:flexify/l10n/l10n.dart';
 import 'package:flexify/main.dart';
+import 'package:flexify/plan/plan_names.dart';
 import 'package:flexify/responsive.dart';
 import 'package:flexify/utils.dart';
 import 'package:flutter/material.dart';
@@ -224,16 +225,16 @@ class _PlanTrailingPreview extends StatelessWidget {
       child: ListTile(
         leading: CircleAvatar(
           backgroundColor: Theme.of(context).primaryColor,
-          child: Text(
-            localizedWeekday(context.l10n, 'Monday', abbreviated: true),
-            style: const TextStyle(
+          child: const Text(
+            '1',
+            style: TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.bold,
               fontFamily: 'monospace',
             ),
           ),
         ),
-        title: Text(context.l10n.monday),
+        title: Text(planDisplayName(sequence: 0)),
         subtitle: Text(context.l10n.examplePlanExercises),
         trailing: _buildTrailing(context),
       ),

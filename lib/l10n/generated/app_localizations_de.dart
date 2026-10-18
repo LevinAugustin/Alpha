@@ -2250,6 +2250,9 @@ class AppLocalizationsDe extends AppLocalizations {
   String get editCustomExercise => 'Übung bearbeiten';
 
   @override
+  String get unassignedExercise => 'Nicht zugeordnet';
+
+  @override
   String get deleteCustomExercise => 'Übung löschen';
 
   @override
@@ -2301,4 +2304,103 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get importBackupZip => 'Sicherung importieren (.zip)';
+
+  @override
+  String importSetSummary(int workouts, int sets) {
+    String _temp0 = intl.Intl.pluralLogic(
+      sets,
+      locale: localeName,
+      other: '$sets Sätze',
+      one: '1 Satz',
+    );
+    String _temp1 = intl.Intl.pluralLogic(
+      sets,
+      locale: localeName,
+      other: '$sets Sätze',
+      one: '1 Satz',
+    );
+    String _temp2 = intl.Intl.pluralLogic(
+      workouts,
+      locale: localeName,
+      other: '$workouts Trainings, $_temp0',
+      one: '1 Training, $_temp1',
+    );
+    return '$_temp2';
+  }
+
+  @override
+  String importDateErrorCount(int count) {
+    return '$count Zeilen haben ein Datum, das nicht gelesen werden konnte.';
+  }
+
+  @override
+  String importUnmatchedNames(String names) {
+    return 'Ohne Zuordnung: $names';
+  }
+
+  @override
+  String importTemplatesSkipped(String names) {
+    return 'Nicht angelegt, Vorlagenlimit erreicht: $names';
+  }
+
+  @override
+  String importApplying(int done, int total) {
+    return '$done von $total';
+  }
+
+  @override
+  String get customExerciseMovementRequired => 'Wähle eine Bewegung.';
+
+  @override
+  String get setRemoved => 'Satz entfernt';
+
+  @override
+  String get exerciseRemovedUndo => 'Übung entfernt';
+
+  @override
+  String get exerciseSwappedUndo => 'Übung getauscht';
+
+  @override
+  String get saveRestInTemplate => 'Auch in Vorlage speichern';
+
+  @override
+  String get deleteGymTitle => 'Studio löschen?';
+
+  @override
+  String get deleteGymBody =>
+      'Trainings, die mit diesem Studio verknüpft sind, bleiben. Nur das Studio wird entfernt.';
+
+  @override
+  String get renameGym => 'Studio umbenennen';
+
+  @override
+  String get cleanupImports => 'Import-Einträge aufräumen';
+
+  @override
+  String cleanupImportsPreview(int workouts, int templates) {
+    String _temp0 = intl.Intl.pluralLogic(
+      workouts,
+      locale: localeName,
+      other: '$workouts importierte Trainings',
+      one: '1 importiertes Training',
+    );
+    String _temp1 = intl.Intl.pluralLogic(
+      templates,
+      locale: localeName,
+      other: '$templates Vorlagen',
+      one: '1 Vorlage',
+    );
+    return '$_temp0 und $_temp1 werden entfernt. Selbst eingetragene Trainings bleiben.';
+  }
+
+  @override
+  String get cleanupImportsEmpty => 'Nichts zum Aufräumen.';
+
+  @override
+  String get cleanupImportsDone => 'Import-Einträge entfernt.';
+
+  @override
+  String measurementsImported(int count) {
+    return '$count Messungen importiert.';
+  }
 }

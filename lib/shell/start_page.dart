@@ -7,6 +7,7 @@ import 'package:flexify/shell/create_profile_dialog.dart';
 import 'package:flexify/workout/muscle_atlas_page.dart';
 import 'package:flexify/l10n/l10n.dart';
 import 'package:flexify/main.dart';
+import 'package:flexify/plan/plan_names.dart';
 import 'package:flexify/platform_page_route.dart';
 import 'package:flexify/profile/local_profiles.dart';
 import 'package:flexify/shell/training_stats.dart';
@@ -181,14 +182,14 @@ class _StartPageState extends State<StartPage> {
             Row(
               children: [
                 Expanded(
-                  child: _Mini(
+                  child: HomeStatTile(
                     icon: Icons.local_fire_department,
                     text: l10n.dayStreak(data.dayStreak),
                   ),
                 ),
                 const SizedBox(width: 8),
                 Expanded(
-                  child: _Mini(
+                  child: HomeStatTile(
                     icon: Icons.calendar_view_week,
                     text: l10n.weekStreak(data.weekStreak),
                   ),
@@ -296,12 +297,19 @@ Future<_Dashboard> _load() async {
   final dailyBest = <int, Map<DateTime, double>>{};
   final heat = <String, double>{};
   final weekStart = mondayOf(now);
+  final workouts = await db.select(db.workouts).get();
+  final startedByWorkout = {
+    for (final workout in workouts) workout.id: workout.startedAt,
+  };
 
   for (final row in sets) {
     final set = row.readTable(db.exerciseSets);
     final exercise = row.readTable(db.exercises);
     if ((set.notes ?? '').contains('warmup')) continue;
-    final day = dateOnly(set.timestamp);
+    final started = set.workoutId == null
+        ? null
+        : startedByWorkout[set.workoutId!];
+    final day = workoutDay(started ?? set.timestamp);
     trained.add(day);
     final reps = set.reps ?? 0;
     final load = set.loadKg ?? 0;
@@ -344,10 +352,7 @@ Future<_Dashboard> _load() async {
     (index) => weekStart.add(Duration(days: index)),
   );
   final doneThisWeek = weekDays.where(trained.contains).length;
-  final plans = await (db.select(
-    db.plans,
-  )..orderBy([(row) => OrderingTerm.asc(row.sequence)])).get();
-  final next = plans.isEmpty ? null : plans[doneThisWeek % plans.length];
+  final next = await suggestedNextPlan(now);
   final registryName = await _profileName();
   final goal = alphaPrefs.weeklyGoalManual
       ? alphaPrefs.weeklyGoal
@@ -366,6 +371,49 @@ Future<_Dashboard> _load() async {
     lifts: lifts,
     quote: _quote(next, doneThisWeek, goal <= 0 ? 5 : goal),
   );
+}
+
+Future<int> finishedWorkoutsThisWeek(DateTime now) async {
+  final start = mondayOf(now);
+  final end = start.add(const Duration(days: 7));
+  final rows =
+      await (db.select(db.workouts)..where(
+            (row) =>
+                row.endedAt.isNotNull() &
+                row.startedAt.isBiggerOrEqualValue(start) &
+                row.startedAt.isSmallerThanValue(end),
+          ))
+          .get();
+  return rows.length;
+}
+
+Future<Plan?> suggestedNextPlan(DateTime now) async {
+  final plans =
+      await (db.select(db.plans)..orderBy([
+            (row) => OrderingTerm.asc(row.sequence),
+            (row) => OrderingTerm.asc(row.id),
+          ]))
+          .get();
+  if (plans.isEmpty) return null;
+  final completed =
+      await (db.select(db.workouts)
+            ..where((row) => row.endedAt.isNotNull())
+            ..orderBy([
+              (row) => OrderingTerm.asc(row.startedAt),
+              (row) => OrderingTerm.asc(row.id),
+            ]))
+          .get();
+  final done = completed
+      .where((row) => !row.startedAt.toLocal().isAfter(now.toLocal()))
+      .toList();
+  final lastIndex = done.isEmpty
+      ? null
+      : plans.indexWhere((plan) => plan.id == done.last.planId);
+  return plans[nextPlanIndex(
+    lastPlanIndex: lastIndex != null && lastIndex >= 0 ? lastIndex : null,
+    completedCount: done.length,
+    planCount: plans.length,
+  )];
 }
 
 Future<String> _profileName() async {
@@ -389,7 +437,7 @@ int _automaticGoal(Set<DateTime> trained, DateTime now) {
 }
 
 String _quote(Plan? plan, int done, int goal) {
-  final title = '${plan?.title ?? ''} ${plan?.days ?? ''}'.toLowerCase();
+  final title = (plan?.title ?? '').toLowerCase();
   if (title.contains('pull') || title.contains('rücken')) return 'pull';
   if (title.contains('bein') || title.contains('leg')) return 'legs';
   if (title.contains('push') || title.contains('brust')) return 'push';
@@ -543,7 +591,11 @@ class _LockedHome extends StatelessWidget {
     final plan = data.nextPlan;
     final planName = plan == null
         ? l10n.tabTraining
-        : ((plan.title ?? '').trim().isEmpty ? plan.days : plan.title!.trim());
+        : planDisplayName(
+            title: plan.title,
+            sequence: plan.sequence,
+            id: plan.id,
+          );
     return Stack(
       children: [
         Opacity(
@@ -555,14 +607,14 @@ class _LockedHome extends StatelessWidget {
                 Row(
                   children: [
                     Expanded(
-                      child: _Mini(
+                      child: HomeStatTile(
                         icon: Icons.local_fire_department,
                         text: l10n.dayStreak(data.dayStreak),
                       ),
                     ),
                     const SizedBox(width: 8),
                     Expanded(
-                      child: _Mini(
+                      child: HomeStatTile(
                         icon: Icons.calendar_view_week,
                         text: l10n.weekStreak(data.weekStreak),
                       ),
@@ -659,7 +711,11 @@ class _Hero extends StatelessWidget {
     final plan = data.nextPlan;
     final planName = plan == null
         ? l10n.tabTraining
-        : ((plan.title ?? '').trim().isEmpty ? plan.days : plan.title!.trim());
+        : planDisplayName(
+            title: plan.title,
+            sequence: plan.sequence,
+            id: plan.id,
+          );
     return Container(
       clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(
@@ -819,8 +875,8 @@ class _Ring extends StatelessWidget {
   }
 }
 
-class _Mini extends StatelessWidget {
-  const _Mini({required this.icon, required this.text});
+class HomeStatTile extends StatelessWidget {
+  const HomeStatTile({super.key, required this.icon, required this.text});
 
   final IconData icon;
   final String text;
@@ -829,8 +885,8 @@ class _Mini extends StatelessWidget {
   Widget build(BuildContext context) {
     final palette = AlphaTheme.of(context);
     return Container(
-      height: 46,
-      padding: const EdgeInsets.symmetric(horizontal: 10),
+      constraints: const BoxConstraints(minHeight: 46),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
       decoration: BoxDecoration(
         color: palette.card,
         borderRadius: BorderRadius.circular(14),
@@ -841,7 +897,11 @@ class _Mini extends StatelessWidget {
           Icon(icon, color: palette.accent, size: 22),
           const SizedBox(width: 6),
           Expanded(
-            child: Text(text, maxLines: 1, overflow: TextOverflow.ellipsis),
+            child: FittedBox(
+              fit: BoxFit.scaleDown,
+              alignment: Alignment.centerLeft,
+              child: Text(text, maxLines: 1),
+            ),
           ),
         ],
       ),

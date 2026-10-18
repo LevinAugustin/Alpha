@@ -106,8 +106,6 @@ class _PlansListState extends State<PlansList> {
 
     if (widget.plans == null) return noneFound;
 
-    final weekday = weekdays[DateTime.now().weekday - 1];
-
     final filteredPlans = widget.plans!.toList();
 
     if (widget.plans!.isEmpty || filteredPlans.isEmpty) return noneFound;
@@ -135,7 +133,6 @@ class _PlansListState extends State<PlansList> {
               exercises: exercisesByPlan == null
                   ? null
                   : exercisesByPlan[plan.id] ?? const <PlanExerciseEntry>[],
-              weekday: weekday,
               index: index,
               navigatorKey: widget.navKey,
               selected: widget.selected,
@@ -177,7 +174,6 @@ class _PlansListState extends State<PlansList> {
             exercises: exercisesByPlan == null
                 ? null
                 : exercisesByPlan[plan.id] ?? const <PlanExerciseEntry>[],
-            weekday: weekday,
             index: index,
             navigatorKey: widget.navKey,
             selected: widget.selected,

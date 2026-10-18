@@ -1,4 +1,5 @@
 import 'package:drift/drift.dart' as drift;
+import 'package:flexify/database/catalog_seed.dart';
 import 'package:flexify/database/database.dart';
 import 'package:flexify/database/exercise_catalog.dart';
 import 'package:flexify/graph/add_exercise_page.dart';
@@ -141,15 +142,58 @@ class _SwapWorkoutState extends State<SwapWorkout> {
                   return const SizedBox();
                 }
 
-                final exercises = snapshot.data!
-                    .where(
-                      (exercise) =>
-                          !_unavailableExerciseIds.contains(exercise.id) &&
-                          exercise.name.toLowerCase().contains(
-                            _searchQuery.toLowerCase(),
-                          ),
-                    )
-                    .toList();
+                final exercises =
+                    snapshot.data!
+                        .where(
+                          (exercise) =>
+                              !_unavailableExerciseIds.contains(exercise.id) &&
+                              exerciseMatchesQuery(
+                                name: exercise.name,
+                                germanName: exercise.germanName,
+                                aliases: exercise.aliases,
+                                muscle: exercise.muscle,
+                                category: exercise.categoryName,
+                                equipment: exercise.equipment,
+                                primaryMuscles: exercise.primaryMuscles,
+                                secondaryMuscles: exercise.secondaryMuscles,
+                                familie: exercise.familie,
+                                grip: exercise.griff,
+                                position: exercise.position,
+                                movement: exercise.bewegung,
+                                query: _searchQuery,
+                              ),
+                        )
+                        .toList()
+                      ..sort(
+                        (left, right) => _searchQuery.trim().isEmpty
+                            ? foldExerciseSearch(
+                                exerciseDisplayName(left.name, left.germanName),
+                              ).compareTo(
+                                foldExerciseSearch(
+                                  exerciseDisplayName(
+                                    right.name,
+                                    right.germanName,
+                                  ),
+                                ),
+                              )
+                            : compareExerciseSearch(
+                                query: _searchQuery,
+                                leftName: left.name,
+                                leftGermanName: left.germanName,
+                                leftAliases: left.aliases,
+                                leftCatalog: isCatalogExercise(
+                                  catalogId: left.catalogId,
+                                  catalogSource: left.catalogSource,
+                                ),
+                                rightName: right.name,
+                                rightGermanName: right.germanName,
+                                rightAliases: right.aliases,
+                                rightCatalog: isCatalogExercise(
+                                  catalogId: right.catalogId,
+                                  catalogSource: right.catalogSource,
+                                ),
+                              ),
+                      );
 
                 return ListView.builder(
                   itemCount: exercises.length,

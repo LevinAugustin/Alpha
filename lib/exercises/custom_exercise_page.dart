@@ -51,13 +51,20 @@ class _CustomExercisePageState extends State<CustomExercisePage> {
       _equipment = initialGear;
     }
     if (exercise != null) {
-      _category = exercise.categoryName ?? _category;
-      _equipment = exercise.equipment ?? _equipment;
+      final invented = inventedCategoryFallback(exercise);
+      final fields = normalizeLegacyCustomExercise(exercise);
+      _category = !invented && exerciseCategories.contains(fields.category)
+          ? fields.category
+          : '';
+      _equipment = !invented && exerciseGearValues.contains(fields.equipment)
+          ? fields.equipment
+          : '';
       _movement = exercise.bewegung ?? '';
-      _grip = exercise.griff ?? '';
-      _position = exercise.position ?? '';
+      if (!exerciseMotionValues.contains(_movement)) _movement = '';
+      _grip = invented ? '' : fields.grip;
+      _position = invented ? '' : fields.position;
       _unilateral = exercise.einseitig;
-      _primary.addAll(_list(exercise.primaryMuscles));
+      if (!invented) _primary.addAll(fields.primaryMuscles);
       _secondary.addAll(_list(exercise.secondaryMuscles));
     }
   }
@@ -80,6 +87,7 @@ class _CustomExercisePageState extends State<CustomExercisePage> {
         ),
       ),
       body: ListView(
+        key: const Key('custom-exercise-form'),
         padding: const EdgeInsets.fromLTRB(16, 12, 16, 24),
         children: [
           TextField(
@@ -93,6 +101,7 @@ class _CustomExercisePageState extends State<CustomExercisePage> {
             initialValue: _category,
             decoration: InputDecoration(labelText: l10n.categoryLabel),
             items: [
+              DropdownMenuItem(value: '', child: Text(l10n.unassignedExercise)),
               for (final category in exerciseCategories)
                 DropdownMenuItem(value: category, child: Text(category)),
             ],
@@ -143,6 +152,7 @@ class _CustomExercisePageState extends State<CustomExercisePage> {
             initialValue: _equipment,
             decoration: InputDecoration(labelText: l10n.equipmentLabel),
             items: [
+              DropdownMenuItem(value: '', child: Text(l10n.unassignedExercise)),
               for (final gear in exerciseGearValues)
                 DropdownMenuItem(value: gear, child: Text(gear)),
             ],
@@ -221,10 +231,14 @@ class _CustomExercisePageState extends State<CustomExercisePage> {
       position: _position,
       unilateral: _unilateral,
     );
-    if (validateCustomExercise(draft) != null) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(context.l10n.customExerciseInvalid)),
-      );
+    final error = validateCustomExercise(draft);
+    if (error != null) {
+      final message = error == 'movement'
+          ? context.l10n.customExerciseMovementRequired
+          : context.l10n.customExerciseInvalid;
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(message)));
       return;
     }
     setState(() => _saving = true);

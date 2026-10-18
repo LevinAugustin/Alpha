@@ -2,8 +2,11 @@ import 'dart:async';
 
 import 'package:drift/drift.dart' hide Column;
 import 'package:flexify/alpha/alpha_prefs.dart';
+import 'package:flexify/alpha/live_workout.dart';
 import 'package:flexify/crash_logger.dart';
 import 'package:flexify/database/database.dart';
+import 'package:flexify/exercises/custom_exercise.dart';
+import 'package:flexify/plan/plan_names.dart';
 import 'package:flexify/database/exercise_de_catalog.dart';
 import 'package:flexify/shell/live_workout_bar.dart';
 import 'package:flexify/database/failed_migrations_page.dart';
@@ -120,9 +123,13 @@ Future<void> main() async {
       talker.info('Loaded application settings');
       try {
         await importExerciseCatalog(db);
-        await _nameDefaultPlans(db);
+        await renameEnglishPlanTitles(db);
+        await restoreLiveWorkout(db);
         await alphaPrefs.load();
+        unawaited(_repairLegacyCustoms(db));
       } catch (error, stack) {
+        debugPrint('Exercise catalog seed failed: $error');
+        debugPrint('$stack');
         talker.error('Exercise catalog seed failed', error, stack);
       }
       unawaited(checkForAppUpdate());
@@ -133,18 +140,23 @@ Future<void> main() async {
   );
 }
 
-Future<void> _nameDefaultPlans(AppDatabase database) async {
-  const titles = {
-    'Monday': 'Montag',
-    'Wednesday': 'Mittwoch',
-    'Friday': 'Freitag',
-  };
+Future<void> _repairLegacyCustoms(AppDatabase database) async {
+  if (await legacyCustomRepairDone(database)) return;
+  String? flexifyMapRaw;
+  try {
+    flexifyMapRaw = await rootBundle.loadString(exerciseFlexifyMapAsset);
+  } catch (_) {}
+  await repairLegacyCustomExercises(database, flexifyMapRaw: flexifyMapRaw);
+}
+
+Future<void> renameEnglishPlanTitles(AppDatabase database) async {
   final plans = await database.select(database.plans).get();
   for (final plan in plans) {
-    final mapped = titles[plan.days];
-    if (mapped == null) continue;
-    final title = (plan.title ?? '').trim();
-    if (title.isNotEmpty && !titles.containsKey(title)) continue;
+    final mapped = germanTitleForEnglishPlan(
+      days: plan.days,
+      title: plan.title,
+    );
+    if (mapped == null || mapped == (plan.title ?? '').trim()) continue;
     await (database.update(database.plans)
           ..where((row) => row.id.equals(plan.id)))
         .write(PlansCompanion(title: Value(mapped)));

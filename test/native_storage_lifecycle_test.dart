@@ -166,6 +166,7 @@ void main() {
           'api_key': null,
           'theme_id': 'tiefschwarz',
           'rest_volume': 0.35,
+          'legacy_repair_version': 0,
         },
     ],
     'exercises': [
@@ -201,11 +202,11 @@ void main() {
     ],
     'plan_exercises': [
       for (final row in before['plan_exercises'] ?? const [])
-        {...row, 'rep_min': null, 'rep_max': null},
+        {...row, 'rep_min': null, 'rep_max': null, 'rest_ms': null},
     ],
     'workouts': [
       for (final row in before['workouts'] ?? const [])
-        {...row, 'exercise_order': null},
+        {...row, 'exercise_order': null, 'import_batch': null},
     ],
   };
 

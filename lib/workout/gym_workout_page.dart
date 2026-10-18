@@ -18,6 +18,7 @@ import 'package:flexify/l10n/generated/app_localizations.dart';
 import 'package:flexify/l10n/l10n.dart';
 import 'package:flexify/logging.dart';
 import 'package:flexify/main.dart';
+import 'package:flexify/plan/plan_names.dart';
 import 'package:flexify/platform_page_route.dart';
 import 'package:flexify/theme/alpha_theme.dart';
 import 'package:flexify/timer/timer_state.dart';
@@ -88,12 +89,34 @@ class _ExerciseBlock {
   }
 }
 
+class _PendingExercise {
+  _PendingExercise({
+    required this.block,
+    required this.index,
+    this.replacement,
+    required this.swapped,
+  });
+
+  final _ExerciseBlock block;
+  final int index;
+  final _ExerciseBlock? replacement;
+  final bool swapped;
+}
+
 class _GymWorkoutPageState extends State<GymWorkoutPage> {
   final List<_ExerciseBlock> _blocks = [];
+  final Map<int, int?> _planRest = {};
   Workout? _workout;
   Timer? _clock;
   var _ready = false;
   var _busy = false;
+  _PendingExercise? _pendingExercise;
+  var _undoingExercise = false;
+  _SetRow? _pendingSet;
+  int? _pendingSetBlock;
+  int? _pendingSetIndex;
+  List<ExerciseSet> _pendingSetRows = const [];
+  var _undoingSet = false;
 
   @override
   void initState() {
@@ -130,11 +153,16 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
     } catch (error, stack) {
       debugPrint('Gym prefs unavailable: $error\n$stack');
     }
-    if (mounted && alphaPrefs.gyms.length > 1) {
+    final existing =
+        await (db.select(db.workouts)..where(
+              (row) => row.planId.equals(widget.plan.id) & row.endedAt.isNull(),
+            ))
+            .getSingleOrNull();
+    if (mounted && existing == null && alphaPrefs.gyms.length > 1) {
       await _chooseGym();
     }
     final settings = await (db.settings.select()..limit(1)).getSingle();
-    final workout = await _activeWorkout();
+    final workout = await _activeWorkout(existing);
     final planRows =
         await (db.select(db.planExercises).join([
               innerJoin(
@@ -173,12 +201,13 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
           )..where((item) => item.id.equals(exerciseId))).getSingleOrNull();
       if (exercise == null) continue;
       final planExercise = row?.readTable(db.planExercises);
+      _planRest[exercise.id] = planExercise?.restMs;
       blocks.add(
         await _blockFor(
           exercise,
           workout.id,
           planExercise?.maxSets ?? settings.maxSets,
-          exercise.defaultRestDurationMs ?? settings.timerDuration,
+          _restMs(exercise, planExercise?.restMs, settings.timerDuration),
           logged.where((set) => set.exerciseId == exercise.id).toList(),
           repMin: planExercise?.repMin,
           repMax: planExercise?.repMax,
@@ -217,9 +246,11 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
 
   void _publishLive() {
     if (_workout == null) return;
-    final title = (widget.plan.title ?? '').trim().isEmpty
-        ? widget.plan.days
-        : widget.plan.title!.trim();
+    final title = planDisplayName(
+      title: widget.plan.title,
+      sequence: widget.plan.sequence,
+      id: widget.plan.id,
+    );
     final current = _blocks.cast<_ExerciseBlock?>().firstWhere(
       (block) => block!.sets.any((set) => !set.done),
       orElse: () => _blocks.isEmpty ? null : _blocks.first,
@@ -263,12 +294,7 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
     );
   }
 
-  Future<Workout> _activeWorkout() async {
-    final existing =
-        await (db.select(db.workouts)..where(
-              (row) => row.planId.equals(widget.plan.id) & row.endedAt.isNull(),
-            ))
-            .getSingleOrNull();
+  Future<Workout> _activeWorkout(Workout? existing) async {
     if (existing != null) return existing;
     final id = await db.workouts.insertOne(
       WorkoutsCompanion.insert(
@@ -688,6 +714,14 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
     );
   }
 
+  int _restMs(Exercise exercise, int? planRest, int globalMs) {
+    return planRest ?? exercise.defaultRestDurationMs ?? globalMs;
+  }
+
+  int _restFor(Exercise exercise, Setting settings) {
+    return _restMs(exercise, _planRest[exercise.id], settings.timerDuration);
+  }
+
   Future<void> _finish() async {
     final workout = _workout;
     if (workout == null) return;
@@ -713,8 +747,10 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
       ),
     );
     if (confirmed != true || !mounted) return;
+    await _commitPendingExercise();
     await (db.update(db.workouts)..where((row) => row.id.equals(workout.id)))
         .write(WorkoutsCompanion(endedAt: Value(DateTime.now())));
+    if (mounted) await context.read<TimerState>().stopTimer();
     await _offerProgression();
     if (liveWorkout.value?.workoutId == workout.id) liveWorkout.value = null;
     if (!mounted) return;
@@ -788,40 +824,110 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
   }
 
   Future<void> _removeBlock(int index) async {
+    await _commitPendingExercise();
+    if (!mounted || index < 0 || index >= _blocks.length) return;
     final block = _blocks[index];
-    final ids = [
-      for (final set in block.sets) ...[
-        if (set.setId != null) set.setId!,
-        if (set.rightSetId != null) set.rightSetId!,
-      ],
-    ];
-    await deleteExerciseSets(db, ids);
-    block.dispose();
     setState(() => _blocks.removeAt(index));
     await _persistOrder();
     if (mounted) _publishLive();
+    _offerExerciseUndo(block, index, swapped: false);
   }
 
   Future<void> _swap(int index) async {
     final picked = await _pickExercise(title: context.l10n.swapExercise);
-    if (picked == null || _workout == null) return;
+    if (picked == null || _workout == null || !mounted) return;
+    await _commitPendingExercise();
+    if (!mounted || index < 0 || index >= _blocks.length) return;
     final current = _blocks[index];
-    await deleteExerciseSets(
-      db,
-      current.sets.map((set) => set.setId).whereType<int>(),
-    );
-    current.dispose();
-    if (!mounted || _workout == null) return;
     final settings = context.read<Setting>();
     final replacement = await _blockFor(
       picked,
       _workout!.id,
       settings.maxSets,
-      picked.defaultRestDurationMs ?? settings.timerDuration,
+      _restFor(picked, settings),
       const [],
     );
+    if (!mounted) return;
     setState(() => _blocks[index] = replacement);
     await _persistOrder();
+    if (mounted) _publishLive();
+    _offerExerciseUndo(current, index, swapped: true, replacement: replacement);
+  }
+
+  void _offerExerciseUndo(
+    _ExerciseBlock block,
+    int index, {
+    required bool swapped,
+    _ExerciseBlock? replacement,
+  }) {
+    _undoingExercise = false;
+    _pendingExercise = _PendingExercise(
+      block: block,
+      index: index,
+      replacement: replacement,
+      swapped: swapped,
+    );
+    final messenger = ScaffoldMessenger.of(context);
+    messenger.clearSnackBars();
+    messenger
+        .showSnackBar(
+          SnackBar(
+            content: Text(
+              swapped
+                  ? context.l10n.exerciseSwappedUndo
+                  : context.l10n.exerciseRemovedUndo,
+            ),
+            action: SnackBarAction(
+              label: context.l10n.actionUndo,
+              onPressed: () {
+                _undoingExercise = true;
+                _undoExercise();
+              },
+            ),
+          ),
+        )
+        .closed
+        .then((reason) {
+          if (!mounted || _undoingExercise) return;
+          if (reason == SnackBarClosedReason.action) return;
+          unawaited(_commitPendingExercise());
+        });
+  }
+
+  void _undoExercise() {
+    final pending = _pendingExercise;
+    if (pending == null) return;
+    setState(() {
+      if (pending.swapped) {
+        final currentIndex = _blocks.indexOf(pending.replacement!);
+        final index = currentIndex < 0
+            ? pending.index.clamp(0, _blocks.length)
+            : currentIndex;
+        if (currentIndex >= 0) _blocks.removeAt(currentIndex);
+        _blocks.insert(index, pending.block);
+        pending.replacement!.dispose();
+      } else {
+        final index = pending.index.clamp(0, _blocks.length);
+        _blocks.insert(index, pending.block);
+      }
+    });
+    _pendingExercise = null;
+    unawaited(_persistOrder());
+    _publishLive();
+  }
+
+  Future<void> _commitPendingExercise() async {
+    final pending = _pendingExercise;
+    if (pending == null) return;
+    _pendingExercise = null;
+    final ids = [
+      for (final set in pending.block.sets) ...[
+        if (set.setId != null) set.setId!,
+        if (set.rightSetId != null) set.rightSetId!,
+      ],
+    ];
+    await deleteExerciseSets(db, ids);
+    pending.block.dispose();
     if (mounted) _publishLive();
   }
 
@@ -852,6 +958,9 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
                         mechanic: exercise.mechanic,
                         primaryMuscles: exercise.primaryMuscles,
                         secondaryMuscles: exercise.secondaryMuscles,
+                        familie: exercise.familie,
+                        grip: exercise.griff,
+                        position: exercise.position,
                         movement: exercise.bewegung,
                         query: needle,
                       ),
@@ -871,9 +980,17 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
                             leftName: a.name,
                             leftGermanName: a.germanName,
                             leftAliases: a.aliases,
+                            leftCatalog: isCatalogExercise(
+                              catalogId: a.catalogId,
+                              catalogSource: a.catalogSource,
+                            ),
                             rightName: b.name,
                             rightGermanName: b.germanName,
                             rightAliases: b.aliases,
+                            rightCatalog: isCatalogExercise(
+                              catalogId: b.catalogId,
+                              catalogSource: b.catalogSource,
+                            ),
                           ),
                   );
             final shown = matches.take(40);
@@ -940,7 +1057,7 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
       picked,
       _workout!.id,
       settings.maxSets,
-      picked.defaultRestDurationMs ?? settings.timerDuration,
+      _restFor(picked, settings),
       const [],
     );
     setState(() => _blocks.add(block));
@@ -951,54 +1068,79 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
   Future<void> _editRest(_ExerciseBlock block) async {
     final choices = restChoices();
     var selected = nearestRest(block.restSeconds);
+    var saveInTemplate = true;
     final saved = await showDialog<bool>(
       context: context,
-      builder: (context) => AlertDialog(
-        title: Text(context.l10n.restWheelTitle),
-        content: SizedBox(
-          height: 180,
-          width: 160,
-          child: ListWheelScrollView.useDelegate(
-            itemExtent: 36,
-            physics: const FixedExtentScrollPhysics(),
-            controller: FixedExtentScrollController(
-              initialItem: choices.indexOf(selected),
-            ),
-            onSelectedItemChanged: (index) => selected = choices[index],
-            childDelegate: ListWheelChildBuilderDelegate(
-              childCount: choices.length,
-              builder: (context, index) {
-                final seconds = choices[index];
-                return Center(
-                  child: Text(
-                    seconds == 0 ? context.l10n.noRest : '${seconds}s',
+      builder: (context) => StatefulBuilder(
+        builder: (context, setLocal) => AlertDialog(
+          title: Text(context.l10n.restWheelTitle),
+          content: SizedBox(
+            width: 280,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                SizedBox(
+                  height: 180,
+                  child: ListWheelScrollView.useDelegate(
+                    itemExtent: 36,
+                    physics: const FixedExtentScrollPhysics(),
+                    controller: FixedExtentScrollController(
+                      initialItem: choices.indexOf(selected),
+                    ),
+                    onSelectedItemChanged: (index) => selected = choices[index],
+                    childDelegate: ListWheelChildBuilderDelegate(
+                      childCount: choices.length,
+                      builder: (context, index) {
+                        final seconds = choices[index];
+                        return Center(
+                          child: Text(
+                            seconds == 0 ? context.l10n.noRest : '${seconds}s',
+                          ),
+                        );
+                      },
+                    ),
                   ),
-                );
-              },
+                ),
+                CheckboxListTile(
+                  key: const Key('save-rest-template'),
+                  contentPadding: EdgeInsets.zero,
+                  value: saveInTemplate,
+                  title: Text(context.l10n.saveRestInTemplate),
+                  onChanged: (value) =>
+                      setLocal(() => saveInTemplate = value ?? true),
+                ),
+              ],
             ),
           ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context, false),
+              child: Text(context.l10n.actionCancel),
+            ),
+            FilledButton(
+              onPressed: () => Navigator.pop(context, true),
+              child: Text(context.l10n.actionSave),
+            ),
+          ],
         ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context, false),
-            child: Text(context.l10n.actionCancel),
-          ),
-          FilledButton(
-            onPressed: () => Navigator.pop(context, true),
-            child: Text(context.l10n.actionSave),
-          ),
-        ],
       ),
     );
-    if (saved != true) return;
+    if (saved != true || !mounted || _workout == null) return;
     setState(() => block.restSeconds = selected);
-    await (db.update(
-      db.exercises,
-    )..where((row) => row.id.equals(block.exercise.id))).write(
-      ExercisesCompanion(
-        defaultRestDurationMs: Value(block.restSeconds * 1000),
-      ),
-    );
+    final planId = widget.plan.id;
+    final linked =
+        await (db.select(db.planExercises)..where(
+              (row) =>
+                  row.planId.equals(planId) &
+                  row.exerciseId.equals(block.exercise.id),
+            ))
+            .getSingleOrNull();
+    if (saveInTemplate && linked != null) {
+      await (db.update(db.planExercises)
+            ..where((row) => row.id.equals(linked.id)))
+          .write(PlanExercisesCompanion(restMs: Value(selected * 1000)));
+      _planRest[block.exercise.id] = selected * 1000;
+    }
   }
 
   Future<void> _editNote(_ExerciseBlock block) async {
@@ -1040,9 +1182,11 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
   Widget build(BuildContext context) {
     final palette = AlphaTheme.of(context);
     final l10n = context.l10n;
-    final title = (widget.plan.title ?? '').trim().isEmpty
-        ? widget.plan.days
-        : widget.plan.title!.trim();
+    final title = planDisplayName(
+      title: widget.plan.title,
+      sequence: widget.plan.sequence,
+      id: widget.plan.id,
+    );
     return PopScope(
       canPop: true,
       child: Scaffold(
@@ -1079,16 +1223,36 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
                   _summary(palette, l10n),
                   _restBar(palette, l10n),
                   Expanded(
-                    child: ListView(
-                      padding: const EdgeInsets.fromLTRB(12, 8, 12, 24),
+                    child: Column(
                       children: [
-                        for (var index = 0; index < _blocks.length; index++)
-                          _exerciseCard(index, palette, l10n),
-                        OutlinedButton.icon(
-                          key: const Key('add-exercise'),
-                          onPressed: _addExercise,
-                          icon: const Icon(Icons.add),
-                          label: Text(l10n.addExerciseWorkout),
+                        Expanded(
+                          child: ReorderableListView.builder(
+                            padding: const EdgeInsets.fromLTRB(12, 8, 12, 8),
+                            buildDefaultDragHandles: false,
+                            itemCount: _blocks.length,
+                            onReorderItem: (oldIndex, newIndex) {
+                              setState(() {
+                                final moved = _blocks.removeAt(oldIndex);
+                                _blocks.insert(newIndex, moved);
+                              });
+                              unawaited(_persistOrder());
+                              _publishLive();
+                            },
+                            itemBuilder: (context, index) =>
+                                _exerciseCard(index, palette, l10n),
+                          ),
+                        ),
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Padding(
+                            padding: const EdgeInsets.fromLTRB(12, 0, 12, 8),
+                            child: OutlinedButton.icon(
+                              key: const Key('add-exercise'),
+                              onPressed: _addExercise,
+                              icon: const Icon(Icons.add),
+                              label: Text(l10n.addExerciseWorkout),
+                            ),
+                          ),
                         ),
                       ],
                     ),
@@ -1199,6 +1363,7 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
       german: block.exercise.germanName,
     );
     return Card(
+      key: ObjectKey(block),
       margin: const EdgeInsets.only(bottom: 12),
       child: Padding(
         padding: const EdgeInsets.fromLTRB(12, 8, 4, 12),
@@ -1207,24 +1372,34 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
           children: [
             Row(
               children: [
-                _thumb(block, palette),
-                const SizedBox(width: 10),
                 Expanded(
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.of(context).push(
-                        FlexPageRoute(
-                          builder: (context) =>
-                              ExerciseDetailPage(exercise: block.exercise),
+                  child: ReorderableDelayedDragStartListener(
+                    index: index,
+                    child: Row(
+                      children: [
+                        _thumb(block, palette),
+                        const SizedBox(width: 10),
+                        Expanded(
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.of(context).push(
+                                FlexPageRoute(
+                                  builder: (context) => ExerciseDetailPage(
+                                    exercise: block.exercise,
+                                  ),
+                                ),
+                              );
+                            },
+                            child: Text(
+                              name,
+                              style: const TextStyle(
+                                fontFamily: 'Bebas Neue',
+                                fontSize: 24,
+                              ),
+                            ),
+                          ),
                         ),
-                      );
-                    },
-                    child: Text(
-                      name,
-                      style: const TextStyle(
-                        fontFamily: 'Bebas Neue',
-                        fontSize: 24,
-                      ),
+                      ],
                     ),
                   ),
                 ),
@@ -1367,55 +1542,186 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
     final block = _blocks[blockIndex];
     final row = block.sets[setIndex];
     final id = block.exercise.id;
-    return Container(
-      margin: const EdgeInsets.symmetric(vertical: 2),
-      decoration: BoxDecoration(
-        color: row.done ? palette.accent.withValues(alpha: 0.18) : null,
-        borderRadius: BorderRadius.circular(8),
+    return Dismissible(
+      key: ObjectKey(row),
+      direction: DismissDirection.endToStart,
+      onDismissed: (_) => _removeSet(blockIndex, setIndex, alreadyGone: true),
+      background: Container(
+        alignment: Alignment.centerRight,
+        padding: const EdgeInsets.only(right: 16),
+        color: palette.accent,
+        child: Icon(Icons.delete_outline, color: palette.onAccent),
       ),
-      child: Row(
-        children: [
-          Expanded(
-            child: Center(
-              child: Text(
-                row.warmup
-                    ? '${l10n.warmupMark}${setIndex + 1}'
-                    : '${setIndex + 1}',
-              ),
-            ),
-          ),
-          Expanded(
-            child: Text(
-              row.previous,
-              textAlign: TextAlign.center,
-              style: TextStyle(color: palette.muted, fontSize: 12),
-            ),
-          ),
-          Expanded(
-            child: _field(row.kg, row.done, Key('set-kg-$id-$setIndex')),
-          ),
-          Expanded(
-            child: _field(row.reps, row.done, Key('set-reps-$id-$setIndex')),
-          ),
-          if (block.exercise.einseitig)
+      child: Container(
+        margin: const EdgeInsets.symmetric(vertical: 2),
+        decoration: BoxDecoration(
+          color: row.done ? palette.accent.withValues(alpha: 0.18) : null,
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: Row(
+          children: [
             Expanded(
-              child: _field(
-                row.repsRight,
-                row.done,
-                Key('set-reps-right-$id-$setIndex'),
+              child: Center(
+                child: Text(
+                  row.warmup
+                      ? '${l10n.warmupMark}${setIndex + 1}'
+                      : '${setIndex + 1}',
+                ),
               ),
             ),
-          IconButton(
-            key: Key('set-check-$id-$setIndex'),
-            onPressed: () => _toggle(blockIndex, setIndex),
-            icon: Icon(
-              row.done ? Icons.check_circle : Icons.circle_outlined,
-              color: row.done ? palette.accent : palette.muted,
+            Expanded(
+              child: Text(
+                row.previous,
+                textAlign: TextAlign.center,
+                style: TextStyle(color: palette.muted, fontSize: 12),
+              ),
             ),
-          ),
-        ],
+            Expanded(
+              child: _field(row.kg, row.done, Key('set-kg-$id-$setIndex')),
+            ),
+            Expanded(
+              child: _field(row.reps, row.done, Key('set-reps-$id-$setIndex')),
+            ),
+            if (block.exercise.einseitig)
+              Expanded(
+                child: _field(
+                  row.repsRight,
+                  row.done,
+                  Key('set-reps-right-$id-$setIndex'),
+                ),
+              ),
+            IconButton(
+              key: Key('set-check-$id-$setIndex'),
+              onPressed: () => _toggle(blockIndex, setIndex),
+              icon: Icon(
+                row.done ? Icons.check_circle : Icons.circle_outlined,
+                color: row.done ? palette.accent : palette.muted,
+              ),
+            ),
+            PopupMenuButton<String>(
+              key: Key('set-menu-$id-$setIndex'),
+              onSelected: (value) {
+                if (value == 'delete') _removeSet(blockIndex, setIndex);
+              },
+              itemBuilder: (context) => [
+                PopupMenuItem(value: 'delete', child: Text(l10n.deleteSet)),
+              ],
+            ),
+          ],
+        ),
       ),
     );
+  }
+
+  void _removeSet(int blockIndex, int setIndex, {bool alreadyGone = false}) {
+    unawaited(_removeSetNow(blockIndex, setIndex, alreadyGone: alreadyGone));
+  }
+
+  Future<void> _removeSetNow(
+    int blockIndex,
+    int setIndex, {
+    required bool alreadyGone,
+  }) async {
+    if (blockIndex < 0 || blockIndex >= _blocks.length) return;
+    final block = _blocks[blockIndex];
+    if (setIndex < 0 || setIndex >= block.sets.length) return;
+    final row = block.sets[setIndex];
+    final previous = _pendingSet;
+    _pendingSet = null;
+    previous?.dispose();
+    final ids = [
+      if (row.setId != null) row.setId!,
+      if (row.rightSetId != null) row.rightSetId!,
+    ];
+    if (!alreadyGone) {
+      setState(() => block.sets.removeAt(setIndex));
+    } else {
+      block.sets.removeAt(setIndex);
+    }
+    final saved = ids.isEmpty
+        ? const <ExerciseSet>[]
+        : await (db.select(
+            db.exerciseSets,
+          )..where((item) => item.id.isIn(ids))).get();
+    if (ids.isNotEmpty) await deleteExerciseSets(db, ids);
+    row.setId = null;
+    row.rightSetId = null;
+    if (!mounted) {
+      row.dispose();
+      return;
+    }
+    _undoingSet = false;
+    _pendingSet = row;
+    _pendingSetBlock = blockIndex;
+    _pendingSetIndex = setIndex;
+    _pendingSetRows = saved;
+    ScaffoldMessenger.of(context).clearSnackBars();
+    ScaffoldMessenger.of(context)
+        .showSnackBar(
+          SnackBar(
+            content: Text(context.l10n.setRemoved),
+            action: SnackBarAction(
+              label: context.l10n.actionUndo,
+              onPressed: () {
+                _undoingSet = true;
+                unawaited(_undoSet());
+              },
+            ),
+          ),
+        )
+        .closed
+        .then((reason) {
+          if (_undoingSet || reason == SnackBarClosedReason.action) return;
+          if (!identical(_pendingSet, row)) return;
+          row.dispose();
+          _pendingSet = null;
+          _pendingSetRows = const [];
+        });
+  }
+
+  Future<void> _undoSet() async {
+    final row = _pendingSet;
+    final blockIndex = _pendingSetBlock;
+    final setIndex = _pendingSetIndex;
+    if (row == null || blockIndex == null || setIndex == null) return;
+    if (blockIndex >= _blocks.length || _workout == null) return;
+    final block = _blocks[blockIndex];
+    for (final saved in _pendingSetRows) {
+      final unit = block.exercise.displayUnit;
+      final inserted = await insertExerciseSet(
+        db,
+        exerciseId: block.exercise.id,
+        workoutId: _workout!.id,
+        bodyWeightKg: saved.bodyWeightKg,
+        exerciseSet: ExerciseSetView(
+          id: 0,
+          bodyWeight: saved.bodyWeightKg ?? 0,
+          cardio: block.exercise.kind == 'cardio',
+          created: saved.timestamp,
+          distance: displayDistance(unit, saved.distanceMetres),
+          duration: (saved.durationMs ?? 0) / 60000,
+          name: block.exercise.name,
+          notes: saved.notes ?? '',
+          planId: widget.plan.id,
+          reps: saved.reps ?? 0,
+          unit: unit,
+          weight: displayLoad(unit, saved.loadKg),
+          side: saved.side,
+        ),
+      );
+      if (saved.side == 'rechts') {
+        row.rightSetId = inserted.id;
+      } else {
+        row.setId = inserted.id;
+      }
+    }
+    if (!mounted) return;
+    setState(() {
+      final index = setIndex.clamp(0, block.sets.length);
+      block.sets.insert(index, row);
+    });
+    _pendingSet = null;
+    _pendingSetRows = const [];
   }
 
   void _addWarmup(_ExerciseBlock block) {
