@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:drift/drift.dart' hide isNotNull, isNull;
 import 'package:flexify/database/database.dart';
+import 'package:flexify/database/exercise_de_catalog.dart';
 import 'package:flexify/database/exercise_set_repository.dart';
 import 'package:flexify/exercises/custom_exercise.dart';
 import 'package:flexify/exercises/custom_exercise_page.dart';
@@ -119,6 +120,74 @@ void main() {
       db.exercises,
     )..where((row) => row.id.equals(catalogId))).getSingle();
     expect(untouched.equipment, 'Langhantel');
+  });
+
+  test('an old custom exercise without a category gets muscles', () async {
+    db = testDb();
+    addTearDown(db.close);
+    await importExerciseCatalogJson(
+      db,
+      File('assets/exercises/exercises_de.json').readAsStringSync(),
+    );
+    final id = await db
+        .into(db.exercises)
+        .insert(
+          ExercisesCompanion.insert(
+            name: 'Landmine Press',
+            kind: 'strength',
+            displayUnit: 'kg',
+          ),
+        );
+    final history = await db.exerciseSets.insertOne(
+      ExerciseSetsCompanion.insert(
+        exerciseId: id,
+        timestamp: DateTime(2024, 6, 1),
+        reps: const Value(8),
+        loadKg: const Value(30),
+      ),
+    );
+    final plain = await db
+        .into(db.exercises)
+        .insert(
+          ExercisesCompanion.insert(
+            name: 'Geheimübung',
+            kind: 'strength',
+            displayUnit: 'kg',
+          ),
+        );
+    expect(await repairLegacyCustomExercises(db), greaterThanOrEqualTo(2));
+    final landmine = await (db.select(
+      db.exercises,
+    )..where((row) => row.id.equals(id))).getSingle();
+    expect(landmine.categoryName, 'Schultern');
+    expect(landmine.equipment, 'Langhantel');
+    expect(landmine.primaryMuscles, contains('schulter_vorne'));
+    expect(
+      (await (db.exerciseSets.select()..where((row) => row.id.equals(history)))
+              .getSingle())
+          .exerciseId,
+      id,
+    );
+    final unmatched = await (db.select(
+      db.exercises,
+    )..where((row) => row.id.equals(plain))).getSingle();
+    expect(unmatched.equipment, 'Körpergewicht');
+    expect(unmatched.primaryMuscles, contains('brust'));
+    final saved = await saveCustomExercise(
+      db,
+      const CustomExerciseDraft(
+        name: 'Geheimübung',
+        category: 'Trizeps',
+        primaryMuscles: ['trizeps'],
+        secondaryMuscles: [],
+        equipment: 'Kurzhantel',
+        movement: 'druecken',
+      ),
+      existing: unmatched,
+    );
+    expect(saved.categoryName, 'Trizeps');
+    expect(saved.equipment, 'Kurzhantel');
+    expect(saved.primaryMuscles, contains('trizeps'));
   });
 
   test(

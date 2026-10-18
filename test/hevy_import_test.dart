@@ -1,7 +1,12 @@
 import 'dart:io';
 
+import 'package:flexify/database/database.dart';
+import 'package:flexify/import/hevy_apply.dart';
 import 'package:flexify/import/hevy_import.dart';
+import 'package:flexify/main.dart';
 import 'package:flutter_test/flutter_test.dart';
+
+import 'mock_tests.dart';
 
 void main() {
   test('Hevy CSV preview counts templates and sets', () {
@@ -182,6 +187,70 @@ Training,"17 Okt. 2026, 13:20","17 Okt. 2026, 14:00",Curl,22,8
     expect(preview!.sets, hasLength(1766));
     expect(preview.workoutCount, 90);
     expect(preview.errors, isEmpty);
+    expect(elapsed.inSeconds, lessThan(5));
+  });
+
+  test('applying 1766 sets stays inside one fast transaction', () async {
+    await mockTests();
+    final database = testDb();
+    addTearDown(database.close);
+    db = database;
+    final exerciseId = await database
+        .into(database.exercises)
+        .insert(
+          ExercisesCompanion.insert(
+            name: 'Curl',
+            kind: 'strength',
+            displayUnit: 'kg',
+          ),
+        );
+    final exercise = await (database.select(
+      database.exercises,
+    )..where((row) => row.id.equals(exerciseId))).getSingle();
+    const workouts = 90;
+    const total = 1766;
+    final base = total ~/ workouts;
+    final extra = total % workouts;
+    final sets = <ImportedSet>[];
+    final templates = <ImportedTemplate>[];
+    for (var workout = 0; workout < workouts; workout++) {
+      final count = base + (workout < extra ? 1 : 0);
+      final title = 'Training ${workout + 1}';
+      final startedAt = DateTime(2026, 1, (workout % 28) + 1, 8, workout % 60);
+      templates.add(
+        ImportedTemplate(
+          title: title,
+          exercises: const ['Curl'],
+          setCounts: {'Curl': count},
+          lastWeights: const {'Curl': 20},
+        ),
+      );
+      for (var set = 0; set < count; set++) {
+        sets.add(
+          ImportedSet(
+            workoutTitle: title,
+            started: startedAt,
+            ended: startedAt,
+            exercise: 'Curl',
+            kg: 20,
+            reps: 10,
+            warmup: false,
+          ),
+        );
+      }
+    }
+    final started = DateTime.now();
+    await applyWorkoutImport(
+      database: database,
+      sets: sets,
+      templates: templates,
+      match: (name) => name == exercise.name ? exercise : null,
+      existingPlanCount: 3,
+      existingTitles: {'Montag', 'Mittwoch', 'Freitag'},
+    );
+    final elapsed = DateTime.now().difference(started);
+    expect(await database.select(database.exerciseSets).get(), hasLength(1766));
+    expect(await database.select(database.plans).get(), hasLength(7));
     expect(elapsed.inSeconds, lessThan(5));
   });
 }

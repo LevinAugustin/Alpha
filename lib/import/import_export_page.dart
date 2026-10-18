@@ -6,7 +6,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flexify/exercises/custom_exercise_page.dart';
 import 'package:flexify/database/catalog_seed.dart';
 import 'package:flexify/database/database.dart';
-import 'package:flexify/database/exercise_set_repository.dart';
+import 'package:flexify/import/hevy_apply.dart';
 import 'package:flexify/import/hevy_import.dart';
 import 'package:flexify/import/import_cleanup.dart';
 import 'package:flexify/import_data.dart';
@@ -490,99 +490,20 @@ class _ImportPreviewPageState extends State<ImportPreviewPage> {
     try {
       await widget.pause?.call();
       if (!mounted) return;
-      await db.transaction(() async {
-        final byWorkout = <String, int>{};
-        final planIds = <String, int?>{};
-        var createdPlans = _existingPlanCount;
-        for (final set in usable) {
-          final template = byOriginal[set.workoutTitle]!;
-          final key = '${set.workoutTitle}|${set.started.toIso8601String()}';
-          var workoutId = byWorkout[key];
-          if (workoutId == null) {
-            planIds[template.originalTitle] ??= await _planFor(
-              template,
-              createdPlans,
-            );
-            if (planIds[template.originalTitle] != null &&
-                !_existingTitles.contains(template.title.trim())) {
-              createdPlans += 1;
-              _existingTitles.add(template.title.trim());
-            }
-            workoutId = await db.workouts.insertOne(
-              WorkoutsCompanion.insert(
-                planId: Value(planIds[template.originalTitle]),
-                startedAt: set.started,
-                endedAt: Value(set.ended ?? set.started),
-              ),
-            );
-            byWorkout[key] = workoutId;
-          }
-          final exercise = _cachedMatch(set.exercise);
-          if (exercise != null) {
-            await insertExerciseSet(
-              db,
-              exerciseId: exercise.id,
-              workoutId: workoutId,
-              exerciseSet: ExerciseSetView(
-                id: 0,
-                bodyWeight: 0,
-                cardio: exercise.kind == 'cardio',
-                created: set.started,
-                distance: 0,
-                duration: 0,
-                name: exercise.name,
-                notes: set.warmup ? '[warmup]' : '',
-                planId: planIds[template.originalTitle],
-                reps: set.reps,
-                unit: 'kg',
-                weight: set.kg,
-              ),
-            );
-          }
-          _applied += 1;
-          if (mounted && (_applied == usable.length || _applied % 25 == 0)) {
-            setState(() {});
-          }
-        }
-      });
+      await applyWorkoutImport(
+        database: db,
+        sets: usable,
+        templates: included,
+        match: _cachedMatch,
+        existingPlanCount: _existingPlanCount,
+        existingTitles: _existingTitles,
+      );
+      _applied = usable.length;
       if (!mounted) return;
       Navigator.pop(context);
     } finally {
       _applying = false;
       if (mounted) setState(() {});
     }
-  }
-
-  Future<int?> _planFor(ImportedTemplate template, int createdPlans) async {
-    final existing = await (db.select(
-      db.plans,
-    )..where((row) => row.title.equals(template.title))).getSingleOrNull();
-    if (existing != null) return existing.id;
-    if (createdPlans >= hevyTemplateLimit) return null;
-    final id = await db.plans.insertOne(
-      PlansCompanion.insert(
-        days: '',
-        title: Value(template.title),
-        sequence: Value(createdPlans),
-      ),
-    );
-    var sequence = 0;
-    for (final name in template.exercises) {
-      final exercise = _cachedMatch(name);
-      if (exercise == null) continue;
-      await db
-          .into(db.planExercises)
-          .insert(
-            PlanExercisesCompanion.insert(
-              enabled: true,
-              exerciseId: exercise.id,
-              planId: id,
-              maxSets: Value(template.setCounts[name]),
-              sequence: Value(sequence++),
-            ),
-            mode: InsertMode.insertOrIgnore,
-          );
-    }
-    return id;
   }
 }

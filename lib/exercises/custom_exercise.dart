@@ -1,7 +1,9 @@
 import 'dart:convert';
 
 import 'package:drift/drift.dart';
+import 'package:flexify/database/catalog_seed.dart';
 import 'package:flexify/database/database.dart';
+import 'package:flexify/database/defaults.dart';
 import 'package:flexify/exercise_keys.dart';
 import 'package:flexify/import/hevy_import.dart';
 
@@ -120,6 +122,8 @@ LegacyCustomFields normalizeLegacyCustomExercise(Exercise exercise) {
   );
 }
 
+final bundledExerciseNames = {for (final entry in defaultExercises) entry.$1};
+
 Future<int> repairLegacyCustomExercises(AppDatabase database) async {
   final rows = await database.select(database.exercises).get();
   var updated = 0;
@@ -132,24 +136,159 @@ Future<int> repairLegacyCustomExercises(AppDatabase database) async {
         .trim();
     final english =
         legacyEnglishCategories[storedCategory.toLowerCase()] != null;
-    if (!owned && !english) continue;
-    final fields = normalizeLegacyCustomExercise(exercise);
-    if (!fields.changed) continue;
-    await (database.update(
-      database.exercises,
-    )..where((row) => row.id.equals(exercise.id))).write(
-      ExercisesCompanion(
-        categoryName: Value(fields.category),
-        muscle: Value(fields.category),
-        equipment: Value(fields.equipment),
-        primaryMuscles: Value(_jsonList(fields.primaryMuscles)),
-        griff: Value(fields.grip.isEmpty ? null : fields.grip),
-        position: Value(fields.position.isEmpty ? null : fields.position),
-      ),
-    );
-    updated++;
+    final match = _catalogMatch(rows, exercise);
+    final bundled = bundledExerciseNames.contains(exercise.name);
+    if (!owned && !english && match == null && bundled) continue;
+    final wrote = match == null
+        ? await _writeNormalized(database, exercise)
+        : await _writeCatalogMatch(database, exercise, match);
+    if (wrote) updated++;
   }
   return updated;
+}
+
+Exercise? _catalogMatch(List<Exercise> rows, Exercise exercise) {
+  final queries = [
+    exercise.name,
+    if ((exercise.germanName ?? '').trim().isNotEmpty) exercise.germanName!,
+  ];
+  Exercise? best;
+  for (final row in rows) {
+    if (row.id == exercise.id) continue;
+    final catalogId = (row.catalogId ?? '').trim();
+    if (catalogId.isEmpty || catalogId.startsWith(customExercisePrefix)) {
+      continue;
+    }
+    final hit = queries.any(
+      (query) => exerciseExactNameOrAlias(
+        name: row.name,
+        germanName: row.germanName,
+        aliases: row.aliases,
+        query: query,
+      ),
+    );
+    if (!hit) continue;
+    if (best == null ||
+        compareExerciseSearch(
+              query: queries.first,
+              leftName: row.name,
+              leftGermanName: row.germanName,
+              leftAliases: row.aliases,
+              rightName: best.name,
+              rightGermanName: best.germanName,
+              rightAliases: best.aliases,
+            ) <
+            0) {
+      best = row;
+    }
+  }
+  return best;
+}
+
+Future<bool> _writeNormalized(AppDatabase database, Exercise exercise) async {
+  final fields = normalizeLegacyCustomExercise(exercise);
+  if (!fields.changed && _hasCustomSource(exercise)) return false;
+  await (database.update(
+    database.exercises,
+  )..where((row) => row.id.equals(exercise.id))).write(
+    ExercisesCompanion(
+      categoryName: Value(fields.category),
+      muscle: Value(fields.category),
+      equipment: Value(fields.equipment),
+      primaryMuscles: Value(_jsonList(fields.primaryMuscles)),
+      griff: Value(fields.grip.isEmpty ? null : fields.grip),
+      position: Value(fields.position.isEmpty ? null : fields.position),
+      catalogSource: Value(_customSource(exercise)),
+    ),
+  );
+  return true;
+}
+
+Future<bool> _writeCatalogMatch(
+  AppDatabase database,
+  Exercise exercise,
+  Exercise match,
+) async {
+  final fallback = normalizeLegacyCustomExercise(exercise);
+  final storedCategory = (exercise.categoryName ?? exercise.muscle ?? '')
+      .trim();
+  final category =
+      _knownCategory(storedCategory) ??
+      _knownCategory(match.categoryName) ??
+      _knownCategory(match.muscle) ??
+      fallback.category;
+  final gear =
+      _knownGear(exercise.equipment) ??
+      _knownGear(match.equipment) ??
+      fallback.equipment;
+  final storedPrimary = decodeMuscleList(exercise.primaryMuscles);
+  final matchedPrimary = decodeMuscleList(match.primaryMuscles);
+  final muscles = storedPrimary.isNotEmpty
+      ? storedPrimary
+      : (matchedPrimary.isEmpty ? fallback.primaryMuscles : matchedPrimary);
+  final secondary = decodeMuscleList(match.secondaryMuscles);
+  final movement = (match.bewegung ?? '').trim();
+  final sameCategory =
+      (exercise.categoryName ?? '').trim() == category &&
+      (exercise.muscle ?? '').trim() == category;
+  final sameGear = (exercise.equipment ?? '').trim() == gear;
+  final samePrimary =
+      decodeMuscleList(exercise.primaryMuscles).join('|') == muscles.join('|');
+  if (sameCategory && sameGear && samePrimary && _hasCustomSource(exercise)) {
+    return false;
+  }
+  await (database.update(
+    database.exercises,
+  )..where((row) => row.id.equals(exercise.id))).write(
+    ExercisesCompanion(
+      categoryName: Value(category),
+      muscle: Value(category),
+      equipment: Value(gear),
+      primaryMuscles: Value(_jsonList(muscles)),
+      secondaryMuscles: Value(_jsonList(secondary)),
+      bewegung: Value(
+        (exercise.bewegung ?? '').trim().isEmpty
+            ? (movement.isEmpty ? null : movement)
+            : exercise.bewegung,
+      ),
+      familie: Value(
+        (exercise.familie ?? '').trim().isEmpty
+            ? match.familie
+            : exercise.familie,
+      ),
+      griff: Value(
+        (exercise.griff ?? '').trim().isEmpty ? match.griff : exercise.griff,
+      ),
+      position: Value(
+        (exercise.position ?? '').trim().isEmpty
+            ? match.position
+            : exercise.position,
+      ),
+      einseitig: Value(exercise.einseitig || match.einseitig),
+      catalogSource: Value(_customSource(exercise)),
+    ),
+  );
+  return true;
+}
+
+bool _hasCustomSource(Exercise exercise) =>
+    (exercise.catalogSource ?? '').trim().toLowerCase() == 'custom';
+
+String _customSource(Exercise exercise) {
+  final source = (exercise.catalogSource ?? '').trim();
+  return source.isEmpty ? 'custom' : source;
+}
+
+String? _knownCategory(String? value) {
+  final text = (value ?? '').trim();
+  if (exerciseCategories.contains(text)) return text;
+  return legacyEnglishCategories[text.toLowerCase()]?.$1;
+}
+
+String? _knownGear(String? value) {
+  final text = (value ?? '').trim();
+  if (exerciseGearValues.contains(text)) return text;
+  return hevyEquipmentGear(text);
 }
 
 String customExerciseSlug(String name) {
