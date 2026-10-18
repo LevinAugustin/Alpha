@@ -1386,7 +1386,7 @@ void main() {
     for (final row in rows) {
       synonyms += ((row as Map)['synonyme'] as List).length;
     }
-    expect(synonyms, 1892);
+    expect(synonyms, 2248);
     final imported = await importExerciseCatalogJson(db, raw);
     expect(imported.skipped, isEmpty);
     final exercise =
