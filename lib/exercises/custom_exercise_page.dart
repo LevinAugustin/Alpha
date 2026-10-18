@@ -51,13 +51,15 @@ class _CustomExercisePageState extends State<CustomExercisePage> {
       _equipment = initialGear;
     }
     if (exercise != null) {
-      _category = exercise.categoryName ?? _category;
-      _equipment = exercise.equipment ?? _equipment;
+      final fields = normalizeLegacyCustomExercise(exercise);
+      _category = fields.category;
+      _equipment = fields.equipment;
       _movement = exercise.bewegung ?? '';
-      _grip = exercise.griff ?? '';
-      _position = exercise.position ?? '';
+      if (!exerciseMotionValues.contains(_movement)) _movement = '';
+      _grip = fields.grip;
+      _position = fields.position;
       _unilateral = exercise.einseitig;
-      _primary.addAll(_list(exercise.primaryMuscles));
+      _primary.addAll(fields.primaryMuscles);
       _secondary.addAll(_list(exercise.secondaryMuscles));
     }
   }
@@ -221,10 +223,14 @@ class _CustomExercisePageState extends State<CustomExercisePage> {
       position: _position,
       unilateral: _unilateral,
     );
-    if (validateCustomExercise(draft) != null) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(context.l10n.customExerciseInvalid)),
-      );
+    final error = validateCustomExercise(draft);
+    if (error != null) {
+      final message = error == 'movement'
+          ? context.l10n.customExerciseMovementRequired
+          : context.l10n.customExerciseInvalid;
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(message)));
       return;
     }
     setState(() => _saving = true);

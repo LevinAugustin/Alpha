@@ -120,6 +120,94 @@ void main() {
     );
   });
 
+  test('every word must match, in any order', () {
+    const cableCurl = (
+      name: 'cable-curl',
+      germanName: 'Bizeps-Curl am Kabel',
+      aliases: 'Cable Curl',
+      equipment: 'Kabelzug',
+      primaryMuscles: '["bizeps"]',
+      category: 'Bizeps',
+    );
+    const barCurl = (
+      name: 'barbell-curl',
+      germanName: 'Bizeps-Curl mit der Langhantel',
+      aliases: 'Barbell Curl',
+      equipment: 'Langhantel',
+      primaryMuscles: '["bizeps"]',
+      category: 'Bizeps',
+    );
+    for (final query in ['Bizeps Kabel', 'kabel bizeps', 'KABEL Bizeps']) {
+      expect(
+        exerciseMatchesQuery(
+          name: cableCurl.name,
+          germanName: cableCurl.germanName,
+          aliases: cableCurl.aliases,
+          equipment: cableCurl.equipment,
+          primaryMuscles: cableCurl.primaryMuscles,
+          category: cableCurl.category,
+          query: query,
+        ),
+        isTrue,
+        reason: query,
+      );
+      expect(
+        exerciseMatchesQuery(
+          name: barCurl.name,
+          germanName: barCurl.germanName,
+          aliases: barCurl.aliases,
+          equipment: barCurl.equipment,
+          primaryMuscles: barCurl.primaryMuscles,
+          category: barCurl.category,
+          query: query,
+        ),
+        isFalse,
+        reason: query,
+      );
+    }
+    expect(
+      exerciseMatchesQuery(
+        name: 'pullover',
+        germanName: 'Überzüge',
+        query: 'ueberzuege',
+      ),
+      isTrue,
+    );
+    expect(
+      exerciseMatchesQuery(
+        name: 'strasse',
+        germanName: 'Straße',
+        query: 'strasse',
+      ),
+      isTrue,
+    );
+    expect(
+      exerciseMatchesQuery(
+        name: 'row',
+        germanName: 'Rudern',
+        category: 'Rücken',
+        query: 'ruecken',
+      ),
+      isTrue,
+    );
+    final ranked =
+        [
+          (name: 'other', germanName: 'Kabelrudern', aliases: '["Bizeps"]'),
+          (name: 'exact', germanName: 'Bizeps Kabel', aliases: ''),
+        ]..sort(
+          (a, b) => compareExerciseSearch(
+            query: 'Bizeps Kabel',
+            leftName: a.name,
+            leftGermanName: a.germanName,
+            leftAliases: a.aliases,
+            rightName: b.name,
+            rightGermanName: b.germanName,
+            rightAliases: b.aliases,
+          ),
+        );
+    expect(ranked.first.germanName, 'Bizeps Kabel');
+  });
+
   test('muscle heat uses the muscle map keys', () {
     final heat = <String, double>{};
     contributeMuscleHeat(

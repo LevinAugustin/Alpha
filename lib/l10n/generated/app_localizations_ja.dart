@@ -2209,4 +2209,72 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get importBackupZip => 'バックアップを読み込む (.zip)';
+
+  @override
+  String importSetSummary(int workouts, int sets) {
+    return '$workouts 回のトレーニング、$sets セット';
+  }
+
+  @override
+  String importDateErrorCount(int count) {
+    return '$count 行の日付を読み取れませんでした。';
+  }
+
+  @override
+  String importUnmatchedNames(String names) {
+    return '一致なし: $names';
+  }
+
+  @override
+  String importTemplatesSkipped(String names) {
+    return '作成されませんでした。テンプレートの上限です: $names';
+  }
+
+  @override
+  String importApplying(int done, int total) {
+    return '$done / $total';
+  }
+
+  @override
+  String get customExerciseMovementRequired => '動作を選んでください。';
+
+  @override
+  String get setRemoved => 'セットを削除しました';
+
+  @override
+  String get exerciseRemovedUndo => '種目を削除しました';
+
+  @override
+  String get exerciseSwappedUndo => '種目を入れ替えました';
+
+  @override
+  String get saveRestInTemplate => 'テンプレートにも保存';
+
+  @override
+  String get deleteGymTitle => 'スタジオを削除しますか？';
+
+  @override
+  String get deleteGymBody => 'このスタジオに紐づくトレーニングは残ります。削除されるのはスタジオだけです。';
+
+  @override
+  String get renameGym => 'スタジオ名を変更';
+
+  @override
+  String get cleanupImports => 'インポート項目を整理';
+
+  @override
+  String cleanupImportsPreview(int workouts, int templates) {
+    return 'インポートしたトレーニング $workouts 件とテンプレート $templates 件を削除します。手入力のトレーニングは残ります。';
+  }
+
+  @override
+  String get cleanupImportsEmpty => '整理するものはありません。';
+
+  @override
+  String get cleanupImportsDone => 'インポート項目を削除しました。';
+
+  @override
+  String measurementsImported(int count) {
+    return '$count 件の測定を取り込みました。';
+  }
 }

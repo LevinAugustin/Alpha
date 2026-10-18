@@ -184,7 +184,10 @@ Stream<List<GymCount>> watchGymCounts(int planId, int workoutId) {
             exercises.name AS name,
             COUNT(exercise_sets.id) AS session_count,
             plan_exercises.max_sets AS max_sets,
-            exercises.default_rest_duration_ms AS rest_ms,
+            COALESCE(
+              plan_exercises.rest_ms,
+              exercises.default_rest_duration_ms
+            ) AS rest_ms,
             plan_exercises.warmup_sets AS warmup_sets,
             plan_exercises.timers AS timers
           FROM plan_exercises
@@ -274,6 +277,7 @@ Future<List<PlanExerciseDraft>> loadPlanExerciseDrafts(
       sequence: Value(row.read(db.planExercises.sequence) ?? 0),
       repMin: Value(row.read(db.planExercises.repMin)),
       repMax: Value(row.read(db.planExercises.repMax)),
+      restMs: Value(row.read(db.planExercises.restMs)),
     );
     final draft = PlanExerciseDraft(
       planExercise: planExercise,

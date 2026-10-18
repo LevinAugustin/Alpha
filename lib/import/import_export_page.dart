@@ -3,11 +3,11 @@ import 'dart:io';
 
 import 'package:drift/drift.dart' hide Column;
 import 'package:file_picker/file_picker.dart';
-import 'package:flexify/database/catalog_seed.dart';
 import 'package:flexify/exercises/custom_exercise_page.dart';
 import 'package:flexify/database/database.dart';
 import 'package:flexify/database/exercise_set_repository.dart';
 import 'package:flexify/import/hevy_import.dart';
+import 'package:flexify/import/import_cleanup.dart';
 import 'package:flexify/import_data.dart';
 import 'package:flexify/l10n/l10n.dart';
 import 'package:flexify/logging.dart';
@@ -46,6 +46,12 @@ class ImportExportPage extends StatelessWidget {
             leading: const Icon(Icons.download),
             title: Text(l10n.exportAlphaData),
             onTap: () => _export(context),
+          ),
+          ListTile(
+            key: const Key('cleanup-imports'),
+            leading: const Icon(Icons.cleaning_services_outlined),
+            title: Text(l10n.cleanupImports),
+            onTap: () => _cleanup(context),
           ),
         ],
       ),
@@ -87,9 +93,49 @@ class ImportExportPage extends StatelessWidget {
           );
     }
     if (!context.mounted) return;
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(context.l10n.measurementsImported(points.length))),
+    );
+  }
+
+  Future<void> _cleanup(BuildContext context) async {
+    final preview = await previewImportCleanup(db);
+    if (!context.mounted) return;
+    if (preview.isEmpty) {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(context.l10n.cleanupImportsEmpty)));
+      return;
+    }
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(context.l10n.cleanupImports),
+        content: Text(
+          context.l10n.cleanupImportsPreview(
+            preview.workoutIds.length,
+            preview.planIds.length,
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context, false),
+            child: Text(context.l10n.actionCancel),
+          ),
+          FilledButton(
+            key: const Key('confirm-cleanup'),
+            onPressed: () => Navigator.pop(context, true),
+            child: Text(context.l10n.actionDelete),
+          ),
+        ],
+      ),
+    );
+    if (confirmed != true || !context.mounted) return;
+    await applyImportCleanup(db, preview);
+    if (!context.mounted) return;
     ScaffoldMessenger.of(
       context,
-    ).showSnackBar(SnackBar(content: Text('${points.length}')));
+    ).showSnackBar(SnackBar(content: Text(context.l10n.cleanupImportsDone)));
   }
 
   Future<void> _importBackup(BuildContext context) async {
@@ -150,9 +196,10 @@ class ImportExportPage extends StatelessWidget {
 }
 
 class ImportPreviewPage extends StatefulWidget {
-  const ImportPreviewPage({super.key, required this.preview});
+  const ImportPreviewPage({super.key, required this.preview, this.pause});
 
   final WorkoutImport preview;
+  final Future<void> Function()? pause;
 
   @override
   State<ImportPreviewPage> createState() => _ImportPreviewPageState();
@@ -161,7 +208,13 @@ class ImportPreviewPage extends StatefulWidget {
 class _ImportPreviewPageState extends State<ImportPreviewPage> {
   late final List<ImportedTemplate> _templates;
   final Map<String, int?> _mapping = {};
+  final Map<String, Exercise?> _matchCache = {};
   List<Exercise> _exercises = const [];
+  Set<String> _existingTitles = const {};
+  var _existingPlanCount = 0;
+  var _applying = false;
+  var _applied = 0;
+  var _applyTotal = 0;
 
   @override
   void initState() {
@@ -174,8 +227,44 @@ class _ImportPreviewPageState extends State<ImportPreviewPage> {
     final exercises = await (db.select(
       db.exercises,
     )..where((row) => row.archived.equals(false))).get();
+    final plans = await db.select(db.plans).get();
     if (!mounted) return;
-    setState(() => _exercises = exercises);
+    setState(() {
+      _exercises = exercises;
+      _matchCache.clear();
+      _existingPlanCount = plans.length;
+      _existingTitles = {
+        for (final plan in plans)
+          if ((plan.title ?? '').trim().isNotEmpty) plan.title!.trim(),
+      };
+    });
+  }
+
+  List<String> get _unmatched {
+    final names = <String>[];
+    for (final template in _templates) {
+      for (final name in template.exercises) {
+        if (_cachedMatch(name) == null && !names.contains(name)) {
+          names.add(name);
+        }
+      }
+    }
+    return names;
+  }
+
+  List<String> get _skippedTemplateTitles {
+    var room = hevyTemplateLimit - _existingPlanCount;
+    if (room < 0) room = 0;
+    final skipped = <String>[];
+    for (final template in _templates.where((row) => row.include)) {
+      if (_existingTitles.contains(template.title.trim())) continue;
+      if (room == 0) {
+        skipped.add(template.title);
+      } else {
+        room -= 1;
+      }
+    }
+    return skipped;
   }
 
   @override
@@ -194,16 +283,39 @@ class _ImportPreviewPageState extends State<ImportPreviewPage> {
           padding: const EdgeInsets.all(16),
           child: FilledButton(
             key: const Key('apply-import'),
-            onPressed: _apply,
-            child: Text(l10n.actionAccept),
+            onPressed: _applying ? null : _apply,
+            child: _applying
+                ? Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const SizedBox(
+                        width: 18,
+                        height: 18,
+                        child: CircularProgressIndicator(strokeWidth: 2),
+                      ),
+                      const SizedBox(width: 12),
+                      Text(l10n.importApplying(_applied, _applyTotal)),
+                    ],
+                  )
+                : Text(l10n.actionAccept),
           ),
         ),
       ),
       body: ListView(
         padding: const EdgeInsets.fromLTRB(16, 8, 16, 24),
         children: [
-          Text(l10n.importSummary(preview.workoutCount, preview.exerciseCount)),
+          Text(
+            l10n.importSetSummary(preview.workoutCount, preview.sets.length),
+          ),
+          if (preview.errors.isNotEmpty)
+            Text(l10n.importDateErrorCount(preview.errors.length)),
           if (range.isNotEmpty) Text(range),
+          if (_unmatched.isNotEmpty)
+            Text(l10n.importUnmatchedNames(_unmatched.join(', '))),
+          if (_skippedTemplateTitles.isNotEmpty)
+            Text(
+              l10n.importTemplatesSkipped(_skippedTemplateTitles.join(', ')),
+            ),
           const SizedBox(height: 16),
           Text(
             l10n.templatesDetected,
@@ -249,55 +361,65 @@ class _ImportPreviewPageState extends State<ImportPreviewPage> {
   Widget _exerciseRow(String name, ImportedTemplate template) {
     final known = _match(name);
     final mapped = _mapping[name];
-    return ListTile(
-      contentPadding: EdgeInsets.zero,
-      title: Text(name),
-      subtitle: Text(
-        '${template.setCounts[name] ?? 0} · ${template.lastWeights[name] ?? 0} kg',
-      ),
-      trailing: known != null
-          ? null
-          : Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                DropdownButton<int>(
-                  hint: Text(context.l10n.mapExercise),
-                  value: mapped,
-                  items: [
-                    for (final exercise in _exercises.take(80))
-                      DropdownMenuItem(
-                        value: exercise.id,
-                        child: Text(
-                          (exercise.germanName ?? '').isEmpty
-                              ? exercise.name
-                              : exercise.germanName!,
-                        ),
-                      ),
-                  ],
-                  onChanged: (value) => setState(() => _mapping[name] = value),
-                ),
-                IconButton(
-                  key: Key('create-custom-import-$name'),
-                  tooltip: context.l10n.createAsCustomExercise,
-                  onPressed: () async {
-                    final created = await Navigator.of(context).push<Exercise>(
-                      MaterialPageRoute(
-                        builder: (context) => CustomExercisePage(
-                          initialName: name,
-                          initialEquipment: _gearFor(name),
-                        ),
-                      ),
-                    );
-                    if (created == null || !mounted) return;
-                    setState(() {
-                      _exercises = [..._exercises, created];
-                      _mapping[name] = created.id;
-                    });
-                  },
-                  icon: const Icon(Icons.add),
-                ),
+    return Padding(
+      padding: const EdgeInsets.only(top: 8),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Text(name, maxLines: 1, overflow: TextOverflow.ellipsis),
+          Text(
+            '${template.setCounts[name] ?? 0} · ${template.lastWeights[name] ?? 0} kg',
+          ),
+          if (known == null) ...[
+            DropdownButton<int>(
+              isExpanded: true,
+              hint: Text(context.l10n.mapExercise),
+              value: mapped,
+              items: [
+                for (final exercise in _exercises.take(80))
+                  DropdownMenuItem(
+                    value: exercise.id,
+                    child: Text(
+                      (exercise.germanName ?? '').isEmpty
+                          ? exercise.name
+                          : exercise.germanName!,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
               ],
+              onChanged: (value) => setState(() {
+                _mapping[name] = value;
+                _matchCache.remove(name);
+              }),
             ),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: IconButton(
+                key: Key('create-custom-import-$name'),
+                tooltip: context.l10n.createAsCustomExercise,
+                onPressed: () async {
+                  final created = await Navigator.of(context).push<Exercise>(
+                    MaterialPageRoute(
+                      builder: (context) => CustomExercisePage(
+                        initialName: name,
+                        initialEquipment: _gearFor(name),
+                      ),
+                    ),
+                  );
+                  if (created == null || !mounted) return;
+                  setState(() {
+                    _exercises = [..._exercises, created];
+                    _mapping[name] = created.id;
+                    _matchCache.remove(name);
+                  });
+                },
+                icon: const Icon(Icons.add),
+              ),
+            ),
+          ],
+        ],
+      ),
     );
   }
 
@@ -315,25 +437,30 @@ class _ImportPreviewPageState extends State<ImportPreviewPage> {
       return _exercises.where((exercise) => exercise.id == forced).firstOrNull;
     }
     for (final exercise in _exercises) {
-      if (exerciseMatchesQuery(
-        name: exercise.name,
-        germanName: exercise.germanName,
-        aliases: exercise.aliases,
-        query: name,
-      )) {
-        if (exercise.name.toLowerCase() == name.toLowerCase() ||
-            (exercise.germanName ?? '').toLowerCase() == name.toLowerCase() ||
-            (exercise.aliases ?? '').toLowerCase().contains(
-              name.toLowerCase(),
-            )) {
-          return exercise;
-        }
+      final aliasHit = (exercise.aliases ?? '')
+          .toLowerCase()
+          .split('|')
+          .map((part) => part.trim())
+          .contains(name.toLowerCase());
+      if (exercise.name.toLowerCase() == name.toLowerCase() ||
+          (exercise.germanName ?? '').toLowerCase() == name.toLowerCase() ||
+          aliasHit) {
+        return exercise;
       }
     }
     return null;
   }
 
+  Exercise? _cachedMatch(String name) {
+    if (_matchCache.containsKey(name)) return _matchCache[name];
+    final match = _match(name);
+    _matchCache[name] = match;
+    return match;
+  }
+
   Future<void> _apply() async {
+    if (_applying) return;
+    _applying = true;
     final included = _templates.where((template) => template.include).toList();
     final byOriginal = {
       for (final template in included) template.originalTitle: template,
@@ -341,66 +468,96 @@ class _ImportPreviewPageState extends State<ImportPreviewPage> {
     final usable = widget.preview.sets
         .where((set) => byOriginal.containsKey(set.workoutTitle))
         .toList();
-    final byWorkout = <String, int>{};
-    final planIds = <String, int?>{};
-    for (final set in usable) {
-      final template = byOriginal[set.workoutTitle]!;
-      final key = '${set.workoutTitle}|${set.started.toIso8601String()}';
-      var workoutId = byWorkout[key];
-      if (workoutId == null) {
-        planIds[template.originalTitle] ??= await _planFor(template);
-        workoutId = await db.workouts.insertOne(
-          WorkoutsCompanion.insert(
-            planId: Value(planIds[template.originalTitle]),
-            startedAt: set.started,
-            endedAt: Value(set.ended ?? set.started),
-          ),
-        );
-        byWorkout[key] = workoutId;
-      }
-      final exercise = await _exerciseFor(set.exercise);
-      if (exercise == null) continue;
-      await insertExerciseSet(
-        db,
-        exerciseId: exercise.id,
-        workoutId: workoutId,
-        exerciseSet: ExerciseSetView(
-          id: 0,
-          bodyWeight: 0,
-          cardio: exercise.kind == 'cardio',
-          created: set.started,
-          distance: 0,
-          duration: 0,
-          name: exercise.name,
-          notes: set.warmup ? '[warmup]' : '',
-          planId: planIds[template.originalTitle],
-          reps: set.reps,
-          unit: 'kg',
-          weight: set.kg,
-        ),
-      );
+    final names = usable.map((set) => set.exercise).toSet();
+    for (final name in names) {
+      _cachedMatch(name);
     }
-    if (!mounted) return;
-    Navigator.pop(context);
+    setState(() {
+      _applied = 0;
+      _applyTotal = usable.length;
+    });
+    try {
+      await widget.pause?.call();
+      if (!mounted) return;
+      await db.transaction(() async {
+        final byWorkout = <String, int>{};
+        final planIds = <String, int?>{};
+        var createdPlans = _existingPlanCount;
+        for (final set in usable) {
+          final template = byOriginal[set.workoutTitle]!;
+          final key = '${set.workoutTitle}|${set.started.toIso8601String()}';
+          var workoutId = byWorkout[key];
+          if (workoutId == null) {
+            planIds[template.originalTitle] ??= await _planFor(
+              template,
+              createdPlans,
+            );
+            if (planIds[template.originalTitle] != null &&
+                !_existingTitles.contains(template.title.trim())) {
+              createdPlans += 1;
+              _existingTitles.add(template.title.trim());
+            }
+            workoutId = await db.workouts.insertOne(
+              WorkoutsCompanion.insert(
+                planId: Value(planIds[template.originalTitle]),
+                startedAt: set.started,
+                endedAt: Value(set.ended ?? set.started),
+              ),
+            );
+            byWorkout[key] = workoutId;
+          }
+          final exercise = _cachedMatch(set.exercise);
+          if (exercise != null) {
+            await insertExerciseSet(
+              db,
+              exerciseId: exercise.id,
+              workoutId: workoutId,
+              exerciseSet: ExerciseSetView(
+                id: 0,
+                bodyWeight: 0,
+                cardio: exercise.kind == 'cardio',
+                created: set.started,
+                distance: 0,
+                duration: 0,
+                name: exercise.name,
+                notes: set.warmup ? '[warmup]' : '',
+                planId: planIds[template.originalTitle],
+                reps: set.reps,
+                unit: 'kg',
+                weight: set.kg,
+              ),
+            );
+          }
+          _applied += 1;
+          if (mounted && (_applied == usable.length || _applied % 25 == 0)) {
+            setState(() {});
+          }
+        }
+      });
+      if (!mounted) return;
+      Navigator.pop(context);
+    } finally {
+      _applying = false;
+      if (mounted) setState(() {});
+    }
   }
 
-  Future<int?> _planFor(ImportedTemplate template) async {
+  Future<int?> _planFor(ImportedTemplate template, int createdPlans) async {
     final existing = await (db.select(
       db.plans,
     )..where((row) => row.title.equals(template.title))).getSingleOrNull();
     if (existing != null) return existing.id;
-    final count = await db.plans.count().getSingle();
-    if (count >= 7) return null;
+    if (createdPlans >= hevyTemplateLimit) return null;
     final id = await db.plans.insertOne(
       PlansCompanion.insert(
         days: '',
         title: Value(template.title),
-        sequence: Value(count),
+        sequence: Value(createdPlans),
       ),
     );
     var sequence = 0;
     for (final name in template.exercises) {
-      final exercise = await _exerciseFor(name);
+      final exercise = _cachedMatch(name);
       if (exercise == null) continue;
       await db
           .into(db.planExercises)
@@ -416,30 +573,5 @@ class _ImportPreviewPageState extends State<ImportPreviewPage> {
           );
     }
     return id;
-  }
-
-  Future<Exercise?> _exerciseFor(String name) async {
-    final known = _match(name);
-    if (known != null) return known;
-    final all = _exercises.isEmpty
-        ? await db.select(db.exercises).get()
-        : _exercises;
-    Exercise? best;
-    var bestScore = 0;
-    final needle = name.toLowerCase();
-    for (final exercise in all) {
-      final haystack =
-          '${exercise.name} ${exercise.germanName ?? ''} ${exercise.aliases ?? ''}'
-              .toLowerCase();
-      if (haystack.contains(needle) ||
-          needle.contains(exercise.name.toLowerCase())) {
-        final score = exercise.name.length;
-        if (score > bestScore) {
-          best = exercise;
-          bestScore = score;
-        }
-      }
-    }
-    return best;
   }
 }

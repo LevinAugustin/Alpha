@@ -3029,5 +3029,81 @@
   "importBackupZip": "Import backup (.zip)",
   "@importBackupZip": {
     "description": "Imports a Flexify or Alpha zip backup."
+  },
+  "importSetSummary": "{workouts} workouts, {sets} sets",
+  "@importSetSummary": {
+    "description": "Preview line for imported workouts and sets.",
+    "placeholders": {
+      "workouts": {"type": "int"},
+      "sets": {"type": "int"}
+    }
+  },
+  "importDateErrorCount": "{count} rows have a date that could not be read.",
+  "@importDateErrorCount": {
+    "description": "Rows skipped because the date could not be parsed.",
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "importUnmatchedNames": "No match: {names}",
+  "@importUnmatchedNames": {
+    "description": "Exercise names that were not matched.",
+    "placeholders": {
+      "names": {"type": "String"}
+    }
+  },
+  "importTemplatesSkipped": "Not created, the template limit was reached: {names}",
+  "@importTemplatesSkipped": {
+    "description": "Templates that exceed the plan limit.",
+    "placeholders": {
+      "names": {"type": "String"}
+    }
+  },
+  "importApplying": "{done} of {total}",
+  "@importApplying": {
+    "description": "Progress while the import is saved.",
+    "placeholders": {
+      "done": {"type": "int"},
+      "total": {"type": "int"}
+    }
+  },
+  "customExerciseMovementRequired": "Choose a movement.",
+  "@customExerciseMovementRequired": {
+    "description": "Shown when a custom exercise has no movement."
+  },
+  "setRemoved": "Set removed",
+  "@setRemoved": {"description": "Snackbar after a set is removed."},
+  "exerciseRemovedUndo": "Exercise removed",
+  "@exerciseRemovedUndo": {"description": "Snackbar after an exercise is removed."},
+  "exerciseSwappedUndo": "Exercise swapped",
+  "@exerciseSwappedUndo": {"description": "Snackbar after an exercise is swapped."},
+  "saveRestInTemplate": "Also save in the template",
+  "@saveRestInTemplate": {"description": "Saves the rest time on the plan exercise."},
+  "deleteGymTitle": "Delete studio?",
+  "@deleteGymTitle": {"description": "Title of the studio delete confirmation."},
+  "deleteGymBody": "Workouts linked to this studio stay. Only the studio is removed.",
+  "@deleteGymBody": {"description": "Explains that deleting a studio keeps workouts."},
+  "renameGym": "Rename studio",
+  "@renameGym": {"description": "Renames a studio."},
+  "cleanupImports": "Clean up import entries",
+  "@cleanupImports": {"description": "Removes workouts created by a broken import."},
+  "cleanupImportsPreview": "{workouts} imported workouts and {templates} templates will be removed. Workouts you entered by hand stay.",
+  "@cleanupImportsPreview": {
+    "description": "Preview before import cleanup.",
+    "placeholders": {
+      "workouts": {"type": "int"},
+      "templates": {"type": "int"}
+    }
+  },
+  "cleanupImportsEmpty": "Nothing to clean up.",
+  "@cleanupImportsEmpty": {"description": "Shown when no broken import rows exist."},
+  "cleanupImportsDone": "Import entries removed.",
+  "@cleanupImportsDone": {"description": "Shown after import cleanup."},
+  "measurementsImported": "{count} measurements imported.",
+  "@measurementsImported": {
+    "description": "Count of imported body-weight rows.",
+    "placeholders": {
+      "count": {"type": "int"}
+    }
   }
 }

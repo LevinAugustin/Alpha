@@ -2287,4 +2287,73 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get importBackupZip => 'Yedeği içe aktar (.zip)';
+
+  @override
+  String importSetSummary(int workouts, int sets) {
+    return '$workouts antrenman, $sets set';
+  }
+
+  @override
+  String importDateErrorCount(int count) {
+    return '$count satırın tarihi okunamadı.';
+  }
+
+  @override
+  String importUnmatchedNames(String names) {
+    return 'Eşleşme yok: $names';
+  }
+
+  @override
+  String importTemplatesSkipped(String names) {
+    return 'Oluşturulmadı, şablon sınırına ulaşıldı: $names';
+  }
+
+  @override
+  String importApplying(int done, int total) {
+    return '$done / $total';
+  }
+
+  @override
+  String get customExerciseMovementRequired => 'Bir hareket seç.';
+
+  @override
+  String get setRemoved => 'Set kaldırıldı';
+
+  @override
+  String get exerciseRemovedUndo => 'Egzersiz kaldırıldı';
+
+  @override
+  String get exerciseSwappedUndo => 'Egzersiz değiştirildi';
+
+  @override
+  String get saveRestInTemplate => 'Şablona da kaydet';
+
+  @override
+  String get deleteGymTitle => 'Stüdyo silinsin mi?';
+
+  @override
+  String get deleteGymBody =>
+      'Bu stüdyoya bağlı antrenmanlar kalır. Yalnızca stüdyo silinir.';
+
+  @override
+  String get renameGym => 'Stüdyoyu yeniden adlandır';
+
+  @override
+  String get cleanupImports => 'İçe aktarılan kayıtları temizle';
+
+  @override
+  String cleanupImportsPreview(int workouts, int templates) {
+    return '$workouts içe aktarılan antrenman ve $templates şablon silinecek. Elle girilen antrenmanlar kalır.';
+  }
+
+  @override
+  String get cleanupImportsEmpty => 'Temizlenecek bir şey yok.';
+
+  @override
+  String get cleanupImportsDone => 'İçe aktarılan kayıtlar silindi.';
+
+  @override
+  String measurementsImported(int count) {
+    return '$count ölçüm içe aktarıldı.';
+  }
 }

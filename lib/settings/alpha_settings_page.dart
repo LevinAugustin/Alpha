@@ -325,15 +325,34 @@ class _AlphaSettingsPageState extends State<AlphaSettingsPage> {
                   ListTile(
                     contentPadding: EdgeInsets.zero,
                     title: Text(gym.name),
-                    trailing: gym.id == alphaPrefs.activeGymId
+                    subtitle: gym.id == alphaPrefs.activeGymId
                         ? Text(l10n.profileActive)
-                        : TextButton(
+                        : null,
+                    trailing: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        if (gym.id != alphaPrefs.activeGymId)
+                          TextButton(
                             onPressed: () async {
                               alphaPrefs.activeGymId = gym.id;
                               await alphaPrefs.save();
                             },
                             child: Text(l10n.chooseGym),
                           ),
+                        IconButton(
+                          key: Key('rename-gym-${gym.id}'),
+                          tooltip: l10n.renameGym,
+                          onPressed: () => _renameGym(gym),
+                          icon: const Icon(Icons.edit_outlined),
+                        ),
+                        IconButton(
+                          key: Key('delete-gym-${gym.id}'),
+                          tooltip: l10n.deleteGymTitle,
+                          onPressed: () => _deleteGym(gym),
+                          icon: const Icon(Icons.delete_outline),
+                        ),
+                      ],
+                    ),
                   ),
                 Align(
                   alignment: Alignment.centerLeft,
@@ -452,6 +471,66 @@ class _AlphaSettingsPageState extends State<AlphaSettingsPage> {
         name: name,
       ),
     );
+    await alphaPrefs.save();
+  }
+
+  Future<void> _renameGym(GymPlace gym) async {
+    final controller = TextEditingController(text: gym.name);
+    final name = await showDialog<String>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(context.l10n.renameGym),
+        content: TextField(
+          key: const Key('rename-gym-field'),
+          controller: controller,
+          autofocus: true,
+          textCapitalization: TextCapitalization.words,
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: Text(context.l10n.actionCancel),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.pop(context, controller.text.trim()),
+            child: Text(context.l10n.actionSave),
+          ),
+        ],
+      ),
+    );
+    controller.dispose();
+    if (name == null || name.isEmpty) return;
+    gym.name = name;
+    await alphaPrefs.save();
+  }
+
+  Future<void> _deleteGym(GymPlace gym) async {
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(context.l10n.deleteGymTitle),
+        content: Text(context.l10n.deleteGymBody),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context, false),
+            child: Text(context.l10n.actionCancel),
+          ),
+          FilledButton(
+            key: const Key('confirm-delete-gym'),
+            onPressed: () => Navigator.pop(context, true),
+            child: Text(context.l10n.actionDelete),
+          ),
+        ],
+      ),
+    );
+    if (confirmed != true) return;
+    alphaPrefs.gyms.removeWhere((row) => row.id == gym.id);
+    if (alphaPrefs.gyms.isEmpty) {
+      alphaPrefs.gyms.add(GymPlace(id: 'default', name: 'Studio'));
+      alphaPrefs.activeGymId = 'default';
+    } else if (alphaPrefs.activeGymId == gym.id) {
+      alphaPrefs.activeGymId = alphaPrefs.gyms.first.id;
+    }
     await alphaPrefs.save();
   }
 }

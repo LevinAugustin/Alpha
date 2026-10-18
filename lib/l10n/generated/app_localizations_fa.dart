@@ -2270,4 +2270,73 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String get importBackupZip => 'درون‌ریزی پشتیبان (.zip)';
+
+  @override
+  String importSetSummary(int workouts, int sets) {
+    return '$workouts تمرین، $sets ست';
+  }
+
+  @override
+  String importDateErrorCount(int count) {
+    return '$count ردیف تاریخی دارند که خوانده نشد.';
+  }
+
+  @override
+  String importUnmatchedNames(String names) {
+    return 'بدون تطبیق: $names';
+  }
+
+  @override
+  String importTemplatesSkipped(String names) {
+    return 'ساخته نشد، سقف قالب‌ها پر است: $names';
+  }
+
+  @override
+  String importApplying(int done, int total) {
+    return '$done از $total';
+  }
+
+  @override
+  String get customExerciseMovementRequired => 'یک حرکت انتخاب کن.';
+
+  @override
+  String get setRemoved => 'ست حذف شد';
+
+  @override
+  String get exerciseRemovedUndo => 'حرکت حذف شد';
+
+  @override
+  String get exerciseSwappedUndo => 'حرکت عوض شد';
+
+  @override
+  String get saveRestInTemplate => 'در قالب هم ذخیره شود';
+
+  @override
+  String get deleteGymTitle => 'باشگاه حذف شود؟';
+
+  @override
+  String get deleteGymBody =>
+      'تمرین‌های مرتبط با این باشگاه می‌مانند. فقط باشگاه حذف می‌شود.';
+
+  @override
+  String get renameGym => 'تغییر نام باشگاه';
+
+  @override
+  String get cleanupImports => 'پاک‌سازی موارد واردشده';
+
+  @override
+  String cleanupImportsPreview(int workouts, int templates) {
+    return '$workouts تمرین واردشده و $templates قالب حذف می‌شوند. تمرین‌های دستی می‌مانند.';
+  }
+
+  @override
+  String get cleanupImportsEmpty => 'چیزی برای پاک‌سازی نیست.';
+
+  @override
+  String get cleanupImportsDone => 'موارد واردشده حذف شدند.';
+
+  @override
+  String measurementsImported(int count) {
+    return '$count اندازه‌گیری وارد شد.';
+  }
 }

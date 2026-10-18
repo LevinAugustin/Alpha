@@ -2280,4 +2280,73 @@ class AppLocalizationsMs extends AppLocalizations {
 
   @override
   String get importBackupZip => 'Import sandaran (.zip)';
+
+  @override
+  String importSetSummary(int workouts, int sets) {
+    return '$workouts senaman, $sets set';
+  }
+
+  @override
+  String importDateErrorCount(int count) {
+    return '$count baris mempunyai tarikh yang tidak dapat dibaca.';
+  }
+
+  @override
+  String importUnmatchedNames(String names) {
+    return 'Tiada padanan: $names';
+  }
+
+  @override
+  String importTemplatesSkipped(String names) {
+    return 'Tidak dibuat, had templat dicapai: $names';
+  }
+
+  @override
+  String importApplying(int done, int total) {
+    return '$done daripada $total';
+  }
+
+  @override
+  String get customExerciseMovementRequired => 'Pilih pergerakan.';
+
+  @override
+  String get setRemoved => 'Set dipadam';
+
+  @override
+  String get exerciseRemovedUndo => 'Senaman dipadam';
+
+  @override
+  String get exerciseSwappedUndo => 'Senaman ditukar';
+
+  @override
+  String get saveRestInTemplate => 'Simpan juga dalam templat';
+
+  @override
+  String get deleteGymTitle => 'Padam studio?';
+
+  @override
+  String get deleteGymBody =>
+      'Senaman yang dipautkan ke studio ini kekal. Hanya studio dipadam.';
+
+  @override
+  String get renameGym => 'Namakan semula studio';
+
+  @override
+  String get cleanupImports => 'Bersihkan entri import';
+
+  @override
+  String cleanupImportsPreview(int workouts, int templates) {
+    return '$workouts senaman import dan $templates templat akan dipadam. Senaman yang ditaip sendiri kekal.';
+  }
+
+  @override
+  String get cleanupImportsEmpty => 'Tiada apa untuk dibersihkan.';
+
+  @override
+  String get cleanupImportsDone => 'Entri import dipadam.';
+
+  @override
+  String measurementsImported(int count) {
+    return '$count ukuran diimport.';
+  }
 }

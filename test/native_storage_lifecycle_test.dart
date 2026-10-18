@@ -201,7 +201,7 @@ void main() {
     ],
     'plan_exercises': [
       for (final row in before['plan_exercises'] ?? const [])
-        {...row, 'rep_min': null, 'rep_max': null},
+        {...row, 'rep_min': null, 'rep_max': null, 'rest_ms': null},
     ],
     'workouts': [
       for (final row in before['workouts'] ?? const [])

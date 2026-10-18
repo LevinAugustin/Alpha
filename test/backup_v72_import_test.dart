@@ -60,7 +60,7 @@ void main() {
       final weight = await db.bodyWeights.select().getSingle();
       expect(weight.weightKg, closeTo(81.5, 0.001));
       final version = await db.customSelect('PRAGMA user_version').getSingle();
-      expect(version.data.values.single, 79);
+      expect(version.data.values.single, 80);
     },
   );
 }

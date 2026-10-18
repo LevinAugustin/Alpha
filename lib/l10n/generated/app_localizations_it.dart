@@ -2289,4 +2289,73 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get importBackupZip => 'Importa backup (.zip)';
+
+  @override
+  String importSetSummary(int workouts, int sets) {
+    return '$workouts allenamenti, $sets serie';
+  }
+
+  @override
+  String importDateErrorCount(int count) {
+    return '$count righe hanno una data illeggibile.';
+  }
+
+  @override
+  String importUnmatchedNames(String names) {
+    return 'Nessuna corrispondenza: $names';
+  }
+
+  @override
+  String importTemplatesSkipped(String names) {
+    return 'Non create, limite dei modelli raggiunto: $names';
+  }
+
+  @override
+  String importApplying(int done, int total) {
+    return '$done di $total';
+  }
+
+  @override
+  String get customExerciseMovementRequired => 'Scegli un movimento.';
+
+  @override
+  String get setRemoved => 'Serie rimossa';
+
+  @override
+  String get exerciseRemovedUndo => 'Esercizio rimosso';
+
+  @override
+  String get exerciseSwappedUndo => 'Esercizio sostituito';
+
+  @override
+  String get saveRestInTemplate => 'Salva anche nel modello';
+
+  @override
+  String get deleteGymTitle => 'Eliminare la palestra?';
+
+  @override
+  String get deleteGymBody =>
+      'Gli allenamenti collegati a questa palestra restano. Si elimina solo la palestra.';
+
+  @override
+  String get renameGym => 'Rinomina palestra';
+
+  @override
+  String get cleanupImports => 'Pulisci le voci importate';
+
+  @override
+  String cleanupImportsPreview(int workouts, int templates) {
+    return '$workouts allenamenti importati e $templates modelli saranno rimossi. Gli allenamenti inseriti a mano restano.';
+  }
+
+  @override
+  String get cleanupImportsEmpty => 'Niente da pulire.';
+
+  @override
+  String get cleanupImportsDone => 'Voci importate rimosse.';
+
+  @override
+  String measurementsImported(int count) {
+    return '$count misurazioni importate.';
+  }
 }

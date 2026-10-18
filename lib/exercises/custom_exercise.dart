@@ -1,11 +1,156 @@
+import 'dart:convert';
+
 import 'package:drift/drift.dart';
 import 'package:flexify/database/database.dart';
 import 'package:flexify/exercise_keys.dart';
+import 'package:flexify/import/hevy_import.dart';
 
 const customExercisePrefix = 'eigen-';
 
-bool isCustomExercise(Exercise exercise) =>
-    (exercise.catalogId ?? '').startsWith(customExercisePrefix);
+bool isCustomExercise(Exercise exercise) {
+  final id = (exercise.catalogId ?? '').trim();
+  if (id.startsWith(customExercisePrefix)) return true;
+  if ((exercise.catalogSource ?? '').trim().toLowerCase() == 'custom') {
+    return true;
+  }
+  return id.isEmpty;
+}
+
+const legacyEnglishCategories = <String, (String, String)>{
+  'chest': ('Brust', 'brust'),
+  'back': ('Rücken', 'latissimus'),
+  'shoulders': ('Schultern', 'schulter_vorne'),
+  'shoulder': ('Schultern', 'schulter_vorne'),
+  'arms': ('Bizeps', 'bizeps'),
+  'arm': ('Bizeps', 'bizeps'),
+  'biceps': ('Bizeps', 'bizeps'),
+  'triceps': ('Trizeps', 'trizeps'),
+  'legs': ('Beine', 'quadrizeps'),
+  'leg': ('Beine', 'quadrizeps'),
+  'calves': ('Beine', 'waden'),
+  'calf': ('Beine', 'waden'),
+  'core': ('Bauch', 'bauch_gerade'),
+  'abs': ('Bauch', 'bauch_gerade'),
+};
+
+const categoryPrimaryMuscle = <String, String>{
+  'Brust': 'brust',
+  'Rücken': 'latissimus',
+  'Schultern': 'schulter_vorne',
+  'Beine': 'quadrizeps',
+  'Bizeps': 'bizeps',
+  'Trizeps': 'trizeps',
+  'Bauch': 'bauch_gerade',
+};
+
+class LegacyCustomFields {
+  const LegacyCustomFields({
+    required this.category,
+    required this.equipment,
+    required this.primaryMuscles,
+    required this.grip,
+    required this.position,
+    required this.changed,
+  });
+
+  final String category;
+  final String equipment;
+  final List<String> primaryMuscles;
+  final String grip;
+  final String position;
+  final bool changed;
+}
+
+List<String> decodeMuscleList(String? raw) {
+  if (raw == null || raw.trim().isEmpty) return const [];
+  try {
+    final decoded = jsonDecode(raw);
+    if (decoded is List) {
+      return [
+        for (final item in decoded)
+          if (item is String && exerciseMuscleKeys.contains(item)) item,
+      ];
+    }
+  } catch (_) {}
+  return const [];
+}
+
+LegacyCustomFields normalizeLegacyCustomExercise(Exercise exercise) {
+  final storedCategory = (exercise.categoryName ?? exercise.muscle ?? '')
+      .trim();
+  final english = legacyEnglishCategories[storedCategory.toLowerCase()];
+  var category = storedCategory;
+  if (!exerciseCategories.contains(category)) {
+    category = english?.$1 ?? exerciseCategories.first;
+  }
+  final storedMuscles = decodeMuscleList(exercise.primaryMuscles);
+  var muscles = storedMuscles;
+  if (muscles.isEmpty) {
+    final fromEnglish = english?.$2;
+    final fromCategory = categoryPrimaryMuscle[category];
+    final fill = fromEnglish ?? fromCategory;
+    if (fill != null) muscles = [fill];
+  }
+  final storedGear = (exercise.equipment ?? '').trim();
+  var gear = storedGear;
+  if (!exerciseGearValues.contains(gear)) {
+    gear = storedGear.isEmpty
+        ? 'Körpergewicht'
+        : (hevyEquipmentGear(storedGear) ?? 'Körpergewicht');
+  }
+  final storedGrip = (exercise.griff ?? '').trim();
+  final grip = exerciseGripValues.contains(storedGrip) ? storedGrip : '';
+  final storedPosition = (exercise.position ?? '').trim();
+  final position = exercisePositionValues.contains(storedPosition)
+      ? storedPosition
+      : '';
+  final changed =
+      category != storedCategory ||
+      gear != storedGear ||
+      muscles.join('|') != storedMuscles.join('|') ||
+      grip != storedGrip ||
+      position != storedPosition;
+  return LegacyCustomFields(
+    category: category,
+    equipment: gear,
+    primaryMuscles: muscles,
+    grip: grip,
+    position: position,
+    changed: changed,
+  );
+}
+
+Future<int> repairLegacyCustomExercises(AppDatabase database) async {
+  final rows = await database.select(database.exercises).get();
+  var updated = 0;
+  for (final exercise in rows) {
+    if (!isCustomExercise(exercise)) continue;
+    final owned =
+        (exercise.catalogId ?? '').startsWith(customExercisePrefix) ||
+        (exercise.catalogSource ?? '').trim().toLowerCase() == 'custom';
+    final storedCategory = (exercise.categoryName ?? exercise.muscle ?? '')
+        .trim();
+    final english =
+        legacyEnglishCategories[storedCategory.toLowerCase()] != null;
+    if (!owned && !english) continue;
+    final fields = normalizeLegacyCustomExercise(exercise);
+    if (!fields.changed) continue;
+    await (database.update(
+      database.exercises,
+    )..where((row) => row.id.equals(exercise.id))).write(
+      ExercisesCompanion(
+        categoryName: Value(fields.category),
+        muscle: Value(fields.category),
+        equipment: Value(fields.equipment),
+        primaryMuscles: Value(_jsonList(fields.primaryMuscles)),
+        griff: Value(fields.grip.isEmpty ? null : fields.grip),
+        position: Value(fields.position.isEmpty ? null : fields.position),
+      ),
+    );
+    updated++;
+  }
+  return updated;
+}
 
 String customExerciseSlug(String name) {
   var value = name.trim().toLowerCase();

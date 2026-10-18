@@ -2253,4 +2253,73 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String get importBackupZip => 'นำเข้าข้อมูลสำรอง (.zip)';
+
+  @override
+  String importSetSummary(int workouts, int sets) {
+    return '$workouts เวิร์กเอาต์, $sets เซต';
+  }
+
+  @override
+  String importDateErrorCount(int count) {
+    return '$count แถวมีวันที่ที่อ่านไม่ได้';
+  }
+
+  @override
+  String importUnmatchedNames(String names) {
+    return 'ไม่พบรายการ: $names';
+  }
+
+  @override
+  String importTemplatesSkipped(String names) {
+    return 'ไม่ได้สร้าง เพราะถึงขีดจำกัดเทมเพลต: $names';
+  }
+
+  @override
+  String importApplying(int done, int total) {
+    return '$done จาก $total';
+  }
+
+  @override
+  String get customExerciseMovementRequired => 'เลือกการเคลื่อนไหว';
+
+  @override
+  String get setRemoved => 'ลบเซตแล้ว';
+
+  @override
+  String get exerciseRemovedUndo => 'ลบท่าแล้ว';
+
+  @override
+  String get exerciseSwappedUndo => 'สลับท่าแล้ว';
+
+  @override
+  String get saveRestInTemplate => 'บันทึกลงเทมเพลตด้วย';
+
+  @override
+  String get deleteGymTitle => 'ลบสตูดิโอ?';
+
+  @override
+  String get deleteGymBody =>
+      'เวิร์กเอาต์ที่ผูกกับสตูดิโอนี้ยังอยู่ ลบเฉพาะสตูดิโอ';
+
+  @override
+  String get renameGym => 'เปลี่ยนชื่อสตูดิโอ';
+
+  @override
+  String get cleanupImports => 'ล้างรายการที่นำเข้า';
+
+  @override
+  String cleanupImportsPreview(int workouts, int templates) {
+    return 'จะลบเวิร์กเอาต์ที่นำเข้า $workouts รายการและเทมเพลต $templates รายการ เวิร์กเอาต์ที่กรอกเองยังอยู่';
+  }
+
+  @override
+  String get cleanupImportsEmpty => 'ไม่มีอะไรให้ล้าง';
+
+  @override
+  String get cleanupImportsDone => 'ลบรายการที่นำเข้าแล้ว';
+
+  @override
+  String measurementsImported(int count) {
+    return 'นำเข้าการวัด $count รายการแล้ว';
+  }
 }

@@ -48,16 +48,24 @@ bool exerciseMatchesQuery({
 }) {
   final needle = query.trim().toLowerCase();
   if (needle.isEmpty) return true;
-  final mapped = movementSearch[needle];
-  if (mapped != null) {
-    if ((movement ?? '').trim().toLowerCase() == mapped) return true;
-    if (mapped == 'beine_huefte') {
-      final categoryName = (category ?? '').trim().toLowerCase();
-      final muscleName = (muscle ?? '').trim().toLowerCase();
-      if (categoryName == 'beine' || muscleName == 'beine') return true;
+  final words = needle
+      .split(RegExp(r'\s+'))
+      .where((word) => word.isNotEmpty)
+      .toList();
+  if (words.length == 1) {
+    final mapped = movementSearch[words.single];
+    if (mapped != null) {
+      if ((movement ?? '').trim().toLowerCase() == mapped) return true;
+      if (mapped == 'beine_huefte') {
+        final categoryName = (category ?? '').trim().toLowerCase();
+        final muscleName = (muscle ?? '').trim().toLowerCase();
+        if (categoryName == 'beine' || muscleName == 'beine') return true;
+      }
+      return false;
     }
-    return false;
   }
+  final primary = decodeCatalogList(primaryMuscles);
+  final secondary = decodeCatalogList(secondaryMuscles);
   final haystack = foldExerciseSearch(
     [
       name,
@@ -67,11 +75,43 @@ bool exerciseMatchesQuery({
       category ?? '',
       equipment ?? '',
       catalogText(mechanic) ?? '',
-      decodeCatalogList(primaryMuscles).join(' '),
-      decodeCatalogList(secondaryMuscles).join(' '),
+      primary.join(' '),
+      secondary.join(' '),
+      for (final key in [...primary, ...secondary])
+        germanMuscleSearchLabel(key),
     ].join(' '),
   );
-  return _containsTerm(haystack, foldExerciseSearch(query));
+  final foldedWords = foldExerciseSearch(
+    query,
+  ).split(RegExp(r'\s+')).where((word) => word.isNotEmpty);
+  return foldedWords.every((word) => _containsTerm(haystack, word));
+}
+
+String germanMuscleSearchLabel(String key) {
+  return const {
+        'brust': 'brust',
+        'brust_oben': 'obere brust',
+        'schulter_vorne': 'vordere schulter',
+        'schulter_seitlich': 'seitliche schulter',
+        'schulter_hinten': 'hintere schulter',
+        'latissimus': 'latissimus',
+        'oberer_ruecken': 'oberer ruecken',
+        'trapez': 'trapez',
+        'unterer_ruecken': 'unterer ruecken',
+        'bizeps': 'bizeps',
+        'unterarme': 'unterarme',
+        'trizeps': 'trizeps',
+        'bauch_gerade': 'gerader bauch',
+        'bauch_schraeg': 'schraeger bauch',
+        'quadrizeps': 'quadrizeps',
+        'beinbeuger': 'beinbeuger',
+        'gesaess': 'gesaess',
+        'adduktoren': 'adduktoren',
+        'abduktoren': 'abduktoren',
+        'waden': 'waden',
+        'hueftbeuger': 'hueftbeuger',
+      }[key] ??
+      key;
 }
 
 String exerciseDisplayName(String name, String? germanName) {
@@ -125,7 +165,11 @@ String foldExerciseSearch(String value) {
   for (final rune in value.trim().toLowerCase().runes) {
     buffer.write(_foldedLetters[rune] ?? String.fromCharCode(rune));
   }
-  return buffer.toString();
+  return buffer
+      .toString()
+      .replaceAll('ae', 'a')
+      .replaceAll('oe', 'o')
+      .replaceAll('ue', 'u');
 }
 
 ({int rank, bool matched, int length, String alpha}) _searchOrder(

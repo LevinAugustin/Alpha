@@ -2276,4 +2276,73 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get importBackupZip => 'Nhập bản sao lưu (.zip)';
+
+  @override
+  String importSetSummary(int workouts, int sets) {
+    return '$workouts buổi tập, $sets hiệp';
+  }
+
+  @override
+  String importDateErrorCount(int count) {
+    return '$count dòng có ngày không đọc được.';
+  }
+
+  @override
+  String importUnmatchedNames(String names) {
+    return 'Không khớp: $names';
+  }
+
+  @override
+  String importTemplatesSkipped(String names) {
+    return 'Không tạo, đã đạt giới hạn mẫu: $names';
+  }
+
+  @override
+  String importApplying(int done, int total) {
+    return '$done / $total';
+  }
+
+  @override
+  String get customExerciseMovementRequired => 'Hãy chọn một động tác.';
+
+  @override
+  String get setRemoved => 'Đã xóa hiệp';
+
+  @override
+  String get exerciseRemovedUndo => 'Đã xóa bài tập';
+
+  @override
+  String get exerciseSwappedUndo => 'Đã đổi bài tập';
+
+  @override
+  String get saveRestInTemplate => 'Lưu cả vào mẫu';
+
+  @override
+  String get deleteGymTitle => 'Xóa phòng tập?';
+
+  @override
+  String get deleteGymBody =>
+      'Các buổi tập gắn với phòng này được giữ. Chỉ phòng tập bị xóa.';
+
+  @override
+  String get renameGym => 'Đổi tên phòng tập';
+
+  @override
+  String get cleanupImports => 'Dọn mục đã nhập';
+
+  @override
+  String cleanupImportsPreview(int workouts, int templates) {
+    return '$workouts buổi tập đã nhập và $templates mẫu sẽ bị xóa. Buổi tập nhập tay được giữ.';
+  }
+
+  @override
+  String get cleanupImportsEmpty => 'Không có gì để dọn.';
+
+  @override
+  String get cleanupImportsDone => 'Đã xóa mục nhập.';
+
+  @override
+  String measurementsImported(int count) {
+    return 'Đã nhập $count số đo.';
+  }
 }

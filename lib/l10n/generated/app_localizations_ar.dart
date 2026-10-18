@@ -2256,4 +2256,73 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get importBackupZip => 'استيراد نسخة احتياطية (.zip)';
+
+  @override
+  String importSetSummary(int workouts, int sets) {
+    return '$workouts تمارين، $sets مجموعات';
+  }
+
+  @override
+  String importDateErrorCount(int count) {
+    return '$count صفوف بتاريخ لا يمكن قراءته.';
+  }
+
+  @override
+  String importUnmatchedNames(String names) {
+    return 'لا يوجد تطابق: $names';
+  }
+
+  @override
+  String importTemplatesSkipped(String names) {
+    return 'لم تُنشأ، بلغ الحد الأقصى للقوالب: $names';
+  }
+
+  @override
+  String importApplying(int done, int total) {
+    return '$done من $total';
+  }
+
+  @override
+  String get customExerciseMovementRequired => 'اختر حركة.';
+
+  @override
+  String get setRemoved => 'حُذفت المجموعة';
+
+  @override
+  String get exerciseRemovedUndo => 'حُذف التمرين';
+
+  @override
+  String get exerciseSwappedUndo => 'استُبدل التمرين';
+
+  @override
+  String get saveRestInTemplate => 'احفظ أيضاً في القالب';
+
+  @override
+  String get deleteGymTitle => 'حذف النادي؟';
+
+  @override
+  String get deleteGymBody =>
+      'التمارين المرتبطة بهذا النادي تبقى. يُحذف النادي فقط.';
+
+  @override
+  String get renameGym => 'إعادة تسمية النادي';
+
+  @override
+  String get cleanupImports => 'تنظيف عناصر الاستيراد';
+
+  @override
+  String cleanupImportsPreview(int workouts, int templates) {
+    return 'سيُحذف $workouts تمريناً مستورداً و$templates قالباً. التمارين المكتوبة يدوياً تبقى.';
+  }
+
+  @override
+  String get cleanupImportsEmpty => 'لا يوجد ما يُنظف.';
+
+  @override
+  String get cleanupImportsDone => 'حُذفت عناصر الاستيراد.';
+
+  @override
+  String measurementsImported(int count) {
+    return 'تم استيراد $count قياسات.';
+  }
 }

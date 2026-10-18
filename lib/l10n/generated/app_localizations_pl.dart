@@ -2297,4 +2297,73 @@ class AppLocalizationsPl extends AppLocalizations {
 
   @override
   String get importBackupZip => 'Importuj kopię (.zip)';
+
+  @override
+  String importSetSummary(int workouts, int sets) {
+    return '$workouts treningów, $sets serii';
+  }
+
+  @override
+  String importDateErrorCount(int count) {
+    return '$count wierszy ma datę, której nie dało się odczytać.';
+  }
+
+  @override
+  String importUnmatchedNames(String names) {
+    return 'Brak dopasowania: $names';
+  }
+
+  @override
+  String importTemplatesSkipped(String names) {
+    return 'Nieutworzone, osiągnięto limit szablonów: $names';
+  }
+
+  @override
+  String importApplying(int done, int total) {
+    return '$done z $total';
+  }
+
+  @override
+  String get customExerciseMovementRequired => 'Wybierz ruch.';
+
+  @override
+  String get setRemoved => 'Seria usunięta';
+
+  @override
+  String get exerciseRemovedUndo => 'Ćwiczenie usunięte';
+
+  @override
+  String get exerciseSwappedUndo => 'Ćwiczenie zamienione';
+
+  @override
+  String get saveRestInTemplate => 'Zapisz też w szablonie';
+
+  @override
+  String get deleteGymTitle => 'Usunąć studio?';
+
+  @override
+  String get deleteGymBody =>
+      'Treningi powiązane z tym studiem zostają. Usuwane jest tylko studio.';
+
+  @override
+  String get renameGym => 'Zmień nazwę studia';
+
+  @override
+  String get cleanupImports => 'Posprzątaj wpisy z importu';
+
+  @override
+  String cleanupImportsPreview(int workouts, int templates) {
+    return '$workouts zaimportowanych treningów i $templates szablonów zostanie usuniętych. Treningi wpisane ręcznie zostają.';
+  }
+
+  @override
+  String get cleanupImportsEmpty => 'Nie ma czego sprzątać.';
+
+  @override
+  String get cleanupImportsDone => 'Wpisy z importu usunięte.';
+
+  @override
+  String measurementsImported(int count) {
+    return '$count pomiarów zaimportowano.';
+  }
 }

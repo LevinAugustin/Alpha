@@ -2211,4 +2211,72 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get importBackupZip => '백업 가져오기 (.zip)';
+
+  @override
+  String importSetSummary(int workouts, int sets) {
+    return '$workouts회 운동, $sets세트';
+  }
+
+  @override
+  String importDateErrorCount(int count) {
+    return '$count개 행의 날짜를 읽지 못했습니다.';
+  }
+
+  @override
+  String importUnmatchedNames(String names) {
+    return '일치 없음: $names';
+  }
+
+  @override
+  String importTemplatesSkipped(String names) {
+    return '만들지 않음, 템플릿 한도에 도달: $names';
+  }
+
+  @override
+  String importApplying(int done, int total) {
+    return '$done / $total';
+  }
+
+  @override
+  String get customExerciseMovementRequired => '동작을 선택하세요.';
+
+  @override
+  String get setRemoved => '세트를 삭제했습니다';
+
+  @override
+  String get exerciseRemovedUndo => '운동을 삭제했습니다';
+
+  @override
+  String get exerciseSwappedUndo => '운동을 바꿨습니다';
+
+  @override
+  String get saveRestInTemplate => '템플릿에도 저장';
+
+  @override
+  String get deleteGymTitle => '스튜디오를 삭제할까요?';
+
+  @override
+  String get deleteGymBody => '이 스튜디오에 연결된 운동은 남습니다. 스튜디오만 삭제됩니다.';
+
+  @override
+  String get renameGym => '스튜디오 이름 변경';
+
+  @override
+  String get cleanupImports => '가져온 항목 정리';
+
+  @override
+  String cleanupImportsPreview(int workouts, int templates) {
+    return '가져온 운동 $workouts개와 템플릿 $templates개를 삭제합니다. 직접 입력한 운동은 남습니다.';
+  }
+
+  @override
+  String get cleanupImportsEmpty => '정리할 항목이 없습니다.';
+
+  @override
+  String get cleanupImportsDone => '가져온 항목을 삭제했습니다.';
+
+  @override
+  String measurementsImported(int count) {
+    return '$count개의 측정을 가져왔습니다.';
+  }
 }

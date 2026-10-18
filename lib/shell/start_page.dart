@@ -7,6 +7,7 @@ import 'package:flexify/shell/create_profile_dialog.dart';
 import 'package:flexify/workout/muscle_atlas_page.dart';
 import 'package:flexify/l10n/l10n.dart';
 import 'package:flexify/main.dart';
+import 'package:flexify/plan/plan_names.dart';
 import 'package:flexify/platform_page_route.dart';
 import 'package:flexify/profile/local_profiles.dart';
 import 'package:flexify/shell/training_stats.dart';
@@ -181,14 +182,14 @@ class _StartPageState extends State<StartPage> {
             Row(
               children: [
                 Expanded(
-                  child: _Mini(
+                  child: HomeStatTile(
                     icon: Icons.local_fire_department,
                     text: l10n.dayStreak(data.dayStreak),
                   ),
                 ),
                 const SizedBox(width: 8),
                 Expanded(
-                  child: _Mini(
+                  child: HomeStatTile(
                     icon: Icons.calendar_view_week,
                     text: l10n.weekStreak(data.weekStreak),
                   ),
@@ -347,7 +348,13 @@ Future<_Dashboard> _load() async {
   final plans = await (db.select(
     db.plans,
   )..orderBy([(row) => OrderingTerm.asc(row.sequence)])).get();
-  final next = plans.isEmpty ? null : plans[doneThisWeek % plans.length];
+  final finishedThisWeek = await finishedWorkoutsThisWeek(now);
+  final next = plans.isEmpty
+      ? null
+      : plans[nextPlanIndex(
+          finishedThisWeek: finishedThisWeek,
+          planCount: plans.length,
+        )];
   final registryName = await _profileName();
   final goal = alphaPrefs.weeklyGoalManual
       ? alphaPrefs.weeklyGoal
@@ -366,6 +373,32 @@ Future<_Dashboard> _load() async {
     lifts: lifts,
     quote: _quote(next, doneThisWeek, goal <= 0 ? 5 : goal),
   );
+}
+
+Future<int> finishedWorkoutsThisWeek(DateTime now) async {
+  final start = mondayOf(now);
+  final end = start.add(const Duration(days: 7));
+  final rows =
+      await (db.select(db.workouts)..where(
+            (row) =>
+                row.endedAt.isNotNull() &
+                row.startedAt.isBiggerOrEqualValue(start) &
+                row.startedAt.isSmallerThanValue(end),
+          ))
+          .get();
+  return rows.length;
+}
+
+Future<Plan?> suggestedNextPlan(DateTime now) async {
+  final plans = await (db.select(
+    db.plans,
+  )..orderBy([(row) => OrderingTerm.asc(row.sequence)])).get();
+  if (plans.isEmpty) return null;
+  final finished = await finishedWorkoutsThisWeek(now);
+  return plans[nextPlanIndex(
+    finishedThisWeek: finished,
+    planCount: plans.length,
+  )];
 }
 
 Future<String> _profileName() async {
@@ -555,14 +588,14 @@ class _LockedHome extends StatelessWidget {
                 Row(
                   children: [
                     Expanded(
-                      child: _Mini(
+                      child: HomeStatTile(
                         icon: Icons.local_fire_department,
                         text: l10n.dayStreak(data.dayStreak),
                       ),
                     ),
                     const SizedBox(width: 8),
                     Expanded(
-                      child: _Mini(
+                      child: HomeStatTile(
                         icon: Icons.calendar_view_week,
                         text: l10n.weekStreak(data.weekStreak),
                       ),
@@ -819,8 +852,8 @@ class _Ring extends StatelessWidget {
   }
 }
 
-class _Mini extends StatelessWidget {
-  const _Mini({required this.icon, required this.text});
+class HomeStatTile extends StatelessWidget {
+  const HomeStatTile({super.key, required this.icon, required this.text});
 
   final IconData icon;
   final String text;
@@ -829,8 +862,8 @@ class _Mini extends StatelessWidget {
   Widget build(BuildContext context) {
     final palette = AlphaTheme.of(context);
     return Container(
-      height: 46,
-      padding: const EdgeInsets.symmetric(horizontal: 10),
+      constraints: const BoxConstraints(minHeight: 46),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
       decoration: BoxDecoration(
         color: palette.card,
         borderRadius: BorderRadius.circular(14),
@@ -841,7 +874,11 @@ class _Mini extends StatelessWidget {
           Icon(icon, color: palette.accent, size: 22),
           const SizedBox(width: 6),
           Expanded(
-            child: Text(text, maxLines: 1, overflow: TextOverflow.ellipsis),
+            child: FittedBox(
+              fit: BoxFit.scaleDown,
+              alignment: Alignment.centerLeft,
+              child: Text(text, maxLines: 1),
+            ),
           ),
         ],
       ),

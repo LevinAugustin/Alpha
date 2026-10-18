@@ -20,6 +20,7 @@ import 'generated/schema_v60.dart' as v60;
 import 'generated/schema_v62.dart' as v62;
 import 'generated/schema_v64.dart' as v64;
 import 'generated/schema_v69.dart' as v69;
+import 'generated/schema_v79.dart' as v79;
 
 void main() {
   driftRuntimeOptions.dontWarnAboutMultipleDatabases = true;
@@ -1429,4 +1430,51 @@ void main() {
       },
     );
   }
+
+  test('v79 plan exercise keeps its row and rest stays empty', () async {
+    await verifier.testWithDataIntegrity(
+      oldVersion: 79,
+      newVersion: 80,
+      createOld: v79.DatabaseAtV79.new,
+      createNew: AppDatabase.new,
+      openTestedDatabase: AppDatabase.new,
+      createItems: (batch, oldDb) {
+        batch.insert(
+          oldDb.plans,
+          v79.PlansCompanion.insert(days: 'Monday', title: const Value('Push')),
+        );
+        batch.insert(
+          oldDb.exercises,
+          v79.ExercisesCompanion.insert(
+            name: 'Curl',
+            kind: 'strength',
+            displayUnit: 'kg',
+          ),
+        );
+        batch.insert(
+          oldDb.planExercises,
+          v79.PlanExercisesCompanion.insert(
+            enabled: 1,
+            exerciseId: 1,
+            planId: 1,
+            maxSets: const Value(3),
+          ),
+        );
+      },
+      validateItems: (newDb) async {
+        final row = await newDb.select(newDb.planExercises).getSingle();
+        expect(row.exerciseId, 1);
+        expect(row.planId, 1);
+        expect(row.maxSets, 3);
+        expect(row.restMs, null);
+        final columns = await newDb
+            .customSelect('PRAGMA table_info(plan_exercises)')
+            .get();
+        expect(
+          columns.map((item) => item.read<String>('name')),
+          contains('rest_ms'),
+        );
+      },
+    );
+  });
 }

@@ -2263,4 +2263,73 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get importBackupZip => 'बैकअप आयात करें (.zip)';
+
+  @override
+  String importSetSummary(int workouts, int sets) {
+    return '$workouts वर्कआउट, $sets सेट';
+  }
+
+  @override
+  String importDateErrorCount(int count) {
+    return '$count पंक्तियों की तारीख पढ़ी नहीं जा सकी।';
+  }
+
+  @override
+  String importUnmatchedNames(String names) {
+    return 'कोई मेल नहीं: $names';
+  }
+
+  @override
+  String importTemplatesSkipped(String names) {
+    return 'नहीं बने, टेम्पलेट की सीमा पूरी हुई: $names';
+  }
+
+  @override
+  String importApplying(int done, int total) {
+    return '$done में से $total';
+  }
+
+  @override
+  String get customExerciseMovementRequired => 'एक गति चुनें।';
+
+  @override
+  String get setRemoved => 'सेट हटाया गया';
+
+  @override
+  String get exerciseRemovedUndo => 'व्यायाम हटाया गया';
+
+  @override
+  String get exerciseSwappedUndo => 'व्यायाम बदला गया';
+
+  @override
+  String get saveRestInTemplate => 'टेम्पलेट में भी सहेजें';
+
+  @override
+  String get deleteGymTitle => 'स्टूडियो हटाएँ?';
+
+  @override
+  String get deleteGymBody =>
+      'इस स्टूडियो से जुड़े वर्कआउट रहेंगे। केवल स्टूडियो हटेगा।';
+
+  @override
+  String get renameGym => 'स्टूडियो का नाम बदलें';
+
+  @override
+  String get cleanupImports => 'आयात प्रविष्टियाँ साफ़ करें';
+
+  @override
+  String cleanupImportsPreview(int workouts, int templates) {
+    return '$workouts आयातित वर्कआउट और $templates टेम्पलेट हटेंगे। हाथ से लिखे वर्कआउट रहेंगे।';
+  }
+
+  @override
+  String get cleanupImportsEmpty => 'साफ़ करने के लिए कुछ नहीं।';
+
+  @override
+  String get cleanupImportsDone => 'आयात प्रविष्टियाँ हटाई गईं।';
+
+  @override
+  String measurementsImported(int count) {
+    return '$count माप आयात हुए।';
+  }
 }

@@ -6680,6 +6680,15 @@ class $PlanExercisesTable extends PlanExercises
     type: DriftSqlType.int,
     requiredDuringInsert: false,
   );
+  static const VerificationMeta _restMsMeta = const VerificationMeta('restMs');
+  @override
+  late final GeneratedColumn<int> restMs = GeneratedColumn<int>(
+    'rest_ms',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
   @override
   List<GeneratedColumn> get $columns => [
     enabled,
@@ -6692,6 +6701,7 @@ class $PlanExercisesTable extends PlanExercises
     sequence,
     repMin,
     repMax,
+    restMs,
   ];
   @override
   String get aliasedName => _alias ?? actualTableName;
@@ -6768,6 +6778,12 @@ class $PlanExercisesTable extends PlanExercises
         repMax.isAcceptableOrUnknown(data['rep_max']!, _repMaxMeta),
       );
     }
+    if (data.containsKey('rest_ms')) {
+      context.handle(
+        _restMsMeta,
+        restMs.isAcceptableOrUnknown(data['rest_ms']!, _restMsMeta),
+      );
+    }
     return context;
   }
 
@@ -6817,6 +6833,10 @@ class $PlanExercisesTable extends PlanExercises
         DriftSqlType.int,
         data['${effectivePrefix}rep_max'],
       ),
+      restMs: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}rest_ms'],
+      ),
     );
   }
 
@@ -6837,6 +6857,7 @@ class PlanExercise extends DataClass implements Insertable<PlanExercise> {
   final int sequence;
   final int? repMin;
   final int? repMax;
+  final int? restMs;
   const PlanExercise({
     required this.enabled,
     required this.timers,
@@ -6848,6 +6869,7 @@ class PlanExercise extends DataClass implements Insertable<PlanExercise> {
     required this.sequence,
     this.repMin,
     this.repMax,
+    this.restMs,
   });
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
@@ -6869,6 +6891,9 @@ class PlanExercise extends DataClass implements Insertable<PlanExercise> {
     }
     if (!nullToAbsent || repMax != null) {
       map['rep_max'] = Variable<int>(repMax);
+    }
+    if (!nullToAbsent || restMs != null) {
+      map['rest_ms'] = Variable<int>(restMs);
     }
     return map;
   }
@@ -6893,6 +6918,9 @@ class PlanExercise extends DataClass implements Insertable<PlanExercise> {
       repMax: repMax == null && nullToAbsent
           ? const Value.absent()
           : Value(repMax),
+      restMs: restMs == null && nullToAbsent
+          ? const Value.absent()
+          : Value(restMs),
     );
   }
 
@@ -6912,6 +6940,7 @@ class PlanExercise extends DataClass implements Insertable<PlanExercise> {
       sequence: serializer.fromJson<int>(json['sequence']),
       repMin: serializer.fromJson<int?>(json['repMin']),
       repMax: serializer.fromJson<int?>(json['repMax']),
+      restMs: serializer.fromJson<int?>(json['restMs']),
     );
   }
   @override
@@ -6928,6 +6957,7 @@ class PlanExercise extends DataClass implements Insertable<PlanExercise> {
       'sequence': serializer.toJson<int>(sequence),
       'repMin': serializer.toJson<int?>(repMin),
       'repMax': serializer.toJson<int?>(repMax),
+      'restMs': serializer.toJson<int?>(restMs),
     };
   }
 
@@ -6942,6 +6972,7 @@ class PlanExercise extends DataClass implements Insertable<PlanExercise> {
     int? sequence,
     Value<int?> repMin = const Value.absent(),
     Value<int?> repMax = const Value.absent(),
+    Value<int?> restMs = const Value.absent(),
   }) => PlanExercise(
     enabled: enabled ?? this.enabled,
     timers: timers ?? this.timers,
@@ -6953,6 +6984,7 @@ class PlanExercise extends DataClass implements Insertable<PlanExercise> {
     sequence: sequence ?? this.sequence,
     repMin: repMin.present ? repMin.value : this.repMin,
     repMax: repMax.present ? repMax.value : this.repMax,
+    restMs: restMs.present ? restMs.value : this.restMs,
   );
   PlanExercise copyWithCompanion(PlanExercisesCompanion data) {
     return PlanExercise(
@@ -6970,6 +7002,7 @@ class PlanExercise extends DataClass implements Insertable<PlanExercise> {
       sequence: data.sequence.present ? data.sequence.value : this.sequence,
       repMin: data.repMin.present ? data.repMin.value : this.repMin,
       repMax: data.repMax.present ? data.repMax.value : this.repMax,
+      restMs: data.restMs.present ? data.restMs.value : this.restMs,
     );
   }
 
@@ -6985,7 +7018,8 @@ class PlanExercise extends DataClass implements Insertable<PlanExercise> {
           ..write('warmupSets: $warmupSets, ')
           ..write('sequence: $sequence, ')
           ..write('repMin: $repMin, ')
-          ..write('repMax: $repMax')
+          ..write('repMax: $repMax, ')
+          ..write('restMs: $restMs')
           ..write(')'))
         .toString();
   }
@@ -7002,6 +7036,7 @@ class PlanExercise extends DataClass implements Insertable<PlanExercise> {
     sequence,
     repMin,
     repMax,
+    restMs,
   );
   @override
   bool operator ==(Object other) =>
@@ -7016,7 +7051,8 @@ class PlanExercise extends DataClass implements Insertable<PlanExercise> {
           other.warmupSets == this.warmupSets &&
           other.sequence == this.sequence &&
           other.repMin == this.repMin &&
-          other.repMax == this.repMax);
+          other.repMax == this.repMax &&
+          other.restMs == this.restMs);
 }
 
 class PlanExercisesCompanion extends UpdateCompanion<PlanExercise> {
@@ -7030,6 +7066,7 @@ class PlanExercisesCompanion extends UpdateCompanion<PlanExercise> {
   final Value<int> sequence;
   final Value<int?> repMin;
   final Value<int?> repMax;
+  final Value<int?> restMs;
   const PlanExercisesCompanion({
     this.enabled = const Value.absent(),
     this.timers = const Value.absent(),
@@ -7041,6 +7078,7 @@ class PlanExercisesCompanion extends UpdateCompanion<PlanExercise> {
     this.sequence = const Value.absent(),
     this.repMin = const Value.absent(),
     this.repMax = const Value.absent(),
+    this.restMs = const Value.absent(),
   });
   PlanExercisesCompanion.insert({
     required bool enabled,
@@ -7053,6 +7091,7 @@ class PlanExercisesCompanion extends UpdateCompanion<PlanExercise> {
     this.sequence = const Value.absent(),
     this.repMin = const Value.absent(),
     this.repMax = const Value.absent(),
+    this.restMs = const Value.absent(),
   }) : enabled = Value(enabled),
        exerciseId = Value(exerciseId),
        planId = Value(planId);
@@ -7067,6 +7106,7 @@ class PlanExercisesCompanion extends UpdateCompanion<PlanExercise> {
     Expression<int>? sequence,
     Expression<int>? repMin,
     Expression<int>? repMax,
+    Expression<int>? restMs,
   }) {
     return RawValuesInsertable({
       if (enabled != null) 'enabled': enabled,
@@ -7079,6 +7119,7 @@ class PlanExercisesCompanion extends UpdateCompanion<PlanExercise> {
       if (sequence != null) 'sequence': sequence,
       if (repMin != null) 'rep_min': repMin,
       if (repMax != null) 'rep_max': repMax,
+      if (restMs != null) 'rest_ms': restMs,
     });
   }
 
@@ -7093,6 +7134,7 @@ class PlanExercisesCompanion extends UpdateCompanion<PlanExercise> {
     Value<int>? sequence,
     Value<int?>? repMin,
     Value<int?>? repMax,
+    Value<int?>? restMs,
   }) {
     return PlanExercisesCompanion(
       enabled: enabled ?? this.enabled,
@@ -7105,6 +7147,7 @@ class PlanExercisesCompanion extends UpdateCompanion<PlanExercise> {
       sequence: sequence ?? this.sequence,
       repMin: repMin ?? this.repMin,
       repMax: repMax ?? this.repMax,
+      restMs: restMs ?? this.restMs,
     );
   }
 
@@ -7141,6 +7184,9 @@ class PlanExercisesCompanion extends UpdateCompanion<PlanExercise> {
     if (repMax.present) {
       map['rep_max'] = Variable<int>(repMax.value);
     }
+    if (restMs.present) {
+      map['rest_ms'] = Variable<int>(restMs.value);
+    }
     return map;
   }
 
@@ -7156,7 +7202,8 @@ class PlanExercisesCompanion extends UpdateCompanion<PlanExercise> {
           ..write('warmupSets: $warmupSets, ')
           ..write('sequence: $sequence, ')
           ..write('repMin: $repMin, ')
-          ..write('repMax: $repMax')
+          ..write('repMax: $repMax, ')
+          ..write('restMs: $restMs')
           ..write(')'))
         .toString();
   }
@@ -11249,6 +11296,7 @@ typedef $$PlanExercisesTableCreateCompanionBuilder =
       Value<int> sequence,
       Value<int?> repMin,
       Value<int?> repMax,
+      Value<int?> restMs,
     });
 typedef $$PlanExercisesTableUpdateCompanionBuilder =
     PlanExercisesCompanion Function({
@@ -11262,6 +11310,7 @@ typedef $$PlanExercisesTableUpdateCompanionBuilder =
       Value<int> sequence,
       Value<int?> repMin,
       Value<int?> repMax,
+      Value<int?> restMs,
     });
 
 final class $$PlanExercisesTableReferences
@@ -11353,6 +11402,11 @@ class $$PlanExercisesTableFilterComposer
 
   ColumnFilters<int> get repMax => $composableBuilder(
     column: $table.repMax,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get restMs => $composableBuilder(
+    column: $table.restMs,
     builder: (column) => ColumnFilters(column),
   );
 
@@ -11452,6 +11506,11 @@ class $$PlanExercisesTableOrderingComposer
     builder: (column) => ColumnOrderings(column),
   );
 
+  ColumnOrderings<int> get restMs => $composableBuilder(
+    column: $table.restMs,
+    builder: (column) => ColumnOrderings(column),
+  );
+
   $$ExercisesTableOrderingComposer get exerciseId {
     final $$ExercisesTableOrderingComposer composer = $composerBuilder(
       composer: this,
@@ -11533,6 +11592,9 @@ class $$PlanExercisesTableAnnotationComposer
 
   GeneratedColumn<int> get repMax =>
       $composableBuilder(column: $table.repMax, builder: (column) => column);
+
+  GeneratedColumn<int> get restMs =>
+      $composableBuilder(column: $table.restMs, builder: (column) => column);
 
   $$ExercisesTableAnnotationComposer get exerciseId {
     final $$ExercisesTableAnnotationComposer composer = $composerBuilder(
@@ -11619,6 +11681,7 @@ class $$PlanExercisesTableTableManager
                 Value<int> sequence = const Value.absent(),
                 Value<int?> repMin = const Value.absent(),
                 Value<int?> repMax = const Value.absent(),
+                Value<int?> restMs = const Value.absent(),
               }) => PlanExercisesCompanion(
                 enabled: enabled,
                 timers: timers,
@@ -11630,6 +11693,7 @@ class $$PlanExercisesTableTableManager
                 sequence: sequence,
                 repMin: repMin,
                 repMax: repMax,
+                restMs: restMs,
               ),
           createCompanionCallback:
               ({
@@ -11643,6 +11707,7 @@ class $$PlanExercisesTableTableManager
                 Value<int> sequence = const Value.absent(),
                 Value<int?> repMin = const Value.absent(),
                 Value<int?> repMax = const Value.absent(),
+                Value<int?> restMs = const Value.absent(),
               }) => PlanExercisesCompanion.insert(
                 enabled: enabled,
                 timers: timers,
@@ -11654,6 +11719,7 @@ class $$PlanExercisesTableTableManager
                 sequence: sequence,
                 repMin: repMin,
                 repMax: repMax,
+                restMs: restMs,
               ),
           withReferenceMapper: (p0) => p0
               .map(
