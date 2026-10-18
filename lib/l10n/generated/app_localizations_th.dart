@@ -2203,6 +2203,9 @@ class AppLocalizationsTh extends AppLocalizations {
   String get editCustomExercise => 'แก้ไขท่า';
 
   @override
+  String get unassignedExercise => 'ยังไม่ได้กำหนด';
+
+  @override
   String get deleteCustomExercise => 'ลบท่า';
 
   @override

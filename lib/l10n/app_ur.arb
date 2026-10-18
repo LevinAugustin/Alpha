@@ -2240,6 +2240,7 @@
   "sideRight": "دائیں",
   "createCustomExercise": "ورزش بنائیں",
   "editCustomExercise": "ورزش میں ترمیم",
+  "unassignedExercise": "تفویض نہیں",
   "deleteCustomExercise": "ورزش حذف کریں",
   "deleteCustomExerciseBody": "یہ ورزش حذف کریں؟ پرانی مشقیں تاریخ میں رہیں گی۔",
   "customExerciseName": "نام",

@@ -696,6 +696,7 @@
   "sideRight": "右",
   "createCustomExercise": "種目を作成",
   "editCustomExercise": "種目を編集",
+  "unassignedExercise": "未設定",
   "deleteCustomExercise": "種目を削除",
   "deleteCustomExerciseBody": "この種目を削除しますか？過去のワークアウトは履歴に残ります。",
   "customExerciseName": "名前",

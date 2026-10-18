@@ -2220,6 +2220,9 @@ class AppLocalizationsFa extends AppLocalizations {
   String get editCustomExercise => 'ویرایش حرکت';
 
   @override
+  String get unassignedExercise => 'اختصاص داده نشده';
+
+  @override
   String get deleteCustomExercise => 'حذف حرکت';
 
   @override

@@ -2240,6 +2240,7 @@
   "sideRight": "راست",
   "createCustomExercise": "ساخت حرکت",
   "editCustomExercise": "ویرایش حرکت",
+  "unassignedExercise": "اختصاص داده نشده",
   "deleteCustomExercise": "حذف حرکت",
   "deleteCustomExerciseBody": "این حرکت حذف شود؟ تمرین‌های قبلی در تاریخچه می‌مانند.",
   "customExerciseName": "نام",

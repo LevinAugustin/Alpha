@@ -77,29 +77,50 @@ List<String> decodeMuscleList(String? raw) {
   return const [];
 }
 
+const legacyCustomRepairVersion = 1;
+
+const _inventedCategory = 'Brust';
+const _inventedGear = 'Körpergewicht';
+const _inventedMuscle = 'brust';
+
+bool inventedCategoryFallback(Exercise exercise) {
+  if ((exercise.catalogId ?? '').startsWith(customExercisePrefix)) return false;
+  if ((exercise.bewegung ?? '').trim().isNotEmpty) return false;
+  if ((exercise.familie ?? '').trim().isNotEmpty) return false;
+  if (decodeMuscleList(exercise.secondaryMuscles).isNotEmpty) return false;
+  if ((exercise.griff ?? '').trim().isNotEmpty) return false;
+  if ((exercise.position ?? '').trim().isNotEmpty) return false;
+  if ((exercise.catalogSource ?? '').trim().toLowerCase() != 'custom') {
+    return false;
+  }
+  final category = (exercise.categoryName ?? '').trim();
+  final muscle = (exercise.muscle ?? '').trim();
+  if (category != _inventedCategory) return false;
+  if (muscle.isNotEmpty && muscle != _inventedCategory) return false;
+  if ((exercise.equipment ?? '').trim() != _inventedGear) return false;
+  final primary = decodeMuscleList(exercise.primaryMuscles);
+  if (primary.isEmpty) return true;
+  return primary.length == 1 && primary.single == _inventedMuscle;
+}
+
 LegacyCustomFields normalizeLegacyCustomExercise(Exercise exercise) {
   final storedCategory = (exercise.categoryName ?? exercise.muscle ?? '')
       .trim();
   final english = legacyEnglishCategories[storedCategory.toLowerCase()];
-  var category = storedCategory;
-  if (!exerciseCategories.contains(category)) {
-    category = english?.$1 ?? exerciseCategories.first;
-  }
+  final category = exerciseCategories.contains(storedCategory)
+      ? storedCategory
+      : (english?.$1 ?? '');
   final storedMuscles = decodeMuscleList(exercise.primaryMuscles);
   var muscles = storedMuscles;
   if (muscles.isEmpty) {
-    final fromEnglish = english?.$2;
-    final fromCategory = categoryPrimaryMuscle[category];
-    final fill = fromEnglish ?? fromCategory;
+    final fill = english?.$2 ?? categoryPrimaryMuscle[category];
     if (fill != null) muscles = [fill];
   }
   final storedGear = (exercise.equipment ?? '').trim();
-  var gear = storedGear;
-  if (!exerciseGearValues.contains(gear)) {
-    gear = storedGear.isEmpty
-        ? 'Körpergewicht'
-        : (hevyEquipmentGear(storedGear) ?? 'Körpergewicht');
-  }
+  final mappedGear = exerciseGearValues.contains(storedGear)
+      ? storedGear
+      : hevyEquipmentGear(storedGear);
+  final gear = mappedGear ?? storedGear;
   final storedGrip = (exercise.griff ?? '').trim();
   final grip = exerciseGripValues.contains(storedGrip) ? storedGrip : '';
   final storedPosition = (exercise.position ?? '').trim();
@@ -124,8 +145,21 @@ LegacyCustomFields normalizeLegacyCustomExercise(Exercise exercise) {
 
 final bundledExerciseNames = {for (final entry in defaultExercises) entry.$1};
 
-Future<int> repairLegacyCustomExercises(AppDatabase database) async {
+Future<bool> legacyCustomRepairDone(AppDatabase database) async {
+  final setting = await (database.select(
+    database.settings,
+  )..limit(1)).getSingleOrNull();
+  return setting != null &&
+      setting.legacyRepairVersion >= legacyCustomRepairVersion;
+}
+
+Future<int> repairLegacyCustomExercises(
+  AppDatabase database, {
+  String? flexifyMapRaw,
+}) async {
+  if (await legacyCustomRepairDone(database)) return 0;
   final rows = await database.select(database.exercises).get();
+  final index = _CatalogNameIndex()..addAll(rows, flexifyMapRaw);
   var updated = 0;
   for (final exercise in rows) {
     if (!isCustomExercise(exercise)) continue;
@@ -136,77 +170,159 @@ Future<int> repairLegacyCustomExercises(AppDatabase database) async {
         .trim();
     final english =
         legacyEnglishCategories[storedCategory.toLowerCase()] != null;
-    final match = _catalogMatch(rows, exercise);
+    final invented = inventedCategoryFallback(exercise);
+    final source = invented ? _withoutInventedFallback(exercise) : exercise;
+    final match = index.lookup(source);
     final bundled = bundledExerciseNames.contains(exercise.name);
-    if (!owned && !english && match == null && bundled) continue;
+    if (!owned && !english && match == null && bundled && !invented) continue;
     final wrote = match == null
-        ? await _writeNormalized(database, exercise)
-        : await _writeCatalogMatch(database, exercise, match);
+        ? await _writeNormalized(database, exercise, source)
+        : await _writeCatalogMatch(database, source, match);
     if (wrote) updated++;
   }
+  await database
+      .update(database.settings)
+      .write(
+        const SettingsCompanion(
+          legacyRepairVersion: Value(legacyCustomRepairVersion),
+        ),
+      );
   return updated;
 }
 
-Exercise? _catalogMatch(List<Exercise> rows, Exercise exercise) {
-  final queries = [
-    exercise.name,
-    if ((exercise.germanName ?? '').trim().isNotEmpty) exercise.germanName!,
-  ];
-  Exercise? best;
-  for (final row in rows) {
-    if (row.id == exercise.id) continue;
-    final catalogId = (row.catalogId ?? '').trim();
-    if (catalogId.isEmpty || catalogId.startsWith(customExercisePrefix)) {
-      continue;
-    }
-    final hit = queries.any(
-      (query) => exerciseExactNameOrAlias(
-        name: row.name,
-        germanName: row.germanName,
-        aliases: row.aliases,
-        query: query,
-      ),
-    );
-    if (!hit) continue;
-    if (best == null ||
-        compareExerciseSearch(
-              query: queries.first,
-              leftName: row.name,
-              leftGermanName: row.germanName,
-              leftAliases: row.aliases,
-              leftCatalog: isCatalogExercise(
-                catalogId: row.catalogId,
-                catalogSource: row.catalogSource,
-              ),
-              rightName: best.name,
-              rightGermanName: best.germanName,
-              rightAliases: best.aliases,
-              rightCatalog: isCatalogExercise(
-                catalogId: best.catalogId,
-                catalogSource: best.catalogSource,
-              ),
-            ) <
-            0) {
-      best = row;
-    }
-  }
-  return best;
+Exercise _withoutInventedFallback(Exercise exercise) {
+  return exercise.copyWith(
+    categoryName: const Value(null),
+    muscle: const Value(null),
+    equipment: const Value(null),
+    primaryMuscles: const Value(null),
+    catalogSource: const Value(null),
+  );
 }
 
-Future<bool> _writeNormalized(AppDatabase database, Exercise exercise) async {
-  final fields = normalizeLegacyCustomExercise(exercise);
-  if (!fields.changed && _hasCustomSource(exercise)) return false;
+class _CatalogNameIndex {
+  final _byKey = <String, Exercise>{};
+
+  void addAll(List<Exercise> rows, String? flexifyMapRaw) {
+    final byCatalogId = <String, Exercise>{};
+    for (final row in rows) {
+      if (!isCatalogExercise(
+        catalogId: row.catalogId,
+        catalogSource: row.catalogSource,
+      )) {
+        continue;
+      }
+      final catalogId = row.catalogId!.trim();
+      byCatalogId[catalogId] = row;
+      _add(row.name, row);
+      final german = (row.germanName ?? '').trim();
+      if (german.isNotEmpty) _add(german, row);
+      for (final alias in decodeCatalogList(row.aliases)) {
+        _add(alias, row);
+      }
+    }
+    for (final entry in _flexifySeedNames(flexifyMapRaw).entries) {
+      final exercise = byCatalogId[entry.key];
+      if (exercise == null) continue;
+      for (final name in entry.value) {
+        _add(name, exercise);
+      }
+    }
+  }
+
+  Exercise? lookup(Exercise exercise) {
+    final queries = [
+      exercise.name,
+      if ((exercise.germanName ?? '').trim().isNotEmpty) exercise.germanName!,
+    ];
+    Exercise? best;
+    for (final query in queries) {
+      final hit = _byKey[foldExerciseSearch(query)];
+      if (hit == null || hit.id == exercise.id) continue;
+      if (best == null || _prefers(query, hit, best)) best = hit;
+    }
+    return best;
+  }
+
+  void _add(String label, Exercise exercise) {
+    final key = foldExerciseSearch(label);
+    if (key.isEmpty) return;
+    final current = _byKey[key];
+    if (current == null || _prefers(label, exercise, current)) {
+      _byKey[key] = exercise;
+    }
+  }
+
+  bool _prefers(String query, Exercise left, Exercise right) {
+    return compareExerciseSearch(
+          query: query,
+          leftName: left.name,
+          leftGermanName: left.germanName,
+          leftAliases: left.aliases,
+          rightName: right.name,
+          rightGermanName: right.germanName,
+          rightAliases: right.aliases,
+        ) <
+        0;
+  }
+}
+
+Map<String, List<String>> _flexifySeedNames(String? raw) {
+  if (raw == null || raw.trim().isEmpty) return const {};
+  Object? decoded;
+  try {
+    decoded = jsonDecode(raw);
+  } catch (_) {
+    return const {};
+  }
+  if (decoded is! Map) return const {};
+  final names = <String, List<String>>{};
+  for (final entry in decoded.entries) {
+    final id = entry.key;
+    if (id is! String || id.trim().isEmpty) continue;
+    final value = entry.value;
+    if (value is! Map) continue;
+    final list = value['seed_namen'];
+    if (list is! List) continue;
+    final seeds = [
+      for (final item in list)
+        if (item is String && item.trim().isNotEmpty) item.trim(),
+    ];
+    if (seeds.isNotEmpty) names[id] = seeds;
+  }
+  return names;
+}
+
+Future<bool> _writeNormalized(
+  AppDatabase database,
+  Exercise original,
+  Exercise source,
+) async {
+  final fields = normalizeLegacyCustomExercise(source);
+  final category = fields.category.isEmpty ? null : fields.category;
+  final gear = _knownGear(fields.equipment);
+  final muscles = fields.primaryMuscles;
+  final sameCategory = (original.categoryName ?? '').trim() == (category ?? '');
+  final sameMuscle = (original.muscle ?? '').trim() == (category ?? '');
+  final sameGear = (original.equipment ?? '').trim() == (gear ?? '');
+  final samePrimary =
+      decodeMuscleList(original.primaryMuscles).join('|') == muscles.join('|');
+  if (sameCategory && sameMuscle && sameGear && samePrimary) return false;
   await (database.update(
     database.exercises,
-  )..where((row) => row.id.equals(exercise.id))).write(
+  )..where((row) => row.id.equals(original.id))).write(
     ExercisesCompanion(
-      categoryName: Value(fields.category),
-      muscle: Value(fields.category),
-      equipment: Value(fields.equipment),
-      primaryMuscles: Value(_jsonList(fields.primaryMuscles)),
+      categoryName: Value(category),
+      muscle: Value(category),
+      equipment: Value(gear),
+      primaryMuscles: Value(muscles.isEmpty ? null : _jsonList(muscles)),
       griff: Value(fields.grip.isEmpty ? null : fields.grip),
       position: Value(fields.position.isEmpty ? null : fields.position),
-      catalogSource: Value(_customSource(exercise)),
+      catalogSource: Value(
+        category == null && gear == null && muscles.isEmpty
+            ? null
+            : _customSource(original),
+      ),
     ),
   );
   return true;
@@ -217,29 +333,22 @@ Future<bool> _writeCatalogMatch(
   Exercise exercise,
   Exercise match,
 ) async {
-  final fallback = normalizeLegacyCustomExercise(exercise);
   final storedCategory = (exercise.categoryName ?? exercise.muscle ?? '')
       .trim();
   final category =
       _knownCategory(storedCategory) ??
       _knownCategory(match.categoryName) ??
-      _knownCategory(match.muscle) ??
-      fallback.category;
-  final gear =
-      _knownGear(exercise.equipment) ??
-      _knownGear(match.equipment) ??
-      fallback.equipment;
+      _knownCategory(match.muscle);
+  final gear = _knownGear(exercise.equipment) ?? _knownGear(match.equipment);
   final storedPrimary = decodeMuscleList(exercise.primaryMuscles);
   final matchedPrimary = decodeMuscleList(match.primaryMuscles);
-  final muscles = storedPrimary.isNotEmpty
-      ? storedPrimary
-      : (matchedPrimary.isEmpty ? fallback.primaryMuscles : matchedPrimary);
+  final muscles = storedPrimary.isNotEmpty ? storedPrimary : matchedPrimary;
   final secondary = decodeMuscleList(match.secondaryMuscles);
   final movement = (match.bewegung ?? '').trim();
   final sameCategory =
-      (exercise.categoryName ?? '').trim() == category &&
-      (exercise.muscle ?? '').trim() == category;
-  final sameGear = (exercise.equipment ?? '').trim() == gear;
+      (exercise.categoryName ?? '').trim() == (category ?? '') &&
+      (exercise.muscle ?? '').trim() == (category ?? '');
+  final sameGear = (exercise.equipment ?? '').trim() == (gear ?? '');
   final samePrimary =
       decodeMuscleList(exercise.primaryMuscles).join('|') == muscles.join('|');
   if (sameCategory && sameGear && samePrimary && _hasCustomSource(exercise)) {

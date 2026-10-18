@@ -167,7 +167,7 @@ void main() {
       db.exercises,
     )..where((row) => row.id.equals(id))).getSingle();
     expect(after.categoryName, 'Brust');
-    expect(after.equipment, 'Körpergewicht');
+    expect(after.equipment, isNull);
     expect(after.primaryMuscles, '["brust"]');
 
     final catalogId = await db
@@ -225,7 +225,7 @@ void main() {
             displayUnit: 'kg',
           ),
         );
-    expect(await repairLegacyCustomExercises(db), greaterThanOrEqualTo(2));
+    expect(await repairLegacyCustomExercises(db), greaterThanOrEqualTo(1));
     final landmine = await (db.select(
       db.exercises,
     )..where((row) => row.id.equals(id))).getSingle();
@@ -241,8 +241,9 @@ void main() {
     final unmatched = await (db.select(
       db.exercises,
     )..where((row) => row.id.equals(plain))).getSingle();
-    expect(unmatched.equipment, 'Körpergewicht');
-    expect(unmatched.primaryMuscles, contains('brust'));
+    expect(unmatched.categoryName, isNull);
+    expect(unmatched.equipment, isNull);
+    expect(unmatched.primaryMuscles, isNull);
     final saved = await saveCustomExercise(
       db,
       const CustomExerciseDraft(

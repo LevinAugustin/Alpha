@@ -2240,6 +2240,7 @@
   "sideRight": "दायाँ",
   "createCustomExercise": "व्यायाम बनाएँ",
   "editCustomExercise": "व्यायाम संपादित करें",
+  "unassignedExercise": "असाइन नहीं",
   "deleteCustomExercise": "व्यायाम हटाएँ",
   "deleteCustomExerciseBody": "यह व्यायाम हटाएँ? पिछले वर्कआउट इतिहास में रहेंगे।",
   "customExerciseName": "नाम",

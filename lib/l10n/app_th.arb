@@ -2240,6 +2240,7 @@
   "sideRight": "ขวา",
   "createCustomExercise": "สร้างท่า",
   "editCustomExercise": "แก้ไขท่า",
+  "unassignedExercise": "ยังไม่ได้กำหนด",
   "deleteCustomExercise": "ลบท่า",
   "deleteCustomExerciseBody": "ลบท่านี้หรือไม่ การฝึกที่ผ่านมายังอยู่ในประวัติ",
   "customExerciseName": "ชื่อ",

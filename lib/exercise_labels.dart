@@ -33,10 +33,14 @@ String mechanicLabel(AppLocalizations l10n, String value) {
   };
 }
 
-String? exerciseListSubtitle({String? category, String? equipment}) {
+String? exerciseListSubtitle({
+  String? category,
+  String? equipment,
+  String? unassigned,
+}) {
   final left = (category ?? '').trim();
   final right = (equipment ?? '').trim();
-  if (left.isEmpty && right.isEmpty) return null;
+  if (left.isEmpty && right.isEmpty) return unassigned;
   if (left.isEmpty) return right;
   if (right.isEmpty) return left;
   return '$left · $right';

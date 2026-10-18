@@ -2240,6 +2240,7 @@
   "sideRight": "يمين",
   "createCustomExercise": "إنشاء تمرين",
   "editCustomExercise": "تعديل التمرين",
+  "unassignedExercise": "غير معيّن",
   "deleteCustomExercise": "حذف التمرين",
   "deleteCustomExerciseBody": "حذف هذا التمرين؟ تبقى التمارين السابقة في السجل.",
   "customExerciseName": "الاسم",

@@ -124,9 +124,9 @@ Future<void> main() async {
       try {
         await importExerciseCatalog(db);
         await renameEnglishPlanTitles(db);
-        await repairLegacyCustomExercises(db);
         await restoreLiveWorkout(db);
         await alphaPrefs.load();
+        unawaited(_repairLegacyCustoms(db));
       } catch (error, stack) {
         debugPrint('Exercise catalog seed failed: $error');
         debugPrint('$stack');
@@ -138,6 +138,15 @@ Future<void> main() async {
     (error, stack) =>
         CrashLogger.instance?.record(error, stack, context: 'zone'),
   );
+}
+
+Future<void> _repairLegacyCustoms(AppDatabase database) async {
+  if (await legacyCustomRepairDone(database)) return;
+  String? flexifyMapRaw;
+  try {
+    flexifyMapRaw = await rootBundle.loadString(exerciseFlexifyMapAsset);
+  } catch (_) {}
+  await repairLegacyCustomExercises(database, flexifyMapRaw: flexifyMapRaw);
 }
 
 Future<void> renameEnglishPlanTitles(AppDatabase database) async {

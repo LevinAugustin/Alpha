@@ -696,6 +696,7 @@
   "sideRight": "Rechts",
   "createCustomExercise": "Oefening maken",
   "editCustomExercise": "Oefening bewerken",
+  "unassignedExercise": "Niet toegewezen",
   "deleteCustomExercise": "Oefening verwijderen",
   "deleteCustomExerciseBody": "Deze oefening verwijderen? Eerdere trainingen blijven in de geschiedenis.",
   "customExerciseName": "Naam",

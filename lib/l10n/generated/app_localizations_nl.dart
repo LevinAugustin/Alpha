@@ -2235,6 +2235,9 @@ class AppLocalizationsNl extends AppLocalizations {
   String get editCustomExercise => 'Oefening bewerken';
 
   @override
+  String get unassignedExercise => 'Niet toegewezen';
+
+  @override
   String get deleteCustomExercise => 'Oefening verwijderen';
 
   @override

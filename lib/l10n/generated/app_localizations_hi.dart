@@ -2213,6 +2213,9 @@ class AppLocalizationsHi extends AppLocalizations {
   String get editCustomExercise => 'व्यायाम संपादित करें';
 
   @override
+  String get unassignedExercise => 'असाइन नहीं';
+
+  @override
   String get deleteCustomExercise => 'व्यायाम हटाएँ';
 
   @override

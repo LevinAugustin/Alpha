@@ -4431,6 +4431,17 @@ class $SettingsTable extends Settings with TableInfo<$SettingsTable, Setting> {
     requiredDuringInsert: false,
     defaultValue: const Constant(0.35),
   );
+  static const VerificationMeta _legacyRepairVersionMeta =
+      const VerificationMeta('legacyRepairVersion');
+  @override
+  late final GeneratedColumn<int> legacyRepairVersion = GeneratedColumn<int>(
+    'legacy_repair_version',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
   @override
   List<GeneratedColumn> get $columns => [
     alarmSound,
@@ -4485,6 +4496,7 @@ class $SettingsTable extends Settings with TableInfo<$SettingsTable, Setting> {
     apiKey,
     themeId,
     restVolume,
+    legacyRepairVersion,
   ];
   @override
   String get aliasedName => _alias ?? actualTableName;
@@ -4929,6 +4941,15 @@ class $SettingsTable extends Settings with TableInfo<$SettingsTable, Setting> {
         restVolume.isAcceptableOrUnknown(data['rest_volume']!, _restVolumeMeta),
       );
     }
+    if (data.containsKey('legacy_repair_version')) {
+      context.handle(
+        _legacyRepairVersionMeta,
+        legacyRepairVersion.isAcceptableOrUnknown(
+          data['legacy_repair_version']!,
+          _legacyRepairVersionMeta,
+        ),
+      );
+    }
     return context;
   }
 
@@ -5146,6 +5167,10 @@ class $SettingsTable extends Settings with TableInfo<$SettingsTable, Setting> {
         DriftSqlType.double,
         data['${effectivePrefix}rest_volume'],
       )!,
+      legacyRepairVersion: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}legacy_repair_version'],
+      )!,
     );
   }
 
@@ -5208,6 +5233,7 @@ class Setting extends DataClass implements Insertable<Setting> {
   final String? apiKey;
   final String themeId;
   final double restVolume;
+  final int legacyRepairVersion;
   const Setting({
     required this.alarmSound,
     required this.automaticBackups,
@@ -5261,6 +5287,7 @@ class Setting extends DataClass implements Insertable<Setting> {
     this.apiKey,
     required this.themeId,
     required this.restVolume,
+    required this.legacyRepairVersion,
   });
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
@@ -5341,6 +5368,7 @@ class Setting extends DataClass implements Insertable<Setting> {
     }
     map['theme_id'] = Variable<String>(themeId);
     map['rest_volume'] = Variable<double>(restVolume);
+    map['legacy_repair_version'] = Variable<int>(legacyRepairVersion);
     return map;
   }
 
@@ -5418,6 +5446,7 @@ class Setting extends DataClass implements Insertable<Setting> {
           : Value(apiKey),
       themeId: Value(themeId),
       restVolume: Value(restVolume),
+      legacyRepairVersion: Value(legacyRepairVersion),
     );
   }
 
@@ -5489,6 +5518,9 @@ class Setting extends DataClass implements Insertable<Setting> {
       apiKey: serializer.fromJson<String?>(json['apiKey']),
       themeId: serializer.fromJson<String>(json['themeId']),
       restVolume: serializer.fromJson<double>(json['restVolume']),
+      legacyRepairVersion: serializer.fromJson<int>(
+        json['legacyRepairVersion'],
+      ),
     );
   }
   @override
@@ -5551,6 +5583,7 @@ class Setting extends DataClass implements Insertable<Setting> {
       'apiKey': serializer.toJson<String?>(apiKey),
       'themeId': serializer.toJson<String>(themeId),
       'restVolume': serializer.toJson<double>(restVolume),
+      'legacyRepairVersion': serializer.toJson<int>(legacyRepairVersion),
     };
   }
 
@@ -5607,6 +5640,7 @@ class Setting extends DataClass implements Insertable<Setting> {
     Value<String?> apiKey = const Value.absent(),
     String? themeId,
     double? restVolume,
+    int? legacyRepairVersion,
   }) => Setting(
     alarmSound: alarmSound ?? this.alarmSound,
     automaticBackups: automaticBackups ?? this.automaticBackups,
@@ -5666,6 +5700,7 @@ class Setting extends DataClass implements Insertable<Setting> {
     apiKey: apiKey.present ? apiKey.value : this.apiKey,
     themeId: themeId ?? this.themeId,
     restVolume: restVolume ?? this.restVolume,
+    legacyRepairVersion: legacyRepairVersion ?? this.legacyRepairVersion,
   );
   Setting copyWithCompanion(SettingsCompanion data) {
     return Setting(
@@ -5800,6 +5835,9 @@ class Setting extends DataClass implements Insertable<Setting> {
       restVolume: data.restVolume.present
           ? data.restVolume.value
           : this.restVolume,
+      legacyRepairVersion: data.legacyRepairVersion.present
+          ? data.legacyRepairVersion.value
+          : this.legacyRepairVersion,
     );
   }
 
@@ -5859,7 +5897,8 @@ class Setting extends DataClass implements Insertable<Setting> {
           ..write('goals: $goals, ')
           ..write('apiKey: $apiKey, ')
           ..write('themeId: $themeId, ')
-          ..write('restVolume: $restVolume')
+          ..write('restVolume: $restVolume, ')
+          ..write('legacyRepairVersion: $legacyRepairVersion')
           ..write(')'))
         .toString();
   }
@@ -5918,6 +5957,7 @@ class Setting extends DataClass implements Insertable<Setting> {
     apiKey,
     themeId,
     restVolume,
+    legacyRepairVersion,
   ]);
   @override
   bool operator ==(Object other) =>
@@ -5975,7 +6015,8 @@ class Setting extends DataClass implements Insertable<Setting> {
           other.goals == this.goals &&
           other.apiKey == this.apiKey &&
           other.themeId == this.themeId &&
-          other.restVolume == this.restVolume);
+          other.restVolume == this.restVolume &&
+          other.legacyRepairVersion == this.legacyRepairVersion);
 }
 
 class SettingsCompanion extends UpdateCompanion<Setting> {
@@ -6031,6 +6072,7 @@ class SettingsCompanion extends UpdateCompanion<Setting> {
   final Value<String?> apiKey;
   final Value<String> themeId;
   final Value<double> restVolume;
+  final Value<int> legacyRepairVersion;
   const SettingsCompanion({
     this.alarmSound = const Value.absent(),
     this.automaticBackups = const Value.absent(),
@@ -6084,6 +6126,7 @@ class SettingsCompanion extends UpdateCompanion<Setting> {
     this.apiKey = const Value.absent(),
     this.themeId = const Value.absent(),
     this.restVolume = const Value.absent(),
+    this.legacyRepairVersion = const Value.absent(),
   });
   SettingsCompanion.insert({
     required String alarmSound,
@@ -6138,6 +6181,7 @@ class SettingsCompanion extends UpdateCompanion<Setting> {
     this.apiKey = const Value.absent(),
     this.themeId = const Value.absent(),
     this.restVolume = const Value.absent(),
+    this.legacyRepairVersion = const Value.absent(),
   }) : alarmSound = Value(alarmSound),
        cardioUnit = Value(cardioUnit),
        curveLines = Value(curveLines),
@@ -6207,6 +6251,7 @@ class SettingsCompanion extends UpdateCompanion<Setting> {
     Expression<String>? apiKey,
     Expression<String>? themeId,
     Expression<double>? restVolume,
+    Expression<int>? legacyRepairVersion,
   }) {
     return RawValuesInsertable({
       if (alarmSound != null) 'alarm_sound': alarmSound,
@@ -6267,6 +6312,8 @@ class SettingsCompanion extends UpdateCompanion<Setting> {
       if (apiKey != null) 'api_key': apiKey,
       if (themeId != null) 'theme_id': themeId,
       if (restVolume != null) 'rest_volume': restVolume,
+      if (legacyRepairVersion != null)
+        'legacy_repair_version': legacyRepairVersion,
     });
   }
 
@@ -6323,6 +6370,7 @@ class SettingsCompanion extends UpdateCompanion<Setting> {
     Value<String?>? apiKey,
     Value<String>? themeId,
     Value<double>? restVolume,
+    Value<int>? legacyRepairVersion,
   }) {
     return SettingsCompanion(
       alarmSound: alarmSound ?? this.alarmSound,
@@ -6380,6 +6428,7 @@ class SettingsCompanion extends UpdateCompanion<Setting> {
       apiKey: apiKey ?? this.apiKey,
       themeId: themeId ?? this.themeId,
       restVolume: restVolume ?? this.restVolume,
+      legacyRepairVersion: legacyRepairVersion ?? this.legacyRepairVersion,
     );
   }
 
@@ -6546,6 +6595,9 @@ class SettingsCompanion extends UpdateCompanion<Setting> {
     if (restVolume.present) {
       map['rest_volume'] = Variable<double>(restVolume.value);
     }
+    if (legacyRepairVersion.present) {
+      map['legacy_repair_version'] = Variable<int>(legacyRepairVersion.value);
+    }
     return map;
   }
 
@@ -6605,7 +6657,8 @@ class SettingsCompanion extends UpdateCompanion<Setting> {
           ..write('goals: $goals, ')
           ..write('apiKey: $apiKey, ')
           ..write('themeId: $themeId, ')
-          ..write('restVolume: $restVolume')
+          ..write('restVolume: $restVolume, ')
+          ..write('legacyRepairVersion: $legacyRepairVersion')
           ..write(')'))
         .toString();
   }
@@ -10240,6 +10293,7 @@ typedef $$SettingsTableCreateCompanionBuilder =
       Value<String?> apiKey,
       Value<String> themeId,
       Value<double> restVolume,
+      Value<int> legacyRepairVersion,
     });
 typedef $$SettingsTableUpdateCompanionBuilder =
     SettingsCompanion Function({
@@ -10295,6 +10349,7 @@ typedef $$SettingsTableUpdateCompanionBuilder =
       Value<String?> apiKey,
       Value<String> themeId,
       Value<double> restVolume,
+      Value<int> legacyRepairVersion,
     });
 
 class $$SettingsTableFilterComposer
@@ -10563,6 +10618,11 @@ class $$SettingsTableFilterComposer
 
   ColumnFilters<double> get restVolume => $composableBuilder(
     column: $table.restVolume,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get legacyRepairVersion => $composableBuilder(
+    column: $table.legacyRepairVersion,
     builder: (column) => ColumnFilters(column),
   );
 }
@@ -10836,6 +10896,11 @@ class $$SettingsTableOrderingComposer
     column: $table.restVolume,
     builder: (column) => ColumnOrderings(column),
   );
+
+  ColumnOrderings<int> get legacyRepairVersion => $composableBuilder(
+    column: $table.legacyRepairVersion,
+    builder: (column) => ColumnOrderings(column),
+  );
 }
 
 class $$SettingsTableAnnotationComposer
@@ -11081,6 +11146,11 @@ class $$SettingsTableAnnotationComposer
     column: $table.restVolume,
     builder: (column) => column,
   );
+
+  GeneratedColumn<int> get legacyRepairVersion => $composableBuilder(
+    column: $table.legacyRepairVersion,
+    builder: (column) => column,
+  );
 }
 
 class $$SettingsTableTableManager
@@ -11164,6 +11234,7 @@ class $$SettingsTableTableManager
                 Value<String?> apiKey = const Value.absent(),
                 Value<String> themeId = const Value.absent(),
                 Value<double> restVolume = const Value.absent(),
+                Value<int> legacyRepairVersion = const Value.absent(),
               }) => SettingsCompanion(
                 alarmSound: alarmSound,
                 automaticBackups: automaticBackups,
@@ -11218,6 +11289,7 @@ class $$SettingsTableTableManager
                 apiKey: apiKey,
                 themeId: themeId,
                 restVolume: restVolume,
+                legacyRepairVersion: legacyRepairVersion,
               ),
           createCompanionCallback:
               ({
@@ -11274,6 +11346,7 @@ class $$SettingsTableTableManager
                 Value<String?> apiKey = const Value.absent(),
                 Value<String> themeId = const Value.absent(),
                 Value<double> restVolume = const Value.absent(),
+                Value<int> legacyRepairVersion = const Value.absent(),
               }) => SettingsCompanion.insert(
                 alarmSound: alarmSound,
                 automaticBackups: automaticBackups,
@@ -11328,6 +11401,7 @@ class $$SettingsTableTableManager
                 apiKey: apiKey,
                 themeId: themeId,
                 restVolume: restVolume,
+                legacyRepairVersion: legacyRepairVersion,
               ),
           withReferenceMapper: (p0) => p0
               .map(

@@ -2238,6 +2238,9 @@ class AppLocalizationsIt extends AppLocalizations {
   String get editCustomExercise => 'Modifica esercizio';
 
   @override
+  String get unassignedExercise => 'Non assegnato';
+
+  @override
   String get deleteCustomExercise => 'Elimina esercizio';
 
   @override

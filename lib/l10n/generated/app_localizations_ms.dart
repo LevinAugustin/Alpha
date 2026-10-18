@@ -2230,6 +2230,9 @@ class AppLocalizationsMs extends AppLocalizations {
   String get editCustomExercise => 'Sunting latihan';
 
   @override
+  String get unassignedExercise => 'Belum ditetapkan';
+
+  @override
   String get deleteCustomExercise => 'Padam latihan';
 
   @override

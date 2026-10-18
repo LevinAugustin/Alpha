@@ -166,6 +166,7 @@ void main() {
           'api_key': null,
           'theme_id': 'tiefschwarz',
           'rest_volume': 0.35,
+          'legacy_repair_version': 0,
         },
     ],
     'exercises': [

@@ -2240,6 +2240,7 @@
   "sideRight": "Kanan",
   "createCustomExercise": "Cipta latihan",
   "editCustomExercise": "Sunting latihan",
+  "unassignedExercise": "Belum ditetapkan",
   "deleteCustomExercise": "Padam latihan",
   "deleteCustomExerciseBody": "Padam latihan ini? Sesi lama kekal dalam sejarah.",
   "customExerciseName": "Nama",

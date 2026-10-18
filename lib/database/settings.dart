@@ -70,4 +70,6 @@ class Settings extends Table {
   TextColumn get apiKey => text().nullable()();
   TextColumn get themeId => text().withDefault(const Constant('tiefschwarz'))();
   RealColumn get restVolume => real().withDefault(const Constant(0.35))();
+  IntColumn get legacyRepairVersion =>
+      integer().withDefault(const Constant(0))();
 }

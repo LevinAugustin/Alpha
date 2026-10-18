@@ -2237,6 +2237,9 @@ class AppLocalizationsTr extends AppLocalizations {
   String get editCustomExercise => 'Egzersizi düzenle';
 
   @override
+  String get unassignedExercise => 'Atanmadı';
+
+  @override
   String get deleteCustomExercise => 'Egzersizi sil';
 
   @override

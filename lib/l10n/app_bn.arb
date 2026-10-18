@@ -2240,6 +2240,7 @@
   "sideRight": "ডান",
   "createCustomExercise": "ব্যায়াম তৈরি করুন",
   "editCustomExercise": "ব্যায়াম সম্পাদনা",
+  "unassignedExercise": "নির্ধারিত নয়",
   "deleteCustomExercise": "ব্যায়াম মুছুন",
   "deleteCustomExerciseBody": "এই ব্যায়াম মুছবেন? আগের ওয়ার্কআউট ইতিহাসে থাকবে।",
   "customExerciseName": "নাম",

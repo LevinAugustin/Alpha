@@ -2249,6 +2249,7 @@
   "sideRight": "Права",
   "createCustomExercise": "Створити вправу",
   "editCustomExercise": "Змінити вправу",
+  "unassignedExercise": "Не призначено",
   "deleteCustomExercise": "Видалити вправу",
   "deleteCustomExerciseBody": "Видалити цю вправу? Минулі тренування залишаються в історії.",
   "customExerciseName": "Назва",

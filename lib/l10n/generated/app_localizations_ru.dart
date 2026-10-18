@@ -2248,6 +2248,9 @@ class AppLocalizationsRu extends AppLocalizations {
   String get editCustomExercise => 'Изменить упражнение';
 
   @override
+  String get unassignedExercise => 'Не назначено';
+
+  @override
   String get deleteCustomExercise => 'Удалить упражнение';
 
   @override

@@ -696,6 +696,7 @@
   "sideRight": "Droite",
   "createCustomExercise": "Créer un exercice",
   "editCustomExercise": "Modifier l'exercice",
+  "unassignedExercise": "Non attribué",
   "deleteCustomExercise": "Supprimer l'exercice",
   "deleteCustomExerciseBody": "Supprimer cet exercice ? Les séances passées restent dans l'historique.",
   "customExerciseName": "Nom",

@@ -4128,6 +4128,12 @@ abstract class AppLocalizations {
   /// **'Edit exercise'**
   String get editCustomExercise;
 
+  /// Shown when a custom exercise has no muscle or equipment yet.
+  ///
+  /// In en, this message translates to:
+  /// **'Not assigned'**
+  String get unassignedExercise;
+
   /// Action for deleting a custom exercise.
   ///
   /// In en, this message translates to:

@@ -696,6 +696,7 @@
   "sideRight": "Prawa",
   "createCustomExercise": "Utwórz ćwiczenie",
   "editCustomExercise": "Edytuj ćwiczenie",
+  "unassignedExercise": "Nieprzypisane",
   "deleteCustomExercise": "Usuń ćwiczenie",
   "deleteCustomExerciseBody": "Usunąć to ćwiczenie? Dotychczasowe treningi zostają w historii.",
   "customExerciseName": "Nazwa",

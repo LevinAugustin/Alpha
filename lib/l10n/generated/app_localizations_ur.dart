@@ -2218,6 +2218,9 @@ class AppLocalizationsUr extends AppLocalizations {
   String get editCustomExercise => 'ورزش میں ترمیم';
 
   @override
+  String get unassignedExercise => 'تفویض نہیں';
+
+  @override
   String get deleteCustomExercise => 'ورزش حذف کریں';
 
   @override

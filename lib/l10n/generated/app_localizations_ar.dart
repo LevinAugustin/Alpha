@@ -2206,6 +2206,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get editCustomExercise => 'تعديل التمرين';
 
   @override
+  String get unassignedExercise => 'غير معيّن';
+
+  @override
   String get deleteCustomExercise => 'حذف التمرين';
 
   @override

@@ -22,6 +22,7 @@ import 'generated/schema_v64.dart' as v64;
 import 'generated/schema_v69.dart' as v69;
 import 'generated/schema_v79.dart' as v79;
 import 'generated/schema_v80.dart' as v80;
+import 'generated/schema_v81.dart' as v81;
 
 void main() {
   driftRuntimeOptions.dontWarnAboutMultipleDatabases = true;
@@ -1505,4 +1506,52 @@ void main() {
       },
     );
   });
+
+  test(
+    'v81 settings keep their row and the repair flag starts at zero',
+    () async {
+      await verifier.testWithDataIntegrity(
+        oldVersion: 81,
+        newVersion: 82,
+        createOld: v81.DatabaseAtV81.new,
+        createNew: AppDatabase.new,
+        openTestedDatabase: AppDatabase.new,
+        createItems: (batch, oldDb) {
+          batch.insert(
+            oldDb.settings,
+            v81.SettingsCompanion.insert(
+              alarmSound: '',
+              cardioUnit: 'km',
+              curveLines: 0,
+              explainedPermissions: 1,
+              groupHistory: 0,
+              longDateFormat: 'dd/MM/yyyy',
+              maxSets: 3,
+              planTrailing: 'PlanTrailing.reorder',
+              restTimers: 0,
+              shortDateFormat: 'dd/MM',
+              showUnits: 1,
+              strengthUnit: 'kg',
+              systemColors: 0,
+              themeMode: 'ThemeMode.dark',
+              timerDuration: 90000,
+              vibrate: 0,
+            ),
+          );
+        },
+        validateItems: (newDb) async {
+          final row = await newDb.select(newDb.settings).getSingle();
+          expect(row.legacyRepairVersion, 0);
+          expect(row.strengthUnit, 'kg');
+          final columns = await newDb
+              .customSelect('PRAGMA table_info(settings)')
+              .get();
+          expect(
+            columns.map((item) => item.read<String>('name')),
+            contains('legacy_repair_version'),
+          );
+        },
+      );
+    },
+  );
 }

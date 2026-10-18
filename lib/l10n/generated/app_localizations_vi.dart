@@ -2226,6 +2226,9 @@ class AppLocalizationsVi extends AppLocalizations {
   String get editCustomExercise => 'Sửa bài tập';
 
   @override
+  String get unassignedExercise => 'Chưa gán';
+
+  @override
   String get deleteCustomExercise => 'Xóa bài tập';
 
   @override

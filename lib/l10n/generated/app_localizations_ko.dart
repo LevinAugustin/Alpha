@@ -2162,6 +2162,9 @@ class AppLocalizationsKo extends AppLocalizations {
   String get editCustomExercise => '운동 편집';
 
   @override
+  String get unassignedExercise => '미지정';
+
+  @override
   String get deleteCustomExercise => '운동 삭제';
 
   @override

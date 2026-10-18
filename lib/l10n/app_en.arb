@@ -2962,6 +2962,10 @@
   "@editCustomExercise": {
     "description": "Action for editing a custom exercise."
   },
+  "unassignedExercise": "Not assigned",
+  "@unassignedExercise": {
+    "description": "Shown when a custom exercise has no muscle or equipment yet."
+  },
   "deleteCustomExercise": "Delete exercise",
   "@deleteCustomExercise": {
     "description": "Action for deleting a custom exercise."

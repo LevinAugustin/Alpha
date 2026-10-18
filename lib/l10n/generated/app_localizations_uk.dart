@@ -2245,6 +2245,9 @@ class AppLocalizationsUk extends AppLocalizations {
   String get editCustomExercise => 'Змінити вправу';
 
   @override
+  String get unassignedExercise => 'Не призначено';
+
+  @override
   String get deleteCustomExercise => 'Видалити вправу';
 
   @override

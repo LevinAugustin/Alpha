@@ -2240,6 +2240,7 @@
   "sideRight": "Kanan",
   "createCustomExercise": "Buat latihan",
   "editCustomExercise": "Ubah latihan",
+  "unassignedExercise": "Belum ditetapkan",
   "deleteCustomExercise": "Hapus latihan",
   "deleteCustomExerciseBody": "Hapus latihan ini? Latihan lama tetap ada di riwayat.",
   "customExerciseName": "Nama",

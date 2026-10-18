@@ -929,6 +929,22 @@ Future<void> _moveHistory(
             ..where((row) => row.id.equals(source.id)))
           .write(PlanExercisesCompanion(exerciseId: Value(toId)));
     } else {
+      if (source.enabled) {
+        await (database.update(
+          database.planExercises,
+        )..where((row) => row.id.equals(target.id))).write(
+          PlanExercisesCompanion(
+            enabled: const Value(true),
+            sequence: Value(source.sequence),
+            maxSets: Value(source.maxSets),
+            warmupSets: Value(source.warmupSets),
+            repMin: Value(source.repMin),
+            repMax: Value(source.repMax),
+            restMs: Value(source.restMs),
+            timers: Value(source.timers),
+          ),
+        );
+      }
       await (database.delete(
         database.planExercises,
       )..where((row) => row.id.equals(source.id))).go();

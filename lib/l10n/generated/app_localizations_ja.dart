@@ -2160,6 +2160,9 @@ class AppLocalizationsJa extends AppLocalizations {
   String get editCustomExercise => '種目を編集';
 
   @override
+  String get unassignedExercise => '未設定';
+
+  @override
   String get deleteCustomExercise => '種目を削除';
 
   @override

@@ -2231,6 +2231,9 @@ class AppLocalizationsId extends AppLocalizations {
   String get editCustomExercise => 'Ubah latihan';
 
   @override
+  String get unassignedExercise => 'Belum ditetapkan';
+
+  @override
   String get deleteCustomExercise => 'Hapus latihan';
 
   @override

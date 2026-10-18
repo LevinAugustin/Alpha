@@ -696,6 +696,7 @@
   "sideRight": "오른쪽",
   "createCustomExercise": "운동 만들기",
   "editCustomExercise": "운동 편집",
+  "unassignedExercise": "미지정",
   "deleteCustomExercise": "운동 삭제",
   "deleteCustomExerciseBody": "이 운동을 삭제할까요? 지난 운동 기록은 히스토리에 남습니다.",
   "customExerciseName": "이름",

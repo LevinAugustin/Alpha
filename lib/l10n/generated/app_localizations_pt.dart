@@ -2245,6 +2245,9 @@ class AppLocalizationsPt extends AppLocalizations {
   String get editCustomExercise => 'Editar exercício';
 
   @override
+  String get unassignedExercise => 'Não atribuído';
+
+  @override
   String get deleteCustomExercise => 'Eliminar exercício';
 
   @override
@@ -4597,6 +4600,9 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
 
   @override
   String get editCustomExercise => 'Editar exercício';
+
+  @override
+  String get unassignedExercise => 'Não atribuído';
 
   @override
   String get deleteCustomExercise => 'Excluir exercício';
@@ -6960,6 +6966,9 @@ class AppLocalizationsPtPt extends AppLocalizationsPt {
 
   @override
   String get editCustomExercise => 'Editar exercício';
+
+  @override
+  String get unassignedExercise => 'Não atribuído';
 
   @override
   String get deleteCustomExercise => 'Eliminar exercício';

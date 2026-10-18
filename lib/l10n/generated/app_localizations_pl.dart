@@ -2247,6 +2247,9 @@ class AppLocalizationsPl extends AppLocalizations {
   String get editCustomExercise => 'Edytuj ćwiczenie';
 
   @override
+  String get unassignedExercise => 'Nieprzypisane';
+
+  @override
   String get deleteCustomExercise => 'Usuń ćwiczenie';
 
   @override

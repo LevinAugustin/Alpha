@@ -2149,6 +2149,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get editCustomExercise => '编辑动作';
 
   @override
+  String get unassignedExercise => '未指定';
+
+  @override
   String get deleteCustomExercise => '删除动作';
 
   @override
@@ -4413,6 +4416,9 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
   String get editCustomExercise => '编辑动作';
 
   @override
+  String get unassignedExercise => '未指定';
+
+  @override
   String get deleteCustomExercise => '删除动作';
 
   @override
@@ -6675,6 +6681,9 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get editCustomExercise => '編輯動作';
+
+  @override
+  String get unassignedExercise => '未指定';
 
   @override
   String get deleteCustomExercise => '刪除動作';

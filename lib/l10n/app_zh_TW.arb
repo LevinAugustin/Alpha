@@ -696,6 +696,7 @@
   "sideRight": "右側",
   "createCustomExercise": "新建動作",
   "editCustomExercise": "編輯動作",
+  "unassignedExercise": "未指定",
   "deleteCustomExercise": "刪除動作",
   "deleteCustomExerciseBody": "刪除這個動作？過去的訓練仍留在歷史中。",
   "customExerciseName": "名稱",

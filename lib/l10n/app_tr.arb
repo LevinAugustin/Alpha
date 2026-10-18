@@ -696,6 +696,7 @@
   "sideRight": "Sağ",
   "createCustomExercise": "Egzersiz oluştur",
   "editCustomExercise": "Egzersizi düzenle",
+  "unassignedExercise": "Atanmadı",
   "deleteCustomExercise": "Egzersizi sil",
   "deleteCustomExerciseBody": "Bu egzersiz silinsin mi? Geçmiş antrenmanlar geçmişte kalır.",
   "customExerciseName": "Ad",

@@ -2240,6 +2240,7 @@
   "sideRight": "Phải",
   "createCustomExercise": "Tạo bài tập",
   "editCustomExercise": "Sửa bài tập",
+  "unassignedExercise": "Chưa gán",
   "deleteCustomExercise": "Xóa bài tập",
   "deleteCustomExerciseBody": "Xóa bài tập này? Các buổi tập cũ vẫn ở trong lịch sử.",
   "customExerciseName": "Tên",

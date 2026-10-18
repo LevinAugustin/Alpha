@@ -2216,6 +2216,9 @@ class AppLocalizationsBn extends AppLocalizations {
   String get editCustomExercise => 'ব্যায়াম সম্পাদনা';
 
   @override
+  String get unassignedExercise => 'নির্ধারিত নয়';
+
+  @override
   String get deleteCustomExercise => 'ব্যায়াম মুছুন';
 
   @override
