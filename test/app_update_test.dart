@@ -1,10 +1,112 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:flexify/shell/calendar_page.dart';
+import 'package:flexify/theme/alpha_theme.dart';
 import 'package:flexify/update/app_update.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
+  tearDown(() {
+    pendingAppUpdate.value = null;
+    updateCheckFailed.value = false;
+    updateCheckCompleted.value = false;
+  });
+
+  test('the startup check retries once before it reports failure', () async {
+    var calls = 0;
+    final ok = await checkForAppUpdate(
+      retry: true,
+      retryDelay: Duration.zero,
+      loadRelease: () async {
+        calls += 1;
+        expect(updateCheckFailed.value, isFalse);
+        if (calls == 1) throw const HandshakeException('handshake');
+        return const AppRelease(
+          version: '0.0.1',
+          apkUrl: 'https://example.test/alpha.apk?sig=secret',
+        );
+      },
+      loadPackage: () async => (version: '9.9.9', buildNumber: '1'),
+    );
+    expect(ok, isTrue);
+    expect(calls, 2);
+    expect(updateCheckFailed.value, isFalse);
+  });
+
+  test('a second failed check is shown as a failed search', () async {
+    var calls = 0;
+    final ok = await checkForAppUpdate(
+      retry: true,
+      retryDelay: Duration.zero,
+      loadRelease: () async {
+        calls += 1;
+        expect(updateCheckFailed.value, isFalse);
+        throw const HandshakeException('handshake');
+      },
+      loadPackage: () async => (version: '9.9.9', buildNumber: '1'),
+    );
+    expect(ok, isFalse);
+    expect(calls, 2);
+    expect(updateCheckFailed.value, isTrue);
+    expect(updateCheckCompleted.value, isTrue);
+  });
+
+  test('download failures stay short and omit signed urls', () {
+    final http = describeUpdateFailure(const UpdateCheckException('HTTP 403'));
+    expect(http.problem, UpdateProblem.http);
+    expect(http.statusCode, 403);
+    expect(http.isDownload, isTrue);
+
+    final empty = describeUpdateFailure(const UpdateCheckException('empty'));
+    expect(empty.problem, UpdateProblem.empty);
+    expect(empty.isDownload, isTrue);
+
+    final size = describeUpdateFailure(
+      const UpdateCheckException('size 4 != 10'),
+    );
+    expect(size.problem, UpdateProblem.size);
+
+    final timeout = describeUpdateFailure(
+      TimeoutException('https://example.test/alpha.apk?sig=secret'),
+    );
+    expect(timeout.problem, UpdateProblem.timeout);
+    expect(timeout.details.contains('http'), isFalse);
+    expect(timeout.details.contains('sig='), isFalse);
+
+    final network = describeUpdateFailure(
+      const HandshakeException('handshake'),
+    );
+    expect(network.problem, UpdateProblem.network);
+    expect(network.isDownload, isTrue);
+
+    final install = describeUpdateFailure(
+      PlatformException(code: 'install_failed', message: 'no activity'),
+    );
+    expect(install.problem, UpdateProblem.install);
+    expect(install.isDownload, isFalse);
+
+    final permission = describeUpdateFailure(
+      const UpdateCheckException('needs_permission'),
+    );
+    expect(permission.isDownload, isFalse);
+  });
+
+  test('the progress fill contrasts with the track in every theme', () {
+    for (final palette in const [
+      AlphaPalette.tiefschwarz,
+      AlphaPalette.eisblau,
+      AlphaPalette.pink,
+    ]) {
+      final colors = updateProgressColors(palette);
+      expect(
+        calendarContrast(colors.fill, colors.track),
+        greaterThanOrEqualTo(3),
+      );
+    }
+  });
+
   test('newer release compares the name and the normalized build', () {
     expect(
       isNewerRelease(

@@ -4,13 +4,12 @@ import 'package:drift/drift.dart' hide Column;
 import 'package:flexify/app_fab.dart';
 import 'package:flexify/database/database.dart';
 import 'package:flexify/empty_state.dart';
-import 'package:flexify/graph/add_exercise_page.dart';
+import 'package:flexify/exercises/exercise_picker.dart';
 import 'package:flexify/l10n/l10n.dart';
 import 'package:flexify/logging.dart';
 import 'package:flexify/main.dart';
 import 'package:flexify/plan/exercise_tile.dart';
 import 'package:flexify/plan/plan_queries.dart';
-import 'package:flexify/platform_page_route.dart';
 import 'package:flexify/responsive.dart';
 import 'package:flexify/utils.dart';
 import 'package:flutter/material.dart';
@@ -36,46 +35,51 @@ class _EditPlanPageState extends State<EditPlanPage> {
   final _titleCtrl = TextEditingController();
 
   Future<void> addExercise() async {
-    Exercise? exercise = await Navigator.of(
+    final exercise = await showExercisePicker(
       context,
-    ).push(FlexPageRoute(builder: (context) => AddExercisePage(name: _search)));
+      title: context.l10n.addExercise,
+      initialQuery: _search,
+      selectOnTap: true,
+    );
     if (exercise == null || !mounted) return;
 
     setState(() {
-      _exercises.add(
-        PlanExerciseDraft(
-          exerciseName: exercise.name,
-          germanName: exercise.germanName ?? '',
-          aliases: exercise.aliases ?? '',
-          muscle: exercise.muscle ?? '',
-          category: exercise.categoryName ?? '',
-          equipment: exercise.equipment ?? '',
-          primaryMuscles: exercise.primaryMuscles ?? '',
-          secondaryMuscles: exercise.secondaryMuscles ?? '',
-          familie: exercise.familie ?? '',
-          grip: exercise.griff ?? '',
-          position: exercise.position ?? '',
-          movement: exercise.bewegung ?? '',
-          catalogId: exercise.catalogId ?? '',
-          catalogSource: exercise.catalogSource ?? '',
-          planExercise: PlanExercisesCompanion(
-            exerciseId: Value(exercise.id),
-            enabled: const Value(true),
-          ),
-        ),
-      );
-      _exercises.sort((a, b) {
-        if (a.planExercise.enabled.value != b.planExercise.enabled.value) {
-          return b.planExercise.enabled.value ? 1 : -1;
-        }
-        final left = a.planExercise.sequence.value;
-        final right = b.planExercise.sequence.value;
-        return left.compareTo(right);
-      });
+      _includeExercise(exercise);
       _search = '';
       _hasUnsavedChanges = true;
     });
     _searchCtrl.text = '';
+  }
+
+  void _includeExercise(Exercise exercise) {
+    final sequence = Value(_endSequence());
+    final index = _exercises.indexWhere(
+      (draft) => draft.planExercise.exerciseId.value == exercise.id,
+    );
+    if (index >= 0) {
+      final current = _exercises[index];
+      _exercises[index] = current.copyWithPlanExercise(
+        current.planExercise.copyWith(
+          enabled: const Value(true),
+          sequence: sequence,
+        ),
+      );
+    } else {
+      _exercises.add(_draftFor(exercise, sequence));
+    }
+    _exercises.sort(comparePlanExerciseDrafts);
+  }
+
+  int _endSequence() {
+    var highest = -1;
+    for (final draft in _exercises) {
+      final sequence = draft.planExercise.sequence;
+      if (sequence.present && sequence.value > highest) {
+        highest = sequence.value;
+      }
+    }
+    final end = _exercises.length;
+    return end > highest ? end : highest + 1;
   }
 
   @override
@@ -380,4 +384,43 @@ class _EditPlanPageState extends State<EditPlanPage> {
     _allowPop = true;
     Navigator.pop(context);
   }
+}
+
+PlanExerciseDraft _draftFor(Exercise exercise, Value<int> sequence) {
+  return PlanExerciseDraft(
+    exerciseName: exercise.name,
+    germanName: exercise.germanName ?? '',
+    aliases: exercise.aliases ?? '',
+    muscle: exercise.muscle ?? '',
+    category: exercise.categoryName ?? '',
+    equipment: exercise.equipment ?? '',
+    primaryMuscles: exercise.primaryMuscles ?? '',
+    secondaryMuscles: exercise.secondaryMuscles ?? '',
+    familie: exercise.familie ?? '',
+    grip: exercise.griff ?? '',
+    position: exercise.position ?? '',
+    movement: exercise.bewegung ?? '',
+    catalogId: exercise.catalogId ?? '',
+    catalogSource: exercise.catalogSource ?? '',
+    planExercise: PlanExercisesCompanion(
+      exerciseId: Value(exercise.id),
+      enabled: const Value(true),
+      sequence: sequence,
+    ),
+  );
+}
+
+int comparePlanExerciseDrafts(PlanExerciseDraft a, PlanExerciseDraft b) {
+  final aEnabled =
+      a.planExercise.enabled.present && a.planExercise.enabled.value;
+  final bEnabled =
+      b.planExercise.enabled.present && b.planExercise.enabled.value;
+  if (aEnabled != bEnabled) return aEnabled ? -1 : 1;
+  return _sequenceRank(a).compareTo(_sequenceRank(b));
+}
+
+int _sequenceRank(PlanExerciseDraft draft) {
+  final sequence = draft.planExercise.sequence;
+  if (!sequence.present) return 1 << 20;
+  return sequence.value;
 }

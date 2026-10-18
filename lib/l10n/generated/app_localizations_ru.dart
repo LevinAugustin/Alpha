@@ -2042,6 +2042,41 @@ class AppLocalizationsRu extends AppLocalizations {
   String get updateInstallFailed => 'Не удалось установить обновление';
 
   @override
+  String get downloadFailed => 'Загрузка не удалась';
+
+  @override
+  String get updateFailureNetwork => 'Нет соединения.';
+
+  @override
+  String get updateFailureTimeout => 'Время истекло.';
+
+  @override
+  String updateFailureHttp(String status) {
+    return 'Сервер ответил кодом $status.';
+  }
+
+  @override
+  String get updateFailureEmpty => 'Файл пустой.';
+
+  @override
+  String get updateFailureSize => 'Файл неполный.';
+
+  @override
+  String get updateFailurePermission => 'Установка не разрешена.';
+
+  @override
+  String get updateFailureGeneric => 'Это не получилось.';
+
+  @override
+  String get errorDetails => 'Подробности';
+
+  @override
+  String get createOwnExercise => 'Создать своё упражнение';
+
+  @override
+  String get customExerciseMuscleRequired => 'Выберите основную мышцу.';
+
+  @override
   String get licensesTitle => 'Лицензии';
 
   @override

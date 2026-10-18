@@ -1957,6 +1957,41 @@ class AppLocalizationsKo extends AppLocalizations {
   String get updateInstallFailed => '업데이트를 설치할 수 없습니다';
 
   @override
+  String get downloadFailed => '다운로드 실패';
+
+  @override
+  String get updateFailureNetwork => '연결이 없습니다.';
+
+  @override
+  String get updateFailureTimeout => '시간이 초과되었습니다.';
+
+  @override
+  String updateFailureHttp(String status) {
+    return '서버가 $status(으)로 응답했습니다.';
+  }
+
+  @override
+  String get updateFailureEmpty => '파일이 비어 있습니다.';
+
+  @override
+  String get updateFailureSize => '파일이 완전하지 않습니다.';
+
+  @override
+  String get updateFailurePermission => '설치가 허용되지 않습니다.';
+
+  @override
+  String get updateFailureGeneric => '되지 않았습니다.';
+
+  @override
+  String get errorDetails => '자세한 내용';
+
+  @override
+  String get createOwnExercise => '내 운동 만들기';
+
+  @override
+  String get customExerciseMuscleRequired => '주동근을 선택하세요.';
+
+  @override
   String get licensesTitle => '라이선스';
 
   @override

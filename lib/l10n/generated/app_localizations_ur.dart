@@ -2013,6 +2013,41 @@ class AppLocalizationsUr extends AppLocalizations {
   String get updateInstallFailed => 'اپ ڈیٹ انسٹال نہیں ہو سکی';
 
   @override
+  String get downloadFailed => 'ڈاؤن لوڈ ناکام';
+
+  @override
+  String get updateFailureNetwork => 'کنکشن نہیں ہے۔';
+
+  @override
+  String get updateFailureTimeout => 'وقت ختم۔';
+
+  @override
+  String updateFailureHttp(String status) {
+    return 'سرور نے $status سے جواب دیا۔';
+  }
+
+  @override
+  String get updateFailureEmpty => 'فائل خالی ہے۔';
+
+  @override
+  String get updateFailureSize => 'فائل نامکمل ہے۔';
+
+  @override
+  String get updateFailurePermission => 'انسٹال کی اجازت نہیں۔';
+
+  @override
+  String get updateFailureGeneric => 'یہ نہیں ہوا۔';
+
+  @override
+  String get errorDetails => 'تفصیل';
+
+  @override
+  String get createOwnExercise => 'اپنی ورزش بنائیں';
+
+  @override
+  String get customExerciseMuscleRequired => 'مرکزی پٹھا منتخب کریں۔';
+
+  @override
   String get licensesTitle => 'لائسنس';
 
   @override

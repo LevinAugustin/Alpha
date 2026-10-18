@@ -1998,6 +1998,41 @@ class AppLocalizationsTh extends AppLocalizations {
   String get updateInstallFailed => 'ติดตั้งอัปเดตไม่ได้';
 
   @override
+  String get downloadFailed => 'ดาวน์โหลดไม่สำเร็จ';
+
+  @override
+  String get updateFailureNetwork => 'ไม่มีการเชื่อมต่อ';
+
+  @override
+  String get updateFailureTimeout => 'หมดเวลา';
+
+  @override
+  String updateFailureHttp(String status) {
+    return 'เซิร์ฟเวอร์ตอบด้วย $status';
+  }
+
+  @override
+  String get updateFailureEmpty => 'ไฟล์ว่าง';
+
+  @override
+  String get updateFailureSize => 'ไฟล์ไม่ครบ';
+
+  @override
+  String get updateFailurePermission => 'ไม่อนุญาตให้ติดตั้ง';
+
+  @override
+  String get updateFailureGeneric => 'ไม่สำเร็จ';
+
+  @override
+  String get errorDetails => 'รายละเอียด';
+
+  @override
+  String get createOwnExercise => 'สร้างท่าของตัวเอง';
+
+  @override
+  String get customExerciseMuscleRequired => 'เลือกกล้ามเนื้อหลัก';
+
+  @override
   String get licensesTitle => 'สัญญาอนุญาต';
 
   @override

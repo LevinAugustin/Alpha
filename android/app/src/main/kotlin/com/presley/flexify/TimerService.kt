@@ -84,6 +84,7 @@ class TimerService : Service() {
                 if (intent != null && intent.action == STOP_BROADCAST_INTERNAL) updateAppUI()
                 val notificationManager = NotificationManagerCompat.from(this@TimerService)
                 notificationManager.cancel(ONGOING_ID)
+                notificationManager.cancel(FINISHED_ID)
                 stopForeground(STOP_FOREGROUND_REMOVE)
                 stopSelf()
             }

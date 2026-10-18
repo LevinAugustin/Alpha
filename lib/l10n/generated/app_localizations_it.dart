@@ -2030,6 +2030,41 @@ class AppLocalizationsIt extends AppLocalizations {
       'Non è stato possibile installare l\'aggiornamento';
 
   @override
+  String get downloadFailed => 'Download non riuscito';
+
+  @override
+  String get updateFailureNetwork => 'Nessuna connessione.';
+
+  @override
+  String get updateFailureTimeout => 'Tempo scaduto.';
+
+  @override
+  String updateFailureHttp(String status) {
+    return 'Il server ha risposto con $status.';
+  }
+
+  @override
+  String get updateFailureEmpty => 'Il file è vuoto.';
+
+  @override
+  String get updateFailureSize => 'Il file è incompleto.';
+
+  @override
+  String get updateFailurePermission => 'L\'installazione non è consentita.';
+
+  @override
+  String get updateFailureGeneric => 'Non ha funzionato.';
+
+  @override
+  String get errorDetails => 'Dettagli';
+
+  @override
+  String get createOwnExercise => 'Crea un esercizio tuo';
+
+  @override
+  String get customExerciseMuscleRequired => 'Scegli un muscolo principale.';
+
+  @override
   String get licensesTitle => 'Licenze';
 
   @override

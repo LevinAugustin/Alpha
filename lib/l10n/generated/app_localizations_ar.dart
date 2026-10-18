@@ -2001,6 +2001,41 @@ class AppLocalizationsAr extends AppLocalizations {
   String get updateInstallFailed => 'تعذر تثبيت التحديث';
 
   @override
+  String get downloadFailed => 'فشل التنزيل';
+
+  @override
+  String get updateFailureNetwork => 'لا يوجد اتصال.';
+
+  @override
+  String get updateFailureTimeout => 'انتهت المهلة.';
+
+  @override
+  String updateFailureHttp(String status) {
+    return 'رد الخادم بالرمز $status.';
+  }
+
+  @override
+  String get updateFailureEmpty => 'الملف فارغ.';
+
+  @override
+  String get updateFailureSize => 'الملف غير مكتمل.';
+
+  @override
+  String get updateFailurePermission => 'التثبيت غير مسموح.';
+
+  @override
+  String get updateFailureGeneric => 'لم ينجح ذلك.';
+
+  @override
+  String get errorDetails => 'تفاصيل أكثر';
+
+  @override
+  String get createOwnExercise => 'أنشئ تمرينك';
+
+  @override
+  String get customExerciseMuscleRequired => 'اختر العضلة الأساسية.';
+
+  @override
   String get licensesTitle => 'التراخيص';
 
   @override

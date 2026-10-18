@@ -2040,6 +2040,41 @@ class AppLocalizationsPl extends AppLocalizations {
   String get updateInstallFailed => 'Nie udało się zainstalować aktualizacji';
 
   @override
+  String get downloadFailed => 'Pobieranie nie powiodło się';
+
+  @override
+  String get updateFailureNetwork => 'Brak połączenia.';
+
+  @override
+  String get updateFailureTimeout => 'Przekroczono czas.';
+
+  @override
+  String updateFailureHttp(String status) {
+    return 'Serwer odpowiedział kodem $status.';
+  }
+
+  @override
+  String get updateFailureEmpty => 'Plik jest pusty.';
+
+  @override
+  String get updateFailureSize => 'Plik jest niekompletny.';
+
+  @override
+  String get updateFailurePermission => 'Instalacja nie jest dozwolona.';
+
+  @override
+  String get updateFailureGeneric => 'To się nie udało.';
+
+  @override
+  String get errorDetails => 'Szczegóły';
+
+  @override
+  String get createOwnExercise => 'Utwórz własne ćwiczenie';
+
+  @override
+  String get customExerciseMuscleRequired => 'Wybierz główny mięsień.';
+
+  @override
   String get licensesTitle => 'Licencje';
 
   @override

@@ -2024,6 +2024,41 @@ class AppLocalizationsId extends AppLocalizations {
   String get updateInstallFailed => 'Pembaruan tidak dapat dipasang';
 
   @override
+  String get downloadFailed => 'Unduhan gagal';
+
+  @override
+  String get updateFailureNetwork => 'Tidak ada koneksi.';
+
+  @override
+  String get updateFailureTimeout => 'Waktu habis.';
+
+  @override
+  String updateFailureHttp(String status) {
+    return 'Server menjawab dengan $status.';
+  }
+
+  @override
+  String get updateFailureEmpty => 'Berkas kosong.';
+
+  @override
+  String get updateFailureSize => 'Berkas tidak lengkap.';
+
+  @override
+  String get updateFailurePermission => 'Pemasangan tidak diizinkan.';
+
+  @override
+  String get updateFailureGeneric => 'Itu tidak berhasil.';
+
+  @override
+  String get errorDetails => 'Rincian';
+
+  @override
+  String get createOwnExercise => 'Buat latihan sendiri';
+
+  @override
+  String get customExerciseMuscleRequired => 'Pilih otot utama.';
+
+  @override
   String get licensesTitle => 'Lisensi';
 
   @override

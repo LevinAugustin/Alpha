@@ -3726,6 +3726,72 @@ abstract class AppLocalizations {
   /// **'The update could not be installed'**
   String get updateInstallFailed;
 
+  /// Title of the dialog shown when the update file could not be downloaded.
+  ///
+  /// In en, this message translates to:
+  /// **'Download failed'**
+  String get downloadFailed;
+
+  /// Short cause when the update download has no network.
+  ///
+  /// In en, this message translates to:
+  /// **'No connection.'**
+  String get updateFailureNetwork;
+
+  /// Short cause when the update download times out.
+  ///
+  /// In en, this message translates to:
+  /// **'Timed out.'**
+  String get updateFailureTimeout;
+
+  /// Short cause when the update server rejects the download.
+  ///
+  /// In en, this message translates to:
+  /// **'The server answered with {status}.'**
+  String updateFailureHttp(String status);
+
+  /// Short cause when the downloaded update file is empty.
+  ///
+  /// In en, this message translates to:
+  /// **'The file is empty.'**
+  String get updateFailureEmpty;
+
+  /// Short cause when the downloaded update file has the wrong size.
+  ///
+  /// In en, this message translates to:
+  /// **'The file is incomplete.'**
+  String get updateFailureSize;
+
+  /// Short cause when Android blocks the update install.
+  ///
+  /// In en, this message translates to:
+  /// **'Installation is not allowed.'**
+  String get updateFailurePermission;
+
+  /// Short cause when an update fails for another reason.
+  ///
+  /// In en, this message translates to:
+  /// **'That did not work.'**
+  String get updateFailureGeneric;
+
+  /// Label that expands the technical update error.
+  ///
+  /// In en, this message translates to:
+  /// **'Details'**
+  String get errorDetails;
+
+  /// Secondary action in the exercise picker that opens the custom exercise form.
+  ///
+  /// In en, this message translates to:
+  /// **'Create your own exercise'**
+  String get createOwnExercise;
+
+  /// Shown when a custom exercise is saved without a primary muscle.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a primary muscle.'**
+  String get customExerciseMuscleRequired;
+
   /// Licenses
   ///
   /// In en, this message translates to:

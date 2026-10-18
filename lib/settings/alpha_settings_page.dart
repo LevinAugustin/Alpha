@@ -447,7 +447,7 @@ class _AlphaSettingsPageState extends State<AlphaSettingsPage> {
                           );
                         },
                         child: Text(
-                          l10n.versionAndLicenses(snapshot.data ?? '2.5.2'),
+                          l10n.versionAndLicenses(snapshot.data ?? '2.5.3'),
                         ),
                       ),
                     );
@@ -464,7 +464,7 @@ class _AlphaSettingsPageState extends State<AlphaSettingsPage> {
     try {
       return (await PackageInfo.fromPlatform()).version;
     } catch (_) {
-      return '2.5.2';
+      return '2.5.3';
     }
   }
 

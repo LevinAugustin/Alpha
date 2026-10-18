@@ -2017,6 +2017,41 @@ class AppLocalizationsEn extends AppLocalizations {
   String get updateInstallFailed => 'The update could not be installed';
 
   @override
+  String get downloadFailed => 'Download failed';
+
+  @override
+  String get updateFailureNetwork => 'No connection.';
+
+  @override
+  String get updateFailureTimeout => 'Timed out.';
+
+  @override
+  String updateFailureHttp(String status) {
+    return 'The server answered with $status.';
+  }
+
+  @override
+  String get updateFailureEmpty => 'The file is empty.';
+
+  @override
+  String get updateFailureSize => 'The file is incomplete.';
+
+  @override
+  String get updateFailurePermission => 'Installation is not allowed.';
+
+  @override
+  String get updateFailureGeneric => 'That did not work.';
+
+  @override
+  String get errorDetails => 'Details';
+
+  @override
+  String get createOwnExercise => 'Create your own exercise';
+
+  @override
+  String get customExerciseMuscleRequired => 'Choose a primary muscle.';
+
+  @override
   String get licensesTitle => 'Licenses';
 
   @override

@@ -8,10 +8,10 @@ import 'package:flexify/alpha/plates.dart';
 import 'package:flexify/alpha/set_notes.dart';
 import 'package:flexify/coach/api_key_store.dart';
 import 'package:flexify/coach/coach_client.dart';
-import 'package:flexify/database/catalog_seed.dart';
 import 'package:flexify/database/database.dart';
 import 'package:flexify/database/exercise_set_repository.dart';
 import 'package:flexify/exercises/exercise_detail_page.dart';
+import 'package:flexify/exercises/exercise_picker.dart';
 import 'package:flexify/exercises/exercise_image.dart';
 import 'package:flexify/exercise_labels.dart';
 import 'package:flexify/l10n/generated/app_localizations.dart';
@@ -159,7 +159,12 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
             ))
             .getSingleOrNull();
     if (mounted && existing == null && alphaPrefs.gyms.length > 1) {
-      await _chooseGym();
+      final picked = await _chooseGym();
+      if (!mounted) return;
+      if (picked == null) {
+        if (Navigator.of(context).canPop()) Navigator.of(context).pop();
+        return;
+      }
     }
     final settings = await (db.settings.select()..limit(1)).getSingle();
     final workout = await _activeWorkout(existing);
@@ -225,7 +230,7 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
     _publishLive();
   }
 
-  Future<void> _chooseGym() async {
+  Future<String?> _chooseGym() async {
     final picked = await showDialog<String>(
       context: context,
       builder: (context) => SimpleDialog(
@@ -239,9 +244,10 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
         ],
       ),
     );
-    if (picked == null) return;
+    if (picked == null) return null;
     alphaPrefs.activeGymId = picked;
     await alphaPrefs.save();
+    return picked;
   }
 
   void _publishLive() {
@@ -931,122 +937,8 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
     if (mounted) _publishLive();
   }
 
-  Future<Exercise?> _pickExercise({String? title}) async {
-    final exercises =
-        await (db.select(db.exercises)
-              ..where((row) => row.archived.equals(false))
-              ..orderBy([(row) => OrderingTerm.asc(row.name)]))
-            .get();
-    if (!mounted) return null;
-    return showDialog<Exercise>(
-      context: context,
-      builder: (context) {
-        var query = '';
-        return StatefulBuilder(
-          builder: (context, setLocal) {
-            final needle = query.trim();
-            final matches =
-                exercises
-                    .where(
-                      (exercise) => exerciseMatchesQuery(
-                        name: exercise.name,
-                        germanName: exercise.germanName,
-                        aliases: exercise.aliases,
-                        muscle: exercise.muscle,
-                        category: exercise.categoryName,
-                        equipment: exercise.equipment,
-                        mechanic: exercise.mechanic,
-                        primaryMuscles: exercise.primaryMuscles,
-                        secondaryMuscles: exercise.secondaryMuscles,
-                        familie: exercise.familie,
-                        grip: exercise.griff,
-                        position: exercise.position,
-                        movement: exercise.bewegung,
-                        query: needle,
-                      ),
-                    )
-                    .toList()
-                  ..sort(
-                    (a, b) => needle.isEmpty
-                        ? foldExerciseSearch(
-                            exerciseDisplayName(a.name, a.germanName),
-                          ).compareTo(
-                            foldExerciseSearch(
-                              exerciseDisplayName(b.name, b.germanName),
-                            ),
-                          )
-                        : compareExerciseSearch(
-                            query: needle,
-                            leftName: a.name,
-                            leftGermanName: a.germanName,
-                            leftAliases: a.aliases,
-                            leftCatalog: isCatalogExercise(
-                              catalogId: a.catalogId,
-                              catalogSource: a.catalogSource,
-                            ),
-                            rightName: b.name,
-                            rightGermanName: b.germanName,
-                            rightAliases: b.aliases,
-                            rightCatalog: isCatalogExercise(
-                              catalogId: b.catalogId,
-                              catalogSource: b.catalogSource,
-                            ),
-                          ),
-                  );
-            final shown = matches.take(40);
-            return AlertDialog(
-              title: Text(title ?? context.l10n.addExerciseWorkout),
-              content: SizedBox(
-                width: 420,
-                height: 420,
-                child: Column(
-                  children: [
-                    TextField(
-                      autofocus: true,
-                      decoration: InputDecoration(
-                        hintText: context.l10n.exerciseSearchHint,
-                      ),
-                      onChanged: (value) => setLocal(() => query = value),
-                    ),
-                    Expanded(
-                      child: ListView(
-                        children: [
-                          for (final exercise in shown)
-                            ListTile(
-                              title: Text(
-                                localizedExerciseName(
-                                  context,
-                                  exercise.name,
-                                  german: exercise.germanName,
-                                ),
-                              ),
-                              onTap: () async {
-                                final added = await Navigator.of(context)
-                                    .push<Exercise>(
-                                      FlexPageRoute(
-                                        builder: (context) =>
-                                            ExerciseDetailPage(
-                                              exercise: exercise,
-                                              onAdd: () {},
-                                            ),
-                                      ),
-                                    );
-                                if (added != null && context.mounted) {
-                                  Navigator.pop(context, added);
-                                }
-                              },
-                            ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            );
-          },
-        );
-      },
-    );
+  Future<Exercise?> _pickExercise({String? title}) {
+    return showExercisePicker(context, title: title);
   }
 
   Future<void> _addExercise() async {
@@ -1321,37 +1213,76 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
             borderRadius: BorderRadius.circular(12),
             border: Border.all(color: palette.border),
           ),
-          child: Row(
-            children: [
-              IconButton(
-                onPressed: running ? () => _shiftRest(-15) : null,
-                icon: const Text('-15'),
-              ),
-              Expanded(
-                child: Text(
-                  running ? label : '00:00',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontFamily: 'Bebas Neue',
-                    fontSize: 28,
-                    color: running ? palette.accent : palette.muted,
+          child: LayoutBuilder(
+            builder: (context, constraints) {
+              final skipMax = (constraints.maxWidth * 0.42).clamp(72.0, 160.0);
+              return Row(
+                children: [
+                  _restNudge('-15', running ? () => _shiftRest(-15) : null),
+                  Expanded(
+                    child: FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Text(
+                        running ? label : '00:00',
+                        maxLines: 1,
+                        softWrap: false,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontFamily: 'Bebas Neue',
+                          fontSize: 28,
+                          color: running ? palette.accent : palette.muted,
+                        ),
+                      ),
+                    ),
                   ),
-                ),
-              ),
-              IconButton(
-                onPressed: running ? () => _shiftRest(15) : null,
-                icon: const Text('+15'),
-              ),
-              TextButton(
-                onPressed: running
-                    ? () => context.read<TimerState>().stopTimer()
-                    : null,
-                child: Text(l10n.restSkip),
-              ),
-            ],
+                  _restNudge('+15', running ? () => _shiftRest(15) : null),
+                  ConstrainedBox(
+                    constraints: BoxConstraints(maxWidth: skipMax),
+                    child: TextButton(
+                      style: TextButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(horizontal: 8),
+                        minimumSize: Size.zero,
+                        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                      ),
+                      onPressed: running
+                          ? () => context.read<TimerState>().stopTimer()
+                          : null,
+                      child: Text(
+                        l10n.restSkip,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        softWrap: false,
+                      ),
+                    ),
+                  ),
+                ],
+              );
+            },
           ),
         );
       },
+    );
+  }
+
+  Widget _restNudge(String label, VoidCallback? onPressed) {
+    return SizedBox(
+      width: 48,
+      height: 48,
+      child: TextButton(
+        style: TextButton.styleFrom(
+          padding: EdgeInsets.zero,
+          minimumSize: Size.zero,
+          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+        ),
+        onPressed: onPressed,
+        child: FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 4),
+            child: Text(label, maxLines: 1, softWrap: false),
+          ),
+        ),
+      ),
     );
   }
 
@@ -1512,10 +1443,15 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
     bool unilateral,
   ) {
     Widget cell(String text) => Expanded(
-      child: Text(
-        text,
-        textAlign: TextAlign.center,
-        style: TextStyle(color: palette.muted, fontSize: 11),
+      child: FittedBox(
+        fit: BoxFit.scaleDown,
+        child: Text(
+          text,
+          maxLines: 1,
+          softWrap: false,
+          textAlign: TextAlign.center,
+          style: TextStyle(color: palette.muted, fontSize: 11),
+        ),
       ),
     );
     return Padding(
