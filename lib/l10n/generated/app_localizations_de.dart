@@ -2295,4 +2295,10 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get notSpecified => '–';
+
+  @override
+  String get resumeWorkout => 'Training fortsetzen';
+
+  @override
+  String get importBackupZip => 'Sicherung importieren (.zip)';
 }

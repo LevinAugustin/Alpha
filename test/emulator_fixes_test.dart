@@ -307,6 +307,16 @@ void main() {
     expect(find.textContaining('Training starten'), findsOneWidget);
     expect(find.byIcon(Icons.lock_outline), findsOneWidget);
     expect(find.byType(GymWorkoutPage), findsNothing);
+    final lock = tester.getRect(find.byIcon(Icons.lock_outline));
+    expect(tester.getRect(find.text('Diese Woche')).overlaps(lock), isFalse);
+    expect(
+      tester.getRect(find.textContaining('Training starten')).overlaps(lock),
+      isFalse,
+    );
+    final streaks = find.textContaining('Folge');
+    for (var index = 0; index < streaks.evaluate().length; index++) {
+      expect(tester.getRect(streaks.at(index)).overlaps(lock), isFalse);
+    }
 
     await tester.tap(find.byKey(const Key('locked-home')));
     await tester.pumpAndSettle();

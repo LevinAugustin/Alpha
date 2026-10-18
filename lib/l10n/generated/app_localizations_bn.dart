@@ -2260,4 +2260,10 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get notSpecified => '–';
+
+  @override
+  String get resumeWorkout => 'ওয়ার্কআউট চালিয়ে যান';
+
+  @override
+  String get importBackupZip => 'ব্যাকআপ আমদানি (.zip)';
 }

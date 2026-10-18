@@ -2205,4 +2205,10 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get notSpecified => '–';
+
+  @override
+  String get resumeWorkout => '운동 이어하기';
+
+  @override
+  String get importBackupZip => '백업 가져오기 (.zip)';
 }

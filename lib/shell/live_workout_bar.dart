@@ -26,7 +26,8 @@ class LiveWorkoutBar extends StatelessWidget {
           child: SafeArea(
             top: false,
             child: InkWell(
-              onTap: () => _open(context, session),
+              key: const Key('live-workout-bar'),
+              onTap: () => _open(session),
               child: Container(
                 height: 58,
                 padding: const EdgeInsets.symmetric(horizontal: 12),
@@ -70,8 +71,8 @@ class LiveWorkoutBar extends StatelessWidget {
                       ),
                     ),
                     IconButton(
-                      tooltip: l10n.discardWorkoutAsk,
-                      onPressed: () => _discard(context, session),
+                      key: const Key('discard-live-workout'),
+                      onPressed: () => _discard(session),
                       icon: Icon(Icons.delete_outline, color: palette.accent),
                     ),
                   ],
@@ -84,12 +85,14 @@ class LiveWorkoutBar extends StatelessWidget {
     );
   }
 
-  Future<void> _open(BuildContext context, LiveWorkout session) async {
+  Future<void> _open(LiveWorkout session) async {
+    final navigator = navigatorKey.currentState;
+    if (navigator == null) return;
     final plan = await (db.select(
       db.plans,
     )..where((row) => row.id.equals(session.planId))).getSingleOrNull();
-    if (plan == null || !context.mounted) return;
-    await Navigator.of(context).push(
+    if (plan == null || !navigator.mounted) return;
+    await navigator.push(
       FlexPageRoute(
         settings: RouteSettings(name: 'start-plan:${plan.id}'),
         builder: (context) => GymWorkoutPage(plan: plan),
@@ -97,11 +100,13 @@ class LiveWorkoutBar extends StatelessWidget {
     );
   }
 
-  Future<void> _discard(BuildContext context, LiveWorkout session) async {
-    final l10n = context.l10n;
-    final palette = AlphaTheme.of(context);
+  Future<void> _discard(LiveWorkout session) async {
+    final host = navigatorKey.currentContext;
+    if (host == null) return;
+    final l10n = host.l10n;
+    final palette = AlphaTheme.of(host);
     final confirmed = await showDialog<bool>(
-      context: context,
+      context: host,
       builder: (context) => AlertDialog(
         backgroundColor: palette.card,
         title: Text(l10n.discardWorkoutAsk),

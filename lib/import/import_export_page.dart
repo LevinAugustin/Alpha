@@ -8,7 +8,9 @@ import 'package:flexify/exercises/custom_exercise_page.dart';
 import 'package:flexify/database/database.dart';
 import 'package:flexify/database/exercise_set_repository.dart';
 import 'package:flexify/import/hevy_import.dart';
+import 'package:flexify/import_data.dart';
 import 'package:flexify/l10n/l10n.dart';
+import 'package:flexify/logging.dart';
 import 'package:flexify/main.dart';
 import 'package:flexify/theme/alpha_theme.dart';
 import 'package:flutter/material.dart';
@@ -33,6 +35,12 @@ class ImportExportPage extends StatelessWidget {
             leading: const Icon(Icons.monitor_weight_outlined),
             title: Text(l10n.importMeasurements),
             onTap: () => _pickMeasurements(context),
+          ),
+          ListTile(
+            key: const Key('import-backup-zip'),
+            leading: const Icon(Icons.folder_zip_outlined),
+            title: Text(l10n.importBackupZip),
+            onTap: () => _importBackup(context),
           ),
           ListTile(
             leading: const Icon(Icons.download),
@@ -82,6 +90,26 @@ class ImportExportPage extends StatelessWidget {
     ScaffoldMessenger.of(
       context,
     ).showSnackBar(SnackBar(content: Text('${points.length}')));
+  }
+
+  Future<void> _importBackup(BuildContext context) async {
+    final l10n = context.l10n;
+    final picked = await FilePicker.pickFiles(
+      type: FileType.custom,
+      allowedExtensions: const ['zip'],
+    );
+    if (picked.isEmpty || !context.mounted) return;
+    final path = picked.single.path;
+    if (path == null || !context.mounted) return;
+    try {
+      await finishFlexifyBackupImport(context, File(path));
+    } catch (error, stackTrace) {
+      talker.handle(error, stackTrace, 'Failed to import Flexify database');
+      if (!context.mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(l10n.failedToImportDatabase('$error'))),
+      );
+    }
   }
 
   Future<void> _export(BuildContext context) async {

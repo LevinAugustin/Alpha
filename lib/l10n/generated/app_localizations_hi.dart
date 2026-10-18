@@ -2257,4 +2257,10 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get notSpecified => '–';
+
+  @override
+  String get resumeWorkout => 'कसरत जारी रखें';
+
+  @override
+  String get importBackupZip => 'बैकअप आयात करें (.zip)';
 }

@@ -2250,4 +2250,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get notSpecified => '–';
+
+  @override
+  String get resumeWorkout => 'متابعة التمرين';
+
+  @override
+  String get importBackupZip => 'استيراد نسخة احتياطية (.zip)';
 }

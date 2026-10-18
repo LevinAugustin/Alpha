@@ -711,5 +711,7 @@
   "mechanicCompound": "Grundübung",
   "mechanicIsolation": "Isolationsübung",
   "ownExerciseSource": "Eigene Übung",
-  "notSpecified": "–"
+  "notSpecified": "–",
+  "resumeWorkout": "Training fortsetzen",
+  "importBackupZip": "Sicherung importieren (.zip)"
 }

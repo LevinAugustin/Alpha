@@ -2270,4 +2270,10 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get notSpecified => '–';
+
+  @override
+  String get resumeWorkout => 'Tiếp tục buổi tập';
+
+  @override
+  String get importBackupZip => 'Nhập bản sao lưu (.zip)';
 }

@@ -711,5 +711,7 @@
   "mechanicCompound": "Basisoefening",
   "mechanicIsolation": "Isolatie",
   "ownExerciseSource": "Eigen oefening",
-  "notSpecified": "–"
+  "notSpecified": "–",
+  "resumeWorkout": "Training hervatten",
+  "importBackupZip": "Back-up importeren (.zip)"
 }

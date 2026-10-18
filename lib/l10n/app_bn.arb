@@ -2255,5 +2255,7 @@
   "mechanicCompound": "যৌগিক",
   "mechanicIsolation": "আইসোলেশন",
   "ownExerciseSource": "নিজের ব্যায়াম",
-  "notSpecified": "–"
+  "notSpecified": "–",
+  "resumeWorkout": "ওয়ার্কআউট চালিয়ে যান",
+  "importBackupZip": "ব্যাকআপ আমদানি (.zip)"
 }

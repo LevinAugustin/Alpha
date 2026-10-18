@@ -4217,6 +4217,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'–'**
   String get notSpecified;
+
+  /// Button that returns to the workout already in progress.
+  ///
+  /// In en, this message translates to:
+  /// **'Resume workout'**
+  String get resumeWorkout;
+
+  /// Imports a Flexify or Alpha zip backup.
+  ///
+  /// In en, this message translates to:
+  /// **'Import backup (.zip)'**
+  String get importBackupZip;
 }
 
 class _AppLocalizationsDelegate

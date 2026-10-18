@@ -2279,4 +2279,10 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get notSpecified => '–';
+
+  @override
+  String get resumeWorkout => 'Training hervatten';
+
+  @override
+  String get importBackupZip => 'Back-up importeren (.zip)';
 }

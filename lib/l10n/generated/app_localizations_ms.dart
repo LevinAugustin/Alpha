@@ -2274,4 +2274,10 @@ class AppLocalizationsMs extends AppLocalizations {
 
   @override
   String get notSpecified => '–';
+
+  @override
+  String get resumeWorkout => 'Sambung latihan';
+
+  @override
+  String get importBackupZip => 'Import sandaran (.zip)';
 }

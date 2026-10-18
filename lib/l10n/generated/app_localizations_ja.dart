@@ -2203,4 +2203,10 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get notSpecified => '–';
+
+  @override
+  String get resumeWorkout => 'ワークアウトを再開';
+
+  @override
+  String get importBackupZip => 'バックアップを読み込む (.zip)';
 }

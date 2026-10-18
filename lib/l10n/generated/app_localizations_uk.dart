@@ -2289,4 +2289,10 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get notSpecified => '–';
+
+  @override
+  String get resumeWorkout => 'Продовжити тренування';
+
+  @override
+  String get importBackupZip => 'Імпорт резервної копії (.zip)';
 }

@@ -2264,4 +2264,10 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String get notSpecified => '–';
+
+  @override
+  String get resumeWorkout => 'ادامه تمرین';
+
+  @override
+  String get importBackupZip => 'درون‌ریزی پشتیبان (.zip)';
 }

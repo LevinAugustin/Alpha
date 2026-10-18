@@ -2264,5 +2264,7 @@
   "mechanicCompound": "Базова",
   "mechanicIsolation": "Ізоляція",
   "ownExerciseSource": "Власна вправа",
-  "notSpecified": "–"
+  "notSpecified": "–",
+  "resumeWorkout": "Продовжити тренування",
+  "importBackupZip": "Імпорт резервної копії (.zip)"
 }

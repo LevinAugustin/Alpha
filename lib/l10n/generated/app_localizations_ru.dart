@@ -2292,4 +2292,10 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get notSpecified => '–';
+
+  @override
+  String get resumeWorkout => 'Продолжить тренировку';
+
+  @override
+  String get importBackupZip => 'Импорт резервной копии (.zip)';
 }

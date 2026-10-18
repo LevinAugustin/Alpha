@@ -711,5 +711,7 @@
   "mechanicCompound": "複合",
   "mechanicIsolation": "孤立",
   "ownExerciseSource": "自訂動作",
-  "notSpecified": "–"
+  "notSpecified": "–",
+  "resumeWorkout": "繼續訓練",
+  "importBackupZip": "匯入備份 (.zip)"
 }

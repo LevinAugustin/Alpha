@@ -3021,5 +3021,13 @@
   "notSpecified": "–",
   "@notSpecified": {
     "description": "Shown when grip or body position is not set."
+  },
+  "resumeWorkout": "Resume workout",
+  "@resumeWorkout": {
+    "description": "Button that returns to the workout already in progress."
+  },
+  "importBackupZip": "Import backup (.zip)",
+  "@importBackupZip": {
+    "description": "Imports a Flexify or Alpha zip backup."
   }
 }

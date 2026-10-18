@@ -2255,5 +2255,7 @@
   "mechanicCompound": "تمرين مركّب",
   "mechanicIsolation": "تمرين عزل",
   "ownExerciseSource": "تمرين خاص",
-  "notSpecified": "–"
+  "notSpecified": "–",
+  "resumeWorkout": "متابعة التمرين",
+  "importBackupZip": "استيراد نسخة احتياطية (.zip)"
 }

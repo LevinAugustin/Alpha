@@ -2247,4 +2247,10 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String get notSpecified => '–';
+
+  @override
+  String get resumeWorkout => 'ฝึกต่อ';
+
+  @override
+  String get importBackupZip => 'นำเข้าข้อมูลสำรอง (.zip)';
 }

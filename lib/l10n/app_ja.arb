@@ -711,5 +711,7 @@
   "mechanicCompound": "コンパウンド",
   "mechanicIsolation": "アイソレーション",
   "ownExerciseSource": "カスタム種目",
-  "notSpecified": "–"
+  "notSpecified": "–",
+  "resumeWorkout": "ワークアウトを再開",
+  "importBackupZip": "バックアップを読み込む (.zip)"
 }

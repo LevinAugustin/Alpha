@@ -2255,5 +2255,7 @@
   "mechanicCompound": "कंपाउंड",
   "mechanicIsolation": "आइसोलेशन",
   "ownExerciseSource": "अपनी कसरत",
-  "notSpecified": "–"
+  "notSpecified": "–",
+  "resumeWorkout": "कसरत जारी रखें",
+  "importBackupZip": "बैकअप आयात करें (.zip)"
 }

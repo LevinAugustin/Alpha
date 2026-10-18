@@ -2255,5 +2255,7 @@
   "mechanicCompound": "หลายข้อต่อ",
   "mechanicIsolation": "แยกส่วน",
   "ownExerciseSource": "ท่าของฉัน",
-  "notSpecified": "–"
+  "notSpecified": "–",
+  "resumeWorkout": "ฝึกต่อ",
+  "importBackupZip": "นำเข้าข้อมูลสำรอง (.zip)"
 }

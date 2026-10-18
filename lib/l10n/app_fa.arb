@@ -2255,5 +2255,7 @@
   "mechanicCompound": "ترکیبی",
   "mechanicIsolation": "ایزوله",
   "ownExerciseSource": "حرکت شخصی",
-  "notSpecified": "–"
+  "notSpecified": "–",
+  "resumeWorkout": "ادامه تمرین",
+  "importBackupZip": "درون‌ریزی پشتیبان (.zip)"
 }

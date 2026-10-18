@@ -2275,4 +2275,10 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get notSpecified => '–';
+
+  @override
+  String get resumeWorkout => 'Lanjutkan latihan';
+
+  @override
+  String get importBackupZip => 'Impor cadangan (.zip)';
 }

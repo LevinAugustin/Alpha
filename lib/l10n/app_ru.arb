@@ -711,5 +711,7 @@
   "mechanicCompound": "Базовое",
   "mechanicIsolation": "Изоляция",
   "ownExerciseSource": "Своё упражнение",
-  "notSpecified": "–"
+  "notSpecified": "–",
+  "resumeWorkout": "Продолжить тренировку",
+  "importBackupZip": "Импорт резервной копии (.zip)"
 }

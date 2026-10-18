@@ -2255,5 +2255,7 @@
   "mechanicCompound": "Gabungan",
   "mechanicIsolation": "Isolasi",
   "ownExerciseSource": "Latihan sendiri",
-  "notSpecified": "–"
+  "notSpecified": "–",
+  "resumeWorkout": "Lanjutkan latihan",
+  "importBackupZip": "Impor cadangan (.zip)"
 }

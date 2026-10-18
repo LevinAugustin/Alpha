@@ -711,5 +711,7 @@
   "mechanicCompound": "Polyarticulaire",
   "mechanicIsolation": "Exercice d'isolation",
   "ownExerciseSource": "Exercice personnel",
-  "notSpecified": "–"
+  "notSpecified": "–",
+  "resumeWorkout": "Reprendre l'entraînement",
+  "importBackupZip": "Importer une sauvegarde (.zip)"
 }

@@ -2290,6 +2290,12 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get notSpecified => '–';
+
+  @override
+  String get resumeWorkout => 'Retomar o treino';
+
+  @override
+  String get importBackupZip => 'Importar cópia (.zip)';
 }
 
 /// The translations for Portuguese, as used in Brazil (`pt_BR`).
@@ -4569,6 +4575,12 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
 
   @override
   String get notSpecified => '–';
+
+  @override
+  String get resumeWorkout => 'Retomar o treino';
+
+  @override
+  String get importBackupZip => 'Importar cópia (.zip)';
 }
 
 /// The translations for Portuguese, as used in Portugal (`pt_PT`).
@@ -6857,4 +6869,10 @@ class AppLocalizationsPtPt extends AppLocalizationsPt {
 
   @override
   String get notSpecified => '–';
+
+  @override
+  String get resumeWorkout => 'Retomar o treino';
+
+  @override
+  String get importBackupZip => 'Importar cópia (.zip)';
 }

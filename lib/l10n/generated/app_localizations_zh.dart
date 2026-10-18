@@ -2192,6 +2192,12 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get notSpecified => '–';
+
+  @override
+  String get resumeWorkout => '继续训练';
+
+  @override
+  String get importBackupZip => '导入备份 (.zip)';
 }
 
 /// The translations for Chinese, as used in China (`zh_CN`).
@@ -4382,6 +4388,12 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
 
   @override
   String get notSpecified => '–';
+
+  @override
+  String get resumeWorkout => '继续训练';
+
+  @override
+  String get importBackupZip => '导入备份 (.zip)';
 }
 
 /// The translations for Chinese, as used in Taiwan (`zh_TW`).
@@ -6572,4 +6584,10 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get notSpecified => '–';
+
+  @override
+  String get resumeWorkout => '繼續訓練';
+
+  @override
+  String get importBackupZip => '匯入備份 (.zip)';
 }

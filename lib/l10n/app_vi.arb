@@ -2255,5 +2255,7 @@
   "mechanicCompound": "Đa khớp",
   "mechanicIsolation": "Cô lập",
   "ownExerciseSource": "Bài tập riêng",
-  "notSpecified": "–"
+  "notSpecified": "–",
+  "resumeWorkout": "Tiếp tục buổi tập",
+  "importBackupZip": "Nhập bản sao lưu (.zip)"
 }

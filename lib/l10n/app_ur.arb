@@ -2255,5 +2255,7 @@
   "mechanicCompound": "مرکب",
   "mechanicIsolation": "تنہائی",
   "ownExerciseSource": "اپنی ورزش",
-  "notSpecified": "–"
+  "notSpecified": "–",
+  "resumeWorkout": "ورزش جاری رکھیں",
+  "importBackupZip": "بیک اپ درآمد کریں (.zip)"
 }

@@ -711,5 +711,7 @@
   "mechanicCompound": "복합 운동",
   "mechanicIsolation": "고립 운동",
   "ownExerciseSource": "사용자 운동",
-  "notSpecified": "–"
+  "notSpecified": "–",
+  "resumeWorkout": "운동 이어하기",
+  "importBackupZip": "백업 가져오기 (.zip)"
 }

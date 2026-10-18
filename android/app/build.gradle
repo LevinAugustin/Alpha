@@ -106,7 +106,9 @@ android {
    }
    buildTypes {
        profile {
-           signingConfig keystorePropertiesFile.isFile() ? signingConfigs.release : signingConfigs.debug
+           if (keystorePropertiesFile.isFile()) {
+               signingConfig signingConfigs.release
+           }
            buildConfigField "long", "BUILD_TIME", "0L"
        }
        debug {
@@ -116,8 +118,23 @@ android {
            buildConfigField "long", "BUILD_TIME", "0L"
        }
        release {
-           signingConfig keystorePropertiesFile.isFile() ? signingConfigs.release : signingConfigs.debug
+           if (keystorePropertiesFile.isFile()) {
+               signingConfig signingConfigs.release
+           }
            buildConfigField "long", "BUILD_TIME", "0L"
+       }
+   }
+   tasks.configureEach { task ->
+       if (task.name ==~ /(?i).*(release|profile).*/) {
+           task.doFirst {
+               if (!keystorePropertiesFile.isFile()) {
+                   throw new GradleException('Release and profile builds need android/key.properties and the release keystore. They do not fall back to the debug key.')
+               }
+               def storeName = keystoreProperties['storeFile']
+               if (storeName == null || !file(storeName).isFile()) {
+                   throw new GradleException('Release and profile builds need the release keystore named in android/key.properties. They do not fall back to the debug key.')
+               }
+           }
        }
    }
    // https://github.com/brandonp2412/Flexify/issues/125

@@ -711,5 +711,7 @@
   "mechanicCompound": "Bileşik",
   "mechanicIsolation": "İzolasyon",
   "ownExerciseSource": "Kendi egzersizi",
-  "notSpecified": "–"
+  "notSpecified": "–",
+  "resumeWorkout": "Antrenmana devam et",
+  "importBackupZip": "Yedeği içe aktar (.zip)"
 }

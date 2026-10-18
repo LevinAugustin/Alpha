@@ -22,6 +22,7 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 final rootScaffoldMessenger = GlobalKey<ScaffoldMessengerState>();
+final navigatorKey = GlobalKey<NavigatorState>();
 String? _lastSyncedBackupLocale;
 
 class _NoAnimationPageTransitionsBuilder extends PageTransitionsBuilder {
@@ -206,6 +207,7 @@ class App extends StatelessWidget {
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      navigatorKey: navigatorKey,
       scaffoldMessengerKey: rootScaffoldMessenger,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,

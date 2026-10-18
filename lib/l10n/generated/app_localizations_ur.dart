@@ -2262,4 +2262,10 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get notSpecified => '–';
+
+  @override
+  String get resumeWorkout => 'ورزش جاری رکھیں';
+
+  @override
+  String get importBackupZip => 'بیک اپ درآمد کریں (.zip)';
 }

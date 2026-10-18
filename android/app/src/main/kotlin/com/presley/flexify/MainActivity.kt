@@ -387,7 +387,11 @@ class MainActivity : FlutterActivity() {
             localization.forEach { (key, value) -> putExtra(key, value) }
         }
 
-        ContextCompat.startForegroundService(context, intent)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            context.startForegroundService(intent)
+        } else {
+            context.startService(intent)
+        }
     }
 
     private fun installApk(path: String, result: io.flutter.plugin.common.MethodChannel.Result) {
@@ -504,7 +508,12 @@ class MainActivity : FlutterActivity() {
         if (vibrator.hasVibrator()) {
             try {
                 val pattern = longArrayOf(0, 500, 200, 300)
-                vibrator.vibrate(android.os.VibrationEffect.createWaveform(pattern, -1))
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    vibrator.vibrate(android.os.VibrationEffect.createWaveform(pattern, -1))
+                } else {
+                    @Suppress("DEPRECATION")
+                    vibrator.vibrate(pattern, -1)
+                }
                 Log.d("MainActivity", "Preview vibration triggered successfully")
             } catch (e: Exception) {
                 Log.e("MainActivity", "Failed to trigger preview vibration", e)

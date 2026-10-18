@@ -62,7 +62,12 @@ class _StartPageState extends State<StartPage> {
     final next = liveWorkout.value;
     final ended = _live != null && next == null;
     _live = next;
-    if (ended) _reload();
+    if (!mounted) return;
+    if (ended) {
+      _reload();
+    } else {
+      setState(() {});
+    }
   }
 
   void _onActive() {
@@ -88,6 +93,20 @@ class _StartPageState extends State<StartPage> {
       context,
     ).push(FlexPageRoute(builder: (context) => GymWorkoutPage(plan: plan)));
     _reload();
+  }
+
+  Future<void> _startOrResume(Plan? next) async {
+    final live = liveWorkout.value;
+    if (live != null) {
+      final plan = await (db.select(
+        db.plans,
+      )..where((row) => row.id.equals(live.planId))).getSingleOrNull();
+      if (plan == null || !mounted) return;
+      await _openPlan(plan);
+      return;
+    }
+    if (next == null) return;
+    await _openPlan(next);
   }
 
   @override
@@ -141,9 +160,9 @@ class _StartPageState extends State<StartPage> {
                 if (!saved || !mounted) return;
                 _reload();
               },
-              onStart: data.nextPlan == null
+              onStart: liveWorkout.value == null && data.nextPlan == null
                   ? null
-                  : () => _openPlan(data.nextPlan!),
+                  : () => _startOrResume(data.nextPlan),
             ),
             ValueListenableBuilder(
               valueListenable: pendingAppUpdate,
@@ -548,6 +567,7 @@ class _LockedHome extends StatelessWidget {
                         text: l10n.weekStreak(data.weekStreak),
                       ),
                     ),
+                    const SizedBox(width: 28),
                   ],
                 ),
                 const SizedBox(height: 12),
@@ -738,14 +758,22 @@ class _Hero extends StatelessWidget {
                   gradient: palette.buttonGradient,
                 ),
                 child: TextButton(
+                  key: const Key('start-workout'),
                   onPressed: onStart,
-                  child: Text(
-                    l10n.startWorkoutNamed(planName),
-                    style: TextStyle(
-                      fontFamily: 'Bebas Neue',
-                      fontSize: 22,
-                      color: palette.onAccent,
-                    ),
+                  child: ValueListenableBuilder<LiveWorkout?>(
+                    valueListenable: liveWorkout,
+                    builder: (context, session, _) {
+                      return Text(
+                        session == null
+                            ? l10n.startWorkoutNamed(planName)
+                            : l10n.resumeWorkout,
+                        style: TextStyle(
+                          fontFamily: 'Bebas Neue',
+                          fontSize: 22,
+                          color: palette.onAccent,
+                        ),
+                      );
+                    },
                   ),
                 ),
               ),
