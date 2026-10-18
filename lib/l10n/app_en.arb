@@ -2683,6 +2683,55 @@
   "@updateInstallFailed": {
     "description": "Title of the dialog shown when an update download or install fails."
   },
+  "downloadFailed": "Download failed",
+  "@downloadFailed": {
+    "description": "Title of the dialog shown when the update file could not be downloaded."
+  },
+  "updateFailureNetwork": "No connection.",
+  "@updateFailureNetwork": {
+    "description": "Short cause when the update download has no network."
+  },
+  "updateFailureTimeout": "Timed out.",
+  "@updateFailureTimeout": {
+    "description": "Short cause when the update download times out."
+  },
+  "updateFailureHttp": "The server answered with {status}.",
+  "@updateFailureHttp": {
+    "description": "Short cause when the update server rejects the download.",
+    "placeholders": {
+      "status": {
+        "type": "String"
+      }
+    }
+  },
+  "updateFailureEmpty": "The file is empty.",
+  "@updateFailureEmpty": {
+    "description": "Short cause when the downloaded update file is empty."
+  },
+  "updateFailureSize": "The file is incomplete.",
+  "@updateFailureSize": {
+    "description": "Short cause when the downloaded update file has the wrong size."
+  },
+  "updateFailurePermission": "Installation is not allowed.",
+  "@updateFailurePermission": {
+    "description": "Short cause when Android blocks the update install."
+  },
+  "updateFailureGeneric": "That did not work.",
+  "@updateFailureGeneric": {
+    "description": "Short cause when an update fails for another reason."
+  },
+  "errorDetails": "Details",
+  "@errorDetails": {
+    "description": "Label that expands the technical update error."
+  },
+  "createOwnExercise": "Create your own exercise",
+  "@createOwnExercise": {
+    "description": "Secondary action in the exercise picker that opens the custom exercise form."
+  },
+  "customExerciseMuscleRequired": "Choose a primary muscle.",
+  "@customExerciseMuscleRequired": {
+    "description": "Shown when a custom exercise is saved without a primary muscle."
+  },
   "licensesTitle": "Licenses",
   "@licensesTitle":   {
     "description": "Licenses"

@@ -2038,6 +2038,41 @@ class AppLocalizationsUk extends AppLocalizations {
   String get updateInstallFailed => 'Не вдалося встановити оновлення';
 
   @override
+  String get downloadFailed => 'Завантаження не вдалося';
+
+  @override
+  String get updateFailureNetwork => 'Немає з\'єднання.';
+
+  @override
+  String get updateFailureTimeout => 'Час вичерпано.';
+
+  @override
+  String updateFailureHttp(String status) {
+    return 'Сервер відповів кодом $status.';
+  }
+
+  @override
+  String get updateFailureEmpty => 'Файл порожній.';
+
+  @override
+  String get updateFailureSize => 'Файл неповний.';
+
+  @override
+  String get updateFailurePermission => 'Встановлення не дозволено.';
+
+  @override
+  String get updateFailureGeneric => 'Це не вдалося.';
+
+  @override
+  String get errorDetails => 'Подробиці';
+
+  @override
+  String get createOwnExercise => 'Створити свою вправу';
+
+  @override
+  String get customExerciseMuscleRequired => 'Оберіть основний м\'яз.';
+
+  @override
   String get licensesTitle => 'Ліцензії';
 
   @override

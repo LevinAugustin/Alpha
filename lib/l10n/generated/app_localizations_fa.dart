@@ -2014,6 +2014,41 @@ class AppLocalizationsFa extends AppLocalizations {
   String get updateInstallFailed => 'به‌روزرسانی نصب نشد';
 
   @override
+  String get downloadFailed => 'دانلود ناموفق بود';
+
+  @override
+  String get updateFailureNetwork => 'اتصال نیست.';
+
+  @override
+  String get updateFailureTimeout => 'زمان تمام شد.';
+
+  @override
+  String updateFailureHttp(String status) {
+    return 'سرور با $status پاسخ داد.';
+  }
+
+  @override
+  String get updateFailureEmpty => 'فایل خالی است.';
+
+  @override
+  String get updateFailureSize => 'فایل ناقص است.';
+
+  @override
+  String get updateFailurePermission => 'نصب مجاز نیست.';
+
+  @override
+  String get updateFailureGeneric => 'انجام نشد.';
+
+  @override
+  String get errorDetails => 'جزئیات بیشتر';
+
+  @override
+  String get createOwnExercise => 'تمرین خودت را بساز';
+
+  @override
+  String get customExerciseMuscleRequired => 'یک عضله اصلی انتخاب کن.';
+
+  @override
   String get licensesTitle => 'مجوزها';
 
   @override

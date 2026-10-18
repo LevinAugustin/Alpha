@@ -2028,6 +2028,41 @@ class AppLocalizationsNl extends AppLocalizations {
   String get updateInstallFailed => 'De update kon niet worden geïnstalleerd';
 
   @override
+  String get downloadFailed => 'Download mislukt';
+
+  @override
+  String get updateFailureNetwork => 'Geen verbinding.';
+
+  @override
+  String get updateFailureTimeout => 'Time-out.';
+
+  @override
+  String updateFailureHttp(String status) {
+    return 'De server antwoordde met $status.';
+  }
+
+  @override
+  String get updateFailureEmpty => 'Het bestand is leeg.';
+
+  @override
+  String get updateFailureSize => 'Het bestand is onvolledig.';
+
+  @override
+  String get updateFailurePermission => 'Installeren is niet toegestaan.';
+
+  @override
+  String get updateFailureGeneric => 'Dat lukte niet.';
+
+  @override
+  String get errorDetails => 'Bijzonderheden';
+
+  @override
+  String get createOwnExercise => 'Eigen oefening maken';
+
+  @override
+  String get customExerciseMuscleRequired => 'Kies een hoofdspier.';
+
+  @override
   String get licensesTitle => 'Licenties';
 
   @override

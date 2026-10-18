@@ -133,7 +133,7 @@ Future<void> main() async {
         debugPrint('$stack');
         talker.error('Exercise catalog seed failed', error, stack);
       }
-      unawaited(checkForAppUpdate());
+      unawaited(checkForAppUpdate(retry: true));
       runApp(appProviders(setting));
     },
     (error, stack) =>

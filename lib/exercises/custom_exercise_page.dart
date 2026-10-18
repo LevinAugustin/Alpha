@@ -37,6 +37,7 @@ class _CustomExercisePageState extends State<CustomExercisePage> {
   final _primary = <String>{};
   final _secondary = <String>{};
   var _saving = false;
+  String? _formError;
 
   @override
   void initState() {
@@ -110,6 +111,15 @@ class _CustomExercisePageState extends State<CustomExercisePage> {
           ),
           const SizedBox(height: 12),
           Text(l10n.primaryMuscleLabel),
+          if (_formError != null)
+            Padding(
+              padding: const EdgeInsets.only(top: 4, bottom: 4),
+              child: Text(
+                _formError!,
+                key: const Key('custom-exercise-error'),
+                style: TextStyle(color: Theme.of(context).colorScheme.error),
+              ),
+            ),
           Wrap(
             spacing: 8,
             children: [
@@ -233,9 +243,12 @@ class _CustomExercisePageState extends State<CustomExercisePage> {
     );
     final error = validateCustomExercise(draft);
     if (error != null) {
-      final message = error == 'movement'
-          ? context.l10n.customExerciseMovementRequired
-          : context.l10n.customExerciseInvalid;
+      final message = switch (error) {
+        'movement' => context.l10n.customExerciseMovementRequired,
+        'muscles' => context.l10n.customExerciseMuscleRequired,
+        _ => context.l10n.customExerciseInvalid,
+      };
+      setState(() => _formError = error == 'muscles' ? message : null);
       ScaffoldMessenger.of(
         context,
       ).showSnackBar(SnackBar(content: Text(message)));

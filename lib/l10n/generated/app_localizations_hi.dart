@@ -2008,6 +2008,41 @@ class AppLocalizationsHi extends AppLocalizations {
   String get updateInstallFailed => 'अपडेट इंस्टॉल नहीं हो सका';
 
   @override
+  String get downloadFailed => 'डाउनलोड विफल';
+
+  @override
+  String get updateFailureNetwork => 'कोई कनेक्शन नहीं।';
+
+  @override
+  String get updateFailureTimeout => 'समय समाप्त।';
+
+  @override
+  String updateFailureHttp(String status) {
+    return 'सर्वर ने $status से जवाब दिया।';
+  }
+
+  @override
+  String get updateFailureEmpty => 'फ़ाइल खाली है।';
+
+  @override
+  String get updateFailureSize => 'फ़ाइल अधूरी है।';
+
+  @override
+  String get updateFailurePermission => 'इंस्टॉल की अनुमति नहीं है।';
+
+  @override
+  String get updateFailureGeneric => 'यह काम नहीं किया।';
+
+  @override
+  String get errorDetails => 'विवरण';
+
+  @override
+  String get createOwnExercise => 'अपना व्यायाम बनाएँ';
+
+  @override
+  String get customExerciseMuscleRequired => 'एक मुख्य मांसपेशी चुनें।';
+
+  @override
   String get licensesTitle => 'लाइसेंस';
 
   @override

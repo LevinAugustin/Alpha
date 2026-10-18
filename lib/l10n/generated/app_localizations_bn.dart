@@ -2010,6 +2010,41 @@ class AppLocalizationsBn extends AppLocalizations {
   String get updateInstallFailed => 'আপডেট ইনস্টল করা যায়নি';
 
   @override
+  String get downloadFailed => 'ডাউনলোড ব্যর্থ';
+
+  @override
+  String get updateFailureNetwork => 'সংযোগ নেই।';
+
+  @override
+  String get updateFailureTimeout => 'সময় শেষ।';
+
+  @override
+  String updateFailureHttp(String status) {
+    return 'সার্ভার $status দিয়ে উত্তর দিয়েছে।';
+  }
+
+  @override
+  String get updateFailureEmpty => 'ফাইল খালি।';
+
+  @override
+  String get updateFailureSize => 'ফাইল অসম্পূর্ণ।';
+
+  @override
+  String get updateFailurePermission => 'ইনস্টলের অনুমতি নেই।';
+
+  @override
+  String get updateFailureGeneric => 'এটা হয়নি।';
+
+  @override
+  String get errorDetails => 'বিস্তারিত';
+
+  @override
+  String get createOwnExercise => 'নিজের ব্যায়াম বানান';
+
+  @override
+  String get customExerciseMuscleRequired => 'একটি প্রধান পেশি বেছে নিন।';
+
+  @override
   String get licensesTitle => 'লাইসেন্স';
 
   @override

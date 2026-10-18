@@ -2023,6 +2023,41 @@ class AppLocalizationsMs extends AppLocalizations {
   String get updateInstallFailed => 'Kemas kini tidak dapat dipasang';
 
   @override
+  String get downloadFailed => 'Muat turun gagal';
+
+  @override
+  String get updateFailureNetwork => 'Tiada sambungan.';
+
+  @override
+  String get updateFailureTimeout => 'Masa tamat.';
+
+  @override
+  String updateFailureHttp(String status) {
+    return 'Pelayan menjawab dengan $status.';
+  }
+
+  @override
+  String get updateFailureEmpty => 'Fail kosong.';
+
+  @override
+  String get updateFailureSize => 'Fail tidak lengkap.';
+
+  @override
+  String get updateFailurePermission => 'Pemasangan tidak dibenarkan.';
+
+  @override
+  String get updateFailureGeneric => 'Itu tidak berjaya.';
+
+  @override
+  String get errorDetails => 'Butiran';
+
+  @override
+  String get createOwnExercise => 'Cipta senaman sendiri';
+
+  @override
+  String get customExerciseMuscleRequired => 'Pilih otot utama.';
+
+  @override
   String get licensesTitle => 'Lesen';
 
   @override

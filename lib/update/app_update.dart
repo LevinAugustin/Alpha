@@ -2,9 +2,11 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:flexify/l10n/generated/app_localizations.dart';
 import 'package:flexify/l10n/l10n.dart';
 import 'package:flexify/logging.dart';
 import 'package:flexify/main.dart';
+import 'package:flexify/theme/alpha_theme.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -17,6 +19,7 @@ const githubReleasesUrl =
 
 const updateConnectTimeout = Duration(seconds: 20);
 const updateIdleTimeout = Duration(seconds: 30);
+const updateCheckRetryDelay = Duration(seconds: 4);
 
 class AppRelease {
   const AppRelease({
@@ -195,10 +198,19 @@ int deleteStaleUpdateApks(Directory directory, {String? keepName}) {
   return removed;
 }
 
-Future<bool> checkForAppUpdate() async {
+Future<bool> checkForAppUpdate({
+  bool retry = false,
+  Duration retryDelay = updateCheckRetryDelay,
+  Future<AppRelease> Function()? loadRelease,
+  Future<({String version, String buildNumber})> Function()? loadPackage,
+}) async {
   try {
-    final latest = await _latestRelease();
-    final info = await PackageInfo.fromPlatform();
+    final latest = loadRelease == null
+        ? await _latestRelease()
+        : await loadRelease();
+    final info = loadPackage == null
+        ? await _packageVersion()
+        : await loadPackage();
     updateCheckFailed.value = false;
     updateCheckCompleted.value = true;
     if (!isNewerRelease(
@@ -213,10 +225,22 @@ Future<bool> checkForAppUpdate() async {
     return true;
   } catch (error, stack) {
     talker.handle(error, stack, 'Update check failed');
+    if (retry) {
+      await Future<void>.delayed(retryDelay);
+      return checkForAppUpdate(
+        loadRelease: loadRelease,
+        loadPackage: loadPackage,
+      );
+    }
     updateCheckFailed.value = true;
     updateCheckCompleted.value = true;
     return false;
   }
+}
+
+Future<({String version, String buildNumber})> _packageVersion() async {
+  final info = await PackageInfo.fromPlatform();
+  return (version: info.version, buildNumber: info.buildNumber);
 }
 
 Future<AppRelease> _latestRelease() async {
@@ -379,12 +403,22 @@ Future<void> _downloadAndInstall(
               final fraction = total == null || total <= 0
                   ? null
                   : (value.$1 / total).clamp(0.0, 1.0);
+              final progressColors = updateProgressColors(
+                AlphaTheme.of(context),
+              );
               return AlertDialog(
                 title: Text(context.l10n.downloadingUpdate),
                 content: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    LinearProgressIndicator(value: fraction),
+                    LinearProgressIndicator(
+                      key: const Key('update-progress'),
+                      value: fraction,
+                      minHeight: 10,
+                      color: progressColors.fill,
+                      backgroundColor: progressColors.track,
+                      borderRadius: BorderRadius.circular(8),
+                    ),
                     const SizedBox(height: 12),
                     Text(
                       context.l10n.updateDownloadProgress(
@@ -552,16 +586,120 @@ Future<void> _showInstallNotification(String title) async {
   }
 }
 
+enum UpdateProblem {
+  network,
+  timeout,
+  http,
+  empty,
+  size,
+  permission,
+  install,
+  generic,
+}
+
+class UpdateProblemReport {
+  const UpdateProblemReport(this.problem, {this.statusCode, this.details = ''});
+
+  final UpdateProblem problem;
+  final int? statusCode;
+  final String details;
+
+  bool get isDownload =>
+      problem != UpdateProblem.permission && problem != UpdateProblem.install;
+}
+
+String stripUpdateUrls(String raw) {
+  return raw
+      .replaceAll(RegExp(r'https?://\S+'), '')
+      .replaceAll(RegExp(r'\s+'), ' ')
+      .trim();
+}
+
+UpdateProblemReport describeUpdateFailure(Object error) {
+  final details = stripUpdateUrls('$error');
+  if (error is UpdateCheckException) {
+    final message = error.message;
+    if (message == 'empty') {
+      return UpdateProblemReport(UpdateProblem.empty, details: details);
+    }
+    if (message.startsWith('HTTP ')) {
+      return UpdateProblemReport(
+        UpdateProblem.http,
+        statusCode: int.tryParse(message.substring(5).trim()),
+        details: details,
+      );
+    }
+    if (message.startsWith('size ')) {
+      return UpdateProblemReport(UpdateProblem.size, details: details);
+    }
+    if (message == 'needs_permission') {
+      return UpdateProblemReport(UpdateProblem.permission, details: details);
+    }
+    return UpdateProblemReport(UpdateProblem.generic, details: details);
+  }
+  if (error is TimeoutException) {
+    return UpdateProblemReport(UpdateProblem.timeout, details: details);
+  }
+  if (error is SocketException ||
+      error is TlsException ||
+      error is HttpException) {
+    return UpdateProblemReport(UpdateProblem.network, details: details);
+  }
+  if (error is PlatformException && error.code == 'install_failed') {
+    return UpdateProblemReport(UpdateProblem.install, details: details);
+  }
+  return UpdateProblemReport(UpdateProblem.generic, details: details);
+}
+
+({Color fill, Color track}) updateProgressColors(AlphaPalette palette) {
+  return (fill: palette.accent, track: palette.background);
+}
+
+String updateFailureCause(AppLocalizations l10n, UpdateProblemReport report) {
+  return switch (report.problem) {
+    UpdateProblem.network => l10n.updateFailureNetwork,
+    UpdateProblem.timeout => l10n.updateFailureTimeout,
+    UpdateProblem.http => l10n.updateFailureHttp('${report.statusCode ?? ''}'),
+    UpdateProblem.empty => l10n.updateFailureEmpty,
+    UpdateProblem.size => l10n.updateFailureSize,
+    UpdateProblem.permission => l10n.updateFailurePermission,
+    UpdateProblem.install => l10n.updateInstallFailed,
+    UpdateProblem.generic => l10n.updateFailureGeneric,
+  };
+}
+
 Future<void> showUpdateFailure(
   BuildContext context,
   Object error,
   String apkUrl,
 ) {
+  talker.handle(error, StackTrace.current, 'Update failed');
+  final report = describeUpdateFailure(error);
+  final details = report.details;
   return showDialog<void>(
     context: context,
     builder: (context) => AlertDialog(
-      title: Text(context.l10n.updateInstallFailed),
-      content: Text('$error'),
+      title: Text(
+        report.isDownload
+            ? context.l10n.downloadFailed
+            : context.l10n.updateInstallFailed,
+      ),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(updateFailureCause(context.l10n, report)),
+          if (details.isNotEmpty)
+            ExpansionTile(
+              key: const Key('update-failure-details'),
+              tilePadding: EdgeInsets.zero,
+              title: Text(context.l10n.errorDetails),
+              children: [
+                Align(alignment: Alignment.centerLeft, child: Text(details)),
+              ],
+            ),
+        ],
+      ),
       actions: [
         if (apkUrl.isNotEmpty)
           TextButton(

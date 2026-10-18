@@ -1955,6 +1955,41 @@ class AppLocalizationsJa extends AppLocalizations {
   String get updateInstallFailed => '更新をインストールできませんでした';
 
   @override
+  String get downloadFailed => 'ダウンロードに失敗しました';
+
+  @override
+  String get updateFailureNetwork => '接続がありません。';
+
+  @override
+  String get updateFailureTimeout => '時間切れです。';
+
+  @override
+  String updateFailureHttp(String status) {
+    return 'サーバーは $status と応答しました。';
+  }
+
+  @override
+  String get updateFailureEmpty => 'ファイルが空です。';
+
+  @override
+  String get updateFailureSize => 'ファイルが不完全です。';
+
+  @override
+  String get updateFailurePermission => 'インストールは許可されていません。';
+
+  @override
+  String get updateFailureGeneric => 'うまくいきませんでした。';
+
+  @override
+  String get errorDetails => '詳細';
+
+  @override
+  String get createOwnExercise => '自分の種目を作る';
+
+  @override
+  String get customExerciseMuscleRequired => '主働筋を選んでください。';
+
+  @override
   String get licensesTitle => 'ライセンス';
 
   @override

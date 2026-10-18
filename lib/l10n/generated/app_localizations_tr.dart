@@ -2030,6 +2030,41 @@ class AppLocalizationsTr extends AppLocalizations {
   String get updateInstallFailed => 'Güncelleme yüklenemedi';
 
   @override
+  String get downloadFailed => 'İndirme başarısız';
+
+  @override
+  String get updateFailureNetwork => 'Bağlantı yok.';
+
+  @override
+  String get updateFailureTimeout => 'Süre doldu.';
+
+  @override
+  String updateFailureHttp(String status) {
+    return 'Sunucu $status ile yanıt verdi.';
+  }
+
+  @override
+  String get updateFailureEmpty => 'Dosya boş.';
+
+  @override
+  String get updateFailureSize => 'Dosya eksik.';
+
+  @override
+  String get updateFailurePermission => 'Yüklemeye izin yok.';
+
+  @override
+  String get updateFailureGeneric => 'Bu işe yaramadı.';
+
+  @override
+  String get errorDetails => 'Ayrıntılar';
+
+  @override
+  String get createOwnExercise => 'Kendi egzersizini oluştur';
+
+  @override
+  String get customExerciseMuscleRequired => 'Bir ana kas seç.';
+
+  @override
   String get licensesTitle => 'Lisanslar';
 
   @override

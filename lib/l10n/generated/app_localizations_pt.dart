@@ -2037,6 +2037,41 @@ class AppLocalizationsPt extends AppLocalizations {
   String get updateInstallFailed => 'Não foi possível instalar a atualização';
 
   @override
+  String get downloadFailed => 'A transferência falhou';
+
+  @override
+  String get updateFailureNetwork => 'Sem ligação.';
+
+  @override
+  String get updateFailureTimeout => 'Tempo esgotado.';
+
+  @override
+  String updateFailureHttp(String status) {
+    return 'O servidor respondeu com $status.';
+  }
+
+  @override
+  String get updateFailureEmpty => 'O ficheiro está vazio.';
+
+  @override
+  String get updateFailureSize => 'O ficheiro está incompleto.';
+
+  @override
+  String get updateFailurePermission => 'A instalação não é permitida.';
+
+  @override
+  String get updateFailureGeneric => 'Não resultou.';
+
+  @override
+  String get errorDetails => 'Pormenores';
+
+  @override
+  String get createOwnExercise => 'Criar um exercício próprio';
+
+  @override
+  String get customExerciseMuscleRequired => 'Escolhe um músculo principal.';
+
+  @override
   String get licensesTitle => 'Licenças';
 
   @override
@@ -4425,6 +4460,41 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
 
   @override
   String get updateInstallFailed => 'Não foi possível instalar a atualização';
+
+  @override
+  String get downloadFailed => 'O download falhou';
+
+  @override
+  String get updateFailureNetwork => 'Sem conexão.';
+
+  @override
+  String get updateFailureTimeout => 'Tempo esgotado.';
+
+  @override
+  String updateFailureHttp(String status) {
+    return 'O servidor respondeu com $status.';
+  }
+
+  @override
+  String get updateFailureEmpty => 'O arquivo está vazio.';
+
+  @override
+  String get updateFailureSize => 'O arquivo está incompleto.';
+
+  @override
+  String get updateFailurePermission => 'A instalação não é permitida.';
+
+  @override
+  String get updateFailureGeneric => 'Isso não funcionou.';
+
+  @override
+  String get errorDetails => 'Detalhes';
+
+  @override
+  String get createOwnExercise => 'Criar um exercício próprio';
+
+  @override
+  String get customExerciseMuscleRequired => 'Escolha um músculo principal.';
 
   @override
   String get licensesTitle => 'Licenças';
@@ -6822,6 +6892,41 @@ class AppLocalizationsPtPt extends AppLocalizationsPt {
 
   @override
   String get updateInstallFailed => 'Não foi possível instalar a atualização';
+
+  @override
+  String get downloadFailed => 'A transferência falhou';
+
+  @override
+  String get updateFailureNetwork => 'Sem ligação.';
+
+  @override
+  String get updateFailureTimeout => 'Tempo esgotado.';
+
+  @override
+  String updateFailureHttp(String status) {
+    return 'O servidor respondeu com $status.';
+  }
+
+  @override
+  String get updateFailureEmpty => 'O ficheiro está vazio.';
+
+  @override
+  String get updateFailureSize => 'O ficheiro está incompleto.';
+
+  @override
+  String get updateFailurePermission => 'A instalação não é permitida.';
+
+  @override
+  String get updateFailureGeneric => 'Não resultou.';
+
+  @override
+  String get errorDetails => 'Pormenores';
+
+  @override
+  String get createOwnExercise => 'Criar um exercício próprio';
+
+  @override
+  String get customExerciseMuscleRequired => 'Escolhe um músculo principal.';
 
   @override
   String get licensesTitle => 'Licenças';

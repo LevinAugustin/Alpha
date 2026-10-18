@@ -1944,6 +1944,41 @@ class AppLocalizationsZh extends AppLocalizations {
   String get updateInstallFailed => '无法安装更新';
 
   @override
+  String get downloadFailed => '下载失败';
+
+  @override
+  String get updateFailureNetwork => '没有连接。';
+
+  @override
+  String get updateFailureTimeout => '超时了。';
+
+  @override
+  String updateFailureHttp(String status) {
+    return '服务器返回 $status。';
+  }
+
+  @override
+  String get updateFailureEmpty => '文件是空的。';
+
+  @override
+  String get updateFailureSize => '文件不完整。';
+
+  @override
+  String get updateFailurePermission => '不允许安装。';
+
+  @override
+  String get updateFailureGeneric => '没有成功。';
+
+  @override
+  String get errorDetails => '详细信息';
+
+  @override
+  String get createOwnExercise => '创建自己的动作';
+
+  @override
+  String get customExerciseMuscleRequired => '请选择一块主要肌群。';
+
+  @override
   String get licensesTitle => '许可';
 
   @override
@@ -4242,6 +4277,41 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
   String get updateInstallFailed => '无法安装更新';
 
   @override
+  String get downloadFailed => '下载失败';
+
+  @override
+  String get updateFailureNetwork => '没有连接。';
+
+  @override
+  String get updateFailureTimeout => '超时了。';
+
+  @override
+  String updateFailureHttp(String status) {
+    return '服务器返回 $status。';
+  }
+
+  @override
+  String get updateFailureEmpty => '文件是空的。';
+
+  @override
+  String get updateFailureSize => '文件不完整。';
+
+  @override
+  String get updateFailurePermission => '不允许安装。';
+
+  @override
+  String get updateFailureGeneric => '没有成功。';
+
+  @override
+  String get errorDetails => '详细信息';
+
+  @override
+  String get createOwnExercise => '创建自己的动作';
+
+  @override
+  String get customExerciseMuscleRequired => '请选择一块主要肌群。';
+
+  @override
   String get licensesTitle => '许可';
 
   @override
@@ -6538,6 +6608,41 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get updateInstallFailed => '無法安裝更新';
+
+  @override
+  String get downloadFailed => '下載失敗';
+
+  @override
+  String get updateFailureNetwork => '沒有連線。';
+
+  @override
+  String get updateFailureTimeout => '逾時了。';
+
+  @override
+  String updateFailureHttp(String status) {
+    return '伺服器回傳 $status。';
+  }
+
+  @override
+  String get updateFailureEmpty => '檔案是空的。';
+
+  @override
+  String get updateFailureSize => '檔案不完整。';
+
+  @override
+  String get updateFailurePermission => '不允許安裝。';
+
+  @override
+  String get updateFailureGeneric => '沒有成功。';
+
+  @override
+  String get errorDetails => '詳細資訊';
+
+  @override
+  String get createOwnExercise => '建立自己的動作';
+
+  @override
+  String get customExerciseMuscleRequired => '請選擇一塊主要肌群。';
 
   @override
   String get licensesTitle => '授權';

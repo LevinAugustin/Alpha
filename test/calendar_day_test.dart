@@ -60,7 +60,7 @@ void main() {
         tester,
         day: today,
         fill: palette.accent,
-        borderWidth: 2,
+        borderWidth: 3,
       );
     }
   });
@@ -149,6 +149,22 @@ void _expectWorkoutDay(
     final border = decoration.border! as Border;
     expect(border.top.width, borderWidth);
     expect(border.bottom.width, borderWidth);
+    if (borderWidth == 3) {
+      expect(calendarContrast(border.top.color, fill), greaterThanOrEqualTo(3));
+      expect(
+        border.top.color,
+        calendarTodayBorder(
+          AlphaPalette.byId(
+            fill == AlphaPalette.eisblau.accent
+                ? 'eisblau'
+                : fill == AlphaPalette.pink.accent
+                ? 'pink'
+                : 'tiefschwarz',
+          ),
+          trained: true,
+        ),
+      );
+    }
   }
   final text = tester.widget<Text>(
     find.descendant(of: cell, matching: find.byType(Text)),

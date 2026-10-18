@@ -2043,6 +2043,41 @@ class AppLocalizationsFr extends AppLocalizations {
   String get updateInstallFailed => 'La mise à jour n\'a pas pu être installée';
 
   @override
+  String get downloadFailed => 'Le téléchargement a échoué';
+
+  @override
+  String get updateFailureNetwork => 'Pas de connexion.';
+
+  @override
+  String get updateFailureTimeout => 'Délai dépassé.';
+
+  @override
+  String updateFailureHttp(String status) {
+    return 'Le serveur a répondu avec $status.';
+  }
+
+  @override
+  String get updateFailureEmpty => 'Le fichier est vide.';
+
+  @override
+  String get updateFailureSize => 'Le fichier est incomplet.';
+
+  @override
+  String get updateFailurePermission => 'L\'installation n\'est pas autorisée.';
+
+  @override
+  String get updateFailureGeneric => 'Cela n\'a pas marché.';
+
+  @override
+  String get errorDetails => 'Précisions';
+
+  @override
+  String get createOwnExercise => 'Créer son propre exercice';
+
+  @override
+  String get customExerciseMuscleRequired => 'Choisis un muscle principal.';
+
+  @override
   String get licensesTitle => 'Licences';
 
   @override

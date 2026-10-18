@@ -2020,6 +2020,41 @@ class AppLocalizationsVi extends AppLocalizations {
   String get updateInstallFailed => 'Không cài được bản cập nhật';
 
   @override
+  String get downloadFailed => 'Tải xuống thất bại';
+
+  @override
+  String get updateFailureNetwork => 'Không có kết nối.';
+
+  @override
+  String get updateFailureTimeout => 'Hết thời gian.';
+
+  @override
+  String updateFailureHttp(String status) {
+    return 'Máy chủ trả về $status.';
+  }
+
+  @override
+  String get updateFailureEmpty => 'Tệp trống.';
+
+  @override
+  String get updateFailureSize => 'Tệp chưa đủ.';
+
+  @override
+  String get updateFailurePermission => 'Không được phép cài đặt.';
+
+  @override
+  String get updateFailureGeneric => 'Việc đó không xong.';
+
+  @override
+  String get errorDetails => 'Chi tiết';
+
+  @override
+  String get createOwnExercise => 'Tạo bài tập của bạn';
+
+  @override
+  String get customExerciseMuscleRequired => 'Hãy chọn cơ chính.';
+
+  @override
   String get licensesTitle => 'Giấy phép';
 
   @override

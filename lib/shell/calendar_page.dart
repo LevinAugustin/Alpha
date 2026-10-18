@@ -30,6 +30,27 @@ Color calendarDayLabelColor(Color background) {
   return light >= dark ? calendarLightLabel : calendarDarkLabel;
 }
 
+Color calendarTodayBorder(AlphaPalette palette, {required bool trained}) {
+  if (!trained) return palette.accent;
+  final candidates = [
+    palette.onAccent,
+    palette.background,
+    palette.text,
+    calendarLightLabel,
+    calendarDarkLabel,
+  ];
+  var best = candidates.first;
+  var bestScore = calendarContrast(best, palette.accent);
+  for (final color in candidates.skip(1)) {
+    final score = calendarContrast(color, palette.accent);
+    if (score > bestScore) {
+      best = color;
+      bestScore = score;
+    }
+  }
+  return best;
+}
+
 String calendarDayKey(DateTime day) =>
     'calendar-day-${day.year}-${day.month}-${day.day}';
 
@@ -200,7 +221,7 @@ class _MonthGrid extends StatelessWidget {
         final fill = isTrained ? palette.accent : Colors.transparent;
         final label = isTrained ? calendarDayLabelColor(fill) : palette.text;
         final ring = isToday
-            ? (isTrained ? label : palette.accent)
+            ? calendarTodayBorder(palette, trained: isTrained)
             : (isSelected ? palette.border : null);
         return InkWell(
           onTap: () => onSelect(day),
@@ -213,7 +234,7 @@ class _MonthGrid extends StatelessWidget {
               borderRadius: BorderRadius.circular(8),
               border: ring == null
                   ? null
-                  : Border.all(color: ring, width: isToday ? 2 : 1),
+                  : Border.all(color: ring, width: isToday ? 3 : 1),
             ),
             child: Text(
               '${day.day}',
