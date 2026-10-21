@@ -746,6 +746,8 @@
   "exerciseSwappedUndo": "已更換動作",
   "saveRestInTemplate": "同時儲存到範本",
   "deleteGymTitle": "刪除訓練館？",
+  "deleteGymAction": "刪除訓練館",
+  "exerciseAlreadyInPlan": "已在這個計畫裡",
   "deleteGymBody": "與此訓練館關聯的訓練會保留。只刪除訓練館。",
   "renameGym": "重新命名訓練館",
   "cleanupImports": "清理匯入紀錄",

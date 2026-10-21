@@ -2410,6 +2410,12 @@ class AppLocalizationsUk extends AppLocalizations {
   String get deleteGymTitle => 'Видалити зал?';
 
   @override
+  String get deleteGymAction => 'Видалити зал';
+
+  @override
+  String get exerciseAlreadyInPlan => 'Уже є в цьому плані';
+
+  @override
   String get deleteGymBody =>
       'Тренування, пов’язані з цим залом, залишаються. Видаляється лише зал.';
 

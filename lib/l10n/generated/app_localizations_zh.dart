@@ -2312,6 +2312,12 @@ class AppLocalizationsZh extends AppLocalizations {
   String get deleteGymTitle => '删除训练馆？';
 
   @override
+  String get deleteGymAction => '删除训练馆';
+
+  @override
+  String get exerciseAlreadyInPlan => '已在这个计划里';
+
+  @override
   String get deleteGymBody => '与这个训练馆关联的训练会保留。只删除训练馆。';
 
   @override
@@ -4645,6 +4651,12 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
   String get deleteGymTitle => '删除训练馆？';
 
   @override
+  String get deleteGymAction => '删除训练馆';
+
+  @override
+  String get exerciseAlreadyInPlan => '已在这个计划里';
+
+  @override
   String get deleteGymBody => '与这个训练馆关联的训练会保留。只删除训练馆。';
 
   @override
@@ -6976,6 +6988,12 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get deleteGymTitle => '刪除訓練館？';
+
+  @override
+  String get deleteGymAction => '刪除訓練館';
+
+  @override
+  String get exerciseAlreadyInPlan => '已在這個計畫裡';
 
   @override
   String get deleteGymBody => '與此訓練館關聯的訓練會保留。只刪除訓練館。';

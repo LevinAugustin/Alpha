@@ -34,21 +34,30 @@ Color calendarTodayBorder(AlphaPalette palette, {required bool trained}) {
   if (!trained) return palette.accent;
   final candidates = [
     palette.onAccent,
-    palette.background,
     palette.text,
     calendarLightLabel,
     calendarDarkLabel,
   ];
-  var best = candidates.first;
-  var bestScore = calendarContrast(best, palette.accent);
-  for (final color in candidates.skip(1)) {
-    final score = calendarContrast(color, palette.accent);
-    if (score > bestScore) {
-      best = color;
-      bestScore = score;
+  Color? onFillAndPage;
+  var onFillAndPageScore = 0.0;
+  Color? strongest;
+  var strongestScore = 0.0;
+  for (final color in candidates) {
+    if (color.toARGB32() == palette.background.toARGB32()) continue;
+    final againstFill = calendarContrast(color, palette.accent);
+    final againstPage = calendarContrast(color, palette.background);
+    if (againstFill > strongestScore) {
+      strongest = color;
+      strongestScore = againstFill;
+    }
+    if (againstFill >= 3 &&
+        againstPage >= 3 &&
+        againstFill > onFillAndPageScore) {
+      onFillAndPage = color;
+      onFillAndPageScore = againstFill;
     }
   }
-  return best;
+  return onFillAndPage ?? strongest ?? palette.text;
 }
 
 String calendarDayKey(DateTime day) =>

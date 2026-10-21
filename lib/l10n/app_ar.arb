@@ -2290,6 +2290,8 @@
   "exerciseSwappedUndo": "استُبدل التمرين",
   "saveRestInTemplate": "احفظ أيضاً في القالب",
   "deleteGymTitle": "حذف النادي؟",
+  "deleteGymAction": "حذف الاستوديو",
+  "exerciseAlreadyInPlan": "موجودة في الخطة",
   "deleteGymBody": "التمارين المرتبطة بهذا النادي تبقى. يُحذف النادي فقط.",
   "renameGym": "إعادة تسمية النادي",
   "cleanupImports": "تنظيف عناصر الاستيراد",

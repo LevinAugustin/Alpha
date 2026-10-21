@@ -4,6 +4,7 @@ import 'dart:math';
 
 import 'package:drift/drift.dart' hide Column;
 import 'package:file_picker/file_picker.dart';
+import 'package:flexify/alpha/plates.dart';
 import 'package:flexify/app_fab.dart';
 import 'package:flexify/constants.dart';
 import 'package:flexify/database/body_weight_repository.dart';
@@ -836,7 +837,7 @@ class _EditSetPageState extends State<EditSetPage> {
     if (restMs != null)
       timer.startTimer(
         _name,
-        Duration(milliseconds: restMs!),
+        Duration(milliseconds: nearestRestMs(restMs!)),
         settings.alarmSound,
         settings.vibrate,
         settings.enableSound,
@@ -846,7 +847,7 @@ class _EditSetPageState extends State<EditSetPage> {
     else
       timer.startTimer(
         _name,
-        Duration(milliseconds: settings.timerDuration),
+        Duration(milliseconds: nearestRestMs(settings.timerDuration)),
         settings.alarmSound,
         settings.vibrate,
         settings.enableSound,

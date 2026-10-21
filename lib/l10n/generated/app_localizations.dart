@@ -4422,6 +4422,18 @@ abstract class AppLocalizations {
   /// **'Delete studio?'**
   String get deleteGymTitle;
 
+  /// Tooltip for the studio delete button.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete studio'**
+  String get deleteGymAction;
+
+  /// Shown when an active plan exercise is picked again.
+  ///
+  /// In en, this message translates to:
+  /// **'Already in this plan'**
+  String get exerciseAlreadyInPlan;
+
   /// Explains that deleting a studio keeps workouts.
   ///
   /// In en, this message translates to:

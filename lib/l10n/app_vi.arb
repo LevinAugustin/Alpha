@@ -2290,6 +2290,8 @@
   "exerciseSwappedUndo": "Đã đổi bài tập",
   "saveRestInTemplate": "Lưu cả vào mẫu",
   "deleteGymTitle": "Xóa phòng tập?",
+  "deleteGymAction": "Xóa phòng tập",
+  "exerciseAlreadyInPlan": "Đã có trong kế hoạch này",
   "deleteGymBody": "Các buổi tập gắn với phòng này được giữ. Chỉ phòng tập bị xóa.",
   "renameGym": "Đổi tên phòng tập",
   "cleanupImports": "Dọn mục đã nhập",

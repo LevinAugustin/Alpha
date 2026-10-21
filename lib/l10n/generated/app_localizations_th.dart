@@ -2368,6 +2368,12 @@ class AppLocalizationsTh extends AppLocalizations {
   String get deleteGymTitle => 'ลบสตูดิโอ?';
 
   @override
+  String get deleteGymAction => 'ลบสตูดิโอ';
+
+  @override
+  String get exerciseAlreadyInPlan => 'มีในแผนนี้แล้ว';
+
+  @override
   String get deleteGymBody =>
       'เวิร์กเอาต์ที่ผูกกับสตูดิโอนี้ยังอยู่ ลบเฉพาะสตูดิโอ';
 

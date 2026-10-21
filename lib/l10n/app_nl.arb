@@ -746,6 +746,8 @@
   "exerciseSwappedUndo": "Oefening verwisseld",
   "saveRestInTemplate": "Ook in de sjabloon opslaan",
   "deleteGymTitle": "Studio verwijderen?",
+  "deleteGymAction": "Studio verwijderen",
+  "exerciseAlreadyInPlan": "Staat al in dit plan",
   "deleteGymBody": "Trainingen die aan deze studio hangen blijven. Alleen de studio wordt verwijderd.",
   "renameGym": "Studio hernoemen",
   "cleanupImports": "Importregels opruimen",

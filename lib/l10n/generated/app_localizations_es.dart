@@ -2409,6 +2409,12 @@ class AppLocalizationsEs extends AppLocalizations {
   String get deleteGymTitle => '¿Eliminar el gimnasio?';
 
   @override
+  String get deleteGymAction => 'Eliminar el gimnasio';
+
+  @override
+  String get exerciseAlreadyInPlan => 'Ya está en este plan';
+
+  @override
   String get deleteGymBody =>
       'Los entrenamientos vinculados a este gimnasio se conservan. Solo se elimina el gimnasio.';
 

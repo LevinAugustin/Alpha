@@ -2290,6 +2290,8 @@
   "exerciseSwappedUndo": "व्यायाम बदला गया",
   "saveRestInTemplate": "टेम्पलेट में भी सहेजें",
   "deleteGymTitle": "स्टूडियो हटाएँ?",
+  "deleteGymAction": "स्टूडियो हटाएँ",
+  "exerciseAlreadyInPlan": "पहले से इस योजना में है",
   "deleteGymBody": "इस स्टूडियो से जुड़े वर्कआउट रहेंगे। केवल स्टूडियो हटेगा।",
   "renameGym": "स्टूडियो का नाम बदलें",
   "cleanupImports": "आयात प्रविष्टियाँ साफ़ करें",

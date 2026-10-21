@@ -2371,6 +2371,12 @@ class AppLocalizationsAr extends AppLocalizations {
   String get deleteGymTitle => 'حذف النادي؟';
 
   @override
+  String get deleteGymAction => 'حذف الاستوديو';
+
+  @override
+  String get exerciseAlreadyInPlan => 'موجودة في الخطة';
+
+  @override
   String get deleteGymBody =>
       'التمارين المرتبطة بهذا النادي تبقى. يُحذف النادي فقط.';
 

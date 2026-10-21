@@ -45,27 +45,24 @@ PlateLoad cableLoad({required double totalKg, required double stepKg}) {
   );
 }
 
-List<int> restChoices() {
-  final values = <int>[0];
-  for (var seconds = 5; seconds <= 60; seconds += 5) {
-    values.add(seconds);
-  }
-  for (var seconds = 75; seconds <= 300; seconds += 15) {
-    values.add(seconds);
-  }
-  return values;
-}
+const restStepSeconds = 5;
+const restMinSeconds = 5;
+const restMaxSeconds = 500;
+
+List<int> restChoices() => [
+  for (
+    var seconds = restMinSeconds;
+    seconds <= restMaxSeconds;
+    seconds += restStepSeconds
+  )
+    seconds,
+];
 
 int nearestRest(int seconds) {
-  final choices = restChoices();
-  var best = choices.first;
-  var gap = (seconds - best).abs();
-  for (final choice in choices) {
-    final next = (seconds - choice).abs();
-    if (next < gap) {
-      best = choice;
-      gap = next;
-    }
-  }
-  return best;
+  if (seconds <= restMinSeconds) return restMinSeconds;
+  if (seconds >= restMaxSeconds) return restMaxSeconds;
+  return (seconds / restStepSeconds).round() * restStepSeconds;
 }
+
+int nearestRestMs(int milliseconds) =>
+    nearestRest((milliseconds / 1000).round()) * 1000;

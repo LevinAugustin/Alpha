@@ -746,6 +746,8 @@
   "exerciseSwappedUndo": "種目を入れ替えました",
   "saveRestInTemplate": "テンプレートにも保存",
   "deleteGymTitle": "スタジオを削除しますか？",
+  "deleteGymAction": "スタジオを削除",
+  "exerciseAlreadyInPlan": "すでにこのプランにあります",
   "deleteGymBody": "このスタジオに紐づくトレーニングは残ります。削除されるのはスタジオだけです。",
   "renameGym": "スタジオ名を変更",
   "cleanupImports": "インポート項目を整理",

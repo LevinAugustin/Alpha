@@ -2290,6 +2290,8 @@
   "exerciseSwappedUndo": "حرکت عوض شد",
   "saveRestInTemplate": "در قالب هم ذخیره شود",
   "deleteGymTitle": "باشگاه حذف شود؟",
+  "deleteGymAction": "حذف استودیو",
+  "exerciseAlreadyInPlan": "از قبل در این برنامه است",
   "deleteGymBody": "تمرین‌های مرتبط با این باشگاه می‌مانند. فقط باشگاه حذف می‌شود.",
   "renameGym": "تغییر نام باشگاه",
   "cleanupImports": "پاک‌سازی موارد واردشده",

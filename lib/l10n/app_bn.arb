@@ -2290,6 +2290,8 @@
   "exerciseSwappedUndo": "ব্যায়াম বদলানো হয়েছে",
   "saveRestInTemplate": "টেমপ্লেটেও সংরক্ষণ করুন",
   "deleteGymTitle": "স্টুডিও মুছবেন?",
+  "deleteGymAction": "স্টুডিও মুছুন",
+  "exerciseAlreadyInPlan": "ইতিমধ্যে এই পরিকল্পনায়",
   "deleteGymBody": "এই স্টুডিওর সাথে যুক্ত ওয়ার্কআউট থাকবে। শুধু স্টুডিও মুছবে।",
   "renameGym": "স্টুডিওর নাম বদলান",
   "cleanupImports": "আমদানি করা এন্ট্রি পরিষ্কার করুন",

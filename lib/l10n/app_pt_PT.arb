@@ -746,6 +746,8 @@
   "exerciseSwappedUndo": "Exercício trocado",
   "saveRestInTemplate": "Guardar também no modelo",
   "deleteGymTitle": "Apagar o estúdio?",
+  "deleteGymAction": "Eliminar o estúdio",
+  "exerciseAlreadyInPlan": "Já está neste plano",
   "deleteGymBody": "Os treinos ligados a este estúdio ficam. Só o estúdio é removido.",
   "renameGym": "Renomear estúdio",
   "cleanupImports": "Limpar entradas importadas",

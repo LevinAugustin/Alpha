@@ -746,6 +746,8 @@
   "exerciseSwappedUndo": "Esercizio sostituito",
   "saveRestInTemplate": "Salva anche nel modello",
   "deleteGymTitle": "Eliminare la palestra?",
+  "deleteGymAction": "Elimina la palestra",
+  "exerciseAlreadyInPlan": "Già in questo piano",
   "deleteGymBody": "Gli allenamenti collegati a questa palestra restano. Si elimina solo la palestra.",
   "renameGym": "Rinomina palestra",
   "cleanupImports": "Pulisci le voci importate",

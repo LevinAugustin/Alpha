@@ -746,6 +746,8 @@
   "exerciseSwappedUndo": "Exercice échangé",
   "saveRestInTemplate": "Enregistrer aussi dans le modèle",
   "deleteGymTitle": "Supprimer la salle ?",
+  "deleteGymAction": "Supprimer la salle",
+  "exerciseAlreadyInPlan": "Déjà dans ce plan",
   "deleteGymBody": "Les séances liées à cette salle restent. Seule la salle est retirée.",
   "renameGym": "Renommer la salle",
   "cleanupImports": "Nettoyer les entrées importées",

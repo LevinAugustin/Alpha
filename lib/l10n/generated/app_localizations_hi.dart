@@ -2378,6 +2378,12 @@ class AppLocalizationsHi extends AppLocalizations {
   String get deleteGymTitle => 'स्टूडियो हटाएँ?';
 
   @override
+  String get deleteGymAction => 'स्टूडियो हटाएँ';
+
+  @override
+  String get exerciseAlreadyInPlan => 'पहले से इस योजना में है';
+
+  @override
   String get deleteGymBody =>
       'इस स्टूडियो से जुड़े वर्कआउट रहेंगे। केवल स्टूडियो हटेगा।';
 

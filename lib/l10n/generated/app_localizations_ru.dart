@@ -2413,6 +2413,12 @@ class AppLocalizationsRu extends AppLocalizations {
   String get deleteGymTitle => 'Удалить зал?';
 
   @override
+  String get deleteGymAction => 'Удалить зал';
+
+  @override
+  String get exerciseAlreadyInPlan => 'Уже есть в этом плане';
+
+  @override
   String get deleteGymBody =>
       'Тренировки, связанные с этим залом, остаются. Удаляется только зал.';
 

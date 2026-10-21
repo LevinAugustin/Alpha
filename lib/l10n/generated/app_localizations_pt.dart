@@ -2411,6 +2411,12 @@ class AppLocalizationsPt extends AppLocalizations {
   String get deleteGymTitle => 'Apagar o estúdio?';
 
   @override
+  String get deleteGymAction => 'Eliminar o estúdio';
+
+  @override
+  String get exerciseAlreadyInPlan => 'Já está neste plano';
+
+  @override
   String get deleteGymBody =>
       'Os treinos ligados a este estúdio ficam. Só o estúdio é removido.';
 
@@ -4833,6 +4839,12 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
 
   @override
   String get deleteGymTitle => 'Excluir o estúdio?';
+
+  @override
+  String get deleteGymAction => 'Excluir o estúdio';
+
+  @override
+  String get exerciseAlreadyInPlan => 'Já está neste plano';
 
   @override
   String get deleteGymBody =>
@@ -7266,6 +7278,12 @@ class AppLocalizationsPtPt extends AppLocalizationsPt {
 
   @override
   String get deleteGymTitle => 'Apagar o estúdio?';
+
+  @override
+  String get deleteGymAction => 'Eliminar o estúdio';
+
+  @override
+  String get exerciseAlreadyInPlan => 'Já está neste plano';
 
   @override
   String get deleteGymBody =>

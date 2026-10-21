@@ -2324,6 +2324,12 @@ class AppLocalizationsJa extends AppLocalizations {
   String get deleteGymTitle => 'スタジオを削除しますか？';
 
   @override
+  String get deleteGymAction => 'スタジオを削除';
+
+  @override
+  String get exerciseAlreadyInPlan => 'すでにこのプランにあります';
+
+  @override
   String get deleteGymBody => 'このスタジオに紐づくトレーニングは残ります。削除されるのはスタジオだけです。';
 
   @override

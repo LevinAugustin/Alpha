@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:drift/drift.dart' hide Column;
+import 'package:flexify/alpha/plates.dart';
 import 'package:flexify/app_fab.dart';
 import 'package:flexify/bottom_nav.dart';
 import 'package:flexify/plan/plan_names.dart';
@@ -789,7 +790,7 @@ class _StartPlanPageState extends State<StartPlanPage>
       if (settings.restTimers && count > warmupSets && peTimers) {
         timerState.startTimer(
           "$exercise ($count/${max ?? settings.maxSets})",
-          Duration(milliseconds: restMs.toInt()),
+          Duration(milliseconds: nearestRestMs(restMs.round())),
           settings.alarmSound,
           settings.vibrate,
           settings.enableSound,

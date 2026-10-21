@@ -746,6 +746,8 @@
   "exerciseSwappedUndo": "Egzersiz değiştirildi",
   "saveRestInTemplate": "Şablona da kaydet",
   "deleteGymTitle": "Stüdyo silinsin mi?",
+  "deleteGymAction": "Stüdyoyu sil",
+  "exerciseAlreadyInPlan": "Zaten bu planda",
   "deleteGymBody": "Bu stüdyoya bağlı antrenmanlar kalır. Yalnızca stüdyo silinir.",
   "renameGym": "Stüdyoyu yeniden adlandır",
   "cleanupImports": "İçe aktarılan kayıtları temizle",

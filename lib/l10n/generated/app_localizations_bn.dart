@@ -2381,6 +2381,12 @@ class AppLocalizationsBn extends AppLocalizations {
   String get deleteGymTitle => 'স্টুডিও মুছবেন?';
 
   @override
+  String get deleteGymAction => 'স্টুডিও মুছুন';
+
+  @override
+  String get exerciseAlreadyInPlan => 'ইতিমধ্যে এই পরিকল্পনায়';
+
+  @override
   String get deleteGymBody =>
       'এই স্টুডিওর সাথে যুক্ত ওয়ার্কআউট থাকবে। শুধু স্টুডিও মুছবে।';
 

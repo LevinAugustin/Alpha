@@ -2391,6 +2391,12 @@ class AppLocalizationsVi extends AppLocalizations {
   String get deleteGymTitle => 'Xóa phòng tập?';
 
   @override
+  String get deleteGymAction => 'Xóa phòng tập';
+
+  @override
+  String get exerciseAlreadyInPlan => 'Đã có trong kế hoạch này';
+
+  @override
   String get deleteGymBody =>
       'Các buổi tập gắn với phòng này được giữ. Chỉ phòng tập bị xóa.';
 

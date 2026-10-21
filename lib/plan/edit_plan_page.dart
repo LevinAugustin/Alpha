@@ -43,21 +43,32 @@ class _EditPlanPageState extends State<EditPlanPage> {
     );
     if (exercise == null || !mounted) return;
 
+    final alreadyActive = _includeExercise(exercise);
+    if (alreadyActive) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(context.l10n.exerciseAlreadyInPlan)),
+      );
+      return;
+    }
     setState(() {
-      _includeExercise(exercise);
       _search = '';
       _hasUnsavedChanges = true;
     });
     _searchCtrl.text = '';
   }
 
-  void _includeExercise(Exercise exercise) {
-    final sequence = Value(_endSequence());
+  bool _includeExercise(Exercise exercise) {
     final index = _exercises.indexWhere(
       (draft) => draft.planExercise.exerciseId.value == exercise.id,
     );
     if (index >= 0) {
       final current = _exercises[index];
+      final enabled =
+          current.planExercise.enabled.present &&
+          current.planExercise.enabled.value;
+      if (enabled) return true;
+      final sequence = Value(_endSequence());
       _exercises[index] = current.copyWithPlanExercise(
         current.planExercise.copyWith(
           enabled: const Value(true),
@@ -65,9 +76,10 @@ class _EditPlanPageState extends State<EditPlanPage> {
         ),
       );
     } else {
-      _exercises.add(_draftFor(exercise, sequence));
+      _exercises.add(_draftFor(exercise, Value(_endSequence())));
     }
     _exercises.sort(comparePlanExerciseDrafts);
+    return false;
   }
 
   int _endSequence() {

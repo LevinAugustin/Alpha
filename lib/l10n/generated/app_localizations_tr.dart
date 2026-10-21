@@ -2402,6 +2402,12 @@ class AppLocalizationsTr extends AppLocalizations {
   String get deleteGymTitle => 'Stüdyo silinsin mi?';
 
   @override
+  String get deleteGymAction => 'Stüdyoyu sil';
+
+  @override
+  String get exerciseAlreadyInPlan => 'Zaten bu planda';
+
+  @override
   String get deleteGymBody =>
       'Bu stüdyoya bağlı antrenmanlar kalır. Yalnızca stüdyo silinir.';
 

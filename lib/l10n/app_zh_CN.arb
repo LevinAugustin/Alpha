@@ -746,6 +746,8 @@
   "exerciseSwappedUndo": "已更换动作",
   "saveRestInTemplate": "同时保存到模板",
   "deleteGymTitle": "删除训练馆？",
+  "deleteGymAction": "删除训练馆",
+  "exerciseAlreadyInPlan": "已在这个计划里",
   "deleteGymBody": "与这个训练馆关联的训练会保留。只删除训练馆。",
   "renameGym": "重命名训练馆",
   "cleanupImports": "清理导入记录",

@@ -2326,6 +2326,12 @@ class AppLocalizationsKo extends AppLocalizations {
   String get deleteGymTitle => '스튜디오를 삭제할까요?';
 
   @override
+  String get deleteGymAction => '스튜디오 삭제';
+
+  @override
+  String get exerciseAlreadyInPlan => '이미 이 계획에 있습니다';
+
+  @override
   String get deleteGymBody => '이 스튜디오에 연결된 운동은 남습니다. 스튜디오만 삭제됩니다.';
 
   @override

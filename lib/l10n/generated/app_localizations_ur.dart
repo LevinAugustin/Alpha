@@ -2383,6 +2383,12 @@ class AppLocalizationsUr extends AppLocalizations {
   String get deleteGymTitle => 'اسٹوڈیو حذف کریں؟';
 
   @override
+  String get deleteGymAction => 'اسٹوڈیو حذف کریں';
+
+  @override
+  String get exerciseAlreadyInPlan => 'پہلے سے اس منصوبے میں ہے';
+
+  @override
   String get deleteGymBody =>
       'اس اسٹوڈیو سے جڑی ورزشیں رہیں گی۔ صرف اسٹوڈیو حذف ہوگا۔';
 

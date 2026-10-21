@@ -746,6 +746,8 @@
   "exerciseSwappedUndo": "Ćwiczenie zamienione",
   "saveRestInTemplate": "Zapisz też w szablonie",
   "deleteGymTitle": "Usunąć studio?",
+  "deleteGymAction": "Usuń studio",
+  "exerciseAlreadyInPlan": "Już jest w tym planie",
   "deleteGymBody": "Treningi powiązane z tym studiem zostają. Usuwane jest tylko studio.",
   "renameGym": "Zmień nazwę studia",
   "cleanupImports": "Posprzątaj wpisy z importu",

@@ -2385,6 +2385,12 @@ class AppLocalizationsFa extends AppLocalizations {
   String get deleteGymTitle => 'باشگاه حذف شود؟';
 
   @override
+  String get deleteGymAction => 'حذف استودیو';
+
+  @override
+  String get exerciseAlreadyInPlan => 'از قبل در این برنامه است';
+
+  @override
   String get deleteGymBody =>
       'تمرین‌های مرتبط با این باشگاه می‌مانند. فقط باشگاه حذف می‌شود.';
 

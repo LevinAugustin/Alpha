@@ -2396,6 +2396,12 @@ class AppLocalizationsId extends AppLocalizations {
   String get deleteGymTitle => 'Hapus studio?';
 
   @override
+  String get deleteGymAction => 'Hapus studio';
+
+  @override
+  String get exerciseAlreadyInPlan => 'Sudah ada di rencana ini';
+
+  @override
   String get deleteGymBody =>
       'Latihan yang terhubung ke studio ini tetap ada. Hanya studionya yang dihapus.';
 

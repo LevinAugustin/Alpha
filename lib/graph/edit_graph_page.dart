@@ -2,6 +2,8 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:file_picker/file_picker.dart';
+import 'package:flexify/alpha/plates.dart';
+import 'package:flexify/alpha/rest_stepper.dart';
 import 'package:flexify/app_fab.dart';
 import 'package:flexify/constants.dart';
 import 'package:flexify/database/exercise_analytics.dart';
@@ -10,7 +12,6 @@ import 'package:flexify/exercises/exercise_image.dart';
 import 'package:flexify/database/categories.dart';
 import 'package:flexify/l10n/l10n.dart';
 import 'package:flexify/database/database.dart';
-import 'package:flexify/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -27,8 +28,7 @@ class _EditGraphPageState extends State<EditGraphPage> {
   late final TextEditingController name = TextEditingController(
     text: widget.name,
   );
-  final TextEditingController minutes = TextEditingController();
-  final TextEditingController seconds = TextEditingController();
+  int? _restSeconds;
   final key = GlobalKey<FormState>();
 
   bool _hasUnsavedChanges = false;
@@ -100,48 +100,14 @@ class _EditGraphPageState extends State<EditGraphPage> {
                   onChanged: (_) => _markDirty(),
                 ),
                 const SizedBox(height: 12.0),
-                Row(
-                  children: [
-                    Expanded(
-                      child: TextFormField(
-                        controller: minutes,
-                        textInputAction: TextInputAction.next,
-                        decoration: InputDecoration(
-                          labelText: context.l10n.restMinutes,
-                        ),
-                        keyboardType: TextInputType.number,
-                        onTap: () => selectAll(minutes),
-                        onChanged: (_) => _markDirty(),
-                        validator: (value) {
-                          if (value == null || value.isEmpty) return null;
-                          if (int.tryParse(value) == null)
-                            return context.l10n.invalidNumber;
-                          return null;
-                        },
-                      ),
-                    ),
-                    const SizedBox(width: 8.0),
-                    Expanded(
-                      child: TextFormField(
-                        controller: seconds,
-                        textInputAction: TextInputAction.next,
-                        decoration: InputDecoration(
-                          labelText: context.l10n.restSeconds,
-                        ),
-                        keyboardType: TextInputType.number,
-                        onTap: () {
-                          selectAll(seconds);
-                        },
-                        onChanged: (_) => _markDirty(),
-                        validator: (value) {
-                          if (value == null || value.isEmpty) return null;
-                          if (int.tryParse(value) == null)
-                            return context.l10n.invalidNumber;
-                          return null;
-                        },
-                      ),
-                    ),
-                  ],
+                Text(context.l10n.restSecondsLabel),
+                RestDurationStepper(
+                  key: const Key('graph-rest-stepper'),
+                  seconds: _restSeconds ?? restMinSeconds,
+                  onChanged: (value) {
+                    setState(() => _restSeconds = value);
+                    _markDirty();
+                  },
                 ),
                 const SizedBox(height: 12.0),
                 Selector<Setting, bool>(
@@ -282,20 +248,13 @@ class _EditGraphPageState extends State<EditGraphPage> {
   @override
   dispose() {
     name.dispose();
-    minutes.dispose();
-    seconds.dispose();
     super.dispose();
   }
 
   Future<void> doUpdate() async {
-    Duration? duration;
-    if (int.tryParse(minutes.text) != null && int.tryParse(minutes.text)! > 0 ||
-        int.tryParse(seconds.text) != null && int.tryParse(seconds.text)! > 0) {
-      duration = Duration(
-        minutes: int.tryParse(minutes.text) ?? 0,
-        seconds: int.tryParse(seconds.text) ?? 0,
-      );
-    }
+    final duration = _restSeconds == null
+        ? null
+        : Duration(seconds: nearestRest(_restSeconds!));
 
     final exerciseId =
         _exerciseId ?? (await getExerciseByName(widget.name))?.id;
@@ -330,11 +289,9 @@ class _EditGraphPageState extends State<EditGraphPage> {
         category = categoryName;
 
         if (exercise.defaultRestDurationMs != null) {
-          final duration = Duration(
-            milliseconds: exercise.defaultRestDurationMs!,
+          _restSeconds = nearestRest(
+            Duration(milliseconds: exercise.defaultRestDurationMs!).inSeconds,
           );
-          minutes.text = duration.inMinutes.toString();
-          seconds.text = (duration.inSeconds % 60).toString();
         }
       });
     });

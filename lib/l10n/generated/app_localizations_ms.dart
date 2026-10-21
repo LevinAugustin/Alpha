@@ -2395,6 +2395,12 @@ class AppLocalizationsMs extends AppLocalizations {
   String get deleteGymTitle => 'Padam studio?';
 
   @override
+  String get deleteGymAction => 'Padam studio';
+
+  @override
+  String get exerciseAlreadyInPlan => 'Sudah ada dalam pelan ini';
+
+  @override
   String get deleteGymBody =>
       'Senaman yang dipautkan ke studio ini kekal. Hanya studio dipadam.';
 

@@ -2299,6 +2299,8 @@
   "exerciseSwappedUndo": "Вправу замінено",
   "saveRestInTemplate": "Також зберегти в шаблоні",
   "deleteGymTitle": "Видалити зал?",
+  "deleteGymAction": "Видалити зал",
+  "exerciseAlreadyInPlan": "Уже є в цьому плані",
   "deleteGymBody": "Тренування, пов’язані з цим залом, залишаються. Видаляється лише зал.",
   "renameGym": "Перейменувати зал",
   "cleanupImports": "Прибрати імпортовані записи",

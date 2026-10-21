@@ -2290,6 +2290,8 @@
   "exerciseSwappedUndo": "Latihan ditukar",
   "saveRestInTemplate": "Simpan juga di templat",
   "deleteGymTitle": "Hapus studio?",
+  "deleteGymAction": "Hapus studio",
+  "exerciseAlreadyInPlan": "Sudah ada di rencana ini",
   "deleteGymBody": "Latihan yang terhubung ke studio ini tetap ada. Hanya studionya yang dihapus.",
   "renameGym": "Ubah nama studio",
   "cleanupImports": "Bersihkan entri impor",

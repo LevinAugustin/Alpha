@@ -2290,6 +2290,8 @@
   "exerciseSwappedUndo": "สลับท่าแล้ว",
   "saveRestInTemplate": "บันทึกลงเทมเพลตด้วย",
   "deleteGymTitle": "ลบสตูดิโอ?",
+  "deleteGymAction": "ลบสตูดิโอ",
+  "exerciseAlreadyInPlan": "มีในแผนนี้แล้ว",
   "deleteGymBody": "เวิร์กเอาต์ที่ผูกกับสตูดิโอนี้ยังอยู่ ลบเฉพาะสตูดิโอ",
   "renameGym": "เปลี่ยนชื่อสตูดิโอ",
   "cleanupImports": "ล้างรายการที่นำเข้า",

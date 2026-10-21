@@ -746,6 +746,8 @@
   "exerciseSwappedUndo": "Ejercicio cambiado",
   "saveRestInTemplate": "Guardar también en la plantilla",
   "deleteGymTitle": "¿Eliminar el gimnasio?",
+  "deleteGymAction": "Eliminar el gimnasio",
+  "exerciseAlreadyInPlan": "Ya está en este plan",
   "deleteGymBody": "Los entrenamientos vinculados a este gimnasio se conservan. Solo se elimina el gimnasio.",
   "renameGym": "Renombrar gimnasio",
   "cleanupImports": "Limpiar entradas importadas",

@@ -2290,6 +2290,8 @@
   "exerciseSwappedUndo": "Senaman ditukar",
   "saveRestInTemplate": "Simpan juga dalam templat",
   "deleteGymTitle": "Padam studio?",
+  "deleteGymAction": "Padam studio",
+  "exerciseAlreadyInPlan": "Sudah ada dalam pelan ini",
   "deleteGymBody": "Senaman yang dipautkan ke studio ini kekal. Hanya studio dipadam.",
   "renameGym": "Namakan semula studio",
   "cleanupImports": "Bersihkan entri import",

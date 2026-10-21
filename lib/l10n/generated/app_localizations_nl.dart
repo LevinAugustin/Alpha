@@ -2400,6 +2400,12 @@ class AppLocalizationsNl extends AppLocalizations {
   String get deleteGymTitle => 'Studio verwijderen?';
 
   @override
+  String get deleteGymAction => 'Studio verwijderen';
+
+  @override
+  String get exerciseAlreadyInPlan => 'Staat al in dit plan';
+
+  @override
   String get deleteGymBody =>
       'Trainingen die aan deze studio hangen blijven. Alleen de studio wordt verwijderd.';
 
