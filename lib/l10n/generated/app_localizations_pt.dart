@@ -1929,7 +1929,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get barbellCalc => 'Barra';
 
   @override
-  String get cableCalc => 'Polia';
+  String get dumbbellCalc => 'Halter';
 
   @override
   String get extraWeight => 'Peso extra';
@@ -1941,7 +1941,10 @@ class AppLocalizationsPt extends AppLocalizations {
   String get plateSetLabel => 'Discos por lado';
 
   @override
-  String get cableStepLabel => 'Passo da pilha';
+  String get dumbbellHandleLabel => 'Pega';
+
+  @override
+  String get dumbbellEachLabel => 'Por halter';
 
   @override
   String get chooseGym => 'Escolher ginásio';
@@ -4360,7 +4363,7 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get barbellCalc => 'Barra';
 
   @override
-  String get cableCalc => 'Polia';
+  String get dumbbellCalc => 'Halter';
 
   @override
   String get extraWeight => 'Peso extra';
@@ -4372,7 +4375,10 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get plateSetLabel => 'Anilhas por lado';
 
   @override
-  String get cableStepLabel => 'Passo da pilha';
+  String get dumbbellHandleLabel => 'Pegada';
+
+  @override
+  String get dumbbellEachLabel => 'Por halter';
 
   @override
   String get chooseGym => 'Escolher academia';
@@ -6798,7 +6804,7 @@ class AppLocalizationsPtPt extends AppLocalizationsPt {
   String get barbellCalc => 'Barra';
 
   @override
-  String get cableCalc => 'Polia';
+  String get dumbbellCalc => 'Halter';
 
   @override
   String get extraWeight => 'Peso extra';
@@ -6810,7 +6816,10 @@ class AppLocalizationsPtPt extends AppLocalizationsPt {
   String get plateSetLabel => 'Discos por lado';
 
   @override
-  String get cableStepLabel => 'Passo da pilha';
+  String get dumbbellHandleLabel => 'Pega';
+
+  @override
+  String get dumbbellEachLabel => 'Por halter';
 
   @override
   String get chooseGym => 'Escolher ginásio';

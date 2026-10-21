@@ -1916,7 +1916,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get barbellCalc => 'Barbel';
 
   @override
-  String get cableCalc => 'Menara kabel';
+  String get dumbbellCalc => 'Dumbel';
 
   @override
   String get extraWeight => 'Beban tambahan';
@@ -1928,7 +1928,10 @@ class AppLocalizationsId extends AppLocalizations {
   String get plateSetLabel => 'Piringan per sisi';
 
   @override
-  String get cableStepLabel => 'Langkah tumpukan';
+  String get dumbbellHandleLabel => 'Gagang';
+
+  @override
+  String get dumbbellEachLabel => 'Per dumbel';
 
   @override
   String get chooseGym => 'Pilih gym';

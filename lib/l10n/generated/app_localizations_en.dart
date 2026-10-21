@@ -1909,7 +1909,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get barbellCalc => 'Barbell';
 
   @override
-  String get cableCalc => 'Cable stack';
+  String get dumbbellCalc => 'Dumbbell';
 
   @override
   String get extraWeight => 'Extra weight';
@@ -1921,7 +1921,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get plateSetLabel => 'Plates per side';
 
   @override
-  String get cableStepLabel => 'Stack step';
+  String get dumbbellHandleLabel => 'Handle';
+
+  @override
+  String get dumbbellEachLabel => 'Per dumbbell';
 
   @override
   String get chooseGym => 'Choose a gym';

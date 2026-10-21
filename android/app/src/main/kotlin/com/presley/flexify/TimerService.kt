@@ -547,6 +547,7 @@ class TimerService : Service() {
         ) {
             return
         }
+        val notificationManager = NotificationManagerCompat.from(this)
         notificationManager.notify(FINISHED_ID, builder.build())
     }
 

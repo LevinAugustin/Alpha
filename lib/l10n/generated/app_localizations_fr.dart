@@ -1935,7 +1935,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get barbellCalc => 'Barre';
 
   @override
-  String get cableCalc => 'Poulie';
+  String get dumbbellCalc => 'Haltère';
 
   @override
   String get extraWeight => 'Poids ajouté';
@@ -1947,7 +1947,10 @@ class AppLocalizationsFr extends AppLocalizations {
   String get plateSetLabel => 'Disques par côté';
 
   @override
-  String get cableStepLabel => 'Pas de la pile';
+  String get dumbbellHandleLabel => 'Poignée';
+
+  @override
+  String get dumbbellEachLabel => 'Par haltère';
 
   @override
   String get chooseGym => 'Choisir une salle';

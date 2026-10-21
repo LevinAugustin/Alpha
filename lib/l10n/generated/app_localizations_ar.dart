@@ -1893,7 +1893,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get barbellCalc => 'البار';
 
   @override
-  String get cableCalc => 'برج الكابل';
+  String get dumbbellCalc => 'دمبل';
 
   @override
   String get extraWeight => 'وزن إضافي';
@@ -1905,7 +1905,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get plateSetLabel => 'أقراص لكل جهة';
 
   @override
-  String get cableStepLabel => 'خطوة الثقل';
+  String get dumbbellHandleLabel => 'المقبض';
+
+  @override
+  String get dumbbellEachLabel => 'لكل دمبل';
 
   @override
   String get chooseGym => 'اختر النادي';

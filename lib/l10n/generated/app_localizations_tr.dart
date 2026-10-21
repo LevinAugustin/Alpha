@@ -1922,7 +1922,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get barbellCalc => 'Halter';
 
   @override
-  String get cableCalc => 'Kablo istasyonu';
+  String get dumbbellCalc => 'Dambıl';
 
   @override
   String get extraWeight => 'Ek ağırlık';
@@ -1934,7 +1934,10 @@ class AppLocalizationsTr extends AppLocalizations {
   String get plateSetLabel => 'Yan başına plaka';
 
   @override
-  String get cableStepLabel => 'Yığın adımı';
+  String get dumbbellHandleLabel => 'Tutamak';
+
+  @override
+  String get dumbbellEachLabel => 'Dambıl başına';
 
   @override
   String get chooseGym => 'Salon seç';

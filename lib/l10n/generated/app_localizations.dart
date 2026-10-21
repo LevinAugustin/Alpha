@@ -3528,11 +3528,11 @@ abstract class AppLocalizations {
   /// **'Barbell'**
   String get barbellCalc;
 
-  /// Cable stack
+  /// Adjustable dumbbell in the plate calculator
   ///
   /// In en, this message translates to:
-  /// **'Cable stack'**
-  String get cableCalc;
+  /// **'Dumbbell'**
+  String get dumbbellCalc;
 
   /// Extra weight
   ///
@@ -3552,11 +3552,17 @@ abstract class AppLocalizations {
   /// **'Plates per side'**
   String get plateSetLabel;
 
-  /// Stack step
+  /// Weight of one adjustable-dumbbell handle
   ///
   /// In en, this message translates to:
-  /// **'Stack step'**
-  String get cableStepLabel;
+  /// **'Handle'**
+  String get dumbbellHandleLabel;
+
+  /// Target weight of one dumbbell
+  ///
+  /// In en, this message translates to:
+  /// **'Per dumbbell'**
+  String get dumbbellEachLabel;
 
   /// Choose a gym
   ///

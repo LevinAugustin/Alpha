@@ -32,17 +32,12 @@ PlateLoad barbellLoad({
   return PlateLoad(sides: used, extraKg: extra.abs() < 0.05 ? 0 : extra);
 }
 
-PlateLoad cableLoad({required double totalKg, required double stepKg}) {
-  if (stepKg <= 0) {
-    return PlateLoad(sides: const [], extraKg: totalKg < 0 ? 0 : totalKg);
-  }
-  final steps = totalKg <= 0 ? 0 : (totalKg / stepKg).floor();
-  final loaded = steps * stepKg;
-  final extra = totalKg - loaded;
-  return PlateLoad(
-    sides: steps == 0 ? const [] : [PlateSide(kg: stepKg, count: steps)],
-    extraKg: extra.abs() < 0.05 ? 0 : extra,
-  );
+PlateLoad dumbbellLoad({
+  required double totalKg,
+  required double handleKg,
+  required List<double> plates,
+}) {
+  return barbellLoad(totalKg: totalKg, barKg: handleKg, plates: plates);
 }
 
 const restStepSeconds = 5;

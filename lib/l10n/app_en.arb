@@ -2519,9 +2519,9 @@
   "@barbellCalc":   {
     "description": "Barbell"
   },
-  "cableCalc": "Cable stack",
-  "@cableCalc":   {
-    "description": "Cable stack"
+  "dumbbellCalc": "Dumbbell",
+  "@dumbbellCalc":   {
+    "description": "Adjustable dumbbell in the plate calculator"
   },
   "extraWeight": "Extra weight",
   "@extraWeight":   {
@@ -2535,9 +2535,13 @@
   "@plateSetLabel":   {
     "description": "Plates per side"
   },
-  "cableStepLabel": "Stack step",
-  "@cableStepLabel":   {
-    "description": "Stack step"
+  "dumbbellHandleLabel": "Handle",
+  "@dumbbellHandleLabel":   {
+    "description": "Weight of one adjustable-dumbbell handle"
+  },
+  "dumbbellEachLabel": "Per dumbbell",
+  "@dumbbellEachLabel":   {
+    "description": "Target weight of one dumbbell"
   },
   "chooseGym": "Choose a gym",
   "@chooseGym":   {

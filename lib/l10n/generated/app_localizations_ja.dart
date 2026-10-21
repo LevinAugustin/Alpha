@@ -1847,7 +1847,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get barbellCalc => 'バーベル';
 
   @override
-  String get cableCalc => 'ケーブル';
+  String get dumbbellCalc => 'ダンベル';
 
   @override
   String get extraWeight => '追加重量';
@@ -1859,7 +1859,10 @@ class AppLocalizationsJa extends AppLocalizations {
   String get plateSetLabel => '片側のプレート';
 
   @override
-  String get cableStepLabel => 'スタック間隔';
+  String get dumbbellHandleLabel => 'グリップ';
+
+  @override
+  String get dumbbellEachLabel => 'ダンベル1本';
 
   @override
   String get chooseGym => 'ジムを選ぶ';

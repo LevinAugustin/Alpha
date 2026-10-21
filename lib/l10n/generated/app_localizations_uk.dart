@@ -1930,7 +1930,7 @@ class AppLocalizationsUk extends AppLocalizations {
   String get barbellCalc => 'Штанга';
 
   @override
-  String get cableCalc => 'Блочна рама';
+  String get dumbbellCalc => 'Гантель';
 
   @override
   String get extraWeight => 'Додаткова вага';
@@ -1942,7 +1942,10 @@ class AppLocalizationsUk extends AppLocalizations {
   String get plateSetLabel => 'Диски на бік';
 
   @override
-  String get cableStepLabel => 'Крок стека';
+  String get dumbbellHandleLabel => 'Рукоять';
+
+  @override
+  String get dumbbellEachLabel => 'На гантелю';
 
   @override
   String get chooseGym => 'Оберіть зал';

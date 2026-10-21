@@ -27,7 +27,7 @@ class AlphaPrefs extends ChangeNotifier {
   String activeGymId = 'default';
   double barKg = 20;
   List<double> plates = [25, 20, 15, 10, 5, 2.5, 1.25];
-  double cableStep = 5;
+  double dumbbellHandleKg = 2.5;
   String lengthUnit = 'cm';
   final Map<String, double> nextWeight = {};
   final Map<String, int> nextReps = {};
@@ -35,48 +35,50 @@ class AlphaPrefs extends ChangeNotifier {
   GymPlace get activeGym =>
       gyms.firstWhere((gym) => gym.id == activeGymId, orElse: () => gyms.first);
 
+  void applyStored(Map<String, dynamic> json) {
+    weeklyGoal = (json['weeklyGoal'] as num?)?.toInt() ?? weeklyGoal;
+    weeklyGoalManual = json['weeklyGoalManual'] as bool? ?? weeklyGoalManual;
+    progression = json['progression'] as bool? ?? progression;
+    aiProvider = json['aiProvider'] as String? ?? aiProvider;
+    coachNote = json['coachNote'] as String? ?? coachNote;
+    activeGymId = json['activeGymId'] as String? ?? activeGymId;
+    barKg = (json['barKg'] as num?)?.toDouble() ?? barKg;
+    dumbbellHandleKg =
+        _positiveKg(json['dumbbellHandleKg']) ?? dumbbellHandleKg;
+    lengthUnit = json['lengthUnit'] as String? ?? lengthUnit;
+    final storedPlates = json['plates'];
+    if (storedPlates is List && storedPlates.isNotEmpty) {
+      plates = storedPlates.map((value) => (value as num).toDouble()).toList();
+    }
+    final storedGyms = json['gyms'];
+    if (storedGyms is List && storedGyms.isNotEmpty) {
+      gyms = storedGyms
+          .map(
+            (row) => GymPlace.fromJson(Map<String, dynamic>.from(row as Map)),
+          )
+          .toList();
+    }
+    nextWeight
+      ..clear()
+      ..addAll(
+        ((json['nextWeight'] as Map?) ?? const {}).map(
+          (key, value) => MapEntry('$key', (value as num).toDouble()),
+        ),
+      );
+    nextReps
+      ..clear()
+      ..addAll(
+        ((json['nextReps'] as Map?) ?? const {}).map(
+          (key, value) => MapEntry('$key', (value as num).toInt()),
+        ),
+      );
+  }
+
   Future<void> load() async {
     try {
       final file = await _file();
       if (!file.existsSync()) return;
-      final json = jsonDecode(file.readAsStringSync()) as Map<String, dynamic>;
-      weeklyGoal = (json['weeklyGoal'] as num?)?.toInt() ?? weeklyGoal;
-      weeklyGoalManual = json['weeklyGoalManual'] as bool? ?? weeklyGoalManual;
-      progression = json['progression'] as bool? ?? progression;
-      aiProvider = json['aiProvider'] as String? ?? aiProvider;
-      coachNote = json['coachNote'] as String? ?? coachNote;
-      activeGymId = json['activeGymId'] as String? ?? activeGymId;
-      barKg = (json['barKg'] as num?)?.toDouble() ?? barKg;
-      cableStep = (json['cableStep'] as num?)?.toDouble() ?? cableStep;
-      lengthUnit = json['lengthUnit'] as String? ?? lengthUnit;
-      final storedPlates = json['plates'];
-      if (storedPlates is List && storedPlates.isNotEmpty) {
-        plates = storedPlates
-            .map((value) => (value as num).toDouble())
-            .toList();
-      }
-      final storedGyms = json['gyms'];
-      if (storedGyms is List && storedGyms.isNotEmpty) {
-        gyms = storedGyms
-            .map(
-              (row) => GymPlace.fromJson(Map<String, dynamic>.from(row as Map)),
-            )
-            .toList();
-      }
-      nextWeight
-        ..clear()
-        ..addAll(
-          ((json['nextWeight'] as Map?) ?? const {}).map(
-            (key, value) => MapEntry('$key', (value as num).toDouble()),
-          ),
-        );
-      nextReps
-        ..clear()
-        ..addAll(
-          ((json['nextReps'] as Map?) ?? const {}).map(
-            (key, value) => MapEntry('$key', (value as num).toInt()),
-          ),
-        );
+      applyStored(jsonDecode(file.readAsStringSync()) as Map<String, dynamic>);
       notifyListeners();
     } catch (error, stack) {
       debugPrint('Alpha prefs unavailable: $error\n$stack');
@@ -95,7 +97,7 @@ class AlphaPrefs extends ChangeNotifier {
         'coachNote': coachNote,
         'activeGymId': activeGymId,
         'barKg': barKg,
-        'cableStep': cableStep,
+        'dumbbellHandleKg': dumbbellHandleKg,
         'lengthUnit': lengthUnit,
         'plates': plates,
         'gyms': gyms.map((gym) => gym.toJson()).toList(),
@@ -111,6 +113,13 @@ class AlphaPrefs extends ChangeNotifier {
     final support = await profileSupportDirectory();
     return File(p.join(support.path, '${registry.activeId}.alpha.json'));
   }
+}
+
+double? _positiveKg(Object? value) {
+  if (value is! num) return null;
+  final kg = value.toDouble();
+  if (kg <= 0) return null;
+  return kg;
 }
 
 final alphaPrefs = AlphaPrefs();

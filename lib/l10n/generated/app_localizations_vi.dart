@@ -1912,7 +1912,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get barbellCalc => 'Thanh đòn';
 
   @override
-  String get cableCalc => 'Máy cáp';
+  String get dumbbellCalc => 'Tạ đơn';
 
   @override
   String get extraWeight => 'Tạ thêm';
@@ -1924,7 +1924,10 @@ class AppLocalizationsVi extends AppLocalizations {
   String get plateSetLabel => 'Bánh mỗi bên';
 
   @override
-  String get cableStepLabel => 'Bước chồng tạ';
+  String get dumbbellHandleLabel => 'Tay cầm';
+
+  @override
+  String get dumbbellEachLabel => 'Mỗi tạ đơn';
 
   @override
   String get chooseGym => 'Chọn phòng tập';

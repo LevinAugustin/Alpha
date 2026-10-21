@@ -1935,7 +1935,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get barbellCalc => 'Langhantel';
 
   @override
-  String get cableCalc => 'Kabelturm';
+  String get dumbbellCalc => 'Kurzhantel';
 
   @override
   String get extraWeight => 'Zusatzgewicht';
@@ -1947,7 +1947,10 @@ class AppLocalizationsDe extends AppLocalizations {
   String get plateSetLabel => 'Scheiben je Seite';
 
   @override
-  String get cableStepLabel => 'Schrittweite';
+  String get dumbbellHandleLabel => 'Griffstange';
+
+  @override
+  String get dumbbellEachLabel => 'Pro Hantel';
 
   @override
   String get chooseGym => 'Studio wählen';

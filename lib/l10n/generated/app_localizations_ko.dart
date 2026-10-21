@@ -1849,7 +1849,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get barbellCalc => '바벨';
 
   @override
-  String get cableCalc => '케이블';
+  String get dumbbellCalc => '덤벨';
 
   @override
   String get extraWeight => '추가 중량';
@@ -1861,7 +1861,10 @@ class AppLocalizationsKo extends AppLocalizations {
   String get plateSetLabel => '한쪽 원판';
 
   @override
-  String get cableStepLabel => '스택 간격';
+  String get dumbbellHandleLabel => '손잡이';
+
+  @override
+  String get dumbbellEachLabel => '덤벨 하나';
 
   @override
   String get chooseGym => '체육관 선택';

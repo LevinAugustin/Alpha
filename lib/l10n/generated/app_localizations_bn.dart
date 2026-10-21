@@ -1902,7 +1902,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get barbellCalc => 'বারবেল';
 
   @override
-  String get cableCalc => 'কেবল টাওয়ার';
+  String get dumbbellCalc => 'ডাম্বেল';
 
   @override
   String get extraWeight => 'অতিরিক্ত ওজন';
@@ -1914,7 +1914,10 @@ class AppLocalizationsBn extends AppLocalizations {
   String get plateSetLabel => 'প্রতি পাশে প্লেট';
 
   @override
-  String get cableStepLabel => 'স্ট্যাকের ধাপ';
+  String get dumbbellHandleLabel => 'হাতল';
+
+  @override
+  String get dumbbellEachLabel => 'প্রতি ডাম্বেল';
 
   @override
   String get chooseGym => 'জিম বেছে নিন';
