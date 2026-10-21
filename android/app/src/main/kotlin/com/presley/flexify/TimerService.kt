@@ -79,6 +79,7 @@ class TimerService : Service() {
 
                 timerRunnable?.let { timerHandler.removeCallbacks(it) }
                 mediaPlayer?.stop()
+                abandonRestFocus()
                 vibrator?.cancel()
 
                 if (intent != null && intent.action == STOP_BROADCAST_INTERNAL) updateAppUI()
@@ -94,6 +95,7 @@ class TimerService : Service() {
         object : BroadcastReceiver() {
             override fun onReceive(context: Context?, intent: Intent?) {
                 mediaPlayer?.stop()
+                abandonRestFocus()
                 vibrator?.cancel()
                 val notificationManager = NotificationManagerCompat.from(this@TimerService)
                 notificationManager.cancel(FINISHED_ID)
@@ -105,6 +107,7 @@ class TimerService : Service() {
             override fun onReceive(context: Context?, intent: Intent?) {
                 Log.d("TimerService", "Received add broadcast intent")
                 mediaPlayer?.stop()
+                abandonRestFocus()
                 vibrator?.cancel()
 
                 val timeStamp = intent?.getLongExtra("timeStamp", 0)
@@ -271,6 +274,7 @@ class TimerService : Service() {
         applicationContext.unregisterReceiver(finishedStopReceiver)
         mediaPlayer?.stop()
         mediaPlayer?.release()
+        abandonRestFocus()
         vibrator?.cancel()
     }
 
@@ -316,11 +320,12 @@ class TimerService : Service() {
 
         try {
             val attributes = AudioAttributes.Builder()
-                .setUsage(AudioAttributes.USAGE_ASSISTANCE_SONIFICATION)
+                .setUsage(AudioAttributes.USAGE_MEDIA)
                 .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
                 .build()
             val player = MediaPlayer()
             player.setAudioAttributes(attributes)
+            player.setWakeMode(applicationContext, PowerManager.PARTIAL_WAKE_LOCK)
             resources.openRawResourceFd(R.raw.rest_end).use { descriptor ->
                 player.setDataSource(
                     descriptor.fileDescriptor,
@@ -331,31 +336,68 @@ class TimerService : Service() {
             val volume = restVolume.coerceIn(0f, 1f)
             player.setVolume(volume, volume)
             player.isLooping = false
-            val audioManager = getSystemService(AUDIO_SERVICE) as AudioManager
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                val request = AudioFocusRequest.Builder(AudioManager.AUDIOFOCUS_GAIN_TRANSIENT_MAY_DUCK)
-                    .setAudioAttributes(attributes)
-                    .build()
-                focusRequest = request
-                audioManager.requestAudioFocus(request)
-            } else {
-                @Suppress("DEPRECATION")
-                audioManager.requestAudioFocus(
-                    null,
-                    AudioManager.STREAM_NOTIFICATION,
-                    AudioManager.AUDIOFOCUS_GAIN_TRANSIENT_MAY_DUCK
-                )
-            }
+            requestRestFocus(attributes)
             player.setOnCompletionListener {
                 vibrator?.cancel()
                 abandonRestFocus()
+                it.release()
+                if (mediaPlayer === it) mediaPlayer = null
+            }
+            player.setOnErrorListener { failed, _, _ ->
+                abandonRestFocus()
+                failed.release()
+                if (mediaPlayer === failed) mediaPlayer = null
+                true
             }
             player.prepare()
             player.start()
             mediaPlayer = player
         } catch (e: Exception) {
+            abandonRestFocus()
             Log.e("TimerService", "Rest sound failed", e)
         }
+    }
+
+    private fun requestRestFocus(attributes: AudioAttributes) {
+        val audioManager = getSystemService(AUDIO_SERVICE) as AudioManager
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val request = AudioFocusRequest.Builder(AudioManager.AUDIOFOCUS_GAIN_TRANSIENT_MAY_DUCK)
+                .setAudioAttributes(attributes)
+                .setWillPauseWhenDucked(false)
+                .setOnAudioFocusChangeListener { _ -> }
+                .build()
+            focusRequest = request
+            audioManager.requestAudioFocus(request)
+        } else {
+            @Suppress("DEPRECATION")
+            audioManager.requestAudioFocus(
+                null,
+                AudioManager.STREAM_MUSIC,
+                AudioManager.AUDIOFOCUS_GAIN_TRANSIENT_MAY_DUCK
+            )
+        }
+    }
+
+    private fun ensureSilentChannel(
+        channelId: String,
+        name: String,
+        importance: Int,
+        description: String
+    ) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) return
+        val manager = getSystemService(NotificationManager::class.java)
+        val existing = manager.getNotificationChannel(channelId)
+        if (existing != null && (existing.sound != null || existing.shouldVibrate())) {
+            manager.deleteNotificationChannel(channelId)
+        }
+        val channel = NotificationChannel(channelId, name, importance).apply {
+            setSound(null, null)
+            enableVibration(false)
+            setBypassDnd(true)
+            this.description = description
+            lockscreenVisibility = Notification.VISIBILITY_PUBLIC
+        }
+        manager.createNotificationChannel(channel)
     }
 
     private fun abandonRestFocus() {
@@ -407,6 +449,8 @@ class TimerService : Service() {
             .setProgress(flexifyTimer.getDurationSeconds(), timeLeftInSeconds, false)
             .setContentIntent(contentPending)
             .setCategory(NotificationCompat.CATEGORY_PROGRESS)
+            .setSound(null)
+            .setSilent(true)
             .setAutoCancel(false)
             .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
             .setPriority(NotificationCompat.PRIORITY_LOW)
@@ -415,20 +459,12 @@ class TimerService : Service() {
             .addAction(R.drawable.ic_baseline_stop_24, stopLabel, stopPending)
             .addAction(R.drawable.ic_baseline_stop_24, addOneMinuteLabel, addPending)
 
-        val notificationManager = NotificationManagerCompat.from(this)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val channel = NotificationChannel(
-                channelId,
-                timerChannelName,
-                NotificationManager.IMPORTANCE_DEFAULT
-            )
-            channel.setSound(null, null)
-            channel.setBypassDnd(true)
-            channel.enableVibration(false)
-            channel.description = timerChannelDescription
-            channel.lockscreenVisibility = Notification.VISIBILITY_PUBLIC
-            notificationManager.createNotificationChannel(channel)
-        }
+        ensureSilentChannel(
+            channelId,
+            timerChannelName,
+            NotificationManager.IMPORTANCE_DEFAULT,
+            timerChannelDescription
+        )
 
         return notificationBuilder
     }
@@ -454,22 +490,12 @@ class TimerService : Service() {
 
     private fun notifyFinished() {
         val channelId = "finished_channel"
-        val notificationManager = NotificationManagerCompat.from(this)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val channel =
-                NotificationChannel(
-                    channelId,
-                    timerFinishedChannelName,
-                    NotificationManager.IMPORTANCE_HIGH
-                ).apply {
-                    setSound(null, null)
-                    setBypassDnd(true)
-                    enableVibration(false)
-                    description = timerFinishedChannelDescription
-                    lockscreenVisibility = Notification.VISIBILITY_PUBLIC
-                }
-            notificationManager.createNotificationChannel(channel)
-        }
+        ensureSilentChannel(
+            channelId,
+            timerFinishedChannelName,
+            NotificationManager.IMPORTANCE_HIGH,
+            timerFinishedChannelDescription
+        )
 
         val contentIntent = Intent(this, MainActivity::class.java).apply {
             putExtra(MainActivity.TIMER_TARGET_EXTRA, currentTarget)
@@ -504,7 +530,9 @@ class TimerService : Service() {
             .setContentText(currentDescription)
             .setSmallIcon(R.drawable.outline_timer_24)
             .setPriority(NotificationCompat.PRIORITY_HIGH)
-            .setCategory(NotificationCompat.CATEGORY_ALARM)
+            .setCategory(NotificationCompat.CATEGORY_STATUS)
+            .setSound(null)
+            .setSilent(true)
             .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
             .setContentIntent(contentPending)
             .setAutoCancel(true)
@@ -519,6 +547,7 @@ class TimerService : Service() {
         ) {
             return
         }
+        val notificationManager = NotificationManagerCompat.from(this)
         notificationManager.notify(FINISHED_ID, builder.build())
     }
 

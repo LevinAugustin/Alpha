@@ -2519,9 +2519,9 @@
   "@barbellCalc":   {
     "description": "Barbell"
   },
-  "cableCalc": "Cable stack",
-  "@cableCalc":   {
-    "description": "Cable stack"
+  "dumbbellCalc": "Dumbbell",
+  "@dumbbellCalc":   {
+    "description": "Adjustable dumbbell in the plate calculator"
   },
   "extraWeight": "Extra weight",
   "@extraWeight":   {
@@ -2535,9 +2535,13 @@
   "@plateSetLabel":   {
     "description": "Plates per side"
   },
-  "cableStepLabel": "Stack step",
-  "@cableStepLabel":   {
-    "description": "Stack step"
+  "dumbbellHandleLabel": "Handle",
+  "@dumbbellHandleLabel":   {
+    "description": "Weight of one adjustable-dumbbell handle"
+  },
+  "dumbbellEachLabel": "Per dumbbell",
+  "@dumbbellEachLabel":   {
+    "description": "Target weight of one dumbbell"
   },
   "chooseGym": "Choose a gym",
   "@chooseGym":   {
@@ -3183,6 +3187,10 @@
   "@saveRestInTemplate": {"description": "Saves the rest time on the plan exercise."},
   "deleteGymTitle": "Delete studio?",
   "@deleteGymTitle": {"description": "Title of the studio delete confirmation."},
+  "deleteGymAction": "Delete studio",
+  "@deleteGymAction": {"description": "Tooltip for the studio delete button."},
+  "exerciseAlreadyInPlan": "Already in this plan",
+  "@exerciseAlreadyInPlan": {"description": "Shown when an active plan exercise is picked again."},
   "deleteGymBody": "Workouts linked to this studio stay. Only the studio is removed.",
   "@deleteGymBody": {"description": "Explains that deleting a studio keeps workouts."},
   "renameGym": "Rename studio",

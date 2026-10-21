@@ -1,4 +1,6 @@
 import 'package:drift/drift.dart' hide Column;
+import 'package:flexify/alpha/plates.dart';
+import 'package:flexify/alpha/rest_stepper.dart';
 import 'package:flexify/database/database.dart';
 import 'package:flexify/exercise_labels.dart';
 import 'package:flexify/l10n/l10n.dart';
@@ -29,7 +31,7 @@ class _ExerciseTileState extends State<ExerciseTile> {
   late final TextEditingController _warmup;
   late final TextEditingController _repMin;
   late final TextEditingController _repMax;
-  late final TextEditingController _rest;
+  int? _restSeconds;
 
   @override
   void initState() {
@@ -58,9 +60,7 @@ class _ExerciseTileState extends State<ExerciseTile> {
     final restMs = widget.planExercise.restMs.present
         ? widget.planExercise.restMs.value
         : null;
-    _rest = TextEditingController(
-      text: restMs == null ? '' : '${(restMs / 1000).round()}',
-    );
+    _restSeconds = restMs == null ? null : nearestRest((restMs / 1000).round());
   }
 
   @override
@@ -69,7 +69,6 @@ class _ExerciseTileState extends State<ExerciseTile> {
     _warmup.dispose();
     _repMin.dispose();
     _repMax.dispose();
-    _rest.dispose();
     super.dispose();
   }
 
@@ -161,28 +160,21 @@ class _ExerciseTileState extends State<ExerciseTile> {
                         ),
                       ),
                       const SizedBox(height: 16),
-                      TextField(
+                      Text(
+                        context.l10n.restSecondsLabel,
                         key: const Key('plan-exercise-rest'),
-                        controller: _rest,
-                        keyboardType: const TextInputType.numberWithOptions(
-                          decimal: false,
-                        ),
-                        onTap: () => selectAll(_rest),
-                        onChanged: (_) {
-                          final seconds = int.tryParse(_rest.text.trim());
+                      ),
+                      RestDurationStepper(
+                        seconds: _restSeconds ?? restMinSeconds,
+                        onChanged: (seconds) {
+                          setState(() => _restSeconds = seconds);
                           widget.onChange(
                             widget.planExercise.copyWith(
                               enabled: const Value(true),
-                              restMs: Value(
-                                seconds == null ? null : seconds * 1000,
-                              ),
+                              restMs: Value(seconds * 1000),
                             ),
                           );
                         },
-                        decoration: InputDecoration(
-                          labelText: context.l10n.restSecondsLabel,
-                          border: const OutlineInputBorder(),
-                        ),
                       ),
                       const SizedBox(height: 16),
                       TextField(

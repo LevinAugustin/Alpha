@@ -32,40 +32,32 @@ PlateLoad barbellLoad({
   return PlateLoad(sides: used, extraKg: extra.abs() < 0.05 ? 0 : extra);
 }
 
-PlateLoad cableLoad({required double totalKg, required double stepKg}) {
-  if (stepKg <= 0) {
-    return PlateLoad(sides: const [], extraKg: totalKg < 0 ? 0 : totalKg);
-  }
-  final steps = totalKg <= 0 ? 0 : (totalKg / stepKg).floor();
-  final loaded = steps * stepKg;
-  final extra = totalKg - loaded;
-  return PlateLoad(
-    sides: steps == 0 ? const [] : [PlateSide(kg: stepKg, count: steps)],
-    extraKg: extra.abs() < 0.05 ? 0 : extra,
-  );
+PlateLoad dumbbellLoad({
+  required double totalKg,
+  required double handleKg,
+  required List<double> plates,
+}) {
+  return barbellLoad(totalKg: totalKg, barKg: handleKg, plates: plates);
 }
 
-List<int> restChoices() {
-  final values = <int>[0];
-  for (var seconds = 5; seconds <= 60; seconds += 5) {
-    values.add(seconds);
-  }
-  for (var seconds = 75; seconds <= 300; seconds += 15) {
-    values.add(seconds);
-  }
-  return values;
-}
+const restStepSeconds = 5;
+const restMinSeconds = 5;
+const restMaxSeconds = 500;
+
+List<int> restChoices() => [
+  for (
+    var seconds = restMinSeconds;
+    seconds <= restMaxSeconds;
+    seconds += restStepSeconds
+  )
+    seconds,
+];
 
 int nearestRest(int seconds) {
-  final choices = restChoices();
-  var best = choices.first;
-  var gap = (seconds - best).abs();
-  for (final choice in choices) {
-    final next = (seconds - choice).abs();
-    if (next < gap) {
-      best = choice;
-      gap = next;
-    }
-  }
-  return best;
+  if (seconds <= restMinSeconds) return restMinSeconds;
+  if (seconds >= restMaxSeconds) return restMaxSeconds;
+  return (seconds / restStepSeconds).round() * restStepSeconds;
 }
+
+int nearestRestMs(int milliseconds) =>
+    nearestRest((milliseconds / 1000).round()) * 1000;

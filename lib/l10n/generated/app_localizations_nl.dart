@@ -1920,7 +1920,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get barbellCalc => 'Halterstang';
 
   @override
-  String get cableCalc => 'Kabeltoren';
+  String get dumbbellCalc => 'Halters';
 
   @override
   String get extraWeight => 'Extra gewicht';
@@ -1932,7 +1932,10 @@ class AppLocalizationsNl extends AppLocalizations {
   String get plateSetLabel => 'Schijven per kant';
 
   @override
-  String get cableStepLabel => 'Stapgrootte';
+  String get dumbbellHandleLabel => 'Greep';
+
+  @override
+  String get dumbbellEachLabel => 'Per halter';
 
   @override
   String get chooseGym => 'Kies een sportschool';
@@ -2398,6 +2401,12 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get deleteGymTitle => 'Studio verwijderen?';
+
+  @override
+  String get deleteGymAction => 'Studio verwijderen';
+
+  @override
+  String get exerciseAlreadyInPlan => 'Staat al in dit plan';
 
   @override
   String get deleteGymBody =>

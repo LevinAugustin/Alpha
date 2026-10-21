@@ -721,7 +721,8 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
   }
 
   int _restMs(Exercise exercise, int? planRest, int globalMs) {
-    return planRest ?? exercise.defaultRestDurationMs ?? globalMs;
+    final raw = planRest ?? exercise.defaultRestDurationMs ?? globalMs;
+    return nearestRestMs(raw);
   }
 
   int _restFor(Exercise exercise, Setting settings) {
@@ -984,11 +985,7 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
                       childCount: choices.length,
                       builder: (context, index) {
                         final seconds = choices[index];
-                        return Center(
-                          child: Text(
-                            seconds == 0 ? context.l10n.noRest : '${seconds}s',
-                          ),
-                        );
+                        return Center(child: Text('${seconds}s'));
                       },
                     ),
                   ),
@@ -1392,9 +1389,7 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
             ),
             TextButton(
               onPressed: () => _editRest(block),
-              child: Text(
-                block.restSeconds == 0 ? l10n.noRest : '${block.restSeconds}s',
-              ),
+              child: Text('${block.restSeconds}s'),
             ),
             TextButton(
               onPressed: () => _addWarmup(block),

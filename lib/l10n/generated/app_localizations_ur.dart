@@ -1905,7 +1905,7 @@ class AppLocalizationsUr extends AppLocalizations {
   String get barbellCalc => 'باربل';
 
   @override
-  String get cableCalc => 'کیبل ٹاور';
+  String get dumbbellCalc => 'ڈمبل';
 
   @override
   String get extraWeight => 'اضافی وزن';
@@ -1917,7 +1917,10 @@ class AppLocalizationsUr extends AppLocalizations {
   String get plateSetLabel => 'ہر طرف پلیٹ';
 
   @override
-  String get cableStepLabel => 'اسٹیک کا قدم';
+  String get dumbbellHandleLabel => 'گرفت';
+
+  @override
+  String get dumbbellEachLabel => 'فی ڈمبل';
 
   @override
   String get chooseGym => 'جم چنیں';
@@ -2381,6 +2384,12 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get deleteGymTitle => 'اسٹوڈیو حذف کریں؟';
+
+  @override
+  String get deleteGymAction => 'اسٹوڈیو حذف کریں';
+
+  @override
+  String get exerciseAlreadyInPlan => 'پہلے سے اس منصوبے میں ہے';
 
   @override
   String get deleteGymBody =>

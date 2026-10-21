@@ -1890,7 +1890,7 @@ class AppLocalizationsTh extends AppLocalizations {
   String get barbellCalc => 'บาร์เบล';
 
   @override
-  String get cableCalc => 'เคเบิล';
+  String get dumbbellCalc => 'ดัมเบล';
 
   @override
   String get extraWeight => 'น้ำหนักเพิ่ม';
@@ -1902,7 +1902,10 @@ class AppLocalizationsTh extends AppLocalizations {
   String get plateSetLabel => 'แผ่นต่อข้าง';
 
   @override
-  String get cableStepLabel => 'ขั้นของสแตก';
+  String get dumbbellHandleLabel => 'ด้ามจับ';
+
+  @override
+  String get dumbbellEachLabel => 'ต่อดัมเบล';
 
   @override
   String get chooseGym => 'เลือกยิม';
@@ -2366,6 +2369,12 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String get deleteGymTitle => 'ลบสตูดิโอ?';
+
+  @override
+  String get deleteGymAction => 'ลบสตูดิโอ';
+
+  @override
+  String get exerciseAlreadyInPlan => 'มีในแผนนี้แล้ว';
 
   @override
   String get deleteGymBody =>

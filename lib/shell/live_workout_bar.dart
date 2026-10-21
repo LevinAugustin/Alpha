@@ -10,15 +10,42 @@ import 'package:flexify/workout/gym_workout_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class LiveWorkoutBar extends StatelessWidget {
+class LiveWorkoutBar extends StatefulWidget {
   const LiveWorkoutBar({super.key});
+
+  @override
+  State<LiveWorkoutBar> createState() => _LiveWorkoutBarState();
+}
+
+class _LiveWorkoutBarState extends State<LiveWorkoutBar> {
+  Timer? _clock;
+
+  void _ensureClock(bool running) {
+    if (running) {
+      _clock ??= Timer.periodic(const Duration(seconds: 1), (_) {
+        if (mounted) setState(() {});
+      });
+      return;
+    }
+    _clock?.cancel();
+    _clock = null;
+  }
+
+  @override
+  void dispose() {
+    _clock?.cancel();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder<LiveWorkout?>(
       valueListenable: liveWorkout,
       builder: (context, session, _) {
-        if (session == null) return const SizedBox.shrink();
+        if (session == null) {
+          _ensureClock(false);
+          return const SizedBox.shrink();
+        }
         final palette = AlphaTheme.of(context);
         final l10n = context.l10n;
         return Material(
@@ -45,6 +72,7 @@ class LiveWorkoutBar extends StatelessWidget {
                         builder: (context, _) {
                           final timer = context.read<TimerState>().timer;
                           final running = timer.isRunning();
+                          _ensureClock(running);
                           final remaining = running
                               ? timer.getRemaining()
                               : Duration.zero;
@@ -57,6 +85,7 @@ class LiveWorkoutBar extends StatelessWidget {
                             children: [
                               Text(
                                 clock,
+                                key: const Key('live-rest-clock'),
                                 style: TextStyle(
                                   color: palette.accent,
                                   fontFamily: 'Bebas Neue',

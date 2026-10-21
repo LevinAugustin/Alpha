@@ -1,12 +1,14 @@
 import 'dart:io';
 
 import 'package:flexify/database/database.dart';
+import 'package:flexify/database/exercise_set_repository.dart';
 import 'package:flexify/import/hevy_apply.dart';
 import 'package:flexify/import/hevy_import.dart';
 import 'package:flexify/main.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'mock_tests.dart';
+import 'support/fixtures.dart';
 
 void main() {
   test('Hevy CSV preview counts templates and sets', () {
@@ -252,5 +254,97 @@ Training,"17 Okt. 2026, 13:20","17 Okt. 2026, 14:00",Curl,22,8
     expect(await database.select(database.exerciseSets).get(), hasLength(1766));
     expect(await database.select(database.plans).get(), hasLength(7));
     expect(elapsed.inSeconds, lessThan(5));
+  });
+
+  test('imported Hevy sets are the best-set baseline', () async {
+    await mockTests();
+    final database = testDb();
+    addTearDown(database.close);
+    final exerciseId = await database
+        .into(database.exercises)
+        .insert(
+          ExercisesCompanion.insert(
+            name: 'Curl',
+            kind: 'strength',
+            displayUnit: 'kg',
+          ),
+        );
+    final exercise = await (database.select(
+      database.exercises,
+    )..where((row) => row.id.equals(exerciseId))).getSingle();
+    final heavyDay = DateTime(2024, 3, 1, 18);
+    final lightDay = DateTime(2024, 6, 1, 18);
+    await applyWorkoutImport(
+      database: database,
+      sets: [
+        ImportedSet(
+          workoutTitle: 'Pull',
+          started: heavyDay,
+          ended: heavyDay,
+          exercise: 'Curl',
+          kg: 100,
+          reps: 5,
+          warmup: false,
+        ),
+        ImportedSet(
+          workoutTitle: 'Pull',
+          started: lightDay,
+          ended: lightDay,
+          exercise: 'Curl',
+          kg: 70,
+          reps: 12,
+          warmup: false,
+        ),
+      ],
+      templates: [
+        ImportedTemplate(
+          title: 'Pull',
+          exercises: const ['Curl'],
+          setCounts: const {'Curl': 1},
+          lastWeights: const {'Curl': 70},
+        ),
+      ],
+      match: (name) => name == exercise.name ? exercise : null,
+      existingPlanCount: 0,
+      existingTitles: {},
+    );
+    final stored = await (database.select(
+      database.exerciseSets,
+    )..where((row) => row.exerciseId.equals(exercise.id))).get();
+    expect(stored.map((row) => row.loadKg).toList()..sort(), [70, 100]);
+    expect(stored.every((row) => row.notes == ''), isTrue);
+
+    final under = await insertExerciseSetFixture(
+      database,
+      'Curl',
+      weight: 80,
+      reps: 8,
+      created: DateTime(2025, 1, 1),
+    );
+    expect(await isBestExerciseSet(database, under), isFalse);
+    final tie = await insertExerciseSetFixture(
+      database,
+      'Curl',
+      weight: 100,
+      reps: 5,
+      created: DateTime(2025, 1, 2),
+    );
+    expect(await isBestExerciseSet(database, tie), isFalse);
+    final moreReps = await insertExerciseSetFixture(
+      database,
+      'Curl',
+      weight: 100,
+      reps: 6,
+      created: DateTime(2025, 1, 3),
+    );
+    expect(await isBestExerciseSet(database, moreReps), isTrue);
+    final heavier = await insertExerciseSetFixture(
+      database,
+      'Curl',
+      weight: 110,
+      reps: 3,
+      created: DateTime(2025, 1, 4),
+    );
+    expect(await isBestExerciseSet(database, heavier), isTrue);
   });
 }

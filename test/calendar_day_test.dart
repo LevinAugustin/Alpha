@@ -153,6 +153,18 @@ void _expectWorkoutDay(
       expect(calendarContrast(border.top.color, fill), greaterThanOrEqualTo(3));
       expect(
         border.top.color,
+        isNot(
+          AlphaPalette.byId(
+            fill == AlphaPalette.eisblau.accent
+                ? 'eisblau'
+                : fill == AlphaPalette.pink.accent
+                ? 'pink'
+                : 'tiefschwarz',
+          ).background,
+        ),
+      );
+      expect(
+        border.top.color,
         calendarTodayBorder(
           AlphaPalette.byId(
             fill == AlphaPalette.eisblau.accent

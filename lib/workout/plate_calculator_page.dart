@@ -41,7 +41,11 @@ class _PlateCalculatorPageState extends State<PlateCalculatorPage> {
     final total = double.tryParse(_weight.text.replaceAll(',', '.')) ?? 0;
     final load = _mode == 'barbell'
         ? barbellLoad(totalKg: total, barKg: prefs.barKg, plates: prefs.plates)
-        : cableLoad(totalKg: total, stepKg: prefs.cableStep);
+        : dumbbellLoad(
+            totalKg: total,
+            handleKg: prefs.dumbbellHandleKg,
+            plates: prefs.plates,
+          );
     return Scaffold(
       backgroundColor: palette.background,
       appBar: AppBar(title: Text(l10n.plateCalculator)),
@@ -51,7 +55,7 @@ class _PlateCalculatorPageState extends State<PlateCalculatorPage> {
           SegmentedButton<String>(
             segments: [
               ButtonSegment(value: 'barbell', label: Text(l10n.barbellCalc)),
-              ButtonSegment(value: 'cable', label: Text(l10n.cableCalc)),
+              ButtonSegment(value: 'dumbbell', label: Text(l10n.dumbbellCalc)),
             ],
             selected: {_mode},
             onSelectionChanged: (value) => setState(() => _mode = value.first),
@@ -64,7 +68,9 @@ class _PlateCalculatorPageState extends State<PlateCalculatorPage> {
               FilteringTextInputFormatter.allow(RegExp(r'[0-9.,]')),
             ],
             decoration: InputDecoration(
-              labelText: l10n.columnKg,
+              labelText: _mode == 'dumbbell'
+                  ? l10n.dumbbellEachLabel
+                  : l10n.columnKg,
               suffixText: 'kg',
             ),
             onChanged: (_) => setState(() {}),
@@ -73,7 +79,11 @@ class _PlateCalculatorPageState extends State<PlateCalculatorPage> {
           if (_mode == 'barbell')
             _BarbellView(load: load, barKg: prefs.barKg, palette: palette)
           else
-            _CableView(load: load, step: prefs.cableStep, palette: palette),
+            _DumbbellView(
+              load: load,
+              handleKg: prefs.dumbbellHandleKg,
+              palette: palette,
+            ),
           if (load.extraKg > 0)
             Padding(
               padding: const EdgeInsets.only(top: 12),
@@ -128,11 +138,11 @@ class _PlateCalculatorPageState extends State<PlateCalculatorPage> {
             )
           else
             _NumberRow(
-              label: l10n.cableStepLabel,
-              value: prefs.cableStep,
-              choices: const [5, 10, 15, 1.25, 2.5],
+              label: l10n.dumbbellHandleLabel,
+              value: prefs.dumbbellHandleKg,
+              choices: const [2, 2.5, 5],
               onChanged: (value) async {
-                setState(() => prefs.cableStep = value);
+                setState(() => prefs.dumbbellHandleKg = value);
                 await prefs.save();
               },
             ),
@@ -163,7 +173,7 @@ class _BarbellView extends StatelessWidget {
       height: 120,
       child: Row(
         children: [
-          _sleeve(plates.reversed.toList()),
+          _plateSleeve(plates.reversed.toList(), palette),
           Expanded(
             child: Container(
               height: 14,
@@ -175,86 +185,47 @@ class _BarbellView extends StatelessWidget {
               ),
             ),
           ),
-          _sleeve(plates),
+          _plateSleeve(plates, palette),
         ],
       ),
     );
   }
-
-  Widget _sleeve(List<double> plates) {
-    return Row(
-      children: [
-        for (final plate in plates)
-          Container(
-            width: plate >= 15 ? 16 : 12,
-            height: 36 + plate,
-            margin: const EdgeInsets.symmetric(horizontal: 1),
-            decoration: BoxDecoration(
-              color: _plateColor(plate, palette),
-              borderRadius: BorderRadius.circular(3),
-            ),
-            alignment: Alignment.center,
-            child: RotatedBox(
-              quarterTurns: 3,
-              child: Text(
-                _text(plate),
-                style: TextStyle(color: palette.onAccent, fontSize: 10),
-              ),
-            ),
-          ),
-      ],
-    );
-  }
 }
 
-class _CableView extends StatelessWidget {
-  const _CableView({
+class _DumbbellView extends StatelessWidget {
+  const _DumbbellView({
     required this.load,
-    required this.step,
+    required this.handleKg,
     required this.palette,
   });
 
   final PlateLoad load;
-  final double step;
+  final double handleKg;
   final AlphaPalette palette;
 
   @override
   Widget build(BuildContext context) {
-    final count = load.sides.isEmpty ? 0 : load.sides.first.count;
-    final shown = count.clamp(0, 16);
+    final plates = [
+      for (final side in load.sides)
+        for (var index = 0; index < side.count; index++) side.kg,
+    ];
     return SizedBox(
-      height: 220,
+      height: 120,
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Container(width: 10, color: palette.muted),
-          const SizedBox(width: 8),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              for (var index = 0; index < shown; index++)
-                Container(
-                  width: 92,
-                  height: 12,
-                  margin: const EdgeInsets.only(top: 2),
-                  decoration: BoxDecoration(
-                    color: index == shown - 1 ? palette.accent : palette.card,
-                    borderRadius: BorderRadius.circular(2),
-                    border: Border.all(color: palette.border),
-                  ),
-                  alignment: Alignment.centerRight,
-                  padding: const EdgeInsets.only(right: 6),
-                  child: Text(
-                    _text(step),
-                    style: TextStyle(
-                      fontSize: 10,
-                      color: index == shown - 1
-                          ? palette.onAccent
-                          : palette.text,
-                    ),
-                  ),
-                ),
-            ],
+          _plateSleeve(plates.reversed.toList(), palette),
+          Container(
+            width: 72,
+            height: 16,
+            color: palette.muted,
+            alignment: Alignment.center,
+            child: Text(
+              '${_text(handleKg)} kg',
+              style: TextStyle(color: palette.background, fontSize: 11),
+            ),
           ),
+          _plateSleeve(plates, palette),
         ],
       ),
     );
@@ -291,6 +262,31 @@ class _NumberRow extends StatelessWidget {
       ],
     );
   }
+}
+
+Widget _plateSleeve(List<double> plates, AlphaPalette palette) {
+  return Row(
+    children: [
+      for (final plate in plates)
+        Container(
+          width: plate >= 15 ? 16 : 12,
+          height: 36 + plate,
+          margin: const EdgeInsets.symmetric(horizontal: 1),
+          decoration: BoxDecoration(
+            color: _plateColor(plate, palette),
+            borderRadius: BorderRadius.circular(3),
+          ),
+          alignment: Alignment.center,
+          child: RotatedBox(
+            quarterTurns: 3,
+            child: Text(
+              _text(plate),
+              style: TextStyle(color: palette.onAccent, fontSize: 10),
+            ),
+          ),
+        ),
+    ],
+  );
 }
 
 Color _plateColor(double kg, AlphaPalette palette) {

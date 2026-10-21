@@ -1906,7 +1906,7 @@ class AppLocalizationsFa extends AppLocalizations {
   String get barbellCalc => 'هالتر';
 
   @override
-  String get cableCalc => 'برج کابل';
+  String get dumbbellCalc => 'دمبل';
 
   @override
   String get extraWeight => 'وزن اضافه';
@@ -1918,7 +1918,10 @@ class AppLocalizationsFa extends AppLocalizations {
   String get plateSetLabel => 'صفحه در هر سمت';
 
   @override
-  String get cableStepLabel => 'گام دسته وزنه';
+  String get dumbbellHandleLabel => 'دسته';
+
+  @override
+  String get dumbbellEachLabel => 'برای هر دمبل';
 
   @override
   String get chooseGym => 'باشگاه را انتخاب کنید';
@@ -2383,6 +2386,12 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String get deleteGymTitle => 'باشگاه حذف شود؟';
+
+  @override
+  String get deleteGymAction => 'حذف استودیو';
+
+  @override
+  String get exerciseAlreadyInPlan => 'از قبل در این برنامه است';
 
   @override
   String get deleteGymBody =>

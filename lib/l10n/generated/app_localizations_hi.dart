@@ -1900,7 +1900,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get barbellCalc => 'बारबेल';
 
   @override
-  String get cableCalc => 'केबल टावर';
+  String get dumbbellCalc => 'डम्बल';
 
   @override
   String get extraWeight => 'अतिरिक्त भार';
@@ -1912,7 +1912,10 @@ class AppLocalizationsHi extends AppLocalizations {
   String get plateSetLabel => 'हर तरफ प्लेट';
 
   @override
-  String get cableStepLabel => 'स्टैक का कदम';
+  String get dumbbellHandleLabel => 'पकड़';
+
+  @override
+  String get dumbbellEachLabel => 'प्रति डम्बल';
 
   @override
   String get chooseGym => 'जिम चुनें';
@@ -2376,6 +2379,12 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get deleteGymTitle => 'स्टूडियो हटाएँ?';
+
+  @override
+  String get deleteGymAction => 'स्टूडियो हटाएँ';
+
+  @override
+  String get exerciseAlreadyInPlan => 'पहले से इस योजना में है';
 
   @override
   String get deleteGymBody =>

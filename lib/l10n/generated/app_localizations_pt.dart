@@ -1929,7 +1929,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get barbellCalc => 'Barra';
 
   @override
-  String get cableCalc => 'Polia';
+  String get dumbbellCalc => 'Halter';
 
   @override
   String get extraWeight => 'Peso extra';
@@ -1941,7 +1941,10 @@ class AppLocalizationsPt extends AppLocalizations {
   String get plateSetLabel => 'Discos por lado';
 
   @override
-  String get cableStepLabel => 'Passo da pilha';
+  String get dumbbellHandleLabel => 'Pega';
+
+  @override
+  String get dumbbellEachLabel => 'Por halter';
 
   @override
   String get chooseGym => 'Escolher ginásio';
@@ -2409,6 +2412,12 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get deleteGymTitle => 'Apagar o estúdio?';
+
+  @override
+  String get deleteGymAction => 'Eliminar o estúdio';
+
+  @override
+  String get exerciseAlreadyInPlan => 'Já está neste plano';
 
   @override
   String get deleteGymBody =>
@@ -4354,7 +4363,7 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get barbellCalc => 'Barra';
 
   @override
-  String get cableCalc => 'Polia';
+  String get dumbbellCalc => 'Halter';
 
   @override
   String get extraWeight => 'Peso extra';
@@ -4366,7 +4375,10 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String get plateSetLabel => 'Anilhas por lado';
 
   @override
-  String get cableStepLabel => 'Passo da pilha';
+  String get dumbbellHandleLabel => 'Pegada';
+
+  @override
+  String get dumbbellEachLabel => 'Por halter';
 
   @override
   String get chooseGym => 'Escolher academia';
@@ -4833,6 +4845,12 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
 
   @override
   String get deleteGymTitle => 'Excluir o estúdio?';
+
+  @override
+  String get deleteGymAction => 'Excluir o estúdio';
+
+  @override
+  String get exerciseAlreadyInPlan => 'Já está neste plano';
 
   @override
   String get deleteGymBody =>
@@ -6786,7 +6804,7 @@ class AppLocalizationsPtPt extends AppLocalizationsPt {
   String get barbellCalc => 'Barra';
 
   @override
-  String get cableCalc => 'Polia';
+  String get dumbbellCalc => 'Halter';
 
   @override
   String get extraWeight => 'Peso extra';
@@ -6798,7 +6816,10 @@ class AppLocalizationsPtPt extends AppLocalizationsPt {
   String get plateSetLabel => 'Discos por lado';
 
   @override
-  String get cableStepLabel => 'Passo da pilha';
+  String get dumbbellHandleLabel => 'Pega';
+
+  @override
+  String get dumbbellEachLabel => 'Por halter';
 
   @override
   String get chooseGym => 'Escolher ginásio';
@@ -7266,6 +7287,12 @@ class AppLocalizationsPtPt extends AppLocalizationsPt {
 
   @override
   String get deleteGymTitle => 'Apagar o estúdio?';
+
+  @override
+  String get deleteGymAction => 'Eliminar o estúdio';
+
+  @override
+  String get exerciseAlreadyInPlan => 'Já está neste plano';
 
   @override
   String get deleteGymBody =>

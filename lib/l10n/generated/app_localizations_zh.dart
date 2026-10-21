@@ -1837,7 +1837,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get barbellCalc => '杠铃';
 
   @override
-  String get cableCalc => '绳索塔';
+  String get dumbbellCalc => '哑铃';
 
   @override
   String get extraWeight => '附加重量';
@@ -1849,7 +1849,10 @@ class AppLocalizationsZh extends AppLocalizations {
   String get plateSetLabel => '每侧杠铃片';
 
   @override
-  String get cableStepLabel => '配重步进';
+  String get dumbbellHandleLabel => '手柄';
+
+  @override
+  String get dumbbellEachLabel => '每只哑铃';
 
   @override
   String get chooseGym => '选择健身房';
@@ -2310,6 +2313,12 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get deleteGymTitle => '删除训练馆？';
+
+  @override
+  String get deleteGymAction => '删除训练馆';
+
+  @override
+  String get exerciseAlreadyInPlan => '已在这个计划里';
 
   @override
   String get deleteGymBody => '与这个训练馆关联的训练会保留。只删除训练馆。';
@@ -4170,7 +4179,7 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
   String get barbellCalc => '杠铃';
 
   @override
-  String get cableCalc => '绳索塔';
+  String get dumbbellCalc => '哑铃';
 
   @override
   String get extraWeight => '附加重量';
@@ -4182,7 +4191,10 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
   String get plateSetLabel => '每侧杠铃片';
 
   @override
-  String get cableStepLabel => '配重步进';
+  String get dumbbellHandleLabel => '手柄';
+
+  @override
+  String get dumbbellEachLabel => '每只哑铃';
 
   @override
   String get chooseGym => '选择健身房';
@@ -4643,6 +4655,12 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
 
   @override
   String get deleteGymTitle => '删除训练馆？';
+
+  @override
+  String get deleteGymAction => '删除训练馆';
+
+  @override
+  String get exerciseAlreadyInPlan => '已在这个计划里';
 
   @override
   String get deleteGymBody => '与这个训练馆关联的训练会保留。只删除训练馆。';
@@ -6503,7 +6521,7 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get barbellCalc => '槓鈴';
 
   @override
-  String get cableCalc => '鋼索塔';
+  String get dumbbellCalc => '啞鈴';
 
   @override
   String get extraWeight => '附加重量';
@@ -6515,7 +6533,10 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get plateSetLabel => '每側槓片';
 
   @override
-  String get cableStepLabel => '配重間距';
+  String get dumbbellHandleLabel => '握把';
+
+  @override
+  String get dumbbellEachLabel => '每支啞鈴';
 
   @override
   String get chooseGym => '選擇健身房';
@@ -6976,6 +6997,12 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get deleteGymTitle => '刪除訓練館？';
+
+  @override
+  String get deleteGymAction => '刪除訓練館';
+
+  @override
+  String get exerciseAlreadyInPlan => '已在這個計畫裡';
 
   @override
   String get deleteGymBody => '與此訓練館關聯的訓練會保留。只刪除訓練館。';

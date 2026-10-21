@@ -347,7 +347,7 @@ class _AlphaSettingsPageState extends State<AlphaSettingsPage> {
                         ),
                         IconButton(
                           key: Key('delete-gym-${gym.id}'),
-                          tooltip: l10n.deleteGymTitle,
+                          tooltip: l10n.deleteGymAction,
                           onPressed: () => _deleteGym(gym),
                           icon: const Icon(Icons.delete_outline),
                         ),
@@ -447,7 +447,7 @@ class _AlphaSettingsPageState extends State<AlphaSettingsPage> {
                           );
                         },
                         child: Text(
-                          l10n.versionAndLicenses(snapshot.data ?? '2.5.3'),
+                          l10n.versionAndLicenses(snapshot.data ?? '2.5.4'),
                         ),
                       ),
                     );
@@ -464,7 +464,7 @@ class _AlphaSettingsPageState extends State<AlphaSettingsPage> {
     try {
       return (await PackageInfo.fromPlatform()).version;
     } catch (_) {
-      return '2.5.3';
+      return '2.5.4';
     }
   }
 

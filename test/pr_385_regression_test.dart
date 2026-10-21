@@ -148,7 +148,8 @@ void main() {
       (_) => const EditGraphPage(name: 'Bench press'),
     );
 
-    expect(find.bySemanticsLabel('Rest minutes'), findsOneWidget);
+    expect(find.byKey(const Key('graph-rest-stepper')), findsOneWidget);
+    expect(find.text('90s'), findsOneWidget);
     await _attemptBack(tester, find.byType(EditGraphPage));
 
     expect(find.text('Open editor'), findsOneWidget);

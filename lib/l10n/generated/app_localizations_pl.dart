@@ -1932,7 +1932,7 @@ class AppLocalizationsPl extends AppLocalizations {
   String get barbellCalc => 'Sztanga';
 
   @override
-  String get cableCalc => 'Wyciąg';
+  String get dumbbellCalc => 'Hantel';
 
   @override
   String get extraWeight => 'Dodatkowy ciężar';
@@ -1944,7 +1944,10 @@ class AppLocalizationsPl extends AppLocalizations {
   String get plateSetLabel => 'Talery na stronę';
 
   @override
-  String get cableStepLabel => 'Skok stosu';
+  String get dumbbellHandleLabel => 'Uchwyt';
+
+  @override
+  String get dumbbellEachLabel => 'Na hantel';
 
   @override
   String get chooseGym => 'Wybierz siłownię';
@@ -2410,6 +2413,12 @@ class AppLocalizationsPl extends AppLocalizations {
 
   @override
   String get deleteGymTitle => 'Usunąć studio?';
+
+  @override
+  String get deleteGymAction => 'Usuń studio';
+
+  @override
+  String get exerciseAlreadyInPlan => 'Już jest w tym planie';
 
   @override
   String get deleteGymBody =>

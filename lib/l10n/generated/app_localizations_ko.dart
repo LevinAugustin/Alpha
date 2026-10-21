@@ -1849,7 +1849,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get barbellCalc => '바벨';
 
   @override
-  String get cableCalc => '케이블';
+  String get dumbbellCalc => '덤벨';
 
   @override
   String get extraWeight => '추가 중량';
@@ -1861,7 +1861,10 @@ class AppLocalizationsKo extends AppLocalizations {
   String get plateSetLabel => '한쪽 원판';
 
   @override
-  String get cableStepLabel => '스택 간격';
+  String get dumbbellHandleLabel => '손잡이';
+
+  @override
+  String get dumbbellEachLabel => '덤벨 하나';
 
   @override
   String get chooseGym => '체육관 선택';
@@ -2324,6 +2327,12 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get deleteGymTitle => '스튜디오를 삭제할까요?';
+
+  @override
+  String get deleteGymAction => '스튜디오 삭제';
+
+  @override
+  String get exerciseAlreadyInPlan => '이미 이 계획에 있습니다';
 
   @override
   String get deleteGymBody => '이 스튜디오에 연결된 운동은 남습니다. 스튜디오만 삭제됩니다.';

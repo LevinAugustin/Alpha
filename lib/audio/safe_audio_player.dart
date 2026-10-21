@@ -63,7 +63,7 @@ class SafeAudioPlayer {
         AudioContext(
           android: const AudioContextAndroid(
             contentType: AndroidContentType.sonification,
-            usageType: AndroidUsageType.assistanceSonification,
+            usageType: AndroidUsageType.media,
             audioFocus: AndroidAudioFocus.gainTransientMayDuck,
           ),
           iOS: AudioContextIOS(category: AVAudioSessionCategory.ambient),
