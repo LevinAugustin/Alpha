@@ -2299,5 +2299,16 @@
   "cleanupImportsPreview": "{workouts} buổi tập đã nhập và {templates} mẫu sẽ bị xóa. Buổi tập nhập tay được giữ.",
   "cleanupImportsEmpty": "Không có gì để dọn.",
   "cleanupImportsDone": "Đã xóa mục nhập.",
-  "measurementsImported": "Đã nhập {count} số đo."
+  "measurementsImported": "Đã nhập {count} số đo.",
+  "splitSidesToggle": "Trái và phải",
+  "trainWhereTitle": "Hôm nay bạn tập ở đâu?",
+  "startTrainingAction": "Bắt đầu buổi tập",
+  "lastTrainedLabel": "Lần trước: {when}",
+  "trainedToday": "hôm nay",
+  "trainedYesterday": "hôm qua",
+  "trainedDaysAgo": "{count} ngày trước",
+  "startWithoutStudio": "Bắt đầu không cần phòng tập",
+  "noStudiosYet": "Chưa có phòng tập. Thêm một phòng hoặc bắt đầu không cần.",
+  "sortExercisesTitle": "Thứ tự",
+  "sortExercisesHint": "Giữ tay cầm và kéo."
 }

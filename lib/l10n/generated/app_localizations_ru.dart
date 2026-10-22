@@ -2446,4 +2446,41 @@ class AppLocalizationsRu extends AppLocalizations {
   String measurementsImported(int count) {
     return '$count измерений импортировано.';
   }
+
+  @override
+  String get splitSidesToggle => 'Левая и правая';
+
+  @override
+  String get trainWhereTitle => 'Где ты тренируешься сегодня?';
+
+  @override
+  String get startTrainingAction => 'Начать тренировку';
+
+  @override
+  String lastTrainedLabel(String when) {
+    return 'Последний раз: $when';
+  }
+
+  @override
+  String get trainedToday => 'сегодня';
+
+  @override
+  String get trainedYesterday => 'вчера';
+
+  @override
+  String trainedDaysAgo(int count) {
+    return '$count дн. назад';
+  }
+
+  @override
+  String get startWithoutStudio => 'Начать без зала';
+
+  @override
+  String get noStudiosYet => 'Залов пока нет. Добавь или начни без зала.';
+
+  @override
+  String get sortExercisesTitle => 'Порядок';
+
+  @override
+  String get sortExercisesHint => 'Держи ручку и перетащи.';
 }

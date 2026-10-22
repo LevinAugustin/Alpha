@@ -2308,5 +2308,16 @@
   "cleanupImportsPreview": "Буде видалено {workouts} імпортованих тренувань і {templates} шаблонів. Тренування, введені вручну, залишаються.",
   "cleanupImportsEmpty": "Нічого прибирати.",
   "cleanupImportsDone": "Імпортовані записи видалено.",
-  "measurementsImported": "{count} вимірювань імпортовано."
+  "measurementsImported": "{count} вимірювань імпортовано.",
+  "splitSidesToggle": "Ліва і права",
+  "trainWhereTitle": "Де ти тренуєшся сьогодні?",
+  "startTrainingAction": "Почати тренування",
+  "lastTrainedLabel": "Востаннє: {when}",
+  "trainedToday": "сьогодні",
+  "trainedYesterday": "вчора",
+  "trainedDaysAgo": "{count} дн. тому",
+  "startWithoutStudio": "Почати без залу",
+  "noStudiosYet": "Залів ще немає. Додай або почни без залу.",
+  "sortExercisesTitle": "Порядок",
+  "sortExercisesHint": "Тримай ручку і перетягни."
 }

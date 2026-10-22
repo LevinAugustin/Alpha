@@ -2299,5 +2299,16 @@
   "cleanupImportsPreview": "{workouts}টি আমদানি করা ওয়ার্কআউট এবং {templates}টি টেমপ্লেট মুছবে। হাতে লেখা ওয়ার্কআউট থাকবে।",
   "cleanupImportsEmpty": "পরিষ্কার করার কিছু নেই।",
   "cleanupImportsDone": "আমদানি করা এন্ট্রি মুছেছে।",
-  "measurementsImported": "{count}টি পরিমাপ আমদানি হয়েছে।"
+  "measurementsImported": "{count}টি পরিমাপ আমদানি হয়েছে।",
+  "splitSidesToggle": "বাম ও ডান",
+  "trainWhereTitle": "আজ কোথায় প্রশিক্ষণ করছ?",
+  "startTrainingAction": "ওয়ার্কআউট শুরু",
+  "lastTrainedLabel": "শেষবার: {when}",
+  "trainedToday": "আজ",
+  "trainedYesterday": "গতকাল",
+  "trainedDaysAgo": "{count} দিন আগে",
+  "startWithoutStudio": "জিম ছাড়া শুরু",
+  "noStudiosYet": "এখনও কোনো জিম নেই। যোগ করুন বা ছাড়া শুরু করুন।",
+  "sortExercisesTitle": "ক্রম",
+  "sortExercisesHint": "হাতল চেপে টেনে আনুন।"
 }

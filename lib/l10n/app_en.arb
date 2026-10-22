@@ -3215,5 +3215,29 @@
     "placeholders": {
       "count": {"type": "int"}
     }
-  }
+  },
+  "splitSidesToggle": "Left and right",
+  "@splitSidesToggle": {"description": "Switch that shows separate left and right reps."},
+  "trainWhereTitle": "Where are you training today?",
+  "@trainWhereTitle": {"description": "Title of the studio picker before a workout starts."},
+  "startTrainingAction": "Start workout",
+  "@startTrainingAction": {"description": "Confirms the studio and starts the workout."},
+  "lastTrainedLabel": "Last: {when}",
+  "@lastTrainedLabel": {"description": "Relative label for the last workout at a studio.",
+    "placeholders": {"when": {"type": "String"}}},
+  "trainedToday": "today",
+  "@trainedToday": {"description": "Relative day used in the studio picker."},
+  "trainedYesterday": "yesterday",
+  "@trainedYesterday": {"description": "Relative day used in the studio picker."},
+  "trainedDaysAgo": "{count} days ago",
+  "@trainedDaysAgo": {"description": "Relative day count used in the studio picker.",
+    "placeholders": {"count": {"type": "int"}}},
+  "startWithoutStudio": "Start without a studio",
+  "@startWithoutStudio": {"description": "Starts a workout without assigning a studio."},
+  "noStudiosYet": "No studio yet. Add one, or start without.",
+  "@noStudiosYet": {"description": "Shown when the user has not created a studio."},
+  "sortExercisesTitle": "Order",
+  "@sortExercisesTitle": {"description": "Title of the live-workout order sheet."},
+  "sortExercisesHint": "Hold a handle and drag.",
+  "@sortExercisesHint": {"description": "Hint for dragging exercises into a new order."}
 }

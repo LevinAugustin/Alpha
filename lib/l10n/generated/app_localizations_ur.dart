@@ -2416,4 +2416,41 @@ class AppLocalizationsUr extends AppLocalizations {
   String measurementsImported(int count) {
     return '$count پیمائشیں درآمد ہوئیں۔';
   }
+
+  @override
+  String get splitSidesToggle => 'بائیں اور دائیں';
+
+  @override
+  String get trainWhereTitle => 'آج کہاں ٹریننگ ہے؟';
+
+  @override
+  String get startTrainingAction => 'ورزش شروع کریں';
+
+  @override
+  String lastTrainedLabel(String when) {
+    return 'آخری بار: $when';
+  }
+
+  @override
+  String get trainedToday => 'آج';
+
+  @override
+  String get trainedYesterday => 'کل';
+
+  @override
+  String trainedDaysAgo(int count) {
+    return '$count دن پہلے';
+  }
+
+  @override
+  String get startWithoutStudio => 'جم کے بغیر شروع';
+
+  @override
+  String get noStudiosYet => 'ابھی کوئی جم نہیں۔ شامل کریں یا بغیر شروع کریں۔';
+
+  @override
+  String get sortExercisesTitle => 'ترتیب';
+
+  @override
+  String get sortExercisesHint => 'ہینڈل پکڑ کر کھینچیں۔';
 }

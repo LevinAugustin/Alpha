@@ -231,27 +231,24 @@ void main() {
       surfaceSize: const Size(390, 844),
     );
     await tester.pump(const Duration(milliseconds: 400));
+    expect(find.text('Links'), findsNothing);
+    expect(find.text('Rechts'), findsNothing);
     await tester.enterText(find.byKey(Key('set-kg-${custom.id}-0')), '16');
     await tester.enterText(find.byKey(Key('set-reps-${custom.id}-0')), '12');
-    await tester.enterText(
-      find.byKey(Key('set-reps-right-${custom.id}-0')),
-      '10',
-    );
     await tester.pump();
     await _shot(tester, 'unilateral_set');
     await tester.tap(find.byKey(Key('set-check-${custom.id}-0')));
     await tester.pump(const Duration(milliseconds: 400));
     final sets = await harness.database.exerciseSets.select().get();
-    expect(sets, hasLength(2));
-    expect(sets.map((set) => (set.side, set.reps)).toSet(), {
-      ('links', 12.0),
-      ('rechts', 10.0),
-    });
+    expect(sets, hasLength(1));
+    expect(sets.single.side, isNull);
+    expect(sets.single.reps, 12);
+    expect(sets.single.loadKg, 16);
     final volume = sets.fold<double>(
       0,
       (sum, set) => sum + (set.loadKg ?? 0) * (set.reps ?? 0),
     );
-    expect(volume, 352);
+    expect(volume, 192);
     await harness.timerState.stopTimer();
   });
 

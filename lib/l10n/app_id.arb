@@ -2299,5 +2299,16 @@
   "cleanupImportsPreview": "{workouts} latihan impor dan {templates} templat akan dihapus. Latihan yang diketik tangan tetap ada.",
   "cleanupImportsEmpty": "Tidak ada yang perlu dibersihkan.",
   "cleanupImportsDone": "Entri impor dihapus.",
-  "measurementsImported": "{count} pengukuran diimpor."
+  "measurementsImported": "{count} pengukuran diimpor.",
+  "splitSidesToggle": "Kiri dan kanan",
+  "trainWhereTitle": "Di mana kamu latihan hari ini?",
+  "startTrainingAction": "Mulai latihan",
+  "lastTrainedLabel": "Terakhir: {when}",
+  "trainedToday": "hari ini",
+  "trainedYesterday": "kemarin",
+  "trainedDaysAgo": "{count} hari lalu",
+  "startWithoutStudio": "Mulai tanpa gym",
+  "noStudiosYet": "Belum ada gym. Tambah atau mulai tanpa gym.",
+  "sortExercisesTitle": "Urutan",
+  "sortExercisesHint": "Tahan gagang lalu geser."
 }

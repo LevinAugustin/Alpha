@@ -7,6 +7,7 @@ import 'package:flexify/exercises/custom_exercise_page.dart';
 import 'package:flexify/database/catalog_seed.dart';
 import 'package:flexify/database/database.dart';
 import 'package:flexify/import/hevy_apply.dart';
+import 'package:flexify/alpha/unilateral_sets.dart';
 import 'package:flexify/import/hevy_import.dart';
 import 'package:flexify/import/import_cleanup.dart';
 import 'package:flexify/import_data.dart';
@@ -170,12 +171,13 @@ class ImportExportPage extends StatelessWidget {
         db.workouts.id.equalsExp(db.exerciseSets.workoutId),
       ),
     ])).get();
-    final sets = <ImportedSet>[];
+    final exported = <ImportedSet>[];
+    final described = <SideExportRow>[];
     for (final row in rows) {
       final set = row.readTable(db.exerciseSets);
       final exercise = row.readTable(db.exercises);
       final workout = row.readTableOrNull(db.workouts);
-      sets.add(
+      exported.add(
         ImportedSet(
           workoutTitle: 'Alpha ${set.workoutId ?? 0}',
           started: workout?.startedAt ?? set.timestamp,
@@ -188,7 +190,20 @@ class ImportExportPage extends StatelessWidget {
           warmup: (set.notes ?? '').contains('warmup'),
         ),
       );
+      described.add(
+        SideExportRow(
+          exerciseId: exercise.id,
+          loggedAt: set.timestamp,
+          side: set.side,
+          kg: set.loadKg ?? 0,
+          reps: set.reps ?? 0,
+        ),
+      );
     }
+    final sets = [
+      for (final index in indexesAfterEqualSideCollapse(described))
+        exported[index],
+    ];
     final csv = exportWorkoutCsv(sets);
     final file = File('${Directory.systemTemp.path}/alpha-export.csv');
     await file.writeAsString(csv);

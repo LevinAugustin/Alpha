@@ -755,5 +755,16 @@
   "cleanupImportsPreview": "Будут удалены {workouts} импортированных тренировок и {templates} шаблонов. Тренировки, введённые вручную, остаются.",
   "cleanupImportsEmpty": "Нечего очищать.",
   "cleanupImportsDone": "Импортированные записи удалены.",
-  "measurementsImported": "{count} измерений импортировано."
+  "measurementsImported": "{count} измерений импортировано.",
+  "splitSidesToggle": "Левая и правая",
+  "trainWhereTitle": "Где ты тренируешься сегодня?",
+  "startTrainingAction": "Начать тренировку",
+  "lastTrainedLabel": "Последний раз: {when}",
+  "trainedToday": "сегодня",
+  "trainedYesterday": "вчера",
+  "trainedDaysAgo": "{count} дн. назад",
+  "startWithoutStudio": "Начать без зала",
+  "noStudiosYet": "Залов пока нет. Добавь или начни без зала.",
+  "sortExercisesTitle": "Порядок",
+  "sortExercisesHint": "Держи ручку и перетащи."
 }

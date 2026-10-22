@@ -2299,5 +2299,16 @@
   "cleanupImportsPreview": "{workouts} درآمد شدہ ورزشیں اور {templates} سانچے حذف ہوں گے۔ ہاتھ سے لکھی ورزشیں رہیں گی۔",
   "cleanupImportsEmpty": "صاف کرنے کے لیے کچھ نہیں۔",
   "cleanupImportsDone": "درآمد شدہ اندراجات حذف ہو گئے۔",
-  "measurementsImported": "{count} پیمائشیں درآمد ہوئیں۔"
+  "measurementsImported": "{count} پیمائشیں درآمد ہوئیں۔",
+  "splitSidesToggle": "بائیں اور دائیں",
+  "trainWhereTitle": "آج کہاں ٹریننگ ہے؟",
+  "startTrainingAction": "ورزش شروع کریں",
+  "lastTrainedLabel": "آخری بار: {when}",
+  "trainedToday": "آج",
+  "trainedYesterday": "کل",
+  "trainedDaysAgo": "{count} دن پہلے",
+  "startWithoutStudio": "جم کے بغیر شروع",
+  "noStudiosYet": "ابھی کوئی جم نہیں۔ شامل کریں یا بغیر شروع کریں۔",
+  "sortExercisesTitle": "ترتیب",
+  "sortExercisesHint": "ہینڈل پکڑ کر کھینچیں۔"
 }

@@ -2429,4 +2429,41 @@ class AppLocalizationsId extends AppLocalizations {
   String measurementsImported(int count) {
     return '$count pengukuran diimpor.';
   }
+
+  @override
+  String get splitSidesToggle => 'Kiri dan kanan';
+
+  @override
+  String get trainWhereTitle => 'Di mana kamu latihan hari ini?';
+
+  @override
+  String get startTrainingAction => 'Mulai latihan';
+
+  @override
+  String lastTrainedLabel(String when) {
+    return 'Terakhir: $when';
+  }
+
+  @override
+  String get trainedToday => 'hari ini';
+
+  @override
+  String get trainedYesterday => 'kemarin';
+
+  @override
+  String trainedDaysAgo(int count) {
+    return '$count hari lalu';
+  }
+
+  @override
+  String get startWithoutStudio => 'Mulai tanpa gym';
+
+  @override
+  String get noStudiosYet => 'Belum ada gym. Tambah atau mulai tanpa gym.';
+
+  @override
+  String get sortExercisesTitle => 'Urutan';
+
+  @override
+  String get sortExercisesHint => 'Tahan gagang lalu geser.';
 }

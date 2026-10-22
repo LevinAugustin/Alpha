@@ -442,7 +442,7 @@ void main() {
     );
     await tester.pumpAndSettle();
 
-    expect(find.text('Studio wählen'), findsNothing);
+    expect(find.text('Wo trainierst du heute?'), findsNothing);
     expect(find.byKey(const Key('finish-workout')), findsOneWidget);
   });
 
@@ -478,7 +478,7 @@ void main() {
     await tester.pump();
     await tester.pump(const Duration(milliseconds: 400));
 
-    expect(find.text('Studio wählen'), findsOneWidget);
+    expect(find.text('Wo trainierst du heute?'), findsOneWidget);
     expect(find.text('Studio Eins'), findsOneWidget);
   });
 

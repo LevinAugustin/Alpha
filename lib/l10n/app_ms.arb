@@ -2299,5 +2299,16 @@
   "cleanupImportsPreview": "{workouts} senaman import dan {templates} templat akan dipadam. Senaman yang ditaip sendiri kekal.",
   "cleanupImportsEmpty": "Tiada apa untuk dibersihkan.",
   "cleanupImportsDone": "Entri import dipadam.",
-  "measurementsImported": "{count} ukuran diimport."
+  "measurementsImported": "{count} ukuran diimport.",
+  "splitSidesToggle": "Kiri dan kanan",
+  "trainWhereTitle": "Di mana anda berlatih hari ini?",
+  "startTrainingAction": "Mula senaman",
+  "lastTrainedLabel": "Terakhir: {when}",
+  "trainedToday": "hari ini",
+  "trainedYesterday": "semalam",
+  "trainedDaysAgo": "{count} hari lalu",
+  "startWithoutStudio": "Mula tanpa gim",
+  "noStudiosYet": "Belum ada gim. Tambah atau mula tanpa gim.",
+  "sortExercisesTitle": "Susunan",
+  "sortExercisesHint": "Pegang pemegang dan seret."
 }

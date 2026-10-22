@@ -2411,4 +2411,41 @@ class AppLocalizationsHi extends AppLocalizations {
   String measurementsImported(int count) {
     return '$count माप आयात हुए।';
   }
+
+  @override
+  String get splitSidesToggle => 'बायाँ और दायाँ';
+
+  @override
+  String get trainWhereTitle => 'आज कहाँ ट्रेन कर रहे हो?';
+
+  @override
+  String get startTrainingAction => 'वर्कआउट शुरू करें';
+
+  @override
+  String lastTrainedLabel(String when) {
+    return 'पिछली बार: $when';
+  }
+
+  @override
+  String get trainedToday => 'आज';
+
+  @override
+  String get trainedYesterday => 'कल';
+
+  @override
+  String trainedDaysAgo(int count) {
+    return '$count दिन पहले';
+  }
+
+  @override
+  String get startWithoutStudio => 'जिम के बिना शुरू करें';
+
+  @override
+  String get noStudiosYet => 'अभी कोई जिम नहीं। जोड़ें या बिना शुरू करें।';
+
+  @override
+  String get sortExercisesTitle => 'क्रम';
+
+  @override
+  String get sortExercisesHint => 'हैंडल पकड़कर खींचें।';
 }

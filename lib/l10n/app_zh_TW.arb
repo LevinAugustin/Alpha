@@ -755,5 +755,16 @@
   "cleanupImportsPreview": "將刪除 {workouts} 筆匯入的訓練和 {templates} 個範本。親手記錄的訓練會保留。",
   "cleanupImportsEmpty": "沒有需要清理的內容。",
   "cleanupImportsDone": "已刪除匯入紀錄。",
-  "measurementsImported": "已匯入 {count} 筆測量。"
+  "measurementsImported": "已匯入 {count} 筆測量。",
+  "splitSidesToggle": "左右分開",
+  "trainWhereTitle": "今天在哪裡訓練？",
+  "startTrainingAction": "開始訓練",
+  "lastTrainedLabel": "上次：{when}",
+  "trainedToday": "今天",
+  "trainedYesterday": "昨天",
+  "trainedDaysAgo": "{count}天前",
+  "startWithoutStudio": "不選健身房開始",
+  "noStudiosYet": "還沒有健身房。新增一個，或直接開始。",
+  "sortExercisesTitle": "順序",
+  "sortExercisesHint": "按住把手拖曳。"
 }

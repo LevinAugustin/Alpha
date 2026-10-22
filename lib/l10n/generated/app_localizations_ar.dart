@@ -2404,4 +2404,41 @@ class AppLocalizationsAr extends AppLocalizations {
   String measurementsImported(int count) {
     return 'تم استيراد $count قياسات.';
   }
+
+  @override
+  String get splitSidesToggle => 'يسار ويمين';
+
+  @override
+  String get trainWhereTitle => 'أين تتدرب اليوم؟';
+
+  @override
+  String get startTrainingAction => 'ابدأ التمرين';
+
+  @override
+  String lastTrainedLabel(String when) {
+    return 'آخر مرة: $when';
+  }
+
+  @override
+  String get trainedToday => 'اليوم';
+
+  @override
+  String get trainedYesterday => 'أمس';
+
+  @override
+  String trainedDaysAgo(int count) {
+    return 'قبل $count أيام';
+  }
+
+  @override
+  String get startWithoutStudio => 'ابدأ بدون نادٍ';
+
+  @override
+  String get noStudiosYet => 'لا يوجد نادٍ بعد. أضف واحداً أو ابدأ بدونه.';
+
+  @override
+  String get sortExercisesTitle => 'الترتيب';
+
+  @override
+  String get sortExercisesHint => 'أمسك المقبض واسحب.';
 }

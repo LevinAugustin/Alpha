@@ -2299,5 +2299,16 @@
   "cleanupImportsPreview": "จะลบเวิร์กเอาต์ที่นำเข้า {workouts} รายการและเทมเพลต {templates} รายการ เวิร์กเอาต์ที่กรอกเองยังอยู่",
   "cleanupImportsEmpty": "ไม่มีอะไรให้ล้าง",
   "cleanupImportsDone": "ลบรายการที่นำเข้าแล้ว",
-  "measurementsImported": "นำเข้าการวัด {count} รายการแล้ว"
+  "measurementsImported": "นำเข้าการวัด {count} รายการแล้ว",
+  "splitSidesToggle": "ซ้ายและขวา",
+  "trainWhereTitle": "วันนี้ซ้อมที่ไหน?",
+  "startTrainingAction": "เริ่มออกกำลังกาย",
+  "lastTrainedLabel": "ล่าสุด: {when}",
+  "trainedToday": "วันนี้",
+  "trainedYesterday": "เมื่อวาน",
+  "trainedDaysAgo": "{count} วันที่แล้ว",
+  "startWithoutStudio": "เริ่มโดยไม่เลือกยิม",
+  "noStudiosYet": "ยังไม่มียิม เพิ่มหรือเริ่มโดยไม่เลือก",
+  "sortExercisesTitle": "ลำดับ",
+  "sortExercisesHint": "กดที่มือจับแล้วลาก"
 }

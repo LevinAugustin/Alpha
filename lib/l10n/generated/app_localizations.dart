@@ -4481,6 +4481,72 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{count} measurements imported.'**
   String measurementsImported(int count);
+
+  /// Switch that shows separate left and right reps.
+  ///
+  /// In en, this message translates to:
+  /// **'Left and right'**
+  String get splitSidesToggle;
+
+  /// Title of the studio picker before a workout starts.
+  ///
+  /// In en, this message translates to:
+  /// **'Where are you training today?'**
+  String get trainWhereTitle;
+
+  /// Confirms the studio and starts the workout.
+  ///
+  /// In en, this message translates to:
+  /// **'Start workout'**
+  String get startTrainingAction;
+
+  /// Relative label for the last workout at a studio.
+  ///
+  /// In en, this message translates to:
+  /// **'Last: {when}'**
+  String lastTrainedLabel(String when);
+
+  /// Relative day used in the studio picker.
+  ///
+  /// In en, this message translates to:
+  /// **'today'**
+  String get trainedToday;
+
+  /// Relative day used in the studio picker.
+  ///
+  /// In en, this message translates to:
+  /// **'yesterday'**
+  String get trainedYesterday;
+
+  /// Relative day count used in the studio picker.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} days ago'**
+  String trainedDaysAgo(int count);
+
+  /// Starts a workout without assigning a studio.
+  ///
+  /// In en, this message translates to:
+  /// **'Start without a studio'**
+  String get startWithoutStudio;
+
+  /// Shown when the user has not created a studio.
+  ///
+  /// In en, this message translates to:
+  /// **'No studio yet. Add one, or start without.'**
+  String get noStudiosYet;
+
+  /// Title of the live-workout order sheet.
+  ///
+  /// In en, this message translates to:
+  /// **'Order'**
+  String get sortExercisesTitle;
+
+  /// Hint for dragging exercises into a new order.
+  ///
+  /// In en, this message translates to:
+  /// **'Hold a handle and drag.'**
+  String get sortExercisesHint;
 }
 
 class _AppLocalizationsDelegate

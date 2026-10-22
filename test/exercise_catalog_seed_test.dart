@@ -1531,6 +1531,30 @@ void main() {
               ..where((row) => row.catalogId.equals('reverse-curls-kabel')))
             .getSingle();
     expect(added.germanName, 'Reverse Curls am Kabelzug');
+    final curl =
+        await (db.exercises.select()
+              ..where((row) => row.catalogId.equals('hammercurls-seil')))
+            .getSingle();
+    expect(curl.einseitig, isTrue);
+    expect(curl.steps, contains('einer oder beiden Händen'));
+    expect(curl.steps, isNot(contains('rechten Hand')));
+    expect(curl.tips, contains('ein- oder beidarmig'));
+    final curlSet = await db.exerciseSets.insertOne(
+      ExerciseSetsCompanion.insert(
+        exerciseId: curl.id,
+        timestamp: DateTime(2026, 10, 18, 9),
+        reps: const Value(11),
+        loadKg: const Value(16),
+      ),
+    );
+    await (db.update(
+      db.exercises,
+    )..where((row) => row.id.equals(curl.id))).write(
+      const ExercisesCompanion(
+        steps: Value('["Einhand-Seilgriff"]'),
+        tips: Value('["alt"]'),
+      ),
+    );
     final historyId = await db.exerciseSets.insertOne(
       ExerciseSetsCompanion.insert(
         exerciseId: lat.id,
@@ -1554,6 +1578,20 @@ void main() {
           .catalogId,
       'latziehen-breit',
     );
+    final curlAfter =
+        await (db.exercises.select()..where((row) => row.id.equals(curl.id)))
+            .getSingle();
+    expect(curlAfter.id, curl.id);
+    expect(curlAfter.name, curl.name);
+    expect(curlAfter.einseitig, isTrue);
+    expect(curlAfter.steps, curl.steps);
+    expect(curlAfter.tips, curl.tips);
+    final keptCurl =
+        await (db.exerciseSets.select()..where((row) => row.id.equals(curlSet)))
+            .getSingle();
+    expect(keptCurl.exerciseId, curl.id);
+    expect(keptCurl.reps, 11);
+    expect(keptCurl.loadKg, 16);
   });
 
   test('legacy map entries can be extended and bad ones are skipped', () {

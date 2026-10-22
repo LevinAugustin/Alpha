@@ -2444,6 +2444,43 @@ class AppLocalizationsPt extends AppLocalizations {
   String measurementsImported(int count) {
     return '$count medições importadas.';
   }
+
+  @override
+  String get splitSidesToggle => 'Esquerda e direita';
+
+  @override
+  String get trainWhereTitle => 'Onde treinas hoje?';
+
+  @override
+  String get startTrainingAction => 'Começar treino';
+
+  @override
+  String lastTrainedLabel(String when) {
+    return 'Última vez: $when';
+  }
+
+  @override
+  String get trainedToday => 'hoje';
+
+  @override
+  String get trainedYesterday => 'ontem';
+
+  @override
+  String trainedDaysAgo(int count) {
+    return 'há $count dias';
+  }
+
+  @override
+  String get startWithoutStudio => 'Começar sem ginásio';
+
+  @override
+  String get noStudiosYet => 'Ainda sem ginásio. Cria um ou começa sem.';
+
+  @override
+  String get sortExercisesTitle => 'Ordem';
+
+  @override
+  String get sortExercisesHint => 'Segura a pega e arrasta.';
 }
 
 /// The translations for Portuguese, as used in Brazil (`pt_BR`).
@@ -4877,6 +4914,43 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   String measurementsImported(int count) {
     return '$count medições importadas.';
   }
+
+  @override
+  String get splitSidesToggle => 'Esquerda e direita';
+
+  @override
+  String get trainWhereTitle => 'Onde você treina hoje?';
+
+  @override
+  String get startTrainingAction => 'Começar treino';
+
+  @override
+  String lastTrainedLabel(String when) {
+    return 'Última vez: $when';
+  }
+
+  @override
+  String get trainedToday => 'hoje';
+
+  @override
+  String get trainedYesterday => 'ontem';
+
+  @override
+  String trainedDaysAgo(int count) {
+    return 'há $count dias';
+  }
+
+  @override
+  String get startWithoutStudio => 'Começar sem academia';
+
+  @override
+  String get noStudiosYet => 'Ainda sem academia. Crie uma ou comece sem.';
+
+  @override
+  String get sortExercisesTitle => 'Ordem';
+
+  @override
+  String get sortExercisesHint => 'Segure a alça e arraste.';
 }
 
 /// The translations for Portuguese, as used in Portugal (`pt_PT`).
@@ -7319,4 +7393,41 @@ class AppLocalizationsPtPt extends AppLocalizationsPt {
   String measurementsImported(int count) {
     return '$count medições importadas.';
   }
+
+  @override
+  String get splitSidesToggle => 'Esquerda e direita';
+
+  @override
+  String get trainWhereTitle => 'Onde treinas hoje?';
+
+  @override
+  String get startTrainingAction => 'Começar treino';
+
+  @override
+  String lastTrainedLabel(String when) {
+    return 'Última vez: $when';
+  }
+
+  @override
+  String get trainedToday => 'hoje';
+
+  @override
+  String get trainedYesterday => 'ontem';
+
+  @override
+  String trainedDaysAgo(int count) {
+    return 'há $count dias';
+  }
+
+  @override
+  String get startWithoutStudio => 'Começar sem ginásio';
+
+  @override
+  String get noStudiosYet => 'Ainda sem ginásio. Cria um ou começa sem.';
+
+  @override
+  String get sortExercisesTitle => 'Ordem';
+
+  @override
+  String get sortExercisesHint => 'Segura a pega e arrasta.';
 }

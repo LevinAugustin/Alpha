@@ -755,5 +755,16 @@
   "cleanupImportsPreview": "{workouts} allenamenti importati e {templates} modelli saranno rimossi. Gli allenamenti inseriti a mano restano.",
   "cleanupImportsEmpty": "Niente da pulire.",
   "cleanupImportsDone": "Voci importate rimosse.",
-  "measurementsImported": "{count} misurazioni importate."
+  "measurementsImported": "{count} misurazioni importate.",
+  "splitSidesToggle": "Sinistra e destra",
+  "trainWhereTitle": "Dove ti alleni oggi?",
+  "startTrainingAction": "Inizia allenamento",
+  "lastTrainedLabel": "Ultima volta: {when}",
+  "trainedToday": "oggi",
+  "trainedYesterday": "ieri",
+  "trainedDaysAgo": "{count} giorni fa",
+  "startWithoutStudio": "Inizia senza palestra",
+  "noStudiosYet": "Nessuna palestra. Aggiungine una o inizia senza.",
+  "sortExercisesTitle": "Ordine",
+  "sortExercisesHint": "Tieni la maniglia e trascina."
 }

@@ -2344,6 +2344,43 @@ class AppLocalizationsZh extends AppLocalizations {
   String measurementsImported(int count) {
     return '已导入 $count 条测量。';
   }
+
+  @override
+  String get splitSidesToggle => '左右分开';
+
+  @override
+  String get trainWhereTitle => '今天在哪里训练？';
+
+  @override
+  String get startTrainingAction => '开始训练';
+
+  @override
+  String lastTrainedLabel(String when) {
+    return '上次：$when';
+  }
+
+  @override
+  String get trainedToday => '今天';
+
+  @override
+  String get trainedYesterday => '昨天';
+
+  @override
+  String trainedDaysAgo(int count) {
+    return '$count天前';
+  }
+
+  @override
+  String get startWithoutStudio => '不选健身房开始';
+
+  @override
+  String get noStudiosYet => '还没有健身房。添加一个，或直接开始。';
+
+  @override
+  String get sortExercisesTitle => '顺序';
+
+  @override
+  String get sortExercisesHint => '按住把手拖动。';
 }
 
 /// The translations for Chinese, as used in China (`zh_CN`).
@@ -4686,6 +4723,43 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
   String measurementsImported(int count) {
     return '已导入 $count 条测量。';
   }
+
+  @override
+  String get splitSidesToggle => '左右分开';
+
+  @override
+  String get trainWhereTitle => '今天在哪里训练？';
+
+  @override
+  String get startTrainingAction => '开始训练';
+
+  @override
+  String lastTrainedLabel(String when) {
+    return '上次：$when';
+  }
+
+  @override
+  String get trainedToday => '今天';
+
+  @override
+  String get trainedYesterday => '昨天';
+
+  @override
+  String trainedDaysAgo(int count) {
+    return '$count天前';
+  }
+
+  @override
+  String get startWithoutStudio => '不选健身房开始';
+
+  @override
+  String get noStudiosYet => '还没有健身房。添加一个，或直接开始。';
+
+  @override
+  String get sortExercisesTitle => '顺序';
+
+  @override
+  String get sortExercisesHint => '按住把手拖动。';
 }
 
 /// The translations for Chinese, as used in Taiwan (`zh_TW`).
@@ -7028,4 +7102,41 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String measurementsImported(int count) {
     return '已匯入 $count 筆測量。';
   }
+
+  @override
+  String get splitSidesToggle => '左右分開';
+
+  @override
+  String get trainWhereTitle => '今天在哪裡訓練？';
+
+  @override
+  String get startTrainingAction => '開始訓練';
+
+  @override
+  String lastTrainedLabel(String when) {
+    return '上次：$when';
+  }
+
+  @override
+  String get trainedToday => '今天';
+
+  @override
+  String get trainedYesterday => '昨天';
+
+  @override
+  String trainedDaysAgo(int count) {
+    return '$count天前';
+  }
+
+  @override
+  String get startWithoutStudio => '不選健身房開始';
+
+  @override
+  String get noStudiosYet => '還沒有健身房。新增一個，或直接開始。';
+
+  @override
+  String get sortExercisesTitle => '順序';
+
+  @override
+  String get sortExercisesHint => '按住把手拖曳。';
 }

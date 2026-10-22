@@ -755,5 +755,16 @@
   "cleanupImportsPreview": "インポートしたトレーニング {workouts} 件とテンプレート {templates} 件を削除します。手入力のトレーニングは残ります。",
   "cleanupImportsEmpty": "整理するものはありません。",
   "cleanupImportsDone": "インポート項目を削除しました。",
-  "measurementsImported": "{count} 件の測定を取り込みました。"
+  "measurementsImported": "{count} 件の測定を取り込みました。",
+  "splitSidesToggle": "左右別々",
+  "trainWhereTitle": "今日はどこでトレーニングしますか？",
+  "startTrainingAction": "トレーニング開始",
+  "lastTrainedLabel": "前回: {when}",
+  "trainedToday": "今日",
+  "trainedYesterday": "昨日",
+  "trainedDaysAgo": "{count}日前",
+  "startWithoutStudio": "ジムなしで開始",
+  "noStudiosYet": "ジムがまだありません。追加するか、なしで開始します。",
+  "sortExercisesTitle": "順番",
+  "sortExercisesHint": "持ち手を押さえてドラッグ。"
 }

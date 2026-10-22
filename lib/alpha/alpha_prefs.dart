@@ -6,15 +6,23 @@ import 'package:flutter/foundation.dart';
 import 'package:path/path.dart' as p;
 
 class GymPlace {
-  GymPlace({required this.id, required this.name});
+  GymPlace({required this.id, required this.name, this.lastUsedAt});
 
   final String id;
   String name;
+  DateTime? lastUsedAt;
 
-  Map<String, String> toJson() => {'id': id, 'name': name};
+  Map<String, String> toJson() => {
+    'id': id,
+    'name': name,
+    if (lastUsedAt != null) 'lastUsedAt': lastUsedAt!.toIso8601String(),
+  };
 
-  factory GymPlace.fromJson(Map<String, dynamic> json) =>
-      GymPlace(id: json['id'] as String, name: json['name'] as String);
+  factory GymPlace.fromJson(Map<String, dynamic> json) => GymPlace(
+    id: json['id'] as String,
+    name: json['name'] as String,
+    lastUsedAt: DateTime.tryParse(json['lastUsedAt'] as String? ?? ''),
+  );
 }
 
 class AlphaPrefs extends ChangeNotifier {
@@ -31,6 +39,10 @@ class AlphaPrefs extends ChangeNotifier {
   String lengthUnit = 'cm';
   final Map<String, double> nextWeight = {};
   final Map<String, int> nextReps = {};
+  DateTime? restEndsAt;
+  int? restTotalMs;
+  String restTitle = '';
+  String restTarget = 'timer';
 
   GymPlace get activeGym =>
       gyms.firstWhere((gym) => gym.id == activeGymId, orElse: () => gyms.first);
@@ -72,6 +84,21 @@ class AlphaPrefs extends ChangeNotifier {
           (key, value) => MapEntry('$key', (value as num).toInt()),
         ),
       );
+    restEndsAt = DateTime.tryParse(json['restEndsAt'] as String? ?? '');
+    restTotalMs = (json['restTotalMs'] as num?)?.toInt();
+    restTitle = json['restTitle'] as String? ?? '';
+    restTarget = json['restTarget'] as String? ?? 'timer';
+  }
+
+  Future<void> clearRestDeadline() async {
+    if (restEndsAt == null && restTotalMs == null && restTitle.isEmpty) {
+      return;
+    }
+    restEndsAt = null;
+    restTotalMs = null;
+    restTitle = '';
+    restTarget = 'timer';
+    await save();
   }
 
   Future<void> load() async {
@@ -103,6 +130,10 @@ class AlphaPrefs extends ChangeNotifier {
         'gyms': gyms.map((gym) => gym.toJson()).toList(),
         'nextWeight': nextWeight,
         'nextReps': nextReps,
+        if (restEndsAt != null) 'restEndsAt': restEndsAt!.toIso8601String(),
+        if (restTotalMs != null) 'restTotalMs': restTotalMs,
+        if (restTitle.isNotEmpty) 'restTitle': restTitle,
+        if (restTarget != 'timer') 'restTarget': restTarget,
       }),
     );
     notifyListeners();

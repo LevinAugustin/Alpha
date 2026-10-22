@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:flexify/alpha/alpha_prefs.dart';
 import 'package:flexify/audio/safe_audio_player.dart';
 import 'package:flexify/crash_logger.dart';
 import 'package:flexify/logging.dart';
@@ -91,6 +92,7 @@ class TimerState extends ChangeNotifier {
         _setNotificationTarget(call.arguments as String?);
       }
     });
+    unawaited(restoreRestDeadline());
     if (!kIsWeb && Platform.isAndroid) {
       androidChannel
           .invokeMethod<String>('getNotificationTarget')
@@ -168,6 +170,28 @@ class TimerState extends ChangeNotifier {
     super.dispose();
   }
 
+  Future<void> restoreRestDeadline() async {
+    final restored = runningTimerFromDeadline(
+      endsAt: alphaPrefs.restEndsAt,
+      totalMs: alphaPrefs.restTotalMs,
+    );
+    if (restored == null) {
+      if (alphaPrefs.restEndsAt != null) await alphaPrefs.clearRestDeadline();
+      return;
+    }
+    final settings = await (db.select(db.settings)..limit(1)).getSingle();
+    await startTimer(
+      alphaPrefs.restTitle.isEmpty ? _restTimerTitle : alphaPrefs.restTitle,
+      restored.getRemaining(),
+      settings.alarmSound,
+      settings.vibrate,
+      settings.enableSound,
+      alphaPrefs.restTarget.isEmpty ? 'timer' : alphaPrefs.restTarget,
+      false,
+      settings.restVolume,
+    );
+  }
+
   Future<void> startTimer(
     String title,
     Duration rest,
@@ -180,6 +204,11 @@ class TimerState extends ChangeNotifier {
   ]) async {
     talker.info('Starting rest timer for ${rest.inSeconds} seconds');
     _target = target;
+    alphaPrefs.restEndsAt = DateTime.now().add(rest);
+    alphaPrefs.restTotalMs = rest.inMilliseconds;
+    alphaPrefs.restTitle = title;
+    alphaPrefs.restTarget = target;
+    unawaited(alphaPrefs.save());
     if (_keepScreenOn && !kIsWeb && Platform.isAndroid) {
       WakelockPlus.enable().catchError((error, stackTrace) {
         talker.handle(error, stackTrace, 'Failed to enable wakelock');
@@ -246,6 +275,7 @@ class TimerState extends ChangeNotifier {
         NativeTimerState.expired,
       ),
     );
+    unawaited(alphaPrefs.clearRestDeadline());
     await notify(title, alarmSound, enableSound, keepRinging, volume);
   }
 
@@ -304,6 +334,7 @@ class TimerState extends ChangeNotifier {
     talker.info('Stopping rest timer');
     _target = 'timer';
     updateTimer(NativeTimerWrapper.emptyTimer());
+    unawaited(alphaPrefs.clearRestDeadline());
     try {
       await _notifications?.cancel(id: 1);
     } catch (error, stack) {

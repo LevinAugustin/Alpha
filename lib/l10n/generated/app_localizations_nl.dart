@@ -2433,4 +2433,42 @@ class AppLocalizationsNl extends AppLocalizations {
   String measurementsImported(int count) {
     return '$count metingen geïmporteerd.';
   }
+
+  @override
+  String get splitSidesToggle => 'Links en rechts';
+
+  @override
+  String get trainWhereTitle => 'Waar train je vandaag?';
+
+  @override
+  String get startTrainingAction => 'Training starten';
+
+  @override
+  String lastTrainedLabel(String when) {
+    return 'Laatst: $when';
+  }
+
+  @override
+  String get trainedToday => 'vandaag';
+
+  @override
+  String get trainedYesterday => 'gisteren';
+
+  @override
+  String trainedDaysAgo(int count) {
+    return '$count dagen geleden';
+  }
+
+  @override
+  String get startWithoutStudio => 'Start zonder sportschool';
+
+  @override
+  String get noStudiosYet =>
+      'Nog geen sportschool. Voeg er een toe of start zonder.';
+
+  @override
+  String get sortExercisesTitle => 'Volgorde';
+
+  @override
+  String get sortExercisesHint => 'Houd de greep vast en sleep.';
 }

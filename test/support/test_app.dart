@@ -1,4 +1,5 @@
 import 'package:drift/drift.dart';
+import 'package:flexify/alpha/alpha_prefs.dart';
 import 'package:flexify/database/database.dart';
 import 'package:flexify/profile/local_profiles.dart';
 import 'package:flexify/l10n/generated/app_localizations.dart';
@@ -20,6 +21,13 @@ class FlexifyTestHarness {
     await mockTests();
     final database = testDb();
     db = database;
+    if (timerState == null) {
+      alphaPrefs.restEndsAt = null;
+      alphaPrefs.restTotalMs = null;
+      alphaPrefs.restTitle = '';
+      alphaPrefs.restTarget = 'timer';
+      await alphaPrefs.save();
+    }
 
     return FlexifyTestHarness._(
       database: database,

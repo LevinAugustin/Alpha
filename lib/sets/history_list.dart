@@ -79,26 +79,7 @@ class _HistoryListState extends State<HistoryList> {
         );
         break;
       case _HistoryContextAction.delete:
-        final confirmed = await showDialog<bool>(
-          context: context,
-          builder: (dialogContext) => AlertDialog(
-            title: Text(context.l10n.confirmDelete),
-            content: Text(context.l10n.deleteSetConfirmation(exerciseSet.name)),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop(dialogContext, false),
-                child: Text(context.l10n.actionCancel),
-              ),
-              FilledButton(
-                onPressed: () => Navigator.pop(dialogContext, true),
-                child: Text(context.l10n.actionDelete),
-              ),
-            ],
-          ),
-        );
-        if (confirmed == true) {
-          await deleteExerciseSets(db, [exerciseSet.id]);
-        }
+        await deleteExerciseSets(db, [exerciseSet.id]);
         break;
       case null:
         break;
@@ -187,7 +168,12 @@ class _HistoryListState extends State<HistoryList> {
       );
     }
 
-    String trailing = "$reps x $weight $unit";
+    final sideLabel = switch (exerciseSet.side) {
+      'links' => ' · ${context.l10n.sideLeft}',
+      'rechts' => ' · ${context.l10n.sideRight}',
+      _ => '',
+    };
+    String trailing = "$reps x $weight $unit$sideLabel";
     if (exerciseSet.cardio &&
         (exerciseSet.unit == 'kg' ||
             exerciseSet.unit == 'lb' ||

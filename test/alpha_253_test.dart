@@ -189,8 +189,8 @@ void main() {
       surfaceSize: const Size(400, 900),
     );
     await tester.tap(find.text('open-workout'));
-    await _until(tester, find.text('Studio wählen'));
-    expect(find.text('Studio wählen'), findsOneWidget);
+    await _until(tester, find.text('Wo trainierst du heute?'));
+    expect(find.text('Wo trainierst du heute?'), findsOneWidget);
 
     await tester.binding.handlePopRoute();
     for (

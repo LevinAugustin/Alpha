@@ -2414,4 +2414,41 @@ class AppLocalizationsBn extends AppLocalizations {
   String measurementsImported(int count) {
     return '$countটি পরিমাপ আমদানি হয়েছে।';
   }
+
+  @override
+  String get splitSidesToggle => 'বাম ও ডান';
+
+  @override
+  String get trainWhereTitle => 'আজ কোথায় প্রশিক্ষণ করছ?';
+
+  @override
+  String get startTrainingAction => 'ওয়ার্কআউট শুরু';
+
+  @override
+  String lastTrainedLabel(String when) {
+    return 'শেষবার: $when';
+  }
+
+  @override
+  String get trainedToday => 'আজ';
+
+  @override
+  String get trainedYesterday => 'গতকাল';
+
+  @override
+  String trainedDaysAgo(int count) {
+    return '$count দিন আগে';
+  }
+
+  @override
+  String get startWithoutStudio => 'জিম ছাড়া শুরু';
+
+  @override
+  String get noStudiosYet => 'এখনও কোনো জিম নেই। যোগ করুন বা ছাড়া শুরু করুন।';
+
+  @override
+  String get sortExercisesTitle => 'ক্রম';
+
+  @override
+  String get sortExercisesHint => 'হাতল চেপে টেনে আনুন।';
 }
