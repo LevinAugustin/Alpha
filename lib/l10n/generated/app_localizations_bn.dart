@@ -2451,4 +2451,169 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get sortExercisesHint => 'হাতল চেপে টেনে আনুন।';
+
+  @override
+  String get feedbackTitle => 'মতামত';
+
+  @override
+  String get feedbackSettings => 'মতামত পাঠান';
+
+  @override
+  String get feedbackCategory => 'বিভাগ';
+
+  @override
+  String get feedbackBug => 'ত্রুটি';
+
+  @override
+  String get feedbackImprovement => 'উন্নতি';
+
+  @override
+  String get feedbackTranslation => 'অনুবাদ';
+
+  @override
+  String get feedbackMessageHint => 'আমাদের কী জানা উচিত?';
+
+  @override
+  String get feedbackDictate => 'ডিক্টেশন';
+
+  @override
+  String get feedbackAttachAudio => 'রেকর্ডিং যোগ করুন';
+
+  @override
+  String get feedbackRemoveAudio => 'রেকর্ডিং সরান';
+
+  @override
+  String get feedbackSend => 'পাঠান';
+
+  @override
+  String get feedbackMailUnavailable => 'কোনো মেইল অ্যাপ নেই।';
+
+  @override
+  String get feedbackStopRecording => 'রেকর্ডিং বন্ধ';
+
+  @override
+  String get otherVariant => 'অন্য রূপ';
+
+  @override
+  String get firstStudioTitle => 'তুমি এখন যে জিমে ট্রেনিং করছ, তার নাম কী?';
+
+  @override
+  String get renameProfile => 'নাম বদলান';
+
+  @override
+  String get deleteProfile => 'প্রোফাইল মুছুন';
+
+  @override
+  String get deleteProfileTitle => 'এই প্রোফাইল মুছবেন?';
+
+  @override
+  String deleteProfileBody(String name) {
+    return 'এই প্রোফাইল ও তার ডেটা মুছতে \"$name\" লিখুন।';
+  }
+
+  @override
+  String get deleteProfileBlockedActive => 'সক্রিয় প্রোফাইল মুছা যায় না।';
+
+  @override
+  String get deleteProfileBlockedLast => 'শেষ প্রোফাইল মুছা যায় না।';
+
+  @override
+  String get profileNameEmpty => 'নাম খালি রাখা যায় না।';
+
+  @override
+  String get profileNameDuplicate => 'এই নামটি আগে থেকেই আছে।';
+
+  @override
+  String get finishBeforeSwitch =>
+      'প্রোফাইল বদলানোর আগে ওয়ার্কআউট শেষ করুন বা বাতিল করুন।';
+
+  @override
+  String get switchFinishWorkout => 'ওয়ার্কআউট শেষ';
+
+  @override
+  String get switchDiscardWorkout => 'ওয়ার্কআউট বাতিল';
+
+  @override
+  String get groupLegs => 'পা';
+
+  @override
+  String get gearBarbell => 'বারবেল';
+
+  @override
+  String get gearDumbbell => 'ডাম্বেল';
+
+  @override
+  String get gearEzBar => 'EZ বার';
+
+  @override
+  String get gearCable => 'কেবল';
+
+  @override
+  String get gearMachine => 'মেশিন';
+
+  @override
+  String get gearSmith => 'স্মিথ মেশিন';
+
+  @override
+  String get gearBodyweight => 'শরীরের ওজন';
+
+  @override
+  String get gearKettlebell => 'কেটলবেল';
+
+  @override
+  String get gearBand => 'রেজিস্ট্যান্স ব্যান্ড';
+
+  @override
+  String get gearCardio => 'কার্ডিও মেশিন';
+
+  @override
+  String get gearPlate => 'প্লেট';
+
+  @override
+  String get gearAbWheel => 'অ্যাব হুইল';
+
+  @override
+  String get gearBattleRope => 'ব্যাটল রোপ';
+
+  @override
+  String get gearSled => 'স্লেড';
+
+  @override
+  String get gearJumpRope => 'দড়ি';
+
+  @override
+  String get positionFlat => 'সমতল';
+
+  @override
+  String get positionIncline => 'ঢালু';
+
+  @override
+  String get positionDecline => 'নিম্নঢাল';
+
+  @override
+  String get positionSeated => 'বসে';
+
+  @override
+  String get positionStanding => 'দাঁড়িয়ে';
+
+  @override
+  String get positionLying => 'শুয়ে';
+
+  @override
+  String get positionBent => 'ঝুঁকে';
+
+  @override
+  String get gripClose => 'সরু গ্রিপ';
+
+  @override
+  String get gripWide => 'চওড়া গ্রিপ';
+
+  @override
+  String get gripOverhand => 'ওভারহ্যান্ড';
+
+  @override
+  String get gripUnderhand => 'আন্ডারহ্যান্ড';
+
+  @override
+  String get gripNeutral => 'নিরপেক্ষ গ্রিপ';
 }

@@ -2441,4 +2441,168 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get sortExercisesHint => 'أمسك المقبض واسحب.';
+
+  @override
+  String get feedbackTitle => 'ملاحظة';
+
+  @override
+  String get feedbackSettings => 'إرسال ملاحظة';
+
+  @override
+  String get feedbackCategory => 'الفئة';
+
+  @override
+  String get feedbackBug => 'خطأ';
+
+  @override
+  String get feedbackImprovement => 'تحسين';
+
+  @override
+  String get feedbackTranslation => 'ترجمة';
+
+  @override
+  String get feedbackMessageHint => 'ماذا ينبغي أن نعرف؟';
+
+  @override
+  String get feedbackDictate => 'إملاء';
+
+  @override
+  String get feedbackAttachAudio => 'إرفاق تسجيل';
+
+  @override
+  String get feedbackRemoveAudio => 'إزالة التسجيل';
+
+  @override
+  String get feedbackSend => 'إرسال';
+
+  @override
+  String get feedbackMailUnavailable => 'لا يوجد تطبيق بريد.';
+
+  @override
+  String get feedbackStopRecording => 'إيقاف التسجيل';
+
+  @override
+  String get otherVariant => 'نسخة أخرى';
+
+  @override
+  String get firstStudioTitle => 'ما اسم النادي الذي تتدرب فيه الآن؟';
+
+  @override
+  String get renameProfile => 'إعادة التسمية';
+
+  @override
+  String get deleteProfile => 'حذف الملف';
+
+  @override
+  String get deleteProfileTitle => 'حذف هذا الملف؟';
+
+  @override
+  String deleteProfileBody(String name) {
+    return 'اكتب \"$name\" لحذف هذا الملف وبياناته.';
+  }
+
+  @override
+  String get deleteProfileBlockedActive => 'لا يمكن حذف الملف النشط.';
+
+  @override
+  String get deleteProfileBlockedLast => 'لا يمكن حذف آخر ملف.';
+
+  @override
+  String get profileNameEmpty => 'لا يمكن أن يكون الاسم فارغًا.';
+
+  @override
+  String get profileNameDuplicate => 'هذا الاسم مستخدم بالفعل.';
+
+  @override
+  String get finishBeforeSwitch => 'أنهِ التمرين أو تجاهله قبل تبديل الملف.';
+
+  @override
+  String get switchFinishWorkout => 'إنهاء التمرين';
+
+  @override
+  String get switchDiscardWorkout => 'تجاهل التمرين';
+
+  @override
+  String get groupLegs => 'ساقان';
+
+  @override
+  String get gearBarbell => 'بار';
+
+  @override
+  String get gearDumbbell => 'دمبل';
+
+  @override
+  String get gearEzBar => 'بار EZ';
+
+  @override
+  String get gearCable => 'كيبل';
+
+  @override
+  String get gearMachine => 'جهاز';
+
+  @override
+  String get gearSmith => 'جهاز سميث';
+
+  @override
+  String get gearBodyweight => 'وزن الجسم';
+
+  @override
+  String get gearKettlebell => 'كيتل بيل';
+
+  @override
+  String get gearBand => 'شريط مقاومة';
+
+  @override
+  String get gearCardio => 'جهاز كارديو';
+
+  @override
+  String get gearPlate => 'قرص';
+
+  @override
+  String get gearAbWheel => 'عجلة البطن';
+
+  @override
+  String get gearBattleRope => 'حبل المعركة';
+
+  @override
+  String get gearSled => 'زلاجة';
+
+  @override
+  String get gearJumpRope => 'حبل القفز';
+
+  @override
+  String get positionFlat => 'مستو';
+
+  @override
+  String get positionIncline => 'مائل للأعلى';
+
+  @override
+  String get positionDecline => 'مائل للأسفل';
+
+  @override
+  String get positionSeated => 'جالس';
+
+  @override
+  String get positionStanding => 'واقف';
+
+  @override
+  String get positionLying => 'مستلق';
+
+  @override
+  String get positionBent => 'منحني';
+
+  @override
+  String get gripClose => 'قبضة ضيقة';
+
+  @override
+  String get gripWide => 'قبضة عريضة';
+
+  @override
+  String get gripOverhand => 'قبضة علوية';
+
+  @override
+  String get gripUnderhand => 'قبضة سفلية';
+
+  @override
+  String get gripNeutral => 'قبضة محايدة';
 }

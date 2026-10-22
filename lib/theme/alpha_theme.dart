@@ -214,5 +214,12 @@ ThemeData alphaThemeData(AlphaPalette palette) {
     ).apply(bodyColor: palette.text, displayColor: palette.text),
     dividerColor: palette.border,
     iconTheme: IconThemeData(color: palette.text),
+    snackBarTheme: SnackBarThemeData(
+      backgroundColor: palette.card,
+      contentTextStyle: TextStyle(color: palette.text, fontFamily: 'Inter'),
+      actionTextColor: palette.accent,
+      closeIconColor: palette.text,
+      behavior: SnackBarBehavior.floating,
+    ),
   );
 }

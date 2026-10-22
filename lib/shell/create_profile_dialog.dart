@@ -1,19 +1,25 @@
+import 'package:flexify/alpha/alpha_prefs.dart';
 import 'package:flexify/l10n/l10n.dart';
 import 'package:flexify/profile/local_profiles.dart';
+import 'package:flexify/shell/language_choice_page.dart';
 import 'package:flexify/theme/alpha_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 Future<bool> showCreateProfileDialog(BuildContext context) async {
+  final locale = await showLanguageChoice(context);
+  if (locale == null || !context.mounted) return false;
   final saved = await showDialog<bool>(
     context: context,
-    builder: (context) => const _CreateProfileDialog(),
+    builder: (context) => _CreateProfileDialog(locale: locale),
   );
   return saved ?? false;
 }
 
 class _CreateProfileDialog extends StatefulWidget {
-  const _CreateProfileDialog();
+  const _CreateProfileDialog({required this.locale});
+
+  final String locale;
 
   @override
   State<_CreateProfileDialog> createState() => _CreateProfileDialogState();
@@ -49,7 +55,14 @@ class _CreateProfileDialogState extends State<_CreateProfileDialog> {
     }
     setState(() => _saving = true);
     try {
-      await completeOnboarding(name: name, bodyWeight: weight, unit: _unit);
+      await completeOnboarding(
+        name: name,
+        bodyWeight: weight,
+        unit: _unit,
+        locale: widget.locale,
+      );
+      alphaPrefs.languageAsked = true;
+      await alphaPrefs.save();
       if (!mounted) return;
       Navigator.of(context).pop(true);
     } finally {

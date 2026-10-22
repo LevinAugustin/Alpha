@@ -39,6 +39,9 @@ const _allowedLiteralUiText = <String>{
   'lib/about_page.dart:Brandon Dick',
   'lib/about_page.dart:MIT',
   'lib/shell/alpha_boot.dart:ALPHA',
+  'lib/shell/language_choice_page.dart:ALPHA',
+  'lib/shell/language_choice_page.dart:Sprache  ·  Language',
+  'lib/shell/language_choice_page.dart:Weiter  ·  Continue',
 };
 
 const _alwaysEnglishEquivalentKeys = <String>{
@@ -68,6 +71,7 @@ const _alwaysEnglishEquivalentKeys = <String>{
   'languageNameThai',
   'languageNameMalay',
   'languageNameUkrainian',
+  'gearKettlebell',
   'stoneUnitShort',
   'columnKg',
   'warmupMark',

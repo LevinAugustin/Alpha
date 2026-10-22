@@ -7,15 +7,7 @@ import 'package:flexify/main.dart';
 import 'package:flexify/theme/alpha_theme.dart';
 import 'package:flutter/material.dart';
 
-bool hasCreatedStudios(List<GymPlace> gyms) {
-  if (gyms.isEmpty) return false;
-  if (gyms.length == 1 &&
-      gyms.single.id == 'default' &&
-      gyms.single.name == 'Studio') {
-    return false;
-  }
-  return true;
-}
+bool hasCreatedStudios(List<GymPlace> gyms) => gyms.length >= 2;
 
 class GymStartChoice {
   const GymStartChoice({this.gymId});
@@ -38,12 +30,49 @@ Future<Map<String, DateTime>> latestStudioUse() async {
             ..orderBy([(row) => OrderingTerm.desc(row.timestamp)])
             ..limit(400))
           .get();
+  final home = firstStudio(alphaPrefs.gyms)?.id;
   final latest = <String, DateTime>{};
   for (final row in rows) {
-    final id = gymIdFromNotes(row.notes) ?? 'default';
+    final id = gymIdFromNotes(row.notes) ?? home;
+    if (id == null || id.isEmpty) continue;
     latest.putIfAbsent(id, () => row.timestamp);
   }
   return latest;
+}
+
+Future<String?> showFirstStudioDialog(BuildContext context) {
+  final palette = AlphaTheme.of(context);
+  final controller = TextEditingController();
+  return showDialog<String>(
+    context: context,
+    barrierDismissible: false,
+    builder: (context) => AlertDialog(
+      backgroundColor: palette.card,
+      title: Text(context.l10n.firstStudioTitle),
+      content: TextField(
+        key: const Key('first-studio-field'),
+        controller: controller,
+        autofocus: true,
+        textCapitalization: TextCapitalization.words,
+        decoration: InputDecoration(hintText: context.l10n.gymNameHint),
+      ),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.pop(context),
+          child: Text(context.l10n.actionCancel),
+        ),
+        FilledButton(
+          key: const Key('first-studio-save'),
+          onPressed: () {
+            final name = controller.text.trim();
+            if (name.isEmpty) return;
+            Navigator.pop(context, name);
+          },
+          child: Text(context.l10n.actionSave),
+        ),
+      ],
+    ),
+  ).whenComplete(controller.dispose);
 }
 
 Future<GymStartChoice?> showGymStartSheet(BuildContext context) {
@@ -133,6 +162,7 @@ class _GymStartSheetState extends State<GymStartSheet> {
     final gym = GymPlace(
       id: DateTime.now().millisecondsSinceEpoch.toString(),
       name: name,
+      createdAt: DateTime.now(),
     );
     alphaPrefs.gyms.add(gym);
     await alphaPrefs.save();
@@ -151,153 +181,144 @@ class _GymStartSheetState extends State<GymStartSheet> {
     final l10n = context.l10n;
     final palette = AlphaTheme.of(context);
     final gyms = alphaPrefs.gyms;
-    final created = hasCreatedStudios(gyms);
     final now = DateTime.now();
+    final maxHeight = MediaQuery.sizeOf(context).height * 0.92;
     return SafeArea(
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(20, 8, 20, 16),
-        child: Column(
-          key: const Key('gym-start-sheet'),
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Center(
-              child: Container(
-                width: 42,
-                height: 4,
-                margin: const EdgeInsets.only(bottom: 16),
-                decoration: BoxDecoration(
-                  color: palette.border,
-                  borderRadius: BorderRadius.circular(4),
+      child: ConstrainedBox(
+        constraints: BoxConstraints(maxHeight: maxHeight),
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(20, 8, 20, 16),
+            child: Column(
+              key: const Key('gym-start-sheet'),
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Center(
+                  child: Container(
+                    width: 42,
+                    height: 4,
+                    margin: const EdgeInsets.only(bottom: 16),
+                    decoration: BoxDecoration(
+                      color: palette.border,
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                  ),
                 ),
-              ),
-            ),
-            Text(
-              l10n.trainWhereTitle,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontFamily: 'Bebas Neue',
-                fontSize: 32,
-                color: palette.text,
-              ),
-            ),
-            const SizedBox(height: 16),
-            if (!created)
-              Text(
-                l10n.noStudiosYet,
-                textAlign: TextAlign.center,
-                style: TextStyle(color: palette.muted),
-              )
-            else
-              SizedBox(
-                height: 168,
-                child: ListView.separated(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: gyms.length,
-                  separatorBuilder: (_, _) => const SizedBox(width: 12),
-                  itemBuilder: (context, index) {
-                    final gym = gyms[index];
-                    final selected = gym.id == _selected;
-                    final when = _latest[gym.id];
-                    return InkWell(
-                      key: Key('gym-card-${gym.id}'),
-                      onTap: () => setState(() => _selected = gym.id),
-                      borderRadius: BorderRadius.circular(18),
-                      child: AnimatedContainer(
-                        duration: const Duration(milliseconds: 150),
-                        width: 148,
-                        padding: const EdgeInsets.fromLTRB(12, 14, 12, 12),
-                        decoration: BoxDecoration(
-                          color: palette.background,
-                          borderRadius: BorderRadius.circular(18),
-                          border: Border.all(
-                            color: selected ? palette.accent : palette.border,
-                            width: selected ? 2 : 1,
+                Text(
+                  l10n.trainWhereTitle,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontFamily: 'Bebas Neue',
+                    fontSize: 32,
+                    color: palette.text,
+                  ),
+                ),
+                const SizedBox(height: 16),
+                SizedBox(
+                  height: 168,
+                  child: ListView.separated(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: gyms.length,
+                    separatorBuilder: (_, _) => const SizedBox(width: 12),
+                    itemBuilder: (context, index) {
+                      final gym = gyms[index];
+                      final selected = gym.id == _selected;
+                      final when = _latest[gym.id];
+                      return InkWell(
+                        key: Key('gym-card-${gym.id}'),
+                        onTap: () => setState(() => _selected = gym.id),
+                        borderRadius: BorderRadius.circular(18),
+                        child: AnimatedContainer(
+                          duration: const Duration(milliseconds: 150),
+                          width: 148,
+                          padding: const EdgeInsets.fromLTRB(12, 14, 12, 12),
+                          decoration: BoxDecoration(
+                            color: palette.background,
+                            borderRadius: BorderRadius.circular(18),
+                            border: Border.all(
+                              color: selected ? palette.accent : palette.border,
+                              width: selected ? 2 : 1,
+                            ),
                           ),
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const _StudioMark(),
-                            const Spacer(),
-                            Row(
-                              children: [
-                                Expanded(
-                                  child: Text(
-                                    gym.name,
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w700,
-                                      color: palette.text,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const _StudioMark(),
+                              const Spacer(),
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: Text(
+                                      gym.name,
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w700,
+                                        color: palette.text,
+                                      ),
                                     ),
                                   ),
-                                ),
-                                if (selected)
-                                  Icon(
-                                    Icons.check_circle,
-                                    color: palette.accent,
-                                    size: 18,
-                                  ),
-                              ],
-                            ),
-                            if (when != null && _ready)
-                              Text(
-                                l10n.lastTrainedLabel(
-                                  lastTrainedWhen(l10n, when, now),
-                                ),
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                                style: TextStyle(
-                                  color: palette.muted,
-                                  fontSize: 12,
-                                ),
+                                  if (selected)
+                                    Icon(
+                                      Icons.check_circle,
+                                      color: palette.accent,
+                                      size: 18,
+                                    ),
+                                ],
                               ),
-                          ],
+                              if (when != null && _ready)
+                                Text(
+                                  l10n.lastTrainedLabel(
+                                    lastTrainedWhen(l10n, when, now),
+                                  ),
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: TextStyle(
+                                    color: palette.muted,
+                                    fontSize: 12,
+                                  ),
+                                ),
+                            ],
+                          ),
                         ),
-                      ),
-                    );
-                  },
+                      );
+                    },
+                  ),
                 ),
-              ),
-            const SizedBox(height: 12),
-            Align(
-              alignment: Alignment.centerLeft,
-              child: ActionChip(
-                key: const Key('gym-add-studio'),
-                avatar: Icon(Icons.add, color: palette.accent, size: 18),
-                label: Text(l10n.newGym),
-                onPressed: _addStudio,
-              ),
-            ),
-            const SizedBox(height: 12),
-            if (!created)
-              OutlinedButton(
-                key: const Key('gym-start-without'),
-                onPressed: () => Navigator.pop(context, const GymStartChoice()),
-                child: Text(l10n.startWithoutStudio),
-              ),
-            if (!created) const SizedBox(height: 8),
-            FilledButton(
-              key: const Key('gym-start-confirm'),
-              onPressed: created && _selected != null ? _start : null,
-              style: FilledButton.styleFrom(
-                backgroundColor: palette.accent,
-                foregroundColor: palette.onAccent,
-                minimumSize: const Size.fromHeight(52),
-                textStyle: const TextStyle(
-                  fontFamily: 'Bebas Neue',
-                  fontSize: 22,
+                const SizedBox(height: 12),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: ActionChip(
+                    key: const Key('gym-add-studio'),
+                    avatar: Icon(Icons.add, color: palette.accent, size: 18),
+                    label: Text(l10n.newGym),
+                    onPressed: _addStudio,
+                  ),
                 ),
-              ),
-              child: Text(l10n.startTrainingAction),
+                const SizedBox(height: 12),
+                FilledButton(
+                  key: const Key('gym-start-confirm'),
+                  onPressed: _selected != null ? _start : null,
+                  style: FilledButton.styleFrom(
+                    backgroundColor: palette.accent,
+                    foregroundColor: palette.onAccent,
+                    minimumSize: const Size.fromHeight(52),
+                    textStyle: const TextStyle(
+                      fontFamily: 'Bebas Neue',
+                      fontSize: 22,
+                    ),
+                  ),
+                  child: Text(l10n.startTrainingAction),
+                ),
+                TextButton(
+                  key: const Key('gym-start-cancel'),
+                  onPressed: () => Navigator.pop(context),
+                  child: Text(l10n.actionCancel),
+                ),
+              ],
             ),
-            TextButton(
-              key: const Key('gym-start-cancel'),
-              onPressed: () => Navigator.pop(context),
-              child: Text(l10n.actionCancel),
-            ),
-          ],
+          ),
         ),
       ),
     );

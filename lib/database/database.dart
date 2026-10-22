@@ -1169,6 +1169,19 @@ class AppDatabase extends _$AppDatabase {
                 schema.settings.legacyRepairVersion,
               );
             },
+            from82To83: (Migrator m, Schema83 schema) async {
+              await m.addColumn(schema.exercises, schema.exercises.englishName);
+              await m.addColumn(
+                schema.exercises,
+                schema.exercises.englishSteps,
+              );
+              await m.addColumn(schema.exercises, schema.exercises.englishTips);
+              await m.addColumn(
+                schema.exercises,
+                schema.exercises.englishAliases,
+              );
+              await m.addColumn(schema.exercises, schema.exercises.variants);
+            },
           );
           await transaction(() async {
             await upgrade(m, from, to);
@@ -1190,5 +1203,5 @@ class AppDatabase extends _$AppDatabase {
   }
 
   @override
-  int get schemaVersion => 82;
+  int get schemaVersion => 83;
 }

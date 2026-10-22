@@ -2,6 +2,7 @@ import 'package:drift/drift.dart';
 import 'package:flexify/database/database.dart';
 import 'package:flexify/plan/plan_names.dart';
 import 'package:flutter/foundation.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 class LiveWorkout {
   LiveWorkout({
@@ -41,7 +42,14 @@ Future<void> restoreLiveWorkout(AppDatabase database) async {
     liveWorkout.value = null;
     return;
   }
-  final title = planDisplayName(
+  final setting = await (database.select(
+    database.settings,
+  )..limit(1)).getSingleOrNull();
+  final locale = (setting?.localeOverride ?? '').trim();
+  final language = locale.isEmpty ? 'de' : locale;
+  await initializeDateFormatting(language);
+  final title = localizedPlanTitle(
+    locale: language,
     title: plan.title,
     sequence: plan.sequence,
     id: plan.id,

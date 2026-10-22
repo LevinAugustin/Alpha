@@ -2479,4 +2479,172 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get sortExercisesHint => 'Mantén el asa y arrastra.';
+
+  @override
+  String get feedbackTitle => 'Comentarios';
+
+  @override
+  String get feedbackSettings => 'Enviar comentarios';
+
+  @override
+  String get feedbackCategory => 'Categoría';
+
+  @override
+  String get feedbackBug => 'Error';
+
+  @override
+  String get feedbackImprovement => 'Mejora';
+
+  @override
+  String get feedbackTranslation => 'Traducción';
+
+  @override
+  String get feedbackMessageHint => '¿Qué debemos saber?';
+
+  @override
+  String get feedbackDictate => 'Dictar';
+
+  @override
+  String get feedbackAttachAudio => 'Adjuntar una grabación';
+
+  @override
+  String get feedbackRemoveAudio => 'Quitar grabación';
+
+  @override
+  String get feedbackSend => 'Enviar';
+
+  @override
+  String get feedbackMailUnavailable => 'No hay una app de correo.';
+
+  @override
+  String get feedbackStopRecording => 'Detener grabación';
+
+  @override
+  String get otherVariant => 'Otra variante';
+
+  @override
+  String get firstStudioTitle =>
+      '¿Cómo se llama el gimnasio en el que entrenas ahora?';
+
+  @override
+  String get renameProfile => 'Cambiar nombre';
+
+  @override
+  String get deleteProfile => 'Eliminar perfil';
+
+  @override
+  String get deleteProfileTitle => '¿Eliminar este perfil?';
+
+  @override
+  String deleteProfileBody(String name) {
+    return 'Escribe «$name» para eliminar este perfil y sus datos.';
+  }
+
+  @override
+  String get deleteProfileBlockedActive =>
+      'El perfil activo no se puede eliminar.';
+
+  @override
+  String get deleteProfileBlockedLast =>
+      'El último perfil no se puede eliminar.';
+
+  @override
+  String get profileNameEmpty => 'El nombre no puede estar vacío.';
+
+  @override
+  String get profileNameDuplicate => 'Ese nombre ya existe.';
+
+  @override
+  String get finishBeforeSwitch =>
+      'Termina o descarta el entrenamiento antes de cambiar de perfil.';
+
+  @override
+  String get switchFinishWorkout => 'Terminar entrenamiento';
+
+  @override
+  String get switchDiscardWorkout => 'Descartar entrenamiento';
+
+  @override
+  String get groupLegs => 'Piernas';
+
+  @override
+  String get gearBarbell => 'Barra';
+
+  @override
+  String get gearDumbbell => 'Mancuerna';
+
+  @override
+  String get gearEzBar => 'Barra EZ';
+
+  @override
+  String get gearCable => 'Polea';
+
+  @override
+  String get gearMachine => 'Máquina';
+
+  @override
+  String get gearSmith => 'Máquina Smith';
+
+  @override
+  String get gearBodyweight => 'Peso corporal';
+
+  @override
+  String get gearKettlebell => 'Pesa rusa';
+
+  @override
+  String get gearBand => 'Banda elástica';
+
+  @override
+  String get gearCardio => 'Máquina de cardio';
+
+  @override
+  String get gearPlate => 'Disco';
+
+  @override
+  String get gearAbWheel => 'Rueda abdominal';
+
+  @override
+  String get gearBattleRope => 'Cuerda de batalla';
+
+  @override
+  String get gearSled => 'Trineo';
+
+  @override
+  String get gearJumpRope => 'Cuerda de saltar';
+
+  @override
+  String get positionFlat => 'Plano';
+
+  @override
+  String get positionIncline => 'Inclinado';
+
+  @override
+  String get positionDecline => 'Declinado';
+
+  @override
+  String get positionSeated => 'Sentado';
+
+  @override
+  String get positionStanding => 'De pie';
+
+  @override
+  String get positionLying => 'Tumbado';
+
+  @override
+  String get positionBent => 'Inclinado hacia delante';
+
+  @override
+  String get gripClose => 'Agarre cerrado';
+
+  @override
+  String get gripWide => 'Agarre ancho';
+
+  @override
+  String get gripOverhand => 'Prono';
+
+  @override
+  String get gripUnderhand => 'Supino';
+
+  @override
+  String get gripNeutral => 'Agarre neutro';
 }

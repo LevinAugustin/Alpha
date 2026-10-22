@@ -37,6 +37,8 @@ bool exerciseMatchesQuery({
   required String name,
   String? germanName,
   String? aliases,
+  String? englishName,
+  String? englishAliases,
   String? muscle,
   String? category,
   String? equipment,
@@ -68,6 +70,8 @@ bool exerciseMatchesQuery({
     name: name,
     germanName: germanName,
     aliases: aliases,
+    englishName: englishName,
+    englishAliases: englishAliases,
     muscle: muscle,
     category: category,
     equipment: equipment,
@@ -84,13 +88,19 @@ bool exerciseExactNameOrAlias({
   required String name,
   String? germanName,
   String? aliases,
+  String? englishName,
+  String? englishAliases,
   required String query,
 }) {
   final needle = foldExerciseSearch(query);
   if (needle.isEmpty) return false;
   if (foldExerciseSearch(name) == needle) return true;
   if (foldExerciseSearch(germanName ?? '') == needle) return true;
-  for (final alias in decodeCatalogList(aliases)) {
+  if (foldExerciseSearch(englishName ?? '') == needle) return true;
+  for (final alias in [
+    ...decodeCatalogList(aliases),
+    ...decodeCatalogList(englishAliases),
+  ]) {
     if (foldExerciseSearch(alias) == needle) return true;
   }
   return false;
@@ -100,6 +110,8 @@ String exerciseSearchText({
   required String name,
   String? germanName,
   String? aliases,
+  String? englishName,
+  String? englishAliases,
   String? muscle,
   String? category,
   String? equipment,
@@ -114,7 +126,12 @@ String exerciseSearchText({
   final parts = <String>[
     name,
     germanName ?? '',
-    for (final alias in decodeCatalogList(aliases)) alias,
+    englishName ?? '',
+    for (final alias in [
+      ...decodeCatalogList(aliases),
+      ...decodeCatalogList(englishAliases),
+    ])
+      alias,
     muscle ?? '',
     category ?? '',
     equipment ?? '',
@@ -200,24 +217,58 @@ int? exerciseSearchRank({
   required String name,
   String? germanName,
   String? aliases,
+  String? englishName,
+  String? englishAliases,
   required String query,
 }) {
   final needle = foldExerciseSearch(query);
   if (needle.isEmpty) return null;
-  final tokens = needle.split(' ');
-  final label = foldExerciseSearch(exerciseDisplayName(name, germanName));
-  final synonyms = [
+  final germanLabel = foldExerciseSearch(exerciseDisplayName(name, germanName));
+  final englishLabel = foldExerciseSearch(englishName ?? '');
+  final germanSynonyms = [
     for (final synonym in decodeCatalogList(aliases))
       foldExerciseSearch(synonym),
-  ].where((synonym) => synonym.isNotEmpty);
+  ].where((synonym) => synonym.isNotEmpty).toList();
+  final englishSynonyms = [
+    for (final synonym in decodeCatalogList(englishAliases))
+      foldExerciseSearch(synonym),
+  ].where((synonym) => synonym.isNotEmpty).toList();
+  final german = _rankedLabel(germanLabel, germanSynonyms, needle);
+  final english = _rankedLabel(
+    englishLabel,
+    englishSynonyms,
+    needle,
+    strictPrefix: true,
+  );
+  return german < english ? german : english;
+}
+
+int _rankedLabel(
+  String label,
+  List<String> synonyms,
+  String needle, {
+  bool strictPrefix = false,
+}) {
+  final tokens = needle.split(' ');
   if (label == needle) return 1;
-  if (label.startsWith(needle)) return 2;
+  if (label.isNotEmpty && _queryPrefix(label, needle, strict: strictPrefix)) {
+    return 2;
+  }
   if (synonyms.contains(needle)) return 3;
   final words = label.split(' ');
-  if (tokens.every((token) => words.any((word) => word.startsWith(token)))) {
+  if (label.isNotEmpty &&
+      tokens.every(
+        (token) => words.any(
+          (word) => _tokenPrefix(word, token, strict: strictPrefix),
+        ),
+      )) {
     return 4;
   }
-  if (synonyms.any((synonym) => synonym.startsWith(needle))) return 5;
+  if (synonyms.any(
+    (synonym) => _queryPrefix(synonym, needle, strict: strictPrefix),
+  )) {
+    return 5;
+  }
   if (label.isNotEmpty && tokens.every((token) => label.contains(token))) {
     return 6;
   }
@@ -227,6 +278,18 @@ int? exerciseSearchRank({
     return 7;
   }
   return 8;
+}
+
+bool _queryPrefix(String label, String needle, {required bool strict}) {
+  if (!label.startsWith(needle)) return false;
+  if (!strict || label.length == needle.length) return true;
+  return label[needle.length] == ' ';
+}
+
+bool _tokenPrefix(String word, String token, {required bool strict}) {
+  if (!word.startsWith(token)) return false;
+  if (!strict || word.length == token.length) return true;
+  return false;
 }
 
 bool isCatalogExercise({String? catalogId, String? catalogSource}) {
@@ -241,14 +304,32 @@ int compareExerciseSearch({
   required String leftName,
   String? leftGermanName,
   String? leftAliases,
+  String? leftEnglishName,
+  String? leftEnglishAliases,
   required String rightName,
   String? rightGermanName,
   String? rightAliases,
+  String? rightEnglishName,
+  String? rightEnglishAliases,
   bool leftCatalog = true,
   bool rightCatalog = true,
 }) {
-  final left = _searchOrder(query, leftName, leftGermanName, leftAliases);
-  final right = _searchOrder(query, rightName, rightGermanName, rightAliases);
+  final left = _searchOrder(
+    query,
+    leftName,
+    leftGermanName,
+    leftAliases,
+    leftEnglishName,
+    leftEnglishAliases,
+  );
+  final right = _searchOrder(
+    query,
+    rightName,
+    rightGermanName,
+    rightAliases,
+    rightEnglishName,
+    rightEnglishAliases,
+  );
   final byRank = left.rank.compareTo(right.rank);
   if (byRank != 0) return byRank;
   if (leftCatalog != rightCatalog) return leftCatalog ? -1 : 1;
@@ -281,12 +362,16 @@ String foldExerciseSearch(String value) {
   String name,
   String? germanName,
   String? aliases,
+  String? englishName,
+  String? englishAliases,
 ) {
   final label = foldExerciseSearch(exerciseDisplayName(name, germanName));
   final rank = exerciseSearchRank(
     name: name,
     germanName: germanName,
     aliases: aliases,
+    englishName: englishName,
+    englishAliases: englishAliases,
     query: query,
   );
   return (
@@ -330,6 +415,8 @@ bool matchesExerciseFilters({
   required String name,
   String? germanName,
   String? aliases,
+  String? englishName,
+  String? englishAliases,
   String? muscle,
   String? category,
   String? equipment,
@@ -383,6 +470,8 @@ bool matchesExerciseFilters({
     name: name,
     germanName: germanName,
     aliases: aliases,
+    englishName: englishName,
+    englishAliases: englishAliases,
     muscle: muscle,
     category: category,
     equipment: equipment,

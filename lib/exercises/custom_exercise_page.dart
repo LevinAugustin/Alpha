@@ -104,7 +104,10 @@ class _CustomExercisePageState extends State<CustomExercisePage> {
             items: [
               DropdownMenuItem(value: '', child: Text(l10n.unassignedExercise)),
               for (final category in exerciseCategories)
-                DropdownMenuItem(value: category, child: Text(category)),
+                DropdownMenuItem(
+                  value: category,
+                  child: Text(localizedCategory(l10n, category)),
+                ),
             ],
             onChanged: (value) =>
                 setState(() => _category = value ?? _category),
@@ -164,7 +167,10 @@ class _CustomExercisePageState extends State<CustomExercisePage> {
             items: [
               DropdownMenuItem(value: '', child: Text(l10n.unassignedExercise)),
               for (final gear in exerciseGearValues)
-                DropdownMenuItem(value: gear, child: Text(gear)),
+                DropdownMenuItem(
+                  value: gear,
+                  child: Text(localizedGear(l10n, gear)),
+                ),
             ],
             onChanged: (value) =>
                 setState(() => _equipment = value ?? _equipment),
@@ -195,7 +201,10 @@ class _CustomExercisePageState extends State<CustomExercisePage> {
             items: [
               DropdownMenuItem(value: '', child: Text(l10n.notSpecified)),
               for (final grip in exerciseGripValues)
-                DropdownMenuItem(value: grip, child: Text(grip)),
+                DropdownMenuItem(
+                  value: grip,
+                  child: Text(localizedGrip(l10n, grip)),
+                ),
             ],
             onChanged: (value) => setState(() => _grip = value ?? ''),
           ),
@@ -206,7 +215,10 @@ class _CustomExercisePageState extends State<CustomExercisePage> {
             items: [
               DropdownMenuItem(value: '', child: Text(l10n.notSpecified)),
               for (final position in exercisePositionValues)
-                DropdownMenuItem(value: position, child: Text(position)),
+                DropdownMenuItem(
+                  value: position,
+                  child: Text(localizedPosition(l10n, position)),
+                ),
             ],
             onChanged: (value) => setState(() => _position = value ?? ''),
           ),

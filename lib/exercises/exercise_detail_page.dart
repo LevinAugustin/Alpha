@@ -5,7 +5,9 @@ import 'package:flexify/database/database.dart';
 import 'package:flexify/exercise_labels.dart';
 import 'package:flexify/exercises/custom_exercise.dart';
 import 'package:flexify/exercises/exercise_image.dart';
+import 'package:flexify/exercises/exercise_variants.dart';
 import 'package:flexify/exercises/custom_exercise_page.dart';
+import 'package:flexify/feedback/feedback_page.dart';
 import 'package:flexify/l10n/generated/app_localizations.dart';
 import 'package:flexify/l10n/l10n.dart';
 import 'package:flexify/main.dart';
@@ -27,6 +29,7 @@ class ExerciseDetailPage extends StatefulWidget {
 
 class _ExerciseDetailPageState extends State<ExerciseDetailPage> {
   var _metric = 'weight';
+  var _variantKey = '';
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +39,7 @@ class _ExerciseDetailPageState extends State<ExerciseDetailPage> {
       context,
       widget.exercise.name,
       german: widget.exercise.germanName,
+      english: widget.exercise.englishName,
     );
     return DefaultTabController(
       length: 3,
@@ -44,6 +48,22 @@ class _ExerciseDetailPageState extends State<ExerciseDetailPage> {
         appBar: AppBar(
           title: Text(title),
           actions: [
+            IconButton(
+              key: const Key('exercise-feedback'),
+              tooltip: l10n.feedbackSettings,
+              onPressed: () {
+                Navigator.of(context).push(
+                  FlexPageRoute(
+                    builder: (context) => FeedbackPage(
+                      exerciseName: title,
+                      exerciseId:
+                          widget.exercise.catalogId ?? widget.exercise.name,
+                    ),
+                  ),
+                );
+              },
+              icon: const Icon(Icons.feedback_outlined),
+            ),
             if (isCustomExercise(widget.exercise)) ...[
               IconButton(
                 key: const Key('edit-custom-exercise'),
@@ -153,7 +173,11 @@ class _ExerciseDetailPageState extends State<ExerciseDetailPage> {
     final primaryText = primary.isEmpty
         ? (exercise.muscle ?? '')
         : primary.map((key) => muscleLabel(l10n, key)).join(', ');
-    final gear = (exercise.equipment ?? '').trim();
+    final gear = localizedGear(
+      l10n,
+      exercise.equipment,
+      catalogId: exercise.catalogId,
+    );
     final working = sets.where((set) => !(set.notes ?? '').contains('warmup'));
     double bestWeight = 0;
     double bestEstimate = 0;
@@ -207,10 +231,13 @@ class _ExerciseDetailPageState extends State<ExerciseDetailPage> {
         if (catalogText(exercise.bewegung) case final movement?)
           Text('${l10n.movementLabel}: ${movementLabel(l10n, movement)}'),
         if (catalogText(exercise.griff) case final grip?)
-          Text('${l10n.gripLabel}: $grip'),
+          Text(
+            '${l10n.gripLabel}: ${localizedGrip(l10n, grip, catalogId: exercise.catalogId)}',
+          ),
         if (catalogText(exercise.position) case final position?)
-          Text('${l10n.positionLabel}: $position'),
-        if (exercise.einseitig) Text(l10n.unilateralLabel),
+          Text(
+            '${l10n.positionLabel}: ${localizedPosition(l10n, position, catalogId: exercise.catalogId)}',
+          ),
         _family(context, exercise),
         _alternatives(context, exercise),
         if (_catalogCredit(l10n, exercise) case final credit?) Text(credit),
@@ -283,14 +310,104 @@ class _ExerciseDetailPageState extends State<ExerciseDetailPage> {
   }
 
   Widget _howto(BuildContext context) {
-    final steps = decodeCatalogList(widget.exercise.steps);
-    final tips = decodeCatalogList(widget.exercise.tips);
-    if (steps.isEmpty && tips.isEmpty) {
+    final variants = parseExerciseVariants(widget.exercise.variants);
+    if (variants.isNotEmpty) {
+      final active = variants.where((item) => item.key == _variantKey);
+      if (active.isEmpty) return _variantChoice(context, variants);
+      final variant = active.first;
+      return _stepsPage(
+        context,
+        steps: variant.steps(context),
+        tips: variant.tips(context),
+        clip: variant.clipPath(),
+        showClip: true,
+        onBack: () => setState(() => _variantKey = ''),
+      );
+    }
+    return _stepsPage(
+      context,
+      steps: localizedExerciseLines(
+        context,
+        german: widget.exercise.steps,
+        english: widget.exercise.englishSteps,
+      ),
+      tips: localizedExerciseLines(
+        context,
+        german: widget.exercise.tips,
+        english: widget.exercise.englishTips,
+      ),
+    );
+  }
+
+  Widget _variantChoice(BuildContext context, List<ExerciseVariant> variants) {
+    final palette = AlphaTheme.of(context);
+    return ListView(
+      key: const Key('variant-choice'),
+      padding: const EdgeInsets.all(16),
+      children: [
+        for (final variant in variants)
+          Padding(
+            padding: const EdgeInsets.only(bottom: 12),
+            child: Material(
+              color: palette.card,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+                side: BorderSide(color: palette.border),
+              ),
+              child: InkWell(
+                key: Key('variant-${variant.key}'),
+                borderRadius: BorderRadius.circular(12),
+                onTap: () => setState(() => _variantKey = variant.key),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 22,
+                  ),
+                  child: Text(
+                    variant.label(context),
+                    style: TextStyle(
+                      fontFamily: 'Bebas Neue',
+                      fontSize: 32,
+                      letterSpacing: 0.6,
+                      color: palette.text,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+      ],
+    );
+  }
+
+  Widget _stepsPage(
+    BuildContext context, {
+    required List<String> steps,
+    required List<String> tips,
+    String? clip,
+    bool showClip = false,
+    VoidCallback? onBack,
+  }) {
+    if (steps.isEmpty && tips.isEmpty && !showClip) {
       return Center(child: Text(context.l10n.noHistory));
     }
     return ListView(
+      key: const Key('exercise-howto'),
       padding: const EdgeInsets.all(16),
       children: [
+        if (onBack != null)
+          Align(
+            alignment: Alignment.centerLeft,
+            child: TextButton(
+              key: const Key('variant-back'),
+              onPressed: onBack,
+              child: Text(context.l10n.otherVariant),
+            ),
+          ),
+        if (showClip) ...[
+          ExerciseImage(path: clip),
+          const SizedBox(height: 12),
+        ],
         for (var index = 0; index < steps.length; index++)
           Padding(
             padding: const EdgeInsets.only(bottom: 12),
@@ -331,8 +448,13 @@ class _ExerciseDetailPageState extends State<ExerciseDetailPage> {
       context,
       row.name,
       german: row.germanName,
+      english: row.englishName,
     );
-    final category = (row.categoryName ?? '').trim();
+    final category = localizedCategory(
+      context.l10n,
+      row.categoryName,
+      catalogId: row.catalogId,
+    );
     if (category.isEmpty) return title;
     return '$title · $category';
   }
@@ -407,6 +529,7 @@ class _ExerciseDetailPageState extends State<ExerciseDetailPage> {
                       context,
                       row.name,
                       german: row.germanName,
+                      english: row.englishName,
                     ),
                   ),
                 ),

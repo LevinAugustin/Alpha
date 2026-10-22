@@ -139,6 +139,10 @@ void main() {
 
     await tester.tap(find.byKey(const Key('create-profile')));
     await tester.pumpAndSettle();
+    await tester.tap(find.byKey(const Key('language-de')));
+    await tester.pump();
+    await tester.tap(find.byKey(const Key('language-continue')));
+    await tester.pumpAndSettle();
 
     expect(
       tester
@@ -165,6 +169,7 @@ void main() {
     final setting = await harness.database.settings.select().getSingle();
     expect(setting.profileName, 'Mia');
     expect(setting.strengthUnit, 'kg');
+    expect(setting.localeOverride, 'de');
     final weight = await harness.database.bodyWeights.select().getSingle();
     expect(weight.weightKg, closeTo(80, 0.001));
 

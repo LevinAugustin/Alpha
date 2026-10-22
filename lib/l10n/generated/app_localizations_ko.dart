@@ -2395,4 +2395,168 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get sortExercisesHint => '손잡이를 잡고 드래그하세요.';
+
+  @override
+  String get feedbackTitle => '의견';
+
+  @override
+  String get feedbackSettings => '의견 보내기';
+
+  @override
+  String get feedbackCategory => '분류';
+
+  @override
+  String get feedbackBug => '오류';
+
+  @override
+  String get feedbackImprovement => '개선';
+
+  @override
+  String get feedbackTranslation => '번역';
+
+  @override
+  String get feedbackMessageHint => '무엇을 알려줄까요?';
+
+  @override
+  String get feedbackDictate => '받아쓰기';
+
+  @override
+  String get feedbackAttachAudio => '음성 녹음 첨부';
+
+  @override
+  String get feedbackRemoveAudio => '녹음 삭제';
+
+  @override
+  String get feedbackSend => '보내기';
+
+  @override
+  String get feedbackMailUnavailable => '메일 앱이 없습니다.';
+
+  @override
+  String get feedbackStopRecording => '녹음 중지';
+
+  @override
+  String get otherVariant => '다른 방식';
+
+  @override
+  String get firstStudioTitle => '지금 운동 중인 체육관 이름은 무엇인가요?';
+
+  @override
+  String get renameProfile => '이름 바꾸기';
+
+  @override
+  String get deleteProfile => '프로필 삭제';
+
+  @override
+  String get deleteProfileTitle => '이 프로필을 삭제할까요?';
+
+  @override
+  String deleteProfileBody(String name) {
+    return '이 프로필과 데이터를 삭제하려면 \"$name\"을 입력하세요.';
+  }
+
+  @override
+  String get deleteProfileBlockedActive => '사용 중인 프로필은 삭제할 수 없습니다.';
+
+  @override
+  String get deleteProfileBlockedLast => '마지막 프로필은 삭제할 수 없습니다.';
+
+  @override
+  String get profileNameEmpty => '이름은 비워 둘 수 없습니다.';
+
+  @override
+  String get profileNameDuplicate => '이미 있는 이름입니다.';
+
+  @override
+  String get finishBeforeSwitch => '프로필을 바꾸기 전에 운동을 마치거나 버리세요.';
+
+  @override
+  String get switchFinishWorkout => '운동 마치기';
+
+  @override
+  String get switchDiscardWorkout => '운동 버리기';
+
+  @override
+  String get groupLegs => '하체';
+
+  @override
+  String get gearBarbell => '바벨';
+
+  @override
+  String get gearDumbbell => '덤벨';
+
+  @override
+  String get gearEzBar => 'EZ바';
+
+  @override
+  String get gearCable => '케이블';
+
+  @override
+  String get gearMachine => '머신';
+
+  @override
+  String get gearSmith => '스미스 머신';
+
+  @override
+  String get gearBodyweight => '맨몸';
+
+  @override
+  String get gearKettlebell => '케틀벨';
+
+  @override
+  String get gearBand => '저항 밴드';
+
+  @override
+  String get gearCardio => '유산소 기구';
+
+  @override
+  String get gearPlate => '원판';
+
+  @override
+  String get gearAbWheel => '복근 휠';
+
+  @override
+  String get gearBattleRope => '배틀 로프';
+
+  @override
+  String get gearSled => '슬레드';
+
+  @override
+  String get gearJumpRope => '줄넘기';
+
+  @override
+  String get positionFlat => '플랫';
+
+  @override
+  String get positionIncline => '인클라인';
+
+  @override
+  String get positionDecline => '디클라인';
+
+  @override
+  String get positionSeated => '앉아서';
+
+  @override
+  String get positionStanding => '서서';
+
+  @override
+  String get positionLying => '누워서';
+
+  @override
+  String get positionBent => '숙여서';
+
+  @override
+  String get gripClose => '좁은 그립';
+
+  @override
+  String get gripWide => '넓은 그립';
+
+  @override
+  String get gripOverhand => '오버그립';
+
+  @override
+  String get gripUnderhand => '언더그립';
+
+  @override
+  String get gripNeutral => '뉴트럴 그립';
 }

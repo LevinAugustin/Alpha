@@ -2465,4 +2465,170 @@ class AppLocalizationsMs extends AppLocalizations {
 
   @override
   String get sortExercisesHint => 'Pegang pemegang dan seret.';
+
+  @override
+  String get feedbackTitle => 'Maklum balas';
+
+  @override
+  String get feedbackSettings => 'Hantar maklum balas';
+
+  @override
+  String get feedbackCategory => 'Kategori';
+
+  @override
+  String get feedbackBug => 'Ralat';
+
+  @override
+  String get feedbackImprovement => 'Penambahbaikan';
+
+  @override
+  String get feedbackTranslation => 'Terjemahan';
+
+  @override
+  String get feedbackMessageHint => 'Apa yang perlu kami tahu?';
+
+  @override
+  String get feedbackDictate => 'Imla';
+
+  @override
+  String get feedbackAttachAudio => 'Lampirkan rakaman';
+
+  @override
+  String get feedbackRemoveAudio => 'Buang rakaman';
+
+  @override
+  String get feedbackSend => 'Hantar';
+
+  @override
+  String get feedbackMailUnavailable => 'Tiada aplikasi mel.';
+
+  @override
+  String get feedbackStopRecording => 'Hentikan rakaman';
+
+  @override
+  String get otherVariant => 'Varian lain';
+
+  @override
+  String get firstStudioTitle => 'Apakah nama gim tempat kamu sedang berlatih?';
+
+  @override
+  String get renameProfile => 'Tukar nama';
+
+  @override
+  String get deleteProfile => 'Padam profil';
+
+  @override
+  String get deleteProfileTitle => 'Padam profil ini?';
+
+  @override
+  String deleteProfileBody(String name) {
+    return 'Taip \"$name\" untuk memadam profil ini dan datanya.';
+  }
+
+  @override
+  String get deleteProfileBlockedActive =>
+      'Profil yang sedang digunakan tidak boleh dipadam.';
+
+  @override
+  String get deleteProfileBlockedLast => 'Profil terakhir tidak boleh dipadam.';
+
+  @override
+  String get profileNameEmpty => 'Nama tidak boleh kosong.';
+
+  @override
+  String get profileNameDuplicate => 'Nama itu sudah digunakan.';
+
+  @override
+  String get finishBeforeSwitch =>
+      'Tamatkan atau buang senaman sebelum tukar profil.';
+
+  @override
+  String get switchFinishWorkout => 'Tamatkan senaman';
+
+  @override
+  String get switchDiscardWorkout => 'Buang senaman';
+
+  @override
+  String get groupLegs => 'Kaki';
+
+  @override
+  String get gearBarbell => 'Barbel';
+
+  @override
+  String get gearDumbbell => 'Dumbel';
+
+  @override
+  String get gearEzBar => 'Bar EZ';
+
+  @override
+  String get gearCable => 'Kabel';
+
+  @override
+  String get gearMachine => 'Mesin';
+
+  @override
+  String get gearSmith => 'Mesin Smith';
+
+  @override
+  String get gearBodyweight => 'Berat badan';
+
+  @override
+  String get gearKettlebell => 'Kettlebell';
+
+  @override
+  String get gearBand => 'Jalur rintangan';
+
+  @override
+  String get gearCardio => 'Mesin kardio';
+
+  @override
+  String get gearPlate => 'Plat';
+
+  @override
+  String get gearAbWheel => 'Roda perut';
+
+  @override
+  String get gearBattleRope => 'Tali battle';
+
+  @override
+  String get gearSled => 'Kereta luncur';
+
+  @override
+  String get gearJumpRope => 'Tali skipping';
+
+  @override
+  String get positionFlat => 'Rata';
+
+  @override
+  String get positionIncline => 'Condong';
+
+  @override
+  String get positionDecline => 'Menurun';
+
+  @override
+  String get positionSeated => 'Duduk';
+
+  @override
+  String get positionStanding => 'Berdiri';
+
+  @override
+  String get positionLying => 'Baring';
+
+  @override
+  String get positionBent => 'Membongkok';
+
+  @override
+  String get gripClose => 'Cengkaman rapat';
+
+  @override
+  String get gripWide => 'Cengkaman lebar';
+
+  @override
+  String get gripOverhand => 'Cengkaman atas';
+
+  @override
+  String get gripUnderhand => 'Cengkaman bawah';
+
+  @override
+  String get gripNeutral => 'Cengkaman neutral';
 }

@@ -6,23 +6,53 @@ import 'package:flutter/foundation.dart';
 import 'package:path/path.dart' as p;
 
 class GymPlace {
-  GymPlace({required this.id, required this.name, this.lastUsedAt});
+  GymPlace({
+    required this.id,
+    required this.name,
+    this.lastUsedAt,
+    this.createdAt,
+  });
 
   final String id;
   String name;
   DateTime? lastUsedAt;
+  DateTime? createdAt;
 
   Map<String, String> toJson() => {
     'id': id,
     'name': name,
     if (lastUsedAt != null) 'lastUsedAt': lastUsedAt!.toIso8601String(),
+    if (createdAt != null) 'createdAt': createdAt!.toIso8601String(),
   };
 
   factory GymPlace.fromJson(Map<String, dynamic> json) => GymPlace(
     id: json['id'] as String,
     name: json['name'] as String,
     lastUsedAt: DateTime.tryParse(json['lastUsedAt'] as String? ?? ''),
+    createdAt: DateTime.tryParse(json['createdAt'] as String? ?? ''),
   );
+}
+
+GymPlace? firstStudio(List<GymPlace> gyms) {
+  if (gyms.isEmpty) return null;
+  final ordered = [...gyms]
+    ..sort((left, right) {
+      final byTime = studioCreatedAt(left).compareTo(studioCreatedAt(right));
+      if (byTime != 0) return byTime;
+      return left.id.compareTo(right.id);
+    });
+  return ordered.first;
+}
+
+DateTime studioCreatedAt(GymPlace gym) {
+  final stored = gym.createdAt;
+  if (stored != null) return stored;
+  if (gym.id == 'default') return DateTime.fromMillisecondsSinceEpoch(0);
+  final millis = int.tryParse(gym.id);
+  if (millis != null && millis > 0) {
+    return DateTime.fromMillisecondsSinceEpoch(millis);
+  }
+  return DateTime.utc(9999);
 }
 
 class AlphaPrefs extends ChangeNotifier {
@@ -31,8 +61,8 @@ class AlphaPrefs extends ChangeNotifier {
   bool progression = false;
   String aiProvider = 'gemini';
   String coachNote = '';
-  List<GymPlace> gyms = [GymPlace(id: 'default', name: 'Studio')];
-  String activeGymId = 'default';
+  List<GymPlace> gyms = [];
+  String activeGymId = '';
   double barKg = 20;
   List<double> plates = [25, 20, 15, 10, 5, 2.5, 1.25];
   double dumbbellHandleKg = 2.5;
@@ -43,9 +73,36 @@ class AlphaPrefs extends ChangeNotifier {
   int? restTotalMs;
   String restTitle = '';
   String restTarget = 'timer';
+  bool languageAsked = false;
 
-  GymPlace get activeGym =>
-      gyms.firstWhere((gym) => gym.id == activeGymId, orElse: () => gyms.first);
+  GymPlace get activeGym {
+    if (gyms.isEmpty) return GymPlace(id: '', name: '');
+    return gyms.firstWhere(
+      (gym) => gym.id == activeGymId,
+      orElse: () => gyms.first,
+    );
+  }
+
+  void resetToDefaults() {
+    weeklyGoal = 5;
+    weeklyGoalManual = true;
+    progression = false;
+    aiProvider = 'gemini';
+    coachNote = '';
+    gyms = [];
+    activeGymId = '';
+    barKg = 20;
+    plates = [25, 20, 15, 10, 5, 2.5, 1.25];
+    dumbbellHandleKg = 2.5;
+    lengthUnit = 'cm';
+    nextWeight.clear();
+    nextReps.clear();
+    restEndsAt = null;
+    restTotalMs = null;
+    restTitle = '';
+    restTarget = 'timer';
+    languageAsked = false;
+  }
 
   void applyStored(Map<String, dynamic> json) {
     weeklyGoal = (json['weeklyGoal'] as num?)?.toInt() ?? weeklyGoal;
@@ -88,6 +145,7 @@ class AlphaPrefs extends ChangeNotifier {
     restTotalMs = (json['restTotalMs'] as num?)?.toInt();
     restTitle = json['restTitle'] as String? ?? '';
     restTarget = json['restTarget'] as String? ?? 'timer';
+    languageAsked = json['languageAsked'] as bool? ?? false;
   }
 
   Future<void> clearRestDeadline() async {
@@ -101,10 +159,14 @@ class AlphaPrefs extends ChangeNotifier {
     await save();
   }
 
-  Future<void> load() async {
+  Future<void> load({bool replace = false}) async {
+    if (replace) resetToDefaults();
     try {
       final file = await _file();
-      if (!file.existsSync()) return;
+      if (!file.existsSync()) {
+        if (replace) notifyListeners();
+        return;
+      }
       applyStored(jsonDecode(file.readAsStringSync()) as Map<String, dynamic>);
       notifyListeners();
     } catch (error, stack) {
@@ -134,6 +196,7 @@ class AlphaPrefs extends ChangeNotifier {
         if (restTotalMs != null) 'restTotalMs': restTotalMs,
         if (restTitle.isNotEmpty) 'restTitle': restTitle,
         if (restTarget != 'timer') 'restTarget': restTarget,
+        if (languageAsked) 'languageAsked': true,
       }),
     );
     notifyListeners();

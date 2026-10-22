@@ -4547,6 +4547,330 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Hold a handle and drag.'**
   String get sortExercisesHint;
+
+  /// Title of the feedback form.
+  ///
+  /// In en, this message translates to:
+  /// **'Feedback'**
+  String get feedbackTitle;
+
+  /// Opens the feedback form from settings or an exercise.
+  ///
+  /// In en, this message translates to:
+  /// **'Send feedback'**
+  String get feedbackSettings;
+
+  /// Label above the feedback category choices.
+  ///
+  /// In en, this message translates to:
+  /// **'Category'**
+  String get feedbackCategory;
+
+  /// Feedback category for something that is wrong.
+  ///
+  /// In en, this message translates to:
+  /// **'Bug'**
+  String get feedbackBug;
+
+  /// Feedback category for a suggested improvement.
+  ///
+  /// In en, this message translates to:
+  /// **'Improvement'**
+  String get feedbackImprovement;
+
+  /// Feedback category for a translation issue.
+  ///
+  /// In en, this message translates to:
+  /// **'Translation'**
+  String get feedbackTranslation;
+
+  /// Hint in the feedback text field.
+  ///
+  /// In en, this message translates to:
+  /// **'What should we know?'**
+  String get feedbackMessageHint;
+
+  /// Button that starts system dictation.
+  ///
+  /// In en, this message translates to:
+  /// **'Dictate'**
+  String get feedbackDictate;
+
+  /// Button that attaches an optional voice recording.
+  ///
+  /// In en, this message translates to:
+  /// **'Attach a voice recording'**
+  String get feedbackAttachAudio;
+
+  /// Removes the attached voice recording.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove recording'**
+  String get feedbackRemoveAudio;
+
+  /// Opens the mail app with the feedback.
+  ///
+  /// In en, this message translates to:
+  /// **'Send'**
+  String get feedbackSend;
+
+  /// Shown when no mail app can be opened.
+  ///
+  /// In en, this message translates to:
+  /// **'No mail app is available.'**
+  String get feedbackMailUnavailable;
+
+  /// Stops the optional voice recording.
+  ///
+  /// In en, this message translates to:
+  /// **'Stop recording'**
+  String get feedbackStopRecording;
+
+  /// Returns from one exercise variant to the variant list.
+  ///
+  /// In en, this message translates to:
+  /// **'Other version'**
+  String get otherVariant;
+
+  /// Asks for the first studio name before a workout can start.
+  ///
+  /// In en, this message translates to:
+  /// **'What is the name of the studio you are training in?'**
+  String get firstStudioTitle;
+
+  /// Renames a local profile.
+  ///
+  /// In en, this message translates to:
+  /// **'Rename'**
+  String get renameProfile;
+
+  /// Deletes a local profile from profile management.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete profile'**
+  String get deleteProfile;
+
+  /// Title of the profile delete confirmation.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete this profile?'**
+  String get deleteProfileTitle;
+
+  /// Asks the user to type the profile name before deleting it.
+  ///
+  /// In en, this message translates to:
+  /// **'Type \"{name}\" to delete this profile and its data.'**
+  String deleteProfileBody(String name);
+
+  /// Shown when the profile in use cannot be deleted.
+  ///
+  /// In en, this message translates to:
+  /// **'The active profile cannot be deleted.'**
+  String get deleteProfileBlockedActive;
+
+  /// Shown when the only remaining profile cannot be deleted.
+  ///
+  /// In en, this message translates to:
+  /// **'The last profile cannot be deleted.'**
+  String get deleteProfileBlockedLast;
+
+  /// Shown when a profile rename has no name.
+  ///
+  /// In en, this message translates to:
+  /// **'The name cannot be empty.'**
+  String get profileNameEmpty;
+
+  /// Shown when a profile rename matches another profile.
+  ///
+  /// In en, this message translates to:
+  /// **'That name is already used.'**
+  String get profileNameDuplicate;
+
+  /// Shown when a workout is still open during a profile switch.
+  ///
+  /// In en, this message translates to:
+  /// **'Finish or discard the workout before switching profiles.'**
+  String get finishBeforeSwitch;
+
+  /// Saves the open workout before switching profiles.
+  ///
+  /// In en, this message translates to:
+  /// **'Finish workout'**
+  String get switchFinishWorkout;
+
+  /// Deletes the open workout before switching profiles.
+  ///
+  /// In en, this message translates to:
+  /// **'Discard workout'**
+  String get switchDiscardWorkout;
+
+  /// Legs muscle group.
+  ///
+  /// In en, this message translates to:
+  /// **'Legs'**
+  String get groupLegs;
+
+  /// Barbell equipment.
+  ///
+  /// In en, this message translates to:
+  /// **'Barbell'**
+  String get gearBarbell;
+
+  /// Dumbbell equipment.
+  ///
+  /// In en, this message translates to:
+  /// **'Dumbbell'**
+  String get gearDumbbell;
+
+  /// EZ bar equipment.
+  ///
+  /// In en, this message translates to:
+  /// **'EZ bar'**
+  String get gearEzBar;
+
+  /// Cable equipment.
+  ///
+  /// In en, this message translates to:
+  /// **'Cable'**
+  String get gearCable;
+
+  /// Machine equipment.
+  ///
+  /// In en, this message translates to:
+  /// **'Machine'**
+  String get gearMachine;
+
+  /// Smith machine equipment.
+  ///
+  /// In en, this message translates to:
+  /// **'Smith machine'**
+  String get gearSmith;
+
+  /// Bodyweight equipment.
+  ///
+  /// In en, this message translates to:
+  /// **'Bodyweight'**
+  String get gearBodyweight;
+
+  /// Kettlebell equipment.
+  ///
+  /// In en, this message translates to:
+  /// **'Kettlebell'**
+  String get gearKettlebell;
+
+  /// Resistance band equipment.
+  ///
+  /// In en, this message translates to:
+  /// **'Resistance band'**
+  String get gearBand;
+
+  /// Cardio machine equipment.
+  ///
+  /// In en, this message translates to:
+  /// **'Cardio machine'**
+  String get gearCardio;
+
+  /// Weight plate equipment.
+  ///
+  /// In en, this message translates to:
+  /// **'Weight plate'**
+  String get gearPlate;
+
+  /// Ab wheel equipment.
+  ///
+  /// In en, this message translates to:
+  /// **'Ab wheel'**
+  String get gearAbWheel;
+
+  /// Battle rope equipment.
+  ///
+  /// In en, this message translates to:
+  /// **'Battle rope'**
+  String get gearBattleRope;
+
+  /// Sled equipment.
+  ///
+  /// In en, this message translates to:
+  /// **'Sled'**
+  String get gearSled;
+
+  /// Jump rope equipment.
+  ///
+  /// In en, this message translates to:
+  /// **'Jump rope'**
+  String get gearJumpRope;
+
+  /// Flat body position.
+  ///
+  /// In en, this message translates to:
+  /// **'Flat'**
+  String get positionFlat;
+
+  /// Incline body position.
+  ///
+  /// In en, this message translates to:
+  /// **'Incline'**
+  String get positionIncline;
+
+  /// Decline body position.
+  ///
+  /// In en, this message translates to:
+  /// **'Decline'**
+  String get positionDecline;
+
+  /// Seated body position.
+  ///
+  /// In en, this message translates to:
+  /// **'Seated'**
+  String get positionSeated;
+
+  /// Standing body position.
+  ///
+  /// In en, this message translates to:
+  /// **'Standing'**
+  String get positionStanding;
+
+  /// Lying body position.
+  ///
+  /// In en, this message translates to:
+  /// **'Lying'**
+  String get positionLying;
+
+  /// Bent-over body position.
+  ///
+  /// In en, this message translates to:
+  /// **'Bent over'**
+  String get positionBent;
+
+  /// Close grip.
+  ///
+  /// In en, this message translates to:
+  /// **'Close grip'**
+  String get gripClose;
+
+  /// Wide grip.
+  ///
+  /// In en, this message translates to:
+  /// **'Wide grip'**
+  String get gripWide;
+
+  /// Overhand grip.
+  ///
+  /// In en, this message translates to:
+  /// **'Overhand'**
+  String get gripOverhand;
+
+  /// Underhand grip.
+  ///
+  /// In en, this message translates to:
+  /// **'Underhand'**
+  String get gripUnderhand;
+
+  /// Neutral grip.
+  ///
+  /// In en, this message translates to:
+  /// **'Neutral grip'**
+  String get gripNeutral;
 }
 
 class _AppLocalizationsDelegate

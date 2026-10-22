@@ -42,6 +42,11 @@ class ExerciseDeEntry {
     required this.grip,
     required this.position,
     required this.unilateral,
+    this.englishName,
+    this.englishSteps = const [],
+    this.englishTips = const [],
+    this.englishSynonyms = const [],
+    this.variantsJson,
   });
 
   final String id;
@@ -66,6 +71,11 @@ class ExerciseDeEntry {
   final String grip;
   final String position;
   final bool unilateral;
+  final String? englishName;
+  final List<String> englishSteps;
+  final List<String> englishTips;
+  final List<String> englishSynonyms;
+  final String? variantsJson;
 
   ExerciseDeEntry copyWith({List<String>? legacyNames}) {
     return ExerciseDeEntry(
@@ -91,6 +101,11 @@ class ExerciseDeEntry {
       grip: grip,
       position: position,
       unilateral: unilateral,
+      englishName: englishName,
+      englishSteps: englishSteps,
+      englishTips: englishTips,
+      englishSynonyms: englishSynonyms,
+      variantsJson: variantsJson,
     );
   }
 }
@@ -195,6 +210,11 @@ ExerciseCatalogParse parseExerciseCatalog(String raw) {
         grip: _string(json['griff']),
         position: _string(json['position']),
         unilateral: json['einseitig'] == true,
+        englishName: _optionalStoredText(json['name_en']),
+        englishSteps: _strings(json['ausfuehrung_en']),
+        englishTips: _strings(json['tipps_en']),
+        englishSynonyms: _strings(json['synonyme_en']),
+        variantsJson: _variantsJson(json['varianten']),
       ),
     );
   }
@@ -377,6 +397,61 @@ Set<String> parseFlexifyOhneZiel(String? raw) {
   return names;
 }
 
+class CatalogEnglishText {
+  const CatalogEnglishText({
+    this.category,
+    this.equipment,
+    this.position,
+    this.grip,
+  });
+
+  final String? category;
+  final String? equipment;
+  final String? position;
+  final String? grip;
+}
+
+final catalogEnglishById = <String, CatalogEnglishText>{};
+
+Map<String, CatalogEnglishText> parseCatalogEnglishLabels(String raw) {
+  Object? decoded;
+  try {
+    decoded = jsonDecode(raw);
+  } catch (_) {
+    return const {};
+  }
+  if (decoded is! List) return const {};
+  final labels = <String, CatalogEnglishText>{};
+  for (final row in decoded) {
+    if (row is! Map) continue;
+    final id = _string(row['id']);
+    if (id.isEmpty) continue;
+    final category = _optionalStoredText(row['kategorie_en']);
+    final equipment = _optionalStoredText(row['geraet_en']);
+    final position = _optionalStoredText(row['position_en']);
+    final grip = _optionalStoredText(row['griff_en']);
+    if (category == null &&
+        equipment == null &&
+        position == null &&
+        grip == null) {
+      continue;
+    }
+    labels[id] = CatalogEnglishText(
+      category: category,
+      equipment: equipment,
+      position: position,
+      grip: grip,
+    );
+  }
+  return labels;
+}
+
+void rememberCatalogEnglishLabels(String raw) {
+  catalogEnglishById
+    ..clear()
+    ..addAll(parseCatalogEnglishLabels(raw));
+}
+
 Future<ExerciseImportResult> importExerciseCatalogJson(
   AppDatabase database,
   String raw, {
@@ -384,6 +459,7 @@ Future<ExerciseImportResult> importExerciseCatalogJson(
   String? flexifyMapRaw,
   String? ohneZielRaw,
 }) async {
+  rememberCatalogEnglishLabels(raw);
   final parsed = parseExerciseCatalog(raw);
   final legacyMap = _combineNameMaps([
     if (legacyMapRaw != null) parseLegacyNameMap(legacyMapRaw),
@@ -615,6 +691,14 @@ String? _validate(Map<String, dynamic> json, String id) {
   if (position != null) return position;
   final unilateral = _unilateral(json, id);
   if (unilateral != null) return unilateral;
+  final englishName = _optionalText(json, 'name_en', id);
+  if (englishName != null) return englishName;
+  for (final key in ['ausfuehrung_en', 'tipps_en', 'synonyme_en']) {
+    final reason = _optionalStringList(json, key, id);
+    if (reason != null) return reason;
+  }
+  final variants = _variants(json, id);
+  if (variants != null) return variants;
   final category = _string(json['kategorie']);
   if (!allowedExerciseCategories.contains(category)) {
     return '$id kategorie "$category" is not allowed.';
@@ -681,6 +765,65 @@ String? _optionalToken(
   return null;
 }
 
+String? _optionalText(Map<String, dynamic> json, String key, String id) {
+  if (!json.containsKey(key) || json[key] == null) return null;
+  if (json[key] is! String || _string(json[key]).isEmpty) {
+    return '$id field $key must be a string.';
+  }
+  return null;
+}
+
+String? _optionalStringList(Map<String, dynamic> json, String key, String id) {
+  if (!json.containsKey(key) || json[key] == null) return null;
+  return _stringList(json, key, id);
+}
+
+String? _variants(Map<String, dynamic> json, String id) {
+  if (!json.containsKey('varianten') || json['varianten'] == null) return null;
+  final value = json['varianten'];
+  if (value is! List) return '$id field varianten must be a list.';
+  final seen = <String>{};
+  for (final item in value) {
+    if (item is! Map) return '$id varianten must contain objects.';
+    final row = Map<String, dynamic>.from(item);
+    final key = _string(row['key']);
+    if (key.isEmpty || !seen.add(key)) {
+      return '$id varianten key is missing.';
+    }
+    for (final field in ['label_de', 'label_en', 'bild']) {
+      if (row[field] is! String || _string(row[field]).isEmpty) {
+        return '$id varianten $field must be a string.';
+      }
+    }
+    for (final field in [
+      'ausfuehrung_de',
+      'tipps_de',
+      'ausfuehrung_en',
+      'tipps_en',
+    ]) {
+      final reason = _stringList(row, field, '$id varianten');
+      if (reason != null) return reason;
+    }
+    if (resolveExerciseImage(_string(row['bild'])) == null) {
+      return '$id varianten bild is not a clip name.';
+    }
+    if (row['bild_gerendert'] is! bool) {
+      return '$id varianten bild_gerendert must be true or false.';
+    }
+  }
+  return null;
+}
+
+String? _optionalStoredText(Object? value) {
+  final text = _string(value);
+  return text.isEmpty ? null : text;
+}
+
+String? _variantsJson(Object? value) {
+  if (value is! List || value.isEmpty) return null;
+  return jsonEncode(value);
+}
+
 String? _unilateral(Map<String, dynamic> json, String id) {
   if (json['einseitig'] is! bool) {
     return '$id einseitig must be true or false.';
@@ -745,6 +888,13 @@ class _Fields {
   String get alternatives => jsonEncode(entry.alternatives);
   String? get image => resolveExerciseImage(entry.image);
   String? get mechanic => entry.mechanic.isEmpty ? null : entry.mechanic;
+  String? get englishSteps =>
+      entry.englishSteps.isEmpty ? null : jsonEncode(entry.englishSteps);
+  String? get englishTips =>
+      entry.englishTips.isEmpty ? null : jsonEncode(entry.englishTips);
+  String? get englishAliases =>
+      entry.englishSynonyms.isEmpty ? null : jsonEncode(entry.englishSynonyms);
+  String? get variants => entry.variantsJson;
 
   ExercisesCompanion insert({required String name}) {
     final cardio = entry.category == 'Cardio';
@@ -775,6 +925,11 @@ class _Fields {
       griff: Value(entry.grip.isEmpty ? null : entry.grip),
       position: Value(entry.position.isEmpty ? null : entry.position),
       einseitig: Value(entry.unilateral),
+      englishName: Value(entry.englishName),
+      englishSteps: Value(englishSteps),
+      englishTips: Value(englishTips),
+      englishAliases: Value(englishAliases),
+      variants: Value(variants),
     );
   }
 
@@ -803,6 +958,11 @@ class _Fields {
       griff: Value(entry.grip.isEmpty ? null : entry.grip),
       position: Value(entry.position.isEmpty ? null : entry.position),
       einseitig: Value(entry.unilateral),
+      englishName: Value(entry.englishName),
+      englishSteps: Value(englishSteps),
+      englishTips: Value(englishTips),
+      englishAliases: Value(englishAliases),
+      variants: Value(variants),
     );
   }
 }
@@ -905,7 +1065,12 @@ bool _same(Exercise row, ExerciseDeEntry entry, int? categoryId) {
       (row.bewegung ?? '') == entry.movement &&
       (row.griff ?? '') == entry.grip &&
       (row.position ?? '') == entry.position &&
-      row.einseitig == entry.unilateral;
+      row.einseitig == entry.unilateral &&
+      (row.englishName ?? '') == (entry.englishName ?? '') &&
+      (row.englishSteps ?? '') == (fields.englishSteps ?? '') &&
+      (row.englishTips ?? '') == (fields.englishTips ?? '') &&
+      (row.englishAliases ?? '') == (fields.englishAliases ?? '') &&
+      (row.variants ?? '') == (fields.variants ?? '');
 }
 
 Future<void> _moveHistory(

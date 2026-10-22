@@ -186,6 +186,7 @@ Future<void> completeOnboarding({
   required String name,
   double? bodyWeight,
   String? unit,
+  String? locale,
 }) async {
   final trimmed = name.trim();
   if (trimmed.isEmpty) return;
@@ -193,10 +194,12 @@ Future<void> completeOnboarding({
   final kilos = bodyWeight == null
       ? null
       : canonicalBodyWeightKg(chosen ?? 'kg', bodyWeight);
+  final language = locale == 'en' ? 'en' : (locale == 'de' ? 'de' : null);
   await db.settings.update().write(
     SettingsCompanion(
       profileName: Value(trimmed),
       strengthUnit: chosen == null ? const Value.absent() : Value(chosen),
+      localeOverride: language == null ? const Value.absent() : Value(language),
     ),
   );
   if (kilos != null && kilos > 0) {
@@ -258,7 +261,25 @@ Future<void> rememberProfileName(String? name) async {
   await saveProfileRegistry(registry);
 }
 
-Future<LocalProfile> createLocalProfile(String name) async {
+Future<void> markLanguageAsked(String profileId) async {
+  final support = await profileSupportDirectory();
+  final file = File(p.join(support.path, '$profileId.alpha.json'));
+  final json = <String, dynamic>{};
+  if (file.existsSync()) {
+    try {
+      final stored = jsonDecode(file.readAsStringSync());
+      if (stored is Map) json.addAll(Map<String, dynamic>.from(stored));
+    } catch (_) {}
+  }
+  json['languageAsked'] = true;
+  file.parent.createSync(recursive: true);
+  file.writeAsStringSync(jsonEncode(json));
+}
+
+Future<LocalProfile> createLocalProfile(
+  String name, {
+  String locale = 'de',
+}) async {
   final trimmed = name.trim();
   final id = 'p${DateTime.now().microsecondsSinceEpoch}';
   final profile = LocalProfile(
@@ -267,16 +288,82 @@ Future<LocalProfile> createLocalProfile(String name) async {
     fileName: 'profile_$id.sqlite',
   );
   final database = await openProfileDatabase(profile);
+  final language = locale == 'en' ? 'en' : 'de';
   await database.settings.update().write(
-    SettingsCompanion(profileName: Value(trimmed)),
+    SettingsCompanion(
+      profileName: Value(trimmed),
+      localeOverride: Value(language),
+    ),
   );
   await importExerciseCatalog(database);
+  await markLanguageAsked(id);
   await database.close();
   final registry = await loadProfileRegistry();
   registry.profiles.add(profile);
   registry.activeId = profile.id;
   await saveProfileRegistry(registry);
   return profile;
+}
+
+Future<String?> renameLocalProfile(LocalProfile profile, String name) async {
+  final trimmed = name.trim();
+  if (trimmed.isEmpty) return 'empty';
+  final registry = await loadProfileRegistry();
+  final duplicate = registry.profiles.any(
+    (row) =>
+        row.id != profile.id &&
+        row.name.trim().toLowerCase() == trimmed.toLowerCase(),
+  );
+  if (duplicate) return 'duplicate';
+  final index = registry.profiles.indexWhere((row) => row.id == profile.id);
+  if (index < 0) return 'missing';
+  registry.profiles[index] = registry.profiles[index].copyWith(name: trimmed);
+  await saveProfileRegistry(registry);
+  if (profile.id == registry.activeId) {
+    await db.settings.update().write(
+      SettingsCompanion(profileName: Value(trimmed)),
+    );
+    return null;
+  }
+  final database = await openProfileDatabase(registry.profiles[index]);
+  try {
+    await database.settings.update().write(
+      SettingsCompanion(profileName: Value(trimmed)),
+    );
+  } finally {
+    await database.close();
+  }
+  return null;
+}
+
+Future<bool> deleteLocalProfile(LocalProfile profile) async {
+  final registry = await loadProfileRegistry();
+  if (registry.profiles.length <= 1) return false;
+  if (profile.id == registry.activeId) return false;
+  final remaining = [
+    for (final row in registry.profiles)
+      if (row.id != profile.id) row,
+  ];
+  if (remaining.length == registry.profiles.length) return false;
+  await saveProfileRegistry(
+    ProfileRegistry(
+      activeId: registry.activeId,
+      profiles: remaining,
+      onboarded: registry.onboarded,
+    ),
+  );
+  final support = await profileSupportDirectory();
+  final databaseFile = File(p.join(support.path, profile.fileName));
+  for (final file in [
+    databaseFile,
+    File('${databaseFile.path}-wal'),
+    File('${databaseFile.path}-shm'),
+    File('${databaseFile.path}-journal'),
+    File(p.join(support.path, '${profile.id}.alpha.json')),
+  ]) {
+    if (file.existsSync()) file.deleteSync();
+  }
+  return true;
 }
 
 Future<void> activateLocalProfile(LocalProfile profile) async {

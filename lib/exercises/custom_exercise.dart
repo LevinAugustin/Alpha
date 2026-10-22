@@ -220,6 +220,11 @@ class _CatalogNameIndex {
       for (final alias in decodeCatalogList(row.aliases)) {
         _add(alias, row);
       }
+      final english = (row.englishName ?? '').trim();
+      if (english.isNotEmpty) _add(english, row);
+      for (final alias in decodeCatalogList(row.englishAliases)) {
+        _add(alias, row);
+      }
     }
     for (final entry in _flexifySeedNames(flexifyMapRaw).entries) {
       final exercise = byCatalogId[entry.key];
@@ -259,9 +264,13 @@ class _CatalogNameIndex {
           leftName: left.name,
           leftGermanName: left.germanName,
           leftAliases: left.aliases,
+          leftEnglishName: left.englishName,
+          leftEnglishAliases: left.englishAliases,
           rightName: right.name,
           rightGermanName: right.germanName,
           rightAliases: right.aliases,
+          rightEnglishName: right.englishName,
+          rightEnglishAliases: right.englishAliases,
         ) <
         0;
   }

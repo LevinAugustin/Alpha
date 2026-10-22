@@ -194,6 +194,11 @@ void main() {
           'griff': null,
           'position': null,
           'einseitig': 0,
+          'english_name': null,
+          'english_steps': null,
+          'english_tips': null,
+          'english_aliases': null,
+          'variants': null,
         },
     ],
     'exercise_sets': [

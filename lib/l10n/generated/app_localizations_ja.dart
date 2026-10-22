@@ -2393,4 +2393,168 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get sortExercisesHint => '持ち手を押さえてドラッグ。';
+
+  @override
+  String get feedbackTitle => 'ご意見';
+
+  @override
+  String get feedbackSettings => 'ご意見を送る';
+
+  @override
+  String get feedbackCategory => '種類';
+
+  @override
+  String get feedbackBug => '不具合';
+
+  @override
+  String get feedbackImprovement => '改善';
+
+  @override
+  String get feedbackTranslation => '翻訳';
+
+  @override
+  String get feedbackMessageHint => '何を伝えますか？';
+
+  @override
+  String get feedbackDictate => '音声入力';
+
+  @override
+  String get feedbackAttachAudio => '音声を添付';
+
+  @override
+  String get feedbackRemoveAudio => '録音を削除';
+
+  @override
+  String get feedbackSend => '送信';
+
+  @override
+  String get feedbackMailUnavailable => 'メールアプリがありません。';
+
+  @override
+  String get feedbackStopRecording => '録音を停止';
+
+  @override
+  String get otherVariant => '別のやり方';
+
+  @override
+  String get firstStudioTitle => '今トレーニングしているジムの名前は？';
+
+  @override
+  String get renameProfile => '名前を変更';
+
+  @override
+  String get deleteProfile => 'プロフィールを削除';
+
+  @override
+  String get deleteProfileTitle => 'このプロフィールを削除しますか？';
+
+  @override
+  String deleteProfileBody(String name) {
+    return '「$name」と入力すると、このプロフィールとデータが削除されます。';
+  }
+
+  @override
+  String get deleteProfileBlockedActive => '使用中のプロフィールは削除できません。';
+
+  @override
+  String get deleteProfileBlockedLast => '最後のプロフィールは削除できません。';
+
+  @override
+  String get profileNameEmpty => '名前は空にできません。';
+
+  @override
+  String get profileNameDuplicate => 'その名前は既に使われています。';
+
+  @override
+  String get finishBeforeSwitch => 'プロフィールを切り替える前に、トレーニングを終了するか破棄してください。';
+
+  @override
+  String get switchFinishWorkout => 'トレーニングを終了';
+
+  @override
+  String get switchDiscardWorkout => 'トレーニングを破棄';
+
+  @override
+  String get groupLegs => '脚';
+
+  @override
+  String get gearBarbell => 'バーベル';
+
+  @override
+  String get gearDumbbell => 'ダンベル';
+
+  @override
+  String get gearEzBar => 'EZバー';
+
+  @override
+  String get gearCable => 'ケーブル';
+
+  @override
+  String get gearMachine => 'マシン';
+
+  @override
+  String get gearSmith => 'スミスマシン';
+
+  @override
+  String get gearBodyweight => '自重';
+
+  @override
+  String get gearKettlebell => 'ケトルベル';
+
+  @override
+  String get gearBand => 'レジスタンスバンド';
+
+  @override
+  String get gearCardio => '有酸素マシン';
+
+  @override
+  String get gearPlate => 'プレート';
+
+  @override
+  String get gearAbWheel => 'アブローラー';
+
+  @override
+  String get gearBattleRope => 'バトルロープ';
+
+  @override
+  String get gearSled => 'スレッド';
+
+  @override
+  String get gearJumpRope => '縄跳び';
+
+  @override
+  String get positionFlat => 'フラット';
+
+  @override
+  String get positionIncline => 'インクライン';
+
+  @override
+  String get positionDecline => 'デクライン';
+
+  @override
+  String get positionSeated => '座位';
+
+  @override
+  String get positionStanding => '立位';
+
+  @override
+  String get positionLying => '仰向け';
+
+  @override
+  String get positionBent => '前傾';
+
+  @override
+  String get gripClose => '狭いグリップ';
+
+  @override
+  String get gripWide => '広いグリップ';
+
+  @override
+  String get gripOverhand => 'オーバーグリップ';
+
+  @override
+  String get gripUnderhand => 'アンダーグリップ';
+
+  @override
+  String get gripNeutral => 'ニュートラルグリップ';
 }

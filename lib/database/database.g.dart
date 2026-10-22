@@ -867,6 +867,61 @@ class $ExercisesTable extends Exercises
     ),
     defaultValue: const Constant(false),
   );
+  static const VerificationMeta _englishNameMeta = const VerificationMeta(
+    'englishName',
+  );
+  @override
+  late final GeneratedColumn<String> englishName = GeneratedColumn<String>(
+    'english_name',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _englishStepsMeta = const VerificationMeta(
+    'englishSteps',
+  );
+  @override
+  late final GeneratedColumn<String> englishSteps = GeneratedColumn<String>(
+    'english_steps',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _englishTipsMeta = const VerificationMeta(
+    'englishTips',
+  );
+  @override
+  late final GeneratedColumn<String> englishTips = GeneratedColumn<String>(
+    'english_tips',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _englishAliasesMeta = const VerificationMeta(
+    'englishAliases',
+  );
+  @override
+  late final GeneratedColumn<String> englishAliases = GeneratedColumn<String>(
+    'english_aliases',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _variantsMeta = const VerificationMeta(
+    'variants',
+  );
+  @override
+  late final GeneratedColumn<String> variants = GeneratedColumn<String>(
+    'variants',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
   @override
   List<GeneratedColumn> get $columns => [
     id,
@@ -903,6 +958,11 @@ class $ExercisesTable extends Exercises
     griff,
     position,
     einseitig,
+    englishName,
+    englishSteps,
+    englishTips,
+    englishAliases,
+    variants,
   ];
   @override
   String get aliasedName => _alias ?? actualTableName;
@@ -1162,6 +1222,48 @@ class $ExercisesTable extends Exercises
         einseitig.isAcceptableOrUnknown(data['einseitig']!, _einseitigMeta),
       );
     }
+    if (data.containsKey('english_name')) {
+      context.handle(
+        _englishNameMeta,
+        englishName.isAcceptableOrUnknown(
+          data['english_name']!,
+          _englishNameMeta,
+        ),
+      );
+    }
+    if (data.containsKey('english_steps')) {
+      context.handle(
+        _englishStepsMeta,
+        englishSteps.isAcceptableOrUnknown(
+          data['english_steps']!,
+          _englishStepsMeta,
+        ),
+      );
+    }
+    if (data.containsKey('english_tips')) {
+      context.handle(
+        _englishTipsMeta,
+        englishTips.isAcceptableOrUnknown(
+          data['english_tips']!,
+          _englishTipsMeta,
+        ),
+      );
+    }
+    if (data.containsKey('english_aliases')) {
+      context.handle(
+        _englishAliasesMeta,
+        englishAliases.isAcceptableOrUnknown(
+          data['english_aliases']!,
+          _englishAliasesMeta,
+        ),
+      );
+    }
+    if (data.containsKey('variants')) {
+      context.handle(
+        _variantsMeta,
+        variants.isAcceptableOrUnknown(data['variants']!, _variantsMeta),
+      );
+    }
     return context;
   }
 
@@ -1307,6 +1409,26 @@ class $ExercisesTable extends Exercises
         DriftSqlType.bool,
         data['${effectivePrefix}einseitig'],
       )!,
+      englishName: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}english_name'],
+      ),
+      englishSteps: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}english_steps'],
+      ),
+      englishTips: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}english_tips'],
+      ),
+      englishAliases: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}english_aliases'],
+      ),
+      variants: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}variants'],
+      ),
     );
   }
 
@@ -1351,6 +1473,11 @@ class Exercise extends DataClass implements Insertable<Exercise> {
   final String? griff;
   final String? position;
   final bool einseitig;
+  final String? englishName;
+  final String? englishSteps;
+  final String? englishTips;
+  final String? englishAliases;
+  final String? variants;
   const Exercise({
     required this.id,
     required this.name,
@@ -1386,6 +1513,11 @@ class Exercise extends DataClass implements Insertable<Exercise> {
     this.griff,
     this.position,
     required this.einseitig,
+    this.englishName,
+    this.englishSteps,
+    this.englishTips,
+    this.englishAliases,
+    this.variants,
   });
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
@@ -1472,6 +1604,21 @@ class Exercise extends DataClass implements Insertable<Exercise> {
       map['position'] = Variable<String>(position);
     }
     map['einseitig'] = Variable<bool>(einseitig);
+    if (!nullToAbsent || englishName != null) {
+      map['english_name'] = Variable<String>(englishName);
+    }
+    if (!nullToAbsent || englishSteps != null) {
+      map['english_steps'] = Variable<String>(englishSteps);
+    }
+    if (!nullToAbsent || englishTips != null) {
+      map['english_tips'] = Variable<String>(englishTips);
+    }
+    if (!nullToAbsent || englishAliases != null) {
+      map['english_aliases'] = Variable<String>(englishAliases);
+    }
+    if (!nullToAbsent || variants != null) {
+      map['variants'] = Variable<String>(variants);
+    }
     return map;
   }
 
@@ -1557,6 +1704,21 @@ class Exercise extends DataClass implements Insertable<Exercise> {
           ? const Value.absent()
           : Value(position),
       einseitig: Value(einseitig),
+      englishName: englishName == null && nullToAbsent
+          ? const Value.absent()
+          : Value(englishName),
+      englishSteps: englishSteps == null && nullToAbsent
+          ? const Value.absent()
+          : Value(englishSteps),
+      englishTips: englishTips == null && nullToAbsent
+          ? const Value.absent()
+          : Value(englishTips),
+      englishAliases: englishAliases == null && nullToAbsent
+          ? const Value.absent()
+          : Value(englishAliases),
+      variants: variants == null && nullToAbsent
+          ? const Value.absent()
+          : Value(variants),
     );
   }
 
@@ -1604,6 +1766,11 @@ class Exercise extends DataClass implements Insertable<Exercise> {
       griff: serializer.fromJson<String?>(json['griff']),
       position: serializer.fromJson<String?>(json['position']),
       einseitig: serializer.fromJson<bool>(json['einseitig']),
+      englishName: serializer.fromJson<String?>(json['englishName']),
+      englishSteps: serializer.fromJson<String?>(json['englishSteps']),
+      englishTips: serializer.fromJson<String?>(json['englishTips']),
+      englishAliases: serializer.fromJson<String?>(json['englishAliases']),
+      variants: serializer.fromJson<String?>(json['variants']),
     );
   }
   @override
@@ -1644,6 +1811,11 @@ class Exercise extends DataClass implements Insertable<Exercise> {
       'griff': serializer.toJson<String?>(griff),
       'position': serializer.toJson<String?>(position),
       'einseitig': serializer.toJson<bool>(einseitig),
+      'englishName': serializer.toJson<String?>(englishName),
+      'englishSteps': serializer.toJson<String?>(englishSteps),
+      'englishTips': serializer.toJson<String?>(englishTips),
+      'englishAliases': serializer.toJson<String?>(englishAliases),
+      'variants': serializer.toJson<String?>(variants),
     };
   }
 
@@ -1682,6 +1854,11 @@ class Exercise extends DataClass implements Insertable<Exercise> {
     Value<String?> griff = const Value.absent(),
     Value<String?> position = const Value.absent(),
     bool? einseitig,
+    Value<String?> englishName = const Value.absent(),
+    Value<String?> englishSteps = const Value.absent(),
+    Value<String?> englishTips = const Value.absent(),
+    Value<String?> englishAliases = const Value.absent(),
+    Value<String?> variants = const Value.absent(),
   }) => Exercise(
     id: id ?? this.id,
     name: name ?? this.name,
@@ -1727,6 +1904,13 @@ class Exercise extends DataClass implements Insertable<Exercise> {
     griff: griff.present ? griff.value : this.griff,
     position: position.present ? position.value : this.position,
     einseitig: einseitig ?? this.einseitig,
+    englishName: englishName.present ? englishName.value : this.englishName,
+    englishSteps: englishSteps.present ? englishSteps.value : this.englishSteps,
+    englishTips: englishTips.present ? englishTips.value : this.englishTips,
+    englishAliases: englishAliases.present
+        ? englishAliases.value
+        : this.englishAliases,
+    variants: variants.present ? variants.value : this.variants,
   );
   Exercise copyWithCompanion(ExercisesCompanion data) {
     return Exercise(
@@ -1796,6 +1980,19 @@ class Exercise extends DataClass implements Insertable<Exercise> {
       griff: data.griff.present ? data.griff.value : this.griff,
       position: data.position.present ? data.position.value : this.position,
       einseitig: data.einseitig.present ? data.einseitig.value : this.einseitig,
+      englishName: data.englishName.present
+          ? data.englishName.value
+          : this.englishName,
+      englishSteps: data.englishSteps.present
+          ? data.englishSteps.value
+          : this.englishSteps,
+      englishTips: data.englishTips.present
+          ? data.englishTips.value
+          : this.englishTips,
+      englishAliases: data.englishAliases.present
+          ? data.englishAliases.value
+          : this.englishAliases,
+      variants: data.variants.present ? data.variants.value : this.variants,
     );
   }
 
@@ -1835,7 +2032,12 @@ class Exercise extends DataClass implements Insertable<Exercise> {
           ..write('bewegung: $bewegung, ')
           ..write('griff: $griff, ')
           ..write('position: $position, ')
-          ..write('einseitig: $einseitig')
+          ..write('einseitig: $einseitig, ')
+          ..write('englishName: $englishName, ')
+          ..write('englishSteps: $englishSteps, ')
+          ..write('englishTips: $englishTips, ')
+          ..write('englishAliases: $englishAliases, ')
+          ..write('variants: $variants')
           ..write(')'))
         .toString();
   }
@@ -1876,6 +2078,11 @@ class Exercise extends DataClass implements Insertable<Exercise> {
     griff,
     position,
     einseitig,
+    englishName,
+    englishSteps,
+    englishTips,
+    englishAliases,
+    variants,
   ]);
   @override
   bool operator ==(Object other) =>
@@ -1914,7 +2121,12 @@ class Exercise extends DataClass implements Insertable<Exercise> {
           other.bewegung == this.bewegung &&
           other.griff == this.griff &&
           other.position == this.position &&
-          other.einseitig == this.einseitig);
+          other.einseitig == this.einseitig &&
+          other.englishName == this.englishName &&
+          other.englishSteps == this.englishSteps &&
+          other.englishTips == this.englishTips &&
+          other.englishAliases == this.englishAliases &&
+          other.variants == this.variants);
 }
 
 class ExercisesCompanion extends UpdateCompanion<Exercise> {
@@ -1952,6 +2164,11 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
   final Value<String?> griff;
   final Value<String?> position;
   final Value<bool> einseitig;
+  final Value<String?> englishName;
+  final Value<String?> englishSteps;
+  final Value<String?> englishTips;
+  final Value<String?> englishAliases;
+  final Value<String?> variants;
   const ExercisesCompanion({
     this.id = const Value.absent(),
     this.name = const Value.absent(),
@@ -1987,6 +2204,11 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
     this.griff = const Value.absent(),
     this.position = const Value.absent(),
     this.einseitig = const Value.absent(),
+    this.englishName = const Value.absent(),
+    this.englishSteps = const Value.absent(),
+    this.englishTips = const Value.absent(),
+    this.englishAliases = const Value.absent(),
+    this.variants = const Value.absent(),
   });
   ExercisesCompanion.insert({
     this.id = const Value.absent(),
@@ -2023,6 +2245,11 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
     this.griff = const Value.absent(),
     this.position = const Value.absent(),
     this.einseitig = const Value.absent(),
+    this.englishName = const Value.absent(),
+    this.englishSteps = const Value.absent(),
+    this.englishTips = const Value.absent(),
+    this.englishAliases = const Value.absent(),
+    this.variants = const Value.absent(),
   }) : name = Value(name),
        kind = Value(kind),
        displayUnit = Value(displayUnit);
@@ -2061,6 +2288,11 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
     Expression<String>? griff,
     Expression<String>? position,
     Expression<bool>? einseitig,
+    Expression<String>? englishName,
+    Expression<String>? englishSteps,
+    Expression<String>? englishTips,
+    Expression<String>? englishAliases,
+    Expression<String>? variants,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
@@ -2099,6 +2331,11 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
       if (griff != null) 'griff': griff,
       if (position != null) 'position': position,
       if (einseitig != null) 'einseitig': einseitig,
+      if (englishName != null) 'english_name': englishName,
+      if (englishSteps != null) 'english_steps': englishSteps,
+      if (englishTips != null) 'english_tips': englishTips,
+      if (englishAliases != null) 'english_aliases': englishAliases,
+      if (variants != null) 'variants': variants,
     });
   }
 
@@ -2137,6 +2374,11 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
     Value<String?>? griff,
     Value<String?>? position,
     Value<bool>? einseitig,
+    Value<String?>? englishName,
+    Value<String?>? englishSteps,
+    Value<String?>? englishTips,
+    Value<String?>? englishAliases,
+    Value<String?>? variants,
   }) {
     return ExercisesCompanion(
       id: id ?? this.id,
@@ -2174,6 +2416,11 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
       griff: griff ?? this.griff,
       position: position ?? this.position,
       einseitig: einseitig ?? this.einseitig,
+      englishName: englishName ?? this.englishName,
+      englishSteps: englishSteps ?? this.englishSteps,
+      englishTips: englishTips ?? this.englishTips,
+      englishAliases: englishAliases ?? this.englishAliases,
+      variants: variants ?? this.variants,
     );
   }
 
@@ -2286,6 +2533,21 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
     if (einseitig.present) {
       map['einseitig'] = Variable<bool>(einseitig.value);
     }
+    if (englishName.present) {
+      map['english_name'] = Variable<String>(englishName.value);
+    }
+    if (englishSteps.present) {
+      map['english_steps'] = Variable<String>(englishSteps.value);
+    }
+    if (englishTips.present) {
+      map['english_tips'] = Variable<String>(englishTips.value);
+    }
+    if (englishAliases.present) {
+      map['english_aliases'] = Variable<String>(englishAliases.value);
+    }
+    if (variants.present) {
+      map['variants'] = Variable<String>(variants.value);
+    }
     return map;
   }
 
@@ -2325,7 +2587,12 @@ class ExercisesCompanion extends UpdateCompanion<Exercise> {
           ..write('bewegung: $bewegung, ')
           ..write('griff: $griff, ')
           ..write('position: $position, ')
-          ..write('einseitig: $einseitig')
+          ..write('einseitig: $einseitig, ')
+          ..write('englishName: $englishName, ')
+          ..write('englishSteps: $englishSteps, ')
+          ..write('englishTips: $englishTips, ')
+          ..write('englishAliases: $englishAliases, ')
+          ..write('variants: $variants')
           ..write(')'))
         .toString();
   }
@@ -8047,6 +8314,11 @@ typedef $$ExercisesTableCreateCompanionBuilder =
       Value<String?> griff,
       Value<String?> position,
       Value<bool> einseitig,
+      Value<String?> englishName,
+      Value<String?> englishSteps,
+      Value<String?> englishTips,
+      Value<String?> englishAliases,
+      Value<String?> variants,
     });
 typedef $$ExercisesTableUpdateCompanionBuilder =
     ExercisesCompanion Function({
@@ -8084,6 +8356,11 @@ typedef $$ExercisesTableUpdateCompanionBuilder =
       Value<String?> griff,
       Value<String?> position,
       Value<bool> einseitig,
+      Value<String?> englishName,
+      Value<String?> englishSteps,
+      Value<String?> englishTips,
+      Value<String?> englishAliases,
+      Value<String?> variants,
     });
 
 final class $$ExercisesTableReferences
@@ -8315,6 +8592,31 @@ class $$ExercisesTableFilterComposer
 
   ColumnFilters<bool> get einseitig => $composableBuilder(
     column: $table.einseitig,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get englishName => $composableBuilder(
+    column: $table.englishName,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get englishSteps => $composableBuilder(
+    column: $table.englishSteps,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get englishTips => $composableBuilder(
+    column: $table.englishTips,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get englishAliases => $composableBuilder(
+    column: $table.englishAliases,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get variants => $composableBuilder(
+    column: $table.variants,
     builder: (column) => ColumnFilters(column),
   );
 
@@ -8566,6 +8868,31 @@ class $$ExercisesTableOrderingComposer
     builder: (column) => ColumnOrderings(column),
   );
 
+  ColumnOrderings<String> get englishName => $composableBuilder(
+    column: $table.englishName,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get englishSteps => $composableBuilder(
+    column: $table.englishSteps,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get englishTips => $composableBuilder(
+    column: $table.englishTips,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get englishAliases => $composableBuilder(
+    column: $table.englishAliases,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get variants => $composableBuilder(
+    column: $table.variants,
+    builder: (column) => ColumnOrderings(column),
+  );
+
   $$CategoriesTableOrderingComposer get categoryId {
     final $$CategoriesTableOrderingComposer composer = $composerBuilder(
       composer: this,
@@ -8728,6 +9055,29 @@ class $$ExercisesTableAnnotationComposer
   GeneratedColumn<bool> get einseitig =>
       $composableBuilder(column: $table.einseitig, builder: (column) => column);
 
+  GeneratedColumn<String> get englishName => $composableBuilder(
+    column: $table.englishName,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get englishSteps => $composableBuilder(
+    column: $table.englishSteps,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get englishTips => $composableBuilder(
+    column: $table.englishTips,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get englishAliases => $composableBuilder(
+    column: $table.englishAliases,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get variants =>
+      $composableBuilder(column: $table.variants, builder: (column) => column);
+
   $$CategoriesTableAnnotationComposer get categoryId {
     final $$CategoriesTableAnnotationComposer composer = $composerBuilder(
       composer: this,
@@ -8868,6 +9218,11 @@ class $$ExercisesTableTableManager
                 Value<String?> griff = const Value.absent(),
                 Value<String?> position = const Value.absent(),
                 Value<bool> einseitig = const Value.absent(),
+                Value<String?> englishName = const Value.absent(),
+                Value<String?> englishSteps = const Value.absent(),
+                Value<String?> englishTips = const Value.absent(),
+                Value<String?> englishAliases = const Value.absent(),
+                Value<String?> variants = const Value.absent(),
               }) => ExercisesCompanion(
                 id: id,
                 name: name,
@@ -8903,6 +9258,11 @@ class $$ExercisesTableTableManager
                 griff: griff,
                 position: position,
                 einseitig: einseitig,
+                englishName: englishName,
+                englishSteps: englishSteps,
+                englishTips: englishTips,
+                englishAliases: englishAliases,
+                variants: variants,
               ),
           createCompanionCallback:
               ({
@@ -8940,6 +9300,11 @@ class $$ExercisesTableTableManager
                 Value<String?> griff = const Value.absent(),
                 Value<String?> position = const Value.absent(),
                 Value<bool> einseitig = const Value.absent(),
+                Value<String?> englishName = const Value.absent(),
+                Value<String?> englishSteps = const Value.absent(),
+                Value<String?> englishTips = const Value.absent(),
+                Value<String?> englishAliases = const Value.absent(),
+                Value<String?> variants = const Value.absent(),
               }) => ExercisesCompanion.insert(
                 id: id,
                 name: name,
@@ -8975,6 +9340,11 @@ class $$ExercisesTableTableManager
                 griff: griff,
                 position: position,
                 einseitig: einseitig,
+                englishName: englishName,
+                englishSteps: englishSteps,
+                englishTips: englishTips,
+                englishAliases: englishAliases,
+                variants: variants,
               ),
           withReferenceMapper: (p0) => p0
               .map(

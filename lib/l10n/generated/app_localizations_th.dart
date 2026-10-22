@@ -2438,4 +2438,168 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String get sortExercisesHint => 'กดที่มือจับแล้วลาก';
+
+  @override
+  String get feedbackTitle => 'ข้อเสนอแนะ';
+
+  @override
+  String get feedbackSettings => 'ส่งข้อเสนอแนะ';
+
+  @override
+  String get feedbackCategory => 'หมวดหมู่';
+
+  @override
+  String get feedbackBug => 'ข้อผิดพลาด';
+
+  @override
+  String get feedbackImprovement => 'การปรับปรุง';
+
+  @override
+  String get feedbackTranslation => 'การแปล';
+
+  @override
+  String get feedbackMessageHint => 'เราควรรู้เรื่องอะไร?';
+
+  @override
+  String get feedbackDictate => 'พูดตาม';
+
+  @override
+  String get feedbackAttachAudio => 'แนบเสียง';
+
+  @override
+  String get feedbackRemoveAudio => 'ลบเสียง';
+
+  @override
+  String get feedbackSend => 'ส่ง';
+
+  @override
+  String get feedbackMailUnavailable => 'ไม่มีแอปอีเมล';
+
+  @override
+  String get feedbackStopRecording => 'หยุดบันทึก';
+
+  @override
+  String get otherVariant => 'แบบอื่น';
+
+  @override
+  String get firstStudioTitle => 'ยิมที่คุณกำลังซ้อมชื่ออะไร?';
+
+  @override
+  String get renameProfile => 'เปลี่ยนชื่อ';
+
+  @override
+  String get deleteProfile => 'ลบโปรไฟล์';
+
+  @override
+  String get deleteProfileTitle => 'ลบโปรไฟล์นี้?';
+
+  @override
+  String deleteProfileBody(String name) {
+    return 'พิมพ์ \"$name\" เพื่อลบโปรไฟล์นี้และข้อมูลของมัน';
+  }
+
+  @override
+  String get deleteProfileBlockedActive => 'ลบโปรไฟล์ที่กำลังใช้อยู่ไม่ได้';
+
+  @override
+  String get deleteProfileBlockedLast => 'ลบโปรไฟล์สุดท้ายไม่ได้';
+
+  @override
+  String get profileNameEmpty => 'ชื่อต้องไม่ว่าง';
+
+  @override
+  String get profileNameDuplicate => 'มีชื่อนี้อยู่แล้ว';
+
+  @override
+  String get finishBeforeSwitch => 'จบหรือทิ้งการฝึกก่อนเปลี่ยนโปรไฟล์';
+
+  @override
+  String get switchFinishWorkout => 'จบการฝึก';
+
+  @override
+  String get switchDiscardWorkout => 'ทิ้งการฝึก';
+
+  @override
+  String get groupLegs => 'ขา';
+
+  @override
+  String get gearBarbell => 'บาร์เบล';
+
+  @override
+  String get gearDumbbell => 'ดัมเบล';
+
+  @override
+  String get gearEzBar => 'บาร์ EZ';
+
+  @override
+  String get gearCable => 'เคเบิล';
+
+  @override
+  String get gearMachine => 'เครื่อง';
+
+  @override
+  String get gearSmith => 'เครื่องสมิธ';
+
+  @override
+  String get gearBodyweight => 'น้ำหนักตัว';
+
+  @override
+  String get gearKettlebell => 'เคตเทิลเบล';
+
+  @override
+  String get gearBand => 'ยางยืด';
+
+  @override
+  String get gearCardio => 'เครื่องคาร์ดิโอ';
+
+  @override
+  String get gearPlate => 'แผ่นน้ำหนัก';
+
+  @override
+  String get gearAbWheel => 'ล้อหน้าท้อง';
+
+  @override
+  String get gearBattleRope => 'เชือกแบทเทิล';
+
+  @override
+  String get gearSled => 'เลื่อน';
+
+  @override
+  String get gearJumpRope => 'เชือกกระโดด';
+
+  @override
+  String get positionFlat => 'ราบ';
+
+  @override
+  String get positionIncline => 'เอียงขึ้น';
+
+  @override
+  String get positionDecline => 'เอียงลง';
+
+  @override
+  String get positionSeated => 'นั่ง';
+
+  @override
+  String get positionStanding => 'ยืน';
+
+  @override
+  String get positionLying => 'นอน';
+
+  @override
+  String get positionBent => 'ก้มตัว';
+
+  @override
+  String get gripClose => 'จับแคบ';
+
+  @override
+  String get gripWide => 'จับกว้าง';
+
+  @override
+  String get gripOverhand => 'จับคว่ำ';
+
+  @override
+  String get gripUnderhand => 'จับหงาย';
+
+  @override
+  String get gripNeutral => 'จับกลาง';
 }

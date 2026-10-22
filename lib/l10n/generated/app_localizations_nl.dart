@@ -2471,4 +2471,171 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get sortExercisesHint => 'Houd de greep vast en sleep.';
+
+  @override
+  String get feedbackTitle => 'Terugkoppeling';
+
+  @override
+  String get feedbackSettings => 'Terugkoppeling sturen';
+
+  @override
+  String get feedbackCategory => 'Categorie';
+
+  @override
+  String get feedbackBug => 'Fout';
+
+  @override
+  String get feedbackImprovement => 'Verbetering';
+
+  @override
+  String get feedbackTranslation => 'Vertaling';
+
+  @override
+  String get feedbackMessageHint => 'Wat moeten we weten?';
+
+  @override
+  String get feedbackDictate => 'Dicteren';
+
+  @override
+  String get feedbackAttachAudio => 'Spraakopname bijvoegen';
+
+  @override
+  String get feedbackRemoveAudio => 'Opname verwijderen';
+
+  @override
+  String get feedbackSend => 'Versturen';
+
+  @override
+  String get feedbackMailUnavailable => 'Geen mail-app beschikbaar.';
+
+  @override
+  String get feedbackStopRecording => 'Opname stoppen';
+
+  @override
+  String get otherVariant => 'Andere variant';
+
+  @override
+  String get firstStudioTitle => 'Hoe heet de sportschool waar je nu traint?';
+
+  @override
+  String get renameProfile => 'Naam wijzigen';
+
+  @override
+  String get deleteProfile => 'Profiel verwijderen';
+
+  @override
+  String get deleteProfileTitle => 'Dit profiel verwijderen?';
+
+  @override
+  String deleteProfileBody(String name) {
+    return 'Typ „$name” om dit profiel en de gegevens te verwijderen.';
+  }
+
+  @override
+  String get deleteProfileBlockedActive =>
+      'Het actieve profiel kan niet worden verwijderd.';
+
+  @override
+  String get deleteProfileBlockedLast =>
+      'Het laatste profiel kan niet worden verwijderd.';
+
+  @override
+  String get profileNameEmpty => 'De naam mag niet leeg zijn.';
+
+  @override
+  String get profileNameDuplicate => 'Deze naam bestaat al.';
+
+  @override
+  String get finishBeforeSwitch =>
+      'Rond de training af of wis hem voordat je van profiel wisselt.';
+
+  @override
+  String get switchFinishWorkout => 'Training afronden';
+
+  @override
+  String get switchDiscardWorkout => 'Training wissen';
+
+  @override
+  String get groupLegs => 'Benen';
+
+  @override
+  String get gearBarbell => 'Halterstang';
+
+  @override
+  String get gearDumbbell => 'Halter';
+
+  @override
+  String get gearEzBar => 'EZ-stang';
+
+  @override
+  String get gearCable => 'Kabel';
+
+  @override
+  String get gearMachine => 'Apparaat';
+
+  @override
+  String get gearSmith => 'Smith-machine';
+
+  @override
+  String get gearBodyweight => 'Lichaamsgewicht';
+
+  @override
+  String get gearKettlebell => 'Kettlebell';
+
+  @override
+  String get gearBand => 'Weerstandsband';
+
+  @override
+  String get gearCardio => 'Cardiotoestel';
+
+  @override
+  String get gearPlate => 'Schijf';
+
+  @override
+  String get gearAbWheel => 'Buikwiel';
+
+  @override
+  String get gearBattleRope => 'Zwaaitouw';
+
+  @override
+  String get gearSled => 'Slee';
+
+  @override
+  String get gearJumpRope => 'Springtouw';
+
+  @override
+  String get positionFlat => 'Vlak';
+
+  @override
+  String get positionIncline => 'Schuin';
+
+  @override
+  String get positionDecline => 'Dalend';
+
+  @override
+  String get positionSeated => 'Zittend';
+
+  @override
+  String get positionStanding => 'Staand';
+
+  @override
+  String get positionLying => 'Liggend';
+
+  @override
+  String get positionBent => 'Voorovergebogen';
+
+  @override
+  String get gripClose => 'Smalle greep';
+
+  @override
+  String get gripWide => 'Brede greep';
+
+  @override
+  String get gripOverhand => 'Bovenhand';
+
+  @override
+  String get gripUnderhand => 'Onderhand';
+
+  @override
+  String get gripNeutral => 'Neutrale greep';
 }

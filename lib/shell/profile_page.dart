@@ -28,13 +28,15 @@ class _ProfilePageState extends State<ProfilePage> {
   late final TextEditingController _goals;
   late final TextEditingController _coach;
   var _ready = false;
+  var _seenName = '';
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     if (_ready) return;
     final settings = context.read<Setting>();
-    _name = TextEditingController(text: settings.profileName ?? '');
+    _seenName = settings.profileName ?? '';
+    _name = TextEditingController(text: _seenName);
     _height = TextEditingController(text: _heightText(settings.heightCm));
     _age = TextEditingController(
       text: settings.ageYears == null ? '' : '${settings.ageYears}',
@@ -74,6 +76,14 @@ class _ProfilePageState extends State<ProfilePage> {
 
   @override
   Widget build(BuildContext context) {
+    final settings = context.watch<Setting>();
+    if (_ready) {
+      final stored = settings.profileName ?? '';
+      if (_name.text == _seenName && stored != _seenName) {
+        _seenName = stored;
+        _name.text = stored;
+      }
+    }
     if (!_ready) return const SizedBox.shrink();
     return ListView(
       padding: const EdgeInsets.fromLTRB(16, 8, 16, 24),

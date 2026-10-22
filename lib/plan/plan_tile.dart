@@ -39,7 +39,8 @@ class PlanTile extends StatefulWidget {
 class _PlanTileState extends State<PlanTile> {
   @override
   Widget build(BuildContext context) {
-    final name = planDisplayName(
+    final name = planTitleOf(
+      context,
       title: widget.plan.title,
       sequence: widget.plan.sequence,
       id: widget.plan.id,

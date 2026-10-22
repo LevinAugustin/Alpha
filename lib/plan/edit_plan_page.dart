@@ -240,6 +240,7 @@ class _EditPlanPageState extends State<EditPlanPage> {
                     planExercise: pe.planExercise,
                     exerciseName: pe.exerciseName,
                     germanName: pe.germanName,
+                    englishName: pe.englishName,
                     onChange: (value) {
                       final id = _exercises.indexWhere(
                         (exercise) =>
@@ -403,6 +404,8 @@ PlanExerciseDraft _draftFor(Exercise exercise, Value<int> sequence) {
     exerciseName: exercise.name,
     germanName: exercise.germanName ?? '',
     aliases: exercise.aliases ?? '',
+    englishName: exercise.englishName ?? '',
+    englishAliases: exercise.englishAliases ?? '',
     muscle: exercise.muscle ?? '',
     category: exercise.categoryName ?? '',
     equipment: exercise.equipment ?? '',

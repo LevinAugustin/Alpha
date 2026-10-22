@@ -2453,4 +2453,170 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get sortExercisesHint => 'ہینڈل پکڑ کر کھینچیں۔';
+
+  @override
+  String get feedbackTitle => 'رائے';
+
+  @override
+  String get feedbackSettings => 'رائے بھیجیں';
+
+  @override
+  String get feedbackCategory => 'زمرہ';
+
+  @override
+  String get feedbackBug => 'خرابی';
+
+  @override
+  String get feedbackImprovement => 'بہتری';
+
+  @override
+  String get feedbackTranslation => 'ترجمہ';
+
+  @override
+  String get feedbackMessageHint => 'ہمیں کیا جاننا چاہیے؟';
+
+  @override
+  String get feedbackDictate => 'املا';
+
+  @override
+  String get feedbackAttachAudio => 'آواز منسلک کریں';
+
+  @override
+  String get feedbackRemoveAudio => 'ریکارڈنگ ہٹائیں';
+
+  @override
+  String get feedbackSend => 'بھیجیں';
+
+  @override
+  String get feedbackMailUnavailable => 'کوئی میل ایپ نہیں۔';
+
+  @override
+  String get feedbackStopRecording => 'ریکارڈنگ روکیں';
+
+  @override
+  String get otherVariant => 'دوسرا طریقہ';
+
+  @override
+  String get firstStudioTitle =>
+      'جس جم میں تم ابھی ٹریننگ کر رہے ہو، اس کا نام کیا ہے؟';
+
+  @override
+  String get renameProfile => 'نام بدلیں';
+
+  @override
+  String get deleteProfile => 'پروفائل حذف کریں';
+
+  @override
+  String get deleteProfileTitle => 'یہ پروفائل حذف کریں؟';
+
+  @override
+  String deleteProfileBody(String name) {
+    return 'یہ پروفائل اور اس کا ڈیٹا حذف کرنے کے لیے \"$name\" لکھیں۔';
+  }
+
+  @override
+  String get deleteProfileBlockedActive => 'فعال پروفائل حذف نہیں ہو سکتا۔';
+
+  @override
+  String get deleteProfileBlockedLast => 'آخری پروفائل حذف نہیں ہو سکتا۔';
+
+  @override
+  String get profileNameEmpty => 'نام خالی نہیں ہو سکتا۔';
+
+  @override
+  String get profileNameDuplicate => 'یہ نام پہلے سے موجود ہے۔';
+
+  @override
+  String get finishBeforeSwitch =>
+      'پروفائل بدلنے سے پہلے ورزش ختم کریں یا چھوڑ دیں۔';
+
+  @override
+  String get switchFinishWorkout => 'ورزش ختم کریں';
+
+  @override
+  String get switchDiscardWorkout => 'ورزش چھوڑ دیں';
+
+  @override
+  String get groupLegs => 'ٹانگیں';
+
+  @override
+  String get gearBarbell => 'باربل';
+
+  @override
+  String get gearDumbbell => 'ڈمبل';
+
+  @override
+  String get gearEzBar => 'EZ بار';
+
+  @override
+  String get gearCable => 'کیبل';
+
+  @override
+  String get gearMachine => 'مشین';
+
+  @override
+  String get gearSmith => 'سمتھ مشین';
+
+  @override
+  String get gearBodyweight => 'جسمانی وزن';
+
+  @override
+  String get gearKettlebell => 'کیٹل بیل';
+
+  @override
+  String get gearBand => 'مزاحمتی بینڈ';
+
+  @override
+  String get gearCardio => 'کارڈیو مشین';
+
+  @override
+  String get gearPlate => 'پلیٹ';
+
+  @override
+  String get gearAbWheel => 'پیٹ کا پہیہ';
+
+  @override
+  String get gearBattleRope => 'بیٹل رسی';
+
+  @override
+  String get gearSled => 'سلیڈ';
+
+  @override
+  String get gearJumpRope => 'رسی';
+
+  @override
+  String get positionFlat => 'ہموار';
+
+  @override
+  String get positionIncline => 'جھکاؤ اوپر';
+
+  @override
+  String get positionDecline => 'جھکاؤ نیچے';
+
+  @override
+  String get positionSeated => 'بیٹھ کر';
+
+  @override
+  String get positionStanding => 'کھڑے ہو کر';
+
+  @override
+  String get positionLying => 'لیٹ کر';
+
+  @override
+  String get positionBent => 'جھک کر';
+
+  @override
+  String get gripClose => 'تنگ گرفت';
+
+  @override
+  String get gripWide => 'چوڑی گرفت';
+
+  @override
+  String get gripOverhand => 'اوپر کی گرفت';
+
+  @override
+  String get gripUnderhand => 'نیچے کی گرفت';
+
+  @override
+  String get gripNeutral => 'غیر جانبدار گرفت';
 }

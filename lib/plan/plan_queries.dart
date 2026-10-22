@@ -31,6 +31,8 @@ class PlanExerciseDraft {
     required this.exerciseName,
     this.germanName = '',
     this.aliases = '',
+    this.englishName = '',
+    this.englishAliases = '',
     this.muscle = '',
     this.category = '',
     this.equipment = '',
@@ -48,6 +50,8 @@ class PlanExerciseDraft {
   final String exerciseName;
   final String germanName;
   final String aliases;
+  final String englishName;
+  final String englishAliases;
   final String muscle;
   final String category;
   final String equipment;
@@ -66,6 +70,8 @@ class PlanExerciseDraft {
         exerciseName: exerciseName,
         germanName: germanName,
         aliases: aliases,
+        englishName: englishName,
+        englishAliases: englishAliases,
         muscle: muscle,
         category: category,
         equipment: equipment,
@@ -91,6 +97,8 @@ List<PlanExerciseDraft> filterPlanExerciseDrafts(
         name: exercise.exerciseName,
         germanName: exercise.germanName,
         aliases: exercise.aliases,
+        englishName: exercise.englishName,
+        englishAliases: exercise.englishAliases,
         muscle: exercise.muscle,
         category: exercise.category,
         equipment: exercise.equipment,
@@ -110,6 +118,8 @@ List<PlanExerciseDraft> filterPlanExerciseDrafts(
       leftName: left.exerciseName,
       leftGermanName: left.germanName,
       leftAliases: left.aliases,
+      leftEnglishName: left.englishName,
+      leftEnglishAliases: left.englishAliases,
       leftCatalog: isCatalogExercise(
         catalogId: left.catalogId,
         catalogSource: left.catalogSource,
@@ -117,6 +127,8 @@ List<PlanExerciseDraft> filterPlanExerciseDrafts(
       rightName: right.exerciseName,
       rightGermanName: right.germanName,
       rightAliases: right.aliases,
+      rightEnglishName: right.englishName,
+      rightEnglishAliases: right.englishAliases,
       rightCatalog: isCatalogExercise(
         catalogId: right.catalogId,
         catalogSource: right.catalogSource,
@@ -275,6 +287,8 @@ Future<List<PlanExerciseDraft>> loadPlanExerciseDrafts(
       db.exercises.name,
       db.exercises.germanName,
       db.exercises.aliases,
+      db.exercises.englishName,
+      db.exercises.englishAliases,
       db.exercises.muscle,
       db.exercises.categoryName,
       db.exercises.equipment,
@@ -331,6 +345,8 @@ Future<List<PlanExerciseDraft>> loadPlanExerciseDrafts(
       exerciseName: row.read(db.exercises.name)!,
       germanName: row.read(db.exercises.germanName) ?? '',
       aliases: row.read(db.exercises.aliases) ?? '',
+      englishName: row.read(db.exercises.englishName) ?? '',
+      englishAliases: row.read(db.exercises.englishAliases) ?? '',
       muscle: row.read(db.exercises.muscle) ?? '',
       category: row.read(db.exercises.categoryName) ?? '',
       equipment: row.read(db.exercises.equipment) ?? '',

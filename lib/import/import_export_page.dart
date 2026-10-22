@@ -458,6 +458,8 @@ class _ImportPreviewPageState extends State<ImportPreviewPage> {
           name: exercise.name,
           germanName: exercise.germanName,
           aliases: exercise.aliases,
+          englishName: exercise.englishName,
+          englishAliases: exercise.englishAliases,
           query: name,
         ))
           exercise,
@@ -469,6 +471,8 @@ class _ImportPreviewPageState extends State<ImportPreviewPage> {
         leftName: left.name,
         leftGermanName: left.germanName,
         leftAliases: left.aliases,
+        leftEnglishName: left.englishName,
+        leftEnglishAliases: left.englishAliases,
         leftCatalog: isCatalogExercise(
           catalogId: left.catalogId,
           catalogSource: left.catalogSource,
@@ -476,6 +480,8 @@ class _ImportPreviewPageState extends State<ImportPreviewPage> {
         rightName: right.name,
         rightGermanName: right.germanName,
         rightAliases: right.aliases,
+        rightEnglishName: right.englishName,
+        rightEnglishAliases: right.englishAliases,
         rightCatalog: isCatalogExercise(
           catalogId: right.catalogId,
           catalogSource: right.catalogSource,

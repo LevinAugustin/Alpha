@@ -12,6 +12,7 @@ class ExerciseTile extends StatefulWidget {
   final PlanExercisesCompanion planExercise;
   final String exerciseName;
   final String germanName;
+  final String englishName;
   final Function(PlanExercisesCompanion) onChange;
 
   const ExerciseTile({
@@ -20,6 +21,7 @@ class ExerciseTile extends StatefulWidget {
     required this.planExercise,
     required this.exerciseName,
     this.germanName = '',
+    this.englishName = '',
   });
 
   @override
@@ -229,6 +231,7 @@ class _ExerciseTileState extends State<ExerciseTile> {
           context,
           widget.exerciseName,
           german: widget.germanName,
+          english: widget.englishName,
         ),
       ),
       subtitle: _rangeSubtitle(context),

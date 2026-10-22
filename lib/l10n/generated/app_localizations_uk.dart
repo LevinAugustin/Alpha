@@ -2480,4 +2480,171 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get sortExercisesHint => 'Тримай ручку і перетягни.';
+
+  @override
+  String get feedbackTitle => 'Відгук';
+
+  @override
+  String get feedbackSettings => 'Надіслати відгук';
+
+  @override
+  String get feedbackCategory => 'Категорія';
+
+  @override
+  String get feedbackBug => 'Помилка';
+
+  @override
+  String get feedbackImprovement => 'Покращення';
+
+  @override
+  String get feedbackTranslation => 'Переклад';
+
+  @override
+  String get feedbackMessageHint => 'Що нам варто знати?';
+
+  @override
+  String get feedbackDictate => 'Диктувати';
+
+  @override
+  String get feedbackAttachAudio => 'Додати запис';
+
+  @override
+  String get feedbackRemoveAudio => 'Видалити запис';
+
+  @override
+  String get feedbackSend => 'Надіслати';
+
+  @override
+  String get feedbackMailUnavailable => 'Немає поштової програми.';
+
+  @override
+  String get feedbackStopRecording => 'Зупинити запис';
+
+  @override
+  String get otherVariant => 'Інший варіант';
+
+  @override
+  String get firstStudioTitle =>
+      'Як називається зал, у якому ти зараз тренуєшся?';
+
+  @override
+  String get renameProfile => 'Перейменувати';
+
+  @override
+  String get deleteProfile => 'Видалити профіль';
+
+  @override
+  String get deleteProfileTitle => 'Видалити цей профіль?';
+
+  @override
+  String deleteProfileBody(String name) {
+    return 'Введи «$name», щоб видалити цей профіль і його дані.';
+  }
+
+  @override
+  String get deleteProfileBlockedActive =>
+      'Активний профіль не можна видалити.';
+
+  @override
+  String get deleteProfileBlockedLast => 'Останній профіль не можна видалити.';
+
+  @override
+  String get profileNameEmpty => 'Ім\'я не може бути порожнім.';
+
+  @override
+  String get profileNameDuplicate => 'Таке ім\'я вже є.';
+
+  @override
+  String get finishBeforeSwitch =>
+      'Заверши або скасуй тренування, перш ніж змінити профіль.';
+
+  @override
+  String get switchFinishWorkout => 'Завершити тренування';
+
+  @override
+  String get switchDiscardWorkout => 'Скасувати тренування';
+
+  @override
+  String get groupLegs => 'Ноги';
+
+  @override
+  String get gearBarbell => 'Штанга';
+
+  @override
+  String get gearDumbbell => 'Гантель';
+
+  @override
+  String get gearEzBar => 'EZ-гриф';
+
+  @override
+  String get gearCable => 'Блок';
+
+  @override
+  String get gearMachine => 'Тренажер';
+
+  @override
+  String get gearSmith => 'Машина Сміта';
+
+  @override
+  String get gearBodyweight => 'Власна вага';
+
+  @override
+  String get gearKettlebell => 'Гиря';
+
+  @override
+  String get gearBand => 'Гума';
+
+  @override
+  String get gearCardio => 'Кардіотренажер';
+
+  @override
+  String get gearPlate => 'Диск';
+
+  @override
+  String get gearAbWheel => 'Ролик для преса';
+
+  @override
+  String get gearBattleRope => 'Канат';
+
+  @override
+  String get gearSled => 'Сани';
+
+  @override
+  String get gearJumpRope => 'Скакалка';
+
+  @override
+  String get positionFlat => 'Горизонтально';
+
+  @override
+  String get positionIncline => 'Похило';
+
+  @override
+  String get positionDecline => 'Негативний нахил';
+
+  @override
+  String get positionSeated => 'Сидячи';
+
+  @override
+  String get positionStanding => 'Стоячи';
+
+  @override
+  String get positionLying => 'Лежачи';
+
+  @override
+  String get positionBent => 'У нахилі';
+
+  @override
+  String get gripClose => 'Вузький хват';
+
+  @override
+  String get gripWide => 'Широкий хват';
+
+  @override
+  String get gripOverhand => 'Хват зверху';
+
+  @override
+  String get gripUnderhand => 'Хват знизу';
+
+  @override
+  String get gripNeutral => 'Нейтральний хват';
 }
