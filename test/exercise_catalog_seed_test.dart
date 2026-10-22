@@ -837,11 +837,11 @@ void main() {
       matching: find.byType(Scrollable),
     );
     for (final gear in const [
-      'Hantelscheibe',
-      'Bauchroller',
-      'Battle Rope',
-      'Schlitten',
-      'Springseil',
+      'Weight plate',
+      'Ab wheel',
+      'Battle rope',
+      'Sled',
+      'Jump rope',
     ]) {
       await tester.scrollUntilVisible(find.text(gear), 200, scrollable: chips);
       expect(find.text(gear), findsOneWidget);

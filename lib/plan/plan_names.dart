@@ -51,7 +51,22 @@ String localizedPlanTitle({
   final date = _weekdayDates[text.toLowerCase()];
   final language = locale.trim();
   if (date != null && language.isNotEmpty) {
-    return DateFormat.EEEE(language).format(date);
+    try {
+      return DateFormat.EEEE(language).format(date);
+    } catch (error) {
+      if (error is! Exception ||
+          error.runtimeType.toString() != 'LocaleDataException') {
+        rethrow;
+      }
+      return text.isEmpty
+          ? planDisplayName(
+              title: title,
+              sequence: sequence,
+              id: id,
+              number: number,
+            )
+          : text;
+    }
   }
   return planDisplayName(
     title: title,
