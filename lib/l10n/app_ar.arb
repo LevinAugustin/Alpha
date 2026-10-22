@@ -2299,5 +2299,16 @@
   "cleanupImportsPreview": "سيُحذف {workouts} تمريناً مستورداً و{templates} قالباً. التمارين المكتوبة يدوياً تبقى.",
   "cleanupImportsEmpty": "لا يوجد ما يُنظف.",
   "cleanupImportsDone": "حُذفت عناصر الاستيراد.",
-  "measurementsImported": "تم استيراد {count} قياسات."
+  "measurementsImported": "تم استيراد {count} قياسات.",
+  "splitSidesToggle": "يسار ويمين",
+  "trainWhereTitle": "أين تتدرب اليوم؟",
+  "startTrainingAction": "ابدأ التمرين",
+  "lastTrainedLabel": "آخر مرة: {when}",
+  "trainedToday": "اليوم",
+  "trainedYesterday": "أمس",
+  "trainedDaysAgo": "قبل {count} أيام",
+  "startWithoutStudio": "ابدأ بدون نادٍ",
+  "noStudiosYet": "لا يوجد نادٍ بعد. أضف واحداً أو ابدأ بدونه.",
+  "sortExercisesTitle": "الترتيب",
+  "sortExercisesHint": "أمسك المقبض واسحب."
 }

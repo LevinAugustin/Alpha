@@ -2451,4 +2451,41 @@ class AppLocalizationsEn extends AppLocalizations {
   String measurementsImported(int count) {
     return '$count measurements imported.';
   }
+
+  @override
+  String get splitSidesToggle => 'Left and right';
+
+  @override
+  String get trainWhereTitle => 'Where are you training today?';
+
+  @override
+  String get startTrainingAction => 'Start workout';
+
+  @override
+  String lastTrainedLabel(String when) {
+    return 'Last: $when';
+  }
+
+  @override
+  String get trainedToday => 'today';
+
+  @override
+  String get trainedYesterday => 'yesterday';
+
+  @override
+  String trainedDaysAgo(int count) {
+    return '$count days ago';
+  }
+
+  @override
+  String get startWithoutStudio => 'Start without a studio';
+
+  @override
+  String get noStudiosYet => 'No studio yet. Add one, or start without.';
+
+  @override
+  String get sortExercisesTitle => 'Order';
+
+  @override
+  String get sortExercisesHint => 'Hold a handle and drag.';
 }

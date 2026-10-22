@@ -1,4 +1,5 @@
 import 'package:drift/drift.dart' hide Column;
+import 'package:flexify/alpha/unilateral_sets.dart';
 import 'package:flexify/database/catalog_seed.dart';
 import 'package:flexify/database/database.dart';
 import 'package:flexify/exercise_labels.dart';
@@ -165,9 +166,15 @@ class _ExerciseDetailPageState extends State<ExerciseDetailPage> {
       final estimate = estimatedOneRepMax(load, reps);
       if (estimate > bestEstimate) bestEstimate = estimate;
       final day = dateOnly(set.timestamp);
+      final volume = unilateralVolume(
+        unilateral: exercise.einseitig,
+        side: set.side,
+        loadKg: load,
+        reps: reps,
+      );
       final metric = switch (_metric) {
         'oneRm' => estimate,
-        'volume' => load * reps,
+        'volume' => volume,
         _ => load,
       };
       if (_metric == 'volume' && exercise.einseitig) {
@@ -252,20 +259,23 @@ class _ExerciseDetailPageState extends State<ExerciseDetailPage> {
   }
 
   Widget _history(BuildContext context, List<ExerciseSet> sets) {
-    if (sets.isEmpty) return Center(child: Text(context.l10n.noHistory));
+    final lines = groupSideSets(sets);
+    if (lines.isEmpty) return Center(child: Text(context.l10n.noHistory));
     return ListView.builder(
-      itemCount: sets.length,
+      itemCount: lines.length,
       itemBuilder: (context, index) {
-        final set = sets[index];
-        final warmup =
-            (set.notes ?? '').contains('[warmup') ||
-            (set.notes ?? '').contains('warmup]');
+        final line = lines[index];
+        final reps = line.repsText(
+          (value) => _num(value ?? 0),
+          leftName: context.l10n.sideLeft,
+          rightName: context.l10n.sideRight,
+        );
         return ListTile(
           title: Text(
-            '${warmup ? '${context.l10n.warmupMark} ' : ''}${_num(set.loadKg ?? 0)} kg × ${_num(set.reps ?? 0)}${_sideLabel(context, set.side)}',
+            '${line.warmup ? '${context.l10n.warmupMark} ' : ''}${_num(line.kg)} kg × $reps',
           ),
           subtitle: Text(
-            MaterialLocalizations.of(context).formatShortDate(set.timestamp),
+            MaterialLocalizations.of(context).formatShortDate(line.time),
           ),
         );
       },
@@ -325,14 +335,6 @@ class _ExerciseDetailPageState extends State<ExerciseDetailPage> {
     final category = (row.categoryName ?? '').trim();
     if (category.isEmpty) return title;
     return '$title · $category';
-  }
-
-  String _sideLabel(BuildContext context, String? side) {
-    return switch (side) {
-      'links' => ' · ${context.l10n.sideLeft}',
-      'rechts' => ' · ${context.l10n.sideRight}',
-      _ => '',
-    };
   }
 
   Widget _family(BuildContext context, Exercise exercise) {

@@ -6,15 +6,23 @@ import 'package:flutter/foundation.dart';
 import 'package:path/path.dart' as p;
 
 class GymPlace {
-  GymPlace({required this.id, required this.name});
+  GymPlace({required this.id, required this.name, this.lastUsedAt});
 
   final String id;
   String name;
+  DateTime? lastUsedAt;
 
-  Map<String, String> toJson() => {'id': id, 'name': name};
+  Map<String, String> toJson() => {
+    'id': id,
+    'name': name,
+    if (lastUsedAt != null) 'lastUsedAt': lastUsedAt!.toIso8601String(),
+  };
 
-  factory GymPlace.fromJson(Map<String, dynamic> json) =>
-      GymPlace(id: json['id'] as String, name: json['name'] as String);
+  factory GymPlace.fromJson(Map<String, dynamic> json) => GymPlace(
+    id: json['id'] as String,
+    name: json['name'] as String,
+    lastUsedAt: DateTime.tryParse(json['lastUsedAt'] as String? ?? ''),
+  );
 }
 
 class AlphaPrefs extends ChangeNotifier {

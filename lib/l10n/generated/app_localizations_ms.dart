@@ -2428,4 +2428,41 @@ class AppLocalizationsMs extends AppLocalizations {
   String measurementsImported(int count) {
     return '$count ukuran diimport.';
   }
+
+  @override
+  String get splitSidesToggle => 'Kiri dan kanan';
+
+  @override
+  String get trainWhereTitle => 'Di mana anda berlatih hari ini?';
+
+  @override
+  String get startTrainingAction => 'Mula senaman';
+
+  @override
+  String lastTrainedLabel(String when) {
+    return 'Terakhir: $when';
+  }
+
+  @override
+  String get trainedToday => 'hari ini';
+
+  @override
+  String get trainedYesterday => 'semalam';
+
+  @override
+  String trainedDaysAgo(int count) {
+    return '$count hari lalu';
+  }
+
+  @override
+  String get startWithoutStudio => 'Mula tanpa gim';
+
+  @override
+  String get noStudiosYet => 'Belum ada gim. Tambah atau mula tanpa gim.';
+
+  @override
+  String get sortExercisesTitle => 'Susunan';
+
+  @override
+  String get sortExercisesHint => 'Pegang pemegang dan seret.';
 }

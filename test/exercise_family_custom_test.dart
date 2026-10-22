@@ -231,6 +231,8 @@ void main() {
       surfaceSize: const Size(390, 844),
     );
     await tester.pump(const Duration(milliseconds: 400));
+    await tester.tap(find.byKey(Key('split-sides-${custom.id}')));
+    await tester.pump();
     await tester.enterText(find.byKey(Key('set-kg-${custom.id}-0')), '16');
     await tester.enterText(find.byKey(Key('set-reps-${custom.id}-0')), '12');
     await tester.enterText(

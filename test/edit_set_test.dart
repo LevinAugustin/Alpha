@@ -203,6 +203,27 @@ void main() {
     );
   });
 
+  testWidgets('EditExerciseSet deletes without a confirmation dialog', (
+    tester,
+  ) async {
+    final harness = await FlexifyTestHarness.create();
+    final saved = await insertExerciseSetFixture(
+      harness.database,
+      'Bench press',
+      reps: 8,
+      weight: 40,
+    );
+
+    await harness.pump(tester, EditSetPage(exerciseSet: saved));
+    await tester.pumpAndSettle();
+    await tester.tap(find.byTooltip('Delete set'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Confirm Delete'), findsNothing);
+    expect(find.byType(EditSetPage), findsNothing);
+    expect(await harness.database.exerciseSets.select().get(), isEmpty);
+  });
+
   testWidgets(
     'EditExerciseSet resizes for the keyboard so notes remain reachable',
     (WidgetTester tester) async {

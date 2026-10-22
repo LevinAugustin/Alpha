@@ -199,40 +199,15 @@ class _EditSetPageState extends State<EditSetPage> {
     return IconButton(
       tooltip: context.l10n.deleteSet,
       icon: const Icon(Icons.delete),
-      onPressed: () => showDeleteDialog(),
+      onPressed: _deleteSet,
     );
   }
 
-  Future<void> showDeleteDialog() async {
-    await showDialog(
-      context: context,
-      builder: (BuildContext dialogContext) {
-        return AlertDialog(
-          title: Text(context.l10n.confirmDelete),
-          content: Text(
-            context.l10n.deleteSetConfirmation(widget.exerciseSet.name),
-          ),
-          actions: [
-            TextButton.icon(
-              label: Text(context.l10n.actionCancel),
-              icon: const Icon(Icons.close),
-              onPressed: () => Navigator.pop(dialogContext),
-            ),
-            TextButton.icon(
-              label: Text(context.l10n.actionDelete),
-              icon: const Icon(Icons.delete),
-              onPressed: () async {
-                Navigator.pop(dialogContext);
-                await deleteExerciseSets(db, [widget.exerciseSet.id]);
-                if (!mounted) return;
-                _allowPop = true;
-                Navigator.pop(context);
-              },
-            ),
-          ],
-        );
-      },
-    );
+  Future<void> _deleteSet() async {
+    await deleteExerciseSets(db, [widget.exerciseSet.id]);
+    if (!mounted) return;
+    _allowPop = true;
+    Navigator.pop(context);
   }
 
   Widget buildBody(bool showBodyWeight) {

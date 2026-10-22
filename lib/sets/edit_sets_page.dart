@@ -100,39 +100,14 @@ class _EditSetsPageState extends State<EditSetsPage> {
           title: Text(l10n.editSets(widget.ids.length)),
           actions: [
             IconButton(
+              tooltip: l10n.deleteSet,
               icon: const Icon(Icons.delete),
               onPressed: () async {
-                await showDialog(
-                  context: context,
-                  builder: (BuildContext dialogContext) {
-                    return AlertDialog(
-                      title: Text(l10n.confirmDelete),
-                      content: Text(
-                        l10n.deleteEntriesConfirmation(widget.ids.length),
-                      ),
-                      actions: <Widget>[
-                        TextButton.icon(
-                          label: Text(l10n.actionCancel),
-                          icon: const Icon(Icons.close),
-                          onPressed: () {
-                            Navigator.pop(dialogContext);
-                          },
-                        ),
-                        TextButton.icon(
-                          label: Text(l10n.actionDelete),
-                          icon: const Icon(Icons.delete),
-                          onPressed: () async {
-                            Navigator.pop(dialogContext);
-                            await deleteExerciseSets(db, widget.ids);
-                            if (!context.mounted) return;
-                            _allowPop = true;
-                            Navigator.pop(context);
-                          },
-                        ),
-                      ],
-                    );
-                  },
-                );
+                final navigator = Navigator.of(context);
+                await deleteExerciseSets(db, widget.ids);
+                if (!mounted) return;
+                _allowPop = true;
+                navigator.pop();
               },
             ),
           ],

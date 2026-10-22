@@ -755,5 +755,16 @@
   "cleanupImportsPreview": "{workouts} geïmporteerde trainingen en {templates} sjablonen worden verwijderd. Zelf ingevoerde trainingen blijven.",
   "cleanupImportsEmpty": "Niets om op te ruimen.",
   "cleanupImportsDone": "Importregels verwijderd.",
-  "measurementsImported": "{count} metingen geïmporteerd."
+  "measurementsImported": "{count} metingen geïmporteerd.",
+  "splitSidesToggle": "Links en rechts",
+  "trainWhereTitle": "Waar train je vandaag?",
+  "startTrainingAction": "Training starten",
+  "lastTrainedLabel": "Laatst: {when}",
+  "trainedToday": "vandaag",
+  "trainedYesterday": "gisteren",
+  "trainedDaysAgo": "{count} dagen geleden",
+  "startWithoutStudio": "Start zonder sportschool",
+  "noStudiosYet": "Nog geen sportschool. Voeg er een toe of start zonder.",
+  "sortExercisesTitle": "Volgorde",
+  "sortExercisesHint": "Houd de greep vast en sleep."
 }

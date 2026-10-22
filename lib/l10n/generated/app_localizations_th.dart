@@ -2401,4 +2401,41 @@ class AppLocalizationsTh extends AppLocalizations {
   String measurementsImported(int count) {
     return 'นำเข้าการวัด $count รายการแล้ว';
   }
+
+  @override
+  String get splitSidesToggle => 'ซ้ายและขวา';
+
+  @override
+  String get trainWhereTitle => 'วันนี้ซ้อมที่ไหน?';
+
+  @override
+  String get startTrainingAction => 'เริ่มออกกำลังกาย';
+
+  @override
+  String lastTrainedLabel(String when) {
+    return 'ล่าสุด: $when';
+  }
+
+  @override
+  String get trainedToday => 'วันนี้';
+
+  @override
+  String get trainedYesterday => 'เมื่อวาน';
+
+  @override
+  String trainedDaysAgo(int count) {
+    return '$count วันที่แล้ว';
+  }
+
+  @override
+  String get startWithoutStudio => 'เริ่มโดยไม่เลือกยิม';
+
+  @override
+  String get noStudiosYet => 'ยังไม่มียิม เพิ่มหรือเริ่มโดยไม่เลือก';
+
+  @override
+  String get sortExercisesTitle => 'ลำดับ';
+
+  @override
+  String get sortExercisesHint => 'กดที่มือจับแล้วลาก';
 }

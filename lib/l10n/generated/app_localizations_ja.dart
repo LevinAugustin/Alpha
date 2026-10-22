@@ -2356,4 +2356,41 @@ class AppLocalizationsJa extends AppLocalizations {
   String measurementsImported(int count) {
     return '$count 件の測定を取り込みました。';
   }
+
+  @override
+  String get splitSidesToggle => '左右別々';
+
+  @override
+  String get trainWhereTitle => '今日はどこでトレーニングしますか？';
+
+  @override
+  String get startTrainingAction => 'トレーニング開始';
+
+  @override
+  String lastTrainedLabel(String when) {
+    return '前回: $when';
+  }
+
+  @override
+  String get trainedToday => '今日';
+
+  @override
+  String get trainedYesterday => '昨日';
+
+  @override
+  String trainedDaysAgo(int count) {
+    return '$count日前';
+  }
+
+  @override
+  String get startWithoutStudio => 'ジムなしで開始';
+
+  @override
+  String get noStudiosYet => 'ジムがまだありません。追加するか、なしで開始します。';
+
+  @override
+  String get sortExercisesTitle => '順番';
+
+  @override
+  String get sortExercisesHint => '持ち手を押さえてドラッグ。';
 }

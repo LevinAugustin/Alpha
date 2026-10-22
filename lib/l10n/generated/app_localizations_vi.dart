@@ -2424,4 +2424,42 @@ class AppLocalizationsVi extends AppLocalizations {
   String measurementsImported(int count) {
     return 'Đã nhập $count số đo.';
   }
+
+  @override
+  String get splitSidesToggle => 'Trái và phải';
+
+  @override
+  String get trainWhereTitle => 'Hôm nay bạn tập ở đâu?';
+
+  @override
+  String get startTrainingAction => 'Bắt đầu buổi tập';
+
+  @override
+  String lastTrainedLabel(String when) {
+    return 'Lần trước: $when';
+  }
+
+  @override
+  String get trainedToday => 'hôm nay';
+
+  @override
+  String get trainedYesterday => 'hôm qua';
+
+  @override
+  String trainedDaysAgo(int count) {
+    return '$count ngày trước';
+  }
+
+  @override
+  String get startWithoutStudio => 'Bắt đầu không cần phòng tập';
+
+  @override
+  String get noStudiosYet =>
+      'Chưa có phòng tập. Thêm một phòng hoặc bắt đầu không cần.';
+
+  @override
+  String get sortExercisesTitle => 'Thứ tự';
+
+  @override
+  String get sortExercisesHint => 'Giữ tay cầm và kéo.';
 }

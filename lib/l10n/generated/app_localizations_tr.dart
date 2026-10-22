@@ -2435,4 +2435,41 @@ class AppLocalizationsTr extends AppLocalizations {
   String measurementsImported(int count) {
     return '$count ölçüm içe aktarıldı.';
   }
+
+  @override
+  String get splitSidesToggle => 'Sol ve sağ';
+
+  @override
+  String get trainWhereTitle => 'Bugün nerede antrenman yapıyorsun?';
+
+  @override
+  String get startTrainingAction => 'Antrenmanı başlat';
+
+  @override
+  String lastTrainedLabel(String when) {
+    return 'Son: $when';
+  }
+
+  @override
+  String get trainedToday => 'bugün';
+
+  @override
+  String get trainedYesterday => 'dün';
+
+  @override
+  String trainedDaysAgo(int count) {
+    return '$count gün önce';
+  }
+
+  @override
+  String get startWithoutStudio => 'Salon olmadan başla';
+
+  @override
+  String get noStudiosYet => 'Henüz salon yok. Ekle veya salonsuz başla.';
+
+  @override
+  String get sortExercisesTitle => 'Sıra';
+
+  @override
+  String get sortExercisesHint => 'Tutamacı basılı tut ve sürükle.';
 }

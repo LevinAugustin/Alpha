@@ -2442,4 +2442,41 @@ class AppLocalizationsEs extends AppLocalizations {
   String measurementsImported(int count) {
     return '$count mediciones importadas.';
   }
+
+  @override
+  String get splitSidesToggle => 'Izquierda y derecha';
+
+  @override
+  String get trainWhereTitle => '¿Dónde entrenas hoy?';
+
+  @override
+  String get startTrainingAction => 'Empezar entrenamiento';
+
+  @override
+  String lastTrainedLabel(String when) {
+    return 'Última vez: $when';
+  }
+
+  @override
+  String get trainedToday => 'hoy';
+
+  @override
+  String get trainedYesterday => 'ayer';
+
+  @override
+  String trainedDaysAgo(int count) {
+    return 'hace $count días';
+  }
+
+  @override
+  String get startWithoutStudio => 'Empezar sin gimnasio';
+
+  @override
+  String get noStudiosYet => 'Aún no hay gimnasio. Añade uno o empieza sin él.';
+
+  @override
+  String get sortExercisesTitle => 'Orden';
+
+  @override
+  String get sortExercisesHint => 'Mantén el asa y arrastra.';
 }

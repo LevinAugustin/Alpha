@@ -755,5 +755,16 @@
   "cleanupImportsPreview": "{workouts} içe aktarılan antrenman ve {templates} şablon silinecek. Elle girilen antrenmanlar kalır.",
   "cleanupImportsEmpty": "Temizlenecek bir şey yok.",
   "cleanupImportsDone": "İçe aktarılan kayıtlar silindi.",
-  "measurementsImported": "{count} ölçüm içe aktarıldı."
+  "measurementsImported": "{count} ölçüm içe aktarıldı.",
+  "splitSidesToggle": "Sol ve sağ",
+  "trainWhereTitle": "Bugün nerede antrenman yapıyorsun?",
+  "startTrainingAction": "Antrenmanı başlat",
+  "lastTrainedLabel": "Son: {when}",
+  "trainedToday": "bugün",
+  "trainedYesterday": "dün",
+  "trainedDaysAgo": "{count} gün önce",
+  "startWithoutStudio": "Salon olmadan başla",
+  "noStudiosYet": "Henüz salon yok. Ekle veya salonsuz başla.",
+  "sortExercisesTitle": "Sıra",
+  "sortExercisesHint": "Tutamacı basılı tut ve sürükle."
 }

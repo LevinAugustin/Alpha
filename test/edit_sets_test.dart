@@ -139,4 +139,27 @@ void main() {
         .toList();
     expect(exerciseSets.length, equals(3));
   });
+
+  testWidgets('EditSetsPage deletes without a confirmation dialog', (
+    tester,
+  ) async {
+    final harness = await FlexifyTestHarness.create();
+    final ids = [
+      (await insertExerciseSetFixture(
+        harness.database,
+        'Bench press',
+        reps: 2,
+        weight: 90,
+      )).id,
+    ];
+
+    await harness.pump(tester, EditSetsPage(ids: ids));
+    await tester.pumpAndSettle();
+    await tester.tap(find.byTooltip('Delete set'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Confirm Delete'), findsNothing);
+    expect(find.byType(EditSetsPage), findsNothing);
+    expect(await harness.database.exerciseSets.select().get(), isEmpty);
+  });
 }

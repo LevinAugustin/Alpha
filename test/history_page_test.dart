@@ -282,6 +282,11 @@ void main() {
 
     expect(find.text('Edit'), findsOneWidget);
     expect(find.text('Delete'), findsOneWidget);
+    await tester.tap(find.text('Delete'));
+    await tester.pumpAndSettle();
+    expect(find.text('Confirm Delete'), findsNothing);
+    expect(find.text('5 x 90 kg'), findsNothing);
+    expect(await harness.database.exerciseSets.select().get(), isEmpty);
   });
 
   testWidgets('Grouped history preserves desktop row actions', (
@@ -316,6 +321,11 @@ void main() {
 
     expect(find.text('Edit'), findsOneWidget);
     expect(find.text('Delete'), findsOneWidget);
+    await tester.tap(find.text('Delete'));
+    await tester.pumpAndSettle();
+    expect(find.text('Confirm Delete'), findsNothing);
+    expect(find.text('5 x 90 kg'), findsNothing);
+    expect(await harness.database.exerciseSets.select().get(), isEmpty);
   });
 
   testWidgets('HistoryPage selects', (WidgetTester tester) async {

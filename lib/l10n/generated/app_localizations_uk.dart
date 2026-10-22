@@ -2443,4 +2443,41 @@ class AppLocalizationsUk extends AppLocalizations {
   String measurementsImported(int count) {
     return '$count вимірювань імпортовано.';
   }
+
+  @override
+  String get splitSidesToggle => 'Ліва і права';
+
+  @override
+  String get trainWhereTitle => 'Де ти тренуєшся сьогодні?';
+
+  @override
+  String get startTrainingAction => 'Почати тренування';
+
+  @override
+  String lastTrainedLabel(String when) {
+    return 'Востаннє: $when';
+  }
+
+  @override
+  String get trainedToday => 'сьогодні';
+
+  @override
+  String get trainedYesterday => 'вчора';
+
+  @override
+  String trainedDaysAgo(int count) {
+    return '$count дн. тому';
+  }
+
+  @override
+  String get startWithoutStudio => 'Почати без залу';
+
+  @override
+  String get noStudiosYet => 'Залів ще немає. Додай або почни без залу.';
+
+  @override
+  String get sortExercisesTitle => 'Порядок';
+
+  @override
+  String get sortExercisesHint => 'Тримай ручку і перетягни.';
 }

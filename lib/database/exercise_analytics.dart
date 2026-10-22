@@ -1,6 +1,7 @@
 import 'dart:math' as math;
 
 import 'package:drift/drift.dart';
+import 'package:flexify/alpha/unilateral_sets.dart';
 import 'package:flexify/constants.dart';
 import 'package:flexify/database/body_weight_repository.dart';
 import 'package:flexify/database/database.dart';
@@ -244,6 +245,7 @@ StrengthData _strengthBucket(
   required StrengthMetric metric,
   required String target,
   String? category,
+  Set<String> unilateralNames = const {},
 }) {
   late final ExerciseSetView representative;
   late final double value;
@@ -268,7 +270,14 @@ StrengthData _strengthBucket(
       representative = _latest(sets);
       final volume = sets.fold<double>(
         0,
-        (sum, set) => sum + _loadInUnit(set, target) * set.reps,
+        (sum, set) =>
+            sum +
+            unilateralVolume(
+              unilateral: unilateralNames.contains(set.name),
+              side: set.side,
+              loadKg: _loadInUnit(set, target),
+              reps: set.reps,
+            ),
       );
       value = double.parse(volume.toStringAsFixed(2));
       break;
@@ -343,6 +352,7 @@ Future<List<StrengthData>> getStrengthData({
     endDate: end,
     order: OrderingMode.asc,
   );
+  final unilateralNames = await _unilateralNames();
   final groups = _groupSets(sets.where((set) => !set.cardio), period, limit);
   return [
     for (final group in groups)
@@ -351,6 +361,7 @@ Future<List<StrengthData>> getStrengthData({
         metric: metric,
         target: target,
         category: group.first.category,
+        unilateralNames: unilateralNames,
       ),
   ];
 }
@@ -485,6 +496,7 @@ Future<List<StrengthData>> getGlobalData({
     group.sort((a, b) => a.created.compareTo(b.created));
   }
   groups.sort((a, b) => b.last.created.compareTo(a.last.created));
+  final unilateralNames = await _unilateralNames();
 
   return groups.reversed
       .map(
@@ -493,9 +505,17 @@ Future<List<StrengthData>> getGlobalData({
           metric: metric,
           target: target,
           category: group.first.category,
+          unilateralNames: unilateralNames,
         ),
       )
       .toList();
+}
+
+Future<Set<String>> _unilateralNames() async {
+  final rows = await (db.select(
+    db.exercises,
+  )..where((row) => row.einseitig.equals(true))).get();
+  return {for (final row in rows) row.name};
 }
 
 Stream<List<GraphExerciseSummary>> watchGraphs() {

@@ -2418,4 +2418,41 @@ class AppLocalizationsFa extends AppLocalizations {
   String measurementsImported(int count) {
     return '$count اندازه‌گیری وارد شد.';
   }
+
+  @override
+  String get splitSidesToggle => 'چپ و راست';
+
+  @override
+  String get trainWhereTitle => 'امروز کجا تمرین می‌کنی؟';
+
+  @override
+  String get startTrainingAction => 'شروع تمرین';
+
+  @override
+  String lastTrainedLabel(String when) {
+    return 'آخرین بار: $when';
+  }
+
+  @override
+  String get trainedToday => 'امروز';
+
+  @override
+  String get trainedYesterday => 'دیروز';
+
+  @override
+  String trainedDaysAgo(int count) {
+    return '$count روز پیش';
+  }
+
+  @override
+  String get startWithoutStudio => 'شروع بدون باشگاه';
+
+  @override
+  String get noStudiosYet => 'هنوز باشگاهی نیست. یکی بساز یا بدون آن شروع کن.';
+
+  @override
+  String get sortExercisesTitle => 'ترتیب';
+
+  @override
+  String get sortExercisesHint => 'دسته را نگه دار و بکش.';
 }

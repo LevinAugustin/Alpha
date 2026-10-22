@@ -2358,4 +2358,41 @@ class AppLocalizationsKo extends AppLocalizations {
   String measurementsImported(int count) {
     return '$count개의 측정을 가져왔습니다.';
   }
+
+  @override
+  String get splitSidesToggle => '왼쪽/오른쪽';
+
+  @override
+  String get trainWhereTitle => '오늘은 어디서 운동하나요?';
+
+  @override
+  String get startTrainingAction => '운동 시작';
+
+  @override
+  String lastTrainedLabel(String when) {
+    return '마지막: $when';
+  }
+
+  @override
+  String get trainedToday => '오늘';
+
+  @override
+  String get trainedYesterday => '어제';
+
+  @override
+  String trainedDaysAgo(int count) {
+    return '$count일 전';
+  }
+
+  @override
+  String get startWithoutStudio => '체육관 없이 시작';
+
+  @override
+  String get noStudiosYet => '체육관이 없습니다. 추가하거나 없이 시작하세요.';
+
+  @override
+  String get sortExercisesTitle => '순서';
+
+  @override
+  String get sortExercisesHint => '손잡이를 잡고 드래그하세요.';
 }

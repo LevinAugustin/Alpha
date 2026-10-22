@@ -2299,5 +2299,16 @@
   "cleanupImportsPreview": "{workouts} تمرین واردشده و {templates} قالب حذف می‌شوند. تمرین‌های دستی می‌مانند.",
   "cleanupImportsEmpty": "چیزی برای پاک‌سازی نیست.",
   "cleanupImportsDone": "موارد واردشده حذف شدند.",
-  "measurementsImported": "{count} اندازه‌گیری وارد شد."
+  "measurementsImported": "{count} اندازه‌گیری وارد شد.",
+  "splitSidesToggle": "چپ و راست",
+  "trainWhereTitle": "امروز کجا تمرین می‌کنی؟",
+  "startTrainingAction": "شروع تمرین",
+  "lastTrainedLabel": "آخرین بار: {when}",
+  "trainedToday": "امروز",
+  "trainedYesterday": "دیروز",
+  "trainedDaysAgo": "{count} روز پیش",
+  "startWithoutStudio": "شروع بدون باشگاه",
+  "noStudiosYet": "هنوز باشگاهی نیست. یکی بساز یا بدون آن شروع کن.",
+  "sortExercisesTitle": "ترتیب",
+  "sortExercisesHint": "دسته را نگه دار و بکش."
 }

@@ -755,5 +755,16 @@
   "cleanupImportsPreview": "{workouts} zaimportowanych treningów i {templates} szablonów zostanie usuniętych. Treningi wpisane ręcznie zostają.",
   "cleanupImportsEmpty": "Nie ma czego sprzątać.",
   "cleanupImportsDone": "Wpisy z importu usunięte.",
-  "measurementsImported": "{count} pomiarów zaimportowano."
+  "measurementsImported": "{count} pomiarów zaimportowano.",
+  "splitSidesToggle": "Lewa i prawa",
+  "trainWhereTitle": "Gdzie dziś ćwiczysz?",
+  "startTrainingAction": "Zacznij trening",
+  "lastTrainedLabel": "Ostatnio: {when}",
+  "trainedToday": "dziś",
+  "trainedYesterday": "wczoraj",
+  "trainedDaysAgo": "{count} dni temu",
+  "startWithoutStudio": "Zacznij bez siłowni",
+  "noStudiosYet": "Nie ma jeszcze siłowni. Dodaj albo zacznij bez.",
+  "sortExercisesTitle": "Kolejność",
+  "sortExercisesHint": "Przytrzymaj uchwyt i przeciągnij."
 }
