@@ -1,5 +1,14 @@
 const feedbackAddress = 'alpha-feedback@mail.grokbot.com';
 
+String feedbackBuildLabel(String build) {
+  final trimmed = build.trim();
+  final code = int.tryParse(trimmed);
+  if (code == null || code < 100) return trimmed;
+  final abi = code % 100;
+  if (abi < 1 || abi > 3) return trimmed;
+  return '${code ~/ 100}';
+}
+
 enum FeedbackCategory { bug, improvement, translation }
 
 class FeedbackDraft {

@@ -54,7 +54,7 @@ class _FeedbackPageState extends State<FeedbackPage> {
     try {
       final info = await PackageInfo.fromPlatform();
       _version = info.version;
-      _build = info.buildNumber;
+      _build = feedbackBuildLabel(info.buildNumber);
     } catch (_) {}
     if (!Platform.isAndroid) {
       if (mounted) setState(() {});

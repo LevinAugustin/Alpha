@@ -108,6 +108,21 @@ class _AlphaSettingsPageState extends State<AlphaSettingsPage> {
     return haystack.toLowerCase().contains(query);
   }
 
+  String? _languageCode(String? stored) {
+    return switch ((stored ?? '').trim()) {
+      'de' => 'de',
+      'en' => 'en',
+      _ => null,
+    };
+  }
+
+  Future<void> _setLanguage(String? code) async {
+    if (code != 'de' && code != 'en') return;
+    await db.settings.update().write(
+      SettingsCompanion(localeOverride: Value(code)),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
@@ -123,6 +138,7 @@ class _AlphaSettingsPageState extends State<AlphaSettingsPage> {
             padding: const EdgeInsets.fromLTRB(16, 8, 16, 24),
             children: [
               TextField(
+                key: const Key('settings-search'),
                 controller: _search,
                 decoration: InputDecoration(
                   prefixIcon: const Icon(Icons.search),
@@ -130,6 +146,37 @@ class _AlphaSettingsPageState extends State<AlphaSettingsPage> {
                 ),
                 onChanged: (_) => setState(() {}),
               ),
+              if (_hit(
+                'Sprache Language Deutsch English ${l10n.settingsLanguage} ${l10n.settingsLanguageDescription} ${l10n.languageNameGerman} ${l10n.languageNameEnglish}',
+              )) ...[
+                const SizedBox(height: 16),
+                Text(
+                  l10n.settingsLanguage,
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
+                RadioGroup<String>(
+                  groupValue: _languageCode(settings.localeOverride),
+                  onChanged: (value) {
+                    _setLanguage(value);
+                  },
+                  child: Column(
+                    children: [
+                      RadioListTile<String>(
+                        key: const Key('settings-language-de'),
+                        contentPadding: EdgeInsets.zero,
+                        title: Text(l10n.languageNameGerman),
+                        value: 'de',
+                      ),
+                      RadioListTile<String>(
+                        key: const Key('settings-language-en'),
+                        contentPadding: EdgeInsets.zero,
+                        title: Text(l10n.languageNameEnglish),
+                        value: 'en',
+                      ),
+                    ],
+                  ),
+                ),
+              ],
               if (_hit(l10n.localProfiles)) ...[
                 const SizedBox(height: 16),
                 Text(
@@ -823,12 +870,7 @@ class _ProfileRow extends StatelessWidget {
         ListTile(
           contentPadding: EdgeInsets.zero,
           title: Text(profile.name),
-          subtitle: Text(
-            [
-              if (active) l10n.profileActive,
-              ?hint,
-            ].join(' · '),
-          ),
+          subtitle: Text([if (active) l10n.profileActive, ?hint].join(' · ')),
         ),
         Wrap(
           spacing: 4,

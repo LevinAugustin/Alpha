@@ -1,16 +1,22 @@
 import 'dart:convert';
+import 'dart:io';
 
-import 'package:drift/drift.dart' hide isNull, isNotNull;
+import 'package:drift/drift.dart' hide isNull, isNotNull, Column;
 import 'package:flexify/database/database.dart';
+import 'package:flexify/exercise_labels.dart';
 import 'package:flexify/exercises/exercise_detail_page.dart';
 import 'package:flexify/exercises/exercise_image.dart';
 import 'package:flexify/exercises/exercise_variants.dart';
 import 'package:flexify/feedback/feedback_mail.dart';
 import 'package:flexify/feedback/feedback_page.dart';
+import 'package:flexify/l10n/generated/app_localizations.dart';
+import 'package:flexify/l10n/locale_preferences.dart';
+import 'package:flexify/settings/alpha_settings_page.dart';
 import 'package:flexify/shell/language_choice_page.dart';
 import 'package:flexify/theme/alpha_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:provider/provider.dart';
 
 import 'support/test_app.dart';
 
@@ -45,6 +51,7 @@ void main() {
     );
     expect(feedbackAddress, 'alpha-feedback@mail.grokbot.com');
     expect(draft.subject, '[Alpha-Feedback] Fehler 2.6.0+458');
+    expect(draft.subject, isNot(contains('45803')));
     expect(draft.body, contains('App-Version: 2.6.0+458'));
     expect(draft.body, contains('Sprache: de'));
     expect(
@@ -226,4 +233,149 @@ void main() {
     expect(sent!.body, contains('Bitte prüfen'));
     expect(sent!.attachmentPath, isNull);
   });
+
+  test('feedback subject uses the pubspec build, not the versionCode', () {
+    expect(feedbackBuildLabel('45803'), '458');
+    expect(feedbackBuildLabel('45801'), '458');
+    expect(feedbackBuildLabel('45802'), '458');
+    expect(feedbackBuildLabel('458'), '458');
+    final draft = FeedbackDraft(
+      category: FeedbackCategory.bug,
+      categoryLabel: 'Fehler',
+      message: 'Der Clip fehlt.',
+      version: '2.6.0',
+      build: feedbackBuildLabel('45803'),
+      language: 'de',
+      manufacturer: 'Google',
+      model: 'Pixel',
+      androidVersion: '14',
+      german: true,
+    );
+    expect(draft.subject, '[Alpha-Feedback] Fehler 2.6.0+458');
+    expect(draft.body, contains('App-Version: 2.6.0+458'));
+    expect(draft.subject, isNot(contains('45803')));
+  });
+
+  testWidgets('settings search finds Sprache and Language and applies it', (
+    tester,
+  ) async {
+    final harness = await FlexifyTestHarness.create();
+    addTearDown(harness.database.close);
+    final otherDir = Directory.systemTemp.createTempSync('alpha-language-');
+    final other = AppDatabase.forPath('${otherDir.path}/other.sqlite');
+    addTearDown(other.close);
+    addTearDown(() => otherDir.deleteSync(recursive: true));
+    await tester.binding.setSurfaceSize(const Size(400, 900));
+    addTearDown(() => tester.binding.setSurfaceSize(null));
+
+    final setting = await (harness.database.settings.select()..limit(1))
+        .getSingle();
+    expect(setting.localeOverride, 'de');
+
+    await tester.pumpWidget(
+      MultiProvider(
+        providers: [
+          StreamProvider<Setting>(
+            initialData: setting,
+            create: (_) => harness.database.watchSettings(),
+          ),
+          ChangeNotifierProvider.value(value: harness.timerState),
+        ],
+        child: const _LanguageSettingsHost(),
+      ),
+    );
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 300));
+
+    expect(find.text('Latziehen'), findsOneWidget);
+    expect(find.text('Langsam ziehen.'), findsOneWidget);
+    expect(find.byKey(const Key('settings-language-de')), findsOneWidget);
+
+    await tester.enterText(
+      find.byKey(const Key('settings-search')),
+      'Language',
+    );
+    await tester.pump();
+    expect(find.byKey(const Key('settings-language-en')), findsOneWidget);
+    expect(find.byKey(const Key('settings-feedback')), findsNothing);
+
+    await tester.enterText(find.byKey(const Key('settings-search')), 'zzz');
+    await tester.pump();
+    expect(find.byKey(const Key('settings-language-de')), findsNothing);
+
+    await tester.enterText(find.byKey(const Key('settings-search')), 'Sprache');
+    await tester.pump();
+    await tester.tap(find.byKey(const Key('settings-language-en')));
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 300));
+
+    expect(find.text('Lat Pulldown'), findsOneWidget);
+    expect(find.text('Pull slowly.'), findsOneWidget);
+    expect(find.text('Latziehen'), findsNothing);
+    expect(find.text('Langsam ziehen.'), findsNothing);
+    final active = await (harness.database.settings.select()..limit(1))
+        .getSingle();
+    expect(active.localeOverride, 'en');
+    final untouched = await (other.settings.select()..limit(1)).getSingle();
+    expect(untouched.localeOverride, 'de');
+
+    await tester.enterText(find.byKey(const Key('settings-search')), '');
+    await tester.pump();
+    await tester.tap(find.byKey(const Key('settings-language-de')));
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 300));
+    expect(find.text('Latziehen'), findsOneWidget);
+    expect(find.text('Langsam ziehen.'), findsOneWidget);
+    final restored = await (harness.database.settings.select()..limit(1))
+        .getSingle();
+    expect(restored.localeOverride, 'de');
+    final stillUntouched = await (other.settings.select()..limit(1))
+        .getSingle();
+    expect(stillUntouched.localeOverride, 'de');
+  });
+}
+
+class _LanguageSettingsHost extends StatelessWidget {
+  const _LanguageSettingsHost();
+
+  @override
+  Widget build(BuildContext context) {
+    final override = context.select<Setting, String?>(
+      (settings) => settings.localeOverride,
+    );
+    return MaterialApp(
+      locale: localeOverrideFromIdentifier(override) ?? const Locale('de'),
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+      home: Scaffold(
+        body: Column(
+          children: [
+            Builder(
+              builder: (context) {
+                final lines = localizedExerciseLines(
+                  context,
+                  german: 'Langsam ziehen.',
+                  english: 'Pull slowly.',
+                );
+                return Column(
+                  children: [
+                    Text(
+                      localizedExerciseName(
+                        context,
+                        'latziehen-breit',
+                        german: 'Latziehen',
+                        english: 'Lat Pulldown',
+                      ),
+                    ),
+                    Text(lines.join(' ')),
+                  ],
+                );
+              },
+            ),
+            const Expanded(child: AlphaSettingsPage()),
+          ],
+        ),
+      ),
+    );
+  }
 }
