@@ -29,8 +29,8 @@ String visibleSetNote(String? notes) {
   return raw.replaceFirst(RegExp(r'^\[[^\]]*\]\s*'), '').trim();
 }
 
-bool sameGym(String? notes, String gymId) {
+bool sameGym(String? notes, String gymId, {String? firstGymId}) {
   final tagged = gymIdFromNotes(notes);
-  if (tagged == null) return gymId == 'default';
+  if (tagged == null) return firstGymId != null && gymId == firstGymId;
   return tagged == gymId;
 }

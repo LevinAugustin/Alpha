@@ -1,17 +1,34 @@
+import 'package:flexify/database/catalog_seed.dart';
 import 'package:flexify/l10n/generated/app_localizations.dart';
 import 'package:flutter/widgets.dart';
 
 String localizedExerciseName(
   BuildContext context,
-  String english, {
+  String name, {
   String? german,
+  String? english,
 }) {
-  if (Localizations.localeOf(context).languageCode == 'de' &&
-      german != null &&
-      german.isNotEmpty) {
-    return german;
+  final de = (german ?? '').trim();
+  final en = (english ?? '').trim();
+  if (Localizations.localeOf(context).languageCode == 'de') {
+    if (de.isNotEmpty) return de;
+    if (en.isNotEmpty) return en;
+    return name;
   }
-  return english;
+  if (en.isNotEmpty) return en;
+  if (de.isNotEmpty) return de;
+  return name;
+}
+
+List<String> localizedExerciseLines(
+  BuildContext context, {
+  String? german,
+  String? english,
+}) {
+  final de = decodeCatalogList(german);
+  if (Localizations.localeOf(context).languageCode == 'de') return de;
+  final en = decodeCatalogList(english);
+  return en.isEmpty ? de : en;
 }
 
 String movementLabel(AppLocalizations l10n, String value) {

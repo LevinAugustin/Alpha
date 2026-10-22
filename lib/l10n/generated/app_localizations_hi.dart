@@ -2448,4 +2448,87 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get sortExercisesHint => 'हैंडल पकड़कर खींचें।';
+
+  @override
+  String get feedbackTitle => 'प्रतिक्रिया';
+
+  @override
+  String get feedbackSettings => 'प्रतिक्रिया भेजें';
+
+  @override
+  String get feedbackCategory => 'श्रेणी';
+
+  @override
+  String get feedbackBug => 'त्रुटि';
+
+  @override
+  String get feedbackImprovement => 'सुधार';
+
+  @override
+  String get feedbackTranslation => 'अनुवाद';
+
+  @override
+  String get feedbackMessageHint => 'हमें क्या जानना चाहिए?';
+
+  @override
+  String get feedbackDictate => 'बोलकर लिखें';
+
+  @override
+  String get feedbackAttachAudio => 'ध्वनि जोड़ें';
+
+  @override
+  String get feedbackRemoveAudio => 'रिकॉर्डिंग हटाएँ';
+
+  @override
+  String get feedbackSend => 'भेजें';
+
+  @override
+  String get feedbackMailUnavailable => 'कोई मेल ऐप नहीं है।';
+
+  @override
+  String get feedbackStopRecording => 'रिकॉर्डिंग रोकें';
+
+  @override
+  String get otherVariant => 'दूसरा रूप';
+
+  @override
+  String get firstStudioTitle =>
+      'अभी जिस जिम में तुम ट्रेन कर रहे हो, उसका नाम क्या है?';
+
+  @override
+  String get renameProfile => 'नाम बदलें';
+
+  @override
+  String get deleteProfile => 'प्रोफ़ाइल हटाएँ';
+
+  @override
+  String get deleteProfileTitle => 'यह प्रोफ़ाइल हटाएँ?';
+
+  @override
+  String deleteProfileBody(String name) {
+    return 'यह प्रोफ़ाइल और उसका डेटा हटाने के लिए \"$name\" लिखें।';
+  }
+
+  @override
+  String get deleteProfileBlockedActive =>
+      'सक्रिय प्रोफ़ाइल नहीं हटाई जा सकती।';
+
+  @override
+  String get deleteProfileBlockedLast => 'आखिरी प्रोफ़ाइल नहीं हटाई जा सकती।';
+
+  @override
+  String get profileNameEmpty => 'नाम खाली नहीं हो सकता।';
+
+  @override
+  String get profileNameDuplicate => 'यह नाम पहले से है।';
+
+  @override
+  String get finishBeforeSwitch =>
+      'प्रोफ़ाइल बदलने से पहले वर्कआउट खत्म करें या छोड़ें।';
+
+  @override
+  String get switchFinishWorkout => 'वर्कआउट खत्म करें';
+
+  @override
+  String get switchDiscardWorkout => 'वर्कआउट छोड़ें';
 }

@@ -1539,6 +1539,11 @@ void main() {
     expect(curl.steps, contains('einer oder beiden Händen'));
     expect(curl.steps, isNot(contains('rechten Hand')));
     expect(curl.tips, contains('ein- oder beidarmig'));
+    expect(curl.englishName, 'Cable Rope Hammer Curl');
+    expect(curl.englishAliases, contains('Hammer Curl'));
+    expect(curl.variants, contains('einarmig'));
+    expect(curl.variants, contains('beidarmig'));
+    expect(lat.englishName, isNotNull);
     final curlSet = await db.exerciseSets.insertOne(
       ExerciseSetsCompanion.insert(
         exerciseId: curl.id,
@@ -1586,6 +1591,8 @@ void main() {
     expect(curlAfter.einseitig, isTrue);
     expect(curlAfter.steps, curl.steps);
     expect(curlAfter.tips, curl.tips);
+    expect(curlAfter.englishName, curl.englishName);
+    expect(curlAfter.variants, curl.variants);
     final keptCurl =
         await (db.exerciseSets.select()..where((row) => row.id.equals(curlSet)))
             .getSingle();

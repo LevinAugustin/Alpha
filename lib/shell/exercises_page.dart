@@ -193,6 +193,8 @@ class _ExercisesPageState extends State<ExercisesPage> {
                       name: exercise.name,
                       germanName: exercise.germanName,
                       aliases: exercise.aliases,
+                      englishName: exercise.englishName,
+                      englishAliases: exercise.englishAliases,
                       muscle: exercise.muscle,
                       category: exercise.categoryName,
                       equipment: exercise.equipment,
@@ -227,6 +229,8 @@ class _ExercisesPageState extends State<ExercisesPage> {
                       leftName: a.name,
                       leftGermanName: a.germanName,
                       leftAliases: a.aliases,
+                      leftEnglishName: a.englishName,
+                      leftEnglishAliases: a.englishAliases,
                       leftCatalog: isCatalogExercise(
                         catalogId: a.catalogId,
                         catalogSource: a.catalogSource,
@@ -234,6 +238,8 @@ class _ExercisesPageState extends State<ExercisesPage> {
                       rightName: b.name,
                       rightGermanName: b.germanName,
                       rightAliases: b.aliases,
+                      rightEnglishName: b.englishName,
+                      rightEnglishAliases: b.englishAliases,
                       rightCatalog: isCatalogExercise(
                         catalogId: b.catalogId,
                         catalogSource: b.catalogSource,
@@ -250,6 +256,7 @@ class _ExercisesPageState extends State<ExercisesPage> {
                     context,
                     exercise.name,
                     german: exercise.germanName,
+                    english: exercise.englishName,
                   );
                   final subtitle = exerciseListSubtitle(
                     category: exercise.categoryName,

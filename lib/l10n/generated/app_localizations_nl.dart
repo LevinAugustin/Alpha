@@ -2471,4 +2471,87 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get sortExercisesHint => 'Houd de greep vast en sleep.';
+
+  @override
+  String get feedbackTitle => 'Terugkoppeling';
+
+  @override
+  String get feedbackSettings => 'Terugkoppeling sturen';
+
+  @override
+  String get feedbackCategory => 'Categorie';
+
+  @override
+  String get feedbackBug => 'Fout';
+
+  @override
+  String get feedbackImprovement => 'Verbetering';
+
+  @override
+  String get feedbackTranslation => 'Vertaling';
+
+  @override
+  String get feedbackMessageHint => 'Wat moeten we weten?';
+
+  @override
+  String get feedbackDictate => 'Dicteren';
+
+  @override
+  String get feedbackAttachAudio => 'Spraakopname bijvoegen';
+
+  @override
+  String get feedbackRemoveAudio => 'Opname verwijderen';
+
+  @override
+  String get feedbackSend => 'Versturen';
+
+  @override
+  String get feedbackMailUnavailable => 'Geen mail-app beschikbaar.';
+
+  @override
+  String get feedbackStopRecording => 'Opname stoppen';
+
+  @override
+  String get otherVariant => 'Andere variant';
+
+  @override
+  String get firstStudioTitle => 'Hoe heet de sportschool waar je nu traint?';
+
+  @override
+  String get renameProfile => 'Naam wijzigen';
+
+  @override
+  String get deleteProfile => 'Profiel verwijderen';
+
+  @override
+  String get deleteProfileTitle => 'Dit profiel verwijderen?';
+
+  @override
+  String deleteProfileBody(String name) {
+    return 'Typ „$name” om dit profiel en de gegevens te verwijderen.';
+  }
+
+  @override
+  String get deleteProfileBlockedActive =>
+      'Het actieve profiel kan niet worden verwijderd.';
+
+  @override
+  String get deleteProfileBlockedLast =>
+      'Het laatste profiel kan niet worden verwijderd.';
+
+  @override
+  String get profileNameEmpty => 'De naam mag niet leeg zijn.';
+
+  @override
+  String get profileNameDuplicate => 'Deze naam bestaat al.';
+
+  @override
+  String get finishBeforeSwitch =>
+      'Rond de training af of wis hem voordat je van profiel wisselt.';
+
+  @override
+  String get switchFinishWorkout => 'Training afronden';
+
+  @override
+  String get switchDiscardWorkout => 'Training wissen';
 }

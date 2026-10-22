@@ -2479,4 +2479,88 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get sortExercisesHint => 'Mantén el asa y arrastra.';
+
+  @override
+  String get feedbackTitle => 'Comentarios';
+
+  @override
+  String get feedbackSettings => 'Enviar comentarios';
+
+  @override
+  String get feedbackCategory => 'Categoría';
+
+  @override
+  String get feedbackBug => 'Error';
+
+  @override
+  String get feedbackImprovement => 'Mejora';
+
+  @override
+  String get feedbackTranslation => 'Traducción';
+
+  @override
+  String get feedbackMessageHint => '¿Qué debemos saber?';
+
+  @override
+  String get feedbackDictate => 'Dictar';
+
+  @override
+  String get feedbackAttachAudio => 'Adjuntar una grabación';
+
+  @override
+  String get feedbackRemoveAudio => 'Quitar grabación';
+
+  @override
+  String get feedbackSend => 'Enviar';
+
+  @override
+  String get feedbackMailUnavailable => 'No hay una app de correo.';
+
+  @override
+  String get feedbackStopRecording => 'Detener grabación';
+
+  @override
+  String get otherVariant => 'Otra variante';
+
+  @override
+  String get firstStudioTitle =>
+      '¿Cómo se llama el gimnasio en el que entrenas ahora?';
+
+  @override
+  String get renameProfile => 'Cambiar nombre';
+
+  @override
+  String get deleteProfile => 'Eliminar perfil';
+
+  @override
+  String get deleteProfileTitle => '¿Eliminar este perfil?';
+
+  @override
+  String deleteProfileBody(String name) {
+    return 'Escribe «$name» para eliminar este perfil y sus datos.';
+  }
+
+  @override
+  String get deleteProfileBlockedActive =>
+      'El perfil activo no se puede eliminar.';
+
+  @override
+  String get deleteProfileBlockedLast =>
+      'El último perfil no se puede eliminar.';
+
+  @override
+  String get profileNameEmpty => 'El nombre no puede estar vacío.';
+
+  @override
+  String get profileNameDuplicate => 'Ese nombre ya existe.';
+
+  @override
+  String get finishBeforeSwitch =>
+      'Termina o descarta el entrenamiento antes de cambiar de perfil.';
+
+  @override
+  String get switchFinishWorkout => 'Terminar entrenamiento';
+
+  @override
+  String get switchDiscardWorkout => 'Descartar entrenamiento';
 }

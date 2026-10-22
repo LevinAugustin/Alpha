@@ -7,10 +7,14 @@ import 'package:path_provider/path_provider.dart';
 import 'package:sqlite3/sqlite3.dart';
 
 QueryExecutor createConnectionForPath(String path) {
-  return NativeDatabase.createInBackground(
-    File(path),
-    setup: _configureDatabase,
-  );
+  final file = File(path);
+  if (Platform.environment.containsKey('FLUTTER_TEST')) {
+    return DatabaseConnection(
+      NativeDatabase(file, setup: _configureDatabase),
+      closeStreamsSynchronously: true,
+    );
+  }
+  return NativeDatabase.createInBackground(file, setup: _configureDatabase);
 }
 
 QueryExecutor createPersistentConnection() {

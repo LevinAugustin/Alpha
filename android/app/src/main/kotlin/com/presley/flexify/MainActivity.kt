@@ -18,6 +18,7 @@ import android.net.Uri
 import androidx.core.app.NotificationCompat
 import androidx.core.content.FileProvider
 import android.database.sqlite.SQLiteDatabase
+import android.media.MediaRecorder
 import android.os.Build
 import android.os.Bundle
 import android.os.IBinder
@@ -40,6 +41,8 @@ class MainActivity : FlutterActivity() {
     private var pendingPickResult: MethodChannel.Result? = null
     private var pendingNotificationTarget: String? = null
     private var speechResult: MethodChannel.Result? = null
+    private var feedbackRecorder: MediaRecorder? = null
+    private var feedbackFile: File? = null
     private var activityResumed = false
 
     private val timerConnection = object : ServiceConnection {
@@ -198,12 +201,17 @@ class MainActivity : FlutterActivity() {
                 }
 
                 "listenSpeech" -> {
+                    val language = call.argument<String>("language") ?: "de-DE"
+                    val preferOffline = call.argument<Boolean>("preferOffline") ?: false
                     val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH).apply {
                         putExtra(
                             RecognizerIntent.EXTRA_LANGUAGE_MODEL,
                             RecognizerIntent.LANGUAGE_MODEL_FREE_FORM
                         )
-                        putExtra(RecognizerIntent.EXTRA_LANGUAGE, "de-DE")
+                        putExtra(RecognizerIntent.EXTRA_LANGUAGE, language)
+                        if (preferOffline) {
+                            putExtra(RecognizerIntent.EXTRA_PREFER_OFFLINE, true)
+                        }
                     }
                     speechResult = result
                     try {
@@ -212,6 +220,36 @@ class MainActivity : FlutterActivity() {
                         speechResult = null
                         result.success("")
                     }
+                }
+
+                "deviceInfo" -> {
+                    result.success(
+                        mapOf(
+                            "manufacturer" to Build.MANUFACTURER,
+                            "model" to Build.MODEL,
+                            "release" to Build.VERSION.RELEASE
+                        )
+                    )
+                }
+
+                "startFeedbackRecording" -> {
+                    try {
+                        result.success(startFeedbackRecording())
+                    } catch (error: Exception) {
+                        result.error("record", error.message, null)
+                    }
+                }
+
+                "stopFeedbackRecording" -> {
+                    result.success(stopFeedbackRecording())
+                }
+
+                "shareFeedback" -> {
+                    val email = call.argument<String>("email") ?: ""
+                    val subject = call.argument<String>("subject") ?: ""
+                    val body = call.argument<String>("body") ?: ""
+                    val attachment = call.argument<String>("attachment")
+                    result.success(shareFeedback(email, subject, body, attachment))
                 }
 
                 "pick" -> {
@@ -425,6 +463,70 @@ class MainActivity : FlutterActivity() {
         )
         settings.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         startActivity(settings)
+    }
+
+    private fun startFeedbackRecording(): String {
+        stopFeedbackRecording()
+        val file = File(cacheDir, "alpha-feedback-${System.currentTimeMillis()}.m4a")
+        val media = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            MediaRecorder(this)
+        } else {
+            @Suppress("DEPRECATION")
+            MediaRecorder()
+        }
+        media.setAudioSource(MediaRecorder.AudioSource.MIC)
+        media.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4)
+        media.setAudioEncoder(MediaRecorder.AudioEncoder.AAC)
+        media.setOutputFile(file.absolutePath)
+        media.prepare()
+        media.start()
+        feedbackRecorder = media
+        feedbackFile = file
+        return file.absolutePath
+    }
+
+    private fun stopFeedbackRecording(): String {
+        val path = feedbackFile?.absolutePath ?: ""
+        val media = feedbackRecorder
+        feedbackRecorder = null
+        if (media != null) {
+            try {
+                media.stop()
+            } catch (_: Exception) {
+            }
+            media.release()
+        }
+        return path
+    }
+
+    private fun shareFeedback(
+        email: String,
+        subject: String,
+        body: String,
+        attachment: String?
+    ): Boolean {
+        val file = attachment?.let { File(it) }?.takeIf { it.exists() }
+        val intent = Intent(Intent.ACTION_SEND).apply {
+            type = if (file == null) "text/plain" else "audio/*"
+            putExtra(Intent.EXTRA_EMAIL, arrayOf(email))
+            putExtra(Intent.EXTRA_SUBJECT, subject)
+            putExtra(Intent.EXTRA_TEXT, body)
+            if (file != null) {
+                val uri = FileProvider.getUriForFile(
+                    this@MainActivity,
+                    "$packageName.fileprovider",
+                    file
+                )
+                putExtra(Intent.EXTRA_STREAM, uri)
+                addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+            }
+        }
+        return try {
+            startActivity(Intent.createChooser(intent, subject))
+            true
+        } catch (_: Exception) {
+            false
+        }
     }
 
     private fun installApk(path: String, result: io.flutter.plugin.common.MethodChannel.Result) {

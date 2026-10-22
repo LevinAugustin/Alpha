@@ -2487,4 +2487,88 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get sortExercisesHint => 'Tiens la poignée et glisse.';
+
+  @override
+  String get feedbackTitle => 'Retour';
+
+  @override
+  String get feedbackSettings => 'Envoyer un retour';
+
+  @override
+  String get feedbackCategory => 'Catégorie';
+
+  @override
+  String get feedbackBug => 'Erreur';
+
+  @override
+  String get feedbackImprovement => 'Amélioration';
+
+  @override
+  String get feedbackTranslation => 'Traduction';
+
+  @override
+  String get feedbackMessageHint => 'Que devons-nous savoir ?';
+
+  @override
+  String get feedbackDictate => 'Dicter';
+
+  @override
+  String get feedbackAttachAudio => 'Joindre un enregistrement';
+
+  @override
+  String get feedbackRemoveAudio => 'Retirer l\'enregistrement';
+
+  @override
+  String get feedbackSend => 'Envoyer';
+
+  @override
+  String get feedbackMailUnavailable => 'Aucune application de messagerie.';
+
+  @override
+  String get feedbackStopRecording => 'Arrêter l\'enregistrement';
+
+  @override
+  String get otherVariant => 'Autre variante';
+
+  @override
+  String get firstStudioTitle =>
+      'Comment s\'appelle la salle où tu t\'entraînes ?';
+
+  @override
+  String get renameProfile => 'Renommer';
+
+  @override
+  String get deleteProfile => 'Supprimer le profil';
+
+  @override
+  String get deleteProfileTitle => 'Supprimer ce profil ?';
+
+  @override
+  String deleteProfileBody(String name) {
+    return 'Saisis « $name » pour supprimer ce profil et ses données.';
+  }
+
+  @override
+  String get deleteProfileBlockedActive =>
+      'Le profil actif ne peut pas être supprimé.';
+
+  @override
+  String get deleteProfileBlockedLast =>
+      'Le dernier profil ne peut pas être supprimé.';
+
+  @override
+  String get profileNameEmpty => 'Le nom ne peut pas être vide.';
+
+  @override
+  String get profileNameDuplicate => 'Ce nom est déjà utilisé.';
+
+  @override
+  String get finishBeforeSwitch =>
+      'Termine ou abandonne la séance avant de changer de profil.';
+
+  @override
+  String get switchFinishWorkout => 'Terminer la séance';
+
+  @override
+  String get switchDiscardWorkout => 'Abandonner la séance';
 }

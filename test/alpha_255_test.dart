@@ -710,13 +710,35 @@ void main() {
     alphaPrefs.activeGymId = 'default';
     await alphaPrefs.save();
 
-    await _pushWorkout(tester, harness, plan, locale: const Locale('de'));
-    await _reveal(tester, find.byKey(const Key('gym-card-hamburg')));
-    await tester.tap(find.byKey(const Key('gym-card-hamburg')));
+    await harness.pump(
+      tester,
+      Builder(
+        builder: (context) => Scaffold(
+          body: TextButton(
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute<void>(
+                  builder: (context) => GymWorkoutPage(plan: plan),
+                ),
+              );
+            },
+            child: const Text('open-workout'),
+          ),
+        ),
+      ),
+      locale: const Locale('de'),
+      surfaceSize: const Size(400, 900),
+    );
+    await tester.tap(find.text('open-workout'));
     await tester.pump();
-    await _reveal(tester, find.byKey(const Key('gym-start-confirm')));
-    await tester.tap(find.byKey(const Key('gym-start-confirm')));
-    await tester.pumpAndSettle();
+    for (
+      var i = 0;
+      i < 30 && find.byKey(const Key('finish-workout')).evaluate().isEmpty;
+      i++
+    ) {
+      await tester.pump(const Duration(milliseconds: 50));
+    }
+    expect(find.byKey(const Key('gym-start-sheet')), findsNothing);
     expect(alphaPrefs.activeGymId, 'hamburg');
     expect(alphaPrefs.gyms.single.lastUsedAt, earlier);
 

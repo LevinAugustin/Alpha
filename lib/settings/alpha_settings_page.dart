@@ -3,11 +3,13 @@ import 'package:flexify/alpha/alpha_prefs.dart';
 import 'package:flexify/coach/api_key_store.dart';
 import 'package:flexify/coach/coach_page.dart';
 import 'package:flexify/database/database.dart';
+import 'package:flexify/feedback/feedback_page.dart';
 import 'package:flexify/import/import_export_page.dart';
 import 'package:flexify/l10n/l10n.dart';
 import 'package:flexify/main.dart';
 import 'package:flexify/platform_page_route.dart';
 import 'package:flexify/profile/local_profiles.dart';
+import 'package:flexify/profile/profile_actions.dart';
 import 'package:flexify/settings/format_settings.dart';
 import 'package:flexify/settings/licenses_page.dart';
 import 'package:flexify/theme/alpha_theme.dart';
@@ -432,6 +434,18 @@ class _AlphaSettingsPageState extends State<AlphaSettingsPage> {
                   },
                 ),
               ],
+              if (_hit(l10n.feedbackSettings))
+                ListTile(
+                  key: const Key('settings-feedback'),
+                  contentPadding: EdgeInsets.zero,
+                  leading: const Icon(Icons.feedback_outlined),
+                  title: Text(l10n.feedbackSettings),
+                  onTap: () {
+                    Navigator.of(context).push(
+                      FlexPageRoute(builder: (context) => const FeedbackPage()),
+                    );
+                  },
+                ),
               if (_hit('${l10n.licensesTitle} ${l10n.versionAndLicenses('')}'))
                 FutureBuilder<String>(
                   future: _versionLabel(),
@@ -447,7 +461,7 @@ class _AlphaSettingsPageState extends State<AlphaSettingsPage> {
                           );
                         },
                         child: Text(
-                          l10n.versionAndLicenses(snapshot.data ?? '2.5.5'),
+                          l10n.versionAndLicenses(snapshot.data ?? '2.6.0'),
                         ),
                       ),
                     );
@@ -464,7 +478,7 @@ class _AlphaSettingsPageState extends State<AlphaSettingsPage> {
     try {
       return (await PackageInfo.fromPlatform()).version;
     } catch (_) {
-      return '2.5.5';
+      return '2.6.0';
     }
   }
 
@@ -511,6 +525,7 @@ class _AlphaSettingsPageState extends State<AlphaSettingsPage> {
       GymPlace(
         id: DateTime.now().millisecondsSinceEpoch.toString(),
         name: name,
+        createdAt: DateTime.now(),
       ),
     );
     await alphaPrefs.save();
@@ -568,9 +583,9 @@ class _AlphaSettingsPageState extends State<AlphaSettingsPage> {
     if (confirmed != true) return;
     alphaPrefs.gyms.removeWhere((row) => row.id == gym.id);
     if (alphaPrefs.gyms.isEmpty) {
-      alphaPrefs.gyms.add(GymPlace(id: 'default', name: 'Studio'));
-      alphaPrefs.activeGymId = 'default';
-    } else if (alphaPrefs.activeGymId == gym.id) {
+      alphaPrefs.activeGymId = '';
+    } else if (alphaPrefs.activeGymId == gym.id ||
+        !alphaPrefs.gyms.any((row) => row.id == alphaPrefs.activeGymId)) {
       alphaPrefs.activeGymId = alphaPrefs.gyms.first.id;
     }
     await alphaPrefs.save();
@@ -628,18 +643,17 @@ class _ProfileListState extends State<_ProfileList> {
       builder: (context, snapshot) {
         final registry = snapshot.data;
         if (registry == null) return const SizedBox.shrink();
+        final lastProfile = registry.profiles.length <= 1;
         return Column(
           children: [
             for (final profile in registry.profiles)
-              ListTile(
-                contentPadding: EdgeInsets.zero,
-                title: Text(profile.name),
-                trailing: profile.id == registry.activeId
-                    ? Text(context.l10n.profileActive)
-                    : TextButton(
-                        onPressed: () => activateLocalProfile(profile),
-                        child: Text(context.l10n.switchProfile),
-                      ),
+              _ProfileRow(
+                profile: profile,
+                active: profile.id == registry.activeId,
+                lastProfile: lastProfile,
+                onSwitch: () => _switch(profile),
+                onRename: () => _rename(profile),
+                onDelete: () => _delete(profile),
               ),
             Align(
               alignment: Alignment.centerLeft,
@@ -656,34 +670,188 @@ class _ProfileListState extends State<_ProfileList> {
   }
 
   Future<void> _create() async {
-    final controller = TextEditingController();
-    final name = await showDialog<String>(
+    final created = await startNewProfile(context);
+    if (!created || !mounted) return;
+    setState(() {
+      _registry = loadProfileRegistry();
+    });
+  }
+
+  Future<void> _switch(LocalProfile profile) async {
+    final switched = await switchLocalProfile(context, profile);
+    if (!switched || !mounted) return;
+    setState(() {
+      _registry = loadProfileRegistry();
+    });
+  }
+
+  Future<void> _rename(LocalProfile profile) async {
+    final controller = TextEditingController(text: profile.name);
+    var error = '';
+    final saved = await showDialog<bool>(
       context: context,
-      builder: (context) => AlertDialog(
-        title: Text(context.l10n.newProfile),
-        content: TextField(
-          controller: controller,
-          autofocus: true,
-          textCapitalization: TextCapitalization.words,
-          decoration: InputDecoration(hintText: context.l10n.profileNameHint),
+      builder: (context) => StatefulBuilder(
+        builder: (context, setLocal) => AlertDialog(
+          title: Text(context.l10n.renameProfile),
+          content: TextField(
+            key: const Key('rename-profile-field'),
+            controller: controller,
+            autofocus: true,
+            textCapitalization: TextCapitalization.words,
+            decoration: InputDecoration(
+              errorText: error.isEmpty ? null : error,
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context, false),
+              child: Text(context.l10n.actionCancel),
+            ),
+            FilledButton(
+              key: const Key('confirm-rename-profile'),
+              onPressed: () async {
+                final result = await renameLocalProfile(
+                  profile,
+                  controller.text,
+                );
+                if (result == null) {
+                  if (context.mounted) Navigator.pop(context, true);
+                  return;
+                }
+                setLocal(() {
+                  error = result == 'duplicate'
+                      ? context.l10n.profileNameDuplicate
+                      : context.l10n.profileNameEmpty;
+                });
+              },
+              child: Text(context.l10n.actionSave),
+            ),
+          ],
         ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: Text(context.l10n.actionCancel),
-          ),
-          FilledButton(
-            onPressed: () => Navigator.pop(context, controller.text.trim()),
-            child: Text(context.l10n.actionSave),
-          ),
-        ],
       ),
     );
-    controller.dispose();
-    if (name == null || name.isEmpty) return;
-    final profile = await createLocalProfile(name);
-    await activateLocalProfile(profile);
+    if (saved != true || !mounted) return;
+    setState(() {
+      _registry = loadProfileRegistry();
+    });
+  }
+
+  Future<void> _delete(LocalProfile profile) async {
+    final controller = TextEditingController();
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (context) => StatefulBuilder(
+        builder: (context, setLocal) {
+          final matches = controller.text.trim() == profile.name;
+          return AlertDialog(
+            title: Text(context.l10n.deleteProfileTitle),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(context.l10n.deleteProfileBody(profile.name)),
+                const SizedBox(height: 12),
+                TextField(
+                  key: const Key('delete-profile-field'),
+                  controller: controller,
+                  autofocus: true,
+                  onChanged: (_) => setLocal(() {}),
+                  decoration: InputDecoration(
+                    hintText: context.l10n.profileNameHint,
+                  ),
+                ),
+              ],
+            ),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context, false),
+                child: Text(context.l10n.actionCancel),
+              ),
+              FilledButton(
+                key: const Key('confirm-delete-profile'),
+                style: FilledButton.styleFrom(
+                  backgroundColor: const Color(0xFFB42318),
+                  foregroundColor: Colors.white,
+                  disabledBackgroundColor: const Color(0xFFB42318),
+                  disabledForegroundColor: Colors.white70,
+                ),
+                onPressed: matches ? () => Navigator.pop(context, true) : null,
+                child: Text(context.l10n.actionDelete),
+              ),
+            ],
+          );
+        },
+      ),
+    );
+    if (confirmed != true) return;
+    await deleteLocalProfile(profile);
     if (!mounted) return;
-    setState(() => _registry = loadProfileRegistry());
+    setState(() {
+      _registry = loadProfileRegistry();
+    });
+  }
+}
+
+class _ProfileRow extends StatelessWidget {
+  const _ProfileRow({
+    required this.profile,
+    required this.active,
+    required this.lastProfile,
+    required this.onSwitch,
+    required this.onRename,
+    required this.onDelete,
+  });
+
+  final LocalProfile profile;
+  final bool active;
+  final bool lastProfile;
+  final VoidCallback onSwitch;
+  final VoidCallback onRename;
+  final VoidCallback onDelete;
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = context.l10n;
+    final blocked = active || lastProfile;
+    final hint = active
+        ? l10n.deleteProfileBlockedActive
+        : lastProfile
+        ? l10n.deleteProfileBlockedLast
+        : null;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        ListTile(
+          contentPadding: EdgeInsets.zero,
+          title: Text(profile.name),
+          subtitle: Text(
+            [
+              if (active) l10n.profileActive,
+              ?hint,
+            ].join(' · '),
+          ),
+        ),
+        Wrap(
+          spacing: 4,
+          children: [
+            if (!active)
+              TextButton(
+                key: Key('profile-switch-${profile.id}'),
+                onPressed: onSwitch,
+                child: Text(l10n.switchProfile),
+              ),
+            TextButton(
+              key: Key('profile-rename-${profile.id}'),
+              onPressed: onRename,
+              child: Text(l10n.renameProfile),
+            ),
+            TextButton(
+              key: Key('profile-delete-${profile.id}'),
+              onPressed: blocked ? null : onDelete,
+              child: Text(l10n.deleteProfile),
+            ),
+          ],
+        ),
+      ],
+    );
   }
 }

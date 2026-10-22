@@ -21,6 +21,16 @@ class FlexifyTestHarness {
     await mockTests();
     final database = testDb();
     db = database;
+    if (alphaPrefs.gyms.isEmpty) {
+      alphaPrefs.gyms = [
+        GymPlace(
+          id: 'default',
+          name: 'Studio',
+          createdAt: DateTime.utc(2020, 1, 1),
+        ),
+      ];
+      alphaPrefs.activeGymId = 'default';
+    }
     if (timerState == null) {
       alphaPrefs.restEndsAt = null;
       alphaPrefs.restTotalMs = null;

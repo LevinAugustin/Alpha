@@ -2472,4 +2472,85 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get sortExercisesHint => 'Tutamacı basılı tut ve sürükle.';
+
+  @override
+  String get feedbackTitle => 'Geri bildirim';
+
+  @override
+  String get feedbackSettings => 'Geri bildirim gönder';
+
+  @override
+  String get feedbackCategory => 'Kategori';
+
+  @override
+  String get feedbackBug => 'Hata';
+
+  @override
+  String get feedbackImprovement => 'İyileştirme';
+
+  @override
+  String get feedbackTranslation => 'Çeviri';
+
+  @override
+  String get feedbackMessageHint => 'Neyi bilmeliyiz?';
+
+  @override
+  String get feedbackDictate => 'Dikte et';
+
+  @override
+  String get feedbackAttachAudio => 'Ses kaydı ekle';
+
+  @override
+  String get feedbackRemoveAudio => 'Kaydı kaldır';
+
+  @override
+  String get feedbackSend => 'Gönder';
+
+  @override
+  String get feedbackMailUnavailable => 'Posta uygulaması yok.';
+
+  @override
+  String get feedbackStopRecording => 'Kaydı durdur';
+
+  @override
+  String get otherVariant => 'Başka varyant';
+
+  @override
+  String get firstStudioTitle => 'Şu an çalıştığın salonun adı ne?';
+
+  @override
+  String get renameProfile => 'Yeniden adlandır';
+
+  @override
+  String get deleteProfile => 'Profili sil';
+
+  @override
+  String get deleteProfileTitle => 'Bu profil silinsin mi?';
+
+  @override
+  String deleteProfileBody(String name) {
+    return 'Bu profili ve verilerini silmek için \"$name\" yaz.';
+  }
+
+  @override
+  String get deleteProfileBlockedActive => 'Etkin profil silinemez.';
+
+  @override
+  String get deleteProfileBlockedLast => 'Son profil silinemez.';
+
+  @override
+  String get profileNameEmpty => 'Ad boş olamaz.';
+
+  @override
+  String get profileNameDuplicate => 'Bu ad zaten kullanılıyor.';
+
+  @override
+  String get finishBeforeSwitch =>
+      'Profil değiştirmeden önce antrenmanı bitir veya vazgeç.';
+
+  @override
+  String get switchFinishWorkout => 'Antrenmanı bitir';
+
+  @override
+  String get switchDiscardWorkout => 'Antrenmanı sil';
 }

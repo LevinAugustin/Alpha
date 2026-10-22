@@ -26,6 +26,7 @@ String exerciseLine(BuildContext context, PlanExerciseEntry exercise) {
     context,
     exercise.exercise.name,
     german: exercise.exercise.germanName,
+    english: exercise.exercise.englishName,
   );
   if (range == null) return name;
   return '$name · ${context.l10n.repRangeLabel(range)}';

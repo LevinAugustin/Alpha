@@ -2481,6 +2481,90 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get sortExercisesHint => 'Segura a pega e arrasta.';
+
+  @override
+  String get feedbackTitle => 'Comentário';
+
+  @override
+  String get feedbackSettings => 'Enviar comentário';
+
+  @override
+  String get feedbackCategory => 'Categoria';
+
+  @override
+  String get feedbackBug => 'Erro';
+
+  @override
+  String get feedbackImprovement => 'Melhoria';
+
+  @override
+  String get feedbackTranslation => 'Tradução';
+
+  @override
+  String get feedbackMessageHint => 'O que devemos saber?';
+
+  @override
+  String get feedbackDictate => 'Ditar';
+
+  @override
+  String get feedbackAttachAudio => 'Anexar uma gravação';
+
+  @override
+  String get feedbackRemoveAudio => 'Remover gravação';
+
+  @override
+  String get feedbackSend => 'Enviar';
+
+  @override
+  String get feedbackMailUnavailable => 'Nenhuma app de correio.';
+
+  @override
+  String get feedbackStopRecording => 'Parar gravação';
+
+  @override
+  String get otherVariant => 'Outra variante';
+
+  @override
+  String get firstStudioTitle =>
+      'Como se chama o ginásio onde estás a treinar?';
+
+  @override
+  String get renameProfile => 'Mudar o nome';
+
+  @override
+  String get deleteProfile => 'Apagar perfil';
+
+  @override
+  String get deleteProfileTitle => 'Apagar este perfil?';
+
+  @override
+  String deleteProfileBody(String name) {
+    return 'Escreve «$name» para apagar este perfil e os seus dados.';
+  }
+
+  @override
+  String get deleteProfileBlockedActive =>
+      'O perfil ativo não pode ser apagado.';
+
+  @override
+  String get deleteProfileBlockedLast =>
+      'O último perfil não pode ser apagado.';
+
+  @override
+  String get profileNameEmpty => 'O nome não pode ficar vazio.';
+
+  @override
+  String get profileNameDuplicate => 'Esse nome já existe.';
+
+  @override
+  String get finishBeforeSwitch =>
+      'Termina ou descarta o treino antes de mudar de perfil.';
+
+  @override
+  String get switchFinishWorkout => 'Terminar treino';
+
+  @override
+  String get switchDiscardWorkout => 'Descartar treino';
 }
 
 /// The translations for Portuguese, as used in Brazil (`pt_BR`).
@@ -4951,6 +5035,90 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
 
   @override
   String get sortExercisesHint => 'Segure a alça e arraste.';
+
+  @override
+  String get feedbackTitle => 'Comentário';
+
+  @override
+  String get feedbackSettings => 'Enviar comentário';
+
+  @override
+  String get feedbackCategory => 'Categoria';
+
+  @override
+  String get feedbackBug => 'Erro';
+
+  @override
+  String get feedbackImprovement => 'Melhoria';
+
+  @override
+  String get feedbackTranslation => 'Tradução';
+
+  @override
+  String get feedbackMessageHint => 'O que devemos saber?';
+
+  @override
+  String get feedbackDictate => 'Ditar';
+
+  @override
+  String get feedbackAttachAudio => 'Anexar uma gravação';
+
+  @override
+  String get feedbackRemoveAudio => 'Remover gravação';
+
+  @override
+  String get feedbackSend => 'Enviar';
+
+  @override
+  String get feedbackMailUnavailable => 'Nenhum app de e-mail.';
+
+  @override
+  String get feedbackStopRecording => 'Parar gravação';
+
+  @override
+  String get otherVariant => 'Outra variante';
+
+  @override
+  String get firstStudioTitle =>
+      'Como se chama a academia em que você está treinando?';
+
+  @override
+  String get renameProfile => 'Renomear';
+
+  @override
+  String get deleteProfile => 'Excluir perfil';
+
+  @override
+  String get deleteProfileTitle => 'Excluir este perfil?';
+
+  @override
+  String deleteProfileBody(String name) {
+    return 'Digite «$name» para excluir este perfil e os dados dele.';
+  }
+
+  @override
+  String get deleteProfileBlockedActive =>
+      'O perfil ativo não pode ser excluído.';
+
+  @override
+  String get deleteProfileBlockedLast =>
+      'O último perfil não pode ser excluído.';
+
+  @override
+  String get profileNameEmpty => 'O nome não pode ficar em branco.';
+
+  @override
+  String get profileNameDuplicate => 'Esse nome já está em uso.';
+
+  @override
+  String get finishBeforeSwitch =>
+      'Encerre ou descarte o treino antes de trocar de perfil.';
+
+  @override
+  String get switchFinishWorkout => 'Encerrar treino';
+
+  @override
+  String get switchDiscardWorkout => 'Descartar treino';
 }
 
 /// The translations for Portuguese, as used in Portugal (`pt_PT`).
@@ -7430,4 +7598,88 @@ class AppLocalizationsPtPt extends AppLocalizationsPt {
 
   @override
   String get sortExercisesHint => 'Segura a pega e arrasta.';
+
+  @override
+  String get feedbackTitle => 'Comentário';
+
+  @override
+  String get feedbackSettings => 'Enviar comentário';
+
+  @override
+  String get feedbackCategory => 'Categoria';
+
+  @override
+  String get feedbackBug => 'Erro';
+
+  @override
+  String get feedbackImprovement => 'Melhoria';
+
+  @override
+  String get feedbackTranslation => 'Tradução';
+
+  @override
+  String get feedbackMessageHint => 'O que devemos saber?';
+
+  @override
+  String get feedbackDictate => 'Ditar';
+
+  @override
+  String get feedbackAttachAudio => 'Anexar uma gravação';
+
+  @override
+  String get feedbackRemoveAudio => 'Remover gravação';
+
+  @override
+  String get feedbackSend => 'Enviar';
+
+  @override
+  String get feedbackMailUnavailable => 'Nenhuma app de correio.';
+
+  @override
+  String get feedbackStopRecording => 'Parar gravação';
+
+  @override
+  String get otherVariant => 'Outra variante';
+
+  @override
+  String get firstStudioTitle =>
+      'Como se chama o ginásio onde estás a treinar?';
+
+  @override
+  String get renameProfile => 'Mudar o nome';
+
+  @override
+  String get deleteProfile => 'Apagar perfil';
+
+  @override
+  String get deleteProfileTitle => 'Apagar este perfil?';
+
+  @override
+  String deleteProfileBody(String name) {
+    return 'Escreve «$name» para apagar este perfil e os seus dados.';
+  }
+
+  @override
+  String get deleteProfileBlockedActive =>
+      'O perfil ativo não pode ser apagado.';
+
+  @override
+  String get deleteProfileBlockedLast =>
+      'O último perfil não pode ser apagado.';
+
+  @override
+  String get profileNameEmpty => 'O nome não pode ficar vazio.';
+
+  @override
+  String get profileNameDuplicate => 'Esse nome já existe.';
+
+  @override
+  String get finishBeforeSwitch =>
+      'Termina ou descarta o treino antes de mudar de perfil.';
+
+  @override
+  String get switchFinishWorkout => 'Terminar treino';
+
+  @override
+  String get switchDiscardWorkout => 'Descartar treino';
 }

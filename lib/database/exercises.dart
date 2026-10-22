@@ -44,4 +44,9 @@ class Exercises extends Table {
   TextColumn get griff => text().nullable()();
   TextColumn get position => text().nullable()();
   BoolColumn get einseitig => boolean().withDefault(const Constant(false))();
+  TextColumn get englishName => text().nullable()();
+  TextColumn get englishSteps => text().nullable()();
+  TextColumn get englishTips => text().nullable()();
+  TextColumn get englishAliases => text().nullable()();
+  TextColumn get variants => text().nullable()();
 }

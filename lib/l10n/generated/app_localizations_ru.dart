@@ -2483,4 +2483,86 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get sortExercisesHint => 'Держи ручку и перетащи.';
+
+  @override
+  String get feedbackTitle => 'Отзыв';
+
+  @override
+  String get feedbackSettings => 'Отправить отзыв';
+
+  @override
+  String get feedbackCategory => 'Категория';
+
+  @override
+  String get feedbackBug => 'Ошибка';
+
+  @override
+  String get feedbackImprovement => 'Улучшение';
+
+  @override
+  String get feedbackTranslation => 'Перевод';
+
+  @override
+  String get feedbackMessageHint => 'Что нам стоит знать?';
+
+  @override
+  String get feedbackDictate => 'Диктовать';
+
+  @override
+  String get feedbackAttachAudio => 'Приложить запись';
+
+  @override
+  String get feedbackRemoveAudio => 'Удалить запись';
+
+  @override
+  String get feedbackSend => 'Отправить';
+
+  @override
+  String get feedbackMailUnavailable => 'Нет почтового приложения.';
+
+  @override
+  String get feedbackStopRecording => 'Остановить запись';
+
+  @override
+  String get otherVariant => 'Другой вариант';
+
+  @override
+  String get firstStudioTitle =>
+      'Как называется зал, в котором ты сейчас тренируешься?';
+
+  @override
+  String get renameProfile => 'Переименовать';
+
+  @override
+  String get deleteProfile => 'Удалить профиль';
+
+  @override
+  String get deleteProfileTitle => 'Удалить этот профиль?';
+
+  @override
+  String deleteProfileBody(String name) {
+    return 'Введи «$name», чтобы удалить этот профиль и его данные.';
+  }
+
+  @override
+  String get deleteProfileBlockedActive => 'Активный профиль нельзя удалить.';
+
+  @override
+  String get deleteProfileBlockedLast => 'Последний профиль нельзя удалить.';
+
+  @override
+  String get profileNameEmpty => 'Имя не может быть пустым.';
+
+  @override
+  String get profileNameDuplicate => 'Такое имя уже есть.';
+
+  @override
+  String get finishBeforeSwitch =>
+      'Заверши или отмени тренировку, прежде чем сменить профиль.';
+
+  @override
+  String get switchFinishWorkout => 'Завершить тренировку';
+
+  @override
+  String get switchDiscardWorkout => 'Отменить тренировку';
 }

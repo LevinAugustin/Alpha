@@ -20,11 +20,19 @@ void main() {
   String aliasesOf(Map<String, dynamic> exercise) =>
       (exercise['synonyme'] as List).join('|');
 
+  String englishAliasesOf(Map<String, dynamic> exercise) {
+    final raw = exercise['synonyme_en'];
+    if (raw is! List) return '';
+    return raw.join('|');
+  }
+
   bool matches(Map<String, dynamic> exercise, String query) {
     return exerciseMatchesQuery(
       name: exercise['id'] as String,
       germanName: exercise['name_de'] as String?,
       aliases: aliasesOf(exercise),
+      englishName: exercise['name_en'] as String?,
+      englishAliases: englishAliasesOf(exercise),
       category: exercise['kategorie'] as String?,
       equipment: exercise['geraet'] as String?,
       primaryMuscles: jsonEncode(exercise['primaermuskeln']),
@@ -48,9 +56,13 @@ void main() {
         leftName: left['id'] as String,
         leftGermanName: left['name_de'] as String?,
         leftAliases: aliasesOf(left),
+        leftEnglishName: left['name_en'] as String?,
+        leftEnglishAliases: englishAliasesOf(left),
         rightName: right['id'] as String,
         rightGermanName: right['name_de'] as String?,
         rightAliases: aliasesOf(right),
+        rightEnglishName: right['name_en'] as String?,
+        rightEnglishAliases: englishAliasesOf(right),
       ),
     );
     return [for (final hit in hits) hit['id'] as String];
@@ -63,6 +75,8 @@ void main() {
           name: exercise['id'] as String,
           germanName: exercise['name_de'] as String?,
           aliases: aliasesOf(exercise),
+          englishName: exercise['name_en'] as String?,
+          englishAliases: englishAliasesOf(exercise),
           query: query,
         ))
           exercise,
@@ -73,9 +87,13 @@ void main() {
         leftName: left['id'] as String,
         leftGermanName: left['name_de'] as String?,
         leftAliases: aliasesOf(left),
+        leftEnglishName: left['name_en'] as String?,
+        leftEnglishAliases: englishAliasesOf(left),
         rightName: right['id'] as String,
         rightGermanName: right['name_de'] as String?,
         rightAliases: aliasesOf(right),
+        rightEnglishName: right['name_en'] as String?,
+        rightEnglishAliases: englishAliasesOf(right),
       ),
     );
     return [for (final hit in hits) hit['id'] as String];
@@ -129,7 +147,7 @@ void main() {
   });
 
   test('hevy matching is a normalized exact name or synonym', () {
-    expect(exact('Lat Pulldown'), ['latziehen-breit']);
+    expect(exact('Lat Pulldown').first, 'latziehen-breit');
     expect(exact('Lat Pulldown extra'), isEmpty);
     expect(exact('Hüftabduktion'), ['abduktorenmaschine', 'abduktion-kabel']);
     expect(exact('Trizepsdrücken (Maschine)'), [
@@ -154,5 +172,12 @@ void main() {
       ),
       isTrue,
     );
+  });
+
+  test('english names and synonyms are searchable', () {
+    expect(search('lat pulldown').first, 'latziehen-breit');
+    expect(search('hammer curl rope'), ['hammercurls-seil']);
+    expect(search('hammer curl'), contains('hammercurls-seil'));
+    expect(exact('Cable Rope Hammer Curl'), ['hammercurls-seil']);
   });
 }

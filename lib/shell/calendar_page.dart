@@ -173,6 +173,7 @@ class _CalendarPageState extends State<CalendarPage> {
                         context,
                         row.readTable(db.exercises).name,
                         german: row.readTable(db.exercises).germanName,
+                        english: row.readTable(db.exercises).englishName,
                       ),
                     ),
                     subtitle: Text(_detail(row.readTable(db.exerciseSets))),

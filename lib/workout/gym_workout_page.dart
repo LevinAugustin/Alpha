@@ -16,6 +16,7 @@ import 'package:flexify/exercises/exercise_detail_page.dart';
 import 'package:flexify/exercises/exercise_picker.dart';
 import 'package:flexify/exercises/exercise_image.dart';
 import 'package:flexify/exercise_labels.dart';
+import 'package:flexify/feedback/feedback_page.dart';
 import 'package:flexify/l10n/generated/app_localizations.dart';
 import 'package:flexify/l10n/l10n.dart';
 import 'package:flexify/logging.dart';
@@ -152,17 +153,12 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
               (row) => row.planId.equals(widget.plan.id) & row.endedAt.isNull(),
             ))
             .getSingleOrNull();
-    if (mounted && existing == null && _shouldPickStudio()) {
-      final choice = await showGymStartSheet(context);
+    if (mounted && existing == null) {
+      final ready = await _ensureStudio();
       if (!mounted) return;
-      if (choice == null) {
+      if (!ready) {
         if (Navigator.of(context).canPop()) Navigator.of(context).pop();
         return;
-      }
-      final gymId = choice.gymId;
-      if (gymId != null) {
-        alphaPrefs.activeGymId = gymId;
-        await alphaPrefs.save();
       }
     }
     final settings = await (db.settings.select()..limit(1)).getSingle();
@@ -229,8 +225,36 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
     _publishLive();
   }
 
-  bool _shouldPickStudio() =>
-      alphaPrefs.gyms.isEmpty || hasCreatedStudios(alphaPrefs.gyms);
+  Future<bool> _ensureStudio() async {
+    if (alphaPrefs.gyms.isEmpty) {
+      final name = await showFirstStudioDialog(context);
+      if (!mounted) return false;
+      final trimmed = name?.trim() ?? '';
+      if (trimmed.isEmpty) return false;
+      final gym = GymPlace(
+        id: DateTime.now().millisecondsSinceEpoch.toString(),
+        name: trimmed,
+        createdAt: DateTime.now(),
+      );
+      alphaPrefs.gyms = [gym];
+      alphaPrefs.activeGymId = gym.id;
+      await alphaPrefs.save();
+      return true;
+    }
+    if (alphaPrefs.gyms.length == 1) {
+      final only = alphaPrefs.gyms.single.id;
+      if (alphaPrefs.activeGymId != only) {
+        alphaPrefs.activeGymId = only;
+        await alphaPrefs.save();
+      }
+      return true;
+    }
+    final choice = await showGymStartSheet(context);
+    if (!mounted || choice == null || choice.gymId == null) return false;
+    alphaPrefs.activeGymId = choice.gymId!;
+    await alphaPrefs.save();
+    return true;
+  }
 
   void _publishLive() {
     if (_workout == null) return;
@@ -249,6 +273,7 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
             context,
             current.exercise.name,
             german: current.exercise.germanName,
+            english: current.exercise.englishName,
           );
     liveWorkout.value = LiveWorkout(
       planId: widget.plan.id,
@@ -484,8 +509,11 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
               ..orderBy([(row) => OrderingTerm.desc(row.timestamp)])
               ..limit(80))
             .get();
+    final home = firstStudio(alphaPrefs.gyms)?.id;
     final gymHistory = history
-        .where((set) => sameGym(set.notes, alphaPrefs.activeGymId))
+        .where(
+          (set) => sameGym(set.notes, alphaPrefs.activeGymId, firstGymId: home),
+        )
         .toList();
     if (gymHistory.isEmpty) return const [];
     final workoutIdOfLast = gymHistory.first.workoutId;
@@ -607,7 +635,14 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
         row.bothSides = block.exercise.einseitig;
         await _startRest(block);
         final best =
-            !row.warmup && hadHistory && await isBestExerciseSet(db, saved);
+            !row.warmup &&
+            hadHistory &&
+            await isBestExerciseSet(
+              db,
+              saved,
+              gymId: alphaPrefs.activeGymId,
+              firstGymId: firstStudio(alphaPrefs.gyms)?.id,
+            );
         if (best && mounted) await _showRecord(kg, reps);
       }
     } finally {
@@ -629,6 +664,7 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
           context,
           block.exercise.name,
           german: block.exercise.germanName,
+          english: block.exercise.englishName,
         ),
         Duration(seconds: block.restSeconds),
         settings.alarmSound,
@@ -777,6 +813,7 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
         context,
         block.exercise.name,
         german: block.exercise.germanName,
+        english: block.exercise.englishName,
       );
       final accepted = await showDialog<bool>(
         context: context,
@@ -817,6 +854,7 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
               context,
               block.exercise.name,
               german: block.exercise.germanName,
+              english: block.exercise.englishName,
             ),
           ),
       ],
@@ -1050,6 +1088,23 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
           .write(PlanExercisesCompanion(restMs: Value(selected * 1000)));
       _planRest[block.exercise.id] = selected * 1000;
     }
+  }
+
+  Future<void> _feedback(_ExerciseBlock block) async {
+    final name = localizedExerciseName(
+      context,
+      block.exercise.name,
+      german: block.exercise.germanName,
+      english: block.exercise.englishName,
+    );
+    await Navigator.of(context).push(
+      FlexPageRoute(
+        builder: (context) => FeedbackPage(
+          exerciseName: name,
+          exerciseId: block.exercise.catalogId ?? block.exercise.name,
+        ),
+      ),
+    );
   }
 
   Future<void> _editNote(_ExerciseBlock block) async {
@@ -1300,6 +1355,7 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
       context,
       block.exercise.name,
       german: block.exercise.germanName,
+      english: block.exercise.englishName,
     );
     return Card(
       key: ObjectKey(block),
@@ -1368,6 +1424,8 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
                         unawaited(_editRest(block));
                       case 'note':
                         unawaited(_editNote(block));
+                      case 'feedback':
+                        unawaited(_feedback(block));
                     }
                   },
                   itemBuilder: (context) => [
@@ -1388,6 +1446,10 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
                       child: Text(l10n.restSecondsLabel),
                     ),
                     PopupMenuItem(value: 'note', child: Text(l10n.addNote)),
+                    PopupMenuItem(
+                      value: 'feedback',
+                      child: Text(l10n.feedbackSettings),
+                    ),
                     PopupMenuItem(
                       value: 'remove',
                       child: Text(l10n.removeExercise),

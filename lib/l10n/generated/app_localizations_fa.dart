@@ -2455,4 +2455,85 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String get sortExercisesHint => 'دسته را نگه دار و بکش.';
+
+  @override
+  String get feedbackTitle => 'بازخورد';
+
+  @override
+  String get feedbackSettings => 'ارسال بازخورد';
+
+  @override
+  String get feedbackCategory => 'دسته';
+
+  @override
+  String get feedbackBug => 'خطا';
+
+  @override
+  String get feedbackImprovement => 'بهبود';
+
+  @override
+  String get feedbackTranslation => 'ترجمه';
+
+  @override
+  String get feedbackMessageHint => 'چه چیزی را باید بدانیم؟';
+
+  @override
+  String get feedbackDictate => 'دیکته';
+
+  @override
+  String get feedbackAttachAudio => 'پیوست صدا';
+
+  @override
+  String get feedbackRemoveAudio => 'حذف ضبط';
+
+  @override
+  String get feedbackSend => 'ارسال';
+
+  @override
+  String get feedbackMailUnavailable => 'برنامه ایمیل نیست.';
+
+  @override
+  String get feedbackStopRecording => 'توقف ضبط';
+
+  @override
+  String get otherVariant => 'روش دیگر';
+
+  @override
+  String get firstStudioTitle => 'نام باشگاهی که الان در آن تمرین می‌کنی چیست؟';
+
+  @override
+  String get renameProfile => 'تغییر نام';
+
+  @override
+  String get deleteProfile => 'حذف نمایه';
+
+  @override
+  String get deleteProfileTitle => 'این نمایه حذف شود؟';
+
+  @override
+  String deleteProfileBody(String name) {
+    return 'برای حذف این نمایه و داده‌هایش «$name» را بنویس.';
+  }
+
+  @override
+  String get deleteProfileBlockedActive => 'نمایهٔ فعال را نمی‌توان حذف کرد.';
+
+  @override
+  String get deleteProfileBlockedLast => 'آخرین نمایه را نمی‌توان حذف کرد.';
+
+  @override
+  String get profileNameEmpty => 'نام نمی‌تواند خالی باشد.';
+
+  @override
+  String get profileNameDuplicate => 'این نام از قبل وجود دارد.';
+
+  @override
+  String get finishBeforeSwitch =>
+      'پیش از عوض کردن نمایه، تمرین را تمام کن یا کنار بگذار.';
+
+  @override
+  String get switchFinishWorkout => 'پایان تمرین';
+
+  @override
+  String get switchDiscardWorkout => 'کنار گذاشتن تمرین';
 }

@@ -1,5 +1,6 @@
 import 'package:drift/drift.dart' as drift;
 import 'package:flexify/database/catalog_seed.dart';
+import 'package:flexify/exercise_labels.dart';
 import 'package:flexify/database/database.dart';
 import 'package:flexify/database/exercise_catalog.dart';
 import 'package:flexify/graph/add_exercise_page.dart';
@@ -151,6 +152,8 @@ class _SwapWorkoutState extends State<SwapWorkout> {
                                 name: exercise.name,
                                 germanName: exercise.germanName,
                                 aliases: exercise.aliases,
+                                englishName: exercise.englishName,
+                                englishAliases: exercise.englishAliases,
                                 muscle: exercise.muscle,
                                 category: exercise.categoryName,
                                 equipment: exercise.equipment,
@@ -181,6 +184,8 @@ class _SwapWorkoutState extends State<SwapWorkout> {
                                 leftName: left.name,
                                 leftGermanName: left.germanName,
                                 leftAliases: left.aliases,
+                                leftEnglishName: left.englishName,
+                                leftEnglishAliases: left.englishAliases,
                                 leftCatalog: isCatalogExercise(
                                   catalogId: left.catalogId,
                                   catalogSource: left.catalogSource,
@@ -188,6 +193,8 @@ class _SwapWorkoutState extends State<SwapWorkout> {
                                 rightName: right.name,
                                 rightGermanName: right.germanName,
                                 rightAliases: right.aliases,
+                                rightEnglishName: right.englishName,
+                                rightEnglishAliases: right.englishAliases,
                                 rightCatalog: isCatalogExercise(
                                   catalogId: right.catalogId,
                                   catalogSource: right.catalogSource,
@@ -200,7 +207,14 @@ class _SwapWorkoutState extends State<SwapWorkout> {
                   itemBuilder: (context, index) {
                     final exercise = exercises[index];
                     return ListTile(
-                      title: Text(exercise.name),
+                      title: Text(
+                        localizedExerciseName(
+                          context,
+                          exercise.name,
+                          german: exercise.germanName,
+                          english: exercise.englishName,
+                        ),
+                      ),
                       onTap: () => _swapToExercise(exercise),
                     );
                   },

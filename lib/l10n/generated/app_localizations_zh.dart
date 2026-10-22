@@ -2381,6 +2381,86 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get sortExercisesHint => '按住把手拖动。';
+
+  @override
+  String get feedbackTitle => '反馈';
+
+  @override
+  String get feedbackSettings => '发送反馈';
+
+  @override
+  String get feedbackCategory => '类别';
+
+  @override
+  String get feedbackBug => '错误';
+
+  @override
+  String get feedbackImprovement => '改进';
+
+  @override
+  String get feedbackTranslation => '翻译';
+
+  @override
+  String get feedbackMessageHint => '我们该知道什么？';
+
+  @override
+  String get feedbackDictate => '听写';
+
+  @override
+  String get feedbackAttachAudio => '附加录音';
+
+  @override
+  String get feedbackRemoveAudio => '移除录音';
+
+  @override
+  String get feedbackSend => '发送';
+
+  @override
+  String get feedbackMailUnavailable => '没有可用的邮件应用。';
+
+  @override
+  String get feedbackStopRecording => '停止录音';
+
+  @override
+  String get otherVariant => '其他做法';
+
+  @override
+  String get firstStudioTitle => '你现在训练的场馆叫什么？';
+
+  @override
+  String get renameProfile => '重命名';
+
+  @override
+  String get deleteProfile => '删除资料';
+
+  @override
+  String get deleteProfileTitle => '删除这份资料？';
+
+  @override
+  String deleteProfileBody(String name) {
+    return '输入“$name”即可删除这份资料及其数据。';
+  }
+
+  @override
+  String get deleteProfileBlockedActive => '正在使用的资料不能删除。';
+
+  @override
+  String get deleteProfileBlockedLast => '最后一份资料不能删除。';
+
+  @override
+  String get profileNameEmpty => '名称不能为空。';
+
+  @override
+  String get profileNameDuplicate => '这个名称已经存在。';
+
+  @override
+  String get finishBeforeSwitch => '切换资料前，请先结束或放弃当前训练。';
+
+  @override
+  String get switchFinishWorkout => '结束训练';
+
+  @override
+  String get switchDiscardWorkout => '放弃训练';
 }
 
 /// The translations for Chinese, as used in China (`zh_CN`).
@@ -4760,6 +4840,86 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
 
   @override
   String get sortExercisesHint => '按住把手拖动。';
+
+  @override
+  String get feedbackTitle => '反馈';
+
+  @override
+  String get feedbackSettings => '发送反馈';
+
+  @override
+  String get feedbackCategory => '类别';
+
+  @override
+  String get feedbackBug => '错误';
+
+  @override
+  String get feedbackImprovement => '改进';
+
+  @override
+  String get feedbackTranslation => '翻译';
+
+  @override
+  String get feedbackMessageHint => '我们该知道什么？';
+
+  @override
+  String get feedbackDictate => '听写';
+
+  @override
+  String get feedbackAttachAudio => '附加录音';
+
+  @override
+  String get feedbackRemoveAudio => '移除录音';
+
+  @override
+  String get feedbackSend => '发送';
+
+  @override
+  String get feedbackMailUnavailable => '没有可用的邮件应用。';
+
+  @override
+  String get feedbackStopRecording => '停止录音';
+
+  @override
+  String get otherVariant => '其他做法';
+
+  @override
+  String get firstStudioTitle => '你现在训练的场馆叫什么？';
+
+  @override
+  String get renameProfile => '重命名';
+
+  @override
+  String get deleteProfile => '删除资料';
+
+  @override
+  String get deleteProfileTitle => '删除这份资料？';
+
+  @override
+  String deleteProfileBody(String name) {
+    return '输入“$name”即可删除这份资料及其数据。';
+  }
+
+  @override
+  String get deleteProfileBlockedActive => '正在使用的资料不能删除。';
+
+  @override
+  String get deleteProfileBlockedLast => '最后一份资料不能删除。';
+
+  @override
+  String get profileNameEmpty => '名称不能为空。';
+
+  @override
+  String get profileNameDuplicate => '这个名称已经存在。';
+
+  @override
+  String get finishBeforeSwitch => '切换资料前，请先结束或放弃当前训练。';
+
+  @override
+  String get switchFinishWorkout => '结束训练';
+
+  @override
+  String get switchDiscardWorkout => '放弃训练';
 }
 
 /// The translations for Chinese, as used in Taiwan (`zh_TW`).
@@ -7139,4 +7299,84 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get sortExercisesHint => '按住把手拖曳。';
+
+  @override
+  String get feedbackTitle => '回饋';
+
+  @override
+  String get feedbackSettings => '傳送回饋';
+
+  @override
+  String get feedbackCategory => '類別';
+
+  @override
+  String get feedbackBug => '錯誤';
+
+  @override
+  String get feedbackImprovement => '改進';
+
+  @override
+  String get feedbackTranslation => '翻譯';
+
+  @override
+  String get feedbackMessageHint => '我們該知道什麼？';
+
+  @override
+  String get feedbackDictate => '聽寫';
+
+  @override
+  String get feedbackAttachAudio => '附加錄音';
+
+  @override
+  String get feedbackRemoveAudio => '移除錄音';
+
+  @override
+  String get feedbackSend => '傳送';
+
+  @override
+  String get feedbackMailUnavailable => '沒有可用的郵件應用。';
+
+  @override
+  String get feedbackStopRecording => '停止錄音';
+
+  @override
+  String get otherVariant => '其他做法';
+
+  @override
+  String get firstStudioTitle => '你現在訓練的場館叫什麼？';
+
+  @override
+  String get renameProfile => '重新命名';
+
+  @override
+  String get deleteProfile => '刪除資料';
+
+  @override
+  String get deleteProfileTitle => '刪除這份資料？';
+
+  @override
+  String deleteProfileBody(String name) {
+    return '輸入「$name」即可刪除這份資料及其數據。';
+  }
+
+  @override
+  String get deleteProfileBlockedActive => '正在使用的資料不能刪除。';
+
+  @override
+  String get deleteProfileBlockedLast => '最後一份資料不能刪除。';
+
+  @override
+  String get profileNameEmpty => '名稱不能空白。';
+
+  @override
+  String get profileNameDuplicate => '這個名稱已經存在。';
+
+  @override
+  String get finishBeforeSwitch => '切換資料前，請先結束或放棄目前訓練。';
+
+  @override
+  String get switchFinishWorkout => '結束訓練';
+
+  @override
+  String get switchDiscardWorkout => '放棄訓練';
 }

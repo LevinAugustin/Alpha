@@ -2465,4 +2465,86 @@ class AppLocalizationsMs extends AppLocalizations {
 
   @override
   String get sortExercisesHint => 'Pegang pemegang dan seret.';
+
+  @override
+  String get feedbackTitle => 'Maklum balas';
+
+  @override
+  String get feedbackSettings => 'Hantar maklum balas';
+
+  @override
+  String get feedbackCategory => 'Kategori';
+
+  @override
+  String get feedbackBug => 'Ralat';
+
+  @override
+  String get feedbackImprovement => 'Penambahbaikan';
+
+  @override
+  String get feedbackTranslation => 'Terjemahan';
+
+  @override
+  String get feedbackMessageHint => 'Apa yang perlu kami tahu?';
+
+  @override
+  String get feedbackDictate => 'Imla';
+
+  @override
+  String get feedbackAttachAudio => 'Lampirkan rakaman';
+
+  @override
+  String get feedbackRemoveAudio => 'Buang rakaman';
+
+  @override
+  String get feedbackSend => 'Hantar';
+
+  @override
+  String get feedbackMailUnavailable => 'Tiada aplikasi mel.';
+
+  @override
+  String get feedbackStopRecording => 'Hentikan rakaman';
+
+  @override
+  String get otherVariant => 'Varian lain';
+
+  @override
+  String get firstStudioTitle => 'Apakah nama gim tempat kamu sedang berlatih?';
+
+  @override
+  String get renameProfile => 'Tukar nama';
+
+  @override
+  String get deleteProfile => 'Padam profil';
+
+  @override
+  String get deleteProfileTitle => 'Padam profil ini?';
+
+  @override
+  String deleteProfileBody(String name) {
+    return 'Taip \"$name\" untuk memadam profil ini dan datanya.';
+  }
+
+  @override
+  String get deleteProfileBlockedActive =>
+      'Profil yang sedang digunakan tidak boleh dipadam.';
+
+  @override
+  String get deleteProfileBlockedLast => 'Profil terakhir tidak boleh dipadam.';
+
+  @override
+  String get profileNameEmpty => 'Nama tidak boleh kosong.';
+
+  @override
+  String get profileNameDuplicate => 'Nama itu sudah digunakan.';
+
+  @override
+  String get finishBeforeSwitch =>
+      'Tamatkan atau buang senaman sebelum tukar profil.';
+
+  @override
+  String get switchFinishWorkout => 'Tamatkan senaman';
+
+  @override
+  String get switchDiscardWorkout => 'Buang senaman';
 }

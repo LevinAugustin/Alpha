@@ -320,6 +320,10 @@ void main() {
 
     await tester.tap(find.byKey(const Key('locked-home')));
     await tester.pumpAndSettle();
+    await tester.tap(find.byKey(const Key('language-en')));
+    await tester.pump();
+    await tester.tap(find.byKey(const Key('language-continue')));
+    await tester.pumpAndSettle();
     expect(find.byKey(const Key('onboarding-name')), findsOneWidget);
   });
 

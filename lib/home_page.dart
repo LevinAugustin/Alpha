@@ -6,12 +6,15 @@ import 'package:flexify/l10n/l10n.dart';
 import 'package:flexify/main.dart';
 import 'package:flexify/platform_page_route.dart';
 import 'package:flexify/profile/local_profiles.dart';
+import 'package:flexify/profile/profile_actions.dart';
 import 'package:flexify/theme/alpha_theme.dart';
 import 'package:flexify/workout/gym_workout_page.dart';
 import 'package:flexify/settings/whats_new.dart';
 import 'package:flexify/shell/calendar_page.dart';
 import 'package:flexify/shell/exercises_page.dart';
 import 'package:flexify/shell/profile_page.dart';
+import 'package:flexify/alpha/alpha_prefs.dart';
+import 'package:flexify/shell/language_choice_page.dart';
 import 'package:flexify/shell/start_page.dart';
 import 'package:flexify/shell/training_page.dart';
 import 'package:flexify/timer/timer_progress_widgets.dart';
@@ -31,6 +34,7 @@ class _ProfileButton extends StatelessWidget {
     final palette = AlphaTheme.of(context);
     final label = (name ?? '').trim();
     return InkWell(
+      key: const Key('profile-switch'),
       onTap: () => _switch(context),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -43,6 +47,7 @@ class _ProfileButton extends StatelessWidget {
               backgroundImage: AssetImage(palette.figureAsset),
             ),
             if (label.isNotEmpty) ...[const SizedBox(width: 6), Text(label)],
+            Icon(Icons.swap_horiz, color: palette.accent, size: 18),
           ],
         ),
       ),
@@ -59,14 +64,19 @@ class _ProfileButton extends StatelessWidget {
         children: [
           for (final profile in registry.profiles)
             SimpleDialogOption(
+              key: Key('profile-option-${profile.id}'),
               onPressed: () async {
-                await activateLocalProfile(profile);
-                if (context.mounted) Navigator.pop(context);
+                final switched = await switchLocalProfile(context, profile);
+                if (switched && context.mounted) Navigator.pop(context);
               },
               child: Text(profile.name),
             ),
           SimpleDialogOption(
-            onPressed: () => Navigator.pop(context),
+            key: const Key('profile-create'),
+            onPressed: () async {
+              final created = await startNewProfile(context);
+              if (created && context.mounted) Navigator.pop(context);
+            },
             child: Text(context.l10n.createProfileAction),
           ),
         ],
@@ -96,11 +106,39 @@ class _HomePageState extends State<HomePage> {
       _handleTimerNotificationTarget();
     });
     unawaited(_announceVersion());
-    unawaited(_offerProfileChoice());
+    unawaited(_offerStartup());
+  }
+
+  Future<void> _offerStartup() async {
+    if (WidgetsBinding.instance.runtimeType.toString().contains('Test')) return;
+    await _offerProfileChoice();
+    await _offerLanguage();
+  }
+
+  Future<void> _offerLanguage() async {
+    if (alphaPrefs.languageAsked || !mounted) return;
+    try {
+      final registry = await loadProfileRegistry();
+      if (!registry.onboarded || !mounted) return;
+      final choice = await showLanguageChoice(context);
+      if (!mounted) return;
+      final setting = await (db.select(db.settings)..limit(1)).getSingle();
+      final current = (setting.localeOverride ?? '').trim();
+      if (choice == 'de' || choice == 'en') {
+        await db.settings.update().write(
+          SettingsCompanion(localeOverride: Value(choice!)),
+        );
+      } else if (current.isEmpty) {
+        await db.settings.update().write(
+          const SettingsCompanion(localeOverride: Value('de')),
+        );
+      }
+      alphaPrefs.languageAsked = true;
+      await alphaPrefs.save();
+    } catch (_) {}
   }
 
   Future<void> _offerProfileChoice() async {
-    if (WidgetsBinding.instance.runtimeType.toString().contains('Test')) return;
     try {
       final registry = await loadProfileRegistry();
       if (!mounted || registry.profiles.length < 2) return;
@@ -119,13 +157,14 @@ class _HomePageState extends State<HomePage> {
                       ? const Icon(Icons.check)
                       : null,
                   onTap: () async {
-                    await activateLocalProfile(profile);
-                    if (context.mounted) Navigator.pop(context);
+                    final switched = await switchLocalProfile(context, profile);
+                    if (switched && context.mounted) Navigator.pop(context);
                   },
                 ),
               TextButton(
                 onPressed: () async {
-                  Navigator.pop(context);
+                  final created = await startNewProfile(context);
+                  if (created && context.mounted) Navigator.pop(context);
                 },
                 child: Text(context.l10n.createProfileAction),
               ),

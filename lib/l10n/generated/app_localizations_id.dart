@@ -2466,4 +2466,86 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get sortExercisesHint => 'Tahan gagang lalu geser.';
+
+  @override
+  String get feedbackTitle => 'Masukan';
+
+  @override
+  String get feedbackSettings => 'Kirim masukan';
+
+  @override
+  String get feedbackCategory => 'Kategori';
+
+  @override
+  String get feedbackBug => 'Kesalahan';
+
+  @override
+  String get feedbackImprovement => 'Perbaikan';
+
+  @override
+  String get feedbackTranslation => 'Terjemahan';
+
+  @override
+  String get feedbackMessageHint => 'Apa yang perlu kami tahu?';
+
+  @override
+  String get feedbackDictate => 'Dikte';
+
+  @override
+  String get feedbackAttachAudio => 'Lampirkan rekaman';
+
+  @override
+  String get feedbackRemoveAudio => 'Hapus rekaman';
+
+  @override
+  String get feedbackSend => 'Kirim';
+
+  @override
+  String get feedbackMailUnavailable => 'Tidak ada aplikasi surel.';
+
+  @override
+  String get feedbackStopRecording => 'Hentikan rekaman';
+
+  @override
+  String get otherVariant => 'Varian lain';
+
+  @override
+  String get firstStudioTitle => 'Apa nama gym tempat kamu latihan sekarang?';
+
+  @override
+  String get renameProfile => 'Ubah nama';
+
+  @override
+  String get deleteProfile => 'Hapus profil';
+
+  @override
+  String get deleteProfileTitle => 'Hapus profil ini?';
+
+  @override
+  String deleteProfileBody(String name) {
+    return 'Ketik \"$name\" untuk menghapus profil ini beserta datanya.';
+  }
+
+  @override
+  String get deleteProfileBlockedActive =>
+      'Profil yang sedang dipakai tidak bisa dihapus.';
+
+  @override
+  String get deleteProfileBlockedLast => 'Profil terakhir tidak bisa dihapus.';
+
+  @override
+  String get profileNameEmpty => 'Nama tidak boleh kosong.';
+
+  @override
+  String get profileNameDuplicate => 'Nama itu sudah dipakai.';
+
+  @override
+  String get finishBeforeSwitch =>
+      'Selesaikan atau buang latihan sebelum ganti profil.';
+
+  @override
+  String get switchFinishWorkout => 'Selesaikan latihan';
+
+  @override
+  String get switchDiscardWorkout => 'Buang latihan';
 }

@@ -2475,4 +2475,87 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get sortExercisesHint => 'Tieni la maniglia e trascina.';
+
+  @override
+  String get feedbackTitle => 'Segnalazione';
+
+  @override
+  String get feedbackSettings => 'Invia una segnalazione';
+
+  @override
+  String get feedbackCategory => 'Categoria';
+
+  @override
+  String get feedbackBug => 'Errore';
+
+  @override
+  String get feedbackImprovement => 'Miglioramento';
+
+  @override
+  String get feedbackTranslation => 'Traduzione';
+
+  @override
+  String get feedbackMessageHint => 'Cosa dobbiamo sapere?';
+
+  @override
+  String get feedbackDictate => 'Detta';
+
+  @override
+  String get feedbackAttachAudio => 'Allega una registrazione';
+
+  @override
+  String get feedbackRemoveAudio => 'Rimuovi registrazione';
+
+  @override
+  String get feedbackSend => 'Invia';
+
+  @override
+  String get feedbackMailUnavailable => 'Nessuna app di posta.';
+
+  @override
+  String get feedbackStopRecording => 'Interrompi registrazione';
+
+  @override
+  String get otherVariant => 'Altra variante';
+
+  @override
+  String get firstStudioTitle => 'Come si chiama la palestra in cui ti alleni?';
+
+  @override
+  String get renameProfile => 'Rinomina';
+
+  @override
+  String get deleteProfile => 'Elimina profilo';
+
+  @override
+  String get deleteProfileTitle => 'Eliminare questo profilo?';
+
+  @override
+  String deleteProfileBody(String name) {
+    return 'Digita «$name» per eliminare questo profilo e i suoi dati.';
+  }
+
+  @override
+  String get deleteProfileBlockedActive =>
+      'Il profilo attivo non può essere eliminato.';
+
+  @override
+  String get deleteProfileBlockedLast =>
+      'L\'ultimo profilo non può essere eliminato.';
+
+  @override
+  String get profileNameEmpty => 'Il nome non può essere vuoto.';
+
+  @override
+  String get profileNameDuplicate => 'Questo nome è già in uso.';
+
+  @override
+  String get finishBeforeSwitch =>
+      'Termina o scarta l\'allenamento prima di cambiare profilo.';
+
+  @override
+  String get switchFinishWorkout => 'Termina allenamento';
+
+  @override
+  String get switchDiscardWorkout => 'Scarta allenamento';
 }

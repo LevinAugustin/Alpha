@@ -4547,6 +4547,162 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Hold a handle and drag.'**
   String get sortExercisesHint;
+
+  /// Title of the feedback form.
+  ///
+  /// In en, this message translates to:
+  /// **'Feedback'**
+  String get feedbackTitle;
+
+  /// Opens the feedback form from settings or an exercise.
+  ///
+  /// In en, this message translates to:
+  /// **'Send feedback'**
+  String get feedbackSettings;
+
+  /// Label above the feedback category choices.
+  ///
+  /// In en, this message translates to:
+  /// **'Category'**
+  String get feedbackCategory;
+
+  /// Feedback category for something that is wrong.
+  ///
+  /// In en, this message translates to:
+  /// **'Bug'**
+  String get feedbackBug;
+
+  /// Feedback category for a suggested improvement.
+  ///
+  /// In en, this message translates to:
+  /// **'Improvement'**
+  String get feedbackImprovement;
+
+  /// Feedback category for a translation issue.
+  ///
+  /// In en, this message translates to:
+  /// **'Translation'**
+  String get feedbackTranslation;
+
+  /// Hint in the feedback text field.
+  ///
+  /// In en, this message translates to:
+  /// **'What should we know?'**
+  String get feedbackMessageHint;
+
+  /// Button that starts system dictation.
+  ///
+  /// In en, this message translates to:
+  /// **'Dictate'**
+  String get feedbackDictate;
+
+  /// Button that attaches an optional voice recording.
+  ///
+  /// In en, this message translates to:
+  /// **'Attach a voice recording'**
+  String get feedbackAttachAudio;
+
+  /// Removes the attached voice recording.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove recording'**
+  String get feedbackRemoveAudio;
+
+  /// Opens the mail app with the feedback.
+  ///
+  /// In en, this message translates to:
+  /// **'Send'**
+  String get feedbackSend;
+
+  /// Shown when no mail app can be opened.
+  ///
+  /// In en, this message translates to:
+  /// **'No mail app is available.'**
+  String get feedbackMailUnavailable;
+
+  /// Stops the optional voice recording.
+  ///
+  /// In en, this message translates to:
+  /// **'Stop recording'**
+  String get feedbackStopRecording;
+
+  /// Returns from one exercise variant to the variant list.
+  ///
+  /// In en, this message translates to:
+  /// **'Other version'**
+  String get otherVariant;
+
+  /// Asks for the first studio name before a workout can start.
+  ///
+  /// In en, this message translates to:
+  /// **'What is the name of the studio you are training in?'**
+  String get firstStudioTitle;
+
+  /// Renames a local profile.
+  ///
+  /// In en, this message translates to:
+  /// **'Rename'**
+  String get renameProfile;
+
+  /// Deletes a local profile from profile management.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete profile'**
+  String get deleteProfile;
+
+  /// Title of the profile delete confirmation.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete this profile?'**
+  String get deleteProfileTitle;
+
+  /// Asks the user to type the profile name before deleting it.
+  ///
+  /// In en, this message translates to:
+  /// **'Type \"{name}\" to delete this profile and its data.'**
+  String deleteProfileBody(String name);
+
+  /// Shown when the profile in use cannot be deleted.
+  ///
+  /// In en, this message translates to:
+  /// **'The active profile cannot be deleted.'**
+  String get deleteProfileBlockedActive;
+
+  /// Shown when the only remaining profile cannot be deleted.
+  ///
+  /// In en, this message translates to:
+  /// **'The last profile cannot be deleted.'**
+  String get deleteProfileBlockedLast;
+
+  /// Shown when a profile rename has no name.
+  ///
+  /// In en, this message translates to:
+  /// **'The name cannot be empty.'**
+  String get profileNameEmpty;
+
+  /// Shown when a profile rename matches another profile.
+  ///
+  /// In en, this message translates to:
+  /// **'That name is already used.'**
+  String get profileNameDuplicate;
+
+  /// Shown when a workout is still open during a profile switch.
+  ///
+  /// In en, this message translates to:
+  /// **'Finish or discard the workout before switching profiles.'**
+  String get finishBeforeSwitch;
+
+  /// Saves the open workout before switching profiles.
+  ///
+  /// In en, this message translates to:
+  /// **'Finish workout'**
+  String get switchFinishWorkout;
+
+  /// Deletes the open workout before switching profiles.
+  ///
+  /// In en, this message translates to:
+  /// **'Discard workout'**
+  String get switchDiscardWorkout;
 }
 
 class _AppLocalizationsDelegate

@@ -2462,4 +2462,85 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get sortExercisesHint => 'Giữ tay cầm và kéo.';
+
+  @override
+  String get feedbackTitle => 'Phản hồi';
+
+  @override
+  String get feedbackSettings => 'Gửi phản hồi';
+
+  @override
+  String get feedbackCategory => 'Danh mục';
+
+  @override
+  String get feedbackBug => 'Lỗi';
+
+  @override
+  String get feedbackImprovement => 'Cải tiến';
+
+  @override
+  String get feedbackTranslation => 'Bản dịch';
+
+  @override
+  String get feedbackMessageHint => 'Chúng tôi nên biết gì?';
+
+  @override
+  String get feedbackDictate => 'Đọc chính tả';
+
+  @override
+  String get feedbackAttachAudio => 'Đính kèm ghi âm';
+
+  @override
+  String get feedbackRemoveAudio => 'Xóa ghi âm';
+
+  @override
+  String get feedbackSend => 'Gửi';
+
+  @override
+  String get feedbackMailUnavailable => 'Không có ứng dụng thư.';
+
+  @override
+  String get feedbackStopRecording => 'Dừng ghi';
+
+  @override
+  String get otherVariant => 'Cách khác';
+
+  @override
+  String get firstStudioTitle => 'Phòng tập bạn đang tập tên là gì?';
+
+  @override
+  String get renameProfile => 'Đổi tên';
+
+  @override
+  String get deleteProfile => 'Xóa hồ sơ';
+
+  @override
+  String get deleteProfileTitle => 'Xóa hồ sơ này?';
+
+  @override
+  String deleteProfileBody(String name) {
+    return 'Nhập \"$name\" để xóa hồ sơ này và dữ liệu của nó.';
+  }
+
+  @override
+  String get deleteProfileBlockedActive => 'Không xóa được hồ sơ đang dùng.';
+
+  @override
+  String get deleteProfileBlockedLast => 'Không xóa được hồ sơ cuối cùng.';
+
+  @override
+  String get profileNameEmpty => 'Tên không được để trống.';
+
+  @override
+  String get profileNameDuplicate => 'Tên này đã có.';
+
+  @override
+  String get finishBeforeSwitch =>
+      'Hãy kết thúc hoặc hủy buổi tập trước khi đổi hồ sơ.';
+
+  @override
+  String get switchFinishWorkout => 'Kết thúc buổi tập';
+
+  @override
+  String get switchDiscardWorkout => 'Hủy buổi tập';
 }

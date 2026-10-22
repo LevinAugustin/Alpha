@@ -2441,4 +2441,84 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get sortExercisesHint => 'أمسك المقبض واسحب.';
+
+  @override
+  String get feedbackTitle => 'ملاحظة';
+
+  @override
+  String get feedbackSettings => 'إرسال ملاحظة';
+
+  @override
+  String get feedbackCategory => 'الفئة';
+
+  @override
+  String get feedbackBug => 'خطأ';
+
+  @override
+  String get feedbackImprovement => 'تحسين';
+
+  @override
+  String get feedbackTranslation => 'ترجمة';
+
+  @override
+  String get feedbackMessageHint => 'ماذا ينبغي أن نعرف؟';
+
+  @override
+  String get feedbackDictate => 'إملاء';
+
+  @override
+  String get feedbackAttachAudio => 'إرفاق تسجيل';
+
+  @override
+  String get feedbackRemoveAudio => 'إزالة التسجيل';
+
+  @override
+  String get feedbackSend => 'إرسال';
+
+  @override
+  String get feedbackMailUnavailable => 'لا يوجد تطبيق بريد.';
+
+  @override
+  String get feedbackStopRecording => 'إيقاف التسجيل';
+
+  @override
+  String get otherVariant => 'نسخة أخرى';
+
+  @override
+  String get firstStudioTitle => 'ما اسم النادي الذي تتدرب فيه الآن؟';
+
+  @override
+  String get renameProfile => 'إعادة التسمية';
+
+  @override
+  String get deleteProfile => 'حذف الملف';
+
+  @override
+  String get deleteProfileTitle => 'حذف هذا الملف؟';
+
+  @override
+  String deleteProfileBody(String name) {
+    return 'اكتب \"$name\" لحذف هذا الملف وبياناته.';
+  }
+
+  @override
+  String get deleteProfileBlockedActive => 'لا يمكن حذف الملف النشط.';
+
+  @override
+  String get deleteProfileBlockedLast => 'لا يمكن حذف آخر ملف.';
+
+  @override
+  String get profileNameEmpty => 'لا يمكن أن يكون الاسم فارغًا.';
+
+  @override
+  String get profileNameDuplicate => 'هذا الاسم مستخدم بالفعل.';
+
+  @override
+  String get finishBeforeSwitch => 'أنهِ التمرين أو تجاهله قبل تبديل الملف.';
+
+  @override
+  String get switchFinishWorkout => 'إنهاء التمرين';
+
+  @override
+  String get switchDiscardWorkout => 'تجاهل التمرين';
 }

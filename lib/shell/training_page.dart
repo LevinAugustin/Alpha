@@ -204,6 +204,7 @@ class _TemplateCard extends StatelessWidget {
       context,
       exercise.name,
       german: exercise.germanName,
+      english: exercise.englishName,
     );
     final sets = planExercise.maxSets;
     final range = formatRepRange(planExercise.repMin, planExercise.repMax);

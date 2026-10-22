@@ -1,4 +1,5 @@
 import 'package:drift/drift.dart';
+import 'package:flexify/alpha/set_notes.dart';
 import 'package:flexify/database/body_weight_repository.dart';
 import 'package:flexify/database/database.dart';
 
@@ -437,8 +438,10 @@ Future<int> deleteExerciseSets(AppDatabase database, Iterable<int> ids) {
 /// Compares a set against prior exercise sets for positive reinforcement.
 Future<bool> isBestExerciseSet(
   AppDatabase database,
-  ExerciseSetView exerciseSet,
-) async {
+  ExerciseSetView exerciseSet, {
+  String? gymId,
+  String? firstGymId,
+}) async {
   final exercise =
       await (database.exercises.select()
             ..where((row) => row.name.equals(exerciseSet.name))
@@ -455,6 +458,13 @@ Future<bool> isBestExerciseSet(
       if (side == null || side.isEmpty) return sameExercise;
       return sameExercise & set.side.equals(side);
     });
+
+  if (gymId != null && gymId.isNotEmpty) {
+    final rows = (await previous.get())
+        .where((row) => sameGym(row.notes, gymId, firstGymId: firstGymId))
+        .toList();
+    return _beatsStoredBest(exerciseSet, rows);
+  }
 
   if (exerciseSet.cardio &&
       const {'kg', 'lb', 'stone'}.contains(exerciseSet.unit)) {
@@ -505,6 +515,68 @@ Future<bool> isBestExerciseSet(
             ])
             ..limit(1))
           .getSingleOrNull();
+  if (best == null) return false;
+  final bestWeight = displayLoad(exerciseSet.unit, best.loadKg);
+  final bestReps = best.reps ?? 0;
+  return exerciseSet.weight > bestWeight ||
+      (exerciseSet.weight == bestWeight && exerciseSet.reps > bestReps);
+}
+
+bool _beatsStoredBest(ExerciseSetView exerciseSet, List<ExerciseSet> rows) {
+  if (exerciseSet.cardio &&
+      const {'kg', 'lb', 'stone'}.contains(exerciseSet.unit)) {
+    ExerciseSet? best;
+    for (final row in rows) {
+      final load = row.loadKg ?? 0;
+      final duration = row.durationMs ?? 0;
+      if (best == null) {
+        best = row;
+        continue;
+      }
+      final bestLoad = best.loadKg ?? 0;
+      final bestDuration = best.durationMs ?? 0;
+      if (load > bestLoad || (load == bestLoad && duration > bestDuration)) {
+        best = row;
+      }
+    }
+    if (best == null) return false;
+    final bestWeight = displayLoad(exerciseSet.unit, best.loadKg);
+    final bestMinutes = (best.durationMs ?? 0) / 60000;
+    return exerciseSet.weight > bestWeight ||
+        (exerciseSet.weight == bestWeight &&
+            exerciseSet.duration > bestMinutes);
+  }
+
+  if (exerciseSet.cardio) {
+    if (exerciseSet.duration == 0) return false;
+    var bestPace = 0.0;
+    var found = false;
+    for (final candidate in rows) {
+      final duration = (candidate.durationMs ?? 0) / 60000;
+      if (duration <= 0) continue;
+      final pace =
+          displayDistance(exerciseSet.unit, candidate.distanceMetres) /
+          duration;
+      if (!found || pace > bestPace) {
+        bestPace = pace;
+        found = true;
+      }
+    }
+    return found && exerciseSet.distance / exerciseSet.duration > bestPace;
+  }
+
+  ExerciseSet? best;
+  for (final row in rows) {
+    final load = row.loadKg ?? 0;
+    final reps = row.reps ?? 0;
+    if (best == null) {
+      best = row;
+      continue;
+    }
+    final bestLoad = best.loadKg ?? 0;
+    final bestReps = best.reps ?? 0;
+    if (load > bestLoad || (load == bestLoad && reps > bestReps)) best = row;
+  }
   if (best == null) return false;
   final bestWeight = displayLoad(exerciseSet.unit, best.loadKg);
   final bestReps = best.reps ?? 0;
