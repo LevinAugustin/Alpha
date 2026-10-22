@@ -39,6 +39,10 @@ class AlphaPrefs extends ChangeNotifier {
   String lengthUnit = 'cm';
   final Map<String, double> nextWeight = {};
   final Map<String, int> nextReps = {};
+  DateTime? restEndsAt;
+  int? restTotalMs;
+  String restTitle = '';
+  String restTarget = 'timer';
 
   GymPlace get activeGym =>
       gyms.firstWhere((gym) => gym.id == activeGymId, orElse: () => gyms.first);
@@ -80,6 +84,21 @@ class AlphaPrefs extends ChangeNotifier {
           (key, value) => MapEntry('$key', (value as num).toInt()),
         ),
       );
+    restEndsAt = DateTime.tryParse(json['restEndsAt'] as String? ?? '');
+    restTotalMs = (json['restTotalMs'] as num?)?.toInt();
+    restTitle = json['restTitle'] as String? ?? '';
+    restTarget = json['restTarget'] as String? ?? 'timer';
+  }
+
+  Future<void> clearRestDeadline() async {
+    if (restEndsAt == null && restTotalMs == null && restTitle.isEmpty) {
+      return;
+    }
+    restEndsAt = null;
+    restTotalMs = null;
+    restTitle = '';
+    restTarget = 'timer';
+    await save();
   }
 
   Future<void> load() async {
@@ -111,6 +130,10 @@ class AlphaPrefs extends ChangeNotifier {
         'gyms': gyms.map((gym) => gym.toJson()).toList(),
         'nextWeight': nextWeight,
         'nextReps': nextReps,
+        if (restEndsAt != null) 'restEndsAt': restEndsAt!.toIso8601String(),
+        if (restTotalMs != null) 'restTotalMs': restTotalMs,
+        if (restTitle.isNotEmpty) 'restTitle': restTitle,
+        if (restTarget != 'timer') 'restTarget': restTarget,
       }),
     );
     notifyListeners();

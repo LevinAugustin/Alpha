@@ -25,6 +25,7 @@ import 'package:flexify/platform_page_route.dart';
 import 'package:flexify/theme/alpha_theme.dart';
 import 'package:flexify/timer/timer_state.dart';
 import 'package:flexify/workout/plate_calculator_page.dart';
+import 'package:flexify/workout/set_table.dart';
 import 'package:flexify/workout/workout_sort_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -48,27 +49,21 @@ class _SidePair {
 }
 
 class _SetRow {
-  _SetRow({
-    required this.kg,
-    required this.reps,
-    required this.repsRight,
-    required this.previous,
-  });
+  _SetRow({required this.kg, required this.reps, required this.previous});
 
   final TextEditingController kg;
   final TextEditingController reps;
-  final TextEditingController repsRight;
   String previous;
   bool done = false;
   bool warmup = false;
   bool bothSides = false;
   int? setId;
   int? rightSetId;
+  double? legacyRightReps;
 
   void dispose() {
     kg.dispose();
     reps.dispose();
-    repsRight.dispose();
   }
 }
 
@@ -84,7 +79,6 @@ class _ExerciseBlock {
   int? repMin;
   int? repMax;
   String note = '';
-  bool splitSides = false;
   final List<_SetRow> sets;
 
   void dispose() {
@@ -168,9 +162,6 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
       final gymId = choice.gymId;
       if (gymId != null) {
         alphaPrefs.activeGymId = gymId;
-        for (final gym in alphaPrefs.gyms) {
-          if (gym.id == gymId) gym.lastUsedAt = DateTime.now();
-        }
         await alphaPrefs.save();
       }
     }
@@ -317,7 +308,6 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
       ..sort((a, b) => a.timestamp.compareTo(b.timestamp));
     final previous = await _previousSets(exercise.id, workoutId);
     final rows = <_SetRow>[];
-    var splitSides = false;
     if (exercise.einseitig) {
       final loggedPairs = _sidePairs(logged);
       final previousPairs = _sidePairs(previous);
@@ -334,33 +324,15 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
             : null;
         final source =
             saved?.left ?? saved?.right ?? earlier?.left ?? earlier?.right;
-        final savedLeft = saved?.left?.reps;
-        final savedRight = saved?.right?.reps;
-        final earlierLeft = earlier?.left?.reps;
-        final earlierRight = earlier?.right?.reps;
-        final unequalSaved =
-            savedLeft != null && savedRight != null && savedLeft != savedRight;
-        if (unequalSaved) splitSides = true;
-        final shared =
-            saved == null &&
-            earlierLeft != null &&
-            earlierRight != null &&
-            earlierLeft != earlierRight;
         final row = _SetRow(
           kg: TextEditingController(
             text: _prefill(exercise.id, source?.loadKg, index),
           ),
-          reps: TextEditingController(
-            text: shared
-                ? ''
-                : _number(savedLeft ?? earlierLeft ?? earlierRight),
-          ),
-          repsRight: TextEditingController(
-            text: _number(savedRight ?? (saved == null ? null : earlierRight)),
-          ),
+          reps: TextEditingController(text: _repsForPair(saved, earlier)),
           previous: _pairPrevious(earlier),
         );
         row.bothSides = _countsBothSides(saved);
+        row.legacyRightReps = _legacyRightReps(saved);
         row.warmup = notesAreWarmup((saved?.left ?? saved?.right)?.notes);
         if (saved != null) {
           row.done = true;
@@ -385,7 +357,6 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
             text: _prefill(exercise.id, source?.loadKg, index),
           ),
           reps: TextEditingController(text: _number(source?.reps)),
-          repsRight: TextEditingController(),
           previous: _previousLabel(earlier),
         );
         row.warmup = notesAreWarmup(saved?.notes);
@@ -403,8 +374,38 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
     );
     block.repMin = repMin;
     block.repMax = repMax;
-    block.splitSides = splitSides;
     return block;
+  }
+
+  String _repsForPair(_SidePair? saved, _SidePair? earlier) {
+    if (saved != null) {
+      final left = saved.left?.reps;
+      final right = saved.right?.reps;
+      if (left != null && right != null && left != right) {
+        return '${_number(left)}/${_number(right)}';
+      }
+      return _number(left ?? right);
+    }
+    final left = earlier?.left?.reps;
+    final right = earlier?.right?.reps;
+    if (left != null && right != null && left != right) return '';
+    return _number(left ?? right);
+  }
+
+  double? _legacyRightReps(_SidePair? saved) {
+    final left = saved?.left?.reps;
+    final right = saved?.right?.reps;
+    if (left == null || right == null || left == right) return null;
+    return right;
+  }
+
+  double _plainReps(String text) {
+    var best = 0.0;
+    for (final part in text.split('/')) {
+      final value = double.tryParse(part.trim().replaceAll(',', '.')) ?? 0;
+      if (value > best) best = value;
+    }
+    return best;
   }
 
   bool _countsBothSides(_SidePair? saved) {
@@ -465,40 +466,6 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
     return '${_number(load)} kg × $reps';
   }
 
-  Future<ExerciseSetView> _saveSide(
-    _ExerciseBlock block, {
-    required double kg,
-    required double reps,
-    required String side,
-    required DateTime created,
-    required bool warmup,
-  }) {
-    return insertExerciseSet(
-      db,
-      exerciseId: block.exercise.id,
-      workoutId: _workout!.id,
-      exerciseSet: ExerciseSetView(
-        id: 0,
-        bodyWeight: 0,
-        cardio: block.exercise.kind == 'cardio',
-        created: created,
-        distance: 0,
-        duration: 0,
-        name: block.exercise.name,
-        notes: encodeSetNotes(
-          gymId: alphaPrefs.activeGymId,
-          warmup: warmup,
-          userNote: block.note,
-        ),
-        planId: widget.plan.id,
-        reps: reps,
-        unit: 'kg',
-        weight: kg,
-        side: side,
-      ),
-    );
-  }
-
   String _prefill(int exerciseId, double? logged, int index) {
     if (logged != null) return _number(logged);
     if (index != 0) return '';
@@ -553,15 +520,19 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
     for (final block in _blocks) {
       for (final set in block.sets.where((row) => row.done && !row.warmup)) {
         final kg = double.tryParse(set.kg.text.replaceAll(',', '.')) ?? 0;
-        final reps = double.tryParse(set.reps.text.replaceAll(',', '.')) ?? 0;
-        final right =
-            double.tryParse(set.repsRight.text.replaceAll(',', '.')) ?? 0;
-        if (block.exercise.einseitig && set.bothSides && !block.splitSides) {
+        final text = set.reps.text.trim();
+        final parts = text.split('/');
+        if (block.exercise.einseitig &&
+            set.legacyRightReps != null &&
+            parts.length == 2) {
+          final left =
+              double.tryParse(parts[0].trim().replaceAll(',', '.')) ?? 0;
+          total += kg * left + kg * set.legacyRightReps!;
+        } else if (block.exercise.einseitig && set.bothSides) {
+          final reps = double.tryParse(text.replaceAll(',', '.')) ?? 0;
           total += kg * reps * 2;
-        } else if (block.exercise.einseitig &&
-            (block.splitSides || set.rightSetId != null)) {
-          total += kg * reps + kg * right;
         } else {
+          final reps = double.tryParse(text.replaceAll(',', '.')) ?? 0;
           total += kg * reps;
         }
       }
@@ -593,44 +564,16 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
         row.done = false;
         row.setId = null;
         row.rightSetId = null;
-        if (mounted) context.read<TimerState>().stopTimer();
-      } else if (block.exercise.einseitig && block.splitSides) {
-        final kg = double.tryParse(row.kg.text.replaceAll(',', '.')) ?? 0;
-        final left = double.tryParse(row.reps.text.replaceAll(',', '.')) ?? 0;
-        final right =
-            double.tryParse(row.repsRight.text.replaceAll(',', '.')) ?? 0;
-        if (left == 0 && right == 0) return;
-        final now = DateTime.now();
-        var best = false;
-        if (left > 0) {
-          final saved = await _saveSide(
-            block,
-            kg: kg,
-            reps: left,
-            side: 'links',
-            created: now,
-            warmup: row.warmup,
-          );
-          row.setId = saved.id;
-          best = await isBestExerciseSet(db, saved) || best;
-        }
-        if (right > 0) {
-          final saved = await _saveSide(
-            block,
-            kg: kg,
-            reps: right,
-            side: 'rechts',
-            created: now,
-            warmup: row.warmup,
-          );
-          row.rightSetId = saved.id;
-          best = await isBestExerciseSet(db, saved) || best;
-        }
-        row.done = true;
         row.bothSides = false;
-        await _startRest(block);
-        if (best && mounted) await _showRecord(kg, left > right ? left : right);
+        row.legacyRightReps = null;
+        if (row.reps.text.contains('/')) {
+          row.reps.text = _number(_plainReps(row.reps.text));
+        }
+        if (mounted) context.read<TimerState>().stopTimer();
       } else {
+        if (row.reps.text.contains('/')) {
+          row.reps.text = _number(_plainReps(row.reps.text));
+        }
         final kg = double.tryParse(row.kg.text.replaceAll(',', '.')) ?? 0;
         final reps = double.tryParse(row.reps.text.replaceAll(',', '.')) ?? 0;
         final hadHistory = row.previous != '—';
@@ -659,6 +602,8 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
         );
         row.done = true;
         row.setId = saved.id;
+        row.rightSetId = null;
+        row.legacyRightReps = null;
         row.bothSides = block.exercise.einseitig;
         await _startRest(block);
         final best =
@@ -763,6 +708,13 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
     return _restMs(exercise, _planRest[exercise.id], settings.timerDuration);
   }
 
+  void _stampStudioUse() {
+    final id = alphaPrefs.activeGymId;
+    for (final gym in alphaPrefs.gyms) {
+      if (gym.id == id) gym.lastUsedAt = DateTime.now();
+    }
+  }
+
   Future<void> _finish() async {
     final workout = _workout;
     if (workout == null) return;
@@ -789,6 +741,8 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
     );
     if (confirmed != true || !mounted) return;
     await _commitPendingExercise();
+    _stampStudioUse();
+    await alphaPrefs.save();
     await (db.update(db.workouts)..where((row) => row.id.equals(workout.id)))
         .write(WorkoutsCompanion(endedAt: Value(DateTime.now())));
     if (mounted) await context.read<TimerState>().stopTimer();
@@ -888,7 +842,6 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
         _SetRow(
           kg: TextEditingController(),
           reps: TextEditingController(),
-          repsRight: TextEditingController(),
           previous: '—',
         ),
       );
@@ -944,6 +897,8 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
     messenger
         .showSnackBar(
           SnackBar(
+            duration: const Duration(seconds: 4),
+            persist: false,
             content: Text(
               swapped
                   ? context.l10n.exerciseSwappedUndo
@@ -1453,26 +1408,7 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
               onPressed: () => _editNote(block),
               child: Text(block.note.isEmpty ? l10n.addNote : block.note),
             ),
-            if (block.exercise.einseitig)
-              SwitchListTile(
-                key: Key('split-sides-${block.exercise.id}'),
-                contentPadding: EdgeInsets.zero,
-                dense: true,
-                title: Text(l10n.splitSidesToggle),
-                value: block.splitSides,
-                onChanged: (value) {
-                  setState(() {
-                    block.splitSides = value;
-                    if (!value) return;
-                    for (final row in block.sets) {
-                      if (row.repsRight.text.trim().isEmpty) {
-                        row.repsRight.text = row.reps.text;
-                      }
-                    }
-                  });
-                },
-              ),
-            _tableHeader(palette, l10n, block.splitSides),
+            _tableHeader(palette, l10n, block.exercise.id),
             for (var setIndex = 0; setIndex < block.sets.length; setIndex++)
               _setLine(index, setIndex, palette, l10n),
             Align(
@@ -1505,34 +1441,36 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
     );
   }
 
-  Widget _tableHeader(
-    AlphaPalette palette,
-    AppLocalizations l10n,
-    bool unilateral,
-  ) {
-    Widget cell(String text) => Expanded(
-      child: FittedBox(
-        fit: BoxFit.scaleDown,
-        child: Text(
-          text,
-          maxLines: 1,
-          softWrap: false,
-          textAlign: TextAlign.center,
-          style: TextStyle(color: palette.muted, fontSize: 11),
-        ),
-      ),
-    );
+  Widget _tableHeader(AlphaPalette palette, AppLocalizations l10n, int id) {
+    final style = TextStyle(color: palette.muted, fontSize: 11);
     return Padding(
       padding: const EdgeInsets.only(bottom: 4),
-      child: Row(
-        children: [
-          cell(l10n.columnSet),
-          cell(l10n.columnPrevious),
-          cell(l10n.columnKg),
-          if (unilateral) cell(l10n.sideLeft) else cell(l10n.columnReps),
-          if (unilateral) cell(l10n.sideRight),
-          const SizedBox(width: 40),
-        ],
+      child: SetTableRow(
+        set: setTableLabel(
+          l10n.columnSet,
+          key: Key('set-header-set-$id'),
+          style: style,
+        ),
+        previous: setTableLabel(
+          l10n.columnPrevious,
+          key: Key('set-header-previous-$id'),
+          style: style,
+        ),
+        kg: setTableLabel(
+          l10n.columnKg,
+          key: Key('set-header-kg-$id'),
+          style: style,
+        ),
+        reps: setTableLabel(
+          l10n.columnReps,
+          key: Key('set-header-reps-$id'),
+          style: style,
+        ),
+        check: SizedBox(
+          key: Key('set-header-check-$id'),
+          width: setTableActionWidth,
+        ),
+        menu: const SizedBox(width: setTableActionWidth),
       ),
     );
   }
@@ -1562,56 +1500,44 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
           color: row.done ? palette.accent.withValues(alpha: 0.18) : null,
           borderRadius: BorderRadius.circular(8),
         ),
-        child: Row(
-          children: [
-            Expanded(
-              child: Center(
-                child: Text(
-                  row.warmup
-                      ? '${l10n.warmupMark}${setIndex + 1}'
-                      : '${setIndex + 1}',
-                ),
-              ),
+        child: SetTableRow(
+          set: setTableLabel(
+            row.warmup
+                ? '${l10n.warmupMark}${setIndex + 1}'
+                : '${setIndex + 1}',
+          ),
+          previous: setTableLabel(
+            row.previous,
+            key: Key('set-previous-$id-$setIndex'),
+            style: TextStyle(color: palette.muted, fontSize: 12),
+          ),
+          kg: _field(row.kg, row.done, Key('set-kg-$id-$setIndex')),
+          reps: _field(row.reps, row.done, Key('set-reps-$id-$setIndex')),
+          check: IconButton(
+            key: Key('set-check-$id-$setIndex'),
+            padding: EdgeInsets.zero,
+            constraints: setTableActionConstraints,
+            onPressed: () => _toggle(blockIndex, setIndex),
+            icon: Icon(
+              row.done ? Icons.check_circle : Icons.circle_outlined,
+              color: row.done ? palette.accent : palette.muted,
             ),
-            Expanded(
-              child: Text(
-                row.previous,
-                textAlign: TextAlign.center,
-                style: TextStyle(color: palette.muted, fontSize: 12),
-              ),
+          ),
+          menu: PopupMenuButton<String>(
+            key: Key('set-menu-$id-$setIndex'),
+            padding: EdgeInsets.zero,
+            style: IconButton.styleFrom(
+              fixedSize: const Size(setTableActionWidth, setTableActionWidth),
+              padding: EdgeInsets.zero,
+              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
             ),
-            Expanded(
-              child: _field(row.kg, row.done, Key('set-kg-$id-$setIndex')),
-            ),
-            Expanded(
-              child: _field(row.reps, row.done, Key('set-reps-$id-$setIndex')),
-            ),
-            if (block.splitSides)
-              Expanded(
-                child: _field(
-                  row.repsRight,
-                  row.done,
-                  Key('set-reps-right-$id-$setIndex'),
-                ),
-              ),
-            IconButton(
-              key: Key('set-check-$id-$setIndex'),
-              onPressed: () => _toggle(blockIndex, setIndex),
-              icon: Icon(
-                row.done ? Icons.check_circle : Icons.circle_outlined,
-                color: row.done ? palette.accent : palette.muted,
-              ),
-            ),
-            PopupMenuButton<String>(
-              key: Key('set-menu-$id-$setIndex'),
-              onSelected: (value) {
-                if (value == 'delete') _removeSet(blockIndex, setIndex);
-              },
-              itemBuilder: (context) => [
-                PopupMenuItem(value: 'delete', child: Text(l10n.deleteSet)),
-              ],
-            ),
-          ],
+            onSelected: (value) {
+              if (value == 'delete') _removeSet(blockIndex, setIndex);
+            },
+            itemBuilder: (context) => [
+              PopupMenuItem(value: 'delete', child: Text(l10n.deleteSet)),
+            ],
+          ),
         ),
       ),
     );
@@ -1655,7 +1581,6 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
         _SetRow(
           kg: TextEditingController(text: _number(kg / 2)),
           reps: TextEditingController(text: '5'),
-          repsRight: TextEditingController(text: '5'),
           previous: '—',
         )..warmup = true,
       );
@@ -1664,7 +1589,6 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
         _SetRow(
           kg: TextEditingController(text: _number(20)),
           reps: TextEditingController(text: '10'),
-          repsRight: TextEditingController(text: '10'),
           previous: '—',
         )..warmup = true,
       );

@@ -1,4 +1,4 @@
-import 'package:drift/drift.dart' hide isNull;
+import 'package:drift/drift.dart' hide Column, isNull, isNotNull;
 import 'package:flexify/alpha/alpha_prefs.dart';
 import 'package:flexify/alpha/gym_start_sheet.dart';
 import 'package:flexify/alpha/set_notes.dart';
@@ -9,7 +9,9 @@ import 'package:flexify/database/exercise_analytics.dart';
 import 'package:flexify/database/exercise_set_repository.dart';
 import 'package:flexify/exercises/exercise_detail_page.dart';
 import 'package:flexify/l10n/generated/app_localizations_en.dart';
+import 'package:flexify/native_timer_wrapper.dart';
 import 'package:flexify/workout/gym_workout_page.dart';
+import 'package:flexify/workout/set_table.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -107,6 +109,8 @@ void main() {
     expect(find.text('KG'), findsWidgets);
     expect(find.text('REPS'), findsWidgets);
     expect(find.text('Left'), findsNothing);
+    expect(find.text('Right'), findsNothing);
+    expect(find.byKey(Key('split-sides-${exercise.id}')), findsNothing);
     expect(find.byKey(Key('set-reps-right-${exercise.id}-0')), findsNothing);
 
     await tester.enterText(find.byKey(Key('set-kg-${exercise.id}-0')), '16');
@@ -120,24 +124,14 @@ void main() {
     expect(saved.single.reps, 8);
     expect(saved.single.loadKg, 16);
 
-    await tester.tap(find.byKey(Key('split-sides-${exercise.id}')));
-    await tester.pumpAndSettle();
-    expect(find.text('Left'), findsOneWidget);
-    expect(find.text('Right'), findsOneWidget);
-    expect(find.byKey(Key('set-reps-right-${exercise.id}-1')), findsOneWidget);
     await tester.enterText(find.byKey(Key('set-kg-${exercise.id}-1')), '18');
     await tester.enterText(find.byKey(Key('set-reps-${exercise.id}-1')), '12');
-    await tester.enterText(
-      find.byKey(Key('set-reps-right-${exercise.id}-1')),
-      '10',
-    );
     await tester.tap(find.byKey(Key('set-check-${exercise.id}-1')));
     await tester.pumpAndSettle();
-    final split = await harness.database.exerciseSets.select().get();
-    expect(
-      split.map((set) => (set.side, set.reps)).toSet(),
-      containsAll([(null, 8.0), ('links', 12.0), ('rechts', 10.0)]),
-    );
+    final second = await harness.database.exerciseSets.select().get();
+    expect(second, hasLength(2));
+    expect(second.map((set) => set.side), everyElement(isNull));
+    expect(second.map((set) => set.reps).toSet(), {8.0, 12.0});
   });
 
   testWidgets('old left and right values stay visible', (tester) async {
@@ -170,6 +164,23 @@ void main() {
     expect(find.text('20 kg × 8'), findsOneWidget);
     expect(find.text('20 kg × 12/10'), findsOneWidget);
     expect(find.text('20 kg × 8/8'), findsNothing);
+    expect(find.text('Left'), findsNothing);
+    expect(find.text('Right'), findsNothing);
+    expect(find.byKey(Key('split-sides-${exercise.id}')), findsNothing);
+    expect(
+      tester
+          .widget<TextField>(find.byKey(Key('set-reps-${exercise.id}-0')))
+          .controller!
+          .text,
+      '8',
+    );
+    expect(
+      tester
+          .widget<TextField>(find.byKey(Key('set-reps-${exercise.id}-1')))
+          .controller!
+          .text,
+      '',
+    );
 
     await harness.pump(
       tester,
@@ -456,6 +467,339 @@ void main() {
     final sheet = tester.getSize(find.byKey(const Key('workout-sort-sheet')));
     expect(sheet.height, greaterThan(700));
   });
+
+  test('rest deadline keeps the remaining time', () {
+    final now = DateTime.now();
+    final restored = runningTimerFromDeadline(
+      endsAt: now.add(const Duration(seconds: 125)),
+      totalMs: 180000,
+      now: now,
+    );
+    expect(restored, isNotNull);
+    expect(restored!.getRemaining().inSeconds, inInclusiveRange(124, 125));
+    expect(
+      runningTimerFromDeadline(
+        endsAt: now.subtract(const Duration(seconds: 1)),
+        totalMs: 180000,
+        now: now,
+      ),
+      isNull,
+    );
+  });
+
+  testWidgets('set columns stay aligned for short and long values', (
+    tester,
+  ) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          body: SizedBox(
+            width: 360,
+            child: Column(
+              children: [
+                SetTableRow(
+                  set: _GridLabel('SET', 'h-set'),
+                  previous: _GridLabel('PREVIOUS', 'h-prev'),
+                  kg: _GridLabel('KG', 'h-kg'),
+                  reps: _GridLabel('REPS', 'h-reps'),
+                  check: SizedBox(
+                    key: Key('h-check'),
+                    width: setTableActionWidth,
+                  ),
+                  menu: SizedBox(
+                    key: Key('h-menu'),
+                    width: setTableActionWidth,
+                  ),
+                ),
+                SetTableRow(
+                  set: _GridLabel('1', 'a-set'),
+                  previous: _GridLabel('5 kg × 9', 'a-prev'),
+                  kg: _GridLabel('5', 'a-kg'),
+                  reps: _GridLabel('9', 'a-reps'),
+                  check: SizedBox(
+                    key: Key('a-check'),
+                    width: setTableActionWidth,
+                  ),
+                  menu: SizedBox(
+                    key: Key('a-menu'),
+                    width: setTableActionWidth,
+                  ),
+                ),
+                SetTableRow(
+                  set: _GridLabel('2', 'b-set'),
+                  previous: _GridLabel('17.5 kg × 12', 'b-prev'),
+                  kg: _GridLabel('17.5', 'b-kg'),
+                  reps: _GridLabel('12', 'b-reps'),
+                  check: SizedBox(
+                    key: Key('b-check'),
+                    width: setTableActionWidth,
+                  ),
+                  menu: SizedBox(
+                    key: Key('b-menu'),
+                    width: setTableActionWidth,
+                  ),
+                ),
+                SetTableRow(
+                  set: _GridLabel('3', 'c-set'),
+                  previous: _GridLabel('55 kg × 9', 'c-prev'),
+                  kg: _GridLabel('55', 'c-kg'),
+                  reps: _GridLabel('9', 'c-reps'),
+                  check: SizedBox(
+                    key: Key('c-check'),
+                    width: setTableActionWidth,
+                  ),
+                  menu: SizedBox(
+                    key: Key('c-menu'),
+                    width: setTableActionWidth,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+    for (final slot in ['set', 'prev', 'kg', 'reps', 'check', 'menu']) {
+      final header = tester.getRect(find.byKey(Key('h-$slot'))).center.dx;
+      for (final row in ['a', 'b', 'c']) {
+        final value = tester.getRect(find.byKey(Key('$row-$slot'))).center.dx;
+        expect((header - value).abs(), lessThan(1.5), reason: '$slot $row');
+      }
+    }
+  });
+
+  testWidgets('workout cards use one column grid', (tester) async {
+    final harness = await FlexifyTestHarness.create();
+    addTearDown(harness.database.close);
+    await _quietTimers(harness.database);
+    await _resetGyms();
+    final exercise = await _unilateral(harness.database, 'Alignment press');
+    await (harness.database.update(harness.database.exercises)
+          ..where((row) => row.id.equals(exercise.id)))
+        .write(const ExercisesCompanion(einseitig: Value(false)));
+    final plan = await _planWith(harness.database, [exercise]);
+    final past = await harness.database.workouts.insertOne(
+      WorkoutsCompanion.insert(
+        planId: Value(plan.id),
+        startedAt: DateTime(2026, 10, 1, 8),
+        endedAt: Value(DateTime(2026, 10, 1, 9)),
+      ),
+    );
+    await _plain(
+      harness.database,
+      exercise,
+      past,
+      DateTime(2026, 10, 1, 8, 1),
+      9,
+      5,
+    );
+    await _plain(
+      harness.database,
+      exercise,
+      past,
+      DateTime(2026, 10, 1, 8, 2),
+      12,
+      17.5,
+    );
+    await _plain(
+      harness.database,
+      exercise,
+      past,
+      DateTime(2026, 10, 1, 8, 3),
+      9,
+      55,
+    );
+
+    await harness.pump(
+      tester,
+      GymWorkoutPage(plan: plan),
+      surfaceSize: const Size(400, 900),
+    );
+    await tester.pumpAndSettle();
+    final id = exercise.id;
+    void sameColumn(String header, String value) {
+      final delta =
+          tester.getRect(find.byKey(Key(header))).center.dx -
+          tester.getRect(find.byKey(Key(value))).center.dx;
+      expect(delta.abs(), lessThan(2), reason: '$header vs $value');
+    }
+
+    sameColumn('set-header-previous-$id', 'set-previous-$id-0');
+    sameColumn('set-header-previous-$id', 'set-previous-$id-1');
+    sameColumn('set-header-previous-$id', 'set-previous-$id-2');
+    sameColumn('set-header-kg-$id', 'set-kg-$id-0');
+    sameColumn('set-header-kg-$id', 'set-kg-$id-2');
+    sameColumn('set-header-reps-$id', 'set-reps-$id-0');
+    sameColumn('set-header-reps-$id', 'set-reps-$id-1');
+    sameColumn('set-header-check-$id', 'set-check-$id-0');
+    sameColumn('set-check-$id-0', 'set-check-$id-2');
+    expect(find.text('5 kg × 9'), findsOneWidget);
+    expect(find.text('17.5 kg × 12'), findsOneWidget);
+    expect(find.text('55 kg × 9'), findsOneWidget);
+  });
+
+  testWidgets('saved left and right sets stay one readable row', (
+    tester,
+  ) async {
+    final harness = await FlexifyTestHarness.create();
+    addTearDown(harness.database.close);
+    await _quietTimers(harness.database);
+    await _resetGyms();
+    final exercise = await _unilateral(harness.database, 'Open curl');
+    final plan = await _planWith(harness.database, [exercise]);
+    final open = await harness.database.workouts.insertOne(
+      WorkoutsCompanion.insert(
+        planId: Value(plan.id),
+        startedAt: DateTime(2026, 10, 20, 8),
+      ),
+    );
+    final at = DateTime(2026, 10, 20, 8, 5);
+    await _side(harness.database, exercise, open, at, 'links', 12);
+    await _side(harness.database, exercise, open, at, 'rechts', 10);
+
+    await harness.pump(
+      tester,
+      GymWorkoutPage(plan: plan),
+      surfaceSize: const Size(400, 900),
+    );
+    await tester.pumpAndSettle();
+    final reps = tester.widget<TextField>(
+      find.byKey(Key('set-reps-${exercise.id}-0')),
+    );
+    expect(reps.controller!.text, '12/10');
+    expect(reps.enabled, isFalse);
+    expect(find.text('Left'), findsNothing);
+    expect(find.text('Right'), findsNothing);
+    expect(find.text('440'), findsOneWidget);
+
+    await tester.tap(find.byKey(Key('set-check-${exercise.id}-0')));
+    await tester.pumpAndSettle();
+    expect(await harness.database.exerciseSets.select().get(), isEmpty);
+    expect(
+      tester
+          .widget<TextField>(find.byKey(Key('set-reps-${exercise.id}-0')))
+          .controller!
+          .text,
+      '12',
+    );
+
+    await tester.tap(find.byKey(Key('set-check-${exercise.id}-0')));
+    await tester.pumpAndSettle();
+    final saved = await harness.database.exerciseSets.select().get();
+    expect(saved, hasLength(1));
+    expect(saved.single.side, isNull);
+    expect(saved.single.reps, 12);
+  });
+
+  testWidgets('studio last-used changes only after the workout is saved', (
+    tester,
+  ) async {
+    final harness = await FlexifyTestHarness.create();
+    addTearDown(harness.database.close);
+    addTearDown(_resetGyms);
+    await _quietTimers(harness.database);
+    final exercise = await _unilateral(harness.database, 'Row');
+    await (harness.database.update(harness.database.exercises)
+          ..where((row) => row.id.equals(exercise.id)))
+        .write(const ExercisesCompanion(einseitig: Value(false)));
+    final plan = await _planWith(harness.database, [exercise]);
+    final earlier = DateTime.now().subtract(const Duration(days: 3));
+    alphaPrefs.gyms = [
+      GymPlace(id: 'hamburg', name: 'Hamburg', lastUsedAt: earlier),
+    ];
+    alphaPrefs.activeGymId = 'default';
+    await alphaPrefs.save();
+
+    await _pushWorkout(tester, harness, plan, locale: const Locale('de'));
+    await _reveal(tester, find.byKey(const Key('gym-card-hamburg')));
+    await tester.tap(find.byKey(const Key('gym-card-hamburg')));
+    await tester.pump();
+    await _reveal(tester, find.byKey(const Key('gym-start-confirm')));
+    await tester.tap(find.byKey(const Key('gym-start-confirm')));
+    await tester.pumpAndSettle();
+    expect(alphaPrefs.activeGymId, 'hamburg');
+    expect(alphaPrefs.gyms.single.lastUsedAt, earlier);
+
+    await tester.tap(find.byKey(const Key('finish-workout')));
+    await tester.pumpAndSettle();
+    await tester.tap(find.byKey(const Key('confirm-finish')));
+    await tester.pumpAndSettle();
+    final stamped = alphaPrefs.gyms.single.lastUsedAt;
+    expect(stamped, isNotNull);
+    expect(stamped!.isAfter(earlier.add(const Duration(days: 2))), isTrue);
+  });
+
+  testWidgets('a saved rest deadline is restored on the workout', (
+    tester,
+  ) async {
+    final harness = await FlexifyTestHarness.create();
+    addTearDown(harness.database.close);
+    addTearDown(() => harness.timerState.stopTimer());
+    await _quietTimers(harness.database);
+    await _resetGyms();
+    final exercise = await _unilateral(harness.database, 'Pause curl');
+    final plan = await _planWith(harness.database, [exercise]);
+    alphaPrefs.restEndsAt = DateTime.now().add(const Duration(seconds: 125));
+    alphaPrefs.restTotalMs = 180000;
+    alphaPrefs.restTitle = 'Pause curl';
+    await alphaPrefs.save();
+    await harness.timerState.restoreRestDeadline();
+
+    await harness.pump(
+      tester,
+      GymWorkoutPage(plan: plan),
+      surfaceSize: const Size(400, 900),
+    );
+    await tester.pump();
+    for (
+      var i = 0;
+      i < 30 && find.byKey(Key('set-reps-${exercise.id}-0')).evaluate().isEmpty;
+      i++
+    ) {
+      await tester.pump(const Duration(milliseconds: 50));
+    }
+    expect(find.textContaining(RegExp(r'02:0[0-5]')), findsOneWidget);
+    await harness.timerState.stopTimer();
+  });
+
+  testWidgets(
+    'removing an exercise hides the undo snackbar after four seconds',
+    (tester) async {
+      final harness = await FlexifyTestHarness.create();
+      addTearDown(harness.database.close);
+      await _quietTimers(harness.database);
+      await _resetGyms();
+      final exercise = await _unilateral(harness.database, 'Shrug');
+      final plan = await _planWith(harness.database, [exercise]);
+      await harness.pump(
+        tester,
+        GymWorkoutPage(plan: plan),
+        surfaceSize: const Size(400, 900),
+      );
+      await tester.pumpAndSettle();
+      await tester.tap(find.byKey(Key('exercise-menu-${exercise.id}')));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Remove'));
+      await tester.pump();
+      await tester.pump(const Duration(milliseconds: 400));
+      expect(find.text('Exercise removed'), findsOneWidget);
+      await tester.pump(const Duration(seconds: 4));
+      await tester.pump(const Duration(seconds: 1));
+      expect(find.text('Exercise removed'), findsNothing);
+    },
+  );
+}
+
+class _GridLabel extends StatelessWidget {
+  const _GridLabel(this.text, this.name);
+
+  final String text;
+  final String name;
+
+  @override
+  Widget build(BuildContext context) {
+    return setTableLabel(text, key: Key(name));
+  }
 }
 
 Future<void> _reveal(WidgetTester tester, Finder finder) async {
@@ -548,6 +892,23 @@ Future<Plan> _planWith(AppDatabase database, List<Exercise> exercises) async {
     );
   }
   return plan;
+}
+
+Future<void> _plain(
+  AppDatabase database,
+  Exercise exercise,
+  int workoutId,
+  DateTime at,
+  double reps,
+  double kg,
+) {
+  return insertExerciseSet(
+    database,
+    exerciseId: exercise.id,
+    workoutId: workoutId,
+    lookupBodyWeight: false,
+    exerciseSet: _view(exercise.name, reps, kg, at),
+  );
 }
 
 Future<void> _side(

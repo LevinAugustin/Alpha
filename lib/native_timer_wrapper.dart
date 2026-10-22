@@ -55,3 +55,24 @@ class NativeTimerWrapper {
     NativeTimerState.expired,
   );
 }
+
+/// Rebuilds a running rest from the wall-clock time it should end.
+///
+/// [totalMs] is the original length. The stamp is [endsAt] minus that length,
+/// so [NativeTimerWrapper.getRemaining] is the time left at [now].
+NativeTimerWrapper? runningTimerFromDeadline({
+  required DateTime? endsAt,
+  required int? totalMs,
+  DateTime? now,
+}) {
+  if (endsAt == null || totalMs == null || totalMs <= 0) return null;
+  final clock = now ?? DateTime.now();
+  if (!endsAt.isAfter(clock)) return null;
+  final total = Duration(milliseconds: totalMs);
+  return NativeTimerWrapper(
+    total,
+    Duration.zero,
+    endsAt.subtract(total),
+    NativeTimerState.running,
+  );
+}
