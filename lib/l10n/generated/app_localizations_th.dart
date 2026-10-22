@@ -2518,4 +2518,88 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String get switchDiscardWorkout => 'ทิ้งการฝึก';
+
+  @override
+  String get groupLegs => 'ขา';
+
+  @override
+  String get gearBarbell => 'บาร์เบล';
+
+  @override
+  String get gearDumbbell => 'ดัมเบล';
+
+  @override
+  String get gearEzBar => 'บาร์ EZ';
+
+  @override
+  String get gearCable => 'เคเบิล';
+
+  @override
+  String get gearMachine => 'เครื่อง';
+
+  @override
+  String get gearSmith => 'เครื่องสมิธ';
+
+  @override
+  String get gearBodyweight => 'น้ำหนักตัว';
+
+  @override
+  String get gearKettlebell => 'เคตเทิลเบล';
+
+  @override
+  String get gearBand => 'ยางยืด';
+
+  @override
+  String get gearCardio => 'เครื่องคาร์ดิโอ';
+
+  @override
+  String get gearPlate => 'แผ่นน้ำหนัก';
+
+  @override
+  String get gearAbWheel => 'ล้อหน้าท้อง';
+
+  @override
+  String get gearBattleRope => 'เชือกแบทเทิล';
+
+  @override
+  String get gearSled => 'เลื่อน';
+
+  @override
+  String get gearJumpRope => 'เชือกกระโดด';
+
+  @override
+  String get positionFlat => 'ราบ';
+
+  @override
+  String get positionIncline => 'เอียงขึ้น';
+
+  @override
+  String get positionDecline => 'เอียงลง';
+
+  @override
+  String get positionSeated => 'นั่ง';
+
+  @override
+  String get positionStanding => 'ยืน';
+
+  @override
+  String get positionLying => 'นอน';
+
+  @override
+  String get positionBent => 'ก้มตัว';
+
+  @override
+  String get gripClose => 'จับแคบ';
+
+  @override
+  String get gripWide => 'จับกว้าง';
+
+  @override
+  String get gripOverhand => 'จับคว่ำ';
+
+  @override
+  String get gripUnderhand => 'จับหงาย';
+
+  @override
+  String get gripNeutral => 'จับกลาง';
 }

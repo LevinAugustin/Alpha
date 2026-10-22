@@ -2571,4 +2571,88 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get switchDiscardWorkout => 'Abandonner la séance';
+
+  @override
+  String get groupLegs => 'Jambes';
+
+  @override
+  String get gearBarbell => 'Barre';
+
+  @override
+  String get gearDumbbell => 'Haltère';
+
+  @override
+  String get gearEzBar => 'Barre EZ';
+
+  @override
+  String get gearCable => 'Poulie';
+
+  @override
+  String get gearMachine => 'Machine guidée';
+
+  @override
+  String get gearSmith => 'Machine Smith';
+
+  @override
+  String get gearBodyweight => 'Poids du corps';
+
+  @override
+  String get gearKettlebell => 'Kettlebell';
+
+  @override
+  String get gearBand => 'Bande de résistance';
+
+  @override
+  String get gearCardio => 'Appareil de cardio';
+
+  @override
+  String get gearPlate => 'Disque';
+
+  @override
+  String get gearAbWheel => 'Roue abdominale';
+
+  @override
+  String get gearBattleRope => 'Corde ondulatoire';
+
+  @override
+  String get gearSled => 'Traîneau';
+
+  @override
+  String get gearJumpRope => 'Corde à sauter';
+
+  @override
+  String get positionFlat => 'À plat';
+
+  @override
+  String get positionIncline => 'Incliné';
+
+  @override
+  String get positionDecline => 'Décliné';
+
+  @override
+  String get positionSeated => 'Assis';
+
+  @override
+  String get positionStanding => 'Debout';
+
+  @override
+  String get positionLying => 'Allongé';
+
+  @override
+  String get positionBent => 'Penché';
+
+  @override
+  String get gripClose => 'Prise serrée';
+
+  @override
+  String get gripWide => 'Prise large';
+
+  @override
+  String get gripOverhand => 'Pronation';
+
+  @override
+  String get gripUnderhand => 'Supination';
+
+  @override
+  String get gripNeutral => 'Prise neutre';
 }

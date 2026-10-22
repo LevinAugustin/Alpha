@@ -208,7 +208,8 @@ class _PlansPageWidgetState extends State<_PlansPageWidget> {
 
                           final summaries = await Future.wait(
                             selectedPlans.map((plan) async {
-                              final name = planDisplayName(
+                              final name = planTitleOf(
+                                context,
                                 title: plan.title,
                                 sequence: plan.sequence,
                                 id: plan.id,

@@ -2531,4 +2531,88 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get switchDiscardWorkout => 'वर्कआउट छोड़ें';
+
+  @override
+  String get groupLegs => 'टांगें';
+
+  @override
+  String get gearBarbell => 'बारबेल';
+
+  @override
+  String get gearDumbbell => 'डंबल';
+
+  @override
+  String get gearEzBar => 'EZ बार';
+
+  @override
+  String get gearCable => 'केबल';
+
+  @override
+  String get gearMachine => 'मशीन';
+
+  @override
+  String get gearSmith => 'स्मिथ मशीन';
+
+  @override
+  String get gearBodyweight => 'शरीर का वजन';
+
+  @override
+  String get gearKettlebell => 'केटलबेल';
+
+  @override
+  String get gearBand => 'रेजिस्टेंस बैंड';
+
+  @override
+  String get gearCardio => 'कार्डियो मशीन';
+
+  @override
+  String get gearPlate => 'प्लेट';
+
+  @override
+  String get gearAbWheel => 'एब व्हील';
+
+  @override
+  String get gearBattleRope => 'बैटल रोप';
+
+  @override
+  String get gearSled => 'स्लेड';
+
+  @override
+  String get gearJumpRope => 'रस्सी';
+
+  @override
+  String get positionFlat => 'समतल';
+
+  @override
+  String get positionIncline => 'झुकाव ऊपर';
+
+  @override
+  String get positionDecline => 'झुकाव नीचे';
+
+  @override
+  String get positionSeated => 'बैठकर';
+
+  @override
+  String get positionStanding => 'खड़े होकर';
+
+  @override
+  String get positionLying => 'लेटकर';
+
+  @override
+  String get positionBent => 'झुककर';
+
+  @override
+  String get gripClose => 'संकरी पकड़';
+
+  @override
+  String get gripWide => 'चौड़ी पकड़';
+
+  @override
+  String get gripOverhand => 'ऊपरी पकड़';
+
+  @override
+  String get gripUnderhand => 'निचली पकड़';
+
+  @override
+  String get gripNeutral => 'तटस्थ पकड़';
 }

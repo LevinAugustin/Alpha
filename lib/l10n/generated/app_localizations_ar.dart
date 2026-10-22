@@ -2521,4 +2521,88 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get switchDiscardWorkout => 'تجاهل التمرين';
+
+  @override
+  String get groupLegs => 'ساقان';
+
+  @override
+  String get gearBarbell => 'بار';
+
+  @override
+  String get gearDumbbell => 'دمبل';
+
+  @override
+  String get gearEzBar => 'بار EZ';
+
+  @override
+  String get gearCable => 'كيبل';
+
+  @override
+  String get gearMachine => 'جهاز';
+
+  @override
+  String get gearSmith => 'جهاز سميث';
+
+  @override
+  String get gearBodyweight => 'وزن الجسم';
+
+  @override
+  String get gearKettlebell => 'كيتل بيل';
+
+  @override
+  String get gearBand => 'شريط مقاومة';
+
+  @override
+  String get gearCardio => 'جهاز كارديو';
+
+  @override
+  String get gearPlate => 'قرص';
+
+  @override
+  String get gearAbWheel => 'عجلة البطن';
+
+  @override
+  String get gearBattleRope => 'حبل المعركة';
+
+  @override
+  String get gearSled => 'زلاجة';
+
+  @override
+  String get gearJumpRope => 'حبل القفز';
+
+  @override
+  String get positionFlat => 'مستو';
+
+  @override
+  String get positionIncline => 'مائل للأعلى';
+
+  @override
+  String get positionDecline => 'مائل للأسفل';
+
+  @override
+  String get positionSeated => 'جالس';
+
+  @override
+  String get positionStanding => 'واقف';
+
+  @override
+  String get positionLying => 'مستلق';
+
+  @override
+  String get positionBent => 'منحني';
+
+  @override
+  String get gripClose => 'قبضة ضيقة';
+
+  @override
+  String get gripWide => 'قبضة عريضة';
+
+  @override
+  String get gripOverhand => 'قبضة علوية';
+
+  @override
+  String get gripUnderhand => 'قبضة سفلية';
+
+  @override
+  String get gripNeutral => 'قبضة محايدة';
 }

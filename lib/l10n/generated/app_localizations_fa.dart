@@ -2536,4 +2536,88 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String get switchDiscardWorkout => 'کنار گذاشتن تمرین';
+
+  @override
+  String get groupLegs => 'پاها';
+
+  @override
+  String get gearBarbell => 'هالتر';
+
+  @override
+  String get gearDumbbell => 'دمبل';
+
+  @override
+  String get gearEzBar => 'میله EZ';
+
+  @override
+  String get gearCable => 'کابل';
+
+  @override
+  String get gearMachine => 'دستگاه';
+
+  @override
+  String get gearSmith => 'دستگاه اسمیت';
+
+  @override
+  String get gearBodyweight => 'وزن بدن';
+
+  @override
+  String get gearKettlebell => 'کتل‌بل';
+
+  @override
+  String get gearBand => 'کش مقاومتی';
+
+  @override
+  String get gearCardio => 'دستگاه هوازی';
+
+  @override
+  String get gearPlate => 'صفحه وزنه';
+
+  @override
+  String get gearAbWheel => 'چرخ شکم';
+
+  @override
+  String get gearBattleRope => 'طناب نبرد';
+
+  @override
+  String get gearSled => 'سورتمه';
+
+  @override
+  String get gearJumpRope => 'طناب';
+
+  @override
+  String get positionFlat => 'تخت';
+
+  @override
+  String get positionIncline => 'شیب‌دار';
+
+  @override
+  String get positionDecline => 'شیب منفی';
+
+  @override
+  String get positionSeated => 'نشسته';
+
+  @override
+  String get positionStanding => 'ایستاده';
+
+  @override
+  String get positionLying => 'درازکش';
+
+  @override
+  String get positionBent => 'خمیده';
+
+  @override
+  String get gripClose => 'گرفتن بسته';
+
+  @override
+  String get gripWide => 'گرفتن باز';
+
+  @override
+  String get gripOverhand => 'گرفتن از رو';
+
+  @override
+  String get gripUnderhand => 'گرفتن از زیر';
+
+  @override
+  String get gripNeutral => 'گرفتن خنثی';
 }

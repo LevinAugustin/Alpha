@@ -41,7 +41,12 @@ Future<void> restoreLiveWorkout(AppDatabase database) async {
     liveWorkout.value = null;
     return;
   }
-  final title = planDisplayName(
+  final setting = await (database.select(
+    database.settings,
+  )..limit(1)).getSingleOrNull();
+  final locale = (setting?.localeOverride ?? '').trim();
+  final title = localizedPlanTitle(
+    locale: locale.isEmpty ? 'de' : locale,
     title: plan.title,
     sequence: plan.sequence,
     id: plan.id,

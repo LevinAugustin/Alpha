@@ -2553,4 +2553,88 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get switchDiscardWorkout => 'Antrenmanı sil';
+
+  @override
+  String get groupLegs => 'Bacaklar';
+
+  @override
+  String get gearBarbell => 'Halter';
+
+  @override
+  String get gearDumbbell => 'Dambıl';
+
+  @override
+  String get gearEzBar => 'EZ çubuk';
+
+  @override
+  String get gearCable => 'Kablo';
+
+  @override
+  String get gearMachine => 'Makine';
+
+  @override
+  String get gearSmith => 'Smith makinesi';
+
+  @override
+  String get gearBodyweight => 'Vücut ağırlığı';
+
+  @override
+  String get gearKettlebell => 'Kettlebell';
+
+  @override
+  String get gearBand => 'Direnç bandı';
+
+  @override
+  String get gearCardio => 'Kardiyo aleti';
+
+  @override
+  String get gearPlate => 'Plaka';
+
+  @override
+  String get gearAbWheel => 'Karın tekeri';
+
+  @override
+  String get gearBattleRope => 'Savaş halatı';
+
+  @override
+  String get gearSled => 'Kızak';
+
+  @override
+  String get gearJumpRope => 'Atlama ipi';
+
+  @override
+  String get positionFlat => 'Düz';
+
+  @override
+  String get positionIncline => 'Eğik';
+
+  @override
+  String get positionDecline => 'Negatif';
+
+  @override
+  String get positionSeated => 'Oturarak';
+
+  @override
+  String get positionStanding => 'Ayakta';
+
+  @override
+  String get positionLying => 'Yatarak';
+
+  @override
+  String get positionBent => 'Öne eğik';
+
+  @override
+  String get gripClose => 'Dar tutuş';
+
+  @override
+  String get gripWide => 'Geniş tutuş';
+
+  @override
+  String get gripOverhand => 'Üst tutuş';
+
+  @override
+  String get gripUnderhand => 'Alt tutuş';
+
+  @override
+  String get gripNeutral => 'Nötr tutuş';
 }

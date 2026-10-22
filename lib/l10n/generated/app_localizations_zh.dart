@@ -2461,6 +2461,90 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get switchDiscardWorkout => '放弃训练';
+
+  @override
+  String get groupLegs => '腿部';
+
+  @override
+  String get gearBarbell => '杠铃';
+
+  @override
+  String get gearDumbbell => '哑铃';
+
+  @override
+  String get gearEzBar => 'EZ杠';
+
+  @override
+  String get gearCable => '绳索';
+
+  @override
+  String get gearMachine => '器械';
+
+  @override
+  String get gearSmith => '史密斯机';
+
+  @override
+  String get gearBodyweight => '自重';
+
+  @override
+  String get gearKettlebell => '壶铃';
+
+  @override
+  String get gearBand => '弹力带';
+
+  @override
+  String get gearCardio => '有氧器械';
+
+  @override
+  String get gearPlate => '杠铃片';
+
+  @override
+  String get gearAbWheel => '健腹轮';
+
+  @override
+  String get gearBattleRope => '战绳';
+
+  @override
+  String get gearSled => '推雪橇';
+
+  @override
+  String get gearJumpRope => '跳绳';
+
+  @override
+  String get positionFlat => '平板';
+
+  @override
+  String get positionIncline => '上斜';
+
+  @override
+  String get positionDecline => '下斜';
+
+  @override
+  String get positionSeated => '坐姿';
+
+  @override
+  String get positionStanding => '站姿';
+
+  @override
+  String get positionLying => '仰卧';
+
+  @override
+  String get positionBent => '俯身';
+
+  @override
+  String get gripClose => '窄握';
+
+  @override
+  String get gripWide => '宽握';
+
+  @override
+  String get gripOverhand => '正握';
+
+  @override
+  String get gripUnderhand => '反握';
+
+  @override
+  String get gripNeutral => '对握';
 }
 
 /// The translations for Chinese, as used in China (`zh_CN`).
@@ -4920,6 +5004,90 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
 
   @override
   String get switchDiscardWorkout => '放弃训练';
+
+  @override
+  String get groupLegs => '腿部';
+
+  @override
+  String get gearBarbell => '杠铃';
+
+  @override
+  String get gearDumbbell => '哑铃';
+
+  @override
+  String get gearEzBar => 'EZ杠';
+
+  @override
+  String get gearCable => '绳索';
+
+  @override
+  String get gearMachine => '器械';
+
+  @override
+  String get gearSmith => '史密斯机';
+
+  @override
+  String get gearBodyweight => '自重';
+
+  @override
+  String get gearKettlebell => '壶铃';
+
+  @override
+  String get gearBand => '弹力带';
+
+  @override
+  String get gearCardio => '有氧器械';
+
+  @override
+  String get gearPlate => '杠铃片';
+
+  @override
+  String get gearAbWheel => '健腹轮';
+
+  @override
+  String get gearBattleRope => '战绳';
+
+  @override
+  String get gearSled => '推雪橇';
+
+  @override
+  String get gearJumpRope => '跳绳';
+
+  @override
+  String get positionFlat => '平板';
+
+  @override
+  String get positionIncline => '上斜';
+
+  @override
+  String get positionDecline => '下斜';
+
+  @override
+  String get positionSeated => '坐姿';
+
+  @override
+  String get positionStanding => '站姿';
+
+  @override
+  String get positionLying => '仰卧';
+
+  @override
+  String get positionBent => '俯身';
+
+  @override
+  String get gripClose => '窄握';
+
+  @override
+  String get gripWide => '宽握';
+
+  @override
+  String get gripOverhand => '正握';
+
+  @override
+  String get gripUnderhand => '反握';
+
+  @override
+  String get gripNeutral => '对握';
 }
 
 /// The translations for Chinese, as used in Taiwan (`zh_TW`).
@@ -7379,4 +7547,88 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get switchDiscardWorkout => '放棄訓練';
+
+  @override
+  String get groupLegs => '腿部';
+
+  @override
+  String get gearBarbell => '槓鈴';
+
+  @override
+  String get gearDumbbell => '啞鈴';
+
+  @override
+  String get gearEzBar => 'EZ槓';
+
+  @override
+  String get gearCable => '繩索';
+
+  @override
+  String get gearMachine => '器械';
+
+  @override
+  String get gearSmith => '史密斯機';
+
+  @override
+  String get gearBodyweight => '自重';
+
+  @override
+  String get gearKettlebell => '壺鈴';
+
+  @override
+  String get gearBand => '彈力帶';
+
+  @override
+  String get gearCardio => '有氧器械';
+
+  @override
+  String get gearPlate => '槓片';
+
+  @override
+  String get gearAbWheel => '健腹輪';
+
+  @override
+  String get gearBattleRope => '戰繩';
+
+  @override
+  String get gearSled => '雪橇';
+
+  @override
+  String get gearJumpRope => '跳繩';
+
+  @override
+  String get positionFlat => '平板';
+
+  @override
+  String get positionIncline => '上斜';
+
+  @override
+  String get positionDecline => '下斜';
+
+  @override
+  String get positionSeated => '坐姿';
+
+  @override
+  String get positionStanding => '站姿';
+
+  @override
+  String get positionLying => '仰臥';
+
+  @override
+  String get positionBent => '俯身';
+
+  @override
+  String get gripClose => '窄握';
+
+  @override
+  String get gripWide => '寬握';
+
+  @override
+  String get gripOverhand => '正握';
+
+  @override
+  String get gripUnderhand => '反握';
+
+  @override
+  String get gripNeutral => '對握';
 }

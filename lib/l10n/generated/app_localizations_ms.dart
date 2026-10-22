@@ -2547,4 +2547,88 @@ class AppLocalizationsMs extends AppLocalizations {
 
   @override
   String get switchDiscardWorkout => 'Buang senaman';
+
+  @override
+  String get groupLegs => 'Kaki';
+
+  @override
+  String get gearBarbell => 'Barbel';
+
+  @override
+  String get gearDumbbell => 'Dumbel';
+
+  @override
+  String get gearEzBar => 'Bar EZ';
+
+  @override
+  String get gearCable => 'Kabel';
+
+  @override
+  String get gearMachine => 'Mesin';
+
+  @override
+  String get gearSmith => 'Mesin Smith';
+
+  @override
+  String get gearBodyweight => 'Berat badan';
+
+  @override
+  String get gearKettlebell => 'Kettlebell';
+
+  @override
+  String get gearBand => 'Jalur rintangan';
+
+  @override
+  String get gearCardio => 'Mesin kardio';
+
+  @override
+  String get gearPlate => 'Plat';
+
+  @override
+  String get gearAbWheel => 'Roda perut';
+
+  @override
+  String get gearBattleRope => 'Tali battle';
+
+  @override
+  String get gearSled => 'Kereta luncur';
+
+  @override
+  String get gearJumpRope => 'Tali skipping';
+
+  @override
+  String get positionFlat => 'Rata';
+
+  @override
+  String get positionIncline => 'Condong';
+
+  @override
+  String get positionDecline => 'Menurun';
+
+  @override
+  String get positionSeated => 'Duduk';
+
+  @override
+  String get positionStanding => 'Berdiri';
+
+  @override
+  String get positionLying => 'Baring';
+
+  @override
+  String get positionBent => 'Membongkok';
+
+  @override
+  String get gripClose => 'Cengkaman rapat';
+
+  @override
+  String get gripWide => 'Cengkaman lebar';
+
+  @override
+  String get gripOverhand => 'Cengkaman atas';
+
+  @override
+  String get gripUnderhand => 'Cengkaman bawah';
+
+  @override
+  String get gripNeutral => 'Cengkaman neutral';
 }

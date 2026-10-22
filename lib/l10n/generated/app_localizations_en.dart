@@ -2571,4 +2571,88 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get switchDiscardWorkout => 'Discard workout';
+
+  @override
+  String get groupLegs => 'Legs';
+
+  @override
+  String get gearBarbell => 'Barbell';
+
+  @override
+  String get gearDumbbell => 'Dumbbell';
+
+  @override
+  String get gearEzBar => 'EZ bar';
+
+  @override
+  String get gearCable => 'Cable';
+
+  @override
+  String get gearMachine => 'Machine';
+
+  @override
+  String get gearSmith => 'Smith machine';
+
+  @override
+  String get gearBodyweight => 'Bodyweight';
+
+  @override
+  String get gearKettlebell => 'Kettlebell';
+
+  @override
+  String get gearBand => 'Resistance band';
+
+  @override
+  String get gearCardio => 'Cardio machine';
+
+  @override
+  String get gearPlate => 'Weight plate';
+
+  @override
+  String get gearAbWheel => 'Ab wheel';
+
+  @override
+  String get gearBattleRope => 'Battle rope';
+
+  @override
+  String get gearSled => 'Sled';
+
+  @override
+  String get gearJumpRope => 'Jump rope';
+
+  @override
+  String get positionFlat => 'Flat';
+
+  @override
+  String get positionIncline => 'Incline';
+
+  @override
+  String get positionDecline => 'Decline';
+
+  @override
+  String get positionSeated => 'Seated';
+
+  @override
+  String get positionStanding => 'Standing';
+
+  @override
+  String get positionLying => 'Lying';
+
+  @override
+  String get positionBent => 'Bent over';
+
+  @override
+  String get gripClose => 'Close grip';
+
+  @override
+  String get gripWide => 'Wide grip';
+
+  @override
+  String get gripOverhand => 'Overhand';
+
+  @override
+  String get gripUnderhand => 'Underhand';
+
+  @override
+  String get gripNeutral => 'Neutral grip';
 }

@@ -2543,4 +2543,88 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get switchDiscardWorkout => 'Hủy buổi tập';
+
+  @override
+  String get groupLegs => 'Chân';
+
+  @override
+  String get gearBarbell => 'Thanh tạ';
+
+  @override
+  String get gearDumbbell => 'Tạ đơn';
+
+  @override
+  String get gearEzBar => 'Thanh EZ';
+
+  @override
+  String get gearCable => 'Cáp';
+
+  @override
+  String get gearMachine => 'Máy';
+
+  @override
+  String get gearSmith => 'Máy Smith';
+
+  @override
+  String get gearBodyweight => 'Trọng lượng cơ thể';
+
+  @override
+  String get gearKettlebell => 'Tạ ấm';
+
+  @override
+  String get gearBand => 'Dây kháng lực';
+
+  @override
+  String get gearCardio => 'Máy cardio';
+
+  @override
+  String get gearPlate => 'Đĩa tạ';
+
+  @override
+  String get gearAbWheel => 'Bánh xe bụng';
+
+  @override
+  String get gearBattleRope => 'Dây thừng';
+
+  @override
+  String get gearSled => 'Xe trượt tạ';
+
+  @override
+  String get gearJumpRope => 'Dây nhảy';
+
+  @override
+  String get positionFlat => 'Ngang';
+
+  @override
+  String get positionIncline => 'Dốc lên';
+
+  @override
+  String get positionDecline => 'Dốc xuống';
+
+  @override
+  String get positionSeated => 'Ngồi';
+
+  @override
+  String get positionStanding => 'Đứng';
+
+  @override
+  String get positionLying => 'Nằm';
+
+  @override
+  String get positionBent => 'Cúi';
+
+  @override
+  String get gripClose => 'Tay hẹp';
+
+  @override
+  String get gripWide => 'Tay rộng';
+
+  @override
+  String get gripOverhand => 'Nắm trên';
+
+  @override
+  String get gripUnderhand => 'Nắm dưới';
+
+  @override
+  String get gripNeutral => 'Nắm trung tính';
 }

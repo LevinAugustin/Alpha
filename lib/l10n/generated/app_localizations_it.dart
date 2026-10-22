@@ -2558,4 +2558,88 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get switchDiscardWorkout => 'Scarta allenamento';
+
+  @override
+  String get groupLegs => 'Gambe';
+
+  @override
+  String get gearBarbell => 'Bilanciere';
+
+  @override
+  String get gearDumbbell => 'Manubrio';
+
+  @override
+  String get gearEzBar => 'Bilanciere EZ';
+
+  @override
+  String get gearCable => 'Cavi';
+
+  @override
+  String get gearMachine => 'Macchina';
+
+  @override
+  String get gearSmith => 'Multipower';
+
+  @override
+  String get gearBodyweight => 'Peso corporeo';
+
+  @override
+  String get gearKettlebell => 'Kettlebell';
+
+  @override
+  String get gearBand => 'Fascia elastica';
+
+  @override
+  String get gearCardio => 'Attrezzo cardio';
+
+  @override
+  String get gearPlate => 'Disco';
+
+  @override
+  String get gearAbWheel => 'Ruota addominale';
+
+  @override
+  String get gearBattleRope => 'Corda da onda';
+
+  @override
+  String get gearSled => 'Slitta';
+
+  @override
+  String get gearJumpRope => 'Corda per saltare';
+
+  @override
+  String get positionFlat => 'Piano';
+
+  @override
+  String get positionIncline => 'Inclinato';
+
+  @override
+  String get positionDecline => 'Declino';
+
+  @override
+  String get positionSeated => 'Seduto';
+
+  @override
+  String get positionStanding => 'In piedi';
+
+  @override
+  String get positionLying => 'Sdraiato';
+
+  @override
+  String get positionBent => 'Piegato in avanti';
+
+  @override
+  String get gripClose => 'Presa stretta';
+
+  @override
+  String get gripWide => 'Presa larga';
+
+  @override
+  String get gripOverhand => 'Pronazione';
+
+  @override
+  String get gripUnderhand => 'Supinazione';
+
+  @override
+  String get gripNeutral => 'Presa neutra';
 }

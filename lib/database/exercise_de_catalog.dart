@@ -397,6 +397,61 @@ Set<String> parseFlexifyOhneZiel(String? raw) {
   return names;
 }
 
+class CatalogEnglishText {
+  const CatalogEnglishText({
+    this.category,
+    this.equipment,
+    this.position,
+    this.grip,
+  });
+
+  final String? category;
+  final String? equipment;
+  final String? position;
+  final String? grip;
+}
+
+final catalogEnglishById = <String, CatalogEnglishText>{};
+
+Map<String, CatalogEnglishText> parseCatalogEnglishLabels(String raw) {
+  Object? decoded;
+  try {
+    decoded = jsonDecode(raw);
+  } catch (_) {
+    return const {};
+  }
+  if (decoded is! List) return const {};
+  final labels = <String, CatalogEnglishText>{};
+  for (final row in decoded) {
+    if (row is! Map) continue;
+    final id = _string(row['id']);
+    if (id.isEmpty) continue;
+    final category = _optionalStoredText(row['kategorie_en']);
+    final equipment = _optionalStoredText(row['geraet_en']);
+    final position = _optionalStoredText(row['position_en']);
+    final grip = _optionalStoredText(row['griff_en']);
+    if (category == null &&
+        equipment == null &&
+        position == null &&
+        grip == null) {
+      continue;
+    }
+    labels[id] = CatalogEnglishText(
+      category: category,
+      equipment: equipment,
+      position: position,
+      grip: grip,
+    );
+  }
+  return labels;
+}
+
+void rememberCatalogEnglishLabels(String raw) {
+  catalogEnglishById
+    ..clear()
+    ..addAll(parseCatalogEnglishLabels(raw));
+}
+
 Future<ExerciseImportResult> importExerciseCatalogJson(
   AppDatabase database,
   String raw, {
@@ -404,6 +459,7 @@ Future<ExerciseImportResult> importExerciseCatalogJson(
   String? flexifyMapRaw,
   String? ohneZielRaw,
 }) async {
+  rememberCatalogEnglishLabels(raw);
   final parsed = parseExerciseCatalog(raw);
   final legacyMap = _combineNameMaps([
     if (legacyMapRaw != null) parseLegacyNameMap(legacyMapRaw),

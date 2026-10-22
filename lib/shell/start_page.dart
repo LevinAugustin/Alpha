@@ -616,7 +616,8 @@ class _LockedHome extends StatelessWidget {
     final plan = data.nextPlan;
     final planName = plan == null
         ? l10n.tabTraining
-        : planDisplayName(
+        : planTitleOf(
+            context,
             title: plan.title,
             sequence: plan.sequence,
             id: plan.id,
@@ -736,7 +737,8 @@ class _Hero extends StatelessWidget {
     final plan = data.nextPlan;
     final planName = plan == null
         ? l10n.tabTraining
-        : planDisplayName(
+        : planTitleOf(
+            context,
             title: plan.title,
             sequence: plan.sequence,
             id: plan.id,

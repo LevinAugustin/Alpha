@@ -1,3 +1,6 @@
+import 'package:flutter/widgets.dart';
+import 'package:intl/intl.dart';
+
 const germanWeekdayTitles = {
   'monday': 'Montag',
   'tuesday': 'Dienstag',
@@ -18,6 +21,60 @@ String? germanTitleForEnglishPlan({
   if (current.isEmpty) return mapped;
   if (germanWeekdayTitles.containsKey(current.toLowerCase())) return mapped;
   return null;
+}
+
+final _weekdayDates = <String, DateTime>{
+  'monday': DateTime.utc(2024, 1, 1),
+  'montag': DateTime.utc(2024, 1, 1),
+  'tuesday': DateTime.utc(2024, 1, 2),
+  'dienstag': DateTime.utc(2024, 1, 2),
+  'wednesday': DateTime.utc(2024, 1, 3),
+  'mittwoch': DateTime.utc(2024, 1, 3),
+  'thursday': DateTime.utc(2024, 1, 4),
+  'donnerstag': DateTime.utc(2024, 1, 4),
+  'friday': DateTime.utc(2024, 1, 5),
+  'freitag': DateTime.utc(2024, 1, 5),
+  'saturday': DateTime.utc(2024, 1, 6),
+  'samstag': DateTime.utc(2024, 1, 6),
+  'sunday': DateTime.utc(2024, 1, 7),
+  'sonntag': DateTime.utc(2024, 1, 7),
+};
+
+String localizedPlanTitle({
+  required String locale,
+  String? title,
+  int? sequence,
+  int? id,
+  int? number,
+}) {
+  final text = (title ?? '').trim();
+  final date = _weekdayDates[text.toLowerCase()];
+  final language = locale.trim();
+  if (date != null && language.isNotEmpty) {
+    return DateFormat.EEEE(language).format(date);
+  }
+  return planDisplayName(
+    title: title,
+    sequence: sequence,
+    id: id,
+    number: number,
+  );
+}
+
+String planTitleOf(
+  BuildContext context, {
+  String? title,
+  int? sequence,
+  int? id,
+  int? number,
+}) {
+  return localizedPlanTitle(
+    locale: Localizations.localeOf(context).toLanguageTag(),
+    title: title,
+    sequence: sequence,
+    id: id,
+    number: number,
+  );
 }
 
 String planDisplayName({String? title, int? sequence, int? id, int? number}) {

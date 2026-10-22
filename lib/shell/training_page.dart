@@ -103,7 +103,8 @@ class _TemplateCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final title = planDisplayName(
+    final title = planTitleOf(
+      context,
       title: plan.title,
       sequence: plan.sequence,
       id: plan.id,
@@ -170,7 +171,8 @@ class _TemplateCard extends StatelessWidget {
   }
 
   Future<void> _delete(BuildContext context, Plan plan) async {
-    final title = planDisplayName(
+    final title = planTitleOf(
+      context,
       title: plan.title,
       sequence: plan.sequence,
       id: plan.id,

@@ -120,7 +120,7 @@ class _ExercisesPageState extends State<ExercisesPage> {
                     Padding(
                       padding: const EdgeInsets.only(right: 8),
                       child: FilterChip(
-                        label: Text(item),
+                        label: Text(localizedGear(context.l10n, item)),
                         selected: _equipment == item,
                         onSelected: (_) => setState(() {
                           _equipment = _equipment == item ? '' : item;
@@ -131,7 +131,7 @@ class _ExercisesPageState extends State<ExercisesPage> {
                     Padding(
                       padding: const EdgeInsets.only(right: 8),
                       child: FilterChip(
-                        label: Text(item),
+                        label: Text(localizedGrip(context.l10n, item)),
                         selected: _grip == item,
                         onSelected: (_) => setState(() {
                           _grip = _grip == item ? '' : item;
@@ -142,7 +142,7 @@ class _ExercisesPageState extends State<ExercisesPage> {
                     Padding(
                       padding: const EdgeInsets.only(right: 8),
                       child: FilterChip(
-                        label: Text(item),
+                        label: Text(localizedPosition(context.l10n, item)),
                         selected: _position == item,
                         onSelected: (_) => setState(() {
                           _position = _position == item ? '' : item;
@@ -259,8 +259,16 @@ class _ExercisesPageState extends State<ExercisesPage> {
                     english: exercise.englishName,
                   );
                   final subtitle = exerciseListSubtitle(
-                    category: exercise.categoryName,
-                    equipment: exercise.equipment,
+                    category: localizedCategory(
+                      context.l10n,
+                      exercise.categoryName,
+                      catalogId: exercise.catalogId,
+                    ),
+                    equipment: localizedGear(
+                      context.l10n,
+                      exercise.equipment,
+                      catalogId: exercise.catalogId,
+                    ),
                     unassigned: context.l10n.unassignedExercise,
                   );
                   return ListTile(

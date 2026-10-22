@@ -4703,6 +4703,174 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Discard workout'**
   String get switchDiscardWorkout;
+
+  /// Legs muscle group.
+  ///
+  /// In en, this message translates to:
+  /// **'Legs'**
+  String get groupLegs;
+
+  /// Barbell equipment.
+  ///
+  /// In en, this message translates to:
+  /// **'Barbell'**
+  String get gearBarbell;
+
+  /// Dumbbell equipment.
+  ///
+  /// In en, this message translates to:
+  /// **'Dumbbell'**
+  String get gearDumbbell;
+
+  /// EZ bar equipment.
+  ///
+  /// In en, this message translates to:
+  /// **'EZ bar'**
+  String get gearEzBar;
+
+  /// Cable equipment.
+  ///
+  /// In en, this message translates to:
+  /// **'Cable'**
+  String get gearCable;
+
+  /// Machine equipment.
+  ///
+  /// In en, this message translates to:
+  /// **'Machine'**
+  String get gearMachine;
+
+  /// Smith machine equipment.
+  ///
+  /// In en, this message translates to:
+  /// **'Smith machine'**
+  String get gearSmith;
+
+  /// Bodyweight equipment.
+  ///
+  /// In en, this message translates to:
+  /// **'Bodyweight'**
+  String get gearBodyweight;
+
+  /// Kettlebell equipment.
+  ///
+  /// In en, this message translates to:
+  /// **'Kettlebell'**
+  String get gearKettlebell;
+
+  /// Resistance band equipment.
+  ///
+  /// In en, this message translates to:
+  /// **'Resistance band'**
+  String get gearBand;
+
+  /// Cardio machine equipment.
+  ///
+  /// In en, this message translates to:
+  /// **'Cardio machine'**
+  String get gearCardio;
+
+  /// Weight plate equipment.
+  ///
+  /// In en, this message translates to:
+  /// **'Weight plate'**
+  String get gearPlate;
+
+  /// Ab wheel equipment.
+  ///
+  /// In en, this message translates to:
+  /// **'Ab wheel'**
+  String get gearAbWheel;
+
+  /// Battle rope equipment.
+  ///
+  /// In en, this message translates to:
+  /// **'Battle rope'**
+  String get gearBattleRope;
+
+  /// Sled equipment.
+  ///
+  /// In en, this message translates to:
+  /// **'Sled'**
+  String get gearSled;
+
+  /// Jump rope equipment.
+  ///
+  /// In en, this message translates to:
+  /// **'Jump rope'**
+  String get gearJumpRope;
+
+  /// Flat body position.
+  ///
+  /// In en, this message translates to:
+  /// **'Flat'**
+  String get positionFlat;
+
+  /// Incline body position.
+  ///
+  /// In en, this message translates to:
+  /// **'Incline'**
+  String get positionIncline;
+
+  /// Decline body position.
+  ///
+  /// In en, this message translates to:
+  /// **'Decline'**
+  String get positionDecline;
+
+  /// Seated body position.
+  ///
+  /// In en, this message translates to:
+  /// **'Seated'**
+  String get positionSeated;
+
+  /// Standing body position.
+  ///
+  /// In en, this message translates to:
+  /// **'Standing'**
+  String get positionStanding;
+
+  /// Lying body position.
+  ///
+  /// In en, this message translates to:
+  /// **'Lying'**
+  String get positionLying;
+
+  /// Bent-over body position.
+  ///
+  /// In en, this message translates to:
+  /// **'Bent over'**
+  String get positionBent;
+
+  /// Close grip.
+  ///
+  /// In en, this message translates to:
+  /// **'Close grip'**
+  String get gripClose;
+
+  /// Wide grip.
+  ///
+  /// In en, this message translates to:
+  /// **'Wide grip'**
+  String get gripWide;
+
+  /// Overhand grip.
+  ///
+  /// In en, this message translates to:
+  /// **'Overhand'**
+  String get gripOverhand;
+
+  /// Underhand grip.
+  ///
+  /// In en, this message translates to:
+  /// **'Underhand'**
+  String get gripUnderhand;
+
+  /// Neutral grip.
+  ///
+  /// In en, this message translates to:
+  /// **'Neutral grip'**
+  String get gripNeutral;
 }
 
 class _AppLocalizationsDelegate

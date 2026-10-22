@@ -173,7 +173,11 @@ class _ExerciseDetailPageState extends State<ExerciseDetailPage> {
     final primaryText = primary.isEmpty
         ? (exercise.muscle ?? '')
         : primary.map((key) => muscleLabel(l10n, key)).join(', ');
-    final gear = (exercise.equipment ?? '').trim();
+    final gear = localizedGear(
+      l10n,
+      exercise.equipment,
+      catalogId: exercise.catalogId,
+    );
     final working = sets.where((set) => !(set.notes ?? '').contains('warmup'));
     double bestWeight = 0;
     double bestEstimate = 0;
@@ -227,9 +231,13 @@ class _ExerciseDetailPageState extends State<ExerciseDetailPage> {
         if (catalogText(exercise.bewegung) case final movement?)
           Text('${l10n.movementLabel}: ${movementLabel(l10n, movement)}'),
         if (catalogText(exercise.griff) case final grip?)
-          Text('${l10n.gripLabel}: $grip'),
+          Text(
+            '${l10n.gripLabel}: ${localizedGrip(l10n, grip, catalogId: exercise.catalogId)}',
+          ),
         if (catalogText(exercise.position) case final position?)
-          Text('${l10n.positionLabel}: $position'),
+          Text(
+            '${l10n.positionLabel}: ${localizedPosition(l10n, position, catalogId: exercise.catalogId)}',
+          ),
         _family(context, exercise),
         _alternatives(context, exercise),
         if (_catalogCredit(l10n, exercise) case final credit?) Text(credit),
@@ -442,7 +450,11 @@ class _ExerciseDetailPageState extends State<ExerciseDetailPage> {
       german: row.germanName,
       english: row.englishName,
     );
-    final category = (row.categoryName ?? '').trim();
+    final category = localizedCategory(
+      context.l10n,
+      row.categoryName,
+      catalogId: row.catalogId,
+    );
     if (category.isEmpty) return title;
     return '$title · $category';
   }

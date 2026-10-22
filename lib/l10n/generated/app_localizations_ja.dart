@@ -2473,4 +2473,88 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get switchDiscardWorkout => 'トレーニングを破棄';
+
+  @override
+  String get groupLegs => '脚';
+
+  @override
+  String get gearBarbell => 'バーベル';
+
+  @override
+  String get gearDumbbell => 'ダンベル';
+
+  @override
+  String get gearEzBar => 'EZバー';
+
+  @override
+  String get gearCable => 'ケーブル';
+
+  @override
+  String get gearMachine => 'マシン';
+
+  @override
+  String get gearSmith => 'スミスマシン';
+
+  @override
+  String get gearBodyweight => '自重';
+
+  @override
+  String get gearKettlebell => 'ケトルベル';
+
+  @override
+  String get gearBand => 'レジスタンスバンド';
+
+  @override
+  String get gearCardio => '有酸素マシン';
+
+  @override
+  String get gearPlate => 'プレート';
+
+  @override
+  String get gearAbWheel => 'アブローラー';
+
+  @override
+  String get gearBattleRope => 'バトルロープ';
+
+  @override
+  String get gearSled => 'スレッド';
+
+  @override
+  String get gearJumpRope => '縄跳び';
+
+  @override
+  String get positionFlat => 'フラット';
+
+  @override
+  String get positionIncline => 'インクライン';
+
+  @override
+  String get positionDecline => 'デクライン';
+
+  @override
+  String get positionSeated => '座位';
+
+  @override
+  String get positionStanding => '立位';
+
+  @override
+  String get positionLying => '仰向け';
+
+  @override
+  String get positionBent => '前傾';
+
+  @override
+  String get gripClose => '狭いグリップ';
+
+  @override
+  String get gripWide => '広いグリップ';
+
+  @override
+  String get gripOverhand => 'オーバーグリップ';
+
+  @override
+  String get gripUnderhand => 'アンダーグリップ';
+
+  @override
+  String get gripNeutral => 'ニュートラルグリップ';
 }

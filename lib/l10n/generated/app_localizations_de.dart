@@ -2602,4 +2602,88 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get switchDiscardWorkout => 'Training verwerfen';
+
+  @override
+  String get groupLegs => 'Beine';
+
+  @override
+  String get gearBarbell => 'Langhantel';
+
+  @override
+  String get gearDumbbell => 'Kurzhantel';
+
+  @override
+  String get gearEzBar => 'SZ-Stange';
+
+  @override
+  String get gearCable => 'Kabelzug';
+
+  @override
+  String get gearMachine => 'Maschine';
+
+  @override
+  String get gearSmith => 'Multipresse';
+
+  @override
+  String get gearBodyweight => 'Körpergewicht';
+
+  @override
+  String get gearKettlebell => 'Kettlebell';
+
+  @override
+  String get gearBand => 'Widerstandsband';
+
+  @override
+  String get gearCardio => 'Cardiogerät';
+
+  @override
+  String get gearPlate => 'Hantelscheibe';
+
+  @override
+  String get gearAbWheel => 'Bauchroller';
+
+  @override
+  String get gearBattleRope => 'Schwungseil';
+
+  @override
+  String get gearSled => 'Schlitten';
+
+  @override
+  String get gearJumpRope => 'Springseil';
+
+  @override
+  String get positionFlat => 'Flach';
+
+  @override
+  String get positionIncline => 'Schräg';
+
+  @override
+  String get positionDecline => 'Negativ';
+
+  @override
+  String get positionSeated => 'Sitzend';
+
+  @override
+  String get positionStanding => 'Stehend';
+
+  @override
+  String get positionLying => 'Liegend';
+
+  @override
+  String get positionBent => 'Vorgebeugt';
+
+  @override
+  String get gripClose => 'Enger Griff';
+
+  @override
+  String get gripWide => 'Breiter Griff';
+
+  @override
+  String get gripOverhand => 'Obergriff';
+
+  @override
+  String get gripUnderhand => 'Untergriff';
+
+  @override
+  String get gripNeutral => 'Neutraler Griff';
 }

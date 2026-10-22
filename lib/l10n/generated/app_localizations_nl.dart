@@ -2554,4 +2554,88 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get switchDiscardWorkout => 'Training wissen';
+
+  @override
+  String get groupLegs => 'Benen';
+
+  @override
+  String get gearBarbell => 'Halterstang';
+
+  @override
+  String get gearDumbbell => 'Halter';
+
+  @override
+  String get gearEzBar => 'EZ-stang';
+
+  @override
+  String get gearCable => 'Kabel';
+
+  @override
+  String get gearMachine => 'Apparaat';
+
+  @override
+  String get gearSmith => 'Smith-machine';
+
+  @override
+  String get gearBodyweight => 'Lichaamsgewicht';
+
+  @override
+  String get gearKettlebell => 'Kettlebell';
+
+  @override
+  String get gearBand => 'Weerstandsband';
+
+  @override
+  String get gearCardio => 'Cardiotoestel';
+
+  @override
+  String get gearPlate => 'Schijf';
+
+  @override
+  String get gearAbWheel => 'Buikwiel';
+
+  @override
+  String get gearBattleRope => 'Zwaaitouw';
+
+  @override
+  String get gearSled => 'Slee';
+
+  @override
+  String get gearJumpRope => 'Springtouw';
+
+  @override
+  String get positionFlat => 'Vlak';
+
+  @override
+  String get positionIncline => 'Schuin';
+
+  @override
+  String get positionDecline => 'Dalend';
+
+  @override
+  String get positionSeated => 'Zittend';
+
+  @override
+  String get positionStanding => 'Staand';
+
+  @override
+  String get positionLying => 'Liggend';
+
+  @override
+  String get positionBent => 'Voorovergebogen';
+
+  @override
+  String get gripClose => 'Smalle greep';
+
+  @override
+  String get gripWide => 'Brede greep';
+
+  @override
+  String get gripOverhand => 'Bovenhand';
+
+  @override
+  String get gripUnderhand => 'Onderhand';
+
+  @override
+  String get gripNeutral => 'Neutrale greep';
 }

@@ -71,6 +71,7 @@ const _alwaysEnglishEquivalentKeys = <String>{
   'languageNameThai',
   'languageNameMalay',
   'languageNameUkrainian',
+  'gearKettlebell',
   'stoneUnitShort',
   'columnKg',
   'warmupMark',

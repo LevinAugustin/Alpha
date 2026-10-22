@@ -2475,4 +2475,88 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get switchDiscardWorkout => '운동 버리기';
+
+  @override
+  String get groupLegs => '하체';
+
+  @override
+  String get gearBarbell => '바벨';
+
+  @override
+  String get gearDumbbell => '덤벨';
+
+  @override
+  String get gearEzBar => 'EZ바';
+
+  @override
+  String get gearCable => '케이블';
+
+  @override
+  String get gearMachine => '머신';
+
+  @override
+  String get gearSmith => '스미스 머신';
+
+  @override
+  String get gearBodyweight => '맨몸';
+
+  @override
+  String get gearKettlebell => '케틀벨';
+
+  @override
+  String get gearBand => '저항 밴드';
+
+  @override
+  String get gearCardio => '유산소 기구';
+
+  @override
+  String get gearPlate => '원판';
+
+  @override
+  String get gearAbWheel => '복근 휠';
+
+  @override
+  String get gearBattleRope => '배틀 로프';
+
+  @override
+  String get gearSled => '슬레드';
+
+  @override
+  String get gearJumpRope => '줄넘기';
+
+  @override
+  String get positionFlat => '플랫';
+
+  @override
+  String get positionIncline => '인클라인';
+
+  @override
+  String get positionDecline => '디클라인';
+
+  @override
+  String get positionSeated => '앉아서';
+
+  @override
+  String get positionStanding => '서서';
+
+  @override
+  String get positionLying => '누워서';
+
+  @override
+  String get positionBent => '숙여서';
+
+  @override
+  String get gripClose => '좁은 그립';
+
+  @override
+  String get gripWide => '넓은 그립';
+
+  @override
+  String get gripOverhand => '오버그립';
+
+  @override
+  String get gripUnderhand => '언더그립';
+
+  @override
+  String get gripNeutral => '뉴트럴 그립';
 }

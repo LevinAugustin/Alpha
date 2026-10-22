@@ -2565,6 +2565,90 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get switchDiscardWorkout => 'Descartar treino';
+
+  @override
+  String get groupLegs => 'Pernas';
+
+  @override
+  String get gearBarbell => 'Barra';
+
+  @override
+  String get gearDumbbell => 'Haltere';
+
+  @override
+  String get gearEzBar => 'Barra EZ';
+
+  @override
+  String get gearCable => 'Polia';
+
+  @override
+  String get gearMachine => 'Máquina';
+
+  @override
+  String get gearSmith => 'Máquina Smith';
+
+  @override
+  String get gearBodyweight => 'Peso corporal';
+
+  @override
+  String get gearKettlebell => 'Kettlebell';
+
+  @override
+  String get gearBand => 'Banda de resistência';
+
+  @override
+  String get gearCardio => 'Máquina de cardio';
+
+  @override
+  String get gearPlate => 'Disco';
+
+  @override
+  String get gearAbWheel => 'Roda abdominal';
+
+  @override
+  String get gearBattleRope => 'Corda de batalha';
+
+  @override
+  String get gearSled => 'Trenó';
+
+  @override
+  String get gearJumpRope => 'Corda de saltar';
+
+  @override
+  String get positionFlat => 'Plano';
+
+  @override
+  String get positionIncline => 'Inclinado';
+
+  @override
+  String get positionDecline => 'Declinado';
+
+  @override
+  String get positionSeated => 'Sentado';
+
+  @override
+  String get positionStanding => 'Em pé';
+
+  @override
+  String get positionLying => 'Deitado';
+
+  @override
+  String get positionBent => 'Inclinado à frente';
+
+  @override
+  String get gripClose => 'Pegada fechada';
+
+  @override
+  String get gripWide => 'Pegada aberta';
+
+  @override
+  String get gripOverhand => 'Pronação';
+
+  @override
+  String get gripUnderhand => 'Supinação';
+
+  @override
+  String get gripNeutral => 'Pegada neutra';
 }
 
 /// The translations for Portuguese, as used in Brazil (`pt_BR`).
@@ -5119,6 +5203,90 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
 
   @override
   String get switchDiscardWorkout => 'Descartar treino';
+
+  @override
+  String get groupLegs => 'Pernas';
+
+  @override
+  String get gearBarbell => 'Barra';
+
+  @override
+  String get gearDumbbell => 'Haltere';
+
+  @override
+  String get gearEzBar => 'Barra EZ';
+
+  @override
+  String get gearCable => 'Polia';
+
+  @override
+  String get gearMachine => 'Máquina';
+
+  @override
+  String get gearSmith => 'Máquina Smith';
+
+  @override
+  String get gearBodyweight => 'Peso do corpo';
+
+  @override
+  String get gearKettlebell => 'Kettlebell';
+
+  @override
+  String get gearBand => 'Faixa de resistência';
+
+  @override
+  String get gearCardio => 'Aparelho de cardio';
+
+  @override
+  String get gearPlate => 'Anilha';
+
+  @override
+  String get gearAbWheel => 'Roda abdominal';
+
+  @override
+  String get gearBattleRope => 'Corda naval';
+
+  @override
+  String get gearSled => 'Trenó';
+
+  @override
+  String get gearJumpRope => 'Corda de pular';
+
+  @override
+  String get positionFlat => 'Reto';
+
+  @override
+  String get positionIncline => 'Inclinado';
+
+  @override
+  String get positionDecline => 'Declinado';
+
+  @override
+  String get positionSeated => 'Sentado';
+
+  @override
+  String get positionStanding => 'Em pé';
+
+  @override
+  String get positionLying => 'Deitado';
+
+  @override
+  String get positionBent => 'Inclinado à frente';
+
+  @override
+  String get gripClose => 'Pegada fechada';
+
+  @override
+  String get gripWide => 'Pegada aberta';
+
+  @override
+  String get gripOverhand => 'Pronação';
+
+  @override
+  String get gripUnderhand => 'Supinação';
+
+  @override
+  String get gripNeutral => 'Pegada neutra';
 }
 
 /// The translations for Portuguese, as used in Portugal (`pt_PT`).
@@ -7682,4 +7850,88 @@ class AppLocalizationsPtPt extends AppLocalizationsPt {
 
   @override
   String get switchDiscardWorkout => 'Descartar treino';
+
+  @override
+  String get groupLegs => 'Pernas';
+
+  @override
+  String get gearBarbell => 'Barra';
+
+  @override
+  String get gearDumbbell => 'Haltere';
+
+  @override
+  String get gearEzBar => 'Barra EZ';
+
+  @override
+  String get gearCable => 'Polia';
+
+  @override
+  String get gearMachine => 'Máquina';
+
+  @override
+  String get gearSmith => 'Máquina Smith';
+
+  @override
+  String get gearBodyweight => 'Peso corporal';
+
+  @override
+  String get gearKettlebell => 'Kettlebell';
+
+  @override
+  String get gearBand => 'Banda de resistência';
+
+  @override
+  String get gearCardio => 'Máquina de cardio';
+
+  @override
+  String get gearPlate => 'Disco';
+
+  @override
+  String get gearAbWheel => 'Roda abdominal';
+
+  @override
+  String get gearBattleRope => 'Corda de batalha';
+
+  @override
+  String get gearSled => 'Trenó';
+
+  @override
+  String get gearJumpRope => 'Corda de saltar';
+
+  @override
+  String get positionFlat => 'Plano';
+
+  @override
+  String get positionIncline => 'Inclinado';
+
+  @override
+  String get positionDecline => 'Declinado';
+
+  @override
+  String get positionSeated => 'Sentado';
+
+  @override
+  String get positionStanding => 'Em pé';
+
+  @override
+  String get positionLying => 'Deitado';
+
+  @override
+  String get positionBent => 'Inclinado à frente';
+
+  @override
+  String get gripClose => 'Pegada fechada';
+
+  @override
+  String get gripWide => 'Pegada aberta';
+
+  @override
+  String get gripOverhand => 'Pronação';
+
+  @override
+  String get gripUnderhand => 'Supinação';
+
+  @override
+  String get gripNeutral => 'Pegada neutra';
 }

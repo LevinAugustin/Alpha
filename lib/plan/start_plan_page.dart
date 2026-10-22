@@ -649,7 +649,8 @@ class _StartPlanPageState extends State<StartPlanPage>
   }
 
   String _displayTitle() {
-    return planDisplayName(
+    return planTitleOf(
+      context,
       title: _plan.title,
       sequence: _plan.sequence,
       id: _plan.id,

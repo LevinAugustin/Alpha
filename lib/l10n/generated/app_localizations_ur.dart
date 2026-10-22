@@ -2535,4 +2535,88 @@ class AppLocalizationsUr extends AppLocalizations {
 
   @override
   String get switchDiscardWorkout => 'ورزش چھوڑ دیں';
+
+  @override
+  String get groupLegs => 'ٹانگیں';
+
+  @override
+  String get gearBarbell => 'باربل';
+
+  @override
+  String get gearDumbbell => 'ڈمبل';
+
+  @override
+  String get gearEzBar => 'EZ بار';
+
+  @override
+  String get gearCable => 'کیبل';
+
+  @override
+  String get gearMachine => 'مشین';
+
+  @override
+  String get gearSmith => 'سمتھ مشین';
+
+  @override
+  String get gearBodyweight => 'جسمانی وزن';
+
+  @override
+  String get gearKettlebell => 'کیٹل بیل';
+
+  @override
+  String get gearBand => 'مزاحمتی بینڈ';
+
+  @override
+  String get gearCardio => 'کارڈیو مشین';
+
+  @override
+  String get gearPlate => 'پلیٹ';
+
+  @override
+  String get gearAbWheel => 'پیٹ کا پہیہ';
+
+  @override
+  String get gearBattleRope => 'بیٹل رسی';
+
+  @override
+  String get gearSled => 'سلیڈ';
+
+  @override
+  String get gearJumpRope => 'رسی';
+
+  @override
+  String get positionFlat => 'ہموار';
+
+  @override
+  String get positionIncline => 'جھکاؤ اوپر';
+
+  @override
+  String get positionDecline => 'جھکاؤ نیچے';
+
+  @override
+  String get positionSeated => 'بیٹھ کر';
+
+  @override
+  String get positionStanding => 'کھڑے ہو کر';
+
+  @override
+  String get positionLying => 'لیٹ کر';
+
+  @override
+  String get positionBent => 'جھک کر';
+
+  @override
+  String get gripClose => 'تنگ گرفت';
+
+  @override
+  String get gripWide => 'چوڑی گرفت';
+
+  @override
+  String get gripOverhand => 'اوپر کی گرفت';
+
+  @override
+  String get gripUnderhand => 'نیچے کی گرفت';
+
+  @override
+  String get gripNeutral => 'غیر جانبدار گرفت';
 }

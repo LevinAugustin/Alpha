@@ -2565,4 +2565,88 @@ class AppLocalizationsPl extends AppLocalizations {
 
   @override
   String get switchDiscardWorkout => 'Odrzuć trening';
+
+  @override
+  String get groupLegs => 'Nogi';
+
+  @override
+  String get gearBarbell => 'Sztanga';
+
+  @override
+  String get gearDumbbell => 'Hantel';
+
+  @override
+  String get gearEzBar => 'Gryf łamany';
+
+  @override
+  String get gearCable => 'Wyciąg';
+
+  @override
+  String get gearMachine => 'Maszyna';
+
+  @override
+  String get gearSmith => 'Maszyna Smitha';
+
+  @override
+  String get gearBodyweight => 'Ciężar ciała';
+
+  @override
+  String get gearKettlebell => 'Kettlebell';
+
+  @override
+  String get gearBand => 'Guma oporowa';
+
+  @override
+  String get gearCardio => 'Sprzęt cardio';
+
+  @override
+  String get gearPlate => 'Obciążenie';
+
+  @override
+  String get gearAbWheel => 'Kółko do brzucha';
+
+  @override
+  String get gearBattleRope => 'Lina treningowa';
+
+  @override
+  String get gearSled => 'Sanie';
+
+  @override
+  String get gearJumpRope => 'Skakanka';
+
+  @override
+  String get positionFlat => 'Poziomo';
+
+  @override
+  String get positionIncline => 'Skośnie';
+
+  @override
+  String get positionDecline => 'Ujemnie';
+
+  @override
+  String get positionSeated => 'Siedząc';
+
+  @override
+  String get positionStanding => 'Stojąc';
+
+  @override
+  String get positionLying => 'Leżąc';
+
+  @override
+  String get positionBent => 'W opadzie';
+
+  @override
+  String get gripClose => 'Wąski chwyt';
+
+  @override
+  String get gripWide => 'Szeroki chwyt';
+
+  @override
+  String get gripOverhand => 'Nachwyt';
+
+  @override
+  String get gripUnderhand => 'Podchwyt';
+
+  @override
+  String get gripNeutral => 'Chwyt neutralny';
 }

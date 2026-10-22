@@ -2548,4 +2548,88 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get switchDiscardWorkout => 'Buang latihan';
+
+  @override
+  String get groupLegs => 'Kaki';
+
+  @override
+  String get gearBarbell => 'Barbel';
+
+  @override
+  String get gearDumbbell => 'Dumbel';
+
+  @override
+  String get gearEzBar => 'Batang EZ';
+
+  @override
+  String get gearCable => 'Kabel';
+
+  @override
+  String get gearMachine => 'Mesin';
+
+  @override
+  String get gearSmith => 'Mesin Smith';
+
+  @override
+  String get gearBodyweight => 'Berat tubuh';
+
+  @override
+  String get gearKettlebell => 'Kettlebell';
+
+  @override
+  String get gearBand => 'Karet resistensi';
+
+  @override
+  String get gearCardio => 'Alat kardio';
+
+  @override
+  String get gearPlate => 'Lempeng';
+
+  @override
+  String get gearAbWheel => 'Roda perut';
+
+  @override
+  String get gearBattleRope => 'Tali battle';
+
+  @override
+  String get gearSled => 'Kereta beban';
+
+  @override
+  String get gearJumpRope => 'Tali lompat';
+
+  @override
+  String get positionFlat => 'Datar';
+
+  @override
+  String get positionIncline => 'Miring naik';
+
+  @override
+  String get positionDecline => 'Miring turun';
+
+  @override
+  String get positionSeated => 'Duduk';
+
+  @override
+  String get positionStanding => 'Berdiri';
+
+  @override
+  String get positionLying => 'Berbaring';
+
+  @override
+  String get positionBent => 'Membungkuk';
+
+  @override
+  String get gripClose => 'Genggaman sempit';
+
+  @override
+  String get gripWide => 'Genggaman lebar';
+
+  @override
+  String get gripOverhand => 'Genggaman atas';
+
+  @override
+  String get gripUnderhand => 'Genggaman bawah';
+
+  @override
+  String get gripNeutral => 'Genggaman netral';
 }

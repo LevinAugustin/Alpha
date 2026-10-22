@@ -2532,4 +2532,88 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get switchDiscardWorkout => 'ওয়ার্কআউট বাতিল';
+
+  @override
+  String get groupLegs => 'পা';
+
+  @override
+  String get gearBarbell => 'বারবেল';
+
+  @override
+  String get gearDumbbell => 'ডাম্বেল';
+
+  @override
+  String get gearEzBar => 'EZ বার';
+
+  @override
+  String get gearCable => 'কেবল';
+
+  @override
+  String get gearMachine => 'মেশিন';
+
+  @override
+  String get gearSmith => 'স্মিথ মেশিন';
+
+  @override
+  String get gearBodyweight => 'শরীরের ওজন';
+
+  @override
+  String get gearKettlebell => 'কেটলবেল';
+
+  @override
+  String get gearBand => 'রেজিস্ট্যান্স ব্যান্ড';
+
+  @override
+  String get gearCardio => 'কার্ডিও মেশিন';
+
+  @override
+  String get gearPlate => 'প্লেট';
+
+  @override
+  String get gearAbWheel => 'অ্যাব হুইল';
+
+  @override
+  String get gearBattleRope => 'ব্যাটল রোপ';
+
+  @override
+  String get gearSled => 'স্লেড';
+
+  @override
+  String get gearJumpRope => 'দড়ি';
+
+  @override
+  String get positionFlat => 'সমতল';
+
+  @override
+  String get positionIncline => 'ঢালু';
+
+  @override
+  String get positionDecline => 'নিম্নঢাল';
+
+  @override
+  String get positionSeated => 'বসে';
+
+  @override
+  String get positionStanding => 'দাঁড়িয়ে';
+
+  @override
+  String get positionLying => 'শুয়ে';
+
+  @override
+  String get positionBent => 'ঝুঁকে';
+
+  @override
+  String get gripClose => 'সরু গ্রিপ';
+
+  @override
+  String get gripWide => 'চওড়া গ্রিপ';
+
+  @override
+  String get gripOverhand => 'ওভারহ্যান্ড';
+
+  @override
+  String get gripUnderhand => 'আন্ডারহ্যান্ড';
+
+  @override
+  String get gripNeutral => 'নিরপেক্ষ গ্রিপ';
 }

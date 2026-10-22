@@ -258,7 +258,8 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
 
   void _publishLive() {
     if (_workout == null) return;
-    final title = planDisplayName(
+    final title = planTitleOf(
+      context,
       title: widget.plan.title,
       sequence: widget.plan.sequence,
       id: widget.plan.id,
@@ -1146,7 +1147,8 @@ class _GymWorkoutPageState extends State<GymWorkoutPage> {
   Widget build(BuildContext context) {
     final palette = AlphaTheme.of(context);
     final l10n = context.l10n;
-    final title = planDisplayName(
+    final title = planTitleOf(
+      context,
       title: widget.plan.title,
       sequence: widget.plan.sequence,
       id: widget.plan.id,
