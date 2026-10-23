@@ -1,7 +1,7 @@
 {
  "stand": "2026-10-23",
  "quelle": "Box (Drive ohne passende Clips, Reaver offline)",
- "gesamt_bytes": 8696692,
+ "gesamt_bytes": 8696518,
  "gesamt_mb": 8.7,
  "uebungen": [
   {
@@ -272,14 +272,14 @@
     {
      "datei": "scottcurls-maschine.webp",
      "rolle": "standbild",
-     "sha256": "83a3068ef3bd8d8e1cad0b64383bf2e5fe1a495608f25535334eef116840ffc2",
-     "bytes": 38602
+     "sha256": "8e1c00c3d4358443ba71c792052a7a6abc826f64646884e4181904c6de36e1e1",
+     "bytes": 38470
     },
     {
      "datei": "icons/scottcurls-maschine.webp",
      "rolle": "icon256",
-     "sha256": "ba797ec5f21aca85d05039ff592de3c56004cde3c7adf1061a62caa23883095d",
-     "bytes": 8030
+     "sha256": "cded3bc4ceae5c8053547207ad17ffc059b41b161a0f4632a4fe06e405a2d388",
+     "bytes": 7988
     }
    ],
    "probleme": []
