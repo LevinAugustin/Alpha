@@ -1,0 +1,288 @@
+{
+ "stand": "2026-10-23",
+ "quelle": "Box (Drive ohne passende Clips, Reaver offline)",
+ "gesamt_bytes": 705693,
+ "gesamt_mb": 0.71,
+ "uebungen": [
+  {
+   "id": "reverse-curls-kabel",
+   "typ": "icon-only",
+   "in_db": true,
+   "dateien": [
+    {
+     "datei": "icons/reverse-curls-kabel.webp",
+     "rolle": "icon256",
+     "sha256": "51ae543cea1098bf72d697c79cae1cb30b8a6387fc733d0c4364c27bcbe6dcf6",
+     "bytes": 6070
+    }
+   ],
+   "probleme": [
+    "fehlt: reverse-curls-kabel_v1_20261020.mp4",
+    "fehlt: reverse-curls-kabel_v1_20261020.webp"
+   ]
+  },
+  {
+   "id": "bizepscurls-kabel",
+   "typ": "icon-only",
+   "in_db": true,
+   "dateien": [
+    {
+     "datei": "icons/bizepscurls-kabel.webp",
+     "rolle": "icon256",
+     "sha256": "e652a2db8d5e3a51da3c201f39d16397da8c719b4054e100caf6c52a723cb689",
+     "bytes": 6318
+    }
+   ],
+   "probleme": [
+    "fehlt: bizepscurls-kabel_v1_20261020.mp4",
+    "fehlt: bizepscurls-kabel_v1_20261020.webp"
+   ]
+  },
+  {
+   "id": "scottcurls-sz",
+   "typ": "icon-only",
+   "in_db": true,
+   "dateien": [
+    {
+     "datei": "icons/scottcurls-sz.webp",
+     "rolle": "icon256",
+     "sha256": "6c792063e0ccc041dc856b2a357de3d28384fbc2e190ae2c665d7af476ba91ba",
+     "bytes": 6390
+    }
+   ],
+   "probleme": [
+    "fehlt: scottcurls-sz_v1_20261020.mp4",
+    "fehlt: scottcurls-sz_v1_20261020.webp"
+   ]
+  },
+  {
+   "id": "hammercurls-seil",
+   "typ": "icon-only",
+   "in_db": true,
+   "dateien": [
+    {
+     "datei": "icons/hammercurls-seil.webp",
+     "rolle": "icon256",
+     "sha256": "1b38e6bea4aa2f8da071dc10ebc5b69d78b45c611b3164706e1ee4b72d49cd34",
+     "bytes": 5342
+    }
+   ],
+   "probleme": [
+    "fehlt: hammercurls-seil_v1_20261020.mp4",
+    "fehlt: hammercurls-seil_v1_20261020.webp"
+   ]
+  },
+  {
+   "id": "trizepsdruecken-einarmig",
+   "typ": "icon-only",
+   "in_db": true,
+   "dateien": [
+    {
+     "datei": "icons/trizepsdruecken-einarmig.webp",
+     "rolle": "icon256",
+     "sha256": "5054389285b274559169983c734fe152435564dc3959bbb6841633ff27d8580d",
+     "bytes": 6256
+    }
+   ],
+   "probleme": [
+    "fehlt: trizepsdruecken-einarmig_v1_20261020.mp4",
+    "fehlt: trizepsdruecken-einarmig_v1_20261020.webp"
+   ]
+  },
+  {
+   "id": "unterarmcurls-kurzhantel",
+   "typ": "icon-only",
+   "in_db": true,
+   "dateien": [
+    {
+     "datei": "icons/unterarmcurls-kurzhantel.webp",
+     "rolle": "icon256",
+     "sha256": "30aff7a26f8a6be647618b672a168921e7f65d8fa95fa20da28901eccfb55ae5",
+     "bytes": 6946
+    }
+   ],
+   "probleme": [
+    "fehlt: unterarmcurls-kurzhantel_v2_20261022.mp4",
+    "fehlt: unterarmcurls-kurzhantel_v2_20261022.webp"
+   ]
+  },
+  {
+   "id": "trizepsstrecken-kabel-einarmig",
+   "typ": "icon-only",
+   "in_db": true,
+   "dateien": [
+    {
+     "datei": "icons/trizepsstrecken-kabel-einarmig.webp",
+     "rolle": "icon256",
+     "sha256": "5220d075825a2c8e72a5df99492f1677c6e8d8c07ce90ba88ca5053a3467011f",
+     "bytes": 5956
+    }
+   ],
+   "probleme": [
+    "fehlt: trizepsstrecken-kabel-einarmig_v1_20261022.mp4",
+    "fehlt: trizepsstrecken-kabel-einarmig_v1_20261022.webp"
+   ]
+  },
+  {
+   "id": "bizepscurls-kabel-oben",
+   "typ": "icon-only",
+   "in_db": true,
+   "dateien": [
+    {
+     "datei": "icons/bizepscurls-kabel-oben.webp",
+     "rolle": "icon256",
+     "sha256": "d8c25c3abfaef5c871a830396fee311de2cc88892687bbe827d477f3ffdb7e33",
+     "bytes": 4570
+    }
+   ],
+   "probleme": [
+    "fehlt: bizepscurls-kabel-oben_v1_20261022.mp4",
+    "fehlt: bizepscurls-kabel-oben_v1_20261022.webp"
+   ]
+  },
+  {
+   "id": "bizepscurls-kabel-einarmig",
+   "typ": "icon-only",
+   "in_db": true,
+   "dateien": [
+    {
+     "datei": "icons/bizepscurls-kabel-einarmig.webp",
+     "rolle": "icon256",
+     "sha256": "dabf347e94d5797350901cce7378f18701a7d4456078123b77f54dee44618a1b",
+     "bytes": 6372
+    }
+   ],
+   "probleme": [
+    "fehlt: bizepscurls-kabel-einarmig_v1_20261022.mp4",
+    "fehlt: bizepscurls-kabel-einarmig_v1_20261022.webp"
+   ]
+  },
+  {
+   "id": "bizepscurls-kurzhantel",
+   "typ": "clip",
+   "in_db": true,
+   "dateien": [
+    {
+     "datei": "bizepscurls-kurzhantel.mp4",
+     "rolle": "clip",
+     "sha256": "d6ed19a4086f474881b9b9d8604cd743fd690ea7856db44d8f1cb76c50a56746",
+     "bytes": 427011
+    },
+    {
+     "datei": "bizepscurls-kurzhantel.webp",
+     "rolle": "standbild",
+     "sha256": "0d05842a851b82cfbf7cae9afa43a28e71a8e78b26509aa6de50d9e1e7ba6518",
+     "bytes": 20820
+    },
+    {
+     "datei": "icons/bizepscurls-kurzhantel.webp",
+     "rolle": "icon256",
+     "sha256": "307e31d9ada248d0dd5b81a8d457e50ff6453958c06d552cfebb217980839010",
+     "bytes": 4440
+    }
+   ],
+   "probleme": []
+  },
+  {
+   "id": "scottcurls-maschine",
+   "typ": "still",
+   "in_db": true,
+   "dateien": [
+    {
+     "datei": "scottcurls-maschine.webp",
+     "rolle": "standbild",
+     "sha256": "0d94d642a2ca11f8967ba5b01d423cef71e7aba93d8a1bb8bc6e2e587a3901d9",
+     "bytes": 37320
+    },
+    {
+     "datei": "icons/scottcurls-maschine.webp",
+     "rolle": "icon256",
+     "sha256": "07454c04e62651b7d243cca89fa07aa5670f45273669676c4ed74e46bb018ae9",
+     "bytes": 7812
+    }
+   ],
+   "probleme": []
+  },
+  {
+   "id": "bizepsmaschine",
+   "typ": "still",
+   "in_db": true,
+   "dateien": [
+    {
+     "datei": "bizepsmaschine.webp",
+     "rolle": "standbild",
+     "sha256": "1b3e3b5667826d41fdbe3fdbe3281e01ce3a63533d0ad4daeb0f9f2e6706675f",
+     "bytes": 35902
+    },
+    {
+     "datei": "icons/bizepsmaschine.webp",
+     "rolle": "icon256",
+     "sha256": "533c3910b60f1fbed213e0629de764859db77a070b4e1aae033295f1bc93cf20",
+     "bytes": 7662
+    }
+   ],
+   "probleme": []
+  },
+  {
+   "id": "trizepsmaschine",
+   "typ": "still",
+   "in_db": true,
+   "dateien": [
+    {
+     "datei": "trizepsmaschine.webp",
+     "rolle": "standbild",
+     "sha256": "8ef668ad06cef517e969eb6dda52558e0465dd57caa75c60fe6f692a0ac098c2",
+     "bytes": 31296
+    },
+    {
+     "datei": "icons/trizepsmaschine.webp",
+     "rolle": "icon256",
+     "sha256": "aa808680bbc8d5aa39eca83a44cbad53fb050173e1d1a869edc7110ee501c846",
+     "bytes": 6686
+    }
+   ],
+   "probleme": []
+  },
+  {
+   "id": "dipmaschine",
+   "typ": "still",
+   "in_db": true,
+   "dateien": [
+    {
+     "datei": "dipmaschine.webp",
+     "rolle": "standbild",
+     "sha256": "f7c9a514f496c3b01461c157b873d719d2f8532aee1c1c75fb73341a4bba7dfb",
+     "bytes": 35412
+    },
+    {
+     "datei": "icons/dipmaschine.webp",
+     "rolle": "icon256",
+     "sha256": "05e7a635d64543c79951f63e4232ef7be4b626a655c981e5426f84078029cb88",
+     "bytes": 6898
+    }
+   ],
+   "probleme": []
+  },
+  {
+   "id": "hammercurls-kreuz",
+   "typ": "still",
+   "in_db": true,
+   "dateien": [
+    {
+     "datei": "hammercurls-kreuz.webp",
+     "rolle": "standbild",
+     "sha256": "a3ff0aa613a62ef8a2e5a7d3b5a3055292f4c55e8bfbe553224b4be3d9c1b20a",
+     "bytes": 25050
+    },
+    {
+     "datei": "icons/hammercurls-kreuz.webp",
+     "rolle": "icon256",
+     "sha256": "39dda126edc23b2196be2bc9e1e5aabfb2d65fb2508162ad0a48e334260e14da",
+     "bytes": 5164
+    }
+   ],
+   "probleme": []
+  }
+ ],
+ "pfad": "assets/uebungen/"
+}
