@@ -1,0 +1,391 @@
+{
+ "stand": "2026-10-23",
+ "quelle": "Box (Drive ohne passende Clips, Reaver offline)",
+ "gesamt_bytes": 8696518,
+ "gesamt_mb": 8.7,
+ "uebungen": [
+  {
+   "id": "reverse-curls-kabel",
+   "typ": "clip",
+   "in_db": true,
+   "dateien": [
+    {
+     "datei": "reverse-curls-kabel.mp4",
+     "rolle": "clip",
+     "sha256": "c400b5fc25f63d00ad684462fb6e9c36656567918f75556dd5d0523e00bbd91e",
+     "bytes": 872860
+    },
+    {
+     "datei": "reverse-curls-kabel.webp",
+     "rolle": "standbild",
+     "sha256": "0537abd340c7911953cacdbb908da73ebcd940cab96bff8da8cf13298245c573",
+     "bytes": 29230
+    },
+    {
+     "datei": "icons/reverse-curls-kabel.webp",
+     "rolle": "icon256",
+     "sha256": "51ae543cea1098bf72d697c79cae1cb30b8a6387fc733d0c4364c27bcbe6dcf6",
+     "bytes": 6070
+    }
+   ],
+   "probleme": []
+  },
+  {
+   "id": "bizepscurls-kabel",
+   "typ": "clip",
+   "in_db": true,
+   "dateien": [
+    {
+     "datei": "bizepscurls-kabel.mp4",
+     "rolle": "clip",
+     "sha256": "e73a59c6b8631ab4e9b8a6fba3b9c847b5bfd0a996d35a5aa6879ca2b30320df",
+     "bytes": 920955
+    },
+    {
+     "datei": "bizepscurls-kabel.webp",
+     "rolle": "standbild",
+     "sha256": "cd86f885f86338b600f6f5030f99c6acaffaa8707a2c1644a85974fe9e92cecc",
+     "bytes": 29430
+    },
+    {
+     "datei": "icons/bizepscurls-kabel.webp",
+     "rolle": "icon256",
+     "sha256": "e652a2db8d5e3a51da3c201f39d16397da8c719b4054e100caf6c52a723cb689",
+     "bytes": 6318
+    }
+   ],
+   "probleme": []
+  },
+  {
+   "id": "scottcurls-sz",
+   "typ": "clip",
+   "in_db": true,
+   "dateien": [
+    {
+     "datei": "scottcurls-sz.mp4",
+     "rolle": "clip",
+     "sha256": "5b17ef42b3f2862ead01af1a66f0d6b0ac970e1a5790c062eefafc9727cbea27",
+     "bytes": 1588179
+    },
+    {
+     "datei": "scottcurls-sz.webp",
+     "rolle": "standbild",
+     "sha256": "f5e476518b172ef6c28b626dcdc5362b5c627317b841f6457e8649e61ce28ee7",
+     "bytes": 32166
+    },
+    {
+     "datei": "icons/scottcurls-sz.webp",
+     "rolle": "icon256",
+     "sha256": "6c792063e0ccc041dc856b2a357de3d28384fbc2e190ae2c665d7af476ba91ba",
+     "bytes": 6390
+    }
+   ],
+   "probleme": []
+  },
+  {
+   "id": "hammercurls-seil",
+   "typ": "clip",
+   "in_db": true,
+   "dateien": [
+    {
+     "datei": "hammercurls-seil.mp4",
+     "rolle": "clip",
+     "sha256": "a1e0320143b7f46833fc1dc751109269a8148e853aa7c7f4266c7944c45d8a08",
+     "bytes": 735990
+    },
+    {
+     "datei": "hammercurls-seil.webp",
+     "rolle": "standbild",
+     "sha256": "6ef9b5fee97cf8e703172e294dc5bf72a2692fc3b2014a5f4e05505fede91aab",
+     "bytes": 31024
+    },
+    {
+     "datei": "icons/hammercurls-seil.webp",
+     "rolle": "icon256",
+     "sha256": "1b38e6bea4aa2f8da071dc10ebc5b69d78b45c611b3164706e1ee4b72d49cd34",
+     "bytes": 5342
+    }
+   ],
+   "probleme": []
+  },
+  {
+   "id": "trizepsdruecken-einarmig",
+   "typ": "clip",
+   "in_db": true,
+   "dateien": [
+    {
+     "datei": "trizepsdruecken-einarmig.mp4",
+     "rolle": "clip",
+     "sha256": "576cca34bc9670b1602a48e033251cb43c20372ea303297bb0a4770f0de854f3",
+     "bytes": 691496
+    },
+    {
+     "datei": "trizepsdruecken-einarmig.webp",
+     "rolle": "standbild",
+     "sha256": "1380c67e9750e6c2e21f81b1ac7f18e6e24002222e57d9012bbd93ce716b83ae",
+     "bytes": 32428
+    },
+    {
+     "datei": "icons/trizepsdruecken-einarmig.webp",
+     "rolle": "icon256",
+     "sha256": "5054389285b274559169983c734fe152435564dc3959bbb6841633ff27d8580d",
+     "bytes": 6256
+    }
+   ],
+   "probleme": []
+  },
+  {
+   "id": "unterarmcurls-kurzhantel",
+   "typ": "clip",
+   "in_db": true,
+   "dateien": [
+    {
+     "datei": "unterarmcurls-kurzhantel.mp4",
+     "rolle": "clip",
+     "sha256": "eb1d6619ef44734c561eabf7e1843d3719df5e8c2c3495874fc992f930b7fb28",
+     "bytes": 1014930
+    },
+    {
+     "datei": "unterarmcurls-kurzhantel.webp",
+     "rolle": "standbild",
+     "sha256": "bdceebeefbefc00b2c13ae5a8b3c3bfb81474baa01a6f88b54c53dc1394c530f",
+     "bytes": 33552
+    },
+    {
+     "datei": "icons/unterarmcurls-kurzhantel.webp",
+     "rolle": "icon256",
+     "sha256": "30aff7a26f8a6be647618b672a168921e7f65d8fa95fa20da28901eccfb55ae5",
+     "bytes": 6946
+    }
+   ],
+   "probleme": []
+  },
+  {
+   "id": "trizepsstrecken-kabel-einarmig",
+   "typ": "clip",
+   "in_db": true,
+   "dateien": [
+    {
+     "datei": "trizepsstrecken-kabel-einarmig.mp4",
+     "rolle": "clip",
+     "sha256": "4b7c4b4be5cfb0a95c13f264e4467a33d76dd5a3fc19f1261d89c985a78acc94",
+     "bytes": 804879
+    },
+    {
+     "datei": "trizepsstrecken-kabel-einarmig.webp",
+     "rolle": "standbild",
+     "sha256": "81d3208553ff6bb535b3e07b994758cfc48d17437b300435c1baf15c84cc9d73",
+     "bytes": 33926
+    },
+    {
+     "datei": "icons/trizepsstrecken-kabel-einarmig.webp",
+     "rolle": "icon256",
+     "sha256": "5220d075825a2c8e72a5df99492f1677c6e8d8c07ce90ba88ca5053a3467011f",
+     "bytes": 5956
+    }
+   ],
+   "probleme": []
+  },
+  {
+   "id": "bizepscurls-kabel-oben",
+   "typ": "clip",
+   "in_db": true,
+   "dateien": [
+    {
+     "datei": "bizepscurls-kabel-oben.mp4",
+     "rolle": "clip",
+     "sha256": "7aaa9970e5166acfa8ad4546f86f04c6ab55d6a4d14d517edf3f6743cf83bad4",
+     "bytes": 366504
+    },
+    {
+     "datei": "bizepscurls-kabel-oben.webp",
+     "rolle": "standbild",
+     "sha256": "59e1d5a40995d1b81c683f3db31632f5a26328299ca9852f8c096197f4872ff5",
+     "bytes": 22418
+    },
+    {
+     "datei": "icons/bizepscurls-kabel-oben.webp",
+     "rolle": "icon256",
+     "sha256": "d8c25c3abfaef5c871a830396fee311de2cc88892687bbe827d477f3ffdb7e33",
+     "bytes": 4570
+    }
+   ],
+   "probleme": []
+  },
+  {
+   "id": "bizepscurls-kabel-einarmig",
+   "typ": "clip",
+   "in_db": true,
+   "dateien": [
+    {
+     "datei": "bizepscurls-kabel-einarmig.mp4",
+     "rolle": "clip",
+     "sha256": "6b456e17b435ec7160d5533c1c023f5cf9194bef911597af2ed2a8d5211f1685",
+     "bytes": 681600
+    },
+    {
+     "datei": "bizepscurls-kabel-einarmig.webp",
+     "rolle": "standbild",
+     "sha256": "1ecd2d8415d2d7e9e80d7ae37017629d3f28f244bb941a0d799dc8a7c22ae87a",
+     "bytes": 29326
+    },
+    {
+     "datei": "icons/bizepscurls-kabel-einarmig.webp",
+     "rolle": "icon256",
+     "sha256": "dabf347e94d5797350901cce7378f18701a7d4456078123b77f54dee44618a1b",
+     "bytes": 6372
+    }
+   ],
+   "probleme": []
+  },
+  {
+   "id": "bizepscurls-kurzhantel",
+   "typ": "clip",
+   "in_db": true,
+   "dateien": [
+    {
+     "datei": "bizepscurls-kurzhantel.mp4",
+     "rolle": "clip",
+     "sha256": "d6ed19a4086f474881b9b9d8604cd743fd690ea7856db44d8f1cb76c50a56746",
+     "bytes": 427011
+    },
+    {
+     "datei": "bizepscurls-kurzhantel.webp",
+     "rolle": "standbild",
+     "sha256": "0d05842a851b82cfbf7cae9afa43a28e71a8e78b26509aa6de50d9e1e7ba6518",
+     "bytes": 20820
+    },
+    {
+     "datei": "icons/bizepscurls-kurzhantel.webp",
+     "rolle": "icon256",
+     "sha256": "307e31d9ada248d0dd5b81a8d457e50ff6453958c06d552cfebb217980839010",
+     "bytes": 4440
+    }
+   ],
+   "probleme": []
+  },
+  {
+   "id": "scottcurls-maschine",
+   "typ": "still",
+   "in_db": true,
+   "dateien": [
+    {
+     "datei": "scottcurls-maschine.webp",
+     "rolle": "standbild",
+     "sha256": "8e1c00c3d4358443ba71c792052a7a6abc826f64646884e4181904c6de36e1e1",
+     "bytes": 38470
+    },
+    {
+     "datei": "icons/scottcurls-maschine.webp",
+     "rolle": "icon256",
+     "sha256": "cded3bc4ceae5c8053547207ad17ffc059b41b161a0f4632a4fe06e405a2d388",
+     "bytes": 7988
+    }
+   ],
+   "probleme": []
+  },
+  {
+   "id": "bizepsmaschine",
+   "typ": "still",
+   "in_db": true,
+   "dateien": [
+    {
+     "datei": "bizepsmaschine.webp",
+     "rolle": "standbild",
+     "sha256": "c2624850f4f9823bbdb0cdbc360f301f75939ea14531b8f6591094a6336eaf8f",
+     "bytes": 35752
+    },
+    {
+     "datei": "icons/bizepsmaschine.webp",
+     "rolle": "icon256",
+     "sha256": "673c6428b58451aeed7adefbcefbc80634f4c4498390d85a4a67d5f6232ba012",
+     "bytes": 7418
+    }
+   ],
+   "probleme": []
+  },
+  {
+   "id": "trizepsmaschine",
+   "typ": "still",
+   "in_db": true,
+   "dateien": [
+    {
+     "datei": "trizepsmaschine.webp",
+     "rolle": "standbild",
+     "sha256": "48c7fa1060a48ab0c480223a7d06bda8e23e6456b0e3993c1263adf086f6da86",
+     "bytes": 32954
+    },
+    {
+     "datei": "icons/trizepsmaschine.webp",
+     "rolle": "icon256",
+     "sha256": "1fdbce6da6839eac8a5053df122d052cddbfef5e14deb5c473b5b6c3ac8989a4",
+     "bytes": 6888
+    }
+   ],
+   "probleme": []
+  },
+  {
+   "id": "dipmaschine",
+   "typ": "still",
+   "in_db": true,
+   "dateien": [
+    {
+     "datei": "dipmaschine.webp",
+     "rolle": "standbild",
+     "sha256": "0a336613952564f486bb6c9b9002ce9b81a61bf85d5eb494c0047befe4d58a1e",
+     "bytes": 36210
+    },
+    {
+     "datei": "icons/dipmaschine.webp",
+     "rolle": "icon256",
+     "sha256": "4feac87d5a701f8e110e32e78f13029b2eed4aa8d32a51f0cade17a32b691da9",
+     "bytes": 7330
+    }
+   ],
+   "probleme": []
+  },
+  {
+   "id": "hammercurls-kreuz",
+   "typ": "still",
+   "in_db": true,
+   "dateien": [
+    {
+     "datei": "hammercurls-kreuz.webp",
+     "rolle": "standbild",
+     "sha256": "a3ff0aa613a62ef8a2e5a7d3b5a3055292f4c55e8bfbe553224b4be3d9c1b20a",
+     "bytes": 25050
+    },
+    {
+     "datei": "icons/hammercurls-kreuz.webp",
+     "rolle": "icon256",
+     "sha256": "39dda126edc23b2196be2bc9e1e5aabfb2d65fb2508162ad0a48e334260e14da",
+     "bytes": 5164
+    }
+   ],
+   "probleme": []
+  },
+  {
+   "id": "hammercurls-seil-beidarmig",
+   "typ": "still",
+   "in_db": "als Variante (varianten[].bild von hammercurls-seil)",
+   "dateien": [
+    {
+     "datei": "hammercurls-seil-beidarmig.webp",
+     "rolle": "standbild",
+     "sha256": "1cd9229b6c094c577b9c22f975f5d580d435a6dafd91fac72f6d17dbc2749601",
+     "bytes": 29998
+    },
+    {
+     "datei": "icons/hammercurls-seil-beidarmig.webp",
+     "rolle": "icon256",
+     "sha256": "e69a4e6455dbe198e936741347378596a75693a4032baeed914b9a52f4f191b8",
+     "bytes": 5912
+    }
+   ],
+   "probleme": [],
+   "variant_of": "hammercurls-seil",
+   "key": "beidarmig"
+  }
+ ],
+ "pfad": "assets/uebungen/"
+}

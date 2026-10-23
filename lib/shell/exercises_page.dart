@@ -5,6 +5,7 @@ import 'package:flexify/exercise_keys.dart';
 import 'package:flexify/exercise_labels.dart';
 import 'package:flexify/exercises/custom_exercise_page.dart';
 import 'package:flexify/exercises/exercise_image.dart';
+import 'package:flexify/exercises/exercise_media.dart';
 import 'package:flexify/exercises/exercise_detail_page.dart';
 import 'package:flexify/l10n/l10n.dart';
 import 'package:flexify/main.dart';
@@ -272,7 +273,11 @@ class _ExercisesPageState extends State<ExercisesPage> {
                     unassigned: context.l10n.unassignedExercise,
                   );
                   return ListTile(
-                    leading: ExerciseImage(path: exercise.image, height: 48),
+                    leading: exerciseLeading(
+                      catalogId: exercise.catalogId,
+                      imagePath: exercise.image,
+                      fallback: ExerciseImage(path: exercise.image, height: 48),
+                    ),
                     title: Text(title),
                     subtitle: subtitle == null ? null : Text(subtitle),
                     onTap: () {

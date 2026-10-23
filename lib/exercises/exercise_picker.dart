@@ -4,6 +4,7 @@ import 'package:flexify/database/database.dart';
 import 'package:flexify/exercise_labels.dart';
 import 'package:flexify/exercises/custom_exercise_page.dart';
 import 'package:flexify/exercises/exercise_detail_page.dart';
+import 'package:flexify/exercises/exercise_media.dart';
 import 'package:flexify/l10n/l10n.dart';
 import 'package:flexify/main.dart';
 import 'package:flexify/platform_page_route.dart';
@@ -168,6 +169,11 @@ class _ExercisePickerDialogState extends State<ExercisePickerDialog> {
                 children: [
                   for (final exercise in shown)
                     ListTile(
+                      leading: exerciseLeading(
+                        catalogId: exercise.catalogId,
+                        imagePath: exercise.image,
+                        size: 40,
+                      ),
                       title: Text(
                         localizedExerciseName(
                           context,

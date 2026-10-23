@@ -8,6 +8,7 @@ import 'package:flexify/database/database.dart';
 import 'package:flexify/exercises/custom_exercise.dart';
 import 'package:flexify/plan/plan_names.dart';
 import 'package:flexify/database/exercise_de_catalog.dart';
+import 'package:flexify/exercises/uebung_assets.dart';
 import 'package:flexify/shell/live_workout_bar.dart';
 import 'package:flexify/database/failed_migrations_page.dart';
 import 'package:flexify/logging.dart';
@@ -123,6 +124,7 @@ Future<void> main() async {
 
       talker.info('Loaded application settings');
       try {
+        await loadUebungAssets();
         await importExerciseCatalog(db);
         await renameEnglishPlanTitles(db);
         await restoreLiveWorkout(db);

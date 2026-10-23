@@ -1,7 +1,7 @@
 name: flexify
 description: Alpha, an offline-first gym tracker based on Flexify
 publish_to: none
-version: 2.6.0+458
+version: 2.7.0+459
 environment:
   sdk: ">=3.12.0 <4.0.0"
   flutter: ">=3.44.8"
@@ -26,6 +26,7 @@ dependencies:
   share_plus: ^13.3.0
   audioplayers: ^6.5.0
   package_info_plus: ^10.2.1
+  video_player: ^2.10.0
   url_launcher: ^6.2.6
   badges: ^4.0.1
   wakelock_plus: ^1.7.0
@@ -76,6 +77,8 @@ flutter:
     - assets/figures/
     - assets/exercises/
     - assets/exercises/img/
+    - assets/uebungen/
+    - assets/uebungen/icons/
     - assets/sound/
     - assets/changelogs/
     - assets/changelogs/l10n/

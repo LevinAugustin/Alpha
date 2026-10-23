@@ -4,7 +4,7 @@ import 'package:flexify/database/catalog_seed.dart';
 import 'package:flexify/database/database.dart';
 import 'package:flexify/exercise_labels.dart';
 import 'package:flexify/exercises/custom_exercise.dart';
-import 'package:flexify/exercises/exercise_image.dart';
+import 'package:flexify/exercises/exercise_media.dart';
 import 'package:flexify/exercises/exercise_variants.dart';
 import 'package:flexify/exercises/custom_exercise_page.dart';
 import 'package:flexify/feedback/feedback_page.dart';
@@ -216,7 +216,10 @@ class _ExerciseDetailPageState extends State<ExerciseDetailPage> {
       key: const Key('exercise-overview'),
       padding: const EdgeInsets.fromLTRB(16, 12, 16, 24),
       children: [
-        ExerciseImage(path: exercise.image),
+        ExerciseStage(
+          catalogId: exercise.catalogId,
+          fallbackPath: exercise.image,
+        ),
         const SizedBox(height: 12),
         Text(
           '${l10n.primaryMuscleLabel}: ${primaryText.isEmpty ? '—' : primaryText}',
@@ -320,6 +323,8 @@ class _ExerciseDetailPageState extends State<ExerciseDetailPage> {
         steps: variant.steps(context),
         tips: variant.tips(context),
         clip: variant.clipPath(),
+        variantKey: variant.key,
+        variantImage: variant.image,
         showClip: true,
         onBack: () => setState(() => _variantKey = ''),
       );
@@ -385,6 +390,8 @@ class _ExerciseDetailPageState extends State<ExerciseDetailPage> {
     required List<String> steps,
     required List<String> tips,
     String? clip,
+    String? variantKey,
+    String? variantImage,
     bool showClip = false,
     VoidCallback? onBack,
   }) {
@@ -405,7 +412,12 @@ class _ExerciseDetailPageState extends State<ExerciseDetailPage> {
             ),
           ),
         if (showClip) ...[
-          ExerciseImage(path: clip),
+          ExerciseStage(
+            catalogId: widget.exercise.catalogId,
+            variantKey: variantKey,
+            variantImage: variantImage,
+            fallbackPath: clip,
+          ),
           const SizedBox(height: 12),
         ],
         for (var index = 0; index < steps.length; index++)

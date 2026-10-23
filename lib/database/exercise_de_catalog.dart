@@ -5,6 +5,7 @@ import 'package:drift/drift.dart';
 import 'package:flexify/database/database.dart';
 import 'package:flexify/exercise_keys.dart';
 import 'package:flexify/exercises/custom_exercise.dart';
+import 'package:flexify/exercises/uebung_assets.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
@@ -231,6 +232,7 @@ Future<ExerciseImportResult> importExerciseCatalog(AppDatabase database) async {
       skipped: [],
     );
   }
+  await loadUebungAssets();
   await refreshBundledExerciseImages();
   final raw = await rootBundle.loadString(exerciseCatalogAsset);
   String? flexifyMapRaw;

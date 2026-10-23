@@ -1,6 +1,7 @@
 import 'package:drift/drift.dart' as drift;
 import 'package:flexify/database/catalog_seed.dart';
 import 'package:flexify/exercise_labels.dart';
+import 'package:flexify/exercises/exercise_media.dart';
 import 'package:flexify/database/database.dart';
 import 'package:flexify/database/exercise_catalog.dart';
 import 'package:flexify/graph/add_exercise_page.dart';
@@ -207,6 +208,11 @@ class _SwapWorkoutState extends State<SwapWorkout> {
                   itemBuilder: (context, index) {
                     final exercise = exercises[index];
                     return ListTile(
+                      leading: exerciseLeading(
+                        catalogId: exercise.catalogId,
+                        imagePath: exercise.image,
+                        size: 40,
+                      ),
                       title: Text(
                         localizedExerciseName(
                           context,
