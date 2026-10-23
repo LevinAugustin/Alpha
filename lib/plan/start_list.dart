@@ -4,6 +4,7 @@ import 'package:flexify/constants.dart';
 import 'package:flexify/custom_set_indicator.dart';
 import 'package:flexify/database/database.dart';
 import 'package:flexify/exercise_labels.dart';
+import 'package:flexify/exercises/exercise_media.dart';
 import 'package:flexify/l10n/l10n.dart';
 import 'package:flexify/database/exercise_set_repository.dart';
 import 'package:flexify/main.dart';
@@ -145,6 +146,11 @@ class _StartListState extends State<StartList> {
     List<GymCount> counts,
   ) {
     final exercise = widget.exercises[index];
+    final thumb = exerciseLeading(
+      catalogId: exercise.exercise.catalogId,
+      imagePath: exercise.exercise.image,
+      size: 36,
+    );
     final idx = counts.indexWhere(
       (element) => element.exerciseId == exercise.exercise.id,
     );
@@ -246,6 +252,10 @@ class _StartListState extends State<StartList> {
                             ),
                             const SizedBox(width: 12),
                           ],
+                          if (thumb != null) ...[
+                            thumb,
+                            const SizedBox(width: 10),
+                          ],
                           Expanded(
                             child: Text(
                               exerciseLine(context, exercise),
@@ -310,6 +320,7 @@ class _StartListState extends State<StartList> {
                       },
                       child: Radio<bool>(value: selected),
                     ),
+                    if (thumb != null) ...[thumb, const SizedBox(width: 8)],
                     Flexible(child: Text(exerciseLine(context, exercise))),
                   ],
                 ),

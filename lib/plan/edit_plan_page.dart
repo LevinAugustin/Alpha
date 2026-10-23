@@ -241,6 +241,7 @@ class _EditPlanPageState extends State<EditPlanPage> {
                     exerciseName: pe.exerciseName,
                     germanName: pe.germanName,
                     englishName: pe.englishName,
+                    catalogId: pe.catalogId,
                     onChange: (value) {
                       final id = _exercises.indexWhere(
                         (exercise) =>

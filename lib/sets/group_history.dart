@@ -6,6 +6,7 @@ import 'package:flexify/constants.dart';
 import 'package:flexify/database/database.dart';
 import 'package:flexify/database/exercise_set_repository.dart';
 import 'package:flexify/exercises/exercise_image.dart';
+import 'package:flexify/exercises/exercise_media.dart';
 import 'package:flexify/l10n/l10n.dart';
 import 'package:flexify/main.dart';
 import 'package:flexify/responsive.dart';
@@ -224,8 +225,14 @@ class _GroupHistoryState extends State<GroupHistory> {
     }
 
     Widget? leading;
+    final bundledIcon = exerciseLeading(imagePath: exerciseSet.image, size: 40);
 
-    if (showImages && exerciseImageFileExists(exerciseSet.image)) {
+    if (showImages && bundledIcon != null) {
+      leading = GestureDetector(
+        onTap: () => widget.onSelect(exerciseSet.id),
+        child: bundledIcon,
+      );
+    } else if (showImages && exerciseImageFileExists(exerciseSet.image)) {
       leading = GestureDetector(
         onTap: () => widget.onSelect(exerciseSet.id),
         child: Image.file(

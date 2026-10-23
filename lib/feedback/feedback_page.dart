@@ -32,8 +32,8 @@ class _FeedbackPageState extends State<FeedbackPage> {
   var _recording = false;
   var _sending = false;
   String? _attachment;
-  String _version = '2.6.0';
-  String _build = '458';
+  String _version = '2.7.0';
+  String _build = '459';
   String _manufacturer = '—';
   String _model = '—';
   String _android = '—';

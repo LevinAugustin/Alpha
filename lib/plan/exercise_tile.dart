@@ -3,6 +3,7 @@ import 'package:flexify/alpha/plates.dart';
 import 'package:flexify/alpha/rest_stepper.dart';
 import 'package:flexify/database/database.dart';
 import 'package:flexify/exercise_labels.dart';
+import 'package:flexify/exercises/exercise_media.dart';
 import 'package:flexify/l10n/l10n.dart';
 import 'package:flexify/utils.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +14,7 @@ class ExerciseTile extends StatefulWidget {
   final String exerciseName;
   final String germanName;
   final String englishName;
+  final String catalogId;
   final Function(PlanExercisesCompanion) onChange;
 
   const ExerciseTile({
@@ -22,6 +24,7 @@ class ExerciseTile extends StatefulWidget {
     required this.exerciseName,
     this.germanName = '',
     this.englishName = '',
+    this.catalogId = '',
   });
 
   @override
@@ -226,13 +229,24 @@ class _ExerciseTileState extends State<ExerciseTile> {
           );
         },
       ),
-      title: Text(
-        localizedExerciseName(
-          context,
-          widget.exerciseName,
-          german: widget.germanName,
-          english: widget.englishName,
-        ),
+      title: Row(
+        children: [
+          if (exerciseLeading(catalogId: widget.catalogId, size: 36)
+              case final icon?) ...[
+            icon,
+            const SizedBox(width: 8),
+          ],
+          Flexible(
+            child: Text(
+              localizedExerciseName(
+                context,
+                widget.exerciseName,
+                german: widget.germanName,
+                english: widget.englishName,
+              ),
+            ),
+          ),
+        ],
       ),
       subtitle: _rangeSubtitle(context),
       trailing: Switch(

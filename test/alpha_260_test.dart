@@ -191,6 +191,14 @@ void main() {
     expect(find.text('Two-arm'), findsOneWidget);
     await tester.tap(find.byKey(const Key('variant-einarmig')));
     await tester.pumpAndSettle();
+    await tester.scrollUntilVisible(
+      find.textContaining('One hand.'),
+      200,
+      scrollable: find.descendant(
+        of: find.byKey(const Key('exercise-howto')),
+        matching: find.byType(Scrollable),
+      ),
+    );
     expect(find.textContaining('One hand.'), findsOneWidget);
     expect(find.textContaining('Slow.'), findsOneWidget);
     expect(find.byType(ExerciseImagePlaceholder), findsWidgets);
@@ -227,7 +235,7 @@ void main() {
     await tester.tap(find.byKey(const Key('feedback-send')));
     await tester.pump();
     expect(sent, isNotNull);
-    expect(sent!.subject, '[Alpha-Feedback] Fehler 2.6.0+458');
+    expect(sent!.subject, '[Alpha-Feedback] Fehler 2.7.0+459');
     expect(sent!.body, contains('Sprache: de'));
     expect(sent!.body, contains('Übung: Curl (hammercurls-seil)'));
     expect(sent!.body, contains('Bitte prüfen'));
