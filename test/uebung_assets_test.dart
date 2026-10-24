@@ -162,7 +162,9 @@ void main() {
   test('variant art comes from the manifest link or the stored bild name', () {
     final index = realIndex();
     final parent = index.visual(catalogId: 'hammercurls-seil');
-    expect(parent.kind, ExerciseVisualKind.none);
+    expect(parent.kind, ExerciseVisualKind.clip);
+    expect(parent.clip, 'assets/uebungen/hammercurls-seil.mp4');
+    expect(parent.still, 'assets/uebungen/hammercurls-seil.webp');
     expect(
       index.icon(catalogId: 'hammercurls-seil'),
       'assets/uebungen/icons/hammercurls-seil.webp',
@@ -174,6 +176,7 @@ void main() {
       variantImage: 'something-else.webp',
     );
     expect(linked.kind, ExerciseVisualKind.still);
+    expect(linked.clip, isNull);
     expect(linked.still, 'assets/uebungen/hammercurls-seil-beidarmig.webp');
     expect(
       index.icon(catalogId: 'hammercurls-seil-beidarmig'),
@@ -206,8 +209,8 @@ void main() {
 
     final missing = index.visual(
       catalogId: 'hammercurls-seil',
-      variantKey: 'einarmig',
-      variantImage: 'hammercurls-seil.webp',
+      variantKey: 'ohne-bild',
+      variantImage: 'nicht-vorhanden.webp',
     );
     expect(missing.kind, ExerciseVisualKind.none);
 
